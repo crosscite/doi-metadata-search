@@ -1,0 +1,9 @@
+%table
+  %tr
+    %td
+      .item-tab
+        %i.icon-question-sign
+        %p= item['published']['year'].to_i
+    %td
+      %p.lead= item['title']
+      = partial :item_links, :item => item

@@ -1,0 +1,14 @@
+.item-links
+  %a
+    %i.icon-download-alt
+    Metadata
+  %a.cite-link
+    %i.icon-bullhorn
+    Cite
+  %a
+    %i.icon-copy
+    More like this
+  .pull-right
+    %a{:href => 'http://dx.doi.org/' + item['doi'], :target => '_blank'}
+      %i.icon-external-link
+      = item['doi']

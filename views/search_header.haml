@@ -1,0 +1,24 @@
+:css
+  .cr-red {
+    color: rgb(192, 70, 62);
+  }
+  .search {
+    position: relative;
+    margin-top: .1em;
+  }
+  .search i {
+    position: absolute;
+    top: 0.3em;
+    left: 0.3em;
+    font-size: 0.7em;
+    color: #aaa;
+  }
+.page-header
+  %h1
+    %span.cr-red CrossRef
+    %span Metadata Search
+    .pull-right
+      %form{:method => 'GET'}
+        .search
+          %input.input.input-xlarge{:placeholder => 'Search', :style => 'padding-left: 2em;', :name => 'q', :type => 'text', :value => page[:query]}
+          %i.icon-search

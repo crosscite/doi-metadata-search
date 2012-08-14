@@ -192,7 +192,7 @@ $(document).ready(function() {
       var url = 'http://dx.doi.org/' + normaliseDoi(searchText);
       window.location.href = url;
     } else {
-      var url = 'http://api.labs.crossref.org/search?q=';
+      var url = '/dois?q=';
       url += encodeURIComponent(searchText);
       window.location.href = url;
     }

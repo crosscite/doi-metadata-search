@@ -1,0 +1,18 @@
+.modal.hide
+  .modal-header
+    %a.button.close x
+    %h3
+      %span Cite '
+      %span.cite-doi= item['doi']
+      %span '
+  .modal-body
+    %select.input-large
+      %option apa
+      %option bibtex
+      %option chicago
+      %option harvard
+      %option ieee
+      %option mla
+      %option vancouver
+    .well
+      
