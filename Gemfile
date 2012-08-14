@@ -1,9 +1,9 @@
-source 'http://rubygems.org'
+source "http://rubygems.org"
 gem 'sinatra'
 gem 'haml'
 gem 'mongo'
 gem 'json'
 gem 'bson_ext'
-gem 'mongo'
 gem 'rsolr'
 gem 'will_paginate'
+gem 'bson'
