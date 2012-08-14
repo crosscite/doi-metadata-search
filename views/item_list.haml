@@ -1,0 +1,52 @@
+:css
+  .item-tab {
+    padding: 1em 0.8em;  
+    border-left: 4px solid rgb(192, 70, 62);
+    background-color: #e9e9e9;
+    color: #a9a9a9;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
+    width: 4.2em;
+  }
+  .item-tab.conf-proc {
+    border-left: 4px solid rgb(49, 145, 177);
+  }
+  .item-tab i {
+    font-size: 5em;
+    line-height: 1em;
+  }
+  .item-tab p {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  .item-data {
+    padding: 0.8em;
+   }
+  td {
+    vertical-align: top;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  table:first_child {
+    border-top: 1px solid #eee;
+  }
+  tr {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5em;
+  }
+  .item-data a {
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+  }
+
+%table  
+  - page[:items].each do |item|
+    - case item['type']
+    - when 'journal_article'
+      = partial :item_article, :item => item
+    - when 'conference_paper'
+      = partial :item_conf_proc, :item => item
+    - else
+      = partial :item_unknown, :item => item

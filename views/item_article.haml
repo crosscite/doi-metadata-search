@@ -1,0 +1,34 @@
+%tr
+  %td
+    .item-tab
+      %i.icon-file
+      - if item['published'].has_key? 'month_abbr'
+        %p= item['published']['month_abbr']      
+      %p= item['published']['year'].to_i
+  %td.item-data
+    %p.lead= item['title']
+    .pull-right
+      %h6
+        - if item.has_key? 'pages'
+          - if item['pages'].has_key?('last_page')
+            pages
+            = item['pages']['first_page']
+            to
+            = item['pages']['last_page']
+          - elsif  item['pages'].has_key?('first_page')
+            page
+            = item['pages']['first_page']
+    %h6
+      = item['journal']['full_title']
+      = item['volume']
+      (
+      = item['issue']
+      )
+    
+    %p
+      - if item.has_key? 'contributors'
+        - item['contributors'].each do |author|
+          = author['given_name']
+          = author['surname']
+    = partial :item_links, :item => item
+        

@@ -1,0 +1,44 @@
+:css
+  .facets {
+    background-color: #f8f8f8;
+    padding: 1em;
+  }
+  .item-paging {
+    text-align: center;
+    margin-top: 1em;
+  }
+  .list-info {
+     margin-bottom: 2em;
+     background-color: #f8f8f8;
+     padding: 1em;   
+  }
+  .gap {
+    display: none;
+  }
+
+= partial :search_header, :page => page
+        
+.row-fluid
+  .span3
+    .facets
+      %h6 Type
+      %h6 Year
+      %h6 Publication
+      %h6 ISSN
+      %h6 ISBN
+      %h6 Issue
+      %h6 Volume
+  .span9
+    .list-info
+      .pull-right
+        .dropdown
+          %a.dropdown-toggle{:'data-toggle' => 'dropdown', :href => '#'}
+            Order by relevance
+            %b.caret
+          %ul.dropdown-menu
+            %li
+              %a{:href => '#'} publication date
+      %h6= "Page #{page[:page]} of [:#{page[:paginate].total_rows} results"
+    = partial :item_list, :page => page
+    .item-paging.bottom
+      = will_paginate page[:paginate], :renderer => BootstrapLinkRenderer
