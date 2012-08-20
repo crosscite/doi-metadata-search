@@ -5,6 +5,7 @@ require 'rsolr'
 require 'mongo'
 require 'haml'
 require 'will_paginate'
+require 'cgi'
 
 require_relative 'lib/paginate'
 require_relative 'lib/bootstrap'
@@ -24,6 +25,14 @@ configure do
 end
 
 helpers do
+  def doi? s
+    to_doi(s) =~ /10\.[0-9]{4}\/.+/
+  end
+
+  def to_doi s
+    s.strip.sub(/\A(https?:\/\/)?dx\.doi\.org\//, '').sub(/\Adoi:/, '')
+  end
+
   def partial template, locals
     haml template.to_sym, :layout => false, :locals => locals
   end 
@@ -55,20 +64,93 @@ helpers do
   end
 
   def query_terms
-    "#{params['q'].gsub(/\(\)\-:/, '')}"
+    if doi? params['q']
+      "doi:\"#{to_doi(params['q']).downcase}\""
+    else
+      "#{params['q'].gsub(/\(\)\-:/, '')}"
+    end
+  end
+
+  def abstract_facet_query
+    fq = {}
+    ['type', 'year', 'publication', 'category'].each do |field|
+      if params.has_key? field
+        p params[field]
+        params[field].split(';').each do |val|
+          fq[field] ||= []
+          fq[field] << val
+        end
+      end
+    end
+    fq
+  end
+
+  def facet_query
+    fq = []
+    abstract_facet_query.each_pair do |name, values|
+      values.each do |value|
+        fq << "#{name}: \"#{value}\""
+      end
+    end
+    fq
   end
 
   def search_query
-    {
+    fq = facet_query
+    query  = {
       :q => query_terms,
       :fl => query_columns,
-      :rows => query_rows
+      :rows => query_rows,
+      :facet => 'true',
+      'facet.field' => ['type', 'year', 'publication', 'category'],
+      :hl => 'true',
+      'hl.fl' => 'hl_*',
+      'hl.simple.pre' => '<span class="hl">',
+      'hl.simple.post' => '</span>',
+      'hl.mergeContinuous' => 'true',
+      'hl.snippets' => 10,
+      'hl.fragsize' => 0
     }
+
+    query['fq'] = fq unless fq.empty?
+    query
+  end
+
+  def facet_link_not field_name, field_value
+    fq = abstract_facet_query
+    fq[field_name].delete field_value
+    fq.delete(field_name) if fq[field_name].empty?
+
+    link = "/dois?q=#{CGI.escape(params['q'])}"
+    fq.each_pair do |field, vals|
+      link += "&#{field}=#{CGI.escape(vals.join(';'))}"
+    end
+    link
+  end
+
+  def facet_link field_name, field_value
+    fq = abstract_facet_query
+    fq[field_name] ||= []
+    fq[field_name] << field_value
+
+    link = "/dois?q=#{CGI.escape(params['q'])}"
+    fq.each_pair do |field, vals|
+      link += "&#{field}=#{CGI.escape(vals.join(';'))}"
+    end
+    link
+  end
+
+  def facet? field_name
+    abstract_facet_query.has_key? field_name
   end
 end
 
 get '/' do
-  haml :index
+  haml :splash, :locals => {:page => {:query => ""}}
+end
+
+get '/splash' do
+  haml :splash, :locals => {:page => {:query => ""}}
 end
 
 get '/dois' do
@@ -77,16 +159,19 @@ get '/dois' do
   doi_records = results['response']['docs'].map do |doc|
     settings.dois.find_one(:doi => doc['doi'])
   end
-  
+
   page = {
     :query => query_terms,
+    :facet_query => abstract_facet_query,
     :page => query_page,
     :rows => {
       :options => settings.typical_rows,
       :actual => query_rows
     },
     :items => doi_records,
-    :paginate => Paginate.new(query_page, query_rows, results)
+    :paginate => Paginate.new(query_page, query_rows, results),
+    :facets => results['facet_counts']['facet_fields'],
+    :highlights => results['highlighting']
   }
 
   haml :results, :locals => {:page => page}

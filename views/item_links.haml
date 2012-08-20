@@ -5,9 +5,10 @@
   %a.cite-link
     %i.icon-bullhorn
     Cite
-  %a
-    %i.icon-copy
-    More like this
+  - unless facet? 'publication'  
+    %a{:href => "#{facet_link('publication', item['journal']['full_title'])}"}
+      %i.icon-copy
+      More from this publication
   .pull-right
     %a{:href => 'http://dx.doi.org/' + item['doi'], :target => '_blank'}
       %i.icon-external-link
