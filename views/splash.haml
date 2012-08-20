@@ -1,0 +1,45 @@
+:css
+  .cr-red {
+    color: rgb(192, 70, 62);
+  }
+  .search {
+    margin-top: 2em;
+    position: relative;
+  }
+  .search i {
+    position: absolute;
+    top: 0.6em;
+    left: 0.3em;
+    font-size: 3em;
+    color: #aaa;
+  }
+  .search input {
+    padding-left: 1.5em;
+    line-height: 1.2em;
+    height: 1.4em;
+    font-size: 2.5em;
+    width: 20em;
+  }
+  h1 {  
+    font-size: 4em;
+    line-height: 1.2em;
+  }
+  body {
+    margin-top: 20em;
+  }
+  .row-centered {
+    margin: 0 auto;
+    width: 700px;
+  }
+
+.spacer  
+.row-centered
+  %h1.cr-red
+    %span CrossRef
+  %h1
+    %span Metadata Search
+  %form{:method => 'GET', :action => '/dois'}
+    .search
+      %input.input.input-xlarge{:name => 'q', :type => 'text', :value => page[:query]}
+      %i.icon-search
+

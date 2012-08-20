@@ -40,13 +40,17 @@
     margin-left: 0.2em;
     margin-right: 0.2em;
   }
+  .hl {
+    background-color: rgb(235,245,167);
+    border-bottom: 1px dashed grey;
+  }
 
 %table  
   - page[:items].each do |item|
     - case item['type']
     - when 'journal_article'
-      = partial :item_article, :item => item
+      = partial :item_article, :page => page, :item => item
     - when 'conference_paper'
-      = partial :item_conf_proc, :item => item
+      = partial :item_conf_proc, :page => page, :item => item
     - else
-      = partial :item_unknown, :item => item
+      = partial :item_unknown, :page => page, :item => item

@@ -1,8 +1,4 @@
 :css
-  .facets {
-    background-color: #f8f8f8;
-    padding: 1em;
-  }
   .item-paging {
     text-align: center;
     margin-top: 1em;
@@ -15,19 +11,26 @@
   .gap {
     display: none;
   }
+  a, a:visited {
+    color: rgb(56, 166, 203);
+  }
+  a:hover {
+    color: rgb(6, 116, 153);
+  }
+  
+  .nav-list > .active > a {
+    background-color: rgb(56, 166, 203);
+  }
+
+  .nav-list > .active > a:hover {
+    background-color: rgb(6, 116, 153);
+  }
 
 = partial :search_header, :page => page
         
 .row-fluid
   .span3
-    .facets
-      %h6 Type
-      %h6 Year
-      %h6 Publication
-      %h6 ISSN
-      %h6 ISBN
-      %h6 Issue
-      %h6 Volume
+    = partial :facets, :page => page
   .span9
     .list-info
       .pull-right
@@ -38,7 +41,7 @@
           %ul.dropdown-menu
             %li
               %a{:href => '#'} publication date
-      %h6= "Page #{page[:page]} of [:#{page[:paginate].total_rows} results"
+      %h6= "Page #{page[:page]} of #{page[:paginate].total_rows} results"
     = partial :item_list, :page => page
     .item-paging.bottom
       = will_paginate page[:paginate], :renderer => BootstrapLinkRenderer

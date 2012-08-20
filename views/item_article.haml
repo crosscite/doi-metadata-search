@@ -6,7 +6,10 @@
         %p= item['published']['month_abbr']      
       %p= item['published']['year'].to_i
   %td.item-data
-    %p.lead= item['title']
+    - if page[:highlights].has_key?(item['doi']) && page[:highlights][item['doi']].has_key?('hl_title')
+      %p.lead= page[:highlights][item['doi']]['hl_title'].first
+    - else    
+      %p.lead= item['title']
     .pull-right
       %h6
         - if item.has_key? 'pages'
@@ -19,7 +22,10 @@
             page
             = item['pages']['first_page']
     %h6
-      = item['journal']['full_title']
+      - if page[:highlights].has_key?(item['doi']) && page[:highlights][item['doi']].has_key?('hl_publication')
+        = page[:highlights][item['doi']]['hl_publication'].first
+      - else  
+        = item['journal']['full_title']
       = item['volume']
       (
       = item['issue']
