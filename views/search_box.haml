@@ -1,0 +1,21 @@
+:css
+  .search-box {
+    padding: 0 .6em;
+  }
+  .search-info {
+    padding: .3em 0;
+  }
+
+- if page[:query_type][:type] != :normal   
+  .alert.search-box
+    .search-info
+      - if page[:query_type][:type] == :doi
+        Showing DOI matching
+        %b= page[:query_type][:value]
+      - elsif page[:query_type][:type] == :short_doi
+        Resolved short DOI to
+        %b= page[:query_type][:value]
+      - elsif page[:query_type][:type] == :issn
+        Showing results for ISSN matching
+        %b= page[:query_type][:value]
+  

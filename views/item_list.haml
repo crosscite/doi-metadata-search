@@ -1,10 +1,8 @@
 :css
   .item-tab {
     padding: 1em 0.8em;  
-    border-left: 4px solid rgb(192, 70, 62);
-    background-color: #e9e9e9;
+    background-color: #f8f8f8;
     color: #a9a9a9;
-    text-align: center;
     text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
     width: 4.2em;
   }
@@ -24,6 +22,7 @@
    }
   td {
     vertical-align: top;
+    padding: .7em;
   }
   table {
     border-collapse: collapse;
@@ -44,10 +43,59 @@
     background-color: rgb(235,245,167);
     border-bottom: 1px dashed grey;
   }
+  .extra {
+    color: #999;
+    font-size: 1.2em;
+    line-height: 1.3em;
+  }
+  .lead {
+    margin-bottom: 0.3em;
+  }
+  .item-tab-icons {
+    text-align: left;
+    margin: .5em;
+    margin-top: 1em;
+    margin-bottom: 0;
+  }
+  .item-tab-icons i {
+    font-size: 1.8em; 
+    line-height: 1.1em;
+    vertical-align: text-top;
+  }
+  .item-tab-date {
+    text-align: center;
+  }
+  .item-tab-icons a, .item-tab-icons a:visited {
+    color: rgb(167, 204, 145);
+  }
+  .item-tab-icons a:hover {
+    color: rgb(147, 184, 125);
+  }
+
+:javascript
+  MAX_EXPAND_CHARS = 60;
+  
+  $(document).ready(function() {
+    $('.oa-tooltip').tooltip({
+      title: 'Article is published in a journal present in the Directory of Open Access Journals.'
+    });
+
+    $.forEach($('.expand'), function(index, item) {
+      if (item.text().length() > MAX_EXPAND_CHARS) {
+        item.data('full-text') = item.text();        
+        item.text(item.text.substring(0, MAX_EXPAND_CHARS));
+        item.append($('<a>').addClass('.expander').text('...'));
+      }
+    });
+
+    $('.expander').click(function(e) {
+      $(this).text($(this).data('full-text'));
+    });
+  });
 
 %table  
   - page[:items].each do |item|
-    - case item['type']
+    - case item.type
     - when 'journal_article'
       = partial :item_article, :page => page, :item => item
     - when 'conference_paper'

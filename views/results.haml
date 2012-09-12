@@ -6,16 +6,10 @@
   .list-info {
      margin-bottom: 2em;
      background-color: #f8f8f8;
-     padding: 1em;   
+     padding: 1em;
   }
   .gap {
     display: none;
-  }
-  a, a:visited {
-    color: rgb(56, 166, 203);
-  }
-  a:hover {
-    color: rgb(6, 116, 153);
   }
   
   .nav-list > .active > a {
@@ -26,22 +20,36 @@
     background-color: rgb(6, 116, 153);
   }
 
+  h6 b, h6 a {
+    font-size: 1.2em;
+    line-height: 1.3em;
+    margin-left: 0.3em;
+  }
+
+  h6 b {
+    color: black;
+  }
+
 = partial :search_header, :page => page
         
 .row-fluid
   .span3
     = partial :facets, :page => page
   .span9
+    = partial :search_box, :page => page 
     .list-info
       .pull-right
-        .dropdown
-          %a.dropdown-toggle{:'data-toggle' => 'dropdown', :href => '#'}
-            Order by relevance
-            %b.caret
-          %ul.dropdown-menu
-            %li
-              %a{:href => '#'} publication date
+        %h6
+          Sort by:
+          - if page[:bare_sort] == 'year'
+            %a{:href => "#{search_link({:sort => 'score'})}"} relevance
+            %b publication year
+          - else
+            %b relevance
+            %a{:href => "#{search_link({:sort => 'year'})}"} publication year
       %h6= "Page #{page[:page]} of #{page[:paginate].total_rows} results"
     = partial :item_list, :page => page
     .item-paging.bottom
       = will_paginate page[:paginate], :renderer => BootstrapLinkRenderer
+
+= partial :cite_box, :page => page      

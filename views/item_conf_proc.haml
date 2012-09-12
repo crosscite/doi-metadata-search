@@ -1,27 +1,33 @@
 %tr
   %td
-    .item-tab.conf-proc
-      %i.icon-user
-      %p= item['published']['year'].to_i
+    .item-tab
+      .item-tab-date
+        %p
+          - unless item.day.nil?
+            item.day
+          - unless item.month.nil?
+            item.month
+        - unless item.year.nil?
+          %p= item.year
   %td.item-data
-    %p.lead= item['title']
-    .pull-right
-      %h6
-        - if item.has_key? 'pages'
-          - if item['pages'].has_key?('last_page')
-            pages
-            = item['pages']['first_page']
-            to
-            = item['pages']['last_page']
-          - elsif  item['pages'].has_key?('first_page')
-            page
-            = item['pages']['first_page']
-    %h6
-      = item['proceedings']['title']
-    
-    %p
-      - if item.has_key? 'contributors'
-        - item['contributors'].each do |author|
-          = author['given_name']
-          = author['surname']
+    - unless item.title.nil?
+      %p.lead= item.title
+
+    .pull-right  
+      %p.extra
+        - unless item.volume.nil?
+          = "Volume <b>#{item.volume}</b>,"
+        - unless item.issue.nil?
+          = "Issue <b>#{item.issue}</b>,"
+        - if !item.first_page.nil? && !item.last_page.nil?
+          = "Pages <b>#{item.first_page}</b> to <b>#{item.last_page}</b>"
+        - elsif !item.first_page.nil?
+          = "From Page <b>#{item.first_page}</b>"
+  
+    - unless item.publication.nil?        
+      %p.extra= item.publication
+
+    - unless item.authors.nil?
+      %p.expand= item.authors
+
     = partial :item_links, :item => item

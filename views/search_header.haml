@@ -2,30 +2,51 @@
   .cr-red {
     color: rgb(192, 70, 62);
   }
-  .search {
-    position: relative;
-    margin-top: .1em;
-  }
-  .search i {
-    position: absolute;
-    top: 0.35em;
-    left: 0.4em;
-    font-size: 1.5em;
-    color: #aaa;
-  }
   .home-link, .home-link:visited, .home-link:hover {
     text-decoration: none;
     color: black;
   }
-  
+  .simple-nav {
+    font-size: 1.4em;
+    line-height: 1.1em;
+    margin-top: 1em;
+  }
+  .simple-nav a, .simple-nav a:visited {
+    color: grey;
+    padding-left: .4em;
+  }
+  .search {
+    position: relative;
+    margin-top: .5em;
+    margin-right: 16em;
+  }
+  .search i {
+    position: absolute;
+    top: 0.5em;
+    left: 0.5em;
+    font-size: 2em;
+    color: #aaa;
+  }
+  .search input {
+    line-height: 1.2em;
+    height: 1.4em;
+    font-size: 1.6em;
+  }
+  h1 img {
+    width: 175px;
+  }
+
 .page-header
   .pull-right
+    .pull-right
+      .simple-nav
+        %a{:href => '#'} API
+        %a{:href => '#'} Help
     %form{:method => 'GET'}
       .search
-        %input.input.input-xlarge{:placeholder => 'Search', :style => 'padding-left: 2em;', :name => 'q', :type => 'text', :value => page[:query]}
-        %i.icon-search
+        %input.input.input-xxlarge{:placeholder => 'Search', :style => 'padding-left: 2em;', :name => 'q', :type => 'text', :value => page[:bare_query]}
+        %i.icon-search  
   %h1
     %a.home-link{:href => '/'}
-      %span.cr-red CrossRef
-      %span Metadata Search
+      %img{:src => '/cms-logo.png'}
     
