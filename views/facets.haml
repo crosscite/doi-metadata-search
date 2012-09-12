@@ -8,27 +8,17 @@
   }
 .facets
   - page[:facets].each_pair do |name, values|
-    %h6= name
+    %h6= name.gsub(/_/, ' ')
     %ul.nav.nav-list
       - values.take(20).each_slice(2) do |value_name, value_count|
         - unless value_count.zero?
           - if page[:facet_query].has_key?(name) && page[:facet_query][name].include?(value_name)
             %li.active
-              - if name == 'year'          
-                %a{:href => "#{facet_link_not(name, value_name)}"}
-                  %i.icon-check
-                  = "#{value_name.to_i} (#{value_count})"
-              - else
-                %a{:href => "#{facet_link_not(name, value_name)}"}
-                  %i.icon-check
-                  = "#{value_name} (#{value_count})"
+              %a{:href => "#{facet_link_not(name, value_name)}"}
+                %i.icon-check
+                = "#{value_name} (#{value_count})"
           - else
             %li
-              - if name == 'year'          
-                %a{:href => "#{facet_link(name, value_name)}"}
-                  %i.icon-check-empty
-                  = "#{value_name.to_i} (#{value_count})"
-              - else
-                %a{:href => "#{facet_link(name, value_name)}"}
-                  %i.icon-check-empty
-                  = "#{value_name} (#{value_count})"
+              %a{:href => "#{facet_link(name, value_name)}"}
+                %i.icon-check-empty
+                = "#{value_name} (#{value_count})"

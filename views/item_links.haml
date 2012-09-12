@@ -1,15 +1,13 @@
+= item.coins_span
 .item-links
-  %a
-    %i.icon-download-alt
-    Metadata
-  %a.cite-link
+  %a.cite-link{:href => "javascript:showCiteBox('#{item.doi}', '#{item.coins_atitle}');"}
     %i.icon-bullhorn
     Cite
-  - unless facet? 'publication'  
-    %a{:href => "#{facet_link('publication', item['journal']['full_title'])}"}
+  - unless facet?('publication') || item.publication.nil?
+    %a{:href => "#{facet_link('publication', item.coins_title)}"}
       %i.icon-copy
       More from this publication
   .pull-right
-    %a{:href => 'http://dx.doi.org/' + item['doi'], :target => '_blank'}
+    %a{:href => 'http://dx.doi.org/' + item.doi, :target => '_blank'}
       %i.icon-external-link
-      = item['doi']
+      = "dx.doi.org/#{item.doi}"
