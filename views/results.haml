@@ -36,7 +36,7 @@
   .span3
     = partial :facets, :page => page
   .span9
-    = partial :search_box, :page => page 
+    = partial :search_box, :page => page
     .list-info
       .pull-right
         %h6
@@ -52,4 +52,9 @@
     .item-paging.bottom
       = will_paginate page[:paginate], :renderer => BootstrapLinkRenderer
 
-= partial :cite_box, :page => page      
+= partial :cite_box, :page => page
+
+%hr
+.footer
+  Feedback:
+  %a{:href => 'mailto:search@crossref.org'} search@crossref.org
