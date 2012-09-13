@@ -83,23 +83,26 @@
   }
 
 :javascript
-  MAX_EXPAND_CHARS = 60;
+  MAX_EXPAND_CHARS = 240;
   
   $(document).ready(function() {
     $('.oa-tooltip').tooltip({
       title: 'Article is published in a journal present in the Directory of Open Access Journals.'
     });
 
-    $.each($('.expand'), function(index, item) {
-      if (item.text().length() > MAX_EXPAND_CHARS) {
-        item.data('full-text') = item.text();        
-        item.text(item.text.substring(0, MAX_EXPAND_CHARS));
-        item.append($('<a>').addClass('.expander').text('...'));
+    $('.expand').each(function() {
+      if ($(this).text().length > MAX_EXPAND_CHARS) {
+        $(this).data('full-text', $(this).text());        
+        $(this).text($(this).text().substring(0, MAX_EXPAND_CHARS));
+        $(this).append($('<a>').addClass('expander').text('...').attr('href', '#'));
       }
     });
 
     $('.expander').click(function(e) {
-      $(this).text($(this).data('full-text'));
+      var parent = $(this).parent();
+      parent.text(parent.data('full-text'));
+      e.preventDefault();
+      return false;
     });
   });
 
