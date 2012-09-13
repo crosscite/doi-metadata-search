@@ -71,6 +71,16 @@
   .item-tab-icons a:hover {
     color: rgb(147, 184, 125);
   }
+  .item-links a {
+    margin-right: 1.5em;
+  }
+  .item-data .extra span {
+    font-size: .9em;
+    line-height: 1em;
+  }
+  .item-data .extra b {
+    font-size: 1.2em;
+  }
 
 :javascript
   MAX_EXPAND_CHARS = 60;
@@ -80,7 +90,7 @@
       title: 'Article is published in a journal present in the Directory of Open Access Journals.'
     });
 
-    $.forEach($('.expand'), function(index, item) {
+    $.each($('.expand'), function(index, item) {
       if (item.text().length() > MAX_EXPAND_CHARS) {
         item.data('full-text') = item.text();        
         item.text(item.text.substring(0, MAX_EXPAND_CHARS));

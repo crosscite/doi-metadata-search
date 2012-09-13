@@ -4,9 +4,9 @@
       .item-tab-date
         %p
           - unless item.day.nil?
-            item.day
+            = item.day
           - unless item.month.nil?
-            item.month
+            = item.month
         - unless item.year.nil?
           %p= item.year
       .item-tab-icons  
@@ -16,20 +16,19 @@
   %td.item-data
     - unless item.title.nil?
       %p.lead= item.title
-    .pull-right  
       %p.extra
+        - unless item.publication.nil?        
+          %span= item.publication
+      %p.extra    
         - unless item.volume.nil?
-          = "Volume <b>#{item.volume}</b>,"
+          %span= "Volume <b>#{item.volume}</b>,"
         - unless item.issue.nil?
-          = "Issue <b>#{item.issue}</b>,"
+          %span= "Issue <b>#{item.issue}</b>,"
         - if !item.first_page.nil? && !item.last_page.nil?
-          = "Pages <b>#{item.first_page}</b> to <b>#{item.last_page}</b>"
+          %span= "Pages <b>#{item.first_page}</b> to <b>#{item.last_page}</b>"
         - elsif !item.first_page.nil?
-          = "From Page <b>#{item.first_page}</b>"
+          %span= "From Page <b>#{item.first_page}</b>"
   
-    - unless item.publication.nil?        
-      %p.extra= item.publication
-
     - unless item.authors.nil?
       %p.expand= item.authors
 

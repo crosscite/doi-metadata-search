@@ -7,7 +7,6 @@
     %a{:href => "#{facet_link('publication', item.coins_title)}"}
       %i.icon-copy
       More from this publication
-  .pull-right
-    %a{:href => 'http://dx.doi.org/' + item.doi, :target => '_blank'}
-      %i.icon-external-link
-      = "dx.doi.org/#{item.doi}"
+  %a{:href => 'http://dx.doi.org/' + item.doi, :target => '_blank'}
+    %i.icon-external-link
+    = "dx.doi.org/#{item.doi}"
