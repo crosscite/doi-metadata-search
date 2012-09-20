@@ -8,11 +8,16 @@ require 'will_paginate'
 require 'cgi'
 require 'faraday'
 require 'faraday_middleware'
+require 'haml'
 
 require_relative 'lib/paginate'
 require_relative 'lib/result'
 require_relative 'lib/bootstrap'
 require_relative 'lib/doi'
+
+MIN_MATCH_SCORE = 2
+MIN_MATCH_TERMS = 3
+MAX_MATCH_TEXTS = 1000
 
 configure do
   config = JSON.parse(File.open('conf/app.json').read)
@@ -180,7 +185,7 @@ helpers do
     fq[field_name].delete field_value
     fq.delete(field_name) if fq[field_name].empty?
 
-    link = "/dois?q=#{CGI.escape(params['q'])}"
+    link = "#{request.path_info}?q=#{CGI.escape(params['q'])}"
     fq.each_pair do |field, vals|
       link += "&#{field}=#{CGI.escape(vals.join(';'))}"
     end
@@ -192,7 +197,7 @@ helpers do
     fq[field_name] ||= []
     fq[field_name] << field_value
 
-    link = "/dois?q=#{CGI.escape(params['q'])}"
+    link = "#{request.path_info}?q=#{CGI.escape(params['q'])}"
     fq.each_pair do |field, vals|
       link += "&#{field}=#{CGI.escape(vals.join(';'))}"
     end
@@ -215,7 +220,7 @@ helpers do
       end
     end
 
-    "/dois?#{parts.compact.flatten.join('&')}"
+    "#{request.path_info}?#{parts.compact.flatten.join('&')}"
   end
 
   def authors_text contributors
@@ -224,42 +229,21 @@ helpers do
     end
     authors.join ', '
   end
+
+  def search_results solr_result
+    solr_result['response']['docs'].map do |solr_doc|
+      mongo_record = settings.dois.find_one(:doi => solr_doc['doiKey'])
+      SearchResult.new mongo_record, solr_doc, solr_result
+    end
+  end
 end
 
 get '/' do
-  haml :splash, :locals => {:page => {:query => ""}}
-end
+  if !params.has_key?('q')
+    haml :splash, :locals => {:page => {:query => ""}}
+  else
+    solr_result = select search_query
 
-get '/splash' do
-  haml :splash, :locals => {:page => {:query => ""}}
-end
-
-get '/dois' do
-  solr_result = select search_query
-
-  search_results = solr_result['response']['docs'].map do |solr_doc|
-    mongo_record = settings.dois.find_one(:doi => solr_doc['doiKey'])
-    SearchResult.new mongo_record, solr_doc, solr_result
-  end
-
-  case response_format
-  when 'json'
-    content_type 'application/json'
-
-    page = search_results.map do |result|
-      {
-        :doi => result.doi,
-        :score => result.score,
-        :normalizedScore => result.normal_score,
-        :title => result.coins_atitle,
-        :fullCitation => result.citation,
-        :coins => result.coins,
-        :year => result.coins_year
-      }
-    end
-
-    page.to_json
-  when 'html'
     page = {
       :bare_sort => params['sort'],
       :bare_query => params['q'],
@@ -271,13 +255,94 @@ get '/dois' do
         :options => settings.typical_rows,
         :actual => query_rows
       },
-      :items => search_results,
+      :items => search_results(solr_result),
       :paginate => Paginate.new(query_page, query_rows, solr_result),
       :facets => solr_result['facet_counts']['facet_fields']
     }
 
     haml :results, :locals => {:page => page}
   end
+end
+
+get '/api' do
+end
+
+get '/help' do
+end
+
+get '/dois' do
+  page = search_results(select(search_query)).map do |result|
+    {
+      :doi => result.doi,
+      :score => result.score,
+      :normalizedScore => result.normal_score,
+      :title => result.coins_atitle,
+      :fullCitation => result.citation,
+      :coins => result.coins,
+      :year => result.coins_year
+    }
+  end
+
+  content_type 'application/json'
+  page.to_json
+end
+
+put '/match' do
+  page = {}
+
+  begin
+    citation_texts = JSON.parse(request.body.read)
+
+    if citation_texts.count > MAX_MATCH_TEXTS
+      page = {
+        :results => [],
+        :query_ok => false,
+        :reason => "Too many citations. Maximum is #{MAX_MATCH_TEXTS}"
+      }
+    else
+      results = citation_texts.take(MAX_MATCH_TEXTS).map do |citation_text|
+        terms = citation_text.gsub(/[\"\.\[\]\(\)\-:\/]/, ' ')
+        params = {:q => terms, :fl => 'doi,score'}
+        result = settings.solr.paginate 0, 1, settings.solr_select, :params => params
+        match = result['response']['docs'].first
+        
+        if citation_text.split.count < MIN_MATCH_TERMS
+          {
+            :text => citation_text,
+            :reason => 'Too few terms',
+            :match => false
+          }
+        elsif match['score'].to_f < MIN_MATCH_SCORE
+          {
+            :text => citation_text,
+            :reason => 'Result score too low',
+            :match => false
+          }
+        else
+          {
+            :text => citation_text,
+            :match => true,
+            :doi => match['doi'],
+            :score => match['score'].to_f
+          }
+        end
+      end
+      
+      page = {
+        :results => results,
+        :query_ok => true
+      }
+    end
+  rescue JSON::ParseError => e
+    page = {
+      :results => [],
+      :query_ok => false,
+      :reason => 'Request contained malformed JSON'
+    }
+  end
+    
+  content_type 'application/json'
+  page.to_json
 end
 
 get '/citation' do

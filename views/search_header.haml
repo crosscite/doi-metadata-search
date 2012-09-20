@@ -44,7 +44,7 @@
         %a{:href => '#'} Help
     %form{:method => 'GET'}
       .search
-        %input.input.input-xxlarge{:placeholder => 'Search', :style => 'padding-left: 2em;', :name => 'q', :type => 'text', :value => page[:bare_query]}
+        %input.input.input-xxlarge{:placeholder => 'Search', :style => 'padding-left: 2em;', :name => 'q', :type => 'text', :value => page[:bare_query], :action => '/'}
         %i.icon-search  
   %h1
     %a.home-link{:href => '/'}
