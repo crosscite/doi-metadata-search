@@ -236,6 +236,36 @@ helpers do
       SearchResult.new mongo_record, solr_doc, solr_result
     end
   end
+
+  def index_stats
+    count_result = settings.solr.get 'solr/labs1/select', :params => {:q => '*:*', :rows => 0}
+    oldest_result = settings.solr.get 'solr/labs1/select', :params => {
+      :q => 'year:[1600 TO *]',
+      :rows => 1,
+      :sort => 'year asc'
+    }
+    
+    stats = []
+
+    stats << {
+      :value => count_result['response']['numFound'],
+      :name => 'Total number of indexed DOIs',
+      :number => true
+    }
+
+    stats << {
+      :value => '21st Sept, 2012',
+      :name => 'Last index date'
+    }
+
+    stats << {
+      :value => oldest_result['response']['docs'].first['year'],
+      :name => 'Oldest indexed publication year'
+    }
+
+    stats
+  end
+
 end
 
 get '/' do
@@ -264,10 +294,12 @@ get '/' do
   end
 end
 
-get '/api' do
+get '/help/api' do
+  haml :api_help, :locals => {:page => {:query => ''}}
 end
 
-get '/help' do
+get '/help/status' do
+  haml :status_help, :locals => {:page => {:query => '', :stats => index_stats}}
 end
 
 get '/dois' do
