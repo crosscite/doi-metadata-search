@@ -48,8 +48,8 @@
   .span-header.span9
     .pull-right
       .simple-nav
-        %a{:href => '#'} API
-        %a{:href => '#'} Help
+        %a{:href => '/help/api'} API
+        %a{:href => '/help/status'} Status
     %form{:method => 'GET'}
       .search
         %input.input.input-xxlarge{:placeholder => 'Search', :style => 'padding-left: 2em;', :name => 'q', :type => 'text', :value => page[:bare_query], :action => '/'}

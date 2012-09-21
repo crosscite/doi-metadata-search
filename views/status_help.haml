@@ -1,0 +1,31 @@
+= partial :search_header, :page => page
+
+:css
+  .stat-value {
+    font-size: 4em;
+    line-height: 1.2em;
+  }
+
+  .stat-name {
+    font-size: 2em;
+    line-height: 2.5em;
+    color: grey;
+    font-family: "Bookman", "Times", serif;
+  }
+
+:javascript
+  $(document).ready(function() {
+    $('.number').formatNumber();
+  });
+
+.row-fluid
+  .span2
+  .span8
+    - page[:stats].each do |stat|
+      .pull-right
+        - if stat[:number]
+          %span.stat-value.number= stat[:value]
+        - else
+          %span.stat-value= stat[:value]
+      %span.stat-name= stat[:name]  
+      %hr

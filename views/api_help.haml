@@ -1,0 +1,127 @@
+:css
+  .span-help p {
+    font-family: "Bookman", "Times", serif;
+    font-size: 1.5em;
+    line-height: 1.3em;
+  }
+
+  .small-caps {
+    font-variant: small-caps;
+  }
+
+  .mini-header {
+    margin-top: 1em;
+  }
+
+  .example {
+    padding: .3em .7em;
+    margin-top: .8em;
+    margin-bottom: .8em;
+  }
+
+  .example span {
+    font-family: "Courier New", monospace;
+  }
+
+  .sep {
+    height: 3em;
+  }
+
+= partial :search_header, :page => page
+
+.row-fluid
+  .span2
+  .span8.span-help
+    %h2.help-title#dois /dois
+    %p
+      %i Perform a single search and return many results.
+
+    %hr
+      
+    %p
+      CrossRef Metadata Search is backed by a full-text index whose search capabilities are exposed
+      by this route. Search terms can be provided to this route along with arguments to paginate, order
+      and filter results.
+
+    %p.mini-header
+      %b Search Terms and Pagination
+      
+    %p.example
+      %span GET /dois?q=renear+palmer&page=2&rows=3
+
+    %p
+      In this example a search request has been made for the terms &#8220;renear&#8221; or
+      &#8220;palmer,&#8221; while the results have been paginated by three results per page
+      and the second page of results has been selected.
+
+    %p.mini-header
+      %b Sorting
+
+    %p
+      Results can be sorted by relevence or year of publication. Relevence sorting orders results
+      by their match quality. A result will have a higher match quality if its metadata matches
+      more search terms
+      relative to the total length of the record's metadata. Specify &#8220;sort=score&#8221; for
+      relevence sorting.
+
+    %p.example
+      %span GET /dois?q=renear+palmer&sort=score
+
+    %p
+      Specify &#8220;sort=year&#8221; to order results by year of publication, beginning with the
+      most recent.
+
+    %p.example
+      %span GET /dois?q=renear+palmer&sort=year
+
+    %p 
+      Note that relevence sorting is used if no sort is specified.
+     
+    %p.mini-header
+      %b Filtering
+
+    %p.example
+      %span GET /dois?q=renear+palmer&year=2012
+      
+    %p
+      Results can be faceted on science category, year of publication, publication type, open access
+      status and publication name. The example above will only return DOIs published in 2012.
+
+    %p.mini-header
+      %b Search for an Identifier
+
+    %p
+      Provide a
+      %span.small-caps DOI,
+      short
+      %span.small-caps DOI
+      or
+      %span.small-caps ISSN
+      as the query term to look up a single
+      %span.small-caps DOI
+      record or return
+      %span.small-caps DOIs
+      from a single journal.
+
+    %p.example
+      %span GET /dois?q=1234-5678  
+
+    %p
+      An empty result list will be returned if a non-existent identifer is provided. Here's another
+      example that selects a specific
+      %span.small-caps DOI.
+      Notice the url encoding of the
+      %span.small-caps DOI.
+
+    %p.example
+      %span GET /dois?q=10.5555%2F12345678
+      
+    .sep
+      
+    %h2.help-title#match /match
+    %p
+      %i Match many free-form citations to DOIs.
+
+    %hr  
+      
+    %p blah blah blah
