@@ -32,12 +32,20 @@
     height: 1.4em;
     font-size: 1.6em;
   }
-  h1 img {
+  a.home-link img {
     width: 175px;
   }
+  .span-header {
+    margin-top: 1.2em;
+    margin-bottom: -1.3em;
+    
+  }
 
-.page-header
-  .pull-right
+.row-fluid
+  .span-header.span3
+    %a.home-link{:href => '/'}
+      %img{:src => '/cms-logo.png'}
+  .span-header.span9
     .pull-right
       .simple-nav
         %a{:href => '#'} API
@@ -45,8 +53,6 @@
     %form{:method => 'GET'}
       .search
         %input.input.input-xxlarge{:placeholder => 'Search', :style => 'padding-left: 2em;', :name => 'q', :type => 'text', :value => page[:bare_query], :action => '/'}
-        %i.icon-search  
-  %h1
-    %a.home-link{:href => '/'}
-      %img{:src => '/cms-logo.png'}
+        %i.icon-search      
+%hr
     
