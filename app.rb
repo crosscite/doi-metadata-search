@@ -239,17 +239,37 @@ helpers do
 
   def index_stats
     count_result = settings.solr.get 'solr/labs1/select', :params => {:q => '*:*', :rows => 0}
+    article_result = settings.solr.get 'solr/labs1/select', :params => {
+      :q => 'type:journal_article', 
+      :rows => 0
+    }
+    proc_result = settings.solr.get 'solr/labs1/select', :params => {
+      :q => 'type:conference_paper', 
+      :rows => 0
+    }
     oldest_result = settings.solr.get 'solr/labs1/select', :params => {
       :q => 'year:[1600 TO *]',
       :rows => 1,
       :sort => 'year asc'
     }
-    
+
     stats = []
 
     stats << {
       :value => count_result['response']['numFound'],
       :name => 'Total number of indexed DOIs',
+      :number => true
+    }
+
+    stats << {
+      :value => article_result['response']['numFound'],
+      :name => 'Number of indexed journal articles',
+      :number => true
+    }
+
+    stats << {
+      :value => proc_result['response']['numFound'],
+      :name => 'Number of indexed conference papers',
       :number => true
     }
 
