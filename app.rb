@@ -408,3 +408,21 @@ get '/citation' do
   content_type citation_format
   res.body if res.success?
 end
+
+get '/heartbeat' do 
+  content_type 'application/json'
+
+  params['q'] = 'fish'
+  
+  begin
+    # Attempt a query with solr
+    solr_result = select(search_query)
+    
+    # Attempt some queries with mongo
+    result_list = search_results(solr_result)
+    
+    {:status => :ok}.to_json
+  rescue StandardError => e
+    {:status => :error, :type => e.class, :message => e}.to_json
+  end
+end
