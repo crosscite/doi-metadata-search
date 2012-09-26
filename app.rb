@@ -240,7 +240,7 @@ helpers do
   def index_stats
     count_result = settings.solr.get 'solr/labs1/select', :params => {:q => '*:*', :rows => 0}
     article_result = settings.solr.get 'solr/labs1/select', :params => {
-      :q => 'type:journal_article', 
+      :q => 'type:journal_article',
       :rows => 0
     }
     proc_result = settings.solr.get 'solr/labs1/select', :params => {
@@ -271,11 +271,6 @@ helpers do
       :value => proc_result['response']['numFound'],
       :name => 'Number of indexed conference papers',
       :number => true
-    }
-
-    stats << {
-      :value => '21st Sept, 2012',
-      :name => 'Last index date'
     }
 
     stats << {
@@ -339,7 +334,7 @@ get '/dois' do
   page.to_json
 end
 
-put '/match' do
+post '/links' do
   page = {}
 
   begin
