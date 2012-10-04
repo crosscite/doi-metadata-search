@@ -39,6 +39,18 @@
     = partial :search_box, :page => page
     .list-info
       .pull-right
+        %h6= "Page #{page[:page]} of #{page[:paginate].total_rows} results"
+      %span
+        %h6 Since:
+        .dropdown
+          %a.dropdown-toggle{:href => '#'}
+            all time
+            %b.caret
+          %ul.dropdown-menu
+            %li 2011
+            %li 2010
+            %li 2009
+      %span
         %h6
           Sort by:
           - if page[:bare_sort] == 'year'
@@ -47,7 +59,6 @@
           - else
             %b relevance
             %a{:href => "#{search_link({:sort => 'year'})}"} publication year
-      %h6= "Page #{page[:page]} of #{page[:paginate].total_rows} results"
     = partial :item_list, :page => page
     .item-paging.bottom
       = will_paginate page[:paginate], :renderer => BootstrapLinkRenderer
