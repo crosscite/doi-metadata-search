@@ -1,25 +1,10 @@
 :css
-  .item-tab {
-    padding: 1em 0.8em;  
-    background-color: #f8f8f8;
-    color: #a9a9a9;
-    text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
-    width: 4.2em;
-  }
   .item-tab.conf-proc {
     border-left: 4px solid rgb(49, 145, 177);
   }
-  .item-tab i {
-    font-size: 5em;
-    line-height: 1em;
-  }
-  .item-tab p {
-    font-size: 1.5em;
-    font-weight: bold;
-  }
   .item-data {
-    padding: 0.8em;
-   }
+    padding: 1em;
+  }
   td {
     vertical-align: top;
     padding: .7em;
@@ -42,6 +27,7 @@
   .hl {
     background-color: rgb(235,245,167);
     border-bottom: 1px dashed grey;
+    color: rgb(51,51,51);
   }
   .extra {
     color: #999;
@@ -49,26 +35,12 @@
     line-height: 1.3em;
   }
   .lead {
-    margin-bottom: 0.3em;
+    margin-bottom: .7em;  
   }
-  .item-tab-icons {
-    text-align: left;
-    margin: .5em;
-    margin-top: 1em;
-    margin-bottom: 0;
-  }
-  .item-tab-icons i {
-    font-size: 1.8em; 
-    line-height: 1.1em;
-    vertical-align: text-top;
-  }
-  .item-tab-date {
-    text-align: center;
-  }
-  .item-tab-icons a, .item-tab-icons a:visited {
+  .oa-tooltip, .oa-tooltip:visited {
     color: rgb(167, 204, 145);
   }
-  .item-tab-icons a:hover {
+  .oa-tooltip:hover {
     color: rgb(147, 184, 125);
   }
   .item-links a {
@@ -76,10 +48,14 @@
   }
   .item-data .extra span {
     font-size: .9em;
-    line-height: 1em;
+    line-height: 1.5em;
   }
+  .label {
+    font-weight: normal;
+  }
+
   .item-data .extra b {
-    font-size: 1.2em;
+    font-size: 1.1em;
   }
 
 :javascript
