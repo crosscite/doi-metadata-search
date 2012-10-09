@@ -25,6 +25,10 @@
       a:hover {
         color: rgb(6, 116, 153);
       }
+    :javascript
+      $(document).ready(function() {
+        $('.number').formatNumber();
+      });
   %body
     .container-fluid
       = yield

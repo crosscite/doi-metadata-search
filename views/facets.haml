@@ -16,9 +16,11 @@
             %li.active
               %a{:href => "#{facet_link_not(name, value_name)}"}
                 %i.icon-check
-                = "#{value_name} (#{value_count})"
+                = value_name
+                %span.number= "(#{value_count})"
           - else
             %li
               %a{:href => "#{facet_link(name, value_name)}"}
                 %i.icon-check-empty
-                = "#{value_name} (#{value_count})"
+                = value_name  
+                %span.number= "(#{value_count})"
