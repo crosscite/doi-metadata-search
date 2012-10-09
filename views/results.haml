@@ -39,17 +39,7 @@
     = partial :search_box, :page => page
     .list-info
       .pull-right
-        %h6= "Page #{page[:page]} of #{page[:paginate].total_rows} results"
-      %span
-        %h6 Since:
-        .dropdown
-          %a.dropdown-toggle{:href => '#'}
-            all time
-            %b.caret
-          %ul.dropdown-menu
-            %li 2011
-            %li 2010
-            %li 2009
+        %h6.number= "Page #{page[:page]} of #{page[:paginate].total_rows} results"
       %span
         %h6
           Sort by:

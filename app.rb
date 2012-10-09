@@ -349,6 +349,7 @@ post '/links' do
     else
       results = citation_texts.take(MAX_MATCH_TEXTS).map do |citation_text|
         terms = citation_text.gsub(/[\"\.\[\]\(\)\-:;\/]/, ' ')
+        terms = "content_citation:(#{terms})"
         params = {:q => terms, :fl => 'doi,score'}
         result = settings.solr.paginate 0, 1, settings.solr_select, :params => params
         match = result['response']['docs'].first
