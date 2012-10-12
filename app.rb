@@ -331,7 +331,7 @@ get '/dois' do
   end
 
   content_type 'application/json'
-  page.to_json
+  JSON.pretty_generate(page)
 end
 
 post '/links' do
@@ -389,7 +389,7 @@ post '/links' do
   end
     
   content_type 'application/json'
-  page.to_json
+  JSON.pretty_generate(page)
 end
 
 get '/citation' do
