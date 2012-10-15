@@ -110,7 +110,7 @@ helpers do
     when :issn
       "issn:\"#{query_info[:value]}\""
     else
-      "#{params['q'].gsub(/[\"\.\[\]\(\)\-:;\/]/, ' ')}"
+      "#{params['q'].gsub(/[\"\.\[\]\(\)\-:;\/\\]/, ' ')}"
     end
   end
 
