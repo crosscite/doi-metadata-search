@@ -9,6 +9,7 @@ require 'cgi'
 require 'faraday'
 require 'faraday_middleware'
 require 'haml'
+require 'gabba'
 
 require_relative 'lib/paginate'
 require_relative 'lib/result'
@@ -57,6 +58,9 @@ configure do
 
   # Set facet fields
   set :facet_fields, ['type', 'year', 'oa_status', 'publication', 'category']
+
+  # Google analytics event tracking
+  set :ga, Gabba::Gabba.new('UA-34536574-2', 'http://search.labs.crossref.org')
 end
 
 helpers do
@@ -318,6 +322,7 @@ get '/help/status' do
 end
 
 get '/dois' do
+  settings.ga.event('API', '/dois', query_terms, nil, true) 
   page = search_results(select(search_query)).map do |result|
     {
       :doi => result.doi,
@@ -387,6 +392,8 @@ post '/links' do
       :reason => 'Request contained malformed JSON'
     }
   end
+
+  settings.ga.event('API', '/links', nil, page[:results].count, true)
     
   content_type 'application/json'
   JSON.pretty_generate(page)
@@ -399,6 +406,8 @@ get '/citation' do
     req.url "/#{params[:doi]}"
     req.headers['Accept'] = citation_format
   end
+
+  settings.ga.event('Citations', '/citation', citation_format, nil, true)
 
   content_type citation_format
   res.body if res.success?
