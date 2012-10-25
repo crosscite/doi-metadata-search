@@ -172,7 +172,7 @@ class SearchResult
       'rft.volume' => coins_volume,
       'rft.issue' => coins_issue,
       'rft.spage' => coins_spage,
-      'rft.lpage' => coins_lpage,
+      'rft.epage' => coins_lpage,
       'rft.aufirst' => coins_au_first,
       'rft.aulast' => coins_au_last
     }
