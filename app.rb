@@ -34,6 +34,8 @@ configure do
   set :dois, settings.mongo[settings.mongo_db]['dois']
   set :shorts, settings.mongo[settings.mongo_db]['shorts']
   set :issns, settings.mongo[settings.mongo_db]['issns']
+  set :citations, settings.mongo[settings.mongo_db]['citations']
+  set :patents, settings.mongo[settings.mongo_db]['patents']
 
   # Set up for http requests to data.crossref.org and dx.doi.org
   dx_doi_org = Faraday.new(:url => 'http://dx.doi.org') do |c|
@@ -68,6 +70,26 @@ helpers do
 
   def partial template, locals
     haml template.to_sym, :layout => false, :locals => locals
+  end
+
+  def citations doi
+    citations = settings.citations.find({'to.id' => doi})
+
+    citations.map do |citation|
+      hsh = {
+        :id => citation['from']['id'],
+        :authority => citation['from']['authority'],
+        :type => citation['from']['type'],
+      }
+
+      if citation['from']['authority'] == 'cambia'
+        patent = settings.patents.find_one({:patent_key => citation['from']['id']})
+        hsh[:url] = "http://lens.org/lens/patent/#{patent['pub_key']}"
+        hsh[:title] = patent['title']
+      end
+
+      hsh
+    end
   end
 
   def select query_params
@@ -237,7 +259,7 @@ helpers do
   def search_results solr_result
     solr_result['response']['docs'].map do |solr_doc|
       mongo_record = settings.dois.find_one(:doi => solr_doc['doiKey'])
-      SearchResult.new mongo_record, solr_doc, solr_result
+      SearchResult.new mongo_record, solr_doc, solr_result, citations(solr_doc['doiKey'])
     end
   end
 

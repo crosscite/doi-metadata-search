@@ -7,6 +7,7 @@ class SearchResult
   attr_accessor :title, :publication, :authors, :volume, :issue
   attr_accessor :first_page, :last_page
   attr_accessor :type, :doi, :score, :normal_score
+  attr_accessor :citations, :hashed
 
   ENGLISH_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
                     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -25,13 +26,15 @@ class SearchResult
   end
 
   # Merge a mongo DOI record with solr highlight information.
-  def initialize mongo_record, solr_doc, solr_result
+  def initialize mongo_record, solr_doc, solr_result, citations
     @doi = mongo_record['doi']
     @type = mongo_record['type']
     @doc = solr_doc
     @record = mongo_record
     @score = solr_doc['score']
     @normal_score = ((@score / solr_result['response']['maxScore']) * 100).to_i
+    @citations = citations
+    @hashed = mongo_record['_id'].to_s
 
     highlights = solr_result['highlighting']
 

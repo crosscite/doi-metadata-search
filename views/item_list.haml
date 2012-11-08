@@ -91,3 +91,30 @@
       = partial :item_conf_proc, :page => page, :item => item
     - else
       = partial :item_unknown, :page => page, :item => item
+
+- page[:items].each do |item|      
+  - unless item.citations.empty?
+    .modal.hide{:id => "citations-#{item.hashed}"}
+      .modal-header
+        %button.close{'type' => 'button', 'data-dismiss' => 'modal'} &times;
+        %h3
+          Patent citations for
+          = item.doi
+      .modal-body
+        %table.table
+          %tr
+            %th ID
+            %th Type
+            %th Title
+          - item.citations.each do |citation|
+            %tr
+              %td= citation[:id]
+              %td= "#{citation[:type]} (#{citation[:authority]})"
+              %td
+                %a{:href => citation[:url]}= citation[:title]
+
+:javascript
+  function showCitationsBox(hashed) {
+    $("#citations-" + hashed).modal();
+  }
+  
