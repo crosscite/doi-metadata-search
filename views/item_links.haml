@@ -7,6 +7,11 @@
     %a{:href => "#{facet_link('publication', item.coins_title)}"}
       %i.icon-copy
       More from this publication
+  - unless item.citations.empty?
+    %a{:href => "javascript:showCitationsBox('#{item.hashed}');"}
+      %i.icon-resize-small
+      = item.citations.count
+      citations from patents     
   %a{:href => 'http://dx.doi.org/' + item.doi}
     %i.icon-external-link
     = "dx.doi.org/#{item.doi}"
