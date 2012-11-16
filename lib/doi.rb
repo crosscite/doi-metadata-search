@@ -4,20 +4,20 @@ module Doi
   JSON_TYPE = 'application/vnd.citationstyles.csl+json'
 
   def doi? s
-    to_doi(s) =~ /10\.[0-9]{4}\/.+/
+    to_doi(s) =~ /10\.[0-9]{4,}\/.+/
   end
 
   # Short DOIs are of the form 10/abcde. These must be used with
   # dx.doi.org.
   def short_doi? s
-    to_doi(s) =~ /\A10\/[a-z0-9]{5}[a-z0-9]*\Z/
+    to_doi(s) =~ /\A10\/[a-z0-9]+\Z/
   end
 
   # Very short DOIs are of the form abcde. These must be used with
   # doi.org. We check for doi.org/ since characters only preclude 
   # search terms.
   def very_short_doi? s
-    s.strip =~ /\A(https?:\/\/)?doi\.org\/[a-z0-9]{5}[a-z0-9]*\Z/
+    s.strip =~ /\A(https?:\/\/)?doi\.org\/[a-z0-9]+\Z/
   end
 
   def issn? s
