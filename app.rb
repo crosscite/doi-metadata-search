@@ -20,6 +20,10 @@ MIN_MATCH_SCORE = 2
 MIN_MATCH_TERMS = 3
 MAX_MATCH_TEXTS = 1000
 
+after do
+  response.headers['Access-Control-Allow-Origin'] = '*'
+end
+
 configure do
   config = JSON.parse(File.open('conf/app.json').read)
   config.each_pair do |key, value|
