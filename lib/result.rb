@@ -197,7 +197,7 @@ class SearchResult
 
     title = title_parts.join('&')
     
-    coins_authors.drop(1).each { |author| title += "&rft.au=#{CGI.escape(author)}" }
+    coins_authors.each { |author| title += "&rft.au=#{CGI.escape(author)}" }
 
     CGI.escapeHTML title
   end
