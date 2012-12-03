@@ -5,10 +5,16 @@ GEM
     bson_ext (1.6.4)
       bson (~> 1.6.4)
     builder (3.0.0)
+    faraday (0.8.4)
+      multipart-post (~> 1.1)
+    faraday_middleware (0.9.0)
+      faraday (>= 0.7.4, < 0.9)
+    gabba (1.0.1)
     haml (3.1.7)
     json (1.7.4)
     mongo (1.6.4)
       bson (~> 1.6.4)
+    multipart-post (1.1.5)
     rack (1.4.1)
     rack-protection (1.2.0)
       rack
@@ -25,7 +31,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bson
   bson_ext
+  faraday
+  faraday_middleware
+  gabba
   haml
   json
   mongo
