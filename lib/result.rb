@@ -25,85 +25,36 @@ class SearchResult
     path_found
   end
 
+  def find_value key
+    if has_path? @highlights, [@doi, key]
+      @highlights[@doi][key]
+    else
+      @doc[key]
+    end
+  end
+
   # Merge a mongo DOI record with solr highlight information.
-  def initialize mongo_record, solr_doc, solr_result, citations
-    @doi = mongo_record['doi']
-    @type = mongo_record['type']
+  def initialize solr_doc, solr_result, citations
+    @doi = solr_doc['doi']
+    @type = solr_doc['type']
     @doc = solr_doc
-    @record = mongo_record
     @score = solr_doc['score']
     @normal_score = ((@score / solr_result['response']['maxScore']) * 100).to_i
     @citations = citations
-    @hashed = mongo_record['_id'].to_s
+    @hashed = solr_doc['mongo_id']
 
-    highlights = solr_result['highlighting']
+    @highlights = solr_result['highlighting']
 
-    # Publication title
-    if has_path? highlights, [@doi, 'hl_publication']
-      @publication = highlights[@doi]['hl_publication'].first
-    elsif  has_path? mongo_record, ['journal', 'full_title']
-      @publication = mongo_record['journal']['full_title']
-    elsif has_path? mongo_record, ['proceedings', 'title']
-      @publication = mongo_record['proceedings']['title']
-    end
-
-    # Work title
-    if has_path? highlights, [@doi, 'hl_title']
-      @title = highlights[@doi]['hl_title'].first
-    elsif has_path? mongo_record, ['title']
-      @title = mongo_record['title']
-    end
-
-    # Year
-    if has_path? highlights, [@doi, 'hl_year']
-      @year = highlights[@doi]['hl_year'].first
-    elsif has_path? mongo_record, ['published', 'year']
-      @year = mongo_record['published']['year'].to_i
-    end
-
-    # Month
-    if has_path? mongo_record, ['published', 'month']
-      month_index = mongo_record['published']['month'].to_i - 1
-      @month = ENGLISH_MONTHS[month_index]
-    end
-
-    # Day
-    if has_path? mongo_record, ['published', 'day']
-      @day = mongo_record['published']['day']
-    end
-
-    # Volume
-    if has_path? highlights, [@doi, 'hl_volume']
-      @volume = highlights[@doi]['hl_volume'].first
-    elsif has_path? mongo_record, ['volume']
-      @volume = mongo_record['volume']
-    end
-
-    # Issue
-    if has_path? highlights, [@doi, 'hl_issue']
-      @issue = highlights[@doi]['hl_issue'].first
-    elsif has_path? mongo_record, ['issue']
-      @issue = mongo_record['issue']
-    end
-
-    # Authors
-    if has_path? highlights, [@doi, 'hl_authors']
-      @authors = highlights[@doi]['hl_authors'].first
-    elsif has_path? mongo_record, ['contributors']
-      authors = mongo_record['contributors'].map do |c|
-        "#{c['given_name']} #{c['surname']}"
-      end
-      @authors = authors.join ', '
-    end
-
-    # Pages
-    if has_path? mongo_record, ['pages', 'first_page']
-      @first_page = mongo_record['pages']['first_page']
-    end
-
-    if has_path? mongo_record, ['pages', 'last_page']
-      @last_page = mongo_record['pages']['last_page']
-    end
+    @publication = find_value('hl_publication')
+    @title = find_value('hl_title')
+    @year = find_value('hl_year')
+    @month = ENGLISH_MONTHS[solr_doc['month'] - 1]
+    @day = solr_doc['day']
+    @volume = find_value('hl_volume')
+    @issue = find_value('hl_issue')
+    @authors = find_value('hl_authors')
+    @first_page = find_value('hl_first_page')
+    @last_page = find_value('hl_last_page')
   end
 
   def open_access?
@@ -111,57 +62,43 @@ class SearchResult
   end
 
   def coins_atitle
-    @record['title'] if has_path? @record, ['title']
+    @doc['hl_title']
   end
 
   def coins_title
-    if has_path? @record, ['journal', 'full_title']
-      @record['journal']['full_title']
-    elsif has_path? @record, ['proceedings', 'title']
-      @record['proceedings']['title']
-    end
+    @doc['hl_publication']
   end
 
   def coins_year
-    @record['published']['year'].to_i if has_path? @record, ['published', 'year']
+    @doc['hl_year']
   end
 
   def coins_volume
-    @record['volume'] if has_path? @record, ['volume']
+    @doc['hl_volume']
   end
 
   def coins_issue
-    @record['issue'] if has_path? @record, ['issue']
+    @doc['hl_issue']
   end
 
   def coins_spage
-    @record['pages']['first_page'] if has_path? @record, ['pages', 'first_page']
+    @doc['hl_first_page']
   end
 
   def coins_lpage
-    @record['pages']['last_page'] if has_path? @record, ['pages', 'last_page']
+    @doc['hl_last_page']
   end
 
   def coins_authors
-    if @record.has_key? 'contributors'
-      @record['contributors'].map do |author|
-        "#{author['given_name']} #{author['surname']}"
-      end
-    else
-      []
-    end
+    @doc['hl_authors']
   end
 
   def coins_au_first
-    unless @record['contributors'].nil? || @record['contributors'].empty?
-      @record['contributors'].first['given_name']
-    end
+    @doc['first_author_given']
   end
 
   def coins_au_last
-    unless @record['contributors'].nil? || @record['contributors'].empty?
-      @record['contributors'].first['surname']
-    end
+    @doc['first_author_surname']
   end
 
   def coins

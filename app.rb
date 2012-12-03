@@ -265,8 +265,7 @@ helpers do
 
   def search_results solr_result
     solr_result['response']['docs'].map do |solr_doc|
-      mongo_record = settings.dois.find_one(:doi => solr_doc['doiKey'])
-      SearchResult.new mongo_record, solr_doc, solr_result, citations(solr_doc['doiKey'])
+      SearchResult.new solr_doc, solr_result, citations(solr_doc['doiKey'])
     end
   end
 
