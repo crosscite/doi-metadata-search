@@ -27,7 +27,7 @@ class SearchResult
 
   def find_value key
     if has_path? @highlights, [@doi, key]
-      @highlights[@doi][key]
+      @highlights[@doi][key].first
     else
       @doc[key]
     end
@@ -48,7 +48,7 @@ class SearchResult
     @publication = find_value('hl_publication')
     @title = find_value('hl_title')
     @year = find_value('hl_year')
-    @month = ENGLISH_MONTHS[solr_doc['month'] - 1]
+    @month = ENGLISH_MONTHS[solr_doc['month'] - 1] if solr_doc['month']
     @day = solr_doc['day']
     @volume = find_value('hl_volume')
     @issue = find_value('hl_issue')
@@ -90,7 +90,11 @@ class SearchResult
   end
 
   def coins_authors
-    @doc['hl_authors']
+    if @doc['hl_authors']
+      @doc['hl_authors']
+    else
+      ''
+    end
   end
 
   def coins_au_first
@@ -134,7 +138,7 @@ class SearchResult
 
     title = title_parts.join('&')
     
-    coins_authors.each { |author| title += "&rft.au=#{CGI.escape(author)}" }
+    coins_authors.split(',').each { |author| title += "&rft.au=#{CGI.escape(author)}" }
 
     CGI.escapeHTML title
   end
