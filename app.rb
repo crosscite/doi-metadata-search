@@ -351,7 +351,8 @@ end
 
 get '/dois' do
   settings.ga.event('API', '/dois', query_terms, nil, true) 
-  page = search_results(select(search_query)).map do |result|
+  solr_result = select(search_query)
+  items = search_results(solr_result).map do |result|
     {
       :doi => result.doi,
       :score => result.score,
@@ -364,7 +365,23 @@ get '/dois' do
   end
 
   content_type 'application/json'
-  JSON.pretty_generate(page)
+
+  if ['true', 't', '1'].include?(params[:header])
+    page = {
+      :totalResults => solr_result['response']['numFound'],
+      :startIndex => solr_result['response']['start'],
+      :itemsPerPage => query_rows,
+      :query => {
+        :searchTerms => params['q'],
+        :startPage => query_page
+      },
+      :items => items,
+    }
+
+    JSON.pretty_generate(page)
+  else
+    JSON.pretty_generate(items)
+  end
 end
 
 post '/links' do
