@@ -150,7 +150,7 @@ class SearchResult
   # Mimic SIGG citation format.
   def citation
     a = []
-    a << CGI.escapeHTML(coins_authors.join(', ')) unless coins_authors.empty?
+    a << CGI.escapeHTML(coins_authors) unless coins_authors.empty?
     a << CGI.escapeHTML(coins_year.to_s) unless coins_year.nil?
     a << "'#{CGI.escapeHTML(coins_atitle)}'" unless coins_atitle.nil?
     a << "<i>#{CGI.escapeHTML(coins_title)}</i>" unless coins_title.nil?
