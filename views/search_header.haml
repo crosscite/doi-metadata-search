@@ -7,7 +7,7 @@
     color: black;
   }
   .simple-nav {
-    font-size: 1.4em;
+    font-size: 1.2em;
     line-height: 1.1em;
     margin-top: 1em;
   }
@@ -15,19 +15,20 @@
     color: grey;
     padding-left: .4em;
   }
-  .search {
+  .search-in-header {
     position: relative;
     margin-top: .5em;
     margin-right: 16em;
+    width: 20em;
   }
-  .search i {
+  .search-in-header i {
     position: absolute;
     top: 0.5em;
     left: 0.5em;
     font-size: 2em;
     color: #aaa;
   }
-  .search input {
+  .search-in-header input {
     line-height: 1.2em;
     height: 1.4em;
     font-size: 1.6em;
@@ -37,22 +38,35 @@
   }
   .span-header {
     margin-top: 1.2em;
-    margin-bottom: -1.3em;
-    
+    margin-bottom: -1.3em;  
+  }
+  .simple-nav > * {
+    margin-left: .4em;
   }
 
 .row-fluid
-  .span-header.span3
-    %a.home-link{:href => '/'}
-      %img{:src => '/cms-logo.png'}
-  .span-header.span9
-    .pull-right
-      .simple-nav
-        %a{:href => '/help/api'} API
-        %a{:href => '/help/status'} Status
-    %form{:method => 'GET'}
-      .search
-        %input.input.input-xxlarge{:placeholder => 'Search', :style => 'padding-left: 2em;', :name => 'q', :type => 'text', :value => page[:bare_query], :action => '/'}
-        %i.icon-search      
+  - if page[:mini_header]
+    .span-header
+      .pull-right
+        .simple-nav
+          .pull-right
+            = partial :profile_link, {}
+          %a{:href => '/help/api'} API
+          %a{:href => '/help/status'} Status
+  - else  
+    .span-header.span3
+      %a.home-link{:href => '/'}
+        %img{:src => '/cms-logo.png'}
+    .span-header.span9
+      .pull-right
+        .simple-nav
+          .pull-right
+            = partial :profile_link, {}
+          %a{:href => '/help/api'} API
+          %a{:href => '/help/status'} Status
+      %form{:method => 'GET', :action => '/'}
+        .search-in-header
+          %input.input.input-xxlarge{:placeholder => 'Search', :style => 'padding-left: 2em;', :name => 'q', :type => 'text', :value => page[:bare_query]}
+          %i.icon-search      
 %hr
     
