@@ -1,4 +1,9 @@
 {
+  "orcid_client_id": "0000-0002-3054-1567",
+  "orcid_client_secret": "7c2a0c49-dc92-40c1-a12d-441c1fc6f9a0",
+  "orcid_site": "https://api.orcid.org",
+  "orcid_authorize_url": "https://orcid.org/oauth/authorize",
+  "orcid_token_url": "https://api.orcid.org/oauth/token",
   "solr_url": "http://5.9.51.2:8983",
   "solr_select": "/solr/labs1/select",
   "mongo_host": "5.9.51.150",

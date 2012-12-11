@@ -10,11 +10,14 @@ require 'faraday'
 require 'faraday_middleware'
 require 'haml'
 require 'gabba'
+require 'rack-session-mongo'
+require 'omniauth-orcid'
 
 require_relative 'lib/paginate'
 require_relative 'lib/result'
 require_relative 'lib/bootstrap'
 require_relative 'lib/doi'
+require_relative 'lib/session'
 
 MIN_MATCH_SCORE = 2
 MIN_MATCH_TERMS = 3
@@ -70,10 +73,24 @@ configure do
 
   # Google analytics event tracking
   set :ga, Gabba::Gabba.new('UA-34536574-2', 'http://search.labs.crossref.org')
+
+  # Orcid endpoint
+  set :orcid_service, Faraday.new(:url => settings.orcid_site)
+
+  # Set up session and auth middlewares for ORCiD sign in
+  use Rack::Session::Mongo, settings.mongo[settings.mongo_db]
+  use OmniAuth::Builder do
+    provider :orcid, settings.orcid_client_id, settings.orcid_client_secret, :client_options => {
+      :site => settings.orcid_site,
+      :authorize_url => settings.orcid_authorize_url,
+      :token_url => settings.orcid_token_url
+    }
+  end
 end
 
 helpers do
   include Doi
+  include Session
 
   def partial template, locals
     haml template.to_sym, :layout => false, :locals => locals
@@ -456,6 +473,17 @@ get '/citation' do
 
   content_type citation_format
   res.body if res.success?
+end
+
+get '/auth/orcid/callback' do
+  session[:orcid] = request.env['omniauth.auth']
+  update_claimed_publications
+  redirect(after_signin_redirect)
+end
+
+get '/auth/signout' do
+  session.clear
+  redirect(params[:redirect_uri])
 end
 
 get '/heartbeat' do 

@@ -6,7 +6,7 @@
   - unless facet?('publication') || item.publication.nil?
     %a{:href => "#{facet_link('publication', item.coins_title)}"}
       %i.icon-copy
-      More from this publication
+      Only this publication
   - unless item.citations.empty?
     %a{:href => "javascript:showCitationsBox('#{item.hashed}');"}
       %i.icon-resize-small
@@ -15,3 +15,6 @@
   %a{:href => 'http://dx.doi.org/' + item.doi}
     %i.icon-external-link
     = "dx.doi.org/#{item.doi}"
+  %a{:href => '#'}
+    %i.icon-reorder
+    More

@@ -24,9 +24,6 @@
     font-size: 4em;
     line-height: 1.2em;
   }
-  body {
-    margin-top: 6em;
-  }
   .row-centered {
     margin: 0 auto;
     width: 700px;
@@ -41,6 +38,9 @@
   dd {
     margin-bottom: 0.4em;
   }
+  .break-below {
+    margin-bottom: 6em;
+  }
 :javascript
   $(document).ready(function() {
     $('#help-body').collapse('hide');
@@ -52,6 +52,9 @@
     });
   });
 
+.row-centered.break-below
+  = partial :search_header, :page => page.merge({:mini_header => true})
+  
 .spacer  
 .row-centered
   %h1

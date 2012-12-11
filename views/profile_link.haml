@@ -1,0 +1,18 @@
+- if signed_in?
+  .dropdown
+    %a.dropdown-toggle{:href => '#', :role => 'button', 'data-toggle' => 'dropdown'}
+      = user_display
+      %b.caret
+    %ul.dropdown-menu{'role' => 'menu'}
+      %li
+        %a{:href => 'https://orcid.org/my-orcid', :target => '_blank'}
+          %i.icon-external-link
+          My ORCiD Record
+      %li.divider
+      %li
+        %a{:href => "/auth/signout?redirect_uri=#{URI.encode(request.fullpath)}"}
+          %i.icon-signout
+          Sign out
+- else
+  %a{:href => '/auth/orcid'} Sign in with ORCiD
+
