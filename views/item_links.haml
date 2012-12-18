@@ -1,12 +1,5 @@
 = item.coins_span
 .item-links
-  %a.cite-link{:href => "javascript:showCiteBox('#{item.doi}', '#{item.coins_atitle}');"}
-    %i.icon-bullhorn
-    Cite
-  - unless facet?('publication') || item.publication.nil?
-    %a{:href => "#{facet_link('publication', item.coins_title)}"}
-      %i.icon-copy
-      Only this publication
   - unless item.citations.empty?
     %a{:href => "javascript:showCitationsBox('#{item.hashed}');"}
       %i.icon-resize-small
@@ -15,6 +8,23 @@
   %a{:href => 'http://dx.doi.org/' + item.doi}
     %i.icon-external-link
     = "dx.doi.org/#{item.doi}"
-  %a{:href => '#'}
-    %i.icon-reorder
-    More
+  %span.dropdown
+    %a.dropdown-toggle{:role => 'button', 'data-toggle' => 'dropdown', :href => '#'}
+      %i.icon-reorder
+      More
+    %ul.dropdown-menu{:role => 'menu'}
+      %li
+        %a.cite-link{:href => "javascript:showCiteBox('#{item.doi}', '#{item.coins_atitle}');"}
+          %i.icon-bullhorn
+          Cite
+      - if signed_in?    
+        %li
+          %a{:href => '#'}
+            %i.icon-plus
+            Add to my ORCiD record
+      - unless facet?('publication') || item.publication.nil?
+        %li
+          %a{:href => "#{facet_link('publication', item.coins_title)}"}
+            %i.icon-filter
+            Filter on this publication
+        
