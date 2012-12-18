@@ -3,16 +3,31 @@
     %a.dropdown-toggle{:href => '#', :role => 'button', 'data-toggle' => 'dropdown'}
       = user_display
       %b.caret
-    %ul.dropdown-menu{'role' => 'menu'}
+    %ul.dropdown-menu{'role' => 'menu', :style => 'right: 0; left: auto;'}
+      %li
+        %a{:href => '#'}
+          %i.icon-tasks
+          Activity  
       %li
         %a{:href => 'https://orcid.org/my-orcid', :target => '_blank'}
           %i.icon-external-link
-          My ORCiD Record
+          ORCiD record
       %li.divider
       %li
         %a{:href => "/auth/signout?redirect_uri=#{URI.encode(request.fullpath)}"}
           %i.icon-signout
           Sign out
 - else
-  %a{:href => '/auth/orcid'} Sign in with ORCiD
+  %a.sign-in-link{:href => '/auth/orcid'} Sign in with ORCiD
+  :javascript
+    $(document).ready(function() {
+      $('.sign-in-link').click(function(e) {
+        $.oauthpopup({path: '/auth/orcid',
+                      callback: function() {
+                        document.location.reload(true);
+                      }});
+        e.preventDefault();
+        return false;
+      });
+    });
 
