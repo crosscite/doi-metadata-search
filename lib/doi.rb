@@ -4,7 +4,7 @@ module Doi
   JSON_TYPE = 'application/vnd.citationstyles.csl+json'
 
   def doi? s
-    to_doi(s) =~ /10\.[0-9]{4,}\/.+/
+    to_doi(s) =~ /\A10\.[0-9]{4,}\/.+/
   end
 
   # Short DOIs are of the form 10/abcde. These must be used with

@@ -12,6 +12,7 @@ require 'haml'
 require 'gabba'
 require 'rack-session-mongo'
 require 'omniauth-orcid'
+require 'oauth2'
 
 require_relative 'lib/paginate'
 require_relative 'lib/result'
@@ -46,6 +47,7 @@ configure do
   set :issns, settings.mongo[settings.mongo_db]['issns']
   set :citations, settings.mongo[settings.mongo_db]['citations']
   set :patents, settings.mongo[settings.mongo_db]['patents']
+  set :claims, settings.mongo[settings.mongo_db]['claims']
 
   # Set up for http requests to data.crossref.org and dx.doi.org
   dx_doi_org = Faraday.new(:url => 'http://dx.doi.org') do |c|
@@ -77,20 +79,29 @@ configure do
   # Orcid endpoint
   set :orcid_service, Faraday.new(:url => settings.orcid_site)
 
+  # Orcid oauth2 object we can use to make API calls
+  set :orcid_oauth, OAuth2::Client.new(settings.orcid_client_id, 
+                                       settings.orcid_client_secret, 
+                                       {:site => settings.orcid_site})
+
   # Set up session and auth middlewares for ORCiD sign in
   use Rack::Session::Mongo, settings.mongo[settings.mongo_db]
   use OmniAuth::Builder do
     provider :orcid, settings.orcid_client_id, settings.orcid_client_secret, :client_options => {
       :site => settings.orcid_site,
       :authorize_url => settings.orcid_authorize_url,
-      :token_url => settings.orcid_token_url
+      :token_url => settings.orcid_token_url,
+      :scope => '/orcid-works/create'
     }
   end
+
+  set :show_exceptions, true
 end
 
 helpers do
   include Doi
   include Session
+  include Claims
 
   def partial template, locals
     haml template.to_sym, :layout => false, :locals => locals
@@ -160,7 +171,7 @@ helpers do
     when :issn
       "issn:\"#{query_info[:value]}\""
     else
-      "#{params['q'].gsub(/[\"\.\[\]\(\)\-:;\/\\]/, ' ')}"
+      "#{params['q'].gsub(/[=\{\}\"\.\[\]\(\)\-:;\/\\]/, ' ')}"
     end
   end
 
@@ -332,6 +343,10 @@ helpers do
 
 end
 
+before do
+  set_after_signin_redirect(request.fullpath)
+end
+
 get '/' do
   if !params.has_key?('q')
     haml :splash, :locals => {:page => {:query => ""}}
@@ -367,7 +382,7 @@ get '/help/status' do
 end
 
 get '/dois' do
-  settings.ga.event('API', '/dois', query_terms, nil, true) 
+  settings.ga.event('API', '/dois', query_terms, nil, true)
   solr_result = select(search_query)
   items = search_results(solr_result).map do |result|
     {
@@ -478,7 +493,7 @@ end
 get '/auth/orcid/callback' do
   session[:orcid] = request.env['omniauth.auth']
   update_claimed_publications
-  redirect(after_signin_redirect)
+  haml :auth_callback
 end
 
 get '/auth/signout' do
@@ -503,3 +518,15 @@ get '/heartbeat' do
     {:status => :error, :type => e.class, :message => e}.to_json
   end
 end
+
+post '/claim' do
+  if signed_in?
+    doi = request.body.read
+    existing_claim = settings.claims.find_one({:doi => doi, :uid => session[:orcid][:uid]})
+
+    if existing_claim.nil?
+      OrcidDeposit.new doi
+    end
+  end
+end
+
