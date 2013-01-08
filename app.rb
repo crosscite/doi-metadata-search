@@ -101,7 +101,6 @@ end
 helpers do
   include Doi
   include Session
-  include Claims
 
   def partial template, locals
     haml template.to_sym, :layout => false, :locals => locals
