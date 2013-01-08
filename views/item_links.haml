@@ -10,17 +10,17 @@
     = "dx.doi.org/#{item.doi}"
   %span.dropdown
     %a.dropdown-toggle{:role => 'button', 'data-toggle' => 'dropdown', :href => '#'}
-      %i.icon-reorder
+      %i.icon-double-angle-down
       More
     %ul.dropdown-menu{:role => 'menu'}
       %li
         %a.cite-link{:href => "javascript:showCiteBox('#{item.doi}', '#{item.coins_atitle}');"}
-          %i.icon-bullhorn
+          %i.icon-quote-left
           Cite
       - if signed_in?    
         %li
           %a{:href => '#'}
-            %i.icon-plus
+            %i.icon-plus-sign-alt
             Add to my ORCiD record
       - unless facet?('publication') || item.publication.nil?
         %li
