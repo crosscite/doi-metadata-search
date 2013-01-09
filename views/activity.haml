@@ -1,0 +1,39 @@
+= partial :search_header, :page => page
+
+.row-fluid
+  .span1
+  .span10
+    .well
+      .pull-right
+        %button.btn.btn-warning#sync-button
+          %i.icon-refresh#sync-icon
+          Sync with ORCiD
+      %span.lead
+        Changes to your ORCiD profile not showing up on CrossRef Metadata Search? Try a sync.
+    .page-header
+      %h1 Recent Activity
+      
+:javascript
+  $(document).ready(function() {
+    $('#sync-button').click(function(e) {
+      if ($(this).hasClass('disabled')) {
+        return;
+      }
+      
+      $('#sync-icon').addClass('icon-spin');
+      $(this).addClass('disabled');
+      $.ajax({url: '/orcid/sync',
+              success: function(data) {
+                $('#sync-icon').removeClass('icon-spin');
+                $('#sync-button').removeClass('disabled');
+              },
+              error: function() {
+                $('#sync-icon').removeClass('icon-spin');
+                $('#sync-button').removeClass('disabled');
+              }
+      });
+      e.preventDefault();
+      return false;
+    });
+  });
+      
