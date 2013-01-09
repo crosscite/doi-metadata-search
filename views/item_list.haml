@@ -37,11 +37,20 @@
   .lead {
     margin-bottom: .7em;  
   }
-  .oa-tooltip, .oa-tooltip:visited {
-    color: rgb(167, 204, 145);
+  .claim-tooltip, .claim-tooltip:visited {
+    color: #999;
   }
-  .oa-tooltip:hover {
-    color: rgb(147, 184, 125);
+  .claim-tooltip:hover {
+    color: rgb(167, 204, 145);
+    text-decoration: none;
+  }
+  .claim-tooltip-claimed, .claim-tooltip-claimed:visited, .claim-tooltop-claimed:hover {
+
+    text-decoration: none;
+  }
+  .oa-tooltip, .oa-tooltip:visited, .oa-tooltip:hover {
+    color: rgb(246, 130, 18);
+    text-decoration: none;
   }
   .item-links a {
     margin-right: 1.5em;
@@ -57,6 +66,10 @@
   .item-data .extra b {
     font-size: 1.1em;
   }
+  .modal-body p {
+    font-size: 1.3em;
+    line-height: 1.2em;
+  }
 
 :javascript
   MAX_EXPAND_CHARS = 240;
@@ -64,6 +77,14 @@
   $(document).ready(function() {
     $('.oa-tooltip').tooltip({
       title: 'Article is published in a journal present in the Directory of Open Access Journals.'
+    });
+
+    $('.claim-tooltip').tooltip({
+      title: 'Add work to your ORCiD profile.'
+    });
+
+    $('.claim-tooltip-claimed').tooltip({
+      title: 'Work is present in your ORCiD profile.'
     });
 
     $('.expand').each(function() {
@@ -92,7 +113,7 @@
     - else
       = partial :item_unknown, :page => page, :item => item
 
-- page[:items].each do |item|      
+- page[:items].each do |item|
   - unless item.citations.empty?
     .modal.hide{:id => "citations-#{item.hashed}"}
       .modal-header
@@ -113,8 +134,31 @@
               %td
                 %a{:href => citation[:url]}= citation[:title]
 
+  - if signed_in? && !item.claimed?
+    .modal.hide{:id => "claim-#{item.hashed}"}
+      .modal-header
+        %button.close{'type' => 'button', 'data-dismiss' => 'modal'} &times;
+        %h3
+          Add
+          = item.doi
+          to your ORCiD profile
+      .modal-body
+        %p
+          You are adding
+          %b= item.coins_atitle
+          to your ORCiD profile. Double check that you were a
+          contributor to this work.
+        %p Add this work to your ORCiD profile?  
+      .modal-footer
+        %button.btn{'type' => 'button', 'data-dismiss' => 'modal'} No, thanks
+        %button.btn.btn-primary Yes, do it
+
 :javascript
   function showCitationsBox(hashed) {
     $("#citations-" + hashed).modal();
+  }
+
+  function showClaimBox(hashed) {
+    $("#claim-" + hashed).modal();
   }
   

@@ -9,7 +9,7 @@ class SearchResult
   attr_accessor :type, :doi, :score, :normal_score
   attr_accessor :citations, :hashed
 
-  ENGLISH_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
+  ENGLISH_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
   def has_path? hash, path
@@ -34,7 +34,7 @@ class SearchResult
   end
 
   # Merge a mongo DOI record with solr highlight information.
-  def initialize solr_doc, solr_result, citations
+  def initialize solr_doc, solr_result, citations, claimed
     @doi = solr_doc['doi']
     @type = solr_doc['type']
     @doc = solr_doc
@@ -42,6 +42,7 @@ class SearchResult
     @normal_score = ((@score / solr_result['response']['maxScore']) * 100).to_i
     @citations = citations
     @hashed = solr_doc['mongo_id']
+    @claimed = claimed
 
     @highlights = solr_result['highlighting']
 
@@ -59,6 +60,10 @@ class SearchResult
 
   def open_access?
     @doc['oa_status'] == 'Open Access'
+  end
+
+  def claimed?
+    @claimed
   end
 
   def coins_atitle
@@ -137,7 +142,7 @@ class SearchResult
     end
 
     title = title_parts.join('&')
-    
+
     coins_authors.split(',').each { |author| title += "&rft.au=#{CGI.escape(author)}" }
 
     CGI.escapeHTML title
@@ -156,7 +161,7 @@ class SearchResult
     a << "<i>#{CGI.escapeHTML(coins_title)}</i>" unless coins_title.nil?
     a << "vol. #{CGI.escapeHTML(coins_volume)}" unless coins_volume.nil?
     a << "no. #{CGI.escapeHTML(coins_issue)}" unless coins_issue.nil?
-    
+
     if !coins_spage.nil? && !coins_lpage.nil?
       a << "pp. #{CGI.escapeHTML(coins_spage)}-#{CGI.escapeHTML(coins_lpage)}"
     elsif !coins_spage.nil?
@@ -167,6 +172,3 @@ class SearchResult
   end
 end
 
-    
-
-    
