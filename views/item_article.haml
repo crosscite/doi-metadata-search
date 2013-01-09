@@ -7,7 +7,7 @@
             %a.claim-tooltip-claimed{:href => '#'}
               %i.icon-circle
           - else
-            %a.claim-tooltip{:href => "javascript:showClaimBox('#{item.hashed}');"}
+            %a.claim-tooltip{:id => "claim-tooltip-#{item.hashed}", :href => "javascript:showClaimBox('#{item.hashed}');"}
               %i.icon-circle-blank
         - if item.open_access?
           %a.oa-tooltip{:href => "http://www.doaj.org/doaj?func=findJournals&uiLanguage=en&hybrid=&query=#{item.coins_title}", :target => '_blank'}

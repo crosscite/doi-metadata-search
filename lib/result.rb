@@ -58,6 +58,10 @@ class SearchResult
     @last_page = find_value('hl_last_page')
   end
 
+  def doi
+    @doi
+  end
+
   def open_access?
     @doc['oa_status'] == 'Open Access'
   end

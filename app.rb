@@ -13,6 +13,7 @@ require 'gabba'
 require 'rack-session-mongo'
 require 'omniauth-orcid'
 require 'oauth2'
+require 'resque'
 
 require_relative 'lib/paginate'
 require_relative 'lib/result'
@@ -20,6 +21,8 @@ require_relative 'lib/bootstrap'
 require_relative 'lib/doi'
 require_relative 'lib/session'
 require_relative 'lib/data'
+require_relative 'lib/orcid_update'
+require_relative 'lib/orcid_claim'
 
 MIN_MATCH_SCORE = 2
 MIN_MATCH_TERMS = 3
@@ -81,8 +84,8 @@ configure do
   set :orcid_service, Faraday.new(:url => settings.orcid_site)
 
   # Orcid oauth2 object we can use to make API calls
-  set :orcid_oauth, OAuth2::Client.new(settings.orcid_client_id, 
-                                       settings.orcid_client_secret, 
+  set :orcid_oauth, OAuth2::Client.new(settings.orcid_client_id,
+                                       settings.orcid_client_secret,
                                        {:site => settings.orcid_site})
 
   # Set up session and auth middlewares for ORCiD sign in
@@ -389,13 +392,32 @@ get '/help/status' do
   haml :status_help, :locals => {:page => {:query => '', :stats => index_stats}}
 end
 
-get '/activity' do
+get '/orcid/activity' do
+  haml :activity, :locals => {:page => {:query => ''}}
 end
 
-get '/claim' do
-  doi = params[:doi]
+get '/orcid/claim' do
+  if signed_in?
+    doi = request.body.read
+    orcid_record = MongoData.coll('orcids').find_one({:orcid => sign_in_id})
 
-  
+    if orcid_record
+      orcid_record['locked_dois'] << doi
+      MongoData.coll('orcids').save()
+    else
+      MongoData.coll('orcids').insert({:orcid => sign_in_id, :dois => [], :locked_dois => [doi]})
+    end
+
+    Resque.enqueue(OrcidClaim, session_info, work)
+  end
+  ""
+end
+
+get '/orcid/sync' do
+  if signed_in?
+    OrcidUpdate.perform(session_info)
+  end
+  ""
 end
 
 get '/dois' do
@@ -509,7 +531,8 @@ end
 
 get '/auth/orcid/callback' do
   session[:orcid] = request.env['omniauth.auth']
-  update_claimed_publications
+  Resque.enqueue(OrcidUpdate, session_info)
+  update_profile
   haml :auth_callback
 end
 

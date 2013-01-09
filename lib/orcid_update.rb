@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'nokogiri'
 require 'oauth2'
 
@@ -20,22 +21,22 @@ class OrcidUpdate
       client = OAuth2::Client.new(@oauth[:client_id], @oauth[:client_secret], {:site => @oauth[:site]})
       token = OAuth2::AccessToken.new(client, @oauth[:token])
 
-      response = token.get("/#{@oauth[:uid]}/orcid-works") do |get|
+      response = token.get("https://api.orcid.org/#{@oauth[:uid]}/orcid-works") do |get|
         get.headers['Accept'] = 'application/orcid+xml'
       end
 
       if response.status == 200
         work_xml = response.body
         parsed_dois = parse_dois work_xml
-        orcid_record = MongoData.coll('orcids').find_one({:orcid => @oauth[:uid]})
+        query = {:orcid => @oauth[:uid]}
+        orcid_record = Data.coll('orcids').find_one(query)
 
         if orcid_record
-          dois_to_insert = parsed_dois - orcid_record['dois']
-          orcid_record['dois'] = orcid_record['dois'] + dois_to_insert
-          MongoData.coll['orcids'].save orcid_record
+          orcid_record['dois'] = parsed_dois
+          MongoData.coll('orcids').save(orcid_record)
         else
-          new_record = {:orcid => @oauth[:uid], :dois => parsed_dois}
-          MongoData.coll['orcids'].insert new_record
+          doc = {:orcid => @oauth[:uid], :dois => parsed_dois, :locked_dois => []}
+          MongoData.coll('orcids').insert(doc)
         end
       end
     end
