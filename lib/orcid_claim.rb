@@ -7,18 +7,23 @@ class OrcidClaim
 
   @queue = :orcid
 
-  def initialize oauth, work
+  def initialize oauth, work, record_id
     @oauth = oauth
     @work = work
+    @record_id = record_id
   end
 
   def self.perform oauth, work
     OrcidClaim.new(ouath, work).perform
   end
 
+  def self.prepare orcid, doi
+    doc = {:created_at => Time.now, :orcid => orcid, :doi => doi}
+    MongoData.coll('claims').insert(doc)
+  end
+
   def started
-    doc = {:created_at => Time.now, :uid => @oauth[:uid], :doi => @work[:doi]}
-    @record_id = MongoData.coll('claims').insert(doc)
+    MongoData.coll('claims').update(@record_id, {:started_at => Time.now})
   end
 
   def failed e = nil

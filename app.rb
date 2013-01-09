@@ -299,7 +299,7 @@ helpers do
 
     if signed_in?
       orcid_record = MongoData.coll('orcids').find_one({:orcid => sign_in_id})
-      claimed_dois = orcid_record['dois'] if orcid_record
+      claimed_dois = orcid_record['dois'] + orcid_record['locked_dois'] if orcid_record
     end
 
     solr_result['response']['docs'].map do |solr_doc|
@@ -309,7 +309,10 @@ helpers do
   end
 
   def index_stats
-    count_result = settings.solr.get 'solr/labs1/select', :params => {:q => '*:*', :rows => 0}
+    count_result = settings.solr.get 'solr/labs1/select', :params => {
+      :q => '*:*',
+      :rows => 0
+    }
     article_result = settings.solr.get 'solr/labs1/select', :params => {
       :q => 'type:journal_article',
       :rows => 0
@@ -393,31 +396,42 @@ get '/help/status' do
 end
 
 get '/orcid/activity' do
-  haml :activity, :locals => {:page => {:query => ''}}
+  if signed_in?
+    opts = {:sort => [:created_at, -1]}
+    activities = MongoData.coll('claims').find({:orcid => sign_in_id}, opts)
+    haml :activity, :locals => {:page => {:query => '', :activities => activities}}
+  else
+    redirect '/'
+  end
 end
 
 get '/orcid/claim' do
-  if signed_in?
-    doi = request.body.read
+  if signed_in? && params['doi']
+    doi = params['doi']
     orcid_record = MongoData.coll('orcids').find_one({:orcid => sign_in_id})
 
     if orcid_record
       orcid_record['locked_dois'] << doi
-      MongoData.coll('orcids').save()
+      orcid_record['locked_dois'].uniq!
+      MongoData.coll('orcids').save(orcid_record)
     else
-      MongoData.coll('orcids').insert({:orcid => sign_in_id, :dois => [], :locked_dois => [doi]})
+      doc = {:orcid => sign_in_id, :dois => [], :locked_dois => [doi]}
+      MongoData.coll('orcids').insert(doc)
     end
 
-    Resque.enqueue(OrcidClaim, session_info, work)
+    record_id = OrcidClaim.prepare(sign_in_id, doi)
+    Resque.enqueue(OrcidClaim, session_info, {}, record_id)
   end
-  ""
+
+  {:status => 'ok'}.to_json
 end
 
 get '/orcid/sync' do
   if signed_in?
     OrcidUpdate.perform(session_info)
   end
-  ""
+
+  {:status => 'ok'}.to_json
 end
 
 get '/dois' do
@@ -541,7 +555,7 @@ get '/auth/signout' do
   redirect(params[:redirect_uri])
 end
 
-get '/heartbeat' do 
+get '/heartbeat' do
   content_type 'application/json'
 
   params['q'] = 'fish'
@@ -556,17 +570,6 @@ get '/heartbeat' do
     {:status => :ok}.to_json
   rescue StandardError => e
     {:status => :error, :type => e.class, :message => e}.to_json
-  end
-end
-
-post '/claim' do
-  if signed_in?
-    doi = request.body.read
-    existing_claim = settings.claims.find_one({:doi => doi, :uid => session[:orcid][:uid]})
-
-    if existing_claim.nil?
-      OrcidDeposit.new doi
-    end
   end
 end
 

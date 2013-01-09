@@ -39,12 +39,13 @@
   }
   .claim-tooltip, .claim-tooltip:visited {
     color: #999;
+    text-decoration: none;
   }
   .claim-tooltip:hover {
     color: rgb(167, 204, 145);
     text-decoration: none;
   }
-  .claim-tooltip-claimed, .claim-tooltip-claimed:visited, .claim-tooltop-claimed:hover {
+  .claim-tooltip-claimed, .claim-tooltip-claimed:visited, .claim-tooltip-claimed:hover {
     color: rgb(167, 204, 145);
     text-decoration: none;
   }
@@ -161,8 +162,8 @@
 
   function showClaimBox(hashed) {
     $('#claim-button-' + hashed).click(function(e) {
-      $tooltip = $('#claim-tooltip-' + hashed);
-      $tooltipIcon = $('#claim-tooltip-' + hashed + ' i');
+      var $tooltip = $('#claim-tooltip-' + hashed);
+      var $tooltipIcon = $('#claim-tooltip-' + hashed + ' i');
       $tooltipIcon.removeClass('icon-circle-blank');
       $tooltipIcon.addClass('icon-circle');
       $tooltip.removeClass('claim-tooltip');
@@ -171,9 +172,12 @@
       $tooltip.tooltip({
         title: 'Work is present in your ORCiD profile.'
       });
-      $.ajax({url: '/orcid/claim',
-              body: $('#doi-' + hashed).text()
+      
+      var req = $.ajax({
+        url: '/orcid/claim',
+        data: {doi: $('#doi-' + hashed).text()}
       });
+      
       $('#claim-' + hashed).modal('hide');
       e.preventDefault();
       return false;

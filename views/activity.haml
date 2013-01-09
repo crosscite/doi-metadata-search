@@ -1,18 +1,51 @@
 = partial :search_header, :page => page
 
 .row-fluid
-  .span1
-  .span10
+  .span2
+  .span8
+    .page-header
+      %h2 Syncronize with ORCiD
     .well
       .pull-right
         %button.btn.btn-warning#sync-button
           %i.icon-refresh#sync-icon
           Sync with ORCiD
       %span.lead
-        Changes to your ORCiD profile not showing up on CrossRef Metadata Search? Try a sync.
+        Sync changes from your ORCiD profile to CrossRef Metata Search
+
+.row-fluid
+  .span2
+  .span8
     .page-header
-      %h1 Recent Activity
+      %h2 Recent Activity
       
+    %table.table.table-striped
+      %thead
+        %tr
+          %th On
+          %th Activity
+          %th DOI
+          %th Status
+      %tbody
+        - page[:activities].each do |a|
+          %tr
+            %td= a['created_at'].strftime("%d %B, %Y")
+            %td Claim a DOI
+            %td= a['doi']
+            - if a['finished_at']
+              %td
+                .label.label-success Complete
+            - elsif a['failed_at']
+              %td
+                .label.label-important Failed
+            - elsif a['started_at']
+              %td
+                .label.label-warning Submitting...
+            - else
+              %td
+                .label.label-warning Queued...
+
+  
 :javascript
   $(document).ready(function() {
     $('#sync-button').click(function(e) {
