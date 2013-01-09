@@ -5,7 +5,7 @@ module Session
     OAuth2::AccessToken.new settings.orcid_oauth, session[:orcid]['credentials']['token']
   end
 
-  def update_claimed_publications
+  def update_profile
     response = auth_token.get "#{session[:orcid][:uid]}/orcid-profile", :headers => {'Accept' => 'application/json'}
     if response.status == 200
       json = JSON.parse(response.body)
@@ -27,6 +27,10 @@ module Session
     if signed_in?
       session[:orcid][:info][:name] || session[:orcid][:uid]
     end
+  end
+
+  def session_info
+    session[:orcid]
   end
 
   def after_signin_redirect

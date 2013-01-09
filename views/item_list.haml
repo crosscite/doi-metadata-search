@@ -45,7 +45,7 @@
     text-decoration: none;
   }
   .claim-tooltip-claimed, .claim-tooltip-claimed:visited, .claim-tooltop-claimed:hover {
-
+    color: rgb(167, 204, 145);
     text-decoration: none;
   }
   .oa-tooltip, .oa-tooltip:visited, .oa-tooltip:hover {
@@ -136,6 +136,7 @@
 
   - if signed_in? && !item.claimed?
     .modal.hide{:id => "claim-#{item.hashed}"}
+      .doi{:id => "doi-#{item.hashed}", :style => 'display: none;'}= item.doi
       .modal-header
         %button.close{'type' => 'button', 'data-dismiss' => 'modal'} &times;
         %h3
@@ -151,14 +152,32 @@
         %p Add this work to your ORCiD profile?  
       .modal-footer
         %button.btn{'type' => 'button', 'data-dismiss' => 'modal'} No, thanks
-        %button.btn.btn-primary Yes, do it
+        %button.btn.btn-primary{:id => "claim-button-#{item.hashed}"} Yes, do it
 
 :javascript
   function showCitationsBox(hashed) {
-    $("#citations-" + hashed).modal();
+    $('#citations-' + hashed).modal();
   }
 
   function showClaimBox(hashed) {
+    $('#claim-button-' + hashed).click(function(e) {
+      $tooltip = $('#claim-tooltip-' + hashed);
+      $tooltipIcon = $('#claim-tooltip-' + hashed + ' i');
+      $tooltipIcon.removeClass('icon-circle-blank');
+      $tooltipIcon.addClass('icon-circle');
+      $tooltip.removeClass('claim-tooltip');
+      $tooltip.addClass('claim-tooltip-claimed');
+      $tooltip.removeAttr('href');
+      $tooltip.tooltip({
+        title: 'Work is present in your ORCiD profile.'
+      });
+      $.ajax({url: '/orcid/claim',
+              body: $('#doi-' + hashed).text()
+      });
+      $('#claim-' + hashed).modal('hide');
+      e.preventDefault();
+      return false;
+    });
     $("#claim-" + hashed).modal();
   }
   
