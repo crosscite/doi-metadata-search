@@ -19,6 +19,10 @@ module Session
     !session[:orcid].nil?
   end
 
+  def sign_in_id
+    session[:orcid][:uid]
+  end
+
   def user_display
     if signed_in?
       session[:orcid][:info][:name] || session[:orcid][:uid]

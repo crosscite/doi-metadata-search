@@ -17,11 +17,6 @@
         %a.cite-link{:href => "javascript:showCiteBox('#{item.doi}', '#{item.coins_atitle}');"}
           %i.icon-quote-left
           Cite
-      - if signed_in?    
-        %li
-          %a{:href => '#'}
-            %i.icon-plus-sign-alt
-            Add to my ORCiD record
       - unless facet?('publication') || item.publication.nil?
         %li
           %a{:href => "#{facet_link('publication', item.coins_title)}"}

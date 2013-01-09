@@ -1,16 +1,17 @@
 require 'mongo'
 
-module Data
+module MongoData
 
   def self.db
-    @db ||= do
+    unless @db
       config = JSON.parse(File.open('conf/app.json').read)
       config.each_pair do |key, value|
         set key.to_sym, value
       end
 
-      Mongo::Connection.new(config['mongo_host'])[config['mongo_db']]
+      @db = Mongo::Connection.new(config['mongo_host'])[config['mongo_db']]
     end
+    @db
   end
 
   def self.coll name

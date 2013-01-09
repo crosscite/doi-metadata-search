@@ -19,6 +19,7 @@ require_relative 'lib/result'
 require_relative 'lib/bootstrap'
 require_relative 'lib/doi'
 require_relative 'lib/session'
+require_relative 'lib/data'
 
 MIN_MATCH_SCORE = 2
 MIN_MATCH_TERMS = 3
@@ -290,9 +291,17 @@ helpers do
     authors.join ', '
   end
 
-  def search_results solr_result
+  def search_results solr_result, oauth = nil
+    claimed_dois = []
+
+    if signed_in?
+      orcid_record = MongoData.coll('orcids').find_one({:orcid => sign_in_id})
+      claimed_dois = orcid_record['dois'] if orcid_record
+    end
+
     solr_result['response']['docs'].map do |solr_doc|
-      SearchResult.new solr_doc, solr_result, citations(solr_doc['doiKey'])
+      claimed = claimed_dois.include?(solr_doc['doiKey'])
+      SearchResult.new solr_doc, solr_result, citations(solr_doc['doiKey']), claimed
     end
   end
 
@@ -380,6 +389,15 @@ get '/help/status' do
   haml :status_help, :locals => {:page => {:query => '', :stats => index_stats}}
 end
 
+get '/activity' do
+end
+
+get '/claim' do
+  doi = params[:doi]
+
+  
+end
+
 get '/dois' do
   settings.ga.event('API', '/dois', query_terms, nil, true)
   solr_result = select(search_query)
@@ -433,7 +451,7 @@ post '/links' do
         params = {:q => terms, :fl => 'doi,score'}
         result = settings.solr.paginate 0, 1, settings.solr_select, :params => params
         match = result['response']['docs'].first
-        
+
         if citation_text.split.count < MIN_MATCH_TERMS
           {
             :text => citation_text,
@@ -455,7 +473,7 @@ post '/links' do
           }
         end
       end
-      
+
       page = {
         :results => results,
         :query_ok => true
@@ -470,7 +488,7 @@ post '/links' do
   end
 
   settings.ga.event('API', '/links', nil, page[:results].count, true)
-    
+
   content_type 'application/json'
   JSON.pretty_generate(page)
 end
@@ -504,14 +522,14 @@ get '/heartbeat' do
   content_type 'application/json'
 
   params['q'] = 'fish'
-  
+
   begin
     # Attempt a query with solr
     solr_result = select(search_query)
-    
+
     # Attempt some queries with mongo
     result_list = search_results(solr_result)
-    
+
     {:status => :ok}.to_json
   rescue StandardError => e
     {:status => :error, :type => e.class, :message => e}.to_json

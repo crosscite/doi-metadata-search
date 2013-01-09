@@ -5,6 +5,8 @@ require_relative 'data'
 
 class OrcidClaim
 
+  @queue = :orcid
+
   def initialize oauth, work
     @oauth = oauth
     @work = work
@@ -15,15 +17,19 @@ class OrcidClaim
   end
 
   def started
-    @record_id = Data.coll('claims').insert({:created_at => Time.now, :uid => @oauth[:uid], :doi => @work[:doi]})
+    doc = {:created_at => Time.now, :uid => @oauth[:uid], :doi => @work[:doi]}
+    @record_id = MongoData.coll('claims').insert(doc)
   end
 
   def failed e = nil
-    Data.coll('claims').update(@record_id, {:failed_at => Time.now, :error => e}) 
+    MongoData.coll('claims').update(@record_id, {:failed_at => Time.now, :error => e})
   end
 
   def finished
-    Data.coll('claims').update(@record_id, {:finished_at => Time.now})
+    MongoData.coll('claims').update(@record_id, {:finished_at => Time.now})
+
+    orcid_record = Data.coll('orcids').find_one({:orcid => @oauth[:uid]})
+    # TODO Data.coll('orcids').find_and_update
   end
 
   def perform
@@ -33,11 +39,11 @@ class OrcidClaim
       client = OAuth2::Client.new(@oauth[:client_id], @oauth[:client_secret], {:site => @oauth[:site]})
       token = OAuth2::AccessToken.new(client, @oauth[:token])
 
-      response = token.post("/{@uid}/orcid-works") do |post|
+      response = token.post("/#{@oauth[:uid]}/orcid-works") do |post|
         post.headers['Content-Type'] = 'application/orcid+xml'
         post.body = to_xml
       end
-        
+
       if response.status == 200
         finished
       else
@@ -86,7 +92,7 @@ class OrcidClaim
             }
           }
         }
-      } 
+      }
     end.to_s
   end
 

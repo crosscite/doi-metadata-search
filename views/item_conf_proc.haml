@@ -2,6 +2,13 @@
   %td.item-data
     - unless item.title.nil?
       %p.lead
+        - if signed_in?
+          - if item.claimed?
+            %a.claim-tooltip-claimed{:href => '#'}
+              %i.icon-circle
+          - else
+            %a.claim-tooltip{:href => "javascript:showClaimBox('#{item.hashed}');"}
+              %i.icon-circle-blank
         - if item.open_access?
           %a.oa-tooltip{:href => '#'}
             %i.icon-unlock
