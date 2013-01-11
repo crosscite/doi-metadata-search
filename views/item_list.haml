@@ -145,8 +145,13 @@
       });
 
       $('.claim-ok-btn').click(function(e) {
-        $(this).prepend($('<i>').addClass('icon-refresh').addClass('icon-rotate'));
-        $(this).addClass('disable');
+        if ($(this).hasClass('disabled')) {
+          return;
+        }
+        
+        $(this).prepend($('<i>').addClass('icon-refresh').addClass('icon-spin'));
+        $(this).addClass('disabled');
+        
         var req = $.ajax({
           url: '/orcid/claim',
           data: {doi: $popover.attr('id')},
@@ -200,7 +205,13 @@
       });
       
       $('.claim-remove-btn').click(function(e) {
-        $(this).addClass('disable');
+        if ($(this).hasClass('disabled')) {
+          return;
+        }
+        
+        $(this).prepend($('<i>').addClass('icon-refresh').addClass('icon-spin'));
+        $(this).addClass('disabled');
+
         var req = $.ajax({
           url: '/orcid/unclaim',
           data: {doi: $popover.attr('id')},
@@ -226,7 +237,7 @@
       return false;
     }
 
-    $('.claim-warn').click(claimWarnClickFn);    
+    $('.claim-warn').click(claimWarnClickFn);
     $('.claim-none').click(claimNoneClickFn);
   });
 

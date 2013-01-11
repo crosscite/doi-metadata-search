@@ -213,7 +213,7 @@ helpers do
     end
     fq
   end
-  
+
   def sort_term
     if 'year' == params['sort']
       'year desc, score desc'
@@ -435,7 +435,7 @@ get '/orcid/claim' do
       end
 
       doi_record = MongoData.coll('dois').find_one({:doi => doi})
-      Resque.enqueue(OrcidClaim, session_info, doi_record, record_id) if doi_record
+      OrcidClaim.perform(session_info, doi_record, record_id) if doi_record
     end
   end
 
