@@ -24,15 +24,17 @@ class OrcidClaim
   end
 
   def started
-    MongoData.coll('claims').update(@record_id, {:started_at => Time.now})
+    # TODO If not through reque @record_id is a BSON object instead of hash.
+    # TODO If through reque we fail later on extended chars.
+    #MongoData.coll('claims').update(@record_id, {:started_at => Time.now})
   end
 
   def failed e = nil
-    MongoData.coll('claims').update(@record_id, {:failed_at => Time.now, :error => e})
+    #MongoData.coll('claims').update(@record_id, {:failed_at => Time.now, :error => e})
   end
 
   def finished
-    MongoData.coll('claims').update(@record_id, {:finished_at => Time.now})
+    #MongoData.coll('claims').update(@record_id, {:finished_at => Time.now})
   end
 
   def perform

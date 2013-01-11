@@ -51,25 +51,29 @@ class OrcidUpdate
   def parse_dois json
     p(json)
 
-    works = json['orcid-profile']['orcid-activities']['orcid-works']['orcid-work']
+    if json['orcid-profile']['orcid-activities'].nil?
+      []
+    else
+      works = json['orcid-profile']['orcid-activities']['orcid-works']['orcid-work']
 
-    extracted_dois = works.map do |work_loc|
-      ids_loc = work_loc['work-external-identifiers']['work-external-identifier']
-      doi = nil
+      extracted_dois = works.map do |work_loc|
+        ids_loc = work_loc['work-external-identifiers']['work-external-identifier']
+        doi = nil
 
-      ids_loc.each do |id_loc|
-        id_type = id_loc['work-external-identifier-type']
-        id_val = id_loc['work-external-identifier-id']['value']
+        ids_loc.each do |id_loc|
+          id_type = id_loc['work-external-identifier-type']
+          id_val = id_loc['work-external-identifier-id']['value']
 
-        if id_type.upcase == 'DOI'
-          doi = id_val
+          if id_type.upcase == 'DOI'
+            doi = id_val
+          end
         end
+
+        doi
       end
 
-      doi
+      extracted_dois.compact
     end
-
-    extracted_dois.compact
   end
 
   def load_config
