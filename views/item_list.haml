@@ -117,13 +117,7 @@
       return false;
     });
 
-    $('.claim-warn').click(function(e) {
-      $('.claim-none').popover('destroy');
-      $('.claim-warn').popover('destroy');
-      $('.claim-ok').popover('destroy');
-    });
-    
-    $('.claim-none').click(function(e) {
+    var claimNoneClickFn = function(e) {
       $('.claim-none').popover('destroy');
       $('.claim-warn').popover('destroy');
       $('.claim-ok').popover('destroy');
@@ -156,15 +150,17 @@
         var req = $.ajax({
           url: '/orcid/claim',
           data: {doi: $popover.attr('id')},
-          success: function(e) {
+          success: function() {
             $popover.popover('destroy');
             $popover.removeClass('claim-none');
             $popover.addClass('claim-warn');
+            $popover.unbind('click');
+            $popover.click(claimWarnClickFn);
             $popover.find('span').text('Not visible');
-            $popover.find('i').removeClass('icon-circle-empty');
+            $popover.find('i').removeClass('icon-circle-blank');
             $popover.find('i').addClass('icon-circle');
           },
-          error: function(e) {
+          error: function() {
             $popover.popover('destroy');
           }
         });
@@ -174,7 +170,64 @@
 
       e.preventDefault();
       return false;
-    });
+    }
+
+    var claimWarnClickFn = function(e) {
+      $('.claim-none').popover('destroy');
+      $('.claim-warn').popover('destroy');
+      $('.claim-ok').popover('destroy');
+
+      $text = $('<div>').html('<span>Work has been added to your ORCID profile but is marked as private. Visit your <a href="https://orcid.org/my-orcid" target="_blank"><i class="icon-external-link"></i>ORCID profile</a> to set this work\'s visibility to public or limited.<br/><br/>If you have removed this private work from your ORCID profile you can click the button below to remove it from CrossRef Metadata Search.</span>');
+      $btnClose = $('<button>').addClass('btn').addClass('claim-close-btn').text('Close');
+      $btnRemove = $('<button>').addClass('btn').addClass('btn-danger').addClass('claim-remove-btn').text('Remove');
+      $content = $('<div>').append($text).append($btnClose).append($btnRemove);
+      $popover = $(this);
+      
+      $(this).popover({
+        placement: 'bottom',
+        html: true,
+        title: 'Work is private in your ORCID profile',
+        content: $('<div>').append($content).html(),
+        trigger: 'manual'
+      });
+
+      $(this).popover('show');
+      
+      $('.claim-close-btn').click(function(e) {
+        $popover.popover('destroy');
+        e.preventDefault();
+        return false;
+      });
+      
+      $('.claim-remove-btn').click(function(e) {
+        $(this).addClass('disable');
+        var req = $.ajax({
+          url: '/orcid/unclaim',
+          data: {doi: $popover.attr('id')},
+          success: function() {
+            $popover.popover('destroy');
+            $popover.removeClass('claim-warn');
+            $popover.addClass('claim-none');
+            $popover.unbind('click');
+            $popover.click(claimNoneClickFn);
+            $popover.find('span').text('Add to ORCID');
+            $popover.find('i').removeClass('icon-circle');
+            $popover.find('i').addClass('icon-circle-blank');
+          },
+          error: function() {
+            $popover.popover('destroy');
+          }
+        });
+        e.preventDefault();
+        return false;
+      });
+
+      e.preventDefault();
+      return false;
+    }
+
+    $('.claim-warn').click(claimWarnClickFn);    
+    $('.claim-none').click(claimNoneClickFn);
   });
 
 %table  
