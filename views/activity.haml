@@ -1,17 +1,22 @@
 = partial :search_header, :page => page
 
+:css
+  .well-transparent {
+    background-color: transparent;
+  }
+
 .row-fluid
   .span2
   .span8
     .page-header
-      %h2 Syncronize with ORCiD
-    .well
+      %h2 Syncronize with ORCID
+    .well.well-large
       .pull-right
         %button.btn.btn-warning#sync-button
           %i.icon-refresh#sync-icon
-          Sync with ORCiD
+          Sync with ORCID
       %span.lead
-        Sync changes from your ORCiD profile to CrossRef Metata Search
+        Sync changes from your ORCID profile to CrossRef Metata Search
 
 .row-fluid
   .span2
@@ -30,8 +35,9 @@
         - page[:activities].each do |a|
           %tr
             %td= a['created_at'].strftime("%d %B, %Y")
-            %td Claim a DOI
-            %td= a['doi']
+            %td Add a work
+            %td
+              %a{:href => "/?q=#{URI.encode(a['doi'])}"}= a['doi']
             - if a['finished_at']
               %td
                 .label.label-success Complete

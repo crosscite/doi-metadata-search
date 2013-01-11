@@ -34,7 +34,7 @@ class SearchResult
   end
 
   # Merge a mongo DOI record with solr highlight information.
-  def initialize solr_doc, solr_result, citations, claimed
+  def initialize solr_doc, solr_result, citations, user_state
     @doi = solr_doc['doi']
     @type = solr_doc['type']
     @doc = solr_doc
@@ -42,7 +42,8 @@ class SearchResult
     @normal_score = ((@score / solr_result['response']['maxScore']) * 100).to_i
     @citations = citations
     @hashed = solr_doc['mongo_id']
-    @claimed = claimed
+    @user_claimed = user_state[:claimed]
+    @in_user_profile = user_state[:in_profile]
 
     @highlights = solr_result['highlighting']
 
@@ -66,8 +67,12 @@ class SearchResult
     @doc['oa_status'] == 'Open Access'
   end
 
-  def claimed?
-    @claimed
+  def user_claimed?
+    @user_claimed
+  end
+
+  def in_user_profile?
+    @in_user_profile
   end
 
   def coins_atitle

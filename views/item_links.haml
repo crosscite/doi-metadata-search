@@ -22,4 +22,18 @@
           %a{:href => "#{facet_link('publication', item.coins_title)}"}
             %i.icon-filter
             Filter on this publication
-        
+  - if signed_in?
+    - if item.in_user_profile?
+      %span.well-transparent.claim-ok{:id => item.doi}
+        %i.icon-circle
+        %span In your profile
+    - elsif item.user_claimed?
+      %span.well-transparent.claim-warn{:id => item.doi}
+        %i.icon-circle
+        %span Not visible
+    - else
+      %span.well-transparent.claim-none{:id => item.doi}
+        %i.icon-circle-blank
+        %span Add to ORCiD
+  
+    
