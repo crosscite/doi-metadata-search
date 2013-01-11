@@ -37,21 +37,27 @@
   .lead {
     margin-bottom: .7em;  
   }
-  .claim-tooltip, .claim-tooltip:visited {
-    color: #999;
-    text-decoration: none;
-  }
-  .claim-tooltip:hover {
-    color: rgb(167, 204, 145);
-    text-decoration: none;
-  }
-  .claim-tooltip-claimed, .claim-tooltip-claimed:visited, .claim-tooltip-claimed:hover {
-    color: rgb(167, 204, 145);
-    text-decoration: none;
-  }
   .oa-tooltip, .oa-tooltip:visited, .oa-tooltip:hover {
     color: rgb(246, 130, 18);
     text-decoration: none;
+  }
+  .claim-ok {
+    color: rgb(167, 204, 145);
+  }
+  .claim-ok:hover {
+    color: rgb(137, 194, 115);
+  }
+  .claim-warn {
+    color: rgb(246, 130, 18);
+  }
+  .claim-warn:hover {
+    color: rgb(216, 100, 0);
+  }
+  .claim-none {
+    color: #ccc;
+  }
+  .claim-none:hover {
+    color: rgb(167, 204, 145);
   }
   .item-links a {
     margin-right: 1.5em;
@@ -71,6 +77,22 @@
     font-size: 1.3em;
     line-height: 1.2em;
   }
+  .well-transparent {
+    border: none;
+    text-transform: uppercase;
+    font-size: .9em;1
+    padding: .8em;
+    cursor: pointer;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+  }
+  .well-transparent i {
+    font-size: 1.2em;
+  }
+  .well-transparent:hover {
+    text-decoration: underline;
+  }
 
 :javascript
   MAX_EXPAND_CHARS = 240;
@@ -78,14 +100,6 @@
   $(document).ready(function() {
     $('.oa-tooltip').tooltip({
       title: 'Article is published in a journal present in the Directory of Open Access Journals.'
-    });
-
-    $('.claim-tooltip').tooltip({
-      title: 'Add work to your ORCiD profile.'
-    });
-
-    $('.claim-tooltip-claimed').tooltip({
-      title: 'Work is present in your ORCiD profile.'
     });
 
     $('.expand').each(function() {
@@ -99,6 +113,65 @@
     $('.expander').click(function(e) {
       var parent = $(this).parent();
       parent.text(parent.data('full-text'));
+      e.preventDefault();
+      return false;
+    });
+
+    $('.claim-warn').click(function(e) {
+      $('.claim-none').popover('destroy');
+      $('.claim-warn').popover('destroy');
+      $('.claim-ok').popover('destroy');
+    });
+    
+    $('.claim-none').click(function(e) {
+      $('.claim-none').popover('destroy');
+      $('.claim-warn').popover('destroy');
+      $('.claim-ok').popover('destroy');
+      
+      var $p = $('<p>').text('Are you sure you want to add this work to your ORCID profile?');
+      var $btnNo = $('<button>').addClass('btn').addClass('claim-no-btn').text('No');
+      var $btnOk = $('<button>').addClass('btn').addClass('btn-success').addClass('claim-ok-btn').text('Yes');
+      var $content = $('<div>').append($p).append($btnNo).append($btnOk);
+      var $popover = $(this);
+      
+      $(this).popover({
+        placement: 'bottom',
+        html: true,
+        title: 'Add work to ORCID',
+        content: $('<div>').append($content).html(),
+        trigger: 'manual'
+      });
+
+      $(this).popover('show');
+      
+      $('.claim-no-btn').click(function(e) {
+        $popover.popover('destroy');
+        e.preventDefault();
+        return false;
+      });
+
+      $('.claim-ok-btn').click(function(e) {
+        $(this).prepend($('<i>').addClass('icon-refresh').addClass('icon-rotate'));
+        $(this).addClass('disable');
+        var req = $.ajax({
+          url: '/orcid/claim',
+          data: {doi: $popover.attr('id')},
+          success: function(e) {
+            $popover.popover('destroy');
+            $popover.removeClass('claim-none');
+            $popover.addClass('claim-warn');
+            $popover.find('span').text('Not visible');
+            $popover.find('i').removeClass('icon-circle-empty');
+            $popover.find('i').addClass('icon-circle');
+          },
+          error: function(e) {
+            $popover.popover('destroy');
+          }
+        });
+        e.preventDefault();
+        return false;
+      });
+
       e.preventDefault();
       return false;
     });
@@ -135,7 +208,7 @@
               %td
                 %a{:href => citation[:url]}= citation[:title]
 
-  - if signed_in? && !item.claimed?
+  - if signed_in? && !item.user_claimed?
     .modal.hide{:id => "claim-#{item.hashed}"}
       .doi{:id => "doi-#{item.hashed}", :style => 'display: none;'}= item.doi
       .modal-header
@@ -143,14 +216,14 @@
         %h3
           Add
           = item.doi
-          to your ORCiD profile
+          to your ORCID profile
       .modal-body
         %p
           You are adding
           %b= item.coins_atitle
-          to your ORCiD profile. Double check that you were a
+          to your ORCID profile. Double check that you were a
           contributor to this work.
-        %p Add this work to your ORCiD profile?  
+        %p Add this work to your ORCID profile?  
       .modal-footer
         %button.btn{'type' => 'button', 'data-dismiss' => 'modal'} No, thanks
         %button.btn.btn-primary{:id => "claim-button-#{item.hashed}"} Yes, do it
@@ -160,28 +233,3 @@
     $('#citations-' + hashed).modal();
   }
 
-  function showClaimBox(hashed) {
-    $('#claim-button-' + hashed).click(function(e) {
-      var $tooltip = $('#claim-tooltip-' + hashed);
-      var $tooltipIcon = $('#claim-tooltip-' + hashed + ' i');
-      $tooltipIcon.removeClass('icon-circle-blank');
-      $tooltipIcon.addClass('icon-circle');
-      $tooltip.removeClass('claim-tooltip');
-      $tooltip.addClass('claim-tooltip-claimed');
-      $tooltip.removeAttr('href');
-      $tooltip.tooltip({
-        title: 'Work is present in your ORCiD profile.'
-      });
-      
-      var req = $.ajax({
-        url: '/orcid/claim',
-        data: {doi: $('#doi-' + hashed).text()}
-      });
-      
-      $('#claim-' + hashed).modal('hide');
-      e.preventDefault();
-      return false;
-    });
-    $("#claim-" + hashed).modal();
-  }
-  

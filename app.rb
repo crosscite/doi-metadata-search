@@ -14,6 +14,7 @@ require 'rack-session-mongo'
 require 'omniauth-orcid'
 require 'oauth2'
 require 'resque'
+require 'open-uri'
 
 require_relative 'lib/paginate'
 require_relative 'lib/result'
@@ -296,15 +297,26 @@ helpers do
 
   def search_results solr_result, oauth = nil
     claimed_dois = []
+    profile_dois = []
 
     if signed_in?
       orcid_record = MongoData.coll('orcids').find_one({:orcid => sign_in_id})
-      claimed_dois = orcid_record['dois'] + orcid_record['locked_dois'] if orcid_record
+      unless orcid_record.nil?
+        claimed_dois = orcid_record['dois'] + orcid_record['locked_dois'] if orcid_record
+        profile_dois = orcid_record['dois']
+      end
     end
 
     solr_result['response']['docs'].map do |solr_doc|
-      claimed = claimed_dois.include?(solr_doc['doiKey'])
-      SearchResult.new solr_doc, solr_result, citations(solr_doc['doiKey']), claimed
+      doi = solr_doc['doiKey']
+      in_profile = profile_dois.include?(doi)
+      claimed = claimed_dois.include?(doi)
+      user_state = {
+        :in_profile => in_profile,
+        :claimed => claimed
+      }
+
+      SearchResult.new solr_doc, solr_result, citations(solr_doc['doiKey']), user_state
     end
   end
 
@@ -409,18 +421,36 @@ get '/orcid/claim' do
   if signed_in? && params['doi']
     doi = params['doi']
     orcid_record = MongoData.coll('orcids').find_one({:orcid => sign_in_id})
+    record_id = OrcidClaim.prepare(sign_in_id, doi)
+    already_added = !orcid_record.nil? && orcid_record['locked_dois'].include?(doi)
+
+    unless already_added
+      if orcid_record
+        orcid_record['locked_dois'] << doi
+        orcid_record['locked_dois'].uniq!
+        MongoData.coll('orcids').save(orcid_record)
+      else
+        doc = {:orcid => sign_in_id, :dois => [], :locked_dois => [doi]}
+        MongoData.coll('orcids').insert(doc)
+      end
+
+      doi_record = MongoData.coll('dois').find_one({:doi => doi})
+      Resque.enqueue(OrcidClaim, session_info, doi_record, record_id) if doi_record
+    end
+  end
+
+  {:status => 'ok'}.to_json
+end
+
+get '/orcid/unclaim' do
+  if signed_in? && params['doi']
+    doi = params['doi']
+    orcid_record = MongoData.coll('orcids').find_one({:orcid => sign_in_id})
 
     if orcid_record
-      orcid_record['locked_dois'] << doi
-      orcid_record['locked_dois'].uniq!
+      orcid_record['locked_dois'].delete(doi)
       MongoData.coll('orcids').save(orcid_record)
-    else
-      doc = {:orcid => sign_in_id, :dois => [], :locked_dois => [doi]}
-      MongoData.coll('orcids').insert(doc)
     end
-
-    record_id = OrcidClaim.prepare(sign_in_id, doi)
-    Resque.enqueue(OrcidClaim, session_info, {}, record_id)
   end
 
   {:status => 'ok'}.to_json

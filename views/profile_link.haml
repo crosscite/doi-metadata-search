@@ -11,14 +11,14 @@
       %li
         %a{:href => 'https://orcid.org/my-orcid', :target => '_blank'}
           %i.icon-external-link
-          ORCiD profile
+          ORCID profile
       %li.divider
       %li
         %a{:href => "/auth/signout?redirect_uri=#{URI.encode(request.fullpath)}"}
           %i.icon-signout
           Sign out
 - else
-  %a.sign-in-link{:href => '/auth/orcid'} Sign in with ORCiD
+  %a.sign-in-link{:href => '/auth/orcid'} Sign in with ORCID
   :javascript
     $(document).ready(function() {
       $('.sign-in-link').click(function(e) {
