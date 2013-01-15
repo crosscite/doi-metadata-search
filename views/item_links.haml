@@ -1,39 +1,41 @@
 = item.coins_span
-.item-links
-  - unless item.citations.empty?
-    %a{:href => "javascript:showCitationsBox('#{item.hashed}');"}
-      %i.icon-resize-small
-      = item.citations.count
-      citations from patents     
-  %a{:href => 'http://dx.doi.org/' + item.doi}
-    %i.icon-external-link
-    = "dx.doi.org/#{item.doi}"
-  %span.dropdown
-    %a.dropdown-toggle{:role => 'button', 'data-toggle' => 'dropdown', :href => '#'}
-      %i.icon-double-angle-down
-      More
-    %ul.dropdown-menu{:role => 'menu'}
-      %li
-        %a.cite-link{:href => "javascript:showCiteBox('#{item.doi}', '#{item.coins_atitle}');"}
-          %i.icon-quote-left
-          Cite
-      - unless facet?('publication') || item.publication.nil?
+.item-links-outer
+  .item-links
+    - unless item.citations.empty?
+      %a{:href => "javascript:showCitationsBox('#{item.hashed}');"}
+        %i.icon-resize-small
+          = item.citations.count
+          citations from patents     
+    %a{:href => 'http://dx.doi.org/' + item.doi}
+      %i.icon-external-link
+      = "dx.doi.org/#{item.doi}"
+    %span.dropdown
+      %a.dropdown-toggle{:role => 'button', 'data-toggle' => 'dropdown', :href => '#'}
+        %i.icon-double-angle-down
+        More
+      %ul.dropdown-menu{:role => 'menu'}
         %li
-          %a{:href => "#{facet_link('publication', item.coins_title)}"}
-            %i.icon-filter
-            Filter on this publication
-  - if signed_in?
-    - if item.in_user_profile?
-      %span.well-transparent.claim-ok{:id => item.doi}
-        %i.icon-circle
-        %span In your profile
-    - elsif item.user_claimed?
-      %span.well-transparent.claim-warn{:id => item.doi}
-        %i.icon-circle
-        %span Not visible
-    - else
-      %span.well-transparent.claim-none{:id => item.doi}
-        %i.icon-circle-blank
-        %span Add to ORCID
+          %a.cite-link{:href => "javascript:showCiteBox('#{item.doi}', '#{item.coins_atitle}');"}
+            %i.icon-quote-left
+            Cite
+        - unless facet?('publication') || item.publication.nil?
+          %li
+            %a{:href => "#{facet_link('publication', item.coins_title)}"}
+              %i.icon-filter
+              Filter on this publication
+    - if signed_in?
+      - if item.in_user_profile?
+        %span.well-transparent.claim-ok{:id => item.doi}
+          %img{:src => '/orcid_16x16.gif'}
+          %i.icon-circle
+          %span In your profile
+      - elsif item.user_claimed?
+        %span.well-transparent.claim-warn{:id => item.doi}
+          %img{:src => '/orcid_16x16.gif'}
+          %span Not visible
+      - else
+        %span.well-transparent.claim-none{:id => item.doi}
+          %img{:src => '/orcid_16x16.gif'}
+          %span Add to ORCID
   
     

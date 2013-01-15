@@ -59,6 +59,19 @@
   .claim-none:hover {
     color: rgb(167, 204, 145);
   }
+  .item-links-outer {
+    margin-top: 1.5em;
+    position: relative;
+  }
+  .item-links {
+    position: absolute;
+    top: 50%;
+    height: 1.6em;
+    margin-top:-0.8em;
+  }
+  .item-links img {
+    margin-top: -0.33em;
+  }
   .item-links a {
     margin-right: 1.5em;
   }
@@ -69,7 +82,9 @@
   .label {
     font-weight: normal;
   }
-
+  .item-data .lead {
+    margin-bottom: .2em;
+  }
   .item-data .extra b {
     font-size: 1.1em;
   }
@@ -92,6 +107,16 @@
   }
   .well-transparent:hover {
     text-decoration: underline;
+  }
+  .btn-container button {
+    margin-left: .5em;
+    margin-top: 1em;
+  }
+  .btn-container {
+    text-align: right;
+  }
+  .btn-container button i {
+    margin-right: 0.4em;
   }
 
 :javascript
@@ -125,7 +150,8 @@
       var $p = $('<p>').text('Are you sure you want to add this work to your ORCID profile?');
       var $btnNo = $('<button>').addClass('btn').addClass('claim-no-btn').text('No');
       var $btnOk = $('<button>').addClass('btn').addClass('btn-success').addClass('claim-ok-btn').text('Yes');
-      var $content = $('<div>').append($p).append($btnNo).append($btnOk);
+      var $btns = $('<div>').addClass('btn-container').append($btnNo).append($btnOk);
+      var $content = $('<div>').append($p).append($btns);
       var $popover = $(this);
       
       $(this).popover({
@@ -139,7 +165,9 @@
       $(this).popover('show');
       
       $('.claim-no-btn').click(function(e) {
-        $popover.popover('destroy');
+        if (!$(this).hasClass('disabled')) {
+          $popover.popover('destroy');
+        }
         e.preventDefault();
         return false;
       });
@@ -151,6 +179,8 @@
         
         $(this).prepend($('<i>').addClass('icon-refresh').addClass('icon-spin'));
         $(this).addClass('disabled');
+        $(this).parent().find('.claim-no-btn').addClass('disabled');
+        $btnNo.addClass('disabled');
         
         var req = $.ajax({
           url: '/orcid/claim',
@@ -182,11 +212,12 @@
       $('.claim-warn').popover('destroy');
       $('.claim-ok').popover('destroy');
 
-      $text = $('<div>').html('<span>Work has been added to your ORCID profile but is marked as private. Visit your <a href="https://orcid.org/my-orcid" target="_blank"><i class="icon-external-link"></i>ORCID profile</a> to set this work\'s visibility to public or limited.<br/><br/>If you have removed this private work from your ORCID profile you can click the button below to remove it from CrossRef Metadata Search.</span>');
-      $btnClose = $('<button>').addClass('btn').addClass('claim-close-btn').text('Close');
-      $btnRemove = $('<button>').addClass('btn').addClass('btn-danger').addClass('claim-remove-btn').text('Remove');
-      $content = $('<div>').append($text).append($btnClose).append($btnRemove);
-      $popover = $(this);
+      var $text = $('<div>').html('<span>Work has been added to your ORCID profile but is marked as private. Visit your <a href="https://orcid.org/my-orcid" target="_blank"><i class="icon-external-link"></i>ORCID profile</a> to set this work\'s visibility to public or limited.<br/><br/>If you have removed this private work from your ORCID profile you can click the button below to remove it from CrossRef Metadata Search.</span>');
+      var $btnClose = $('<button>').addClass('btn').addClass('claim-close-btn').text('Close');
+      var $btnRemove = $('<button>').addClass('btn').addClass('btn-danger').addClass('claim-remove-btn').text('Remove');
+      var $btns = $('<div>').addClass('btn-container').append($btnClose).append($btnRemove);
+      var $content = $('<div>').append($text).append($btns);
+      var $popover = $(this);
       
       $(this).popover({
         placement: 'bottom',
@@ -199,7 +230,9 @@
       $(this).popover('show');
       
       $('.claim-close-btn').click(function(e) {
-        $popover.popover('destroy');
+        if (!$(this).hasClass('disabled')) {
+          $popover.popover('destroy');
+        }
         e.preventDefault();
         return false;
       });
@@ -211,6 +244,7 @@
         
         $(this).prepend($('<i>').addClass('icon-refresh').addClass('icon-spin'));
         $(this).addClass('disabled');
+        $(this).parent().find('.claim-close-btn').addClass('disabled');
 
         var req = $.ajax({
           url: '/orcid/unclaim',
