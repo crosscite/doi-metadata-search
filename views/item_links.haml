@@ -27,7 +27,6 @@
       - if item.in_user_profile?
         %span.well-transparent.claim-ok{:id => item.doi}
           %img{:src => '/orcid_16x16.gif'}
-          %i.icon-circle
           %span In your profile
       - elsif item.user_claimed?
         %span.well-transparent.claim-warn{:id => item.doi}
