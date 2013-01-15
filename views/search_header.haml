@@ -40,6 +40,26 @@
     margin-top: 1.2em;
     margin-bottom: -1.3em;  
   }
+  .simple-nav-outer {
+    position: relative;
+    width: 25em;
+  }
+  .simple-nav-bump-up {
+    margin-top: -1em;
+  }
+  .simple-nav {
+    position: absolute;
+    height: 2em;
+    top: 50%;
+    margin-top: 1em;
+    right: 0;
+  }
+  .simple-nav .pull-right {
+    margin-top: -0.05em;
+  }
+  .simple-nav .pull-right img {
+    margin-top: -0.2em;
+  }
   .simple-nav > * {
     margin-left: .4em;
   }
@@ -48,22 +68,24 @@
   - if page[:mini_header]
     .span-header
       .pull-right
-        .simple-nav
-          .pull-right
-            = partial :profile_link, {}
-          %a{:href => '/help/api'} API
-          %a{:href => '/help/status'} Status
+        .simple-nav-outer.simple-nav-bump-up
+          .simple-nav
+            .pull-right
+              = partial :profile_link, {}
+            %a{:href => '/help/api'} API
+            %a{:href => '/help/status'} Status
   - else  
     .span-header.span3
       %a.home-link{:href => '/'}
         %img{:src => '/cms-logo.png'}
     .span-header.span9
       .pull-right
-        .simple-nav
-          .pull-right
-            = partial :profile_link, {}
-          %a{:href => '/help/api'} API
-          %a{:href => '/help/status'} Status
+        .simple-nav-outer
+          .simple-nav
+            .pull-right
+              = partial :profile_link, {}
+            %a{:href => '/help/api'} API
+            %a{:href => '/help/status'} Status
       %form{:method => 'GET', :action => '/'}
         .search-in-header
           %input.input.input-xxlarge{:placeholder => 'Search', :style => 'padding-left: 2em;', :name => 'q', :type => 'text', :value => page[:bare_query]}
