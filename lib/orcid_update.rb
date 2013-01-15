@@ -48,27 +48,40 @@ class OrcidUpdate
     end
   end
 
-  def parse_dois json
-    p(json)
+  def has_path? hsh, path
+    loc = hsh
+    path.each do |path_item|
+      if loc[path_item]
+        loc = loc[path_item]
+      else
+        loc = nil
+        break
+      end
+    end
+    loc != nil
+  end
 
-    if json['orcid-profile']['orcid-activities'].nil?
+  def parse_dois json
+    if !has_path?(json, ['orcid-profile', 'orcid-activities'])
       []
     else
       works = json['orcid-profile']['orcid-activities']['orcid-works']['orcid-work']
 
       extracted_dois = works.map do |work_loc|
-        ids_loc = work_loc['work-external-identifiers']['work-external-identifier']
         doi = nil
+        if has_path?(work_loc, ['work-external-identifiers', 'work-external-identifier'])
+          ids_loc = work_loc['work-external-identifiers']['work-external-identifier']
 
-        ids_loc.each do |id_loc|
-          id_type = id_loc['work-external-identifier-type']
-          id_val = id_loc['work-external-identifier-id']['value']
+          ids_loc.each do |id_loc|
+            id_type = id_loc['work-external-identifier-type']
+            id_val = id_loc['work-external-identifier-id']['value']
 
-          if id_type.upcase == 'DOI'
-            doi = id_val
+            if id_type.upcase == 'DOI'
+              doi = id_val
+            end
           end
-        end
 
+        end
         doi
       end
 
