@@ -4,7 +4,7 @@
       %p.lead  
         - if item.open_access?
           %a.oa-tooltip{:href => "http://www.doaj.org/doaj?func=findJournals&uiLanguage=en&hybrid=&query=#{item.coins_title}", :target => '_blank'}
-            %i.icon-unlock
+            %span.small{:style => 'font-size: 0.8em;'} DOAJ
         = item.title
         
       %p.extra

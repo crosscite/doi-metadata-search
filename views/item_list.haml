@@ -142,6 +142,57 @@
       return false;
     });
 
+    var claimOkClickFn = function(e) {
+      $('.claim-none').popover('destroy');
+      $('.claim-warn').popover('destroy');
+      $('.claim-ok').popover('destroy');
+
+      var $p = $('<p>').text('Last time we checked, this work was in your ORCID profile. Refresh to retrieve changes to your works from ORCID.');
+      var $btnClose = $('<button>').addClass('btn').addClass('claim-close-btn').text('Close');
+      var $btnRefresh = $('<button>').addClass('btn').addClass('btn-warning').addClass('claim-refresh-btn').text('Refresh');
+      var $btns = $('<div>').addClass('btn-container').append($btnClose).append($btnRefresh);
+      var $content = $('<div>').append($p).append($btns);
+      var $popover = $(this);
+
+      $(this).popover({
+        placement: 'bottom',
+        html: true,
+        title: 'Work is in your ORCID profile',
+        content: $('<div>').append($content).html(),
+        trigger: 'manual'
+      });
+
+      $(this).popover('show');
+
+      $('.claim-close-btn').click(function(e) {
+        if (!$(this).hasClass('disabled')) {
+          $popover.popover('destroy');
+        }
+        e.preventDefault();
+        return false;
+      });
+
+      $('.claim-refresh-btn').click(function(e) {
+        if (!$(this).hasClass('disabled')) {
+          $(this).parent().find('.btn').addClass('disabled');
+          $(this).prepend($('<i>').addClass('icon-refresh').addClass('icon-spin'));
+          $.ajax({url: '/orcid/sync',
+                  success: function(data) {
+                    location.reload();
+                  },
+                  error: function() {
+                    location.reload();
+                  }
+          });
+        }
+        e.preventDefault();
+        return false;
+      });
+
+      e.preventDefault();
+      return false;
+    }
+          
     var claimNoneClickFn = function(e) {
       $('.claim-none').popover('destroy');
       $('.claim-warn').popover('destroy');
@@ -287,6 +338,7 @@
       return false;
     }
 
+    $('.claim-ok').click(claimOkClickFn);
     $('.claim-warn').click(claimWarnClickFn);
     $('.claim-none').click(claimNoneClickFn);
   });
