@@ -19,7 +19,8 @@ module Session
     if session[:orcid].nil?
       false
     else
-      !(session[:orcid]['expires'] && session[:orcid]['expires_at'] <= Time.now.to_i)
+      creds = session[:orcid]['credentials']
+      !(creds['expires'] && creds['expires_at'] <= Time.now.to_i)
     end
   end
 
