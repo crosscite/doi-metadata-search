@@ -4,6 +4,11 @@
   .well-transparent {
     background-color: transparent;
   }
+  #sync-ok {
+    color: rgb(166, 206, 57);
+    font-size: 1.4em;
+    display: none;
+  }
 
 .row-fluid
   .span2
@@ -12,48 +17,39 @@
       %h2 Syncronize with ORCID
     .well.well-large
       .pull-right
+        %i.icon-ok.lead#sync-ok
         %button.btn.btn-warning#sync-button
           %i.icon-refresh#sync-icon
           Sync with ORCID
       %span.lead
         Sync changes from your ORCID profile to CrossRef Metata Search
 
-.row-fluid
-  .span2
-  .span8
-    .page-header
-      %h2 Recent Activity
-      
-    %table.table.table-striped
-      %thead
-        %tr
-          %th On
-          %th Activity
-          %th DOI
-          %th Status
-      %tbody
-        - page[:activities].each do |a|
-          %tr
-            %td= a['created_at'].strftime("%d %B, %Y")
-            %td Add a work
-            %td
-              %a{:href => "/?q=#{URI.encode(a['doi'])}"}= a['doi']
-            - if a['finished_at']
-              %td
-                .label.label-success Complete
-            - elsif a['failed_at']
-              %td
-                .label.label-important Failed
-            - elsif a['started_at']
-              %td
-                .label.label-warning Submitting...
-            - else
-              %td
-                .label.label-warning Queued...
-
-  
 :javascript
   $(document).ready(function() {
+    var performSync = function() {
+      $.ajax({url: '/orcid/sync',
+              success: function(data) {
+                if (data['status'] == 'oauth_timeout') {
+                  $.oauthpopup({path: '/auth/orcid',
+                                callback: function() {
+                                  performSync();
+                                }});  
+                } else {
+                  $('#sync-icon').removeClass('icon-spin');
+                  $('#sync-button').removeClass('disabled');
+                }
+
+                if (data['status'] == 'ok') {
+                  $('#sync-ok').show().delay(1000).fadeOut();
+                }
+              },
+              error: function() {
+                $('#sync-icon').removeClass('icon-spin');
+                $('#sync-button').removeClass('disabled');
+              }
+      });
+    }
+    
     $('#sync-button').click(function(e) {
       if ($(this).hasClass('disabled')) {
         return;
@@ -61,16 +57,8 @@
       
       $('#sync-icon').addClass('icon-spin');
       $(this).addClass('disabled');
-      $.ajax({url: '/orcid/sync',
-              success: function(data) {
-                $('#sync-icon').removeClass('icon-spin');
-                $('#sync-button').removeClass('disabled');
-              },
-              error: function() {
-                $('#sync-icon').removeClass('icon-spin');
-                $('#sync-button').removeClass('disabled');
-              }
-      });
+      performSync();
+      
       e.preventDefault();
       return false;
     });
