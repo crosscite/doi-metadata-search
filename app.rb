@@ -420,7 +420,7 @@ get '/orcid/activity' do
 end
 
 get '/orcid/claim' do
-  status = 'not_signed_in'
+  status = 'oauth_timeout'
 
   if signed_in? && params['doi']
     doi = params['doi']
@@ -473,7 +473,7 @@ get '/orcid/unclaim' do
 end
 
 get '/orcid/sync' do
-  status = 'not_signed_in'
+  status = 'oauth_timeout'
 
   if signed_in?
     if OrcidUpdate.perform(session_info)
