@@ -96,7 +96,7 @@ configure do
       :site => settings.orcid_site,
       :authorize_url => settings.orcid_authorize_url,
       :token_url => settings.orcid_token_url,
-      :scope => '/orcid-works/create'
+      :scope => '/orcid-profile/read-limited /orcid-works/create'
     }
   end
 
@@ -421,7 +421,6 @@ get '/orcid/claim' do
   if signed_in? && params['doi']
     doi = params['doi']
     orcid_record = MongoData.coll('orcids').find_one({:orcid => sign_in_id})
-    record_id = OrcidClaim.prepare(sign_in_id, doi)
     already_added = !orcid_record.nil? && orcid_record['locked_dois'].include?(doi)
 
     unless already_added
@@ -435,7 +434,7 @@ get '/orcid/claim' do
       end
 
       doi_record = MongoData.coll('dois').find_one({:doi => doi})
-      OrcidClaim.perform(session_info, doi_record, record_id) if doi_record
+      Resque.enqueue(OrcidClaim, session_info, doi_record) if doi_record
     end
   end
 

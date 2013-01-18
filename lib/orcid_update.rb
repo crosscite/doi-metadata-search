@@ -30,6 +30,7 @@ class OrcidUpdate
       response = token.get "https://api.orcid.org/#{uid}/orcid-works", {:headers => headers}
 
       if response.status == 200
+        puts response.body
         response_json = JSON.parse(response.body)
         parsed_dois = parse_dois(response_json)
         query = {:orcid => uid}
