@@ -18,6 +18,8 @@ class OrcidClaim
   end
 
   def perform
+    oauth_expired = false
+
     begin
       load_config
 
@@ -34,9 +36,12 @@ class OrcidClaim
         post.headers['Content-Type'] = 'application/orcid+xml'
         post.body = to_xml
       end
+      oauth_expired = !response.success?
     rescue StandardError => e
       puts e
     end
+
+    !oauth_expired
   end
 
   def has_path? hsh, path

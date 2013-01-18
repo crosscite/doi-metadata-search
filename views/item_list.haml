@@ -142,6 +142,58 @@
       return false;
     });
 
+    var performSync = function() {
+      $.ajax({
+        url: '/orcid/sync',
+        success: function(data) {
+          if (data['status'] == 'ok') {
+            location.reload();
+          } else if (data['status'] == 'oauth_timeout') {
+            $.oauthpopup({path: '/auth/orcid',
+                          callback: function() {
+                            performSync();
+                          }
+                        });
+          } else {
+            location.reload();
+          }  
+        },
+        error: function() {
+          location.reload();
+        }
+      });
+    }
+
+    var performClaim = function($popover) {
+      $.ajax({
+          url: '/orcid/claim',
+          data: {doi: $popover.attr('id')},
+          success: function(data) {
+            if (data['status'] == 'ok') {
+              $popover.popover('destroy');
+              $popover.removeClass('claim-none');
+              $popover.addClass('claim-warn');
+              $popover.unbind('click');
+              $popover.click(claimWarnClickFn);
+              $popover.find('span').text('Not visible');
+              $popover.find('i').removeClass('icon-circle-blank');
+              $popover.find('i').addClass('icon-circle');
+            } else if (data['status'] == 'oauth_timeout') {
+              $.oauthpopup({path: '/auth/orcid',
+                          callback: function() {
+                            performClaim($popover);
+                          }
+                        });
+            } else {
+              $popover.popover('destroy');
+            }
+          },
+          error: function() {
+            $popover.popover('destroy');
+          }
+      });
+    }
+
     var claimOkClickFn = function(e) {
       $('.claim-none').popover('destroy');
       $('.claim-warn').popover('destroy');
@@ -176,14 +228,7 @@
         if (!$(this).hasClass('disabled')) {
           $(this).parent().find('.btn').addClass('disabled');
           $(this).prepend($('<i>').addClass('icon-refresh').addClass('icon-spin'));
-          $.ajax({url: '/orcid/sync',
-                  success: function(data) {
-                    location.reload();
-                  },
-                  error: function() {
-                    location.reload();
-                  }
-          });
+          performSync();
         }
         e.preventDefault();
         return false;
@@ -231,24 +276,9 @@
         $(this).prepend($('<i>').addClass('icon-refresh').addClass('icon-spin'));
         $(this).addClass('disabled');
         $(this).parent().find('.btn').addClass('disabled');
+
+        performClaim($popover);
         
-        var req = $.ajax({
-          url: '/orcid/claim',
-          data: {doi: $popover.attr('id')},
-          success: function() {
-            $popover.popover('destroy');
-            $popover.removeClass('claim-none');
-            $popover.addClass('claim-warn');
-            $popover.unbind('click');
-            $popover.click(claimWarnClickFn);
-            $popover.find('span').text('Not visible');
-            $popover.find('i').removeClass('icon-circle-blank');
-            $popover.find('i').addClass('icon-circle');
-          },
-          error: function() {
-            $popover.popover('destroy');
-          }
-        });
         e.preventDefault();
         return false;
       });
@@ -292,14 +322,7 @@
         if (!$(this).hasClass('disabled')) {
           $(this).parent().find('.btn').addClass('disabled');
           $(this).prepend($('<i>').addClass('icon-refresh').addClass('icon-spin'));
-          $.ajax({url: '/orcid/sync',
-                  success: function(data) {
-                    location.reload();
-                  },
-                  error: function() {
-                    location.reload();
-                  }
-          });
+          performSync();
         }
         e.preventDefault();
         return false;
@@ -313,7 +336,7 @@
         $(this).prepend($('<i>').addClass('icon-refresh').addClass('icon-spin'));
         $(this).parent().find('.btn').addClass('disabled');
 
-        var req = $.ajax({
+        $.ajax({
           url: '/orcid/unclaim',
           data: {doi: $popover.attr('id')},
           success: function() {

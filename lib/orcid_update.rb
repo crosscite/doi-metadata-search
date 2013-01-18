@@ -17,6 +17,8 @@ class OrcidUpdate
   end
 
   def perform
+    oauth_expired = false
+
     begin
       load_config
 
@@ -43,10 +45,14 @@ class OrcidUpdate
           doc = {:orcid => uid, :dois => parsed_dois, :locked_dois => []}
           MongoData.coll('orcids').insert(doc)
         end
+      else
+        oauth_expired = true
       end
     rescue StandardError => e
       puts e
     end
+
+    !oauth_expired
   end
 
   def has_path? hsh, path

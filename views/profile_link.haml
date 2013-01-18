@@ -6,13 +6,13 @@
       %b.caret
     %ul.dropdown-menu{'role' => 'menu', :style => 'right: 0; left: auto;'}
       %li
-        %a{:href => '/orcid/activity'}
-          %i.icon-tasks
-          Activity  
-      %li
         %a{:href => 'https://orcid.org/my-orcid', :target => '_blank'}
           %i.icon-external-link
           ORCID profile
+      %li
+        %a{:href => '/orcid/activity'}
+          %i.icon-cog
+          Settings
       %li.divider
       %li
         %a{:href => "/auth/signout?redirect_uri=#{URI.encode(request.fullpath)}"}

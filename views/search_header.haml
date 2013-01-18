@@ -42,7 +42,7 @@
   }
   .simple-nav-outer {
     position: relative;
-    width: 25em;
+    width: 35em;
   }
   .simple-nav-bump-up {
     margin-top: -1em;
@@ -72,6 +72,7 @@
           .simple-nav
             .pull-right
               = partial :profile_link, {}
+            %a{:href => '/help/search'} Help  
             %a{:href => '/help/api'} API
             %a{:href => '/help/status'} Status
   - else  
@@ -84,11 +85,12 @@
           .simple-nav
             .pull-right
               = partial :profile_link, {}
+            %a{:href => '/help/search'} Help  
             %a{:href => '/help/api'} API
             %a{:href => '/help/status'} Status
       %form{:method => 'GET', :action => '/'}
         .search-in-header
-          %input.input.input-xxlarge{:placeholder => 'Search', :style => 'padding-left: 2em;', :name => 'q', :type => 'text', :value => page[:bare_query]}
+          %input.input.input-xxlarge.search-input{:placeholder => 'Search', :style => 'padding-left: 2em;', :name => 'q', :type => 'text', :value => page[:bare_query]}
           %i.icon-search      
 %hr
     

@@ -403,42 +403,58 @@ get '/help/api' do
   haml :api_help, :locals => {:page => {:query => ''}}
 end
 
+get '/help/search' do
+  haml :search_help, :locals => {:page => {:query => ''}}
+end
+
 get '/help/status' do
   haml :status_help, :locals => {:page => {:query => '', :stats => index_stats}}
 end
 
 get '/orcid/activity' do
   if signed_in?
-    opts = {:sort => [:created_at, -1]}
-    activities = MongoData.coll('claims').find({:orcid => sign_in_id}, opts)
-    haml :activity, :locals => {:page => {:query => '', :activities => activities}}
+    haml :activity, :locals => {:page => {:query => ''}}
   else
     redirect '/'
   end
 end
 
 get '/orcid/claim' do
+  status = 'not_signed_in'
+
   if signed_in? && params['doi']
     doi = params['doi']
     orcid_record = MongoData.coll('orcids').find_one({:orcid => sign_in_id})
     already_added = !orcid_record.nil? && orcid_record['locked_dois'].include?(doi)
 
-    unless already_added
-      if orcid_record
-        orcid_record['locked_dois'] << doi
-        orcid_record['locked_dois'].uniq!
-        MongoData.coll('orcids').save(orcid_record)
-      else
-        doc = {:orcid => sign_in_id, :dois => [], :locked_dois => [doi]}
-        MongoData.coll('orcids').insert(doc)
-      end
-
+    if already_added
+      status = 'ok'
+    else
       doi_record = MongoData.coll('dois').find_one({:doi => doi})
-      Resque.enqueue(OrcidClaim, session_info, doi_record) if doi_record
+
+      if !doi_record
+        status = 'no_such_doi'
+      else
+        if OrcidClaim.perform(session_info, doi_record)
+          if orcid_record
+            orcid_record['locked_dois'] << doi
+            orcid_record['locked_dois'].uniq!
+            MongoData.coll('orcids').save(orcid_record)
+          else
+            doc = {:orcid => sign_in_id, :dois => [], :locked_dois => [doi]}
+            MongoData.coll('orcids').insert(doc)
+          end
+
+          status = 'ok'
+        else
+          status = 'oauth_timeout'
+        end
+      end
     end
   end
 
-  {:status => 'ok'}.to_json
+  content_type 'application/json'
+  {:status => status}.to_json
 end
 
 get '/orcid/unclaim' do
@@ -452,15 +468,23 @@ get '/orcid/unclaim' do
     end
   end
 
+  content_type 'application/json'
   {:status => 'ok'}.to_json
 end
 
 get '/orcid/sync' do
+  status = 'not_signed_in'
+
   if signed_in?
-    OrcidUpdate.perform(session_info)
+    if OrcidUpdate.perform(session_info)
+      status = 'ok'
+    else
+      status = 'oauth_timeout'
+    end
   end
 
-  {:status => 'ok'}.to_json
+  content_type 'application/json'
+  {:status => status}.to_json
 end
 
 get '/dois' do
@@ -577,6 +601,9 @@ get '/auth/orcid/callback' do
   Resque.enqueue(OrcidUpdate, session_info)
   update_profile
   haml :auth_callback
+end
+
+get '/auth/orcid/check' do
 end
 
 get '/auth/signout' do

@@ -28,28 +28,18 @@
     margin: 0 auto;
     width: 700px;
   }
-  dl, dd, dt {
-    line-height: 1.6em;
-  }
   #help-accordion {
     margin-top: 2em;
     margin-left: 4px;
   }
-  dd {
-    margin-bottom: 0.4em;
-  }
   .break-below {
     margin-bottom: 6em;
   }
+
 :javascript
   $(document).ready(function() {
     $('#help-body').collapse('hide');
-    var $searchInput = $('#search-input');
-    $searchInput.focus();
-    $('.example-link').click(function(e) {
-      $searchInput.val($(this).text());
-      $searchInput.focus();
-    });
+    $('#search-input').focus();
   });
 
 .row-centered.break-below
@@ -61,7 +51,7 @@
     %img{:src => '/cms-logo.png'}
   %form{:method => 'GET', :action => '/'}
     .search
-      %input.input.input-xlarge#search-input{:name => 'q', :type => 'text', :value => page[:query]}
+      %input.input.input-xlarge.search-input#search-input{:name => 'q', :type => 'text', :value => page[:query]}
       %i.icon-search
 
 .row-centered
@@ -71,29 +61,8 @@
         %a.accordion-toggle{:href => '#help-body', 'data-toggle' => 'collapse', 'data-parent' => '#help-accordion'}
           .pull-right
             %i.icon-caret-down
-          %span Help! - Sample Searches  
+          %span Help! - Example Queries
       .accordion-body#help-body  
         .accordion-inner
-          %dl.lead
-            %dt
-              %a.example-link{:href => '#'} galaxy classification
-            %dd Discover new articles, proceedings and books by searching for query terms.
-            %dt
-              %a.example-link{:href => '#'} +galaxy +bayesian !lensing
-            %dd Put a + in front of a query term to force it to appear in search results (or a ! to exclude it).
-            %dt
-              %a.example-link{:href => '#'} 10.2331/suisan.32.804
-            %dd Find a particular work by searching for its DOI.
-            %dt
-              %a.example-link{:href => '#'} 10/ct8vzd
-            %dd
-              Find a particular work by searching for its
-              %a{:href => 'http://shortdoi.org', :target => '_blank'} short DOI
-              :plain
-                .
-            %dt
-              %a.example-link{:href => '#'} 1740-8776
-            %dd Find articles within a journal by searching for an ISSN.
-            %dt
-              %a.example-link{:href => '#'} M. Henrion, D. J. Mortlock, D. J. Hand, and A. Gandy, "A Bayesian approach to star-galaxy classification," Monthly Notices of the Royal Astronomical Society, vol. 412, no. 4, pp. 2286-2302, Apr. 2011.
-            %dd Find a particular work by searching for a full citation.
+          = partial :help_list, :page => page
+
