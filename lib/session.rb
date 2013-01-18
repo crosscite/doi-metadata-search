@@ -16,7 +16,11 @@ module Session
   end
 
   def signed_in?
-    !session[:orcid].nil?
+    if session[:orcid].nil?
+      false
+    else
+      !(session[:orcid]['expires'] && session[:orcid]['expires_at'] <= Time.now.to_i)
+    end
   end
 
   def sign_in_id
