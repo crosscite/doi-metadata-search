@@ -142,6 +142,25 @@
       return false;
     });
 
+    var replacePopoverWithLogin = function() {
+      var $p = $('<p>').text('Your sign in to ORCID has expired. Please sign back in.')
+      var $btnLogin = $('<button>').addClass('btn').addClass('btn-info').addClass('.login-btn').text('Sign in to ORCID');
+      var $btns = $('<div>').addClass('btn-container').append($btnLogin);
+      var $content = $('<div>').append($p).append($btns);
+
+      $('.popover-content').replaceWith($content);
+
+      $('.login-btn').click(function(e) {
+        $.oauthpopup({path: '/auth/orcid',
+                          callback: function() {
+                            location.reload();
+                          }
+                        });
+        e.preventDefault();
+        return false;
+      });
+    }
+
     var performSync = function() {
       $.ajax({
         url: '/orcid/sync',
@@ -149,11 +168,7 @@
           if (data['status'] == 'ok') {
             location.reload();
           } else if (data['status'] == 'oauth_timeout') {
-            $.oauthpopup({path: '/auth/orcid',
-                          callback: function() {
-                            performSync();
-                          }
-                        });
+            replacePopoverWithLogin();
           } else {
             location.reload();
           }  
@@ -179,11 +194,7 @@
               $popover.find('i').removeClass('icon-circle-blank');
               $popover.find('i').addClass('icon-circle');
             } else if (data['status'] == 'oauth_timeout') {
-              $.oauthpopup({path: '/auth/orcid',
-                          callback: function() {
-                            performClaim($popover);
-                          }
-                        });
+              replacePopoverWithLogin();
             } else {
               $popover.popover('destroy');
             }

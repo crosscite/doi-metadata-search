@@ -10,6 +10,13 @@
  *  * @modified_by Geoffrey Bilder (center window)
  *  *
  *  */
+var currentOAuthModel = null;
+var currentOAuthCallback = null;
+
+function oauthIframeCallback() {
+  currentOAuthModel.modal('hide');
+}
+
 (function($){
     //  inspired by DISQUS
     $.oauthpopup = function(options)
@@ -35,4 +42,14 @@
             }
         }, 1000);
     };
+
+  $.oauthmodel = function(options) {
+    var $model = $('<div>').addClass('model').addClass('hide').addClass('fade').appendTo($('body'));
+    var $iframe = $('<iframe>').attr('src', options['path']).appendTo($model);
+
+    $model.model('show');
+
+    currentOAuthModel = $model;
+    currentOAuthCallback = options['callback'];
+  };
 })(jQuery);
