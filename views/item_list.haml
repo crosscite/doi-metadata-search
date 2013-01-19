@@ -142,33 +142,41 @@
       return false;
     });
 
-    var replacePopoverWithLogin = function() {
+    var replacePopoverWithLogin = function($popover) {
       var $p = $('<p>').text('Your sign in to ORCID has expired. Please sign back in.')
-      var $btnLogin = $('<button>').addClass('btn').addClass('btn-info').addClass('.login-btn').text('Sign in to ORCID');
-      var $btns = $('<div>').addClass('btn-container').append($btnLogin);
+      var $btnLogin = $('<button>').addClass('btn').addClass('btn-info').addClass('login-btn').text('Sign in to ORCID');
+      var $btnClose = $('<button>').addClass('btn').addClass('close-btn').text('Close');
+      var $btns = $('<div>').addClass('btn-container').append($btnClose).append($btnLogin);
       var $content = $('<div>').append($p).append($btns);
+      var $newPopoverContent = $('<div>').addClass('popover-content').append($content);
 
-      $('.popover-content').replaceWith($content);
+      $('.popover-content').replaceWith($newPopoverContent);
 
       $('.login-btn').click(function(e) {
         $.oauthpopup({path: '/auth/orcid',
-                          callback: function() {
-                            location.reload();
-                          }
-                        });
+                      callback: function() {
+                        location.reload();
+                      }
+        });
+        e.preventDefault();
+        return false;
+      });
+
+      $('.close-btn').click(function(e) {
+        $popover.popover('destroy');
         e.preventDefault();
         return false;
       });
     }
 
-    var performSync = function() {
+    var performSync = function($popover) {
       $.ajax({
         url: '/orcid/sync',
         success: function(data) {
           if (data['status'] == 'ok') {
             location.reload();
           } else if (data['status'] == 'oauth_timeout') {
-            replacePopoverWithLogin();
+            replacePopoverWithLogin($popover);
           } else {
             location.reload();
           }  
@@ -194,7 +202,7 @@
               $popover.find('i').removeClass('icon-circle-blank');
               $popover.find('i').addClass('icon-circle');
             } else if (data['status'] == 'oauth_timeout') {
-              replacePopoverWithLogin();
+              replacePopoverWithLogin($popover);
             } else {
               $popover.popover('destroy');
             }
@@ -239,7 +247,7 @@
         if (!$(this).hasClass('disabled')) {
           $(this).parent().find('.btn').addClass('disabled');
           $(this).prepend($('<i>').addClass('icon-refresh').addClass('icon-spin'));
-          performSync();
+          performSync($popover);
         }
         e.preventDefault();
         return false;
@@ -333,7 +341,7 @@
         if (!$(this).hasClass('disabled')) {
           $(this).parent().find('.btn').addClass('disabled');
           $(this).prepend($('<i>').addClass('icon-refresh').addClass('icon-spin'));
-          performSync();
+          performSync($popover);
         }
         e.preventDefault();
         return false;
