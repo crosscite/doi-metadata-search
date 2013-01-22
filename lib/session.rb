@@ -19,8 +19,18 @@ module Session
     if session[:orcid].nil?
       false
     else
+      !expired_session?
+    end
+  end
+
+  # Returns true if there is a session and it has expired, or false if the
+  # session has not expired or if there is no session.
+  def expired_session?
+    if session[:orcid].nil?
+      false
+    else
       creds = session[:orcid]['credentials']
-      !(creds['expires'] && creds['expires_at'] <= Time.now.to_i)
+      creds['expires'] && creds['expires_at'] <= Time.now.to_i
     end
   end
 
