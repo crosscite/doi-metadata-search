@@ -63,6 +63,10 @@
   .simple-nav > * {
     margin-left: .4em;
   }
+  .simple-nav.smaller {
+    font-size: 1em;
+    line-height: 2em;
+  }
 
 .row-fluid
   - if page[:mini_header]
@@ -75,14 +79,14 @@
             %a{:href => '/help/search'} Help  
             %a{:href => '/help/api'} API
             %a{:href => '/help/status'} Status
-  - else  
+  - else
     .span-header.span3
       %a.home-link{:href => '/'}
         %img{:src => '/cms-logo.png'}
     .span-header.span9
       .pull-right
         .simple-nav-outer
-          .simple-nav
+          .simple-nav.smaller
             .pull-right
               = partial :profile_link, {}
             %a{:href => '/help/search'} Help  

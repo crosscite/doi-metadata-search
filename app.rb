@@ -175,7 +175,7 @@ helpers do
     when :issn
       "issn:\"#{query_info[:value]}\""
     else
-      "#{params['q'].gsub(/[=\{\}\"\.\[\]\(\)\-:;\/\\]/, ' ')}"
+      scrub_query(params['q'], false)
     end
   end
 
@@ -318,6 +318,14 @@ helpers do
 
       SearchResult.new solr_doc, solr_result, citations(solr_doc['doiKey']), user_state
     end
+  end
+
+  def scrub_query query_str, remove_short_operators
+    query_str = query_str.gsub(/[\"\.\[\]\(\)\-:;\/%]/, ' ')
+    query_str = query_str.gsub(/[\+\!\-]/, ' ') if remove_short_operators
+    query_str = query_str.gsub(/AND/, ' ')
+    query_str = query_str.gsub(/OR/, ' ')
+    query_str.gsub(/NOT/, ' ')
   end
 
   def index_stats
@@ -526,7 +534,7 @@ post '/links' do
   page = {}
 
   begin
-    citation_texts = JSON.parse(request.body.read)
+    citation_texts = JSON.parse(request.env['rack.input'].read)
 
     if citation_texts.count > MAX_MATCH_TEXTS
       page = {
@@ -536,7 +544,7 @@ post '/links' do
       }
     else
       results = citation_texts.take(MAX_MATCH_TEXTS).map do |citation_text|
-        terms = citation_text.gsub(/[\"\.\[\]\(\)\-:;\/]/, ' ')
+        terms = scrub_query(citation_text, true)
         params = {:q => terms, :fl => 'doi,score'}
         result = settings.solr.paginate 0, 1, settings.solr_select, :params => params
         match = result['response']['docs'].first
@@ -606,6 +614,8 @@ end
 get '/auth/orcid/check' do
 end
 
+# Used to sign out a user but can also be used to mark that a user has seen the
+# 'You have been signed out' message. Clears the user's session cookie.
 get '/auth/signout' do
   session.clear
   redirect(params[:redirect_uri])

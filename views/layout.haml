@@ -8,7 +8,8 @@
     %script{:type => 'text/javascript', :src => '/bootstrap.js'}
     %script{:type => 'text/javascript', :src => '/spin.min.js'}
     %script{:type => 'text/javascript', :src => '/format.min.js'}
-    %script{:type => 'text/javascript', :src => '/jquery.oauthpopup.js'}  
+    %script{:type => 'text/javascript', :src => '/jquery.oauthpopup.js'}
+    %script{:type => 'text/javascript', :src => '/bootstrap.notify.js'}  
     :javascript
        var _gaq = _gaq || [];
        _gaq.push(['_setAccount', 'UA-34536574-2']);
@@ -31,7 +32,20 @@
         $('.number').formatNumber();
       });
   %body
+    .notifications.top-left
     .container-fluid
       = yield
+    - if expired_session?  
+      :css
+        $(document).ready(function() {
+          $('.top-left').notify({
+            message: {text: "You have been signed out of ORCID (sign-ins last for 1 hour)."},
+            type: 'warn',
+            fadeOut: {enabled: true, delay: 4000}
+          }).show();
 
+          $.ajax({
+            url: '/auth/signout',
+          });
+        });
       
