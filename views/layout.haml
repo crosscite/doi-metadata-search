@@ -9,7 +9,7 @@
     %script{:type => 'text/javascript', :src => '/spin.min.js'}
     %script{:type => 'text/javascript', :src => '/format.min.js'}
     %script{:type => 'text/javascript', :src => '/jquery.oauthpopup.js'}
-    %script{:type => 'text/javascript', :src => '/bootstrap.notify.js'}  
+    %script{:type => 'text/javascript', :src => '/bootstrap.notify.js'}
     :javascript
        var _gaq = _gaq || [];
        _gaq.push(['_setAccount', 'UA-34536574-2']);
@@ -36,7 +36,7 @@
     .container-fluid
       = yield
     - if expired_session?  
-      :css
+      :javascript
         $(document).ready(function() {
           $('.top-left').notify({
             message: {text: "You have been signed out of ORCID (sign-ins last for 1 hour)."},
@@ -48,4 +48,4 @@
             url: '/auth/signout',
           });
         });
-      
+
