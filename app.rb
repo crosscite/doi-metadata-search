@@ -347,8 +347,6 @@ helpers do
       :sort => 'year asc'
     }
 
-
-
     stats = []
 
     stats << {
