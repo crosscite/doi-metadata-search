@@ -2,7 +2,7 @@
   .dropdown
     %a.dropdown-toggle{:href => '#', :role => 'button', 'data-toggle' => 'dropdown'}
       %img{:src => '/orcid_24x24.gif'}
-      %span= user_display
+      = user_display
       %b.caret
     %ul.dropdown-menu{'role' => 'menu', :style => 'right: 0; left: auto;'}
       %li
@@ -21,7 +21,7 @@
 - else
   %a.sign-in-link{:href => '#'}
     %img{:src => '/orcid_24x24.gif'}
-    %span Sign in with ORCID
+    Sign in with ORCID
   :javascript
     $(document).ready(function() {
       $('.sign-in-link').click(function(e) {
