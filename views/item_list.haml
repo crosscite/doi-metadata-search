@@ -187,32 +187,6 @@
       });
     }
 
-    var performClaim = function($popover) {
-      $.ajax({
-          url: '/orcid/claim',
-          data: {doi: $popover.attr('id')},
-          success: function(data) {
-            if (data['status'] == 'ok') {
-              $popover.popover('destroy');
-              $popover.removeClass('claim-none');
-              $popover.addClass('claim-warn');
-              $popover.unbind('click');
-              $popover.click(claimWarnClickFn);
-              $popover.find('span').text('Not visible');
-              $popover.find('i').removeClass('icon-circle-blank');
-              $popover.find('i').addClass('icon-circle');
-            } else if (data['status'] == 'oauth_timeout') {
-              replacePopoverWithLogin($popover);
-            } else {
-              $popover.popover('destroy');
-            }
-          },
-          error: function() {
-            $popover.popover('destroy');
-          }
-      });
-    }
-
     var claimOkClickFn = function(e) {
       $('.claim-none').popover('destroy');
       $('.claim-warn').popover('destroy');
@@ -255,6 +229,39 @@
 
       e.preventDefault();
       return false;
+    }
+
+    var performClaim = function($popover) {
+      $.ajax({
+          url: '/orcid/claim',
+          data: {doi: $popover.attr('id')},
+          success: function(data) {
+            if (data['status'] == 'ok' || data['status'] == 'ok_visible') {
+              $popover.popover('destroy');
+              $popover.removeClass('claim-none');
+              $popover.unbind('click');
+              $popover.find('i').removeClass('icon-circle-blank');
+              $popover.find('i').addClass('icon-circle');
+
+              if (data['status'] == 'ok') {
+                $popover.addClass('claim-warn');
+                $popover.click(claimWarnClickFn);
+                $popover.find('span').text('Not visible');
+              } else {
+                $popover.addClass('claim-ok');
+                $popover.click(claimOkClickFn);
+                $popover.find('span').text('In your profile');
+              }
+            } else if (data['status'] == 'oauth_timeout') {
+              replacePopoverWithLogin($popover);
+            } else {
+              $popover.popover('destroy');
+            }
+          },
+          error: function() {
+            $popover.popover('destroy');
+          }
+      });
     }
           
     var claimNoneClickFn = function(e) {
