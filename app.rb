@@ -453,7 +453,16 @@ get '/orcid/claim' do
             MongoData.coll('orcids').insert(doc)
           end
 
-          status = 'ok'
+          # The work could have been added as limited or public. If so we need
+          # to tell the UI.
+          OrcidUpdate.perform(session_info)
+          updated_orcid_record = MongoData.coll('orcids').find_one({:orcid => sign_in_id})
+
+          if updated_orcid_record['dois'].include?(doi)
+            status = 'ok_visible'
+          else
+            status = 'ok'
+          end
         else
           status = 'oauth_timeout'
         end
