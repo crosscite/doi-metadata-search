@@ -347,6 +347,8 @@ helpers do
       :sort => 'year asc'
     }
 
+
+
     stats = []
 
     stats << {
@@ -370,6 +372,11 @@ helpers do
     stats << {
       :value => oldest_result['response']['docs'].first['year'],
       :name => 'Oldest indexed publication year'
+    }
+
+    stats << {
+      :value => MongoData.coll('orcids').count({:query => {:updated => true}}),
+      :name => 'Number of ORCID profiles updated'
     }
 
     stats
@@ -445,6 +452,7 @@ get '/orcid/claim' do
       else
         if OrcidClaim.perform(session_info, doi_record)
           if orcid_record
+            orcid_record['updated'] = true
             orcid_record['locked_dois'] << doi
             orcid_record['locked_dois'].uniq!
             MongoData.coll('orcids').save(orcid_record)
