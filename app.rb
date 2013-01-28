@@ -53,6 +53,7 @@ configure do
   set :citations, settings.mongo[settings.mongo_db]['citations']
   set :patents, settings.mongo[settings.mongo_db]['patents']
   set :claims, settings.mongo[settings.mongo_db]['claims']
+  set :rocids, settings.mongo[settings.mongo_db]['orcids']
 
   # Set up for http requests to data.crossref.org and dx.doi.org
   dx_doi_org = Faraday.new(:url => 'http://dx.doi.org') do |c|
@@ -300,7 +301,7 @@ helpers do
     profile_dois = []
 
     if signed_in?
-      orcid_record = MongoData.coll('orcids').find_one({:orcid => sign_in_id})
+      orcid_record = settings.orcids.find_one({:orcid => sign_in_id})
       unless orcid_record.nil?
         claimed_dois = orcid_record['dois'] + orcid_record['locked_dois'] if orcid_record
         profile_dois = orcid_record['dois']
@@ -373,7 +374,7 @@ helpers do
     }
 
     stats << {
-      :value => MongoData.coll('orcids').count({:query => {:updated => true}}),
+      :value => settings.orcids.count({:query => {:updated => true}}),
       :name => 'Number of ORCID profiles updated'
     }
 
@@ -437,13 +438,13 @@ get '/orcid/claim' do
 
   if signed_in? && params['doi']
     doi = params['doi']
-    orcid_record = MongoData.coll('orcids').find_one({:orcid => sign_in_id})
+    orcid_record = settings.orcids.find_one({:orcid => sign_in_id})
     already_added = !orcid_record.nil? && orcid_record['locked_dois'].include?(doi)
 
     if already_added
       status = 'ok'
     else
-      doi_record = MongoData.coll('dois').find_one({:doi => doi})
+      doi_record = settings.dois.find_one({:doi => doi})
 
       if !doi_record
         status = 'no_such_doi'
@@ -453,16 +454,16 @@ get '/orcid/claim' do
             orcid_record['updated'] = true
             orcid_record['locked_dois'] << doi
             orcid_record['locked_dois'].uniq!
-            MongoData.coll('orcids').save(orcid_record)
+            settings.orcids.save(orcid_record)
           else
             doc = {:orcid => sign_in_id, :dois => [], :locked_dois => [doi]}
-            MongoData.coll('orcids').insert(doc)
+            settings.orcids.insert(doc)
           end
 
           # The work could have been added as limited or public. If so we need
           # to tell the UI.
           OrcidUpdate.perform(session_info)
-          updated_orcid_record = MongoData.coll('orcids').find_one({:orcid => sign_in_id})
+          updated_orcid_record = settings.orcids.find_one({:orcid => sign_in_id})
 
           if updated_orcid_record['dois'].include?(doi)
             status = 'ok_visible'
@@ -483,11 +484,11 @@ end
 get '/orcid/unclaim' do
   if signed_in? && params['doi']
     doi = params['doi']
-    orcid_record = MongoData.coll('orcids').find_one({:orcid => sign_in_id})
+    orcid_record = settings.orcids.find_one({:orcid => sign_in_id})
 
     if orcid_record
       orcid_record['locked_dois'].delete(doi)
-      MongoData.coll('orcids').save(orcid_record)
+      settings.orcids.save(orcid_record)
     end
   end
 

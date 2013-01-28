@@ -1,5 +1,8 @@
+# -*- coding: utf-8 -*-
 require 'mongo'
 
+# Access to mongo collections, intended for use when sinatra settings are not available,
+# such as when processing resque jobs.
 module MongoData
 
   def self.db
