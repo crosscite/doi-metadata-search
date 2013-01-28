@@ -230,7 +230,7 @@ helpers do
       :fl => query_columns,
       :rows => query_rows,
       :facet => 'true',
-      'facet.field' => settings.facet_fields, 
+      'facet.field' => settings.facet_fields,
       'facet.mincount' => 1,
       :hl => 'true',
       'hl.fl' => 'hl_*',
