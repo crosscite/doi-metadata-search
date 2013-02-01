@@ -1,0 +1,20 @@
+{
+  "run_list": [
+    "recipe[apt]",
+    "recipe[build-essential]",
+    "recipe[git]",
+    "recipe[ruby_build]",
+    "recipe[rbenv::system]",
+    "recipe[rbenv::vagrant]",
+    "recipe[passenger_apache2::mod_rails]",
+    "recipe[mongodb::default]",
+    "recipe[phantomjs]",
+    "recipe[cr-search]"
+  ],
+  "rbenv": { "global": "1.9.3-p194", 
+             "rubies": ["1.9.3-p194"],
+             "gems": { "1.9.3-p194": [
+               { "name": "bundler" },
+               { "name": "passenger"}]}},
+  "passenger": { "version": "3.0.19" },
+  "admin": { "email": "ADMIN@EXAMPLE.ORG" }}
