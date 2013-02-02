@@ -15,6 +15,7 @@ require 'omniauth-orcid'
 require 'oauth2'
 require 'resque'
 require 'open-uri'
+require 'sinatra/config_file'
 
 require_relative 'lib/paginate'
 require_relative 'lib/result'
@@ -34,12 +35,9 @@ after do
 end
 
 configure do
-  config = JSON.parse(File.open('conf/app.json').read)
-  config.each_pair do |key, value|
-    set key.to_sym, value
-  end
+  config_file 'config/settings.yml'
 
-  # Work around rack protection referrer bug
+  # Work around rack protection referrer bug
   set :protection, :except => :json_csrf
 
   # Configure solr
@@ -82,20 +80,20 @@ configure do
   set :ga, Gabba::Gabba.new('UA-34536574-2', 'http://search.labs.crossref.org')
 
   # Orcid endpoint
-  set :orcid_service, Faraday.new(:url => settings.orcid_site)
+  set :orcid_service, Faraday.new(:url => settings.orcid[:site])
 
   # Orcid oauth2 object we can use to make API calls
-  set :orcid_oauth, OAuth2::Client.new(settings.orcid_client_id,
-                                       settings.orcid_client_secret,
-                                       {:site => settings.orcid_site})
+  set :orcid_oauth, OAuth2::Client.new(settings.orcid[:client_id],
+                                       settings.orcid[:client_secret],
+                                       {:site => settings.orcid[:site]})
 
   # Set up session and auth middlewares for ORCiD sign in
   use Rack::Session::Mongo, settings.mongo[settings.mongo_db]
   use OmniAuth::Builder do
-    provider :orcid, settings.orcid_client_id, settings.orcid_client_secret, :client_options => {
-      :site => settings.orcid_site,
-      :authorize_url => settings.orcid_authorize_url,
-      :token_url => settings.orcid_token_url,
+    provider :orcid, settings.orcid[:client_id], settings.orcid[:client_secret], :client_options => {
+      :site => settings.orcid[:site],
+      :authorize_url => settings.orcid[:authorize_url],
+      :token_url => settings.orcid[:token_url],
       :scope => '/orcid-profile/read-limited /orcid-works/create'
     }
   end
