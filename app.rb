@@ -327,19 +327,19 @@ helpers do
   end
 
   def index_stats
-    count_result = settings.solr.get 'solr/labs1/select', :params => {
+    count_result = settings.solr.get settings.solr_select, :params => {
       :q => '*:*',
       :rows => 0
     }
-    article_result = settings.solr.get 'solr/labs1/select', :params => {
+    article_result = settings.solr.get settings.solr_select, :params => {
       :q => 'type:journal_article',
       :rows => 0
     }
-    proc_result = settings.solr.get 'solr/labs1/select', :params => {
+    proc_result = settings.solr.get settings.solr_select, :params => {
       :q => 'type:conference_paper',
       :rows => 0
     }
-    oldest_result = settings.solr.get 'solr/labs1/select', :params => {
+    oldest_result = settings.solr.get settings.solr_select, :params => {
       :q => 'year:[1600 TO *]',
       :rows => 1,
       :sort => 'year asc'
@@ -651,4 +651,3 @@ get '/heartbeat' do
     {:status => :error, :type => e.class, :message => e}.to_json
   end
 end
-
