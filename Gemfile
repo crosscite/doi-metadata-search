@@ -1,4 +1,5 @@
 source "http://rubygems.org"
+
 gem 'sinatra'
 gem 'haml'
 gem 'mongo'
@@ -16,3 +17,10 @@ gem 'oauth2'
 gem 'resque'
 gem 'nokogiri'
 gem 'rake'
+
+group :test do
+  gem "rspec", "~> 2.12.0"
+  gem 'cucumber'
+  gem 'capybara', "~> 1.1.4"
+  gem 'poltergeist'
+end

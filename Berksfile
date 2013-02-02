@@ -9,6 +9,7 @@ cookbook 'rbenv', :git => 'git://github.com/fnichol/chef-rbenv.git', :branch => 
   
 cookbook "passenger_apache2", "1.1.0"
 cookbook "mongodb", "0.11.0"
+# cookbook "resque", "3.0.4"
 cookbook "phantomjs", "0.0.10"
 
 cookbook 'cr-search', :git => 'git://github.com/mfenner/cr-search-cookbook.git'
