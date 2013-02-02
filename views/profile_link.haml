@@ -1,7 +1,7 @@
 - if signed_in?
   .dropdown
     %a.dropdown-toggle{:href => '#', :role => 'button', 'data-toggle' => 'dropdown'}
-      %img{:src => '/orcid_24x24.gif'}
+      %img{:src => '/images/orcid_24x24.gif'}
       = user_display
       %b.caret
     %ul.dropdown-menu{'role' => 'menu', :style => 'right: 0; left: auto;'}
@@ -20,7 +20,7 @@
           Sign out
 - else
   %a.sign-in-link{:href => '#'}
-    %img{:src => '/orcid_24x24.gif'}
+    %img{:src => '/images/orcid_24x24.gif'}
     Sign in with ORCID
   :javascript
     $(document).ready(function() {
