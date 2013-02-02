@@ -1,0 +1,450 @@
+/* status_help.haml */
+span {
+  color: #333;
+}
+  
+.stat-value {
+  font-size: 4em;
+  line-height: 1.2em;
+}
+
+.stat-name {
+  font-size: 2em;
+  line-height: 2.5em;
+  color: grey;
+  font-family: "Bookman", "Times", serif;
+}
+
+/* splash.haml */
+.cr-red {
+  color: rgb(192, 70, 62);
+}
+.search {
+  margin-top: 2em;
+  position: relative;
+}
+.search i {
+  position: absolute;
+  top: 0.25em;
+  left: 0.3em;
+  font-size: 2.8em;
+  color: #aaa;
+}
+.search input {
+  padding-left: 1.5em;
+  line-height: 1.2em;
+  height: 1.4em;
+  font-size: 2.5em;
+  width: 20em;
+}
+h1 {  
+  font-size: 4em;
+  line-height: 1.2em;
+}
+.row-centered {
+  margin: 0 auto;
+  width: 700px;
+}
+#help-accordion {
+  margin-top: 2em;
+  margin-left: 4px;
+}
+.break-below {
+  margin-bottom: 6em;
+}
+
+/* search_box.haml */
+.search-box {
+  padding: 0 .6em;
+}
+.search-info {
+  padding: .3em 0;
+}
+
+/* results.haml */
+.item-paging {
+  text-align: center;
+  margin-top: 1em;
+}
+.list-info {
+   margin-bottom: 2em;
+   background-color: #f8f8f8;
+   padding: 1em;
+}
+.gap {
+  display: none;
+}
+  
+.nav-list > .active > a {
+  background-color: rgb(56, 166, 203);
+}
+
+.nav-list > .active > a:hover {
+  background-color: rgb(6, 116, 153);
+}
+
+h6 b, h6 a {
+  font-size: 1.2em;
+  line-height: 1.3em;
+  margin-left: 0.3em;
+}
+
+h6 b {
+  color: black;
+}
+
+/* layout.haml */
+a, a:visited {
+  color: rgb(56, 166, 203);
+}
+a:hover {
+  color: rgb(6, 116, 153);
+}
+
+/* item_list.haml */
+.item-tab.conf-proc {
+  border-left: 4px solid rgb(49, 145, 177);
+}
+.item-data {
+  padding: 1em;
+}
+td {
+  vertical-align: top;
+  padding: .7em;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+table:first_child {
+  border-top: 1px solid #eee;
+}
+tr {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5em;
+}
+.item-data a {
+  margin-left: 0.2em;
+  margin-right: 0.2em;
+}
+.hl {
+  background-color: rgb(235,245,167);
+  border-bottom: 1px dashed grey;
+  color: rgb(51,51,51);
+}
+.extra {
+  color: #999;
+  font-size: 1.2em;
+  line-height: 1.3em;
+}
+.lead {
+  margin-bottom: .7em;  
+}
+.oa-tooltip, .oa-tooltip:visited, .oa-tooltip:hover {
+  color: rgb(246, 130, 18);
+  text-decoration: none;
+}
+.claim-ok {
+  color: rgb(167, 204, 145);
+}
+.claim-ok:hover {
+  color: rgb(137, 194, 115);
+}
+.claim-warn {
+  color: rgb(246, 130, 18);
+}
+.claim-warn:hover {
+  color: rgb(216, 100, 0);
+}
+.claim-none {
+  color: #ccc;
+}
+.claim-none:hover {
+  color: rgb(167, 204, 145);
+}
+.item-links-outer {
+  margin-top: 1.5em;
+  position: relative;
+}
+.item-links {
+  position: absolute;
+  top: 50%;
+  height: 1.6em;
+  margin-top:-0.8em;
+}
+.item-links img {
+  margin-top: -0.33em;
+}
+.item-links a {
+  margin-right: 1.5em;
+}
+.item-data .extra span {
+  font-size: .9em;
+  line-height: 1.5em;
+}
+.label {
+  font-weight: normal;
+}
+.item-data .lead {
+  margin-bottom: .2em;
+}
+.item-data .extra b {
+  font-size: 1.1em;
+}
+.modal-body p {
+  font-size: 1.3em;
+  line-height: 1.2em;
+}
+.well-transparent {
+  border: none;
+  text-transform: uppercase;
+  font-size: .9em;1
+  padding: .8em;
+  cursor: pointer;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+.well-transparent i {
+  font-size: 1.2em;
+}
+.well-transparent:hover {
+  text-decoration: underline;
+}
+.btn-container button {
+  margin-left: .5em;
+  margin-top: 1em;
+}
+.btn-container {
+  text-align: right;
+}
+.btn-container button i {
+  margin-right: 0.4em;
+}
+
+
+/* index.haml */
+h6.simple-search {
+  font-size: 1.5em;
+  color: rgb(192, 70, 62);
+}
+h6.adv-search {
+  font-size: 1.5em;
+  color: rgb(49, 145, 177);
+}
+h6.bib-search {
+  font-size: 1.5em;
+  color: rgb(181, 191, 111);
+}
+.cr-red {
+  color: rgb(192, 70, 62);
+}
+.middle {
+  text-align: center;
+}
+.right {
+  text-align: right;
+}
+.btn {
+  font-size: 1.3em;
+  line-height: 1.3em;
+}
+
+.add-more-area {
+  background-color: #fbfbfb;
+  border: 1px solid rgb(204, 204, 204);
+  padding: 10px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.label-add {
+  background-color: rgb(192, 70, 62);
+  font-size: 0.9em;
+  line-height: 0.9em;
+  margin: 3px;
+  padding: 4px;
+  color: white;
+  display: inline-block;
+}
+
+.label-add.optional {
+  background-color: rgb(49, 145, 177);
+}
+  
+.label-add.added {
+  background-color: #8ccb7f;
+}
+
+.set-label {
+  font-size: 0.9em;
+  text-align: right;
+  line-height: 0.9em;
+  color: #a9a9a9;
+  padding: 4px;
+}
+
+#completion-msg {
+  font-size: 1.3em;
+  padding: 2em;
+}
+
+/* help_list.haml */
+dl, dd, dt {
+  line-height: 1.6em;
+}
+dd {
+  margin-bottom: 0.4em;
+}
+
+/* facets.haml */
+.facets {
+  background-color: #f8f8f8;
+  padding: 1em;
+}
+li {
+margin: 0.1em 0em;
+}
+
+/* cite_box.haml */
+.modal pre {
+  font-size: 1.2em;
+  line-height: 1.4em;
+  margin-top: 1em;
+  max-height: 300px;
+  min-height: 100px;
+  overflow-y: scroll;
+}
+.modal {
+  width: 75%;
+  margin-left: -37.5%;
+}
+
+/* api_help.haml */
+.span-help p {
+  font-family: "Bookman", "Times", serif;
+  font-size: 1.5em;
+  line-height: 1.3em;
+}
+
+.small-caps {
+  font-variant: small-caps;
+}
+
+.mini-header {
+  margin-top: 1em;
+}
+
+.example {
+  padding: .3em .7em;
+  margin-top: .8em;
+  margin-bottom: .8em;
+}
+
+.example span, pre.example {
+  font-family: "Courier New", monospace;
+  background-color: white;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+pre.example {
+  font-family: "Courier New", monospace;
+  font-size: 1.5em;
+  line-height: 1.3em;
+  background-color: white;
+  border: none;
+  padding: .3em .7em;
+  margin-top: .8em;
+  margin-bottom: .8em;
+}
+
+.sep {
+  height: 3em;
+}
+
+p, span, h2 {
+  color: #333;
+}
+
+/* activity.haml */
+.well-transparent {
+  background-color: transparent;
+}
+#sync-ok {
+  color: rgb(166, 206, 57);
+  font-size: 1.4em;
+  display: none;
+}
+
+/* search_header.haml */
+.cr-red {
+  color: rgb(192, 70, 62);
+}
+.home-link, .home-link:visited, .home-link:hover {
+  text-decoration: none;
+  color: black;
+}
+.simple-nav {
+  font-size: 1.2em;
+  line-height: 1.1em;
+  margin-top: 1em;
+}
+.simple-nav a, .simple-nav a:visited {
+  color: grey;
+  padding-left: .4em;
+}
+.search-in-header {
+  position: relative;
+  margin-top: .5em;
+  margin-right: 16em;
+  width: 20em;
+}
+.search-in-header i {
+  position: absolute;
+  top: 0.35em;
+  left: 0.5em;
+  font-size: 1.8em;
+  color: #aaa;
+}
+.search-in-header input {
+  line-height: 1.2em;
+  height: 1.4em;
+  font-size: 1.6em;
+}
+a.home-link img {
+  width: 175px;
+}
+.span-header {
+  margin-top: 1.2em;
+  margin-bottom: -1.3em;  
+}
+.simple-nav-outer {
+  position: relative;
+  width: 35em;
+}
+.simple-nav-bump-up {
+  margin-top: -1em;
+}
+.simple-nav {
+  position: absolute;
+  height: 2em;
+  top: 50%;
+  margin-top: 1em;
+  right: 0;
+}
+.simple-nav .pull-right {
+  margin-top: -0.05em;
+}
+.simple-nav .pull-right img {
+  margin-top: -0.2em;
+}
+.simple-nav > * {
+  margin-left: .4em;
+}
+.simple-nav.smaller {
+  font-size: 1em;
+  line-height: 2em;
+}

@@ -1,11 +1,3 @@
-:css
-  .facets {
-    background-color: #f8f8f8;
-    padding: 1em;
-  }
-  li {
-  margin: 0.1em 0em;
-  }
 .facets
   - page[:facets].each_pair do |name, values|
     %h6= name.gsub(/_/, ' ')
