@@ -53,7 +53,7 @@ configure do
   set :citations, settings.mongo[settings.mongo_db]['citations']
   set :patents, settings.mongo[settings.mongo_db]['patents']
   set :claims, settings.mongo[settings.mongo_db]['claims']
-  set :rocids, settings.mongo[settings.mongo_db]['orcids']
+  set :orcids, settings.mongo[settings.mongo_db]['orcids']
 
   # Set up for http requests to data.crossref.org and dx.doi.org
   dx_doi_org = Faraday.new(:url => 'http://dx.doi.org') do |c|
