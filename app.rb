@@ -82,12 +82,12 @@ configure do
   # Orcid endpoint
   set :orcid_service, Faraday.new(:url => settings.orcid[:site])
 
-  # Orcid oauth2 object we can use to make API calls
+  # Orcid oauth2 object we can use to make API calls
   set :orcid_oauth, OAuth2::Client.new(settings.orcid[:client_id],
                                        settings.orcid[:client_secret],
                                        {:site => settings.orcid[:site]})
 
-  # Set up session and auth middlewares for ORCiD sign in
+  # Set up session and auth middlewares for ORCiD sign in
   use Rack::Session::Mongo, settings.mongo[settings.mongo_db]
   use OmniAuth::Builder do
     provider :orcid, settings.orcid[:client_id], settings.orcid[:client_secret], :client_options => {
@@ -617,9 +617,9 @@ get '/citation' do
   res.body if res.success?
 end
 
-get '/auth/orcid/callback' do
+get '/users/auth/orcid' do
   session[:orcid] = request.env['omniauth.auth']
-  Resque.enqueue(OrcidUpdate, session_info)
+  #Resque.enqueue(OrcidUpdate, session_info)
   update_profile
   haml :auth_callback
 end

@@ -1,7 +1,10 @@
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
 
 require 'sinatra'
+require 'rspec'
 require 'rack/test'
+require 'factory_girl'
+require 'factories'
 
 # setup test environment
 set :environment, :test

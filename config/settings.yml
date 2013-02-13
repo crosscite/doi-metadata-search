@@ -1,9 +1,9 @@
 orcid:
-  client_id: 0000-0002-3054-1567
-  client_secret: 7c2a0c49-dc92-40c1-a12d-441c1fc6f9a0
-  site: https://api.orcid.org
-  authorize_url: https://orcid.org/oauth/authorize
-  token_url: https://api.orcid.org/oauth/token
+  client_id: 0000-0002-2833-9706
+  client_secret: 9d7ec9f1-6d5c-49df-abab-4620b6f3e502
+  site: http://sandbox-1.orcid.org
+  authorize_url: http://sandbox-1.orcid.org/oauth/authorize
+  token_url: http://sandbox-1.orcid.org/oauth/token
 solr_url: http://5.9.51.2:8983
 solr_select: /solr/labs1/select
 mongo_host: 127.0.0.1
