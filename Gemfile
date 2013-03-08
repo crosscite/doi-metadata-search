@@ -22,7 +22,8 @@ gem 'rake'
 
 group :test do
   gem "rspec", "~> 2.12.0"
-  gem 'cucumber'
+  gem 'cucumber', "~> 1.2.1"
   gem 'capybara', "~> 1.1.4"
+  gem "factory_girl", "~> 4.2.0"
   gem 'poltergeist'
 end
