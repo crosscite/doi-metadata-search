@@ -2,10 +2,11 @@
 .vagrant
 Berksfile.lock
 Gemfile.lock
+.librarian/*
 *~
 *#
 .#*
 \#*#
 .*.sw[a-z]
 *.un~
-cookbooks
+tmp/*

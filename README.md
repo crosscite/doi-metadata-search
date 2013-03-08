@@ -6,13 +6,11 @@
 - git
 - Vagrant: http://www.vagrantup.com
 - Virtualbox: https://www.virtualbox.org
-- Berkshelf: `gem install berkshelf`
 
 ### Installation
 
     git clone https://github.com/mfenner/cr-search.git
     cd cr-search
-    berks install
     vagrant up
 
 If you don't see any errors from the last command, you now have a properly
