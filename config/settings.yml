@@ -4,8 +4,8 @@ orcid:
   site: https://api.orcid.org
   authorize_url: https://orcid.org/oauth/authorize
   token_url: https://api.orcid.org/oauth/token
-solr_url: http://5.9.51.2:8983
-solr_select: /solr/labs1/select
+solr_url: http://search.datacite.org
+solr_select: /api
 mongo_host: 127.0.0.1
 mongo_db: crossref
 typical_rows: [10, 20, 50, 100, 500]

@@ -17,6 +17,7 @@ require 'resque'
 require 'open-uri'
 require 'sinatra/config_file'
 
+
 require_relative 'lib/paginate'
 require_relative 'lib/result'
 require_relative 'lib/bootstrap'
@@ -25,6 +26,26 @@ require_relative 'lib/session'
 require_relative 'lib/data'
 require_relative 'lib/orcid_update'
 require_relative 'lib/orcid_claim'
+
+use Rack::Logger
+require 'ap'
+logger = Logger.new('log/app.log')
+logger.datetime_format = "%Y-%m-%d %H:%M:%S"
+root_dir = ::File.dirname(__FILE__)
+logger.debug "root = #{root_dir}"
+logger.formatter = proc do |severity, datetime, progname, msg|
+  filename = Kernel.caller[4].gsub(root_dir+'/', '')
+  filename = filename.gsub(/\:in.+/, '')
+  "#{datetime} #{severity} -- #{filename}: #{msg}\n"
+end
+
+if defined?(Logger)
+  logger.debug "YES Logger defined"
+  logger.debug logger.public_methods
+  logger.debug logger.private_methods
+  #respond_to? :
+end
+
 
 MIN_MATCH_SCORE = 2
 MIN_MATCH_TERMS = 3
@@ -37,14 +58,20 @@ end
 configure do
   config_file 'config/settings.yml'
 
+  # Set logging level
+  set :logging, Logger::DEBUG  
+
+
   # Work around rack protection referrer bug
   set :protection, :except => :json_csrf
 
   # Configure solr
   set :solr, RSolr.connect(:url => settings.solr_url)
+  logger.info "Configuring Solr: url=" + settings.solr_url
 
   # Configure mongo
   set :mongo, Mongo::Connection.new(settings.mongo_host)
+  logger.info "Configuring Mongo: url=" + settings.mongo_host
   set :dois, settings.mongo[settings.mongo_db]['dois']
   set :shorts, settings.mongo[settings.mongo_db]['shorts']
   set :issns, settings.mongo[settings.mongo_db]['issns']
@@ -130,6 +157,7 @@ helpers do
   end
 
   def select query_params
+    logger.debug "building query with params " + query_params.inspect
     page = query_page
     rows = query_rows
     results = settings.solr.paginate page, rows, settings.solr_select, :params => query_params
@@ -382,13 +410,20 @@ end
 
 before do
   set_after_signin_redirect(request.fullpath)
+  logger.info "Fetching #{url}, params " + params.inspect
 end
 
 get '/' do
   if !params.has_key?('q')
     haml :splash, :locals => {:page => {:query => ""}}
   else
+    logger.debug "Initiating Solr search with query string '#{params['q']}'"
     solr_result = select search_query
+    logger.debug "Got Solr results: "
+    solr_result['response']['docs'].map do |solr_doc|
+      logger.debug {solr_doc.inspect}
+      logger.ap {solr_doc}
+    end
 
     page = {
       :bare_sort => params['sort'],
