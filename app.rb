@@ -54,6 +54,7 @@ configure do
   set :patents, settings.mongo[settings.mongo_db]['patents']
   set :claims, settings.mongo[settings.mongo_db]['claims']
   set :orcids, settings.mongo[settings.mongo_db]['orcids']
+  set :links, settings.mongo[settings.mongo_db]['links']
 
   # Set up for http requests to data.crossref.org and dx.doi.org
   dx_doi_org = Faraday.new(:url => 'http://dx.doi.org') do |c|
@@ -322,7 +323,7 @@ helpers do
   end
 
   def scrub_query query_str, remove_short_operators
-    query_str = query_str.gsub(/[*\"\.\[\]\(\)\-:;\/%]/, ' ')
+    query_str = query_str.gsub(/[{}*\"\.\[\]\(\)\-:;\/%]/, ' ')
     query_str = query_str.gsub(/[\+\!\-]/, ' ') if remove_short_operators
     query_str = query_str.gsub(/AND/, ' ')
     query_str = query_str.gsub(/OR/, ' ')
@@ -561,29 +562,38 @@ post '/links' do
     else
       results = citation_texts.take(MAX_MATCH_TEXTS).map do |citation_text|
         terms = scrub_query(citation_text, true)
-        params = {:q => terms, :fl => 'doi,score'}
-        result = settings.solr.paginate 0, 1, settings.solr_select, :params => params
-        match = result['response']['docs'].first
 
-        if citation_text.split.count < MIN_MATCH_TERMS
+        if terms.strip.empty?
           {
             :text => citation_text,
-            :reason => 'Too few terms',
-            :match => false
-          }
-        elsif match['score'].to_f < MIN_MATCH_SCORE
-          {
-            :text => citation_text,
-            :reason => 'Result score too low',
+            :reason => 'Citation text contains no characters or digits',
             :match => false
           }
         else
-          {
-            :text => citation_text,
-            :match => true,
-            :doi => match['doi'],
-            :score => match['score'].to_f
-          }
+          params = {:q => terms, :fl => 'doi,score'}
+          result = settings.solr.paginate 0, 1, settings.solr_select, :params => params
+          match = result['response']['docs'].first
+
+          if citation_text.split.count < MIN_MATCH_TERMS
+            {
+              :text => citation_text,
+              :reason => 'Too few terms',
+              :match => false
+            }
+          elsif match['score'].to_f < MIN_MATCH_SCORE
+            {
+              :text => citation_text,
+              :reason => 'Result score too low',
+              :match => false
+            }
+          else
+            {
+              :text => citation_text,
+              :match => true,
+              :doi => match['doi'],
+              :score => match['score'].to_f
+            }
+          end
         end
       end
 
@@ -592,11 +602,17 @@ post '/links' do
         :query_ok => true
       }
     end
-  rescue JSON::ParseError => e
+  rescue JSON::ParserError => e
     page = {
       :results => [],
       :query_ok => false,
       :reason => 'Request contained malformed JSON'
+    }
+  rescue Exception => e
+    page = {
+      :results => [],
+      :query_ok => false,
+      :reason => e.message
     }
   end
 
