@@ -15,6 +15,7 @@ require 'omniauth-orcid'
 require 'oauth2'
 require 'resque'
 require 'open-uri'
+require 'uri'
 
 require_relative 'lib/paginate'
 require_relative 'lib/result'
@@ -641,6 +642,13 @@ get '/auth/orcid/callback' do
   Resque.enqueue(OrcidUpdate, session_info)
   update_profile
   haml :auth_callback
+end
+
+get '/auth/orcid/import' do
+  session[:orcid] = request.env['omniauth.auth']
+  Resque.enqueue(OrcidUpdate, session_info)
+  update_profile
+  redirect to("/?q=#{session[:orcid][:info][:name]}")
 end
 
 get '/auth/orcid/check' do
