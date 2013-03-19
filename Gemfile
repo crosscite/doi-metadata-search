@@ -19,6 +19,7 @@ gem 'oauth2'
 gem 'resque'
 gem 'nokogiri'
 gem 'rake'
+gem 'log4r'
 
 group :test do
   gem "rspec", "~> 2.12.0"

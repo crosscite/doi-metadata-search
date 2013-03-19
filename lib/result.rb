@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
+
 require 'cgi'
+require 'log4r'
+require_relative 'helpers'
+
 
 class SearchResult
 
@@ -11,6 +15,10 @@ class SearchResult
 
   ENGLISH_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
+  def logger
+    Log4r::Logger['test']    
+  end
 
   def has_path? hash, path
     path_found = true
@@ -26,6 +34,7 @@ class SearchResult
   end
 
   def find_value key
+    logger.debug "Trying to find value for key #{key} in Solr doc"
     if has_path? @highlights, [@doi, key]
       @highlights[@doi][key].first
     else
@@ -35,6 +44,7 @@ class SearchResult
 
   # Merge a mongo DOI record with solr highlight information.
   def initialize solr_doc, solr_result, citations, user_state
+    logger.debug "initializing a mongo DOI record for work type #{solr_doc['type']}, DOI name #{solr_doc['doi']}"
     @doi = solr_doc['doi']
     @type = solr_doc['type']
     @doc = solr_doc
@@ -44,9 +54,7 @@ class SearchResult
     @hashed = solr_doc['mongo_id']
     @user_claimed = user_state[:claimed]
     @in_user_profile = user_state[:in_profile]
-
-    @highlights = solr_result['highlighting']
-
+    @highlights = solr_result['highlighting'] || {}
     @publication = find_value('hl_publication')
     @title = find_value('hl_title')
     @year = find_value('hl_year')
