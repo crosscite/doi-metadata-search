@@ -41,7 +41,7 @@ helpers do
   end
 
   def select query_params
-    logger.debug "building query with params:\n" + query_params.ai
+    logger.debug "building query to send to #{settings.solr_url}#{settings.solr_select}, with params:\n" + query_params.ai
     page = query_page
     rows = query_rows
     results = settings.solr.paginate page, rows, settings.solr_select, :params => query_params
@@ -218,15 +218,15 @@ helpers do
     end
 
     solr_result['response']['docs'].map do |solr_doc|
-      doi = solr_doc['doiKey']
+      doi = solr_doc['doi']
       in_profile = profile_dois.include?(doi)
       claimed = claimed_dois.include?(doi)
       user_state = {
         :in_profile => in_profile,
         :claimed => claimed
       }
-
-      SearchResult.new solr_doc, solr_result, citations(solr_doc['doiKey']), user_state
+      logger.debug "Adding solr_doc doi:#{doi} as new search results item"
+      SearchResult.new solr_doc, solr_result, citations(solr_doc['doi']), user_state
     end
   end
 

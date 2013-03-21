@@ -1,9 +1,26 @@
-%table
-  %tr
-    %td
-      .item-tab
-        %i.icon-question-sign
-        %p= item['published']['year'].to_i
-    %td
-      %p.lead= item['title']
-      = partial :item_links, :item => item
+%tr
+  %td.item-data
+    - unless item.title.nil?
+      %p.lead
+        = item.title
+        
+      %p.extra
+        %span
+          Published
+          %b
+            - unless item.day.nil?
+              = item.day
+            - unless item.month.nil?
+              = item.month
+            - unless item.year.nil?
+              = item.year              
+        - unless item.publication.nil?
+          %span
+            in
+            %b= item.publication
+  
+    - unless item.authors.nil?
+      %p.expand= item.authors
+
+    = partial :item_links, :item => item
+        

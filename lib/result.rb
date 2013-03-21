@@ -34,7 +34,7 @@ class SearchResult
   end
 
   def find_value key
-    logger.debug "Trying to find value for key #{key} in Solr doc"
+    logger.debug "Trying to find value for key '#{key}' in Solr doc"
     if has_path? @highlights, [@doi, key]
       @highlights[@doi][key].first
     else
@@ -46,7 +46,7 @@ class SearchResult
   def initialize solr_doc, solr_result, citations, user_state
     logger.debug "initializing a mongo DOI record for work type #{solr_doc['type']}, DOI name #{solr_doc['doi']}"
     @doi = solr_doc['doi']
-    @type = solr_doc['type']
+    @type = solr_doc['type'] || "unknown"
     @doc = solr_doc
     @score = solr_doc['score']
     @normal_score = ((@score / solr_result['response']['maxScore']) * 100).to_i
@@ -55,14 +55,14 @@ class SearchResult
     @user_claimed = user_state[:claimed]
     @in_user_profile = user_state[:in_profile]
     @highlights = solr_result['highlighting'] || {}
-    @publication = find_value('hl_publication')
-    @title = find_value('hl_title')
-    @year = find_value('hl_year')
+    @publication = find_value('hl_publication') || find_value('publisher')
+    @title = find_value('hl_title') || find_value('title').first
+    @year = find_value('hl_year') || find_value('publicationYear')
     @month = ENGLISH_MONTHS[solr_doc['month'] - 1] if solr_doc['month']
     @day = solr_doc['day']
     @volume = find_value('hl_volume')
     @issue = find_value('hl_issue')
-    @authors = find_value('hl_authors')
+    @authors = find_value('hl_authors') || find_value('creator').first
     @first_page = find_value('hl_first_page')
     @last_page = find_value('hl_last_page')
   end

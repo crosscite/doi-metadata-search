@@ -78,11 +78,12 @@ configure do
   set :protection, :except => :json_csrf
 
   # Configure solr
+  logger.info "Configuring Solr to connect to " + settings.solr_url
   set :solr, RSolr.connect(:url => settings.solr_url)
 
   # Configure mongo
   set :mongo, Mongo::Connection.new(settings.mongo_host)
-  #logger.info "Configuring Mongo: url=" + settings.mongo_host
+  logger.info "Configuring Mongo: url=" + settings.mongo_host
   set :dois, settings.mongo[settings.mongo_db]['dois']
   set :shorts, settings.mongo[settings.mongo_db]['shorts']
   set :issns, settings.mongo[settings.mongo_db]['issns']
