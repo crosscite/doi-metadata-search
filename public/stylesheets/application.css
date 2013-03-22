@@ -414,6 +414,9 @@ p, span, h2 {
   height: 1.4em;
   font-size: 1.6em;
 }
+a.home-link img {
+  width: 175px;
+}
 .span-header {
   margin-top: 1.2em;
   margin-bottom: -1.3em;  
