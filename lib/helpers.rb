@@ -243,18 +243,14 @@ helpers do
       :q => '*:*',
       :rows => 0
     }
-    article_result = settings.solr.get settings.solr_select, :params => {
-      :q => 'type:journal_article',
-      :rows => 0
-    }
-    proc_result = settings.solr.get settings.solr_select, :params => {
-      :q => 'type:conference_paper',
+    dataset_result = settings.solr.get settings.solr_select, :params => {
+      :q => 'resourceType:Dataset',
       :rows => 0
     }
     oldest_result = settings.solr.get settings.solr_select, :params => {
-      :q => 'year:[1600 TO *]',
+      :q => 'publicationYear:[1 TO *]',
       :rows => 1,
-      :sort => 'year asc'
+      :sort => 'publicationYear asc'
     }
 
     stats = []
@@ -266,19 +262,13 @@ helpers do
     }
 
     stats << {
-      :value => article_result['response']['numFound'],
-      :name => 'Number of indexed journal articles',
+      :value => dataset_result['response']['numFound'],
+      :name => 'Number of indexed datasets',
       :number => true
     }
 
     stats << {
-      :value => proc_result['response']['numFound'],
-      :name => 'Number of indexed conference papers',
-      :number => true
-    }
-
-    stats << {
-      :value => oldest_result['response']['docs'].first['year'],
+      :value => oldest_result['response']['docs'].first['publicationYear'],
       :name => 'Oldest indexed publication year'
     }
 
