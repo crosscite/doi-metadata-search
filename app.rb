@@ -70,9 +70,8 @@ end
 configure do
   config_file 'config/settings.yml'
 
-  # Set logging level
   set :logging, Logger::DEBUG
-
+  set :environment, :development
 
   # Work around rack protection referrer bug
   set :protection, :except => :json_csrf
@@ -91,13 +90,13 @@ configure do
   set :patents, settings.mongo[settings.mongo_db]['patents']
   set :claims, settings.mongo[settings.mongo_db]['claims']
 
-  # Set up for http requests to data.crossref.org and dx.doi.org
+  # Set up for http requests to data.datacite.org and dx.doi.org
   dx_doi_org = Faraday.new(:url => 'http://dx.doi.org') do |c|
     c.use FaradayMiddleware::FollowRedirects, :limit => 5
     c.adapter :net_http
   end
 
-  set :data_service, Faraday.new(:url => 'http://data.crossref.org')
+  set :data_service, Faraday.new(:url => 'http://data.datacite.org')
   set :dx_doi_org, dx_doi_org
 
   # Citation format types
