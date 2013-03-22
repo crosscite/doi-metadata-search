@@ -9,6 +9,9 @@ solr_select: /api
 #solr_url: http://localhost:2222
 #solr_select: /solr/labs1/select
 contact_url: http://datacite.org/contact
+gabba:
+  cookie:
+  url:
 mongo_host: 127.0.0.1
 mongo_db: crossref
 typical_rows: [10, 20, 50, 100, 500]

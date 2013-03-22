@@ -9,7 +9,7 @@ require 'cgi'
 require 'faraday'
 require 'faraday_middleware'
 require 'haml'
-require 'gabba'
+# require 'gabba' uncomment to use Google Analytics
 require 'rack-session-mongo'
 require 'omniauth-orcid'
 require 'oauth2'
@@ -116,7 +116,7 @@ configure do
   set :facet_fields, ['type', 'year', 'oa_status', 'publication', 'category']
 
   # Google analytics event tracking
-  set :ga, Gabba::Gabba.new('UA-34536574-2', 'http://search.labs.crossref.org')
+  set :ga, Gabba::Gabba.new(settings.gabba[:cookie], settings.gabba[:url]) if settings.gabba[:cookie]
 
   # Orcid endpoint
   set :orcid_service, Faraday.new(:url => settings.orcid[:site])
@@ -278,7 +278,7 @@ get '/orcid/sync' do
 end
 
 get '/dois' do
-  settings.ga.event('API', '/dois', query_terms, nil, true)
+  settings.ga.event('API', '/dois', query_terms, nil, true) if settings.gabba[:cookie]
   solr_result = select(search_query)
   items = search_results(solr_result).map do |result|
     {
@@ -366,7 +366,7 @@ post '/links' do
     }
   end
 
-  settings.ga.event('API', '/links', nil, page[:results].count, true)
+  settings.ga.event('API', '/links', nil, page[:results].count, true) if settings.gabba[:cookie]
 
   content_type 'application/json'
   JSON.pretty_generate(page)
@@ -380,7 +380,7 @@ get '/citation' do
     req.headers['Accept'] = citation_format
   end
 
-  settings.ga.event('Citations', '/citation', citation_format, nil, true)
+  settings.ga.event('Citations', '/citation', citation_format, nil, true) if settings.gabba[:cookie]
 
   content_type citation_format
   res.body if res.success?
