@@ -125,8 +125,8 @@ helpers do
   end
 
   def sort_term
-    if 'year' == params['sort']
-      'year desc, score desc'
+    if 'publicationYear' == params['sort']
+      'publicationYear desc, score desc'
     else
       'score desc'
     end

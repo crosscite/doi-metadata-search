@@ -11,12 +11,12 @@
       %span
         %h6
           Sort by:
-          - if page[:bare_sort] == 'year'
+          - if page[:bare_sort] == 'publicationYear'
             %a{:href => "#{search_link({:sort => 'score'})}"} relevance
             %b publication year
           - else
             %b relevance
-            %a{:href => "#{search_link({:sort => 'year'})}"} publication year
+            %a{:href => "#{search_link({:sort => 'publicationYear'})}"} publication year
     = partial :item_list, :page => page
     .item-paging.bottom
       = will_paginate page[:paginate], :renderer => BootstrapLinkRenderer
