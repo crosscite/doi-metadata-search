@@ -244,7 +244,15 @@ helpers do
       :rows => 0
     }
     dataset_result = settings.solr.get settings.solr_select, :params => {
-      :q => 'resourceType:Dataset',
+      :q => 'resourceTypeGeneral:Dataset',
+      :rows => 0
+    }
+    text_result = settings.solr.get settings.solr_select, :params => {
+      :q => 'resourceTypeGeneral:Text',
+      :rows => 0
+    }    
+    software_result = settings.solr.get settings.solr_select, :params => {
+      :q => 'resourceTypeGeneral:Software',
       :rows => 0
     }
     oldest_result = settings.solr.get settings.solr_select, :params => {
@@ -264,6 +272,18 @@ helpers do
     stats << {
       :value => dataset_result['response']['numFound'],
       :name => 'Number of indexed datasets',
+      :number => true
+    }
+
+    stats << {
+      :value => text_result['response']['numFound'],
+      :name => 'Number of indexed text documents',
+      :number => true
+    }
+    
+    stats << {
+      :value => software_result['response']['numFound'],
+      :name => 'Number of indexed software',
       :number => true
     }
 
