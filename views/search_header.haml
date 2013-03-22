@@ -9,10 +9,11 @@
             %a{:href => '/help/search'} Help  
             %a{:href => '/help/status'} Status
             %a{:href => '/help/api'} API
+            %a{:href => settings.contact_url} Feedback
   - else
     .span-header.span3
       %a.home-link{:href => '/'}
-        %img{:src => '/images/cms-logo.png'}
+        %img{:src => '/images/logo.png'}
     .span-header.span9
       .pull-right
         .simple-nav-outer
@@ -22,6 +23,7 @@
             %a{:href => '/help/search'} Help  
             %a{:href => '/help/api'} API
             %a{:href => '/help/status'} Status
+            %a{:href => settings.contact_url} Feedback
       %form{:method => 'GET', :action => '/'}
         .search-in-header
           %input.input.input-xlarge.search-input{:placeholder => 'Search', :style => 'width: 22em; padding-left: 2em;', :name => 'q', :type => 'text', :value => page[:bare_query]}
