@@ -42,11 +42,11 @@ class SearchResult
     end
   end
 
-  # Merge a mongo DOI record with solr highlight information.
+  # Merge a mongo DOI record with solr highlight information.
   def initialize solr_doc, solr_result, citations, user_state
-    logger.debug "initializing a mongo DOI record for work type #{solr_doc['type']}, DOI name #{solr_doc['doi']}"
+    logger.debug "initializing a mongo DOI record for work type #{solr_doc['resourceTypeGeneral'] || "unknown"}, DOI name #{solr_doc['doi']}"
     @doi = solr_doc['doi']
-    @type = solr_doc['type'] || "unknown"
+    @type = solr_doc['resourceTypeGeneral'] || "unknown"
     @doc = solr_doc
     @score = solr_doc['score']
     @normal_score = ((@score / solr_result['response']['maxScore']) * 100).to_i
@@ -73,6 +73,24 @@ class SearchResult
 
   def open_access?
     @doc['oa_status'] == 'Open Access'
+  end
+  
+  def creative_commons
+    if @doc['rights'] && @doc['rights'].start_with?("Creative Commons")
+      if @doc['rights'].include? "BY-NC-ND" 
+        "by-nc-nd"     
+      elsif @doc['rights'].include? "BY-NC-SA" 
+        "by-nc-sa"  
+      elsif @doc['rights'].include? "BY-NC" 
+        "by-nc"          
+      elsif @doc['rights'].include? "(CC-BY)"
+        "by"
+      else
+        nil
+      end
+    else
+      nil
+    end
   end
 
   def user_claimed?
