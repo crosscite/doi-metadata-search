@@ -21,6 +21,10 @@
   
     - unless item.authors.nil?
       %p.expand= item.authors
+      
+    - if item.creative_commons
+      %p
+        %img{:src => "http://i.creativecommons.org/l/#{item.creative_commons}/3.0/80x15.png"}
 
     = partial :item_links, :item => item
         
