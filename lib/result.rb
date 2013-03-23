@@ -42,11 +42,11 @@ class SearchResult
     end
   end
 
-  # Merge a mongo DOI record with solr highlight information.
+  # Merge a mongo DOI record with solr highlight information.
   def initialize solr_doc, solr_result, citations, user_state
-    logger.debug "initializing a mongo DOI record for work type #{solr_doc['type']}, DOI name #{solr_doc['doi']}"
+    logger.debug "initializing a mongo DOI record for work type #{solr_doc['resourceTypeGeneral'] || "unknown"}, DOI name #{solr_doc['doi']}"
     @doi = solr_doc['doi']
-    @type = solr_doc['type'] || "unknown"
+    @type = solr_doc['resourceTypeGeneral'] || "unknown"
     @doc = solr_doc
     @score = solr_doc['score']
     @normal_score = ((@score / solr_result['response']['maxScore']) * 100).to_i
@@ -65,6 +65,7 @@ class SearchResult
     @authors = find_value('hl_authors') || find_value('creator').first
     @first_page = find_value('hl_first_page')
     @last_page = find_value('hl_last_page')
+    @rights = solr_doc['rights']
   end
 
   def doi
@@ -73,6 +74,28 @@ class SearchResult
 
   def open_access?
     @doc['oa_status'] == 'Open Access'
+  end
+  
+  def creative_commons
+    if @rights =~ /Creative Commons|creativecommons/
+      if @rights =~ /BY-NC-ND/ 
+        "by-nc-nd"     
+      elsif @rights =~ /BY-NC-SA/ 
+        "by-nc-sa"  
+      elsif @rights =~ /BY-NC/ 
+        "by-nc"     
+      elsif @rights =~ /BY-SA/ 
+        "by-sa"       
+      elsif @rights =~ /CC-BY/
+        "by"
+      elsif @rights =~ /zero/
+        "zero"
+      else
+        nil
+      end
+    else
+      nil
+    end
   end
 
   def user_claimed?

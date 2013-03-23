@@ -16,8 +16,26 @@
               = item.year              
         - unless item.publication.nil?
           %span
-            via
+            in
             %b= item.publication
+        - unless item.volume.nil?
+          %span
+            , volume
+            %b= item.volume
+        - unless item.issue.nil?
+          %span
+            , issue
+            %b= item.issue
+        - if !item.first_page.nil? && !item.last_page.nil?
+          %span
+            , on pages
+            %b= item.first_page
+            to
+            %b= item.last_page
+        - elsif !item.first_page.nil?
+          %span
+            , on page
+            %b= item.first_page
   
     - unless item.authors.nil?
       %p.expand= item.authors
@@ -32,4 +50,3 @@
             %img{:src => "http://i.creativecommons.org/l/#{item.creative_commons}/3.0/80x15.png"}
 
     = partial :item_links, :item => item
-        
