@@ -58,10 +58,10 @@ class SearchResult
     @highlights = solr_result['highlighting'] || {}
     @publication = find_value('hl_publication') || find_value('publisher')
     @title = find_value('hl_title') || find_value('title').first
-    @date = solr_doc['date'] ? solr_doc['date'].first : nil
+    @date = solr_doc['date'] ? solr_doc['date'].last : nil
     @year = find_value('hl_year') || find_value('publicationYear')
-    @month = solr_doc['month'] ? ENGLISH_MONTHS[solr_doc['month'] - 1] : (@date ? ENGLISH_MONTHS[@date[5..6].to_i - 1] : nil)
-    @day = solr_doc['day'] || @date ? @date[8..9].to_i : nil
+    @month = solr_doc['month'] ? ENGLISH_MONTHS[solr_doc['month'] - 1] : (@date && @date.size > 6 ? ENGLISH_MONTHS[@date[5..6].to_i - 1] : nil)
+    @day = solr_doc['day'] || @date && @date.size > 9 ? @date[8..9].to_i : nil
     @volume = find_value('hl_volume')
     @issue = find_value('hl_issue')
     @authors = find_value('hl_authors') || find_value('creator')
