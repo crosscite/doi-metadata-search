@@ -1,10 +1,7 @@
 %tr
   %td.item-data
     - unless item.title.nil?
-      %p.lead  
-        - if item.open_access?
-          %a.oa-tooltip{:href => "http://www.doaj.org/doaj?func=findJournals&uiLanguage=en&hybrid=&query=#{item.coins_title}", :target => '_blank'}
-            %span.small{:style => 'font-size: 0.8em;'} DOAJ
+      %p.lead
         = item.title
         
       %p.extra
@@ -45,6 +42,11 @@
       
     - if item.creative_commons
       %p
-        %img{:src => "http://i.creativecommons.org/l/#{item.creative_commons}/3.0/80x15.png"}
+        - if item.creative_commons == "zero"
+          %a{:href => "http://creativecommons.org/publicdomain/zero/1.0/"}
+            %img{:src => "http://i.creativecommons.org/p/zero/1.0/80x15.png"}
+        - else
+          %a{:href => "http://creativecommons.org/licenses/#{item.creative_commons}/3.0/"}
+            %img{:src => "http://i.creativecommons.org/l/#{item.creative_commons}/3.0/80x15.png"}
 
     = partial :item_links, :item => item

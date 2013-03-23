@@ -65,6 +65,7 @@ class SearchResult
     @authors = find_value('hl_authors') || find_value('creator').first
     @first_page = find_value('hl_first_page')
     @last_page = find_value('hl_last_page')
+    @rights = solr_doc['rights']
   end
 
   def doi
@@ -76,15 +77,19 @@ class SearchResult
   end
   
   def creative_commons
-    if @doc['rights'] && @doc['rights'].start_with?("Creative Commons")
-      if @doc['rights'].include? "BY-NC-ND" 
+    if @rights =~ /Creative Commons|creativecommons/
+      if @rights =~ /BY-NC-ND/ 
         "by-nc-nd"     
-      elsif @doc['rights'].include? "BY-NC-SA" 
+      elsif @rights =~ /BY-NC-SA/ 
         "by-nc-sa"  
-      elsif @doc['rights'].include? "BY-NC" 
-        "by-nc"          
-      elsif @doc['rights'].include? "(CC-BY)"
+      elsif @rights =~ /BY-NC/ 
+        "by-nc"     
+      elsif @rights =~ /BY-SA/ 
+        "by-sa"       
+      elsif @rights =~ /CC-BY/
         "by"
+      elsif @rights =~ /zero/
+        "zero"
       else
         nil
       end
