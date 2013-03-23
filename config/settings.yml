@@ -6,8 +6,6 @@ orcid:
   token_url: http://sandbox-1.orcid.org/oauth/token
 solr_url: http://search.datacite.org
 solr_select: /api
-#solr_url: http://localhost:2222
-#solr_select: /solr/labs1/select
 contact_url: http://datacite.org/contact
 gabba:
   cookie:

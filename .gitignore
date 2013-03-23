@@ -1,5 +1,5 @@
 .DS_Store
-.vagrant
+.vagrant*
 Berksfile.lock
 Gemfile.lock
 .librarian/*
@@ -10,3 +10,4 @@ Gemfile.lock
 .*.sw[a-z]
 *.un~
 tmp/*
+log/*
