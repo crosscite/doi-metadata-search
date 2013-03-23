@@ -11,7 +11,7 @@ class SearchResult
   attr_accessor :title, :publication, :authors, :volume, :issue
   attr_accessor :first_page, :last_page
   attr_accessor :type, :subtype, :doi, :score, :normal_score
-  attr_accessor :citations, :hashed, :related
+  attr_accessor :citations, :hashed, :related, :version
 
   ENGLISH_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -69,6 +69,7 @@ class SearchResult
     @last_page = find_value('hl_last_page')
     @rights = solr_doc['rights']
     @related = solr_doc['relatedIdentifier']
+    @version = solr_doc['version']
   end
 
   def doi

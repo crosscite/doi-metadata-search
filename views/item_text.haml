@@ -6,6 +6,8 @@
         
       %p.extra
         %span
+          - if item.version
+            = "Version " + item.version + " of "
           %strong
             = item.subtype
           published
@@ -18,7 +20,7 @@
               = item.year              
         - unless item.publication.nil?
           %span
-            in
+            via
             %b= item.publication
         - unless item.volume.nil?
           %span

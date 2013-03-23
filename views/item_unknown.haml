@@ -6,6 +6,8 @@
         
       %p.extra
         %span
+          - if item.version
+            = "Version " + item.version + ". "
           Published
           %b
             - unless item.day.nil?
