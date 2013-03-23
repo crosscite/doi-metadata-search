@@ -7,10 +7,10 @@ require_relative 'helpers'
 
 class SearchResult
 
-  attr_accessor :year, :month, :day
+  attr_accessor :date, :year, :month, :day
   attr_accessor :title, :publication, :authors, :volume, :issue
   attr_accessor :first_page, :last_page
-  attr_accessor :type, :doi, :score, :normal_score
+  attr_accessor :type, :subtype, :doi, :score, :normal_score
   attr_accessor :citations, :hashed
 
   ENGLISH_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -47,6 +47,7 @@ class SearchResult
     logger.debug "initializing a mongo DOI record for work type #{solr_doc['resourceTypeGeneral'] || "unknown"}, DOI name #{solr_doc['doi']}"
     @doi = solr_doc['doi']
     @type = solr_doc['resourceTypeGeneral'] || "unknown"
+    @subtype = solr_doc['resourceType'].to_s.empty? ? @type : solr_doc['resourceType']
     @doc = solr_doc
     @score = solr_doc['score']
     @normal_score = ((@score / solr_result['response']['maxScore']) * 100).to_i
@@ -57,9 +58,10 @@ class SearchResult
     @highlights = solr_result['highlighting'] || {}
     @publication = find_value('hl_publication') || find_value('publisher')
     @title = find_value('hl_title') || find_value('title').first
+    @date = solr_doc['date'] ? solr_doc['date'].first : nil
     @year = find_value('hl_year') || find_value('publicationYear')
-    @month = ENGLISH_MONTHS[solr_doc['month'] - 1] if solr_doc['month']
-    @day = solr_doc['day']
+    @month = solr_doc['month'] ? ENGLISH_MONTHS[solr_doc['month'] - 1] : (@date ? ENGLISH_MONTHS[@date[5..6].to_i - 1] : nil)
+    @day = solr_doc['day'] || @date ? @date[8..9] : nil
     @volume = find_value('hl_volume')
     @issue = find_value('hl_issue')
     @authors = find_value('hl_authors') || find_value('creator').first
@@ -78,15 +80,15 @@ class SearchResult
   
   def creative_commons
     if @rights =~ /Creative Commons|creativecommons/
-      if @rights =~ /BY-NC-ND/ 
+      if @rights =~ /BY-NC-ND|Attribution-NonCommercial-NoDerivs/ 
         "by-nc-nd"     
       elsif @rights =~ /BY-NC-SA/ 
         "by-nc-sa"  
-      elsif @rights =~ /BY-NC/ 
+      elsif @rights =~ /BY-NC|Attribution-NonCommercial/ 
         "by-nc"     
       elsif @rights =~ /BY-SA/ 
         "by-sa"       
-      elsif @rights =~ /CC-BY/
+      elsif @rights =~ /CC-BY|Attribution|Attribuzione/
         "by"
       elsif @rights =~ /zero/
         "zero"
@@ -95,6 +97,14 @@ class SearchResult
       end
     else
       nil
+    end
+  end
+  
+  def subtype
+    if ["ConferencePaper", "JournalArticle"].include? @subtype
+      @subtype.split(/(?=[A-Z])/).join(" ")
+    else
+      @subtype
     end
   end
 

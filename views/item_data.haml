@@ -6,7 +6,9 @@
         
       %p.extra
         %span
-          Published
+          %strong
+            = item.subtype
+          published
           %b
             - unless item.day.nil?
               = item.day
