@@ -11,7 +11,7 @@ class SearchResult
   attr_accessor :title, :publication, :authors, :volume, :issue
   attr_accessor :first_page, :last_page
   attr_accessor :type, :subtype, :doi, :score, :normal_score
-  attr_accessor :citations, :hashed
+  attr_accessor :citations, :hashed, :related
 
   ENGLISH_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -68,6 +68,7 @@ class SearchResult
     @first_page = find_value('hl_first_page')
     @last_page = find_value('hl_last_page')
     @rights = solr_doc['rights']
+    @related = solr_doc['relatedIdentifier']
   end
 
   def doi
@@ -106,6 +107,13 @@ class SearchResult
     else
       @subtype
     end
+  end
+  
+  def related
+    return nil unless @related
+    @related.map { |item| { relation: item.split(":", 3)[0].split(/(?=[A-Z])/).join(" "), 
+                            id: item.split(":", 3)[1],
+                            text: item.split(":", 3)[2] } }
   end
 
   def user_claimed?
