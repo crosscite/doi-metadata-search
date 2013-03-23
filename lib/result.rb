@@ -61,10 +61,10 @@ class SearchResult
     @date = solr_doc['date'] ? solr_doc['date'].first : nil
     @year = find_value('hl_year') || find_value('publicationYear')
     @month = solr_doc['month'] ? ENGLISH_MONTHS[solr_doc['month'] - 1] : (@date ? ENGLISH_MONTHS[@date[5..6].to_i - 1] : nil)
-    @day = solr_doc['day'] || @date ? @date[8..9] : nil
+    @day = solr_doc['day'] || @date ? @date[8..9].to_i : nil
     @volume = find_value('hl_volume')
     @issue = find_value('hl_issue')
-    @authors = find_value('hl_authors') || find_value('creator').first
+    @authors = find_value('hl_authors') || find_value('creator')
     @first_page = find_value('hl_first_page')
     @last_page = find_value('hl_last_page')
     @rights = solr_doc['rights']
@@ -114,6 +114,20 @@ class SearchResult
     @related.map { |item| { relation: item.split(":", 3)[0].split(/(?=[A-Z])/).join(" "), 
                             id: item.split(":", 3)[1],
                             text: item.split(":", 3)[2] } }
+  end
+  
+  def authors
+    @authors.map { |author| parse_author(author) }
+  end
+  
+  def parse_author(name)
+    # revert order if single words, separated by comma
+    name = name.split(",")
+    if name.all? { |i| i.split(" ").size > 1 }
+      name.join(", ")
+    else
+      name.reverse.join(" ")
+    end
   end
 
   def user_claimed?

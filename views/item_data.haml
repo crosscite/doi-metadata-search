@@ -40,7 +40,7 @@
             %b= item.first_page
   
     - unless item.authors.nil?
-      %p.expand= item.authors
+      %p.expand= item.authors[0..19].join(", ")
       
     - if item.creative_commons
       %p
