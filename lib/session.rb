@@ -1,11 +1,17 @@
 require 'json'
 
 module Session
+
+  def logger
+    Log4r::Logger['test']    
+  end
+
   def auth_token
     OAuth2::AccessToken.new settings.orcid_oauth, session[:orcid]['credentials']['token']
   end
 
   def update_profile
+    logger.debug "retrieving ORCID profile for #{session[:orcid][:uid]}"
     response = auth_token.get "#{session[:orcid][:uid]}/orcid-profile", :headers => {'Accept' => 'application/json'}
     if response.status == 200
       json = JSON.parse(response.body)
