@@ -23,9 +23,22 @@
             - if related[:id] == "DOI"
               %li
                 %a.cite-link{:href => 'http://dx.doi.org/' + related[:text]}
-                  = related[:relation]
+                  %strong
+                    = related[:relation]
                   %i.icon-external-link
                   = "dx.doi.org/#{related[:text]}"
+                  
+    - if item.alternate
+      %span.dropdown
+        %a.dropdown-toggle{:role => 'button', 'data-toggle' => 'dropdown', :href => '#'}
+          %i.icon-double-angle-down
+          Other Identifiers
+        %ul.dropdown-menu{:role => 'menu'}
+          - item.alternate.each do |alternate|
+            %li.alternate
+              %strong
+                = alternate[:id]
+              = alternate[:text]
 
     - if signed_in?
       - if item.in_user_profile?

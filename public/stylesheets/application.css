@@ -449,3 +449,9 @@ a.home-link img {
   font-size: 1em;
   line-height: 2em;
 }
+
+.alternate {
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  white-space: nowrap;
+}

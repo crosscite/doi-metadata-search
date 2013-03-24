@@ -11,7 +11,7 @@ class SearchResult
   attr_accessor :title, :publication, :authors, :volume, :issue
   attr_accessor :first_page, :last_page
   attr_accessor :type, :subtype, :doi, :score, :normal_score
-  attr_accessor :citations, :hashed, :related, :version
+  attr_accessor :citations, :hashed, :related, :alternate, :version
 
   ENGLISH_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -69,6 +69,7 @@ class SearchResult
     @last_page = find_value('hl_last_page')
     @rights = solr_doc['rights']
     @related = solr_doc['relatedIdentifier']
+    @alternate = solr_doc['alternateIdentifier']
     @version = solr_doc['version']
   end
 
@@ -112,9 +113,15 @@ class SearchResult
   
   def related
     return nil unless @related
-    @related.map { |item| { relation: item.split(":", 3)[0].split(/(?=[A-Z])/).join(" "), 
+    @related.map { |item| { relation: uncamelize(item.split(":", 3)[0]), 
                             id: item.split(":", 3)[1],
                             text: item.split(":", 3)[2] } }
+  end
+  
+  def alternate
+    return nil unless @alternate
+    @alternate.map { |item| { id: item.split(":", 2)[0],
+                            text: item.split(":", 2)[1] } }
   end
   
   def authors
@@ -129,6 +136,10 @@ class SearchResult
     else
       name.reverse.join(" ")
     end
+  end
+  
+  def uncamelize(string)
+    string.split(/(?=[A-Z])/).join(" ").capitalize
   end
 
   def user_claimed?
