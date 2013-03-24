@@ -151,7 +151,7 @@ class SearchResult
   end
 
   def coins_atitle
-    @doc['hl_title']
+    @title
   end
 
   def coins_title
@@ -159,7 +159,7 @@ class SearchResult
   end
 
   def coins_year
-    @doc['hl_year']
+    @year
   end
 
   def coins_volume
@@ -179,8 +179,8 @@ class SearchResult
   end
 
   def coins_authors
-    if @doc['hl_authors']
-      @doc['hl_authors']
+    if @authors
+      @authors.join(", ")
     else
       ''
     end
@@ -198,7 +198,7 @@ class SearchResult
     props = {
       'ctx_ver' => 'Z39.88-2004',
       'rft_id' => "info:doi/#{@doi}",
-      'rfr_id' => 'info:sid/crossref.org:search',
+      'rfr_id' => 'info:sid/datacite.org:search',
       'rft.atitle' => coins_atitle,
       'rft.jtitle' => coins_title,
       'rft.date' => coins_year,
@@ -217,6 +217,21 @@ class SearchResult
     when 'conference_paper'
       props['rft_val_fmt'] = 'info:ofi/fmt:kev:mtx:journal'
       props['rft.genre'] = 'proceeding'
+    when 'Dataset'
+      props['rft_val_fmt'] = 'info:ofi/fmt:kev:mtx:dc'
+      props['rft.genre'] = 'dataset'
+    when 'Collection'
+      props['rft_val_fmt'] = 'info:ofi/fmt:kev:mtx:dc'
+      props['rft.genre'] = 'collection'
+    when 'Text'
+      props['rft_val_fmt'] = 'info:ofi/fmt:kev:mtx:dc'
+      props['rft.genre'] = 'text'
+    when 'Software'
+      props['rft_val_fmt'] = 'info:ofi/fmt:kev:mtx:dc'
+      props['rft.genre'] = 'software'
+    else
+      props['rft_val_fmt'] = 'info:ofi/fmt:kev:mtx:dc'
+      props['rft.genre'] = 'unknown'
     end
 
     title_parts = []
@@ -226,8 +241,7 @@ class SearchResult
     end
 
     title = title_parts.join('&')
-
-    coins_authors.split(',').each { |author| title += "&rft.au=#{CGI.escape(author)}" }
+    coins_authors.split(',').each { |author| title += "&rft.au=#{CGI.escape(author.strip)}" } if coins_authors
 
     CGI.escapeHTML title
   end
@@ -236,7 +250,7 @@ class SearchResult
     "<span class=\"Z3988\" title=\"#{coins}\"><!-- coins --></span>"
   end
 
-  # Mimic SIGG citation format.
+  # Mimic SIGG citation format.
   def citation
     a = []
     a << CGI.escapeHTML(coins_authors) unless coins_authors.empty?
