@@ -1,20 +1,17 @@
 %script{:type => 'text/javascript', :src => '/javascripts/itemlist.js'}
-  
-%table  
-  - page[:items].each do |item|
-    - case item.type
-    - when 'Dataset'
-      = partial :item_dataset, :page => page, :item => item
-    - when 'Text'
-      = partial :item_text, :page => page, :item => item
-    - when 'Software'
-      = partial :item_software, :page => page, :item => item
-    - when 'journal_article'
-      = partial :item_article, :page => page, :item => item
-    - when 'conference_paper'
-      = partial :item_conf_proc, :page => page, :item => item
-    - else
-      = partial :item_unknown, :page => page, :item => item
+   
+- page[:items].each do |item|
+  - case item.type
+  - when 'Text'
+    = partial :item_text, :page => page, :item => item
+  - when 'unknown'
+    = partial :item_unknown, :page => page, :item => item
+  - when 'journal_article'
+    = partial :item_article, :page => page, :item => item
+  - when 'conference_paper'
+    = partial :item_conf_proc, :page => page, :item => item
+  - else
+    = partial :item_data, :page => page, :item => item
 
 - page[:items].each do |item|
   - unless item.citations.empty?

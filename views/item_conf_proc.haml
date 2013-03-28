@@ -1,43 +1,42 @@
-%tr
-  %td.item-data
-    - unless item.title.nil?
-      %p.lead
-        - if item.open_access?
-          %a.oa-tooltip{:href => '#'}
-            %i.icon-unlock
-        = item.title
-        
-      %p.extra
+%div.item-data
+  - unless item.title.nil?
+    %p.lead
+      - if item.open_access?
+        %a.oa-tooltip{:href => '#'}
+          %i.icon-unlock
+      = item.title
+      
+    %p.extra
+      %span
+        Published
+        %b
+          - unless item.day.nil?
+            = item.day
+          - unless item.month.nil?
+            = item.month
+          - unless item.year.nil?
+            = item.year              
+      - unless item.publication.nil?
         %span
-          Published
-          %b
-            - unless item.day.nil?
-              = item.day
-            - unless item.month.nil?
-              = item.month
-            - unless item.year.nil?
-              = item.year              
-        - unless item.publication.nil?
-          %span
-            in
-            %b= item.publication
-        - unless item.volume.nil?
-          %span
-            , volume
-            %b= item.volume
-        - unless item.issue.nil?
-          %span
-            , issue
-            %b= item.issue
-        - if !item.first_page.nil? && !item.last_page.nil?
-          %span
-            , on pages
-            %b= item.first_page
-            to
-            %b= item.last_page
-        - elsif !item.first_page.nil?
-          %span
-            , on page
+          in
+          %b= item.publication
+      - unless item.volume.nil?
+        %span
+          , volume
+          %b= item.volume
+      - unless item.issue.nil?
+        %span
+          , issue
+          %b= item.issue
+      - if !item.first_page.nil? && !item.last_page.nil?
+        %span
+          , on pages
+          %b= item.first_page
+          to
+          %b= item.last_page
+      - elsif !item.first_page.nil?
+        %span
+          , on page
             %b= item.first_page
   
     - unless item.authors.nil?

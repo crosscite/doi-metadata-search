@@ -12,6 +12,34 @@
     %a.cite-link{:href => "javascript:showCiteBox('#{item.doi}', '#{item.title}');"}
       %i.icon-quote-left
       Cite
+    
+    - if item.related && item.related.any? { |related| related[:id] == "DOI" }
+      %span.dropdown
+        %a.dropdown-toggle{:role => 'button', 'data-toggle' => 'dropdown', :href => '#'}
+          %i.icon-double-angle-down
+          Related Content
+        %ul.dropdown-menu{:role => 'menu'}
+          - item.related.each do |related|
+            - if related[:id] == "DOI"
+              %li
+                %a.cite-link{:href => 'http://dx.doi.org/' + related[:text]}
+                  %strong
+                    = related[:relation]
+                  %i.icon-external-link
+                  = "dx.doi.org/#{related[:text]}"
+                  
+    - if item.alternate
+      %span.dropdown
+        %a.dropdown-toggle{:role => 'button', 'data-toggle' => 'dropdown', :href => '#'}
+          %i.icon-double-angle-down
+          Other Identifiers
+        %ul.dropdown-menu{:role => 'menu'}
+          - item.alternate.each do |alternate|
+            %li.alternate
+              %strong
+                = alternate[:id]
+              = alternate[:text]
+
     - if signed_in?
       - if item.in_user_profile?
         %span.well-transparent.claim-ok{:id => item.doi}
