@@ -19,6 +19,6 @@
             %a{:href => "#{search_link({:sort => 'publicationYear'})}"} publication year
     = partial :item_list, :page => page
     .item-paging.bottom
-      = will_paginate page[:paginate], :renderer => BootstrapLinkRenderer
+      = will_paginate page[:paginate], :renderer => BootstrapLinkRenderer, :inner_window => 2
 
 = partial :cite_box, :page => page
