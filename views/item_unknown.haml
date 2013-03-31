@@ -1,20 +1,23 @@
 %div.item-data
-  - unless item.title.nil?
-    %p.lead
+  %p.lead
+    - unless item.title.nil?
       = item.title
+    - else
+      [no metadata registered]
       
     %p.extra
       %span
         - if item.version
           = "Version " + item.version + ". "
-        Published
+        - unless (item.year.nil? || item.year.to_i == 0)
+          Published
         %b
           - unless item.day.nil?
             = item.day
           - unless item.month.nil?
             = item.month
-          - unless item.year.nil?
-            = item.year              
+          - unless (item.year.nil? || item.year.to_i == 0)
+            = item.year            
       - unless item.publication.nil?
         %span
           via
