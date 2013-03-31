@@ -408,6 +408,17 @@ a.home-link img {
   margin-top: 1.2em;
   margin-bottom: -1.3em;  
 }
+.span-footer {
+  margin-top: 0;
+  margin-bottom: 1.5em;  
+}
+.span-footer a, .span-footer a:visited {
+  color: grey;
+  padding-right: 1em;
+}
+.search-header {
+  padding-top: 1.5em;
+}
 .simple-nav-outer {
   position: relative;
   width: 35em;

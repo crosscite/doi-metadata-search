@@ -14,16 +14,12 @@
     .span-header.span3
       %a.home-link{:href => '/'}
         %img{:src => '/images/logo.png'}
-    .span-header.span9
+    .span-header.span9.search-header
       .pull-right
         .simple-nav-outer
           .simple-nav.smaller
             .pull-right
               = partial :profile_link, {}
-            %a{:href => '/help/search'} Help  
-            %a{:href => '/help/api'} API
-            %a{:href => '/help/status'} Status
-            %a{:href => settings.contact_url} Contact
       %form{:method => 'GET', :action => '/'}
         .search-in-header
           %input.input.input-xlarge.search-input{:placeholder => 'Search', :style => 'width: 22em; padding-left: 2em;', :name => 'q', :type => 'text', :value => page[:bare_query]}

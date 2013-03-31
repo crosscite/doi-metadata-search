@@ -6,12 +6,12 @@ orcid:
   token_url: http://sandbox-1.orcid.org/oauth/token
 solr_url: http://search.datacite.org
 solr_select: /api
-contact_url: http://datacite.org/contact
+contact_url: http://odin-project.eu/contact/
 gabba:
   cookie:
   url:
 mongo_host: 127.0.0.1
-mongo_db: crossref
+mongo_db: datacite
 typical_rows: [10, 20, 50, 100, 500]
 default_rows: 20
 month_short_names: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
