@@ -57,7 +57,7 @@ class SearchResult
     @in_user_profile = user_state[:in_profile]
     @highlights = solr_result['highlighting'] || {}
     @publication = find_value('hl_publication') || find_value('publisher')
-    @title = find_value('hl_title') || find_value('title').first
+    @title = solr_doc['title'] ? solr_doc['title'].first : nil
     @date = solr_doc['date'] ? solr_doc['date'].last : nil
     @year = find_value('hl_year') || find_value('publicationYear')
     @month = solr_doc['month'] ? ENGLISH_MONTHS[solr_doc['month'] - 1] : (@date && @date.size > 6 ? ENGLISH_MONTHS[@date[5..6].to_i - 1] : nil)
@@ -125,6 +125,7 @@ class SearchResult
   end
   
   def authors
+    return nil unless @authors
     @authors.map { |author| parse_author(author) }
   end
   
@@ -151,7 +152,7 @@ class SearchResult
   end
 
   def coins_atitle
-    @title
+    @title || ""
   end
 
   def coins_title
