@@ -20,7 +20,7 @@
       $.ajax({url: '/orcid/sync',
               success: function(data) {
                 if (data['status'] == 'oauth_timeout') {
-                  $.oauthpopup({path: '/users/auth/orcid',
+                  $.oauthpopup({path: '/auth/orcid',
                                 callback: function() {
                                   performSync();
                                 }});  

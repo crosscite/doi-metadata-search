@@ -136,6 +136,7 @@ configure do
       :scope => '/orcid-profile/read-limited /orcid-works/create'
     }
   end
+  OmniAuth.config.logger = logger
 
   set :show_exceptions, true
 end
@@ -145,6 +146,7 @@ end
 before do
   set_after_signin_redirect(request.fullpath)
   logger.info "Fetching #{url}, params " + params.inspect
+  logger.debug {"request.env:\n" + request.env.ai}
 end
 
 get '/' do
@@ -386,7 +388,8 @@ get '/citation' do
   res.body if res.success?
 end
 
-get '/users/auth/orcid_FOO' do
+get '/auth/orcid/callback' do
+  logger.debug "in callback handle, I hope?"
   session[:orcid] = request.env['omniauth.auth']
   logger.info "Signing in via ORCID"
   logger.debug "got session info:\n" + session.ai

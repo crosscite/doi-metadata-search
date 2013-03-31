@@ -25,7 +25,7 @@
   :javascript
     $(document).ready(function() {
       $('.sign-in-link').click(function(e) {
-        $.oauthpopup({path: '/users/auth/orcid',
+        $.oauthpopup({path: '/auth/orcid',
                       callback: function() {
                         document.location.reload(true);
                       }});

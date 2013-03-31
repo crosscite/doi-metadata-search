@@ -1,6 +1,6 @@
 orcid:
-  client_id: 0000-0002-2833-9706
-  client_secret: 9d7ec9f1-6d5c-49df-abab-4620b6f3e502
+  client_id: 0000-0002-7649-0259
+  client_secret: 5a81472f-d318-4823-887a-ea64ac6f680a
   site: http://sandbox-1.orcid.org
   authorize_url: http://sandbox-1.orcid.org/oauth/authorize
   token_url: http://sandbox-1.orcid.org/oauth/token
