@@ -105,9 +105,9 @@ class SearchResult
   
   def subtype
     if ["ConferencePaper", "JournalArticle"].include? @subtype
-      @subtype.split(/(?=[A-Z])/).join(" ")
+      uncamelize(@subtype)
     else
-      @subtype
+      @subtype.capitalize
     end
   end
   
