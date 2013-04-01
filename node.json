@@ -3,7 +3,8 @@
     "recipe[apt]",
     "recipe[build-essential]",
     "recipe[git]",
-    "recipe[mongodb::default]",
+    "recipe[chef-mongodb::10gen_repo]",
+    "recipe[chef-mongodb::default]",
     "recipe[phantomjs]",
     "recipe[cr-search]"
   ],

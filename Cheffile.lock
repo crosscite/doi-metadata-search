@@ -12,13 +12,11 @@ SITE
       runit (<= 0.16.2)
       windows (>= 0.0.0)
       yum (>= 0.0.0)
-    mongodb (0.11.0)
-      apt (>= 0.0.0)
     phantomjs (0.0.10)
     runit (0.16.2)
     windows (1.8.4)
       chef_handler (>= 0.0.0)
-    yum (2.1.0)
+    yum (2.2.0)
 
 GIT
   remote: https://github.com/articlemetrics/passenger_apache2.git
@@ -30,24 +28,33 @@ GIT
       build-essential (>= 0.0.0)
 
 GIT
+  remote: https://github.com/edelight/chef-mongodb.git
+  ref: master
+  sha: ce35aef9ba52106ddb0a97d52caf98324e672174
+  specs:
+    chef-mongodb (0.12.0)
+      apt (>= 0.0.0)
+      yum (>= 0.0.0)
+
+GIT
   remote: https://github.com/mfenner/cr-search-cookbook.git
   ref: master
-  sha: 52c910994b069b8ca20f3fc90a85464e1532e0b3
+  sha: ba35d03c9bb1f0f0d3fe44a50f68569078639acc
   specs:
-    cr-search (1.0.0)
+    cr-search (1.0.1)
       apt (>= 0.0.0)
       build-essential (>= 0.0.0)
+      chef-mongodb (>= 0.0.0)
       git (>= 0.0.0)
-      mongodb (>= 0.0.0)
       passenger_apache2 (>= 0.0.0)
       phantomjs (>= 0.0.0)
 
 DEPENDENCIES
   apt (= 1.7.0)
   build-essential (= 1.3.2)
+  chef-mongodb (>= 0)
   cr-search (>= 0)
   git (= 2.1.4)
-  mongodb (= 0.11.0)
   passenger_apache2 (>= 0)
   phantomjs (= 0.0.10)
 
