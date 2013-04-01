@@ -70,8 +70,7 @@ end
 configure do
   config_file 'config/settings.yml'
 
-  set :logging, Logger::DEBUG
-  set :environment, :development
+  set :logging, Logger::INFO
 
   # Work around rack protection referrer bug
   set :protection, :except => :json_csrf
@@ -385,7 +384,7 @@ get '/citation' do
   res.body if res.success?
 end
 
-get '/users/auth/orcid' do
+get '/auth/orcid/callback' do
   session[:orcid] = request.env['omniauth.auth']
   #Resque.enqueue(OrcidUpdate, session_info)
   update_profile
@@ -400,6 +399,14 @@ end
 get '/auth/signout' do
   session.clear
   redirect(params[:redirect_uri])
+end
+
+get "/auth/failure" do
+  haml "%h3== Authentication Failed with message #{params}"
+end
+
+get '/auth/:provider/deauthorized' do
+  haml "#{params[:provider]} has deauthorized this app."
 end
 
 get '/heartbeat' do
@@ -419,5 +426,3 @@ get '/heartbeat' do
     {:status => :error, :type => e.class, :message => e}.to_json
   end
 end
-
-
