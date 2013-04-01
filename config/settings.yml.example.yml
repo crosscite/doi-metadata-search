@@ -1,0 +1,19 @@
+orcid:
+  client_id: 
+  client_secret: 
+  site: 
+  authorize_url: 
+  token_url: 
+solr_url: 
+solr_select:
+contact_url: 
+app_name: Example
+gabba:
+  cookie:
+  url:
+mongo_host: 127.0.0.1
+mongo_db: datacite
+typical_rows: [10, 20, 50, 100, 500]
+default_rows: 20
+month_short_names: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+

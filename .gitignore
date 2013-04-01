@@ -1,6 +1,5 @@
 .DS_Store
 .vagrant*
-Berksfile.lock
 Gemfile.lock
 .librarian/*
 *~
@@ -11,3 +10,4 @@ Gemfile.lock
 *.un~
 tmp/*
 log/*
+config/settings.yml
