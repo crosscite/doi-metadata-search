@@ -53,14 +53,6 @@ h1 {
   margin-bottom: 6em;
 }
 
-/* search_box.haml */
-.search-box {
-  padding: 0 .6em;
-}
-.search-info {
-  padding: .3em 0;
-}
-
 /* results.haml */
 .item-paging {
   text-align: center;

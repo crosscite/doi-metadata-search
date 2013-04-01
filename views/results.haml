@@ -4,6 +4,9 @@
   .span3
 
   .span9
+    - unless flash[:error].nil?
+      %div.alert.alert-error
+        = flash[:error]
     = partial :search_box, :page => page
     .list-info
       .pull-right

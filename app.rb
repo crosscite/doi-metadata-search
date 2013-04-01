@@ -11,6 +11,7 @@ require 'faraday_middleware'
 require 'haml'
 # require 'gabba' uncomment to use Google Analytics
 require 'rack-session-mongo'
+require 'rack-flash'
 require 'omniauth-orcid'
 require 'oauth2'
 require 'resque'
@@ -126,6 +127,7 @@ configure do
 
   # Set up session and auth middlewares for ORCiD sign in
   use Rack::Session::Mongo, settings.mongo[settings.mongo_db]
+  use Rack::Flash
   use OmniAuth::Builder do
     provider :orcid, settings.orcid[:client_id], settings.orcid[:client_secret], :client_options => {
       :site => settings.orcid[:site],
@@ -137,8 +139,6 @@ configure do
 
   set :show_exceptions, true
 end
-
-
 
 before do
   set_after_signin_redirect(request.fullpath)
@@ -386,7 +386,7 @@ end
 
 get '/auth/orcid/callback' do
   session[:orcid] = request.env['omniauth.auth']
-  #Resque.enqueue(OrcidUpdate, session_info)
+  Resque.enqueue(OrcidUpdate, session_info)
   update_profile
   haml :auth_callback
 end
@@ -402,7 +402,8 @@ get '/auth/signout' do
 end
 
 get "/auth/failure" do
-  haml "%h3== Authentication Failed with message #{params}"
+  flash[:error] = "Authentication failed with message \"#{params['message']}\"."
+  haml :auth_callback
 end
 
 get '/auth/:provider/deauthorized' do
