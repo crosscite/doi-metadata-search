@@ -7,6 +7,7 @@ orcid:
 solr_url: http://search.datacite.org
 solr_select: /api
 contact_url: http://odin-project.eu/contact/
+app_name: DataCite to ORCID
 gabba:
   cookie:
   url:
