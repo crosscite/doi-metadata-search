@@ -23,6 +23,10 @@ module Doi
   def issn? s
     s.strip.upcase =~ /\A[0-9]{4}\-[0-9]{3}[0-9X]\Z/
   end
+  
+  def orcid? s
+    s.strip =~ /\A[0-9]{4}\-[0-9]{4}\-[0-9]{4}\-[0-9]{3}[0-9X]\Z/
+  end
 
   def to_doi s
     s = s.strip.sub(/\A(https?:\/\/)?dx\.doi\.org\//, '').sub(/\Adoi:/, '')

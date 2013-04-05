@@ -72,7 +72,7 @@ helpers do
   end
 
   def query_columns
-    ['*', 'score']
+    ['doi','creator','title','publisher','publicationYear','relatedIdentifier','alternateIdentifier','resourceTypeGeneral','resourceType','rights','version', 'score']
   end
 
   def query_terms
@@ -84,6 +84,8 @@ helpers do
       "doi:\"#{query_info[:value]}\""
     when :issn
       "issn:\"#{query_info[:value]}\""
+    when :orcid
+      "orcid:\"#{query_info[:value]}\""
     else
       scrub_query(params['q'], false)
     end
@@ -96,6 +98,8 @@ helpers do
       {:type => :short_doi, :value => to_long_doi(params['q'])}
     elsif issn? params['q']
       {:type => :issn, :value => params['q'].strip.upcase}
+    elsif orcid? params['q']
+      {:type => :orcid, :value => params['q'].strip}
     else
       {:type => :normal}
     end
@@ -115,7 +119,7 @@ helpers do
   end
 
   def facet_query
-    fq = []
+    fq = ['has_metadata:true']
     abstract_facet_query.each_pair do |name, values|
       values.each do |value|
         fq << "#{name}: \"#{value}\""
