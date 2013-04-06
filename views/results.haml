@@ -7,22 +7,27 @@
     - unless flash[:error].nil?
       %div.alert.alert-error
         = flash[:error]
-    = partial :search_box, :page => page
-    .list-info
-      .pull-right
-        %h6.number= "Page #{page[:page]} of #{page[:paginate].total_rows} results"
-      %span
-        %h6
-          Sort by:
-          - if page[:bare_sort] == 'publicationYear'
-            %a{:href => "#{search_link({:sort => 'score'})}"} relevance
-            %b publication year
-          - else
-            %b relevance
-            %a{:href => "#{search_link({:sort => 'publicationYear'})}"} publication year
-    = partial :item_list, :page => page
-    .item-paging.bottom
-      = will_paginate page[:paginate], :renderer => BootstrapLinkRenderer, :inner_window => 2
+    - unless page[:page].nil? || page[:paginate].nil? || params['q'] == ""
+      = partial :search_box, :page => page
+      .list-info
+        .pull-right
+          %h6.number= "Page #{page[:page]} of #{page[:paginate].total_rows} results"
+        %span
+          %h6
+            Sort by:
+            - if page[:bare_sort] == 'publicationYear'
+              %a{:href => "#{search_link({:sort => 'score'})}"} relevance
+              %b publication year
+            - else
+              %b relevance
+              %a{:href => "#{search_link({:sort => 'publicationYear'})}"} publication year
+      = partial :item_list, :page => page
+      .item-paging.bottom
+        = will_paginate page[:paginate], :renderer => BootstrapLinkRenderer, :inner_window => 2
+    - else
+      %h2
+        Example Queries
+      = partial :help_list, :page => page
 
 = partial :cite_box, :page => page
 

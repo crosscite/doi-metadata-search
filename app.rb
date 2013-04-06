@@ -16,6 +16,7 @@ require 'omniauth-orcid'
 require 'oauth2'
 require 'resque'
 require 'open-uri'
+require 'uri'
 require 'sinatra/config_file'
 require 'ap'
 
@@ -89,6 +90,7 @@ configure do
   set :citations, settings.mongo[settings.mongo_db]['citations']
   set :patents, settings.mongo[settings.mongo_db]['patents']
   set :claims, settings.mongo[settings.mongo_db]['claims']
+  set :links, settings.mongo[settings.mongo_db]['links']
 
   # Set up for http requests to data.datacite.org and dx.doi.org
   dx_doi_org = Faraday.new(:url => 'http://dx.doi.org') do |c|
@@ -141,14 +143,14 @@ configure do
 end
 
 before do
-  set_after_signin_redirect(request.fullpath)
   logger.info "Fetching #{url}, params " + params.inspect
 end
 
 get '/' do
-  if !params.has_key?('q')
+  if !signed_in?
     haml :splash, :locals => {:page => {:query => ""}}
   else
+    params['q'] = session[:orcid][:info][:name] if !params.has_key?('q')
     logger.debug "Initiating Solr search with query string '#{params['q']}'"
     solr_result = select search_query
     logger.debug "Got some Solr results: "
@@ -389,6 +391,13 @@ get '/auth/orcid/callback' do
   Resque.enqueue(OrcidUpdate, session_info)
   update_profile
   haml :auth_callback
+end
+
+get '/auth/orcid/import' do
+  session[:orcid] = request.env['omniauth.auth']
+  Resque.enqueue(OrcidUpdate, session_info)
+  update_profile
+  redirect to("/?q=#{session[:orcid][:info][:name]}")
 end
 
 get '/auth/orcid/check' do
