@@ -16,6 +16,9 @@ span {
 }
 
 /* splash.haml */
+.logo {
+  margin-bottom: 0.5em;
+}
 .cr-red {
   color: rgb(192, 70, 62);
 }
