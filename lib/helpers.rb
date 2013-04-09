@@ -72,7 +72,7 @@ helpers do
   end
 
   def query_columns
-    ['doi','creator','title','publisher','publicationYear','relatedIdentifier','alternateIdentifier','resourceTypeGeneral','resourceType','rights','version', 'score']
+    ['doi','creator','title','publisher','publicationYear','relatedIdentifier','alternateIdentifier','resourceTypeGeneral','resourceType','nameIdentifier','rights','version', 'score']
   end
 
   def query_terms
@@ -85,7 +85,7 @@ helpers do
     when :issn
       "issn:\"#{query_info[:value]}\""
     when :orcid
-      "orcid:\"#{query_info[:value]}\""
+      "nameIdentifier:ORCID\:#{query_info[:value]}"
     else
       scrub_query(params['q'], false)
     end
@@ -143,10 +143,10 @@ helpers do
       :q => query_terms,
       :fl => query_columns,
       :rows => query_rows,
-      :facet => 'true',
+      :facet => settings.facet ? 'true' : 'false',
       'facet.field' => settings.facet_fields, 
       'facet.mincount' => 1,
-      :hl => 'true',
+      :hl => settings.highlighting ? 'true' : 'false',
       'hl.fl' => 'hl_*',
       'hl.simple.pre' => '<span class="hl">',
       'hl.simple.post' => '</span>',
