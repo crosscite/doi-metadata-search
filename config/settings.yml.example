@@ -8,6 +8,8 @@ solr_url:
 solr_select:
 contact_url: 
 app_name: Example
+facet: false
+highlighting: false
 gabba:
   cookie:
   url:
