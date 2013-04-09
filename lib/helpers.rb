@@ -245,6 +245,7 @@ helpers do
   def index_stats
     count_result = settings.solr.get settings.solr_select, :params => {
       :q => '*:*',
+      :fq => 'has_metadata:true',
       :rows => 0
     }
     dataset_result = settings.solr.get settings.solr_select, :params => {
