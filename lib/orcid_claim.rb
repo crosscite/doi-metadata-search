@@ -19,8 +19,6 @@ class OrcidClaim
 
   def perform
     oauth_expired = false
-    
-    logger.info "Claiming #{@work} for user #{uid}"
 
     begin
       puts to_xml
