@@ -1,5 +1,15 @@
 = partial :search_header, :page => page
 
+:css
+  .well-transparent {
+    background-color: transparent;
+  }
+  #sync-ok {
+    color: rgb(166, 206, 57);
+    font-size: 1.4em;
+    display: none;
+  }
+
 .row-fluid
   .span2
   .span8
@@ -12,7 +22,7 @@
           %i.icon-refresh#sync-icon
           Sync with ORCID
       %span.lead
-        Sync changes from your ORCID profile to CrossRef Metata Search
+        Sync changes from your ORCID profile to this site
 
 :javascript
   $(document).ready(function() {
@@ -53,4 +63,3 @@
       return false;
     });
   });
-      

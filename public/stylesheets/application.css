@@ -16,6 +16,9 @@ span {
 }
 
 /* splash.haml */
+.logo {
+  margin-bottom: 0.5em;
+}
 .cr-red {
   color: rgb(192, 70, 62);
 }
@@ -51,14 +54,6 @@ h1 {
 }
 .break-below {
   margin-bottom: 6em;
-}
-
-/* search_box.haml */
-.search-box {
-  padding: 0 .6em;
-}
-.search-info {
-  padding: .3em 0;
 }
 
 /* results.haml */

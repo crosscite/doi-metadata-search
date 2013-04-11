@@ -53,16 +53,6 @@ module Session
   def session_info
     session[:orcid]
   end
-
-  def after_signin_redirect
-    redirect_to = session[:after_signin_redirect] || '/'
-    session.delete :after_signin_redirect
-    redirect_to
-  end
-
-  def set_after_signin_redirect redirect_to
-    session[:after_signin_redirect] = redirect_to
-  end
 end
 
 

@@ -72,7 +72,7 @@ helpers do
   end
 
   def query_columns
-    ['*', 'score']
+    ['doi','creator','title','publisher','publicationYear','relatedIdentifier','alternateIdentifier','resourceTypeGeneral','resourceType','nameIdentifier','rights','version', 'score']
   end
 
   def query_terms
@@ -84,6 +84,8 @@ helpers do
       "doi:\"#{query_info[:value]}\""
     when :issn
       "issn:\"#{query_info[:value]}\""
+    when :orcid
+      "nameIdentifier:ORCID\:#{query_info[:value]}"
     else
       scrub_query(params['q'], false)
     end
@@ -96,6 +98,8 @@ helpers do
       {:type => :short_doi, :value => to_long_doi(params['q'])}
     elsif issn? params['q']
       {:type => :issn, :value => params['q'].strip.upcase}
+    elsif orcid? params['q']
+      {:type => :orcid, :value => params['q'].strip}
     else
       {:type => :normal}
     end
@@ -115,7 +119,7 @@ helpers do
   end
 
   def facet_query
-    fq = []
+    fq = ['has_metadata:true']
     abstract_facet_query.each_pair do |name, values|
       values.each do |value|
         fq << "#{name}: \"#{value}\""
@@ -139,10 +143,10 @@ helpers do
       :q => query_terms,
       :fl => query_columns,
       :rows => query_rows,
-      :facet => 'true',
+      :facet => settings.facet ? 'true' : 'false',
       'facet.field' => settings.facet_fields, 
       'facet.mincount' => 1,
-      :hl => 'true',
+      :hl => settings.highlighting ? 'true' : 'false',
       'hl.fl' => 'hl_*',
       'hl.simple.pre' => '<span class="hl">',
       'hl.simple.post' => '</span>',
@@ -241,6 +245,7 @@ helpers do
   def index_stats
     count_result = settings.solr.get settings.solr_select, :params => {
       :q => '*:*',
+      :fq => 'has_metadata:true',
       :rows => 0
     }
     dataset_result = settings.solr.get settings.solr_select, :params => {
