@@ -37,14 +37,14 @@ class OrcidUpdate
         response_json = JSON.parse(response.body)
         parsed_dois = parse_dois(response_json)
         query = {:orcid => uid}
-        orcid_record = MongoData.coll('orcids').find_one(query)
+        orcid_record = settings.orcids.find_one(query)
 
         if orcid_record
           orcid_record['dois'] = parsed_dois
-          MongoData.coll('orcids').save(orcid_record)
+          settings.orcids.save(orcid_record)
         else
           doc = {:orcid => uid, :dois => parsed_dois, :locked_dois => []}
-          MongoData.coll('orcids').insert(doc)
+          settings.orcids.insert(doc)
         end
       else
         oauth_expired = true
