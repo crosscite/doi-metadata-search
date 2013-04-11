@@ -1,4 +1,4 @@
-#require 'resque/tasks'
+require 'resque/tasks'
 require 'rspec/core/rake_task'
 require 'cucumber/rake/task'
 
