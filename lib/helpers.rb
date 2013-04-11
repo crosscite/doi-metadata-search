@@ -214,7 +214,7 @@ helpers do
     profile_dois = []
 
     if signed_in?
-      orcid_record = settings.orcids.find_one({:orcid => sign_in_id})
+      orcid_record = MongoData.coll('orcids').find_one({:orcid => sign_in_id})
       unless orcid_record.nil?
         claimed_dois = orcid_record['dois'] + orcid_record['locked_dois'] if orcid_record
         profile_dois = orcid_record['dois']
@@ -298,7 +298,7 @@ helpers do
     }
 
     stats << {
-      :value => settings.orcids.count({:query => {:updated => true}}),
+      :value => MongoData.coll('orcids').count({:query => {:updated => true}}),
       :name => 'Number of ORCID profiles updated'
     }
 
