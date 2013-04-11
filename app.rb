@@ -146,7 +146,7 @@ end
 
 before do
   logger.info "Fetching #{url}, params " + params.inspect
-  logger.debug {"request.env:\n" + request.env.ai}
+  #logger.debug {"request.env:\n" + request.env.ai}
 end
 
 get '/' do
