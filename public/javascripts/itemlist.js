@@ -132,6 +132,9 @@ $(document).ready(function() {
             }
           } else if (data['status'] == 'oauth_timeout') {
             replacePopoverWithLogin($popover);
+          } else if (data['status'] == 'no_such_doi') {
+            $popover.find('span').text('An error occured');
+            $popover.popover('destroy');
           } else {
             $popover.popover('destroy');
           }

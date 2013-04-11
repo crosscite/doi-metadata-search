@@ -210,6 +210,8 @@ get '/orcid/claim' do
     orcid_record = MongoData.coll('orcids').find_one({:orcid => sign_in_id})
     already_added = !orcid_record.nil? && orcid_record['locked_dois'].include?(doi)
 
+    logger.info "Initiating claim for #{doi}"
+   
     if already_added
       status = 'ok'
     else
@@ -218,6 +220,7 @@ get '/orcid/claim' do
       if !doi_record
         status = 'no_such_doi'
       else
+        
         if OrcidClaim.perform(session_info, doi_record)
           if orcid_record
             orcid_record['updated'] = true
