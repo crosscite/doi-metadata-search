@@ -18,6 +18,7 @@ module Session
       given_name = json['orcid-profile']['orcid-bio']['personal-details']['given-names']['value']
       family_name = json['orcid-profile']['orcid-bio']['personal-details']['family-name']['value']
       session[:orcid][:info][:name] = "#{given_name} #{family_name}"
+      logger.info "Got updated profile data: " + session[:orcid].ai
     end
   end
 
