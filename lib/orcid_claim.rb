@@ -19,14 +19,14 @@ class OrcidClaim
 
   def perform
     oauth_expired = false
+    
+    logger.info "Claiming #{@work} for user #{uid}"
 
     begin
       puts to_xml
 
       # Need to check both since @oauth may or may not have been serialized back and forth from JSON.
       uid = @oauth[:uid] || @oauth['uid']
-      
-      logger.info "Claiming #{@work} for user #{uid}"
 
       opts = {:site => settings.orcid[:site]}
       client = OAuth2::Client.new(settings.orcid[:client_id], settings.orcid[:client_secret], opts)
