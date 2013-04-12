@@ -23,8 +23,8 @@ require 'ap'
 require 'log4r'
 include Log4r
 logger = Log4r::Logger.new('test')
-Log4r::Logger['test'].trace = true
-Log4r::Logger['test'].level = DEBUG
+logger.trace = true
+logger.level = DEBUG
 
 formatter = Log4r::PatternFormatter.new(:pattern => "[%l] %t  %M")
 Log4r::Logger['test'].outputters << Log4r::Outputter.stdout
@@ -121,6 +121,7 @@ configure do
   set :ga, Gabba::Gabba.new(settings.gabba[:cookie], settings.gabba[:url]) if settings.gabba[:cookie]
 
   # Orcid endpoint
+  logger.info "Configuring ORCID, client app ID #{settings.orcid[:client_id]} connecting to #{settings.orcid[:site]}"
   set :orcid_service, Faraday.new(:url => settings.orcid[:site])
 
   # Orcid oauth2 object we can use to make API calls
@@ -139,12 +140,14 @@ configure do
       :scope => '/orcid-profile/read-limited /orcid-works/create'
     }
   end
+  OmniAuth.config.logger = logger
 
   set :show_exceptions, true
 end
 
 before do
   logger.info "Fetching #{url}, params " + params.inspect
+  #logger.debug {"request.env:\n" + request.env.ai}
 end
 
 get '/' do
@@ -393,6 +396,8 @@ end
 get '/auth/orcid/callback' do
   session[:orcid] = request.env['omniauth.auth']
   Resque.enqueue(OrcidUpdate, session_info)
+  logger.info "Signing in via ORCID"
+  logger.debug "got session info:\n" + session.ai
   update_profile
   haml :auth_callback
 end
