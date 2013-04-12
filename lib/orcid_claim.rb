@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 require 'nokogiri'
 require 'oauth2'
+require 'log4r'
 
 require_relative 'data'
 
@@ -16,6 +17,10 @@ class OrcidClaim
   def self.perform oauth, work
     OrcidClaim.new(oauth, work).perform
   end
+  
+  def logger
+    Log4r::Logger['test']    
+  end
 
   def perform
     oauth_expired = false
@@ -23,8 +28,10 @@ class OrcidClaim
     begin
       puts to_xml
 
-      # Need to check both since @oauth may or may not have been serialized back and forth from JSON.
+      # Need to check both since @oauth may or may not have been serialized back and forth from JSON.
       uid = @oauth[:uid] || @oauth['uid']
+      
+      logger.debug "Claiming for user #{uid}"
 
       opts = {:site => settings.orcid[:site]}
       client = OAuth2::Client.new(settings.orcid[:client_id], settings.orcid[:client_secret], opts)
@@ -34,9 +41,11 @@ class OrcidClaim
         post.headers['Content-Type'] = 'application/orcid+xml'
         post.body = to_xml
       end
+      logger.debug "An error occured: #{response.body} with status #{response.status}" unless response.success?
+      
       oauth_expired = !response.success?
     rescue StandardError => e
-      puts e
+      logger.debug "An error occured: #{e}"
     end
 
     !oauth_expired

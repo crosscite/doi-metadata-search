@@ -215,11 +215,11 @@ get '/orcid/claim' do
     else
       doi_record = settings.dois.find_one({:doi => doi})
 
-      if !doi
+      if !doi_record
         status = 'no_such_doi'
       else
         
-        if OrcidClaim.perform(session_info, doi)
+        if OrcidClaim.perform(session_info, doi_record)
           if orcid_record
             orcid_record['updated'] = true
             orcid_record['locked_dois'] << doi

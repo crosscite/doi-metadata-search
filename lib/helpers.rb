@@ -229,8 +229,8 @@ helpers do
         :in_profile => in_profile,
         :claimed => claimed
       }
-      logger.debug "Adding solr_doc doi:#{doi} as new search results item"
       SearchResult.new solr_doc, solr_result, citations(solr_doc['doi']), user_state
+      logger.debug "Added solr_doc doi:#{doi} as new search results item"
     end
   end
 

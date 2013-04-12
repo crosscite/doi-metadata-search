@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 require 'nokogiri'
 require 'oauth2'
+require 'log4r'
 
 require_relative 'data'
 
@@ -14,6 +15,10 @@ class OrcidUpdate
 
   def self.perform oauth
     OrcidUpdate.new(oauth).perform
+  end
+  
+  def logger
+    Log4r::Logger['test']    
   end
 
   def perform
@@ -50,7 +55,7 @@ class OrcidUpdate
         oauth_expired = true
       end
     rescue StandardError => e
-      puts e
+      logger.debug "An error occured: #{e}"
     end
 
     !oauth_expired
