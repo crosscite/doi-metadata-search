@@ -173,7 +173,7 @@ class OrcidClaim
 
   def insert_citation xml
     conn = Faraday.new
-    response = conn.get "http://data.crossref.org/#{@work['doi']}", {}, {
+    response = conn.get "http://data.datacite.org/#{@work['doi']}", {}, {
       'Accept' => 'application/x-bibtex'
     }
 
