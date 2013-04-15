@@ -34,7 +34,6 @@ class SearchResult
   end
 
   def find_value key
-    logger.debug "Trying to find value for key '#{key}' in Solr doc"
     if has_path? @highlights, [@doi, key]
       @highlights[@doi][key].first
     else
@@ -45,6 +44,7 @@ class SearchResult
   # Merge a mongo DOI record with solr highlight information.
   def initialize solr_doc, solr_result, citations, user_state
     logger.debug "initializing a mongo DOI record for work type #{solr_doc['resourceTypeGeneral'] || "unknown"}, DOI name #{solr_doc['doi']}"
+    logger.debug {solr_doc.ai}
     @doi = solr_doc['doi']
     @type = solr_doc['resourceTypeGeneral'] || "unknown"
     @subtype = solr_doc['resourceType'].to_s.empty? ? @type : solr_doc['resourceType']
@@ -71,6 +71,23 @@ class SearchResult
     @related = solr_doc['relatedIdentifier']
     @alternate = solr_doc['alternateIdentifier']
     @version = solr_doc['version']
+
+    # Insert/update record in MongoDB
+    # Hack Alert (possibly)
+    settings.dois.update({doi: @doi },  {
+                           doi: @doi,
+                           title: @title,
+                           type: @type,
+                           publication: @publication,
+                           contributor: @authors,
+                           published: {
+                             year: @year,
+                             month: @month,
+                             day: @day
+                           }
+                         }, 
+                         { :upsert => true })
+    
   end
 
   def doi

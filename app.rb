@@ -158,9 +158,6 @@ get '/' do
     logger.debug "Initiating Solr search with query string '#{params['q']}'"
     solr_result = select search_query
     logger.debug "Got some Solr results: "
-    solr_result['response']['docs'].map do |solr_doc|
-      logger.debug {"\n" + solr_doc.ai}
-    end
 
     page = {
       :bare_sort => params['sort'],
@@ -214,15 +211,35 @@ get '/orcid/claim' do
     logger.info "Initiating claim for #{doi}"
    
     if already_added
+      logger.info "DOI #{doi} is already claimed, not doing anything!"
       status = 'ok'
     else
+      logger.debug "Retrieving metadata from MongoDB for #{doi}"
       doi_record = settings.dois.find_one({:doi => doi})
 
-      if !doi
+      ### HACK ALERT?? 
+      if doi_record.nil? 
+        doi_record = {'doi' => doi}
+      end
+      ### 
+
+
+      if !doi_record
+        logger.warn "No metadata found in MongoDB for #{doi}"
         status = 'no_such_doi'
-      else
+      else       
+        logger.debug "Got some DOI metadata from MongoDB: " + doi_record.ai
+
+        claim_ok = false
+        begin
+          claim_ok = OrcidClaim.perform(session_info, doi_record)          
+        rescue => e
+          # ToDo: need more useful error messaging here, for displaying to user
+          status = "could not claim work"
+          logger.error "Caught exception from claim process: #{e}: \n" + e.backtrace.join("\n")
+        end
         
-        if OrcidClaim.perform(session_info, doi)
+        if claim_ok          
           if orcid_record
             orcid_record['updated'] = true
             orcid_record['locked_dois'] << doi
@@ -232,19 +249,17 @@ get '/orcid/claim' do
             doc = {:orcid => sign_in_id, :dois => [], :locked_dois => [doi]}
             settings.orcids.insert(doc)
           end
-
+          
           # The work could have been added as limited or public. If so we need
           # to tell the UI.
           OrcidUpdate.perform(session_info)
           updated_orcid_record = settings.orcids.find_one({:orcid => sign_in_id})
-
+          
           if updated_orcid_record['dois'].include?(doi)
             status = 'ok_visible'
           else
             status = 'ok'
           end
-        else
-          status = 'oauth_timeout'
         end
       end
     end
@@ -257,6 +272,8 @@ end
 get '/orcid/unclaim' do
   if signed_in? && params['doi']
     doi = params['doi']
+
+    logger.info "Initiating unclaim for #{doi}"    
     orcid_record = settings.orcids.find_one({:orcid => sign_in_id})
 
     if orcid_record
