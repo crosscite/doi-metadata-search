@@ -214,7 +214,7 @@ helpers do
     profile_dois = []
 
     if signed_in?
-      orcid_record = MongoData.coll('orcids').find_one({:orcid => sign_in_id})
+      orcid_record = settings.orcids.find_one({:orcid => sign_in_id})
       unless orcid_record.nil?
         claimed_dois = orcid_record['dois'] + orcid_record['locked_dois'] if orcid_record
         profile_dois = orcid_record['dois']
@@ -229,8 +229,8 @@ helpers do
         :in_profile => in_profile,
         :claimed => claimed
       }
-      logger.debug "Adding solr_doc doi:#{doi} as new search results item"
-      SearchResult.new solr_doc, solr_result, citations(solr_doc['doi']), user_state
+      result = SearchResult.new solr_doc, solr_result, citations(solr_doc['doi']), user_state
+      logger.debug "Added #{result.inspect} for doi:#{doi} as new search results item"
     end
   end
 

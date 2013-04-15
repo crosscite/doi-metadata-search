@@ -220,15 +220,7 @@ get '/orcid/claim' do
       logger.debug "Retrieving metadata from MongoDB for #{doi}"
       doi_record = settings.dois.find_one({:doi => doi})
 
-      ### HACK ALERT?? 
-      if doi_record.nil? 
-        doi_record = {'doi' => doi}
-      end
-      ### 
-
-
       if !doi_record
-        logger.warn "No metadata found in MongoDB for #{doi}"
         status = 'no_such_doi'
       else       
         logger.debug "Got some DOI metadata from MongoDB: " + doi_record.ai

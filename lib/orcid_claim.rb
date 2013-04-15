@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 require 'nokogiri'
 require 'oauth2'
+require 'log4r'
 
 require_relative 'data'
 
@@ -19,6 +20,10 @@ class OrcidClaim
 
   def self.perform oauth, work
     OrcidClaim.new(oauth, work).perform
+  end
+  
+  def logger
+    Log4r::Logger['test']    
   end
 
   def perform
@@ -43,7 +48,6 @@ class OrcidClaim
       post.body = to_xml
     end
     oauth_expired = !response.success?
-
     !oauth_expired
   end
 
