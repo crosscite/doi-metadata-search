@@ -133,11 +133,14 @@ configure do
   use Rack::Session::Mongo, settings.mongo[settings.mongo_db]
   use Rack::Flash
   use OmniAuth::Builder do
-    provider :orcid, settings.orcid[:client_id], settings.orcid[:client_secret], :client_options => {
+    provider :orcid, settings.orcid[:client_id], settings.orcid[:client_secret],
+    :authorize_params => {
+      :scope => '/orcid-profile/read-limited /orcid-works/create'
+    },
+    :client_options => {
       :site => settings.orcid[:site],
       :authorize_url => settings.orcid[:authorize_url],
       :token_url => settings.orcid[:token_url],
-      :scope => '/orcid-profile/read-limited /orcid-works/create'
     }
   end
   OmniAuth.config.logger = logger
