@@ -9,6 +9,10 @@ class OrcidClaim
 
   @queue = :orcid
 
+  def logger
+    Log4r::Logger['test']    
+  end
+
   def initialize oauth, work
     @oauth = oauth
     @work = work
@@ -25,29 +29,25 @@ class OrcidClaim
   def perform
     oauth_expired = false
 
-    begin
-      puts to_xml
+    logger.info "Performing claim with @oauth and @work:"
+    logger.debug {@oauth.ai}
+    logger.debug {@work.ai}
+    logger.debug "Works XML: " + to_xml
 
-      # Need to check both since @oauth may or may not have been serialized back and forth from JSON.
-      uid = @oauth[:uid] || @oauth['uid']
-      
-      logger.debug "Claiming for user #{uid}"
+    # Need to check both since @oauth may or may not have been serialized back and forth from JSON.
+    uid = @oauth[:uid] || @oauth['uid']
 
-      opts = {:site => settings.orcid[:site]}
-      client = OAuth2::Client.new(settings.orcid[:client_id], settings.orcid[:client_secret], opts)
-      token = OAuth2::AccessToken.new(client, @oauth['credentials']['token'])
-      headers = {'Accept' => 'application/json'}
-      response = token.post("https://api.orcid.org/#{uid}/orcid-works") do |post|
-        post.headers['Content-Type'] = 'application/orcid+xml'
-        post.body = to_xml
-      end
-      logger.debug "An error occured: #{response.body} with status #{response.status}" unless response.success?
-      
-      oauth_expired = !response.success?
-    rescue StandardError => e
-      logger.debug "An error occured: #{e}"
+    opts = {:site => settings.orcid[:site]}
+    logger.info "Connecting to ORCID OAuth API at site #{opts[:site]} to post claim data"
+    
+    client = OAuth2::Client.new(settings.orcid[:client_id], settings.orcid[:client_secret], opts)
+    token = OAuth2::AccessToken.new(client, @oauth['credentials']['token'])
+    headers = {'Accept' => 'application/json'}
+    response = token.post("https://api.orcid.org/#{uid}/orcid-works") do |post|
+      post.headers['Content-Type'] = 'application/orcid+xml'
+      post.body = to_xml
     end
-
+    oauth_expired = !response.success?
     !oauth_expired
   end
 
@@ -65,6 +65,7 @@ class OrcidClaim
   end
 
   def orcid_work_type internal_work_type
+    logger.debug "Inserting type, internal_work_type=" + internal_work_type
     case internal_work_type
     when 'journal_article' then 'journal-article'
     when 'conference_paper' then 'conference-proceedings'
@@ -173,6 +174,7 @@ class OrcidClaim
 
   def insert_citation xml
     conn = Faraday.new
+    logger.info "Retrieving citation for #{@work['doi']}"
     response = conn.get "http://data.datacite.org/#{@work['doi']}", {}, {
       'Accept' => 'application/x-bibtex'
     }
@@ -194,7 +196,7 @@ class OrcidClaim
       :'xmlns' => 'http://www.orcid.org/ns/orcid'
     }
 
-    Nokogiri::XML::Builder.new do |xml|
+    builder = Nokogiri::XML::Builder.new do |xml|
       xml.send(:'orcid-message', root_attributes) {
         xml.send(:'message-version', '1.0.8')
         xml.send(:'orcid-profile') {

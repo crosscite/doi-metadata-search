@@ -24,8 +24,8 @@ function oauthIframeCallback() {
         if (!options || !options.path) {
             throw new Error("options.path must not be empty");
         }
-      var width = 500;
-      var height = 560;
+      var width = 700;
+      var height = 600;
       var left = (screen.width  - width)/2;
       var top = (screen.height - height)/2;
         options = $.extend({
