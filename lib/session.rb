@@ -12,7 +12,7 @@ module Session
 
   def update_profile
     logger.debug "retrieving ORCID profile for #{session[:orcid][:uid]}"
-    response = auth_token.get "#{session[:orcid][:uid]}/orcid-profile", :headers => {'Accept' => 'application/json'}
+    response = auth_token.get "/#{session[:orcid][:uid]}/orcid-profile", :headers => {'Accept' => 'application/json'}
     if response.status == 200
       json = JSON.parse(response.body)
       given_name = json['orcid-profile']['orcid-bio']['personal-details']['given-names']['value']
