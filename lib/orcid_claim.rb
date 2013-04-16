@@ -54,6 +54,7 @@ class OrcidClaim
       return response.status
     else
       raise OAuth2::Error "Bad response from ORCID API: HTTP status=#{response.status}, error message=" + response.body
+    end
   end
 
   def has_path? hsh, path
@@ -125,7 +126,8 @@ class OrcidClaim
   end
 
   def insert_type xml
-    xml.send(:'work-type', orcid_work_type(@work['type']))
+    # xml.send(:'work-type', orcid_work_type(@work['type']))
+    xml.send(:'work-type', orcid_work_type("misc"))
   end
 
   def insert_titles xml

@@ -46,7 +46,6 @@ logger.info "This is a message with level INFO"
 #end
 use Rack::Logger, logger
 
-
 require_relative 'lib/helpers'
 require_relative 'lib/paginate'
 require_relative 'lib/result'
@@ -56,8 +55,6 @@ require_relative 'lib/session'
 require_relative 'lib/data'
 require_relative 'lib/orcid_update'
 require_relative 'lib/orcid_claim'
-
-
 
 MIN_MATCH_SCORE = 2
 MIN_MATCH_TERMS = 3
