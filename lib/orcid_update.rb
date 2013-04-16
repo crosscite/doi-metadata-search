@@ -6,7 +6,6 @@ require 'log4r'
 require_relative 'data'
 
 class OrcidUpdate
-
   @queue = :orcid
 
   def initialize oauth
@@ -25,14 +24,15 @@ class OrcidUpdate
     oauth_expired = false
 
     begin
-
+      load_config
+      
       # Need to check both since @oauth may or may not have been serialized back and forth from JSON.
       uid = @oauth[:uid] || @oauth['uid']
       
       logger.info "Updating user #{uid}"
 
-      opts = {:site => settings.orcid[:site]}
-      client = OAuth2::Client.new(settings.orcid[:client_id], settings.orcid[:client_secret], opts)
+      opts = {:site => @conf['orcid']['site']}
+      client = OAuth2::Client.new(@conf['orcid']['client_id'], @conf['orcid']['client_secret'], opts)
       token = OAuth2::AccessToken.new(client, @oauth['credentials']['token'])
       headers = {'Accept' => 'application/json'}
       response = token.get "https://api.orcid.org/#{uid}/orcid-works", {:headers => headers}
@@ -42,14 +42,14 @@ class OrcidUpdate
         response_json = JSON.parse(response.body)
         parsed_dois = parse_dois(response_json)
         query = {:orcid => uid}
-        orcid_record = settings.orcids.find_one(query)
+        orcid_record = MongoData.coll('orcids').find_one(query)
 
         if orcid_record
           orcid_record['dois'] = parsed_dois
-          settings.orcids.save(orcid_record)
+          MongoData.coll('orcids').save(orcid_record)
         else
           doc = {:orcid => uid, :dois => parsed_dois, :locked_dois => []}
-          settings.orcids.insert(doc)
+          MongoData.coll('orcids').insert(doc)
         end
       else
         oauth_expired = true
@@ -100,6 +100,10 @@ class OrcidUpdate
 
       extracted_dois.compact
     end
+  end
+  
+  def load_config
+    @conf ||= YAML.load_file('config/settings.yml')
   end
 end
 

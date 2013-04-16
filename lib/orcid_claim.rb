@@ -33,14 +33,16 @@ class OrcidClaim
     logger.debug {@oauth.ai}
     logger.debug {@work.ai}
     logger.debug "Works XML: " + to_xml
+    
+    load_config
 
     # Need to check both since @oauth may or may not have been serialized back and forth from JSON.
     uid = @oauth[:uid] || @oauth['uid']
 
-    opts = {:site => settings.orcid[:site]}
+    opts = {:site => @conf['orcid']['site']}
     logger.info "Connecting to ORCID OAuth API at site #{opts[:site]} to post claim data"
     
-    client = OAuth2::Client.new(settings.orcid[:client_id], settings.orcid[:client_secret], opts)
+    client = OAuth2::Client.new( @conf['orcid']['client_id'],  @conf['orcid']['client_secret'], opts)
     token = OAuth2::AccessToken.new(client, @oauth['credentials']['token'])
     headers = {'Accept' => 'application/json'}
     response = token.post("/#{uid}/orcid-works") do |post|
@@ -221,5 +223,9 @@ class OrcidClaim
         }
       }
     end.to_xml
+  end
+  
+  def load_config
+    @conf ||= YAML.load_file('config/settings.yml')
   end
 end

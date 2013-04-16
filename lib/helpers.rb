@@ -5,7 +5,6 @@ require_relative 'session'
 require_relative 'paginate'
 require 'log4r'
 
-
 helpers do
   include Doi
   include Session

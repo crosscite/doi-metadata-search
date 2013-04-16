@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 require 'sinatra'
+require 'sinatra/config_file'
 require 'json'
 require 'rsolr'
 require 'mongo'
@@ -17,8 +18,7 @@ require 'oauth2'
 require 'resque'
 require 'open-uri'
 require 'uri'
-require 'sinatra/config_file'
-require 'ap'
+#require 'ap'
 
 require 'log4r'
 include Log4r
@@ -60,15 +60,13 @@ MIN_MATCH_SCORE = 2
 MIN_MATCH_TERMS = 3
 MAX_MATCH_TEXTS = 1000
 
-
 after do
   response.headers['Access-Control-Allow-Origin'] = '*'
 end
 
-
 configure do
   config_file 'config/settings.yml'
-
+  
   set :logging, Logger::INFO
 
   # Work around rack protection referrer bug
@@ -414,6 +412,8 @@ end
 get '/auth/orcid/import' do
   session[:orcid] = request.env['omniauth.auth']
   Resque.enqueue(OrcidUpdate, session_info)
+  logger.info "Signing in via ORCID"
+  logger.debug "got session info:\n" + session.ai
   update_profile
   redirect to("/?q=#{session[:orcid][:info][:name]}")
 end
