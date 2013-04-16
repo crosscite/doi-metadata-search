@@ -43,12 +43,17 @@ class OrcidClaim
     client = OAuth2::Client.new(settings.orcid[:client_id], settings.orcid[:client_secret], opts)
     token = OAuth2::AccessToken.new(client, @oauth['credentials']['token'])
     headers = {'Accept' => 'application/json'}
-    response = token.post("https://api.orcid.org/#{uid}/orcid-works") do |post|
+    response = token.post("/#{uid}/orcid-works") do |post|
       post.headers['Content-Type'] = 'application/orcid+xml'
       post.body = to_xml
     end
-    oauth_expired = !response.success?
-    !oauth_expired
+    logger.debug "response obj=" + response.ai
+    
+    # Raise firm exception if we do NOT get an a-OK response back from the POST operation
+    if response.status == 201 
+      return response.status
+    else
+      raise OAuth2::Error "Bad response from ORCID API: HTTP status=#{response.status}, error message=" + response.body
   end
 
   def has_path? hsh, path
@@ -65,11 +70,10 @@ class OrcidClaim
   end
 
   def orcid_work_type internal_work_type
-    logger.debug "Inserting type, internal_work_type=" + internal_work_type
     case internal_work_type
     when 'journal_article' then 'journal-article'
     when 'conference_paper' then 'conference-proceedings'
-    else ''
+    else 'other'
     end
   end
 
