@@ -21,6 +21,7 @@ require_relative 'lib/paginate'
 require_relative 'lib/result'
 require_relative 'lib/bootstrap'
 require_relative 'lib/doi'
+require_relative 'lib/orcid'
 require_relative 'lib/session'
 require_relative 'lib/data'
 require_relative 'lib/orcid_update'
@@ -108,6 +109,7 @@ end
 
 helpers do
   include Doi
+  include Orcid
   include Session
 
   def partial template, locals
@@ -177,6 +179,8 @@ helpers do
       "doi:\"#{query_info[:value]}\""
     when :issn
       "issn:\"#{query_info[:value]}\""
+    when :orcid
+      "ORCID:\"#{query_info[:value]}\""
     else
       scrub_query(params['q'], false)
     end
@@ -189,6 +193,8 @@ helpers do
       {:type => :short_doi, :value => to_long_doi(params['q'])}
     elsif issn? params['q']
       {:type => :issn, :value => params['q'].strip.upcase}
+    elsif orcid? params['q']
+      {:type => :orcid, :value => params['q'].strip}
     else
       {:type => :normal}
     end
