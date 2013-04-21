@@ -1,9 +1,9 @@
 orcid:
   client_id: 
   client_secret: 
-  site: 
-  authorize_url: 
-  token_url: 
+  site: http://api.sandbox-1.orcid.org
+  authorize_url: http://sandbox-1.orcid.org/oauth/authorize
+  token_url: http://api.sandbox-1.orcid.org/oauth/token
 solr_url: 
 solr_select:
 contact_url: 
