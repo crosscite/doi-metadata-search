@@ -12,4 +12,7 @@
     - elsif page[:query_type][:type] == :orcid
       Showing results for ORCID matching
       %b= page[:query_type][:value]
+    - elsif page[:query_type][:type] == :urn
+      Showing URN matching
+      %b= page[:query_type][:value]
   

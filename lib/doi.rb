@@ -27,6 +27,10 @@ module Doi
   def orcid? s
     s.strip =~ /\A[0-9]{4}\-[0-9]{4}\-[0-9]{4}\-[0-9]{3}[0-9X]\Z/
   end
+  
+  def urn? s
+    s.strip =~ /\A(urn|URN):[a-zA-Z0-9\.\/:_-]+\Z/
+  end
 
   def to_doi s
     s = s.strip.sub(/\A(https?:\/\/)?dx\.doi\.org\//, '').sub(/\Adoi:/, '')

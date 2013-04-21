@@ -85,6 +85,8 @@ helpers do
       "issn:\"#{query_info[:value]}\""
     when :orcid
       "nameIdentifier:ORCID\:#{query_info[:value]}"
+    when :urn
+      "alternateIdentifier:#{query_info[:value]}"
     else
       scrub_query(params['q'], false)
     end
@@ -99,6 +101,8 @@ helpers do
       {:type => :issn, :value => params['q'].strip.upcase}
     elsif orcid? params['q']
       {:type => :orcid, :value => params['q'].strip}
+    elsif urn? params['q']
+      {:type => :urn, :value => params['q'].strip}
     else
       {:type => :normal}
     end
