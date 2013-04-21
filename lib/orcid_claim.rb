@@ -187,11 +187,13 @@ class OrcidClaim
       'Accept' => 'application/x-bibtex'
     }
 
+    citation = response.body.sub(/^@data{/, '@misc{datacite')
+
     if response.status == 200
       xml.send(:'work-citation') {
         xml.send(:'work-citation-type', 'bibtex')
         xml.citation {
-          xml.cdata(response.body)
+          xml.cdata(citation)
         }
       }
     end
