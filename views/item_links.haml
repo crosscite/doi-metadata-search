@@ -35,21 +35,10 @@
           Other Identifiers
         %ul.dropdown-menu{:role => 'menu'}
           - item.alternate.each do |alternate|
-            - if alternate[:id] == "URN"
-              %li
-                %a.cite-link{:href => 'http://nbn-resolving.org/' + alternate[:text]}
-                  %i.icon-external-link
-                  = alternate[:text]
-            - elsif alternate[:id] == "URL"
-              %li
-                %a.cite-link{:href => alternate[:text]}
-                  %i.icon-external-link
-                  = alternate[:text]
-            - else
-              %li.alternate
-                %strong
-                  = alternate[:id]
-                = alternate[:text]
+            %li.alternate
+              %strong
+                = alternate[:id]
+              = alternate[:text]
 
     - if signed_in?
       - if item.in_user_profile?
