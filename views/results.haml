@@ -11,7 +11,7 @@
       = partial :search_box, :page => page
       .list-info
         .pull-right
-          %h6.number= "#{page[:paginate].total_rows} results - page #{page[:page]}"
+          %h6.number= "#{page[:paginate].total_rows} results - page #{page[:page]} of #{page[:paginate].total_pages}"
         %span
           %h6
             Sort by:
