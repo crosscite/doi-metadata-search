@@ -1,5 +1,8 @@
 .row-centered.break-below
   = partial :search_header, :page => page.merge({:mini_header => true})
+  - unless flash[:error].nil?
+    %div.alert.alert-error
+      = flash[:error]
   
 .spacer  
 .row-centered
