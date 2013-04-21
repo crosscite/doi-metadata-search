@@ -31,6 +31,10 @@ module Doi
   def urn? s
     s.strip =~ /\A(urn|URN):[a-zA-Z0-9\.\/:_-]+\Z/
   end
+  
+  def name? s
+    signed_in? && s.strip.downcase == session[:orcid][:info][:name].downcase
+  end
 
   def to_doi s
     s = s.strip.sub(/\A(https?:\/\/)?dx\.doi\.org\//, '').sub(/\Adoi:/, '')

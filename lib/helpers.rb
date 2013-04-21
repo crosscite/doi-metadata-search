@@ -82,11 +82,13 @@ helpers do
     when :short_doi
       "doi:\"#{query_info[:value]}\""
     when :issn
-      "issn:\"#{query_info[:value]}\""
+      "*:#{query_info[:value]}"
     when :orcid
       "nameIdentifier:ORCID\:#{query_info[:value]}"
     when :urn
       "alternateIdentifier:#{query_info[:value]}"
+    when :name
+      query_info[:value].map { |name| "creator:(#{name.strip})"}.join(" OR ")
     else
       scrub_query(params['q'], false)
     end
@@ -103,6 +105,8 @@ helpers do
       {:type => :orcid, :value => params['q'].strip}
     elsif urn? params['q']
       {:type => :urn, :value => params['q'].strip}
+    elsif name? params['q']
+      {:type => :name, :value => [session[:orcid][:info][:name]] | session[:orcid][:info][:other_names]}
     else
       {:type => :normal}
     end
