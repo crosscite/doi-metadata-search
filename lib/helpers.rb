@@ -107,7 +107,7 @@ helpers do
       {:type => :urn, :value => params['q'].strip}
     elsif name? params['q']
       names = session[:orcid][:info][:other_names].nil? ? [session[:orcid][:info][:name]] : [session[:orcid][:info][:name]] | session[:orcid][:info][:other_names]
-      {:type => :name, :value => names}
+      {:type => :name, :value => names.uniq}
     else
       {:type => :normal}
     end
