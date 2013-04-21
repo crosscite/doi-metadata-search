@@ -12,4 +12,9 @@
     - elsif page[:query_type][:type] == :orcid
       Showing results for ORCID matching
       %b= page[:query_type][:value]
-  
+    - elsif page[:query_type][:type] == :urn
+      Showing URN matching
+      %b= page[:query_type][:value]
+    - elsif page[:query_type][:type] == :name
+      Showing results for names matching
+      = page[:query_type][:value].length <= 1 ? "<b>#{page[:query_type][:value][0]}</b>" : page[:query_type][:value][0..-2].map { |name| "<b>#{name}</b>"}.join(", ") + " or " + "<b>#{page[:query_type][:value][-1]}</b>"

@@ -4,7 +4,6 @@ require 'cgi'
 require 'log4r'
 require_relative 'helpers'
 
-
 class SearchResult
 
   attr_accessor :date, :year, :month, :day
@@ -74,20 +73,16 @@ class SearchResult
 
     # Insert/update record in MongoDB
     # Hack Alert (possibly)
-    settings.dois.update({doi: @doi },  {
-                           doi: @doi,
-                           title: @title,
-                           type: @type,
-                           publication: @publication,
-                           contributor: @authors,
-                           published: {
-                             year: @year,
-                             month: @month,
-                             day: @day
-                           }
-                         }, 
-                         { :upsert => true })
-    
+    MongoData.coll('dois').update({ doi: @doi }, {doi: @doi,
+                                                  title: @title,
+                                                  type: @type,
+                                                  publication: @publication,
+                                                  contributor: @authors,
+                                                  published: {
+                                                    year: @year,
+                                                    month: @month,
+                                                    day: @day } }, 
+                                                { :upsert => true })
   end
 
   def doi
