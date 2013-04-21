@@ -118,7 +118,7 @@ helpers do
   end
 
   def facet_query
-    fq = ['has_metadata:true']
+    fq = ['has_metadata:true','NOT relatedIdentifier:IsPartOf\:*']
     abstract_facet_query.each_pair do |name, values|
       values.each do |value|
         fq << "#{name}: \"#{value}\""
