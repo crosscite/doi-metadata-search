@@ -88,7 +88,7 @@ helpers do
     when :urn
       "alternateIdentifier:#{query_info[:value]}"
     when :name
-      query_info[:value].map { |name| "creator:(#{name.strip})"}.join(" OR ")
+      query_info[:value].map { |name| "creator:\"#{name.strip}\"~4"}.join(" OR ")
     else
       scrub_query(params['q'], false)
     end
@@ -106,7 +106,8 @@ helpers do
     elsif urn? params['q']
       {:type => :urn, :value => params['q'].strip}
     elsif name? params['q']
-      {:type => :name, :value => [session[:orcid][:info][:name]] | session[:orcid][:info][:other_names]}
+      names = session[:orcid][:info][:other_names].nil? ? [session[:orcid][:info][:name]] : [session[:orcid][:info][:name]] | session[:orcid][:info][:other_names]
+      {:type => :name, :value => names.uniq}
     else
       {:type => :normal}
     end
