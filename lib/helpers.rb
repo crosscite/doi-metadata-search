@@ -88,7 +88,7 @@ helpers do
     when :urn
       "alternateIdentifier:#{query_info[:value]}"
     when :name
-      query_info[:value].map { |name| "creator:(#{name.strip})"}.join(" OR ")
+      query_info[:value].map { |name| "creator:\"#{name.strip}\"~4"}.join(" OR ")
     else
       scrub_query(params['q'], false)
     end
