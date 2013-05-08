@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 require 'sinatra'
+require 'newrelic_rpm'
 require 'json'
 require 'rsolr'
 require 'mongo'
@@ -655,9 +656,6 @@ get '/auth/orcid/import' do
   Resque.enqueue(OrcidUpdate, session_info)
   update_profile
   redirect to("/?q=#{session[:orcid][:info][:name]}")
-end
-
-get '/auth/orcid/check' do
 end
 
 # Used to sign out a user but can also be used to mark that a user has seen the
