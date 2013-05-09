@@ -394,13 +394,7 @@
 
 %table  
   - page[:items].each do |item|
-    - case item.type
-    - when 'journal_article'
-      = partial :item_article, :page => page, :item => item
-    - when 'conference_paper'
-      = partial :item_conf_proc, :page => page, :item => item
-    - else
-      = partial :item_unknown, :page => page, :item => item
+    = partial :item, :page => page, :item => item
 
 - page[:items].each do |item|
   - unless item.citations.empty?

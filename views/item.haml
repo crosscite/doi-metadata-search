@@ -1,0 +1,65 @@
+%tr
+  %td.item-data
+    - unless item.title.nil?
+      %p.lead  
+        - if item.open_access?
+          %a.oa-tooltip{:href => "http://www.doaj.org/doaj?func=findJournals&uiLanguage=en&hybrid=&query=#{item.coins_title}", :target => '_blank'}
+            %span.small{:style => 'font-size: 0.8em;'} DOAJ
+        %span.small{:style => 'font-size: 0.7em;'}= item.type    
+        = item.title.first
+        
+      %p.extra
+        %span
+          Published
+          %b
+            - unless item.day.nil?
+              = item.day
+            - unless item.month.nil?
+              = item.month
+            - unless item.year.empty?
+              = item.year.first              
+        - unless item.publication.empty?
+          %span
+            in
+            %b= item.publication.first
+        - unless item.volume.empty?
+          %span
+            volume
+            %b= item.volume.first
+        - unless item.issue.empty?
+          %span
+            issue
+            %b= item.issue.first
+        - if !item.first_page.empty? && !item.last_page.empty?
+          %span
+            on pages
+            %b= item.first_page.first
+            to
+            %b= item.last_page.first
+        - elsif !item.first_page.empty?
+          %span
+            on page
+            %b= item.first_page.first
+
+    - unless item.funder_names.empty?
+      %p.extra
+        %span Research funded by
+        %span= item.funder_names.join('  |  ')
+        
+    - unless item.authors.empty?
+      %p.expand= "Authors: #{item.authors.first}"
+
+    - unless item.editors.empty?
+      %p.expand= "Editors: #{item.editors.first}"
+
+    - unless item.chairs.empty?
+      %p.expand= "Chairs: #{item.chairs.first}"
+
+    - unless item.translators.empty?
+      %p.expand= "Translated: #{item.translators.first}"
+
+    - unless item.contributors.empty?
+      %p.expand= "Contributors: #{item.contributors.first}"
+
+    = partial :item_links, :item => item
+        

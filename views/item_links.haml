@@ -6,9 +6,9 @@
         %i.icon-resize-small
           = item.citations.count
           citations from patents     
-    %a{:href => 'http://dx.doi.org/' + item.doi}
+    %a{:href => item.doi}
       %i.icon-external-link
-      = "dx.doi.org/#{item.doi}"
+      = item.doi
     %span.dropdown
       %a.dropdown-toggle{:role => 'button', 'data-toggle' => 'dropdown', :href => '#'}
         %i.icon-double-angle-down

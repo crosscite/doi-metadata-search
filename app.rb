@@ -81,7 +81,7 @@ configure do
   }
 
   # Set facet fields
-  set :facet_fields, ['type', 'year', 'oa_status', 'publication', 'category']
+  set :facet_fields, ['type', 'year', 'oa_status', 'publication', 'category', 'funder_name', 'source']
 
   # Google analytics event tracking
   set :ga, Gabba::Gabba.new('UA-34536574-2', 'http://search.labs.crossref.org')
@@ -175,13 +175,13 @@ helpers do
     query_info = query_type
     case query_info[:type]
     when :doi
-      "doi:\"#{query_info[:value]}\""
+      "doi:\"http://dx.doi.org/#{query_info[:value]}\""
     when :short_doi
-      "doi:\"#{query_info[:value]}\""
+      "doi:\"http://doi.org/#{query_info[:value]}\""
     when :issn
-      "issn:\"#{query_info[:value]}\""
+      "issn:\"http://id.crossref.org/issn/#{query_info[:value]}\""
     when :orcid
-      "ORCID:\"#{query_info[:value]}\""
+      "orcid:\"http://orcid.org/#{query_info[:value]}\""
     else
       scrub_query(params['q'], false)
     end
@@ -243,6 +243,7 @@ helpers do
       'facet.field' => settings.facet_fields,
       'facet.mincount' => 1,
       :hl => 'true',
+      'hl.preserveMulti' => 'true',
       'hl.fl' => 'hl_*',
       'hl.simple.pre' => '<span class="hl">',
       'hl.simple.post' => '</span>',
@@ -339,19 +340,34 @@ helpers do
   end
 
   def index_stats
-    count_result = settings.solr.get 'solr/labs1/select', :params => {
+    loc = 'solr-web/crmds1/select'
+
+    count_result = settings.solr.get loc, :params => {
       :q => '*:*',
       :rows => 0
     }
-    article_result = settings.solr.get 'solr/labs1/select', :params => {
-      :q => 'type:journal_article',
+    article_result = settings.solr.get loc, :params => {
+      :q => 'type:"Journal Article"',
       :rows => 0
     }
-    proc_result = settings.solr.get 'solr/labs1/select', :params => {
-      :q => 'type:conference_paper',
+    proc_result = settings.solr.get loc, :params => {
+      :q => 'type:"Proceedings Article"',
       :rows => 0
     }
-    oldest_result = settings.solr.get 'solr/labs1/select', :params => {
+    
+    book_types = ['Book', 'Book Series', 'Book Set', 'Reference', 
+                  'Monograph', 'Book Chapter', 'Book Section', 
+                  'Book Part', 'Book Track', 'Reference Book Entry']
+
+    book_result = settings.solr.get loc, :params => {
+      :q => book_types.map {|t| "type:\"#{t}\""}.join(' OR '),
+      :rows => 0
+    }
+    dataset_result = settings.solr.get loc, :params => {
+      :q => 'type:dataset',
+      :rows => 0
+    }
+    oldest_result = settings.solr.get loc, :params => {
       :q => 'year:[1600 TO *]',
       :rows => 1,
       :sort => 'year asc'
@@ -378,13 +394,26 @@ helpers do
     }
 
     stats << {
+      :value => book_result['response']['numFound'],
+      :name => 'Number of indexed book-related DOIs',
+      :number => true
+    }
+
+    stats << {
+      :value => dataset_result['response']['numFound'],
+      :name => 'Number of indexed dataset-related DOIs',
+      :number => true
+    }
+
+    stats << {
       :value => oldest_result['response']['docs'].first['year'],
       :name => 'Oldest indexed publication year'
     }
 
     stats << {
       :value => settings.orcids.count({:query => {:updated => true}}),
-      :name => 'Number of ORCID profiles updated'
+      :name => 'Number of ORCID profiles updated',
+      :number => true
     }
 
     stats

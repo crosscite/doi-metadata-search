@@ -4,10 +4,12 @@ require 'cgi'
 class SearchResult
 
   attr_accessor :year, :month, :day
-  attr_accessor :title, :publication, :authors, :volume, :issue
+  attr_accessor :title, :publication, :volume, :issue
   attr_accessor :first_page, :last_page
   attr_accessor :type, :doi, :score, :normal_score
   attr_accessor :citations, :hashed
+  attr_accessor :funder_names
+  attr_accessor :editors, :translators, :chairs , :contributors, :authors
 
   ENGLISH_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -27,9 +29,14 @@ class SearchResult
 
   def find_value key
     if has_path? @highlights, [@doi, key]
-      @highlights[@doi][key].first
+      hls = @highlights[@doi][key]
+      if hls.empty? || (hls.length == 1 && hls.first == '')
+        []
+      else
+        hls
+      end
     else
-      @doc[key]
+      []
     end
   end
 
@@ -55,8 +62,15 @@ class SearchResult
     @volume = find_value('hl_volume')
     @issue = find_value('hl_issue')
     @authors = find_value('hl_authors')
+    @editors = find_value('hl_editors')
+    @translators = find_value('hl_translators')
+    @chairs = find_value('hl_chairs')
+    @contributors = find_value('hl_contributors')
     @first_page = find_value('hl_first_page')
     @last_page = find_value('hl_last_page')
+    @funder_names = find_value('hl_funder_name')
+
+    puts @funder_names
   end
 
   def doi
