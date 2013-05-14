@@ -81,8 +81,8 @@
             %a{:href => '/help/api'} API
   - else
     .span-header.span3
-      %a.home-link{:href => branding[:logo_link]}
-        %img{:src => branding[:logo_path]}
+      %a.home-link{:href => page[:branding][:logo_link]}
+        %img{:src => page[:branding][:logo_path]}
     .span-header.span9
       .pull-right
         .simple-nav-outer
@@ -94,7 +94,7 @@
             %a{:href => '/help/status'} Status
       %form{:method => 'GET'}
         .search-in-header
-          %input.input.input-xlarge.search-input{:placeholder => 'Search', :style => 'width: 22em; padding-left: 2em;', :name => 'q', :type => 'text', :value => page[:bare_query]}
+          %input.input.input-xlarge.search-input{:placeholder => page[:branding][:search_placeholder], :style => 'width: 22em; padding-left: 2em;', :name => 'q', :type => 'text', :value => page[:bare_query]}
           %i.icon-search      
 %hr
     
