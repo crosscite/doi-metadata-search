@@ -425,9 +425,25 @@ before do
   set_after_signin_redirect(request.fullpath)
 end
 
+get '/fundref' do
+  branding = {
+    :logo_path => '/fundref-logo.png',
+    :logo_link => '/fundref',
+    :examples_layout => :fundref_help_list
+  }
+
+  haml :splash, :locals => {:branding => branding}
+end
+
 get '/' do
+  branding = {
+    :logo_path => '/cms-logo.png',
+    :logo_link => '/fundref',
+    :examples_layout => :crmds_help_list
+  }
+
   if !params.has_key?('q')
-    haml :splash, :locals => {:page => {:query => ""}}
+    haml :splash, :locals => {:page => {:query => ""}, :branding => branding}
   else
     solr_result = select search_query
 
@@ -447,7 +463,7 @@ get '/' do
       :facets => solr_result['facet_counts']['facet_fields']
     }
 
-    haml :results, :locals => {:page => page}
+    haml :results, :locals => {:page => page, :branding => branding}
   end
 end
 

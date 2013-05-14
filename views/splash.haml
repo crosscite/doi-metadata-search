@@ -48,8 +48,8 @@
 .spacer  
 .row-centered
   %h1
-    %img{:src => '/cms-logo.png'}
-  %form{:method => 'GET', :action => '/'}
+    %img{:src => branding[:logo_path]}
+  %form{:method => 'GET'}
     .search
       %input.input.input-xlarge.search-input#search-input{:name => 'q', :type => 'text', :value => page[:query]}
       %i.icon-search
@@ -64,5 +64,5 @@
           %span Help! - Example Queries
       .accordion-body#help-body  
         .accordion-inner
-          = partial :help_list, :page => page
+          = partial branding[:examples_layout], :page => page
 
