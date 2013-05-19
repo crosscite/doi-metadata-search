@@ -58,6 +58,7 @@ configure do
   set :claims, settings.mongo[settings.mongo_db]['claims']
   set :orcids, settings.mongo[settings.mongo_db]['orcids']
   set :links, settings.mongo[settings.mongo_db]['links']
+  set :funders, settings.mongo[settings.mongo_db]['funders']
 
   # Set up for http requests to data.crossref.org and dx.doi.org
   dx_doi_org = Faraday.new(:url => 'http://dx.doi.org') do |c|
@@ -232,6 +233,30 @@ helpers do
     end
   end
 
+  def fundref_query
+    query = {
+      :q => "hl_funder_name:\"#{query_terms}\"",
+      :sort => sort_term,
+      :rows => query_rows,
+      :fl => query_columns,
+      :facet => 'true',
+      'facet.field' => settings.facet_fields,
+      'facet.mincount' => 1,
+      :hl => 'true',
+      'hl.preserveMulti' => 'true',
+      'hl.fl' => 'hl_*',
+      'hl.simple.pre' => '<span class="hl">',
+      'hl.simple.post' => '</span>',
+      'hl.mergeContinuous' => 'true',
+      'hl.snippets' => 10,
+      'hl.fragsize' => 0
+    }
+
+    fq = facet_query
+    query['fq'] = fq unless fq.empty?
+    query
+  end 
+
   def search_query
     fq = facet_query
     query  = {
@@ -254,6 +279,24 @@ helpers do
 
     query['fq'] = fq unless fq.empty?
     query
+  end
+
+  def result_page solr_result
+    {
+      :bare_sort => params['sort'],
+      :bare_query => params['q'],
+      :query_type => query_type,
+      :query => query_terms,
+      :facet_query => abstract_facet_query,
+      :page => query_page,
+      :rows => {
+        :options => settings.typical_rows,
+        :actual => query_rows
+      },
+      :items => search_results(solr_result),
+      :paginate => Paginate.new(query_page, query_rows, solr_result),
+      :facets => solr_result['facet_counts']['facet_fields']
+    }
   end
 
   def facet_link_not field_name, field_value
@@ -319,7 +362,7 @@ helpers do
     end
 
     solr_result['response']['docs'].map do |solr_doc|
-      doi = solr_doc['doiKey']
+      doi = solr_doc['doi_key']
       in_profile = profile_dois.include?(doi)
       claimed = claimed_dois.include?(doi)
       user_state = {
@@ -327,7 +370,7 @@ helpers do
         :claimed => claimed
       }
 
-      SearchResult.new solr_doc, solr_result, citations(solr_doc['doiKey']), user_state
+      SearchResult.new solr_doc, solr_result, citations(solr_doc['doi_key']), user_state
     end
   end
 
@@ -356,8 +399,8 @@ helpers do
     }
     
     book_types = ['Book', 'Book Series', 'Book Set', 'Reference', 
-                  'Monograph', 'Book Chapter', 'Book Section', 
-                  'Book Part', 'Book Track', 'Reference Book Entry']
+                  'Monograph', 'Chapter', 'Section', 
+                  'Part', 'Track', 'Reference Book Entry']
 
     book_result = settings.solr.get loc, :params => {
       :q => book_types.map {|t| "type:\"#{t}\""}.join(' OR '),
@@ -427,13 +470,43 @@ end
 
 get '/fundref' do
   branding = {
-    :logo_path => '/fundref-logo.png',
+    :logo_path => '/frs-logo.png',
     :logo_link => '/fundref',
     :search_placeholder => 'Funder name',
+    :search_typeahead => :funder_name,
     :examples_layout => :fundref_help_list
   }
 
-  haml :splash, :locals => {:page => {:branding => branding}}
+  if !params.has_key?('q')
+    haml :splash, :locals => {:page => {:branding => branding}}
+  else
+    solr_result = select(fundref_query)
+    page = result_page(solr_result)
+
+    haml :results, :locals => {:page => page.merge({:branding => branding})}
+  end
+end
+
+get '/funders' do
+  query_terms = params['q'].downcase.gsub(/[,\.\-\'\"]/, '').split(/\s+/)
+  query = {'$and' => []}
+  query_terms.each do |t|
+    query['$and'] << {'primary_name_tokens' => {'$regex' => "^#{t}"}}
+  end
+
+  results = settings.funders.find(query)
+  datums = results.map do |result|
+    {
+      :id => result['id'],
+      :uri => result['uri'],
+      :value => result['primary_name_display'],
+      :other_names => result['other_names_display'],
+      :tokens => result['primary_name_tokens']
+    }
+  end
+
+  content_type 'application/json'
+  datums.to_json
 end
 
 get '/' do
@@ -441,29 +514,15 @@ get '/' do
     :logo_path => '/cms-logo.png',
     :logo_link => '/',
     :search_placeholder => '',
-    :examples_layout => :crmds_help_list
+    :search_typeahead => false,
+    :examples_layout => :crmds_help_list,
   }
 
   if !params.has_key?('q')
-    haml :splash, :locals => {:page => {:query => "", :branding => branding}}
+    haml :splash, :locals => {:page => {:query => '', :branding => branding}}
   else
-    solr_result = select search_query
-
-    page = {
-      :bare_sort => params['sort'],
-      :bare_query => params['q'],
-      :query_type => query_type,
-      :query => query_terms,
-      :facet_query => abstract_facet_query,
-      :page => query_page,
-      :rows => {
-        :options => settings.typical_rows,
-        :actual => query_rows
-      },
-      :items => search_results(solr_result),
-      :paginate => Paginate.new(query_page, query_rows, solr_result),
-      :facets => solr_result['facet_counts']['facet_fields']
-    }
+    solr_result = select(search_query)
+    page = result_page(solr_result)
 
     haml :results, :locals => {:page => page.merge({:branding => branding})}
   end

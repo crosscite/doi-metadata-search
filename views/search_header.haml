@@ -68,6 +68,19 @@
     line-height: 2em;
   }
 
+- if page[:branding][:search_typeahead] == :funder_name
+  :javascript
+    $(document).ready(function() {
+      $('#search-input').typeahead({
+        name: 'funders',
+        remote: '/funders?q=%QUERY',
+        limit: 8
+      });
+      $('#search-input').bind('typeahead:autocompleted typeahead:selected', function(e, datum) {
+        $('#search-form').submit();
+      });
+    });
+
 .row-fluid
   - if page[:mini_header]
     .span-header
@@ -92,9 +105,9 @@
             %a{:href => '/help/search'} Help  
             %a{:href => '/help/api'} API
             %a{:href => '/help/status'} Status
-      %form{:method => 'GET'}
+      %form#search-form{:method => 'GET'}
         .search-in-header
-          %input.input.input-xlarge.search-input{:placeholder => page[:branding][:search_placeholder], :style => 'width: 22em; padding-left: 2em;', :name => 'q', :type => 'text', :value => page[:bare_query]}
-          %i.icon-search      
+          %input.input.input-xlarge.search-input#search-input{:placeholder => page[:branding][:search_placeholder], :style => 'width: 22em; padding-left: 2em;', :name => 'q', :type => 'text', :value => page[:bare_query]}
+          %i.icon-search   
 %hr
     
