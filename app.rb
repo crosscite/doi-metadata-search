@@ -443,6 +443,10 @@ helpers do
       :q => 'funder_name:[* TO *]',
       :rows => 0
     }
+    orcid_result = settings.solr.get loc, :params => {
+      :q => 'orcid:[* TO *]',
+      :rows => 0
+    }
     
     book_types = ['Book', 'Book Series', 'Book Set', 'Reference', 
                   'Monograph', 'Chapter', 'Section', 
@@ -510,6 +514,12 @@ helpers do
     stats << {
       :value => fundref_result['response']['numFound'],
       :name => 'Number of indexed FundRef-enabled DOIs',
+      :number => true
+    }
+
+    stats << {
+      :value => orcid_result['response']['numFound'],
+      :name => 'Number of indexed DOIs with associated ORCIDs',
       :number => true
     }
 
