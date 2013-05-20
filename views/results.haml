@@ -7,6 +7,7 @@
      margin-bottom: 2em;
      background-color: #f8f8f8;
      padding: 1em;
+     margin-bottom: 1em;
   }
   .gap {
     display: none;
@@ -36,7 +37,6 @@
   .span3
     = partial :facets, :page => page
   .span9
-    = partial :search_box, :page => page
     .list-info
       .pull-right
         %h6.number= "Page #{page[:page]} of #{page[:paginate].total_rows} results"
@@ -49,6 +49,7 @@
           - else
             %b relevance
             %a{:href => "#{search_link({:sort => 'year'})}"} publication year
+    = partial :search_box, :page => page      
     = partial :item_list, :page => page
     .item-paging.bottom
       = will_paginate page[:paginate], :renderer => BootstrapLinkRenderer
