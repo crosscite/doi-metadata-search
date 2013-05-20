@@ -49,7 +49,14 @@
           - else
             %b relevance
             %a{:href => "#{search_link({:sort => 'year'})}"} publication year
-    = partial :search_box, :page => page      
+          - if page[:branding][:downloads].include?(:fundref_csv) && !page[:items].empty?
+            %span{:style => 'margin-left: 10em;'}
+              %a{:href => "/fundref?format=csv&q=#{URI::escape(page[:bare_query])}"}
+                %i.icon-download-alt
+                Download as CSV  
+
+    = partial :search_box, :page => page
+
     = partial :item_list, :page => page
     .item-paging.bottom
       = will_paginate page[:paginate], :renderer => BootstrapLinkRenderer

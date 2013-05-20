@@ -59,8 +59,8 @@ class OrcidClaim
 
   def orcid_work_type internal_work_type
     case internal_work_type
-    when 'journal_article' then 'journal-article'
-    when 'conference_paper' then 'conference-proceedings'
+    when 'Journal Article' then 'journal-article'
+    when 'Conference Paper' then 'conference-proceedings'
     else ''
     end
   end

@@ -17,6 +17,7 @@ require 'oauth2'
 require 'resque'
 require 'open-uri'
 require 'uri'
+require 'csv'
 
 require_relative 'lib/paginate'
 require_relative 'lib/result'
@@ -117,7 +118,8 @@ configure do
     :search_typeahead => false,
     :examples_layout => :crmds_help_list,
     :header_links_profile => :crmds,
-    :facet_fields => settings.crmds_facet_fields
+    :facet_fields => settings.crmds_facet_fields,
+    :downloads => []
   }
 
   set :fundref_branding, {
@@ -128,7 +130,8 @@ configure do
     :search_typeahead => :funder_name,
     :examples_layout => :fundref_help_list,
     :header_links_profile => :fundref,
-    :facet_fields => settings.fundref_facet_fields
+    :facet_fields => settings.fundref_facet_fields,
+    :downloads => [:fundref_csv]
   }
 
   set :show_exceptions, true
@@ -166,6 +169,12 @@ helpers do
   def select query_params
     page = query_page
     rows = query_rows
+    results = settings.solr.paginate page, rows, settings.solr_select, :params => query_params
+  end
+
+  def select_all query_params
+    page = 1
+    rows = 60000000 # TODO collect pages instead
     results = settings.solr.paginate page, rows, settings.solr_select, :params => query_params
   end
 
@@ -527,10 +536,21 @@ end
 get '/fundref' do
   if !params.has_key?('q')
     haml :splash, :locals => {:page => {:branding => settings.fundref_branding}}
+  elsif params.has_key?('format') && params['format'] == 'csv'
+    solr_result = select_all(fundref_query)
+    results = search_results(solr_result)  
+
+    csv_response = CSV.generate do |csv|
+      results.each do |result|
+        csv << [result.doi, result.coins_atitle]
+      end
+    end
+
+    content_type 'text/csv'
+    csv_response
   else
     solr_result = select(fundref_query)
     page = result_page(solr_result)
-
     haml :results, :locals => {:page => page.merge({:branding => settings.fundref_branding})}
   end
 end
