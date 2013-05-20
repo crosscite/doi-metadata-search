@@ -19,7 +19,7 @@
     position: relative;
     margin-top: .5em;
     margin-right: 16em;
-    width: 20em;
+
   }
   .search-in-header i {
     position: absolute;
@@ -32,6 +32,8 @@
     line-height: 1.2em;
     height: 1.4em;
     font-size: 1.6em;
+    width: 22em;
+    padding-left: 2em;
   }
   a.home-link img {
     width: 175px;
@@ -123,7 +125,7 @@
               %a{:href => '/help/api'} API
       %form#search-form{:method => 'GET', :action => page[:branding][:search_action]}
         .search-in-header
-          %input.input.input-xlarge.search-input#search-input{:placeholder => page[:branding][:search_placeholder], :style => 'width: 22em; padding-left: 2em;', :name => 'q', :type => 'text', :value => page[:bare_query]}
+          %input.input.input-xlarge.search-input#search-input{:placeholder => page[:branding][:search_placeholder], :name => 'q', :type => 'text', :value => page[:bare_query]}
           %i.icon-search   
 %hr
     
