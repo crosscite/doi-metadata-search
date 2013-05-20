@@ -114,6 +114,7 @@ configure do
     :search_action => '/',
     :search_typeahead => false,
     :examples_layout => :crmds_help_list,
+    :header_links_profile => :crmds
   }
 
   set :fundref_branding, {
@@ -122,7 +123,8 @@ configure do
     :search_placeholder => 'Funder name',
     :search_action => '/fundref',
     :search_typeahead => :funder_name,
-    :examples_layout => :fundref_help_list
+    :examples_layout => :fundref_help_list,
+    :header_links_profile => :fundref
   }
 
   set :show_exceptions, true

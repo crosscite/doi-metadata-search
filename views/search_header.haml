@@ -89,9 +89,17 @@
           .simple-nav
             .pull-right
               = partial :profile_link, {}
-            %a{:href => '/help/search'} Help  
-            %a{:href => '/help/status'} Status
-            %a{:href => '/help/api'} API
+            - if page[:branding][:header_links_profile] == :fundref
+              %a{:href => '/'} Metadata Search
+            - elsif page[:branding][:header_links_profile] == :crmds
+              %a{:href => '/fundref'} FundRef
+              %a{:href => '/help/status'} Status
+              %a{:href => '/help/api'} API
+              %a{:href => '/help/search'} Help  
+            - else
+              %a{:href => '/help/search'} Help  
+              %a{:href => '/help/status'} Status
+              %a{:href => '/help/api'} API
   - else
     .span-header.span3
       %a.home-link{:href => page[:branding][:logo_link]}
@@ -102,9 +110,17 @@
           .simple-nav.smaller
             .pull-right
               = partial :profile_link, {}
-            %a{:href => '/help/search'} Help  
-            %a{:href => '/help/api'} API
-            %a{:href => '/help/status'} Status
+            - if page[:branding][:header_links_profile] == :fundref
+              %a{:href => '/'} Metadata Search
+            - elsif page[:branding][:header_links_profile] == :crmds
+              %a{:href => '/fundref'} FundRef
+              %a{:href => '/help/status'} Status
+              %a{:href => '/help/api'} API
+              %a{:href => '/help/search'} Help  
+            - else
+              %a{:href => '/help/search'} Help  
+              %a{:href => '/help/status'} Status
+              %a{:href => '/help/api'} API
       %form#search-form{:method => 'GET', :action => page[:branding][:search_action]}
         .search-in-header
           %input.input.input-xlarge.search-input#search-input{:placeholder => page[:branding][:search_placeholder], :style => 'width: 22em; padding-left: 2em;', :name => 'q', :type => 'text', :value => page[:bare_query]}
