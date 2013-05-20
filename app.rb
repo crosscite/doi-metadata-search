@@ -437,8 +437,9 @@ helpers do
       :q => book_types.map {|t| "type:\"#{t}\""}.join(' OR '),
       :rows => 0
     }
+
     dataset_result = settings.solr.get loc, :params => {
-      :q => 'type:Dataset',
+      :q => 'type:Dataset OR type:Component',
       :rows => 0
     }
     oldest_result = settings.solr.get loc, :params => {
@@ -475,7 +476,7 @@ helpers do
 
     stats << {
       :value => dataset_result['response']['numFound'],
-      :name => 'Number of indexed dataset-related DOIs',
+      :name => 'Number of indexed figure, component and dataset DOIs',
       :number => true
     }
 
@@ -717,7 +718,7 @@ get '/dois' do
         :searchTerms => params['q'],
         :startPage => query_page
       },
-      :items => items,
+      :items => items
     }
 
     JSON.pretty_generate(page)

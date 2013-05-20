@@ -90,11 +90,11 @@ class SearchResult
   end
 
   def coins_atitle
-    @doc['hl_title']
+    @doc['hl_title'].first if @doc['hl_title']
   end
 
   def coins_title
-    @doc['hl_publication']
+    @doc['hl_publication'].first if @doc['hl_publication']
   end
 
   def coins_year
@@ -150,10 +150,10 @@ class SearchResult
     }
 
     case @type
-    when 'journal_article'
+    when 'Journal Article'
       props['rft_val_fmt'] = 'info:ofi/fmt:kev:mtx:journal'
       props['rft.genre'] = 'article'
-    when 'conference_paper'
+    when 'Conference Paper'
       props['rft_val_fmt'] = 'info:ofi/fmt:kev:mtx:journal'
       props['rft.genre'] = 'proceeding'
     end
