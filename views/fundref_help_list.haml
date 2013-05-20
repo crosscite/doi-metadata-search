@@ -9,22 +9,15 @@
 :javascript
   $(document).ready(function() {
     $('.example-link').click(function(e) {
-      var $searchInput = $('.search-input');
-      $searchInput.val($(this).text());
-      $searchInput.focus();
-      $('html, body').animate({scrollTop:0});
+      $('.search-input').val($(this).text());
+      $('#search-form').submit();
     });
   });  
   
 %dl.lead
   %dt
-    %a.example-link{:href => '#'} National Science Foundation
+    %a.example-link{:href => '#'} National Institutes of Health
   %dd
     Find all works produced from research that was funded by the National
-    Science Foundation.
-  %dt
-    %a.example-link{:href => '#'} National Institute on Drug Abuse
-  %dd
-    Find all works produced from research that was funded by the National
-    Institute on Drug Abuse.
+    Institutes of Health.
     
