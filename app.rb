@@ -83,6 +83,8 @@ configure do
 
   # Set facet fields
   set :facet_fields, ['type', 'year', 'oa_status', 'publication', 'category', 'funder_name', 'source']
+  set :crmds_facet_fields, ['type', 'year', 'oa_status', 'publication', 'category', 'funder_name', 'source']
+  set :fundref_facet_fields, ['type', 'year', 'oa_status', 'publication', 'category', 'source']
 
   # Google analytics event tracking
   set :ga, Gabba::Gabba.new('UA-34536574-2', 'http://search.labs.crossref.org')
@@ -114,7 +116,8 @@ configure do
     :search_action => '/',
     :search_typeahead => false,
     :examples_layout => :crmds_help_list,
-    :header_links_profile => :crmds
+    :header_links_profile => :crmds,
+    :facet_fields => settings.crmds_facet_fields
   }
 
   set :fundref_branding, {
@@ -124,7 +127,8 @@ configure do
     :search_action => '/fundref',
     :search_typeahead => :funder_name,
     :examples_layout => :fundref_help_list,
-    :header_links_profile => :fundref
+    :header_links_profile => :fundref,
+    :facet_fields => settings.fundref_facet_fields
   }
 
   set :show_exceptions, true

@@ -7,7 +7,9 @@
   margin: 0.1em 0em;
   }
 .facets
-  - page[:facets].each_pair do |name, values|
+  - page[:branding][:facet_fields].each do |n|
+    - name = n.to_s
+    - values = page[:facets][name]
     %h6= name.gsub(/_/, ' ')
     %ul.nav.nav-list
       - values.take(20).each_slice(2) do |value_name, value_count|
