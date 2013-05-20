@@ -21,4 +21,10 @@
       - elsif page[:query_type][:type] == :orcid
         Showing results for ORCID matching
         %b= page[:query_type][:value]
-  
+- elsif page[:branding][:header_links_profile] == :fundref && page[:items].empty?
+  .alert.alert-error.search-box
+    .search-info
+      %h4 No Records
+      There are no FundRef records for
+      %b= page[:bare_query]
+
