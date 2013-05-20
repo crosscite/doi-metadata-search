@@ -488,10 +488,14 @@ get '/fundref' do
 end
 
 get '/funders' do
-  query_terms = params['q'].downcase.gsub(/[,\.\-\'\"]/, '').split(/\s+/)
-  query = {'$and' => []}
-  query_terms.each do |t|
-    query['$and'] << {'primary_name_tokens' => {'$regex' => "^#{t}"}}
+  query = {}
+
+  if params['q']
+    query_terms = params['q'].downcase.gsub(/[,\.\-\'\"]/, '').split(/\s+/)
+    query = {'$and' => []}
+    query_terms.each do |t|
+      query['$and'] << {'primary_name_tokens' => {'$regex' => "^#{t}"}}
+    end
   end
 
   results = settings.funders.find(query)
