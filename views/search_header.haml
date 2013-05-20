@@ -105,7 +105,7 @@
             %a{:href => '/help/search'} Help  
             %a{:href => '/help/api'} API
             %a{:href => '/help/status'} Status
-      %form#search-form{:method => 'GET'}
+      %form#search-form{:method => 'GET', :action => page[:branding][:search_action]}
         .search-in-header
           %input.input.input-xlarge.search-input#search-input{:placeholder => page[:branding][:search_placeholder], :style => 'width: 22em; padding-left: 2em;', :name => 'q', :type => 'text', :value => page[:bare_query]}
           %i.icon-search   

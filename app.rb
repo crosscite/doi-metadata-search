@@ -106,6 +106,25 @@ configure do
     }
   end
 
+  # Branding options
+  set :crmds_branding, {
+    :logo_path => '/cms-logo.png',
+    :logo_link => '/',
+    :search_placeholder => '',
+    :search_action => '/',
+    :search_typeahead => false,
+    :examples_layout => :crmds_help_list,
+  }
+
+  set :fundref_branding, {
+    :logo_path => '/frs-logo.png',
+    :logo_link => '/fundref',
+    :search_placeholder => 'Funder name',
+    :search_action => '/fundref',
+    :search_typeahead => :funder_name,
+    :examples_layout => :fundref_help_list
+  }
+
   set :show_exceptions, true
 end
 
@@ -394,20 +413,32 @@ helpers do
       :rows => 0
     }
     proc_result = settings.solr.get loc, :params => {
-      :q => 'type:"Proceedings Article"',
+      :q => 'type:"Conference Paper"',
+      :rows => 0
+    }
+    standard_result = settings.solr.get loc, :params => {
+      :q => 'type:"Standard"',
+      :rows => 0
+    }
+    report_result = settings.solr.get loc, :params => {
+      :q => 'type:"Report"',
+      :rows => 0
+    }
+    fundref_result = settings.solr.get loc, :params => {
+      :q => 'funder_name:[* TO *]',
       :rows => 0
     }
     
     book_types = ['Book', 'Book Series', 'Book Set', 'Reference', 
                   'Monograph', 'Chapter', 'Section', 
-                  'Part', 'Track', 'Reference Book Entry']
+                  'Part', 'Track', 'Entry']
 
     book_result = settings.solr.get loc, :params => {
       :q => book_types.map {|t| "type:\"#{t}\""}.join(' OR '),
       :rows => 0
     }
     dataset_result = settings.solr.get loc, :params => {
-      :q => 'type:dataset',
+      :q => 'type:Dataset',
       :rows => 0
     }
     oldest_result = settings.solr.get loc, :params => {
@@ -449,6 +480,24 @@ helpers do
     }
 
     stats << {
+      :value => standard_result['response']['numFound'],
+      :name => 'Number of indexed standards',
+      :number => true
+    }
+
+    stats << {
+      :value => report_result['response']['numFound'],
+      :name => 'Number of indexed reports',
+      :number => true
+    }
+
+    stats << {
+      :value => fundref_result['response']['numFound'],
+      :name => 'Number of indexed FundRef-enabled DOIs',
+      :number => true
+    }
+
+    stats << {
       :value => oldest_result['response']['docs'].first['year'],
       :name => 'Oldest indexed publication year'
     }
@@ -469,21 +518,13 @@ before do
 end
 
 get '/fundref' do
-  branding = {
-    :logo_path => '/frs-logo.png',
-    :logo_link => '/fundref',
-    :search_placeholder => 'Funder name',
-    :search_typeahead => :funder_name,
-    :examples_layout => :fundref_help_list
-  }
-
   if !params.has_key?('q')
-    haml :splash, :locals => {:page => {:branding => branding}}
+    haml :splash, :locals => {:page => {:branding => settings.fundref_branding}}
   else
     solr_result = select(fundref_query)
     page = result_page(solr_result)
 
-    haml :results, :locals => {:page => page.merge({:branding => branding})}
+    haml :results, :locals => {:page => page.merge({:branding => settings.fundref_branding})}
   end
 end
 
@@ -514,39 +555,59 @@ get '/funders' do
 end
 
 get '/' do
-  branding = {
-    :logo_path => '/cms-logo.png',
-    :logo_link => '/',
-    :search_placeholder => '',
-    :search_typeahead => false,
-    :examples_layout => :crmds_help_list,
-  }
-
   if !params.has_key?('q')
-    haml :splash, :locals => {:page => {:query => '', :branding => branding}}
+    haml :splash, :locals => {
+      :page => {
+        :query => '', 
+        :branding => settings.crmds_branding
+      }
+    }
   else
     solr_result = select(search_query)
     page = result_page(solr_result)
 
-    haml :results, :locals => {:page => page.merge({:branding => branding})}
+    haml :results, :locals => {
+      :page => page.merge({:branding => settings.crmds_branding})
+    }
   end
 end
 
 get '/help/api' do
-  haml :api_help, :locals => {:page => {:query => ''}}
+  haml :api_help, :locals => {
+    :page => {
+      :query => '', 
+      :branding => settings.crmds_branding
+    }
+  }
 end
 
 get '/help/search' do
-  haml :search_help, :locals => {:page => {:query => ''}}
+  haml :search_help, :locals => {
+    :page => {
+      :query => '',
+      :branding => settings.crmds_branding
+    }
+  }
 end
 
 get '/help/status' do
-  haml :status_help, :locals => {:page => {:query => '', :stats => index_stats}}
+  haml :status_help, :locals => {
+    :page => {
+      :branding => settings.crmds_branding,
+      :query => '', 
+      :stats => index_stats
+    }
+  }
 end
 
 get '/orcid/activity' do
   if signed_in?
-    haml :activity, :locals => {:page => {:query => ''}}
+    haml :activity, :locals => {
+      :page => {
+        :query => '',
+        :branding => settings.crmds_branding
+      }
+    }
   else
     redirect '/'
   end

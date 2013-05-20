@@ -63,7 +63,7 @@
   %h1
     %center
       %img{:src => page[:branding][:logo_path]}
-  %form#search-form{:method => 'GET'}
+  %form#search-form{:method => 'GET', :action => page[:branding][:search_action]}
     .search
       %input.input.input-xlarge.search-input#search-input{:name => 'q', :type => 'text', :value => page[:query], :placeholder => page[:branding][:search_placeholder]}
       %i.icon-search
