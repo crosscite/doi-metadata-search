@@ -94,18 +94,18 @@ class OrcidClaim
 
   def insert_ids xml
      xml.send(:'work-external-identifiers') {
-      insert_id(xml, 'doi', @work['doi'])
-      insert_id(xml, 'isbn', @work['proceedings']['isbn']) if has_path?(@work, ['proceedings', 'isbn'])
-      insert_id(xml, 'issn', @work['journal']['issn']) if has_path?(@work, ['journal', 'issn'])
+      insert_id(xml, 'doi', to_doi(@work['doi_key']))
+      insert_id(xml, 'isbn', @work['isbn'].first) if @work['isbn'] && !@work['isbn'].empty?
+      insert_id(xml, 'issn', @work['issn']) if @work['issn'] && !@work['issn'].empty?
     }
   end
 
   def insert_pub_date xml
-    month_str = pad_date_item(@work['published']['month'])
-    day_str = pad_date_item(@work['published']['day'])
-    if @work['published']
+    month_str = pad_date_item(@work['month'])
+    day_str = pad_date_item(@work['day'])
+    if @work['hl_year']
       xml.send(:'publication-date') {
-        xml.year(@work['published']['year'].to_i.to_s)
+        xml.year(@work['hl_year'].to_i.to_s)
         xml.month(month_str) if month_str
         xml.day(day_str) if day_str
       }
@@ -117,56 +117,30 @@ class OrcidClaim
   end
 
   def insert_titles xml
-    subtitle = case @work['type']
-               when 'journal_article'
-                 if has_path?(@work, ['journal', 'full_title'])
-                   @work['journal']['full_title']
-                 else
-                   nil
-                 end
-               when 'conference_paper'
-                 if has_path?(@work, ['proceedings', 'title'])
-                   @work['proceedings']['title']
-                 else
-                   nil
-                 end
-               else
-                 nil
-               end
+    subtitle = nil
+    if @work['hl_publication'] && !@work['hl_publication'].empty?
+      subtitle = @work['hl_publication'].first 
+    end
 
-    if subtitle || @work['title']
+    if subtitle || @work['hl_title']
       xml.send(:'work-title') {
-        xml.title(@work['title']) if @work['title']
+        xml.title(@work['hl_title'].first) if @work['hl_title'] && !@work['hl_title'].empty?
         xml.subtitle(subtitle) if subtitle
       }
     end
   end
 
   def insert_contributors xml
-    if @work['contributors'] && !@work['contributors'].count.zero?
-      xml.send(:'work-contributors') {
-        @work['contributors'].each do |contributor|
-          full_name = ""
-          full_name = contributor['given_name'] if contributor['given_name']
-          full_name += " " + contributor['surname'] if contributor['surname']
-          if !full_name.empty?
-            xml.contributor {
-              xml.send(:'credit-name', full_name)
-              # TODO Insert contributor roles and sequence once available
-              # in 'dois' mongo collection.
-              #xml.send(:'contributor-attributes') {
-              #  xml.send(:'contributor-role', 'author')
-              #}
-            }
-          end
-        end
-      }
-    end
+    # TODO Insert contributor roles and sequence once available
+    # in 'dois' mongo collection.
+    # xml.send(:'contributor-attributes') {
+    #   xml.send(:'contributor-role', 'author')
+    # }
   end
 
   def insert_citation xml
     conn = Faraday.new
-    response = conn.get "http://data.crossref.org/#{@work['doi']}", {}, {
+    response = conn.get "http://data.crossref.org/#{to_doi(@work['doi_key'])}", {}, {
       'Accept' => 'application/x-bibtex'
     }
 

@@ -662,6 +662,13 @@ get '/orcid/claim' do
       status = 'ok'
     else
       doi_record = settings.dois.find_one({:doi => doi})
+      # TODO escape DOI characters
+      params = {
+        :q => "doi_key:\"#{doi}\"",
+        :fl => '*'
+      }
+      result = settings.solr.paginate 0, 1, settings.solr_select, :params => params
+      doi_record = result['response']['docs'].first
 
       if !doi_record
         status = 'no_such_doi'
