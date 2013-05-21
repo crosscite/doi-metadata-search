@@ -44,19 +44,6 @@ class OrcidClaim
     !oauth_expired
   end
 
-  def has_path? hsh, path
-    loc = hsh
-    path.each do |path_item|
-      if loc[path_item]
-        loc = loc[path_item]
-      else
-        loc = nil
-        break
-      end
-    end
-    loc != nil
-  end
-
   def orcid_work_type internal_work_type
     case internal_work_type
     when 'Journal Article' then 'journal-article'
