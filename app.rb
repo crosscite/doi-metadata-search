@@ -190,7 +190,7 @@ helpers do
     if params.has_key? 'page'
       params['page'].to_i
     else
-      1
+      0
     end
   end
 
@@ -267,12 +267,11 @@ helpers do
     end
   end
 
-  def fundref_query
-    query = {
-      :q => "hl_funder_name:\"#{query_terms}\"",
+  def base_query
+    {
       :sort => sort_term,
-      :rows => query_rows,
       :fl => query_columns,
+      :rows => query_rows,
       :facet => 'true',
       'facet.field' => settings.facet_fields,
       'facet.mincount' => 1,
@@ -285,32 +284,25 @@ helpers do
       'hl.snippets' => 10,
       'hl.fragsize' => 0
     }
+  end
 
+  def fundref_query
+    query = base_query.merge({:q => "hl_funder_name:\"#{query_terms}\""})
     fq = facet_query
     query['fq'] = fq unless fq.empty?
     query
   end 
 
   def search_query
+    query = base_query.merge({:q => query_terms})
     fq = facet_query
-    query  = {
-      :sort => sort_term,
-      :q => query_terms,
-      :fl => query_columns,
-      :rows => query_rows,
-      :facet => 'true',
-      'facet.field' => settings.facet_fields,
-      'facet.mincount' => 1,
-      :hl => 'true',
-      'hl.preserveMulti' => 'true',
-      'hl.fl' => 'hl_*',
-      'hl.simple.pre' => '<span class="hl">',
-      'hl.simple.post' => '</span>',
-      'hl.mergeContinuous' => 'true',
-      'hl.snippets' => 10,
-      'hl.fragsize' => 0
-    }
+    query['fq'] = fq unless fq.empty?
+    query
+  end
 
+  def fundref_doi_query funder_doi
+    query = base_query.merge({:q => "funder_doi:\"#{funder_doi}\""})
+    fq = facet_query
     query['fq'] = fq unless fq.empty?
     query
   end
@@ -565,6 +557,55 @@ get '/fundref' do
   end
 end
 
+get '/funders/:id/dois' do
+  funder_id = params[:id]
+  funder_doi = "http://dx.doi.org/10.13039/#{funder_id}"
+  
+  params = {
+    :fl => 'doi',
+    :q => "funder_doi:\"#{funder_doi}\"",
+    :rows => query_rows
+  }
+  result = settings.solr.paginate(query_rows, query_page, settings.solr_select, :params => params)
+
+  page = {
+    :totalResults => result['response']['numFound'],
+    :startIndex => result['response']['start'],
+    :itemsPerPage => query_rows,
+    :query => {
+      :searchTerms => funder_id,
+      :startPage => query_page
+    },
+    :items => result['response']['docs'].map {|r| r['doi'] }
+  }
+
+  content_type 'application/json'
+  JSON.pretty_generate(page)
+end
+
+get '/funders/dois' do
+  params = {
+    :fl => 'doi',
+    :q => 'funder_name:[* TO *]',
+    :rows => query_rows,
+  }
+  result = settings.solr.paginate(query_rows, query_page, settings.solr_select, :params => params)
+  
+  page = {
+    :totalResults => result['response']['numFound'],
+    :startIndex => result['response']['start'],
+    :itemsPerPage => query_rows,
+    :query => {
+      :searchTerms => '',
+      :startPage => query_page
+    },
+    :items => result['response']['docs'].map {|r| r['doi'] }
+  }
+
+  content_type 'application/json'
+  JSON.pretty_generate(page)
+end
+
 get '/funders' do
   query = {}
 
@@ -588,7 +629,7 @@ get '/funders' do
   end
 
   content_type 'application/json'
-  datums.to_json
+  JSON.pretty_generate(datums)
 end
 
 get '/' do
