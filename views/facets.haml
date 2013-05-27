@@ -3,6 +3,13 @@
     background-color: #f8f8f8;
     padding: 1em;
   }
+  .mini-page-header {
+    padding-bottom: 0.1em;
+    margin-bottom: 0.1em;
+    border-bottom-color: rgb(238, 238, 238);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+  }
   li {
   margin: 0.1em 0em;
   }
@@ -10,7 +17,8 @@
   - page[:branding][:facet_fields].each do |n|
     - name = n.to_s
     - values = page[:facets][name]
-    %h6= name.gsub(/_/, ' ')
+    .mini-page-header
+      %h6= name.gsub(/_/, ' ')
     %ul.nav.nav-list
       - values.take(20).each_slice(2) do |value_name, value_count|
         - unless value_count.zero?
