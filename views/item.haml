@@ -41,10 +41,10 @@
             on page
             %b= item.first_page.first
 
-    - unless item.funder_names.empty?
+    - unless item.grant_info.empty?
       %p.extra
         %span Research funded by
-        %span= item.funder_names.join('  |  ')
+        %span= item.grant_info.join('  |  ')
         
     - unless item.authors.empty?
       %p.expand= "Authors: #{item.authors.first}"

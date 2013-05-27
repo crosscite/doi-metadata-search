@@ -8,7 +8,7 @@ class SearchResult
   attr_accessor :first_page, :last_page
   attr_accessor :type, :doi, :score, :normal_score
   attr_accessor :citations, :hashed
-  attr_accessor :funder_names
+  attr_accessor :funder_names, :grant_info
   attr_accessor :editors, :translators, :chairs , :contributors, :authors
 
   ENGLISH_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -69,8 +69,7 @@ class SearchResult
     @first_page = find_value('hl_first_page')
     @last_page = find_value('hl_last_page')
     @funder_names = find_value('hl_funder_name')
-
-    puts @funder_names
+    @grant_info = find_value('hl_grant')
   end
 
   def doi
