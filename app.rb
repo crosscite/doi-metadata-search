@@ -543,8 +543,15 @@ get '/fundref' do
     results = search_results(solr_result)  
 
     csv_response = CSV.generate do |csv|
+      csv << ['DOI', 'Type', 'Year', 'Title', 'Publication', 'Authors', 'Funders']
       results.each do |result|
-        csv << [result.doi, result.coins_atitle]
+        csv << [result.doi, 
+                result.type, 
+                result.coins_year, 
+                result.coins_atitle, 
+                result.coins_title, 
+                result.coins_authors, 
+                result.plain_funder_names]
       end
     end
 
