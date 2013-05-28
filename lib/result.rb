@@ -69,7 +69,7 @@ class SearchResult
     @first_page = find_value('hl_first_page')
     @last_page = find_value('hl_last_page')
     @funder_names = find_value('hl_funder_name')
-    @plain_funder_names = solr_doc['funder_name'].join(', ')
+    @plain_funder_names = solr_doc['funder_name'].join(', ') if solr_doc['funder_name']
     @grant_info = find_value('hl_grant')
   end
 
@@ -146,7 +146,7 @@ class SearchResult
       'rft.spage' => coins_spage,
       'rft.epage' => coins_lpage,
       'rft.aufirst' => coins_au_first,
-      'rft.aulast' => coins_au_last
+      'rft.aulast' => coins_au_last,
     }
 
     case @type
@@ -156,6 +156,39 @@ class SearchResult
     when 'Conference Paper'
       props['rft_val_fmt'] = 'info:ofi/fmt:kev:mtx:journal'
       props['rft.genre'] = 'proceeding'
+    when 'Proceedings'
+      props['rft_val_fmt'] = 'info:ofi/fmt:kev:mtx:journal'
+      props['rft.genre'] = 'conference'
+    when 'Journal Issue'
+      props['rft_val_fmt'] = 'info:ofi/fmt:kev:mtx:journal'
+      props['rft.genre'] = 'issue'
+    when 'Book'
+      props['rft_val_fmt'] = 'info:ofi/fmt:kev:mtx:book'
+      props['rft.genre'] = 'book'
+    when 'Monograph'
+      props['rft_val_fmt'] = 'info:ofi/fmt:kev:mtx:book'
+      props['rft.genre'] = 'book'
+    when 'Reference'
+      props['rft_val_fmt'] = 'info:ofi/fmt:kev:mtx:book'
+      props['rft.genre'] = 'book'
+    when 'Report'
+      props['rft_val_fmt'] = 'info:ofi/fmt:kev:mtx:book'
+      props['rft.genre'] = 'report'
+    when 'Chapter'
+      props['rft_val_fmt'] = 'info:ofi/fmt:kev:mtx:book'
+      props['rft.genre'] = 'bookitem'
+    when 'Entry'
+      props['rft_val_fmt'] = 'info:ofi/fmt:kev:mtx:book'
+      props['rft.genre'] = 'bookitem'
+    when 'Track'
+      props['rft_val_fmt'] = 'info:ofi/fmt:kev:mtx:book'
+      props['rft.genre'] = 'bookitem'
+    when 'Part'
+      props['rft_val_fmt'] = 'info:ofi/fmt:kev:mtx:book'
+      props['rft.genre'] = 'bookitem'
+    else
+      props['rft_val_fmt'] = 'info:ofi/fmt:kev:mtx:unknown'
+      props['rft.genre'] = 'unknown'
     end
 
     title_parts = []
