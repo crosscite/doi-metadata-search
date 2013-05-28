@@ -173,7 +173,7 @@ helpers do
   end
 
   def select_all query_params
-    page = 1
+    page = 0
     rows = 60000000 # TODO collect pages instead
     results = settings.solr.paginate page, rows, settings.solr_select, :params => query_params
   end
@@ -190,7 +190,7 @@ helpers do
     if params.has_key? 'page'
       params['page'].to_i
     else
-      0
+      1
     end
   end
 
@@ -566,7 +566,7 @@ get '/funders/:id/dois' do
     :q => "funder_doi:\"#{funder_doi}\"",
     :rows => query_rows
   }
-  result = settings.solr.paginate(query_rows, query_page, settings.solr_select, :params => params)
+  result = settings.solr.paginate(query_page, query_rows, settings.solr_select, :params => params)
 
   page = {
     :totalResults => result['response']['numFound'],
@@ -589,7 +589,7 @@ get '/funders/dois' do
     :q => 'funder_name:[* TO *]',
     :rows => query_rows,
   }
-  result = settings.solr.paginate(query_rows, query_page, settings.solr_select, :params => params)
+  result = settings.solr.paginate(query_page, query_rows, settings.solr_select, :params => params)
   
   page = {
     :totalResults => result['response']['numFound'],
