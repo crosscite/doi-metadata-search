@@ -613,7 +613,7 @@ get '/funders' do
     query_terms = params['q'].downcase.gsub(/[,\.\-\'\"]/, '').split(/\s+/)
     query = {'$and' => []}
     query_terms.each do |t|
-      query['$and'] << {'primary_name_tokens' => {'$regex' => "^#{t}"}}
+      query['$and'] << {'name_tokens' => {'$regex' => "^#{t}"}}
     end
   end
 
@@ -624,7 +624,7 @@ get '/funders' do
       :uri => result['uri'],
       :value => result['primary_name_display'],
       :other_names => result['other_names_display'],
-      :tokens => result['primary_name_tokens']
+      :tokens => result['name_tokens']
     }
   end
 
