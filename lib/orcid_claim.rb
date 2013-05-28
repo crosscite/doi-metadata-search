@@ -23,6 +23,8 @@ class OrcidClaim
     begin
       load_config
 
+      puts to_xml
+
       # Need to check both since @oauth may or may not have been serialized back and forth from JSON.
       uid = @oauth[:uid] || @oauth['uid']
 
@@ -46,7 +48,20 @@ class OrcidClaim
     case internal_work_type
     when 'Journal Article' then 'journal-article'
     when 'Conference Paper' then 'conference-proceedings'
-    else ''
+    when 'Dissertation' then 'dissertation'
+    when 'Report' then 'report'
+    when 'Standard' then 'standards'
+    when 'Dataset' then 'database'
+    when 'Book' then 'book'
+    when 'Reference' then 'book'
+    when 'Monograph' then 'book'
+    when 'Chapter' then 'components'
+    when 'Section' then 'components'
+    when 'Part' then 'components'
+    when 'Track' then 'components'
+    when 'Component' then 'components'
+    when 'Entry' then 'components'
+    else 'other'
     end
   end
 
