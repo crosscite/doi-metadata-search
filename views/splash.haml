@@ -48,7 +48,7 @@
       $('#search-input').typeahead({
         name: 'funders',
         remote: '/funders?q=%QUERY',
-        limit: 8
+        limit: 16
       });
       $('#search-input').bind('typeahead:autocompleted typeahead:selected', function(e, datum) {
         $('#search-form').submit();

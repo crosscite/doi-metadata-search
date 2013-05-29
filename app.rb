@@ -703,16 +703,16 @@ get '/orcid/claim' do
 
   if signed_in? && params['doi']
     doi = params['doi']
+    plain_doi = to_doi(doi)
     orcid_record = settings.orcids.find_one({:orcid => sign_in_id})
-    already_added = !orcid_record.nil? && orcid_record['locked_dois'].include?(doi)
+    already_added = !orcid_record.nil? && orcid_record['locked_dois'].include?(plain_doi)
 
     if already_added
       status = 'ok'
     else
-      doi_record = settings.dois.find_one({:doi => doi})
       # TODO escape DOI characters
       params = {
-        :q => "doi_key:\"#{doi}\"",
+        :q => "doi:\"#{doi}\"",
         :fl => '*'
       }
       result = settings.solr.paginate 0, 1, settings.solr_select, :params => params
@@ -724,11 +724,11 @@ get '/orcid/claim' do
         if OrcidClaim.perform(session_info, doi_record)
           if orcid_record
             orcid_record['updated'] = true
-            orcid_record['locked_dois'] << doi
+            orcid_record['locked_dois'] << plain_doi
             orcid_record['locked_dois'].uniq!
             settings.orcids.save(orcid_record)
           else
-            doc = {:orcid => sign_in_id, :dois => [], :locked_dois => [doi]}
+            doc = {:orcid => sign_in_id, :dois => [], :locked_dois => [plain_doi]}
             settings.orcids.insert(doc)
           end
 
@@ -737,7 +737,7 @@ get '/orcid/claim' do
           OrcidUpdate.perform(session_info)
           updated_orcid_record = settings.orcids.find_one({:orcid => sign_in_id})
 
-          if updated_orcid_record['dois'].include?(doi)
+          if updated_orcid_record['dois'].include?(plain_doi)
             status = 'ok_visible'
           else
             status = 'ok'
