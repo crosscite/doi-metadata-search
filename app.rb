@@ -12,7 +12,6 @@ require 'faraday_middleware'
 require 'haml'
 require 'gabba'
 require 'rack-session-mongo'
-require 'omniauth-orcid'
 require 'oauth2'
 require 'resque'
 require 'open-uri'
@@ -28,6 +27,7 @@ require_relative 'lib/session'
 require_relative 'lib/data'
 require_relative 'lib/orcid_update'
 require_relative 'lib/orcid_claim'
+require_relative 'lib/orcid_auth'
 
 MIN_MATCH_SCORE = 2
 MIN_MATCH_TERMS = 3
@@ -631,7 +631,8 @@ get '/funders' do
       :uri => result['uri'],
       :value => result['primary_name_display'],
       :other_names => result['other_names_display'],
-      :tokens => result['name_tokens']
+      :tokens => result['name_tokens'],
+      :subs => result['subs']
     }
   end
 
@@ -915,7 +916,7 @@ get '/auth/orcid/callback' do
 end
 
 get '/auth/orcid/import' do
-  session[:orcid] = request.env['omniauth.auth']
+  make_and_set_token(params[:code], settings.orcid_import_callback)
   Resque.enqueue(OrcidUpdate, session_info)
   update_profile
   redirect to("/?q=#{session[:orcid][:info][:name]}")

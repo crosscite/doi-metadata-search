@@ -50,6 +50,7 @@
         remote: '/funders?q=%QUERY',
         limit: 16
       });
+      
       $('#search-input').bind('typeahead:autocompleted typeahead:selected', function(e, datum) {
         $('#search-form').submit();
       });

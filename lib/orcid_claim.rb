@@ -32,7 +32,7 @@ class OrcidClaim
       client = OAuth2::Client.new(@conf['orcid_client_id'], @conf['orcid_client_secret'], opts)
       token = OAuth2::AccessToken.new(client, @oauth['credentials']['token'])
       headers = {'Accept' => 'application/json'}
-      response = token.post("https://api.orcid.org/#{uid}/orcid-works") do |post|
+      response = token.post("#{@conf['orcid_site']}/#{uid}/orcid-works") do |post|
         post.headers['Content-Type'] = 'application/orcid+xml'
         post.body = to_xml
       end

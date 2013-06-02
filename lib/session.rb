@@ -5,6 +5,17 @@ module Session
     OAuth2::AccessToken.new settings.orcid_oauth, session[:orcid]['credentials']['token']
   end
 
+  def make_and_set_token code, redirect
+    token_obj = settings.orcid_oauth.auth_code.get_token(code, {:redirect_uri => redirect})
+    session[:orcid] = {
+      'credentials' => {
+        'token' => token_obj.token
+      },
+      :uid => token_obj.params['orcid'],
+      :info => {}
+    }
+  end
+
   def update_profile
     response = auth_token.get "#{session[:orcid][:uid]}/orcid-profile", :headers => {'Accept' => 'application/json'}
     if response.status == 200
