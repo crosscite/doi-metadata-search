@@ -911,13 +911,14 @@ end
 get '/auth/orcid/callback' do
   session[:orcid] = request.env['omniauth.auth']
   Resque.enqueue(OrcidUpdate, session_info)
+  
   update_profile
   haml :auth_callback
 end
 
 get '/auth/orcid/import' do
   make_and_set_token(params[:code], settings.orcid_import_callback)
-  Resque.enqueue(OrcidUpdate, session_info)
+  OrcidUpdate.perform(sesssion_info)
   update_profile
   redirect to("/?q=#{session[:orcid][:info][:name]}")
 end
