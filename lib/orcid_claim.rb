@@ -22,12 +22,8 @@ class OrcidClaim
   def perform
     oauth_expired = false
 
-    log_file = File.open('log/orcid-claim.log', 'a')
-
     begin
       load_config
-
-      log_file << to_xml
 
       # Need to check both since @oauth may or may not have been serialized back and forth from JSON.
       uid = @oauth[:uid] || @oauth['uid']
@@ -41,14 +37,10 @@ class OrcidClaim
         post.body = to_xml
       end
       oauth_expired = response.status >= 400
-      
-      log_file << response
     rescue StandardError => e
       oauth_expired = true
-      log_file << e
+      puts e
     end
-
-    log_file.close()
 
     !oauth_expired
   end

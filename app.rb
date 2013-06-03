@@ -757,10 +757,11 @@ end
 get '/orcid/unclaim' do
   if signed_in? && params['doi']
     doi = params['doi']
+    plain_doi = to_doi(doi)
     orcid_record = settings.orcids.find_one({:orcid => sign_in_id})
 
     if orcid_record
-      orcid_record['locked_dois'].delete(doi)
+      orcid_record['locked_dois'].delete(plain_doi)
       settings.orcids.save(orcid_record)
     end
   end
