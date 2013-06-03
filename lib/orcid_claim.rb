@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
 require 'nokogiri'
 require 'oauth2'
+require 'unidecode'
 
 require_relative 'data'
+require_relative 'doi'
 
 class OrcidClaim
+  include Doi
 
   @queue = :orcid
 
@@ -20,10 +23,12 @@ class OrcidClaim
   def perform
     oauth_expired = false
 
+    log_file = File.open('log/orcid-claim.log', 'a')
+
     begin
       load_config
 
-      puts to_xml
+      log_file << to_xml
 
       # Need to check both since @oauth may or may not have been serialized back and forth from JSON.
       uid = @oauth[:uid] || @oauth['uid']
@@ -36,10 +41,15 @@ class OrcidClaim
         post.headers['Content-Type'] = 'application/orcid+xml'
         post.body = to_xml
       end
-      oauth_expired = !response.success?
+      oauth_expired = response.status >= 400
+      
+      log_file << response
     rescue StandardError => e
-      puts e
+      oauth_expired = true
+      log_file << e
     end
+
+    log_file.close()
 
     !oauth_expired
   end
@@ -85,6 +95,14 @@ class OrcidClaim
     result
   end
 
+  def to_issn uri
+    uri.strip.sub(/\Ahttp:\/\/id.crossref.org\/issn\//, '')
+  end
+
+  def to_isbn uri
+    uri.strip.sub(/\Ahttp:\/\/id.crossref.org\/isbn\//, '')
+  end
+
   def insert_id xml, type, value
     xml.send(:'work-external-identifier') {
       xml.send(:'work-external-identifier-type', type)
@@ -95,8 +113,8 @@ class OrcidClaim
   def insert_ids xml
      xml.send(:'work-external-identifiers') {
       insert_id(xml, 'doi', to_doi(@work['doi_key']))
-      insert_id(xml, 'isbn', @work['isbn'].first) if @work['isbn'] && !@work['isbn'].empty?
-      insert_id(xml, 'issn', @work['issn']) if @work['issn'] && !@work['issn'].empty?
+      insert_id(xml, 'isbn', to_isbn(@work['isbn'].first)) if @work['isbn'] && !@work['isbn'].empty?
+      insert_id(xml, 'issn', to_issn(@work['issn'].first)) if @work['issn'] && !@work['issn'].empty?
     }
   end
 
@@ -119,7 +137,7 @@ class OrcidClaim
   def insert_titles xml
     subtitle = nil
     if @work['hl_publication'] && !@work['hl_publication'].empty?
-      subtitle = @work['hl_publication'].first 
+      subtitle = @work['hl_publication'].first
     end
 
     if subtitle || @work['hl_title']
@@ -147,9 +165,7 @@ class OrcidClaim
     if response.status == 200
       xml.send(:'work-citation') {
         xml.send(:'work-citation-type', 'bibtex')
-        xml.citation {
-          xml.cdata(response.body)
-        }
+        xml.citation(response.body.to_ascii)
       }
     end
   end

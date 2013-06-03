@@ -4,8 +4,8 @@
     - unless item.citations.empty?
       %a{:href => "javascript:showCitationsBox('#{item.hashed}');"}
         %i.icon-resize-small
-          = item.citations.count
-          citations from patents     
+        = item.citations.count
+        citations from patents     
     %a{:href => item.doi}
       %i.icon-external-link
       = item.doi

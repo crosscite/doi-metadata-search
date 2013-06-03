@@ -133,8 +133,6 @@ configure do
     :facet_fields => settings.fundref_facet_fields,
     :downloads => [:fundref_csv]
   }
-
-  set :show_exceptions, true
 end
 
 helpers do
@@ -147,6 +145,7 @@ helpers do
   end
 
   def citations doi
+    doi = to_doi(doi)
     citations = settings.citations.find({'to.id' => doi})
 
     citations.map do |citation|
@@ -389,8 +388,9 @@ helpers do
 
     solr_result['response']['docs'].map do |solr_doc|
       doi = solr_doc['doi_key']
-      in_profile = profile_dois.include?(doi)
-      claimed = claimed_dois.include?(doi)
+      plain_doi = to_doi(doi)
+      in_profile = profile_dois.include?(plain_doi)
+      claimed = claimed_dois.include?(plain_doi)
       user_state = {
         :in_profile => in_profile,
         :claimed => claimed
@@ -911,14 +911,13 @@ end
 get '/auth/orcid/callback' do
   session[:orcid] = request.env['omniauth.auth']
   Resque.enqueue(OrcidUpdate, session_info)
-  
   update_profile
   haml :auth_callback
 end
 
 get '/auth/orcid/import' do
   make_and_set_token(params[:code], settings.orcid_import_callback)
-  OrcidUpdate.perform(sesssion_info)
+  OrcidUpdate.perform(session_info)
   update_profile
   redirect to("/?q=#{session[:orcid][:info][:name]}")
 end
