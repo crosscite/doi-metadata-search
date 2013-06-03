@@ -19,7 +19,8 @@ module OmniAuth
         # Trick shamelessly borrowed from the omniauth-facebook gem!
         super.tap do |params|
           %w[scope].each { |v| params[v.to_sym] = request.params[v] if request.params[v] }
-          #params[:scope] ||= DEFAULT_SCOPE # ensure that we're always request *some* default scope
+          params[:scope] ||= '/orcid-profile/read-limited /orcid-works/create' 
+          # ensure that we're always request *some* default scope
         end
       end
     end
