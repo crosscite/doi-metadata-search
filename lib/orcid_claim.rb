@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 require 'nokogiri'
 require 'oauth2'
-require 'unidecode'
 
 require_relative 'data'
 require_relative 'doi'
@@ -165,7 +164,7 @@ class OrcidClaim
     if response.status == 200
       xml.send(:'work-citation') {
         xml.send(:'work-citation-type', 'bibtex')
-        xml.citation(response.body.to_ascii)
+        xml.citation(response.body)
       }
     end
   end
