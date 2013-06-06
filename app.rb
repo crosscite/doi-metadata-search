@@ -357,6 +357,14 @@ helpers do
     "?q=#{id}"
   end
 
+  def fundref_csv_link id, descendants
+    if descendants
+      "?q=#{id}&descendants=true&format=csv"
+    else
+      "?q=#{id}&format=csv"
+    end
+  end
+
   def facet? field_name
     abstract_facet_query.has_key? field_name
   end

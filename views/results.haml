@@ -51,9 +51,9 @@
             %a{:href => "#{search_link({:sort => 'year'})}"} publication year
           - if page[:branding][:downloads].include?(:fundref_csv) && !page[:items].empty?
             %span{:style => 'margin-left: 10em;'}
-              %a{:href => "/fundref?format=csv&q=#{URI::escape(page[:bare_query])}"}
+              %a{:href => fundref_csv_link(page[:funder][:id], page[:funder][:descendants])}
                 %i.icon-download-alt
-                Download as CSV  
+                Download as CSV
 
     = partial :search_box, :page => page
 
