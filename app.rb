@@ -133,6 +133,8 @@ configure do
     :facet_fields => settings.fundref_facet_fields,
     :downloads => [:fundref_csv]
   }
+
+  set :test_prefixes, ["10.5555", "10.55555"]
 end
 
 helpers do
@@ -460,6 +462,11 @@ helpers do
         "http://dx.doi.org/10.13039/#{id}"
       end
     end
+  end
+
+  def test_doi? doi
+    plain_doi = to_doi(doi)
+    plain_doi.start_with?('10.5555') || plain_doi.start_with?('10.55555')
   end
 
   def index_stats

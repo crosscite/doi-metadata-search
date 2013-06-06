@@ -5,12 +5,15 @@
         - if item.open_access?
           %a.oa-tooltip{:href => "http://www.doaj.org/doaj?func=findJournals&uiLanguage=en&hybrid=&query=#{item.coins_title}", :target => '_blank'}
             %span.small{:style => 'font-size: 0.8em;'} DOAJ
-        %span.small{:style => 'font-size: 0.7em;'}= item.type    
         = item.title.first
         
-      %p.extra
+      %p.extra{:style => 'margin-top: .5em;'}
         %span
-          Published
+          - if test_doi?(item.doi)
+            %b{:style => 'color: rgb(207, 121, 121);'} Example Item
+          - else
+            %b= item.type
+          published
           %b
             - unless item.day.nil?
               = item.day
