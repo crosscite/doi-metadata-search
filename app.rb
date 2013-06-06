@@ -286,7 +286,7 @@ helpers do
   end
 
   def fundref_query
-    query = base_query.merge({:q => "hl_funder_name:\"#{query_terms}\""})
+    query = base_query.merge({:q => "funder_doi:\"#{query_terms}\""})
     fq = facet_query
     query['fq'] = fq unless fq.empty?
     query
@@ -299,8 +299,9 @@ helpers do
     query
   end
 
-  def fundref_doi_query funder_doi
-    query = base_query.merge({:q => "funder_doi:\"#{funder_doi}\""})
+  def fundref_doi_query funder_dois
+    q = funder_dois.map {|doi| "funder_doi:\"#{doi}\""}.join(' OR ')
+    query = base_query.merge({:q => q})
     fq = facet_query
     query['fq'] = fq unless fq.empty?
     query
@@ -346,6 +347,14 @@ helpers do
       link += "&#{field}=#{CGI.escape(vals.join(';'))}"
     end
     link
+  end
+
+  def descendants_link id
+    "?q=#{id}&descendants=true"
+  end
+
+  def no_descendants_link id
+    "?q=#{id}"
   end
 
   def facet? field_name
@@ -406,6 +415,43 @@ helpers do
     query_str = query_str.gsub(/AND/, ' ')
     query_str = query_str.gsub(/OR/, ' ')
     query_str.gsub(/NOT/, ' ')
+  end
+
+  def render_top_funder_name m, names
+    top_funder_id = m.keys.first
+    names[top_funder_id]
+  end
+
+  def render_top_funder_id m
+    m.keys.first
+  end
+
+  def rest_funder_nesting m
+    m[m.keys.first]
+  end
+
+  def render_funders m, names, indent, &block
+    ks = m.keys
+    ks.each do |k|
+      if m[k].keys == ['more']
+        block.call(indent + 1, k, names[k], true)
+      else
+        block.call(indent + 1, k, names[k], false)
+        render_funders(m[k], names, indent + 1, &block)
+      end
+    end
+  end
+
+  def funder_doi_from_id id, descendants
+    dois = ["http://dx.doi.org/10.13039/#{id}"]
+
+    if !descendants
+      dois
+    else
+      dois += settings.funders.find_one({:id => id})['descendants'].map do |id|
+        "http://dx.doi.org/10.13039/#{id}"
+      end
+    end
   end
 
   def index_stats
@@ -528,7 +574,6 @@ helpers do
 
     stats
   end
-
 end
 
 before do
@@ -536,10 +581,13 @@ before do
 end
 
 get '/fundref' do
+  descendants = ['true', 't', '1'].include?(params[:descendants])
+
   if !params.has_key?('q')
     haml :splash, :locals => {:page => {:branding => settings.fundref_branding}}
   elsif params.has_key?('format') && params['format'] == 'csv'
-    solr_result = select_all(fundref_query)
+    funder_dois = funder_doi_from_id(params['q'], descendants)
+    solr_result = select_all(fundref_doi_query(funder_dois))
     results = search_results(solr_result)  
 
     csv_response = CSV.generate do |csv|
@@ -558,15 +606,32 @@ get '/fundref' do
     content_type 'text/csv'
     csv_response
   else
-    solr_result = select(fundref_query)
+    funder_dois = funder_doi_from_id(params['q'], descendants)
+    solr_result = select(fundref_doi_query(funder_dois))
+    funder = settings.funders.find_one({:uri => funder_dois.first})
+    funder_info = {
+      :nesting => funder['nesting'], 
+      :nesting_names => funder['nesting_names'],
+      :id => funder['id'],
+      :descendants => descendants
+    }
     page = result_page(solr_result)
-    haml :results, :locals => {:page => page.merge({:branding => settings.fundref_branding})}
+
+    page[:bare_query] = funder['primary_name_display']
+    page[:query] = scrub_query(page[:bare_query], false)
+
+    haml :results, :locals => {
+      :page => {
+        :branding => settings.fundref_branding,
+        :funder => funder_info
+      }.merge(page)
+    }
   end
 end
 
 get '/funders/:id/dois' do
   funder_id = params[:id]
-  funder_doi = "http://dx.doi.org/10.13039/#{funder_id}"
+  funder_doi = funder_doi_from_id(funder_id, false).first
   
   params = {
     :fl => 'doi',
@@ -583,7 +648,7 @@ get '/funders/:id/dois' do
       :searchTerms => funder_id,
       :startPage => query_page
     },
-    :items => result['response']['docs'].map {|r| r['doi'] }
+    :items => result['response']['docs'].map {|r| r['doi']}
   }
 
   content_type 'application/json'
@@ -606,7 +671,7 @@ get '/funders/dois' do
       :searchTerms => '',
       :startPage => query_page
     },
-    :items => result['response']['docs'].map {|r| r['doi'] }
+    :items => result['response']['docs'].map {|r| r['doi']}
   }
 
   content_type 'application/json'
@@ -624,20 +689,29 @@ get '/funders' do
     end
   end
 
-  results = settings.funders.find(query)
-  datums = results.map do |result|
-    {
-      :id => result['id'],
-      :uri => result['uri'],
-      :value => result['primary_name_display'],
-      :other_names => result['other_names_display'],
-      :tokens => result['name_tokens'],
-      :subs => result['subs']
-    }
-  end
+  results = settings.funders.find(query, {:sort => [[:level, 1]]})
 
-  content_type 'application/json'
-  JSON.pretty_generate(datums)
+  if params['format'] == 'csv'
+    content_type 'text/csv'
+    CSV.generate do |csv|
+      results.each do |record|
+        csv << [record['uri'], record['primary_name_display']]
+      end
+    end
+  else
+    datums = results.map do |result|
+      {
+        :id => result['id'],
+        :uri => result['uri'],
+        :value => result['primary_name_display'],
+        :other_names => result['other_names_display'],
+        :tokens => result['name_tokens']
+      }
+    end
+    
+    content_type 'application/json'
+    JSON.pretty_generate(datums)
+  end
 end
 
 get '/' do

@@ -52,9 +52,14 @@
       });
       
       $('#search-input').bind('typeahead:autocompleted typeahead:selected', function(e, datum) {
-        $('#search-form').submit();
+        $('#fundref-input').val(datum['id']);
+        $('#fundref-form').submit();
       });
     });
+
+  .proxy-form{:style => 'display: none;'}
+    %form#fundref-form{:method => 'GET', :action => page[:branding][:search_action]}
+      %input#fundref-input{:name => 'q'}
 
 .row-centered.break-below
   = partial :search_header, :page => page.merge({:mini_header => true})

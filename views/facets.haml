@@ -4,17 +4,82 @@
     padding: 1em;
   }
   .mini-page-header {
-    padding-bottom: 0.1em;
-    margin-bottom: 0.2em;
-    margin-top: 0.2em;
-    border-bottom-color: rgb(238, 238, 238);
+    border-bottom-color: rgb(208, 208, 208);
     border-bottom-style: solid;
     border-bottom-width: 1px;
   }
   li {
   margin: 0.1em 0em;
   }
-.facets
+  .funder {
+    margin-top: .3em;
+    margin-buttom: .3em;
+  }
+  .funder-level1 {
+    margin-top: .5em;
+    margin-bottom: .5em;
+    padding-top: .5em;
+    border-top-color: rgb(208, 208, 208);
+    border-top-style: solid;
+    border-top-width: 1px;
+  }
+  .funder-hl {
+    font-weight: bold;
+  }
+  .funder-header {
+    padding-bottom: 0.1em;
+    margin-bottom: 0.2em;
+    margin-top: 0.2em;
+  }
+  .funder-header h6 {
+    font-size: 1.1em;
+  }
+  .funder-header h6 a {
+    font-size: 1em;
+  }
+  .funder-expand {
+    padding: 0.2em;
+    font-size: 0.9em;
+    color: rgb(164, 164, 164);
+    font-weight: light;
+    margin-left: 0.4em;
+  }
+  .facet-spacer {
+    margin-bottom: 1em;
+  }
+  
+- if page.has_key?(:funder)
+  .facets
+    %ul.nav.nav-list.facet-spacer
+      - if page[:funder][:descendants]
+        %li.active
+          %a{:href => no_descendants_link(page[:funder][:id])}
+            %i.icon-check
+            Show records for descendant funders
+      - else
+        %li
+          %a{:href => descendants_link(page[:funder][:id])}
+            %i.icon-check-empty
+            Show records for descendant funders  
+    .funder-header
+      - top_funder_id = render_top_funder_id(page[:funder][:nesting])
+      - if top_funder_id == page[:funder][:id]
+        %h6= render_top_funder_name(page[:funder][:nesting], page[:funder][:nesting_names])
+      - else
+        %h6
+          %a{:href => "/fundref?q=#{top_funder_id}"}
+            = render_top_funder_name(page[:funder][:nesting], page[:funder][:nesting_names])
+    - render_funders(rest_funder_nesting(page[:funder][:nesting]), page[:funder][:nesting_names], 0) do |indent, id, name, more|
+      .funder{:class => "funder-level#{indent}", :style => "margin-left:#{(indent - 1) * 20}px;"}
+        - if more
+          .pull-right
+            %span.funder-expand +
+        - if id != page[:funder][:id]
+          %a{:href => "/fundref?q=#{id}"}= name
+        - else
+          %span.funder-hl= name
+
+.facets  
   - page[:branding][:facet_fields].each do |n|
     - name = n.to_s
     - values = page[:facets][name]
