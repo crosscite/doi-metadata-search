@@ -55,12 +55,12 @@
         %li.active
           %a{:href => no_descendants_link(page[:funder][:id])}
             %i.icon-check
-            Show records for descendant funders
+            Include funding from sub-organizations
       - else
         %li
           %a{:href => descendants_link(page[:funder][:id])}
             %i.icon-check-empty
-            Show records for descendant funders  
+            Include funding from sub-organizations
     .funder-header
       - top_funder_id = render_top_funder_id(page[:funder][:nesting])
       - if top_funder_id == page[:funder][:id]
