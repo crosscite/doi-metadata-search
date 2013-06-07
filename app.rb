@@ -670,6 +670,33 @@ get '/funders/:id/dois' do
   JSON.pretty_generate(page)
 end
 
+get '/funders/:id/hierarchy' do
+  funder = settings.funders.find_one({:id => params[:id]})
+  page = {
+    :funder => {
+      :nesting => funder['nesting'],
+      :nesting_names => funder['nesting_names'],
+      :id => funder['id'],
+      :uri => funder['uri']
+    }
+  }
+  haml :funder, :locals => {:page => page}
+end
+
+get '/funders/hierarchy' do
+  funder_doi = params['doi']
+  funder = settings.funders.find_one({:uri => funder_doi})
+  page = {
+    :funder => {
+      :nesting => funder['nesting'],
+      :nesting_names => funder['nesting_names'],
+      :id => funder['id'],
+      :uri => funder['uri']
+    }
+  }
+  haml :funder, :locals => {:page => page}
+end
+
 get '/funders/dois' do
   params = {
     :fl => 'doi',
@@ -695,12 +722,15 @@ end
 
 get '/funders' do
   query = {}
+  strict = !['0', 'f', 'false'].include?(params['strict'])
 
   if params['q']
     query_terms = params['q'].downcase.gsub(/[,\.\-\'\"]/, '').split(/\s+/)
-    query = {'$and' => []}
+    operator = '$and' if strict
+    operator = '$or' unless strict
+    query = {operator => []}
     query_terms.each do |t|
-      query['$and'] << {'name_tokens' => {'$regex' => "^#{t}"}}
+      query[operator] << {'name_tokens' => {'$regex' => "^#{t}"}}
     end
   end
 
@@ -722,6 +752,15 @@ get '/funders' do
         :other_names => result['other_names_display'],
         :tokens => result['name_tokens']
       }
+    end
+
+    unless strict
+      # Order the results by the number of words they have matched
+      datums.each do |datum|
+        datum[:count] = (query_terms & datum[:tokens]).count
+      end
+      
+      datums.sort_by! {|datum| datum[:count]}.reverse!
     end
     
     content_type 'application/json'
