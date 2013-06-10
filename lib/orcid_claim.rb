@@ -133,8 +133,12 @@ class OrcidClaim
 
     if subtitle || @work['hl_title']
       xml.send(:'work-title') {
-        xml.title(@work['hl_title'].first) if @work['hl_title'] && !@work['hl_title'].empty?
-        xml.subtitle(subtitle) if subtitle
+        if @work['hl_title'] && !@work['hl_title'].empty?
+          xml.title(without_control(@work['hl_title'].first))
+        end
+        if subtitle
+          xml.subtitle(without_control(subtitle))
+        end
       }
     end
   end
@@ -156,9 +160,19 @@ class OrcidClaim
     if response.status == 200
       xml.send(:'work-citation') {
         xml.send(:'work-citation-type', 'bibtex')
-        xml.citation(response.body)
+        xml.citation(without_control(response.body))
       }
     end
+  end
+
+  def without_control s
+    r = ''
+    s.each_codepoint do |c|
+      if c >= 32
+        r << c
+      end
+    end
+    r
   end
 
   def to_xml
