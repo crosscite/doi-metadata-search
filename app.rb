@@ -723,6 +723,7 @@ end
 get '/funders' do
   query = {}
   strict = !['0', 'f', 'false'].include?(params['strict'])
+  nesting = ['1', 't', 'true'].include?(params['nesting'])
 
   if params['q']
     query_terms = params['q'].downcase.gsub(/[,\.\-\'\"]/, '').split(/\s+/)
@@ -745,13 +746,18 @@ get '/funders' do
     end
   else
     datums = results.map do |result|
-      {
+      base = {
         :id => result['id'],
         :uri => result['uri'],
         :value => result['primary_name_display'],
         :other_names => result['other_names_display'],
-        :tokens => result['name_tokens']
+        :tokens => result['name_tokens'],
       }
+      if nesting
+        base.merge({:nesting => result['nesting'], :nesting_names => result['nesting_names']})
+      else
+        base
+      end
     end
 
     unless strict

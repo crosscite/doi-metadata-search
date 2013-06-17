@@ -48,7 +48,7 @@ class SearchResult
     @score = solr_doc['score']
     @normal_score = ((@score / solr_result['response']['maxScore']) * 100).to_i
     @citations = citations
-    @hashed = solr_doc['mongo_id']
+    @hashed =  Digest::MD5.hexdigest(solr_doc['doi_key'])
     @user_claimed = user_state[:claimed]
     @in_user_profile = user_state[:in_profile]
 
