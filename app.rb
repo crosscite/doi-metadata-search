@@ -492,8 +492,12 @@ helpers do
       :q => 'type:"Report"',
       :rows => 0
     }
+    fundref_id_result = settings.solr.get loc, :params => {
+      :q => 'funder_doi:[* TO *]',
+      :rows => 0
+    }
     fundref_result = settings.solr.get loc, :params => {
-      :q => 'funder_name:[* TO *]',
+      :q => 'funder_name:[* TO *] OR funder_doi:[* TO *]',
       :rows => 0
     }
     orcid_result = settings.solr.get loc, :params => {
@@ -565,8 +569,14 @@ helpers do
     }
 
     stats << {
+      :value => fundref_id_result['response']['numFound'],
+      :name => 'Number of FundRef enabled DOIs with funder IDs',
+      :number => true
+    }
+
+    stats << {
       :value => fundref_result['response']['numFound'],
-      :name => 'Number of indexed FundRef-enabled DOIs',
+      :name => 'Total number of FundRef enabled DOIs',
       :number => true
     }
 
@@ -723,7 +733,7 @@ end
 get '/funders' do
   query = {}
   strict = !['0', 'f', 'false'].include?(params['strict'])
-  nesting = ['1', 't', 'true'].include?(params['nesting'])
+  descendants = ['1', 't', 'true'].include?(params['descendants'])
 
   if params['q']
     query_terms = params['q'].downcase.gsub(/[,\.\-\'\"]/, '').split(/\s+/)
@@ -753,8 +763,8 @@ get '/funders' do
         :other_names => result['other_names_display'],
         :tokens => result['name_tokens'],
       }
-      if nesting
-        base.merge({:nesting => result['nesting'], :nesting_names => result['nesting_names']})
+      if descendants
+        base.merge({:descendants => result['descendants'], :descendant_names => result['descendant_names']})
       else
         base
       end
