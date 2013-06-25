@@ -24,6 +24,10 @@ module Doi
     s.strip.upcase =~ /\A[0-9]{4}\-[0-9]{3}[0-9X]\Z/
   end
 
+  def to_prefix s
+    s.match(/http:\/\/dx\.doi\.org\/(10\.\d+)\/.+/).captures.first
+  end
+    
   def to_doi s
     s = s.strip.sub(/\A(https?:\/\/)?dx\.doi\.org\//, '').sub(/\Adoi:/, '')
     s.sub(/\A(https?:\/\/)?doi.org\//, '')

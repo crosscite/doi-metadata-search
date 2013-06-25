@@ -613,7 +613,7 @@ get '/fundref' do
   elsif params.has_key?('format') && params['format'] == 'csv'
     funder_dois = funder_doi_from_id(params['q'], descendants)
     solr_result = select_all(fundref_doi_query(funder_dois))
-    results = search_results(solr_result)  
+    results = search_results(solr_result)
 
     csv_response = CSV.generate do |csv|
       csv << ['DOI', 'Type', 'Year', 'Title', 'Publication', 'Authors', 'Funders']
@@ -623,7 +623,7 @@ get '/fundref' do
                 result.coins_year, 
                 result.coins_atitle, 
                 result.coins_title, 
-                result.coins_authors, 
+                result.coins_authors,
                 result.plain_funder_names]
       end
     end
@@ -728,6 +728,25 @@ get '/funders/dois' do
 
   content_type 'application/json'
   JSON.pretty_generate(page)
+end
+
+get '/funders/prefixes' do
+  # TODO Set rows to 'all'
+  params = {
+    :fl => 'doi',
+    :q => 'funder_name:[* TO *]',
+    :rows => 10000000,
+  }
+  result = settings.solr.paginate(query_page, query_rows, settings.solr_select, :params => params)
+  dois = result['response']['docs'].map {|r| r['doi']}
+  prefixes = dois.group_by {|doi| to_prefix(doi)}
+  
+  content_type 'text/csv'
+  CSV.generate do |csv|
+    prefixes.each do |prefix, items|
+      csv << [prefix, items.count]
+    end
+  end
 end
 
 get '/funders' do
