@@ -48,6 +48,8 @@
       $('#search-input').typeahead({
         name: 'funders',
         remote: '/funders?q=%QUERY',
+        template: '<p>{{value}} <small>{{country}}</small></p>',
+        engine: Hogan,
         limit: 16
       });
       

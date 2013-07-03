@@ -497,7 +497,7 @@ helpers do
       :rows => 0
     }
     fundref_result = settings.solr.get loc, :params => {
-      :q => 'funder_name:[* TO *] OR funder_doi:[* TO *]',
+      :q => 'funder_name:[* TO *] OR funder_doi:[* TO *] OR hl_grant:[* TO *] -hl_grant:""',
       :rows => 0
     }
     orcid_result = settings.solr.get loc, :params => {
@@ -687,6 +687,7 @@ get '/funders/:id/hierarchy' do
       :nesting => funder['nesting'],
       :nesting_names => funder['nesting_names'],
       :id => funder['id'],
+      :country => funder['country'],
       :uri => funder['uri']
     }
   }
@@ -701,6 +702,7 @@ get '/funders/hierarchy' do
       :nesting => funder['nesting'],
       :nesting_names => funder['nesting_names'],
       :id => funder['id'],
+      :country => funder['country'],
       :uri => funder['uri']
     }
   }
@@ -777,6 +779,7 @@ get '/funders' do
     datums = results.map do |result|
       base = {
         :id => result['id'],
+        :country => result['country'],
         :uri => result['uri'],
         :value => result['primary_name_display'],
         :other_names => result['other_names_display'],
