@@ -742,11 +742,33 @@ get '/funders/prefixes' do
   result = settings.solr.paginate(query_page, query_rows, settings.solr_select, :params => params)
   dois = result['response']['docs'].map {|r| r['doi']}
   prefixes = dois.group_by {|doi| to_prefix(doi)}
-  
+
+  params = {
+    :fl => 'doi',
+    :q => 'funder_doi:[* TO *]',
+    :rows => 10000000,
+  }
+  result = settings.solr.paginate(query_page, query_rows, settings.solr_select, :params => params)
+  dois = result['response']['docs'].map {|r| r['doi']}
+  with_id_prefixes = dois.group_by {|doi| to_prefix(doi)}
+
+  combined = {}
+  prefixes.each_pair do |prefix, items|
+    combined[prefix] = {
+      :total => items.count
+    }
+  end
+
+  with_id_prefixes.each_pair do |prefix, items|
+    combined[prefix] ||= {}
+    combined[prefix][:with_id] = items.count
+  end
+
   content_type 'text/csv'
   CSV.generate do |csv|
-    prefixes.each do |prefix, items|
-      csv << [prefix, items.count]
+    csv << ['Prefix', 'Total DOIs with FundRef information', 'DOIs with FundRef funder IDs']
+    combined.each_pair do |prefix, info|
+      csv << [prefix, (info[:total] or 0), (info[:with_id] or 0)]
     end
   end
 end
