@@ -659,9 +659,10 @@ get '/funders/:id/dois' do
   funder_doi = funder_doi_from_id(funder_id, false).first
   
   params = {
-    :fl => 'doi',
+    :fl => 'doi,deposited_at',
     :q => "funder_doi:\"#{funder_doi}\"",
-    :rows => query_rows
+    :rows => query_rows,
+    :sort => 'deposited_at desc'
   }
   result = settings.solr.paginate(query_page, query_rows, settings.solr_select, :params => params)
 
@@ -673,7 +674,7 @@ get '/funders/:id/dois' do
       :searchTerms => funder_id,
       :startPage => query_page
     },
-    :items => result['response']['docs'].map {|r| r['doi']}
+    :items => result['response']['docs'].map {|r| {:doi => r['doi'], :deposited => r['deposited_at']}}
   }
 
   content_type 'application/json'
@@ -711,9 +712,10 @@ end
 
 get '/funders/dois' do
   params = {
-    :fl => 'doi',
+    :fl => 'doi,deposited_at',
     :q => 'funder_name:[* TO *]',
     :rows => query_rows,
+    :sort => 'deposited_at desc'
   }
   result = settings.solr.paginate(query_page, query_rows, settings.solr_select, :params => params)
   
@@ -725,7 +727,7 @@ get '/funders/dois' do
       :searchTerms => '',
       :startPage => query_page
     },
-    :items => result['response']['docs'].map {|r| r['doi']}
+    :items => result['response']['docs'].map {|r| {:doi => r['doi'], :deposited => r['deposited_at']}}
   }
 
   content_type 'application/json'
@@ -777,7 +779,7 @@ get '/funders' do
   query = {}
   strict = !['0', 'f', 'false'].include?(params['strict'])
   descendants = ['1', 't', 'true'].include?(params['descendants'])
-
+ 
   if params['q']
     query_terms = params['q'].downcase.gsub(/[,\.\-\'\"]/, '').split(/\s+/)
     operator = '$and' if strict
