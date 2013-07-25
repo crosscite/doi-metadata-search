@@ -85,7 +85,7 @@ class SearchResult
   end
 
   def open_access?
-    @doc['oa_status'] == 'Open Access'
+    @doc['oa_status'] == 'DOAJ'
   end
 
   def user_claimed?
