@@ -10,6 +10,7 @@ class SearchResult
   attr_accessor :citations, :hashed
   attr_accessor :funder_names, :grant_info, :plain_funder_names
   attr_accessor :editors, :translators, :chairs , :contributors, :authors
+  attr_accessor :supplementary_ids
 
   ENGLISH_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -71,6 +72,7 @@ class SearchResult
     @funder_names = find_value('hl_funder_name')
     @plain_funder_names = solr_doc['funder_name'].join(', ') if solr_doc['funder_name']
     @grant_info = find_value('hl_grant')
+    @supplementary_ids = find_value('supplementary_ids')
   end
 
   def doi
