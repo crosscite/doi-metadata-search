@@ -419,6 +419,13 @@ helpers do
     end
   end
 
+  def result_publication_date record
+    year = record['hl_year'].to_i
+    month = record['month'] || 1
+    day = record['day'] || 1
+    Date.new(year, month, day)
+  end
+
   def scrub_query query_str, remove_short_operators
     query_str = query_str.gsub(/[{}*\"\.\[\]\(\)\-:;\/%]/, ' ')
     query_str = query_str.gsub(/[\+\!\-]/, ' ') if remove_short_operators
@@ -619,9 +626,9 @@ get '/fundref' do
       csv << ['DOI', 'Type', 'Year', 'Title', 'Publication', 'Authors', 'Funders']
       results.each do |result|
         csv << [result.doi, 
-                result.type, 
+                result.type,
                 result.coins_year, 
-                result.coins_atitle, 
+                result.coins_atitle,
                 result.coins_title, 
                 result.coins_authors,
                 result.plain_funder_names]
@@ -659,12 +666,21 @@ get '/funders/:id/dois' do
   funder_doi = funder_doi_from_id(funder_id, false).first
   
   params = {
-    :fl => 'doi,deposited_at',
+    :fl => 'doi,deposited_at,hl_year,month,day',
     :q => "funder_doi:\"#{funder_doi}\"",
     :rows => query_rows,
     :sort => 'deposited_at desc'
   }
-  result = settings.solr.paginate(query_page, query_rows, settings.solr_select, :params => params)
+  result = settings.solr.paginate(query_page, query_rows, 
+                                  settings.solr_select, :params => params)
+
+  items = result['response']['docs'].map do |r| 
+    {
+      :doi => r['doi'], 
+      :deposited => Date.parse(r['deposited_at']),
+      :published => result_publication_date(r)
+    }
+  end
 
   page = {
     :totalResults => result['response']['numFound'],
@@ -674,7 +690,7 @@ get '/funders/:id/dois' do
       :searchTerms => funder_id,
       :startPage => query_page
     },
-    :items => result['response']['docs'].map {|r| {:doi => r['doi'], :deposited => r['deposited_at']}}
+    :items => items
   }
 
   content_type 'application/json'
@@ -695,27 +711,6 @@ get '/funders/:id/hierarchy' do
   haml :funder, :locals => {:page => page}
 end
 
-get '/funders/:id' do
-  funder = settings.funders.find_one({:id => params[:id]})
-  if funder
-    page = {
-      :id => funder['id'],
-      :country => funder['country'],
-      :uri => funder['uri'],
-      :parent => funder['parent'],
-      :children => funder['children'],
-      :affiliated => funder['affiliated'],
-      :name => funder['primary_name_display'],
-      :alt => funder['other_names_display']
-    }
-    content_type 'application/json'
-    JSON.pretty_generate(page)
-  else
-    status 404
-    'No such funder identifier'
-  end
-end 
-
 get '/funders/hierarchy' do
   funder_doi = params['doi']
   funder = settings.funders.find_one({:uri => funder_doi})
@@ -733,13 +728,22 @@ end
 
 get '/funders/dois' do
   params = {
-    :fl => 'doi,deposited_at',
+    :fl => 'doi,deposited_at,hl_year,month,day',
     :q => 'funder_name:[* TO *]',
     :rows => query_rows,
     :sort => 'deposited_at desc'
   }
-  result = settings.solr.paginate(query_page, query_rows, settings.solr_select, :params => params)
-  
+  result = settings.solr.paginate(query_page, query_rows, 
+                                  settings.solr_select, :params => params)
+
+  items = result['response']['docs'].map do |r| 
+    {
+      :doi => r['doi'], 
+      :deposited => Date.parse(r['deposited_at']),
+      :published => result_publication_date(r)
+    }
+  end
+
   page = {
     :totalResults => result['response']['numFound'],
     :startIndex => result['response']['start'],
@@ -748,7 +752,7 @@ get '/funders/dois' do
       :searchTerms => '',
       :startPage => query_page
     },
-    :items => result['response']['docs'].map {|r| {:doi => r['doi'], :deposited => r['deposited_at']}}
+    :items => items
   }
 
   content_type 'application/json'
@@ -795,6 +799,27 @@ get '/funders/prefixes' do
     end
   end
 end
+
+get '/funders/:id' do
+  funder = settings.funders.find_one({:id => params[:id]})
+  if funder
+    page = {
+      :id => funder['id'],
+      :country => funder['country'],
+      :uri => funder['uri'],
+      :parent => funder['parent'],
+      :children => funder['children'],
+      :affiliated => funder['affiliated'],
+      :name => funder['primary_name_display'],
+      :alt => funder['other_names_display']
+    }
+    content_type 'application/json'
+    JSON.pretty_generate(page)
+  else
+    status 404
+    'No such funder identifier'
+  end
+end 
 
 get '/funders' do
   query = {}
