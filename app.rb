@@ -695,6 +695,27 @@ get '/funders/:id/hierarchy' do
   haml :funder, :locals => {:page => page}
 end
 
+get '/funders/:id' do
+  funder = settings.funders.find_one({:id => params[:id]})
+  if funder
+    page = {
+      :id => funder['id'],
+      :country => funder['country'],
+      :uri => funder['uri'],
+      :parent => funder['parent'],
+      :children => funder['children'],
+      :affiliated => funder['affiliated'],
+      :name => funder['primary_name_display'],
+      :alt => funder['other_names_display']
+    }
+    content_type 'application/json'
+    JSON.pretty_generate(page)
+  else
+    status 404
+    'No such funder identifier'
+  end
+end 
+
 get '/funders/hierarchy' do
   funder_doi = params['doi']
   funder = settings.funders.find_one({:uri => funder_doi})
