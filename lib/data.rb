@@ -11,7 +11,7 @@ module MongoData
   end
 
   def self.conf
-      @conf ||= JSON.parse(File.open('conf/app.json').read)
+    @conf ||= JSON.parse(File.open('conf/app.json').read)
   end
 
 end

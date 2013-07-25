@@ -72,7 +72,12 @@ class SearchResult
     @funder_names = find_value('hl_funder_name')
     @plain_funder_names = solr_doc['funder_name'].join(', ') if solr_doc['funder_name']
     @grant_info = find_value('hl_grant')
-    @supplementary_ids = find_value('supplementary_ids')
+
+    if solr_doc['supplementary_id'].nil?
+      @supplementary_ids = []
+    else
+      @supplementary_ids = solr_doc['supplementary_id'].map {|uri| uri.sub(/http:\/\/id\.crossref\.org\/supp\//, '')}
+    end
   end
 
   def doi
