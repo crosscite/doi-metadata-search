@@ -56,7 +56,7 @@ class SearchResult
     @in_user_profile = user_state[:in_profile]
     @highlights = solr_result['highlighting'] || {}
     @publication = find_value('publisher')
-    @title = solr_doc['title'] ? solr_doc['title'].first : nil
+    @title = solr_doc['title'] ? solr_doc['title'].first.strip : nil
     @date = solr_doc['date'] ? solr_doc['date'].last : nil
     @year = find_value('publicationYear')
     @month = solr_doc['month'] ? ENGLISH_MONTHS[solr_doc['month'] - 1] : (@date && @date.size > 6 ? ENGLISH_MONTHS[@date[5..6].to_i - 1] : nil)
