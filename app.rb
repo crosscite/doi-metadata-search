@@ -613,7 +613,7 @@ before do
 end
 
 get '/fundref' do
-  descendants = ['true', 't', '1'].include?(params[:descendants])
+   descendants = ['true', 't', '1'].include?(params[:descendants])
 
   if !params.has_key?('q')
     haml :splash, :locals => {:page => {:branding => settings.fundref_branding}}
@@ -1079,7 +1079,7 @@ post '/links' do
             :match => false
           }
         else
-          params = {:q => terms, :fl => 'doi,score'}
+          params = base_query.merge({:q => terms, :rows => 1})
           result = settings.solr.paginate 0, 1, settings.solr_select, :params => params
           match = result['response']['docs'].first
 
@@ -1100,6 +1100,7 @@ post '/links' do
               :text => citation_text,
               :match => true,
               :doi => match['doi'],
+              :coins => search_results(result).first.coins,
               :score => match['score'].to_f
             }
           end
@@ -1121,7 +1122,8 @@ post '/links' do
     page = {
       :results => [],
       :query_ok => false,
-      :reason => e.message
+      :reason => e.message,
+      :trace => e.backtrace
     }
   end
 
