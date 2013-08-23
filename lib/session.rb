@@ -17,9 +17,9 @@ module Session
       json = JSON.parse(response.body)
       given_name = json['orcid-profile']['orcid-bio']['personal-details']['given-names']['value']
       family_name = json['orcid-profile']['orcid-bio']['personal-details']['family-name']['value']
-      other_names = json['orcid-profile']['orcid-bio']['personal-details']['other-names']['other-name']
+      other_names = json['orcid-profile']['orcid-bio']['personal-details']['other-names'].nil? ? nil : json['orcid-profile']['orcid-bio']['personal-details']['other-names']['other-name']
       session[:orcid][:info][:name] = "#{given_name} #{family_name}"
-      session[:orcid][:info][:other_names] = other_names.map { |other_name| other_name['value'] }
+      session[:orcid][:info][:other_names] = other_names.nil? ? nil : other_names.map { |other_name| other_name['value'] }
       logger.info "Got updated profile data: " + session[:orcid].ai
     end
   end
