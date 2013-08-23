@@ -4,8 +4,8 @@ cookbook "apt", "1.7.0"
 cookbook "build-essential", "1.3.2"
 cookbook "git", "2.1.4"
   
-cookbook "passenger_apache2", :git => "https://github.com/articlemetrics/passenger_apache2.git", :ref => "articlemetrics"
+cookbook "passenger_apache2", :git => "https://github.com/ORCID-EU-Labs/passenger_apache2.git", :ref => "articlemetrics"
 cookbook "chef-mongodb", :git => "https://github.com/edelight/chef-mongodb.git"
 cookbook "phantomjs", "0.0.10"
 
-cookbook "cr-search", :git => "https://github.com/mfenner/cr-search-cookbook.git"
+cookbook "cr-search", :git => "https://github.com/ORCID-EU-Labs/cr-search-cookbook.git"
