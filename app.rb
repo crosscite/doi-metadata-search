@@ -134,6 +134,18 @@ configure do
     :downloads => [:fundref_csv]
   }
 
+  set :chorus_branding, {
+    :logo_path => '/chorus-logo.png',
+    :logo_link => '/chorus',
+    :search_placeholder => 'Funder name',
+    :search_action => '/chorus',
+    :search_typeahead => :funder_name,
+    :examples_layout => :fundref_help_list,
+    :header_links_profile => :none,
+    :facet_fields => settings.fundref_facet_fields,
+    :downloads => [:fundref_csv]
+  } 
+
   set :test_prefixes, ["10.5555", "10.55555"]
 end
 
@@ -612,53 +624,63 @@ before do
   set_after_signin_redirect(request.fullpath)
 end
 
-get '/fundref' do
-   descendants = ['true', 't', '1'].include?(params[:descendants])
+helpers do
+  def handle_fundref branding
+    descendants = ['true', 't', '1'].include?(params[:descendants])
 
-  if !params.has_key?('q')
-    haml :splash, :locals => {:page => {:branding => settings.fundref_branding}}
-  elsif params.has_key?('format') && params['format'] == 'csv'
-    funder_dois = funder_doi_from_id(params['q'], descendants)
-    solr_result = select_all(fundref_doi_query(funder_dois))
-    results = search_results(solr_result)
+    if !params.has_key?('q')
+      haml :splash, :locals => {:page => {:branding => branding}}
+    elsif params.has_key?('format') && params['format'] == 'csv'
+      funder_dois = funder_doi_from_id(params['q'], descendants)
+      solr_result = select_all(fundref_doi_query(funder_dois))
+      results = search_results(solr_result)
 
-    csv_response = CSV.generate do |csv|
-      csv << ['DOI', 'Type', 'Year', 'Title', 'Publication', 'Authors', 'Funders']
-      results.each do |result|
-        csv << [result.doi, 
-                result.type,
-                result.coins_year, 
-                result.coins_atitle,
-                result.coins_title, 
-                result.coins_authors,
-                result.plain_funder_names]
+      csv_response = CSV.generate do |csv|
+        csv << ['DOI', 'Type', 'Year', 'Title', 'Publication', 'Authors', 'Funders']
+        results.each do |result|
+          csv << [result.doi, 
+                  result.type,
+                  result.coins_year, 
+                  result.coins_atitle,
+                  result.coins_title, 
+                  result.coins_authors,
+                  result.plain_funder_names]
+        end
       end
+
+      content_type 'text/csv'
+      csv_response
+    else
+      funder_dois = funder_doi_from_id(params['q'], descendants)
+      solr_result = select(fundref_doi_query(funder_dois))
+      funder = settings.funders.find_one({:uri => funder_dois.first})
+      funder_info = {
+        :nesting => funder['nesting'], 
+        :nesting_names => funder['nesting_names'],
+        :id => funder['id'],
+        :descendants => descendants
+      }
+      page = result_page(solr_result)
+
+      page[:bare_query] = funder['primary_name_display']
+      page[:query] = scrub_query(page[:bare_query], false)
+
+      haml :results, :locals => {
+        :page => {
+          :branding => branding,
+          :funder => funder_info
+        }.merge(page)
+      }
     end
-
-    content_type 'text/csv'
-    csv_response
-  else
-    funder_dois = funder_doi_from_id(params['q'], descendants)
-    solr_result = select(fundref_doi_query(funder_dois))
-    funder = settings.funders.find_one({:uri => funder_dois.first})
-    funder_info = {
-      :nesting => funder['nesting'], 
-      :nesting_names => funder['nesting_names'],
-      :id => funder['id'],
-      :descendants => descendants
-    }
-    page = result_page(solr_result)
-
-    page[:bare_query] = funder['primary_name_display']
-    page[:query] = scrub_query(page[:bare_query], false)
-
-    haml :results, :locals => {
-      :page => {
-        :branding => settings.fundref_branding,
-        :funder => funder_info
-      }.merge(page)
-    }
   end
+end
+
+get '/fundref' do
+  handle_fundref(settings.fundref_branding)
+end
+
+get '/chorus' do
+  handle_fundref(settings.chorus_branding)
 end
 
 get '/funders/:id/dois' do
