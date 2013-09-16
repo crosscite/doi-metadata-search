@@ -121,7 +121,7 @@ configure do
     :header_links_profile => :crmds,
     :facet_fields => settings.crmds_facet_fields,
     :downloads => [],
-    :show_doaj_label => false
+    :show_doaj_label => true
   }
 
   set :fundref_branding, {
@@ -134,7 +134,7 @@ configure do
     :header_links_profile => :fundref,
     :facet_fields => settings.fundref_facet_fields,
     :downloads => [:fundref_csv],
-    :show_doaj_label => false
+    :show_doaj_label => true
   }
 
   set :chorus_branding, {
