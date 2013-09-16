@@ -86,6 +86,7 @@ configure do
   set :facet_fields, ['type', 'year', 'oa_status', 'publication', 'category', 'funder_name', 'source']
   set :crmds_facet_fields, ['type', 'year', 'oa_status', 'publication', 'category', 'funder_name', 'source']
   set :fundref_facet_fields, ['type', 'year', 'oa_status', 'publication', 'category', 'source']
+  set :chorus_facet_fields, ['category', 'type', 'year', 'publication', 'source']
 
   # Google analytics event tracking
   set :ga, Gabba::Gabba.new('UA-34536574-2', 'http://search.labs.crossref.org')
@@ -119,7 +120,8 @@ configure do
     :examples_layout => :crmds_help_list,
     :header_links_profile => :crmds,
     :facet_fields => settings.crmds_facet_fields,
-    :downloads => []
+    :downloads => [],
+    :show_doaj_label => false
   }
 
   set :fundref_branding, {
@@ -131,7 +133,8 @@ configure do
     :examples_layout => :fundref_help_list,
     :header_links_profile => :fundref,
     :facet_fields => settings.fundref_facet_fields,
-    :downloads => [:fundref_csv]
+    :downloads => [:fundref_csv],
+    :show_doaj_label => false
   }
 
   set :chorus_branding, {
@@ -142,8 +145,9 @@ configure do
     :search_typeahead => :funder_name,
     :examples_layout => :fundref_help_list,
     :header_links_profile => :none,
-    :facet_fields => settings.fundref_facet_fields,
-    :downloads => [:fundref_csv]
+    :facet_fields => settings.chorus_facet_fields,
+    :downloads => [:fundref_csv],
+    :show_doaj_label => false
   } 
 
   set :test_prefixes, ["10.5555", "10.55555"]
