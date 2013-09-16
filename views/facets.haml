@@ -75,7 +75,7 @@
           .pull-right
             %span.funder-expand +
         - if id != page[:funder][:id]
-          %a{:href => "/fundref?q=#{id}"}= name
+          %a{:href => "#{page[:branding][:search_action]}?q=#{id}"}= name
         - else
           %span.funder-hl= name
 
