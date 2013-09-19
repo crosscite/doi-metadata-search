@@ -902,6 +902,26 @@ get '/funders' do
   end
 end
 
+get '/orcids/prefixes' do
+  # TODO Set rows to 'all'
+  params = {
+    :fl => 'doi',
+    :q => 'orcid:[* TO *]',
+    :rows => 10000000,
+  }
+  result = settings.solr.paginate(query_page, query_rows, settings.solr_select, :params => params)
+  dois = result['response']['docs'].map {|r| r['doi']}
+  prefixes = dois.group_by {|doi| to_prefix(doi)}
+
+  content_type 'text/csv'
+  CSV.generate do |csv|
+    csv << ['Prefix', 'Total DOI records with one or more ORCIDs']
+    prefixes.each_pair do |prefix, items|
+      csv << [prefix, items.count]
+    end
+  end
+end
+
 get '/' do
   if !params.has_key?('q')
     haml :splash, :locals => {
