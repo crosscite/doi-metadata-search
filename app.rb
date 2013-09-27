@@ -493,7 +493,7 @@ helpers do
   end
 
   def index_stats
-    loc = 'solr-web/crmds1/select'
+    loc = 'solr/crmds1/select'
 
     count_result = settings.solr.get loc, :params => {
       :q => '*:*',
