@@ -83,10 +83,10 @@ configure do
   }
 
   # Set facet fields
-  set :facet_fields, ['type', 'year', 'oa_status', 'publication', 'category', 'funder_name', 'source']
-  set :crmds_facet_fields, ['type', 'year', 'oa_status', 'publication', 'category', 'funder_name', 'source']
-  set :fundref_facet_fields, ['type', 'year', 'oa_status', 'publication', 'category', 'source']
-  set :chorus_facet_fields, ['category', 'type', 'year', 'publication', 'source']
+  set :facet_fields, ['type', 'year', 'oa_status', 'publication', 'category', 'publisher', 'funder_name', 'source']
+  set :crmds_facet_fields, ['type', 'year', 'oa_status', 'publication', 'category', 'publisher', 'funder_name', 'source']
+  set :fundref_facet_fields, ['type', 'year', 'oa_status', 'publication', 'category', 'publisher', 'source']
+  set :chorus_facet_fields, ['category', 'type', 'year', 'publication', 'publisher', 'source']
 
   # Google analytics event tracking
   set :ga, Gabba::Gabba.new('UA-34536574-2', 'http://search.labs.crossref.org')
@@ -493,7 +493,7 @@ helpers do
   end
 
   def index_stats
-    loc = 'solr/crmds1/select'
+    loc = settings.solr_select
 
     count_result = settings.solr.get loc, :params => {
       :q => '*:*',
