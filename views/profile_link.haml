@@ -1,18 +1,18 @@
-- if signed_in?
+- if signed_in?  
   .dropdown
-    %a.dropdown-toggle{:href => '#', :role => 'button', 'data-toggle' => 'dropdown'}
-      %img{:src => '/images/orcid_24x24.gif'}
+    %img{:src => '/images/orcid_24x24.gif'}
+    %a.dropdown-toggle{:href => '#', :role => 'button', 'data-toggle' => 'dropdown'}      
       = user_display
       %b.caret
     %ul.dropdown-menu{'role' => 'menu', :style => 'right: 0; left: auto;'}
       %li
-        %a{:href => 'https://orcid.org/my-orcid', :target => '_blank'}
+        %a{:href => "#{@conf['orcid']['site']}/#{session[:orcid][:uid]}", :target => '_blank'}
           %i.icon-external-link
-          ORCID profile
+          My ORCID: #{session[:orcid][:uid]}
       %li
         %a{:href => '/orcid/activity'}
-          %i.icon-cog
-          Settings
+          %i.icon-th-list
+          My claimed works in DataCite
       %li.divider
       %li
         %a{:href => "/auth/signout?redirect_uri=#{URI.encode(request.fullpath)}"}

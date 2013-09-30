@@ -21,6 +21,21 @@
             - else
               %b relevance
               %a{:href => "#{search_link({:sort => 'publicationYear'})}"} publication year
+        .pull-left
+          %h6 
+            Filter:
+            - if page[:filter] == 'showUnclaimed'
+              %a{:href => "#{search_link({:filter => 'showAll'})}"} all
+              %b only unclaimed by me
+              %a{:href => "#{search_link({:filter => 'showClaimed'})}"} only claimed by me
+            - elsif page[:filter] == 'showClaimed'
+              %a{:href => "#{search_link({:filter => 'showAll'})}"} all
+              %a{:href => "#{search_link({:filter => 'showUnclaimed'})}"} only claimed by me
+              %b only claimed by me
+            - else
+              %b all
+              %a{:href => "#{search_link({:filter => 'showUnclaimed'})}"} only unclaimed by me
+              %a{:href => "#{search_link({:filter => 'showClaimed'})}"} only claimed by me
       = partial :item_list, :page => page
       .item-paging.bottom
         = will_paginate page[:paginate], :renderer => BootstrapLinkRenderer, :inner_window => 2

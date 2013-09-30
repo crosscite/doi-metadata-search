@@ -4,6 +4,7 @@ require 'oauth2'
 require 'log4r'
 
 require_relative 'data'
+require_relative 'helpers'
 
 class OrcidClaim
 
@@ -227,7 +228,4 @@ class OrcidClaim
     end.to_xml
   end
   
-  def load_config
-    @conf ||= YAML.load_file('config/settings.yml')
-  end
 end

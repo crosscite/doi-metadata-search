@@ -146,6 +146,7 @@ end
 before do
   logger.info "Fetching #{url}, params " + params.inspect
   #logger.debug {"request.env:\n" + request.env.ai}
+  load_config
 end
 
 get '/' do
@@ -161,6 +162,7 @@ get '/' do
       :bare_sort => params['sort'],
       :bare_query => params['q'],
       :query_type => query_type,
+      :bare_filter => params['filter'],
       :query => query_terms,
       :facet_query => abstract_facet_query,
       :page => query_page,
@@ -454,3 +456,8 @@ get '/heartbeat' do
     {:status => :error, :type => e.class, :message => e}.to_json
   end
 end
+
+ def load_config
+    @conf ||= YAML.load_file('config/settings.yml')
+  end
+

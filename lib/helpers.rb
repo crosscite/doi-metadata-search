@@ -15,6 +15,10 @@ helpers do
     Log4r::Logger['test']    
   end
 
+#  def load_config
+#    @conf ||= YAML.load_file('config/settings.yml')
+#  end
+
   def partial template, locals
     haml template.to_sym, :layout => false, :locals => locals
   end
@@ -196,7 +200,7 @@ helpers do
   end
 
   def search_link opts
-    fields = settings.facet_fields + ['q', 'sort']
+    fields = settings.facet_fields + ['q', 'sort'] # 'filter' ??
     parts = fields.map do |field|
       if opts.has_key? field.to_sym
         "#{field}=#{CGI.escape(opts[field.to_sym])}"
