@@ -96,8 +96,9 @@
       .pull-right
         .simple-nav-outer.simple-nav-bump-up
           .simple-nav
-            .pull-right
-              = partial :profile_link, {}
+            - if page[:branding][:show_profile_link]
+              .pull-right
+                = partial :profile_link, {}
             - if page[:branding][:header_links_profile] == :fundref
               %a{:href => '/'} Metadata Search
             - elsif page[:branding][:header_links_profile] == :crmds
@@ -105,6 +106,7 @@
               %a{:href => '/help/status'} Status
               %a{:href => '/help/api'} API
               %a{:href => '/help/search'} Help
+            - elsif page[:branding][:header_links_profile] == :chorus
             - else
               %a{:href => '/help/search'} Help  
               %a{:href => '/help/status'} Status
@@ -117,15 +119,17 @@
       .pull-right
         .simple-nav-outer
           .simple-nav.smaller
-            .pull-right
-              = partial :profile_link, {}
+            - if page[:branding][:show_profile_link]
+              .pull-right
+                = partial :profile_link, {}
             - if page[:branding][:header_links_profile] == :fundref
               %a{:href => '/'} Metadata Search
             - elsif page[:branding][:header_links_profile] == :crmds
               %a{:href => '/fundref'} FundRef
               %a{:href => '/help/status'} Status
               %a{:href => '/help/api'} API
-              %a{:href => '/help/search'} Help  
+              %a{:href => '/help/search'} Help
+            - elsif page[:branding][:header_links_profile] == :chorus
             - else
               %a{:href => '/help/search'} Help  
               %a{:href => '/help/status'} Status

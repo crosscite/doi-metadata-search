@@ -121,7 +121,8 @@ configure do
     :header_links_profile => :crmds,
     :facet_fields => settings.crmds_facet_fields,
     :downloads => [],
-    :show_doaj_label => true
+    :show_doaj_label => true,
+    :show_profile_link => true
   }
 
   set :fundref_branding, {
@@ -134,7 +135,8 @@ configure do
     :header_links_profile => :fundref,
     :facet_fields => settings.fundref_facet_fields,
     :downloads => [:fundref_csv],
-    :show_doaj_label => true
+    :show_doaj_label => true,
+    :show_profile_link => true
   }
 
   set :chorus_branding, {
@@ -144,10 +146,11 @@ configure do
     :search_action => '/chorus',
     :search_typeahead => :funder_name,
     :examples_layout => :fundref_help_list,
-    :header_links_profile => :none,
+    :header_links_profile => :chorus,
     :facet_fields => settings.chorus_facet_fields,
     :downloads => [:fundref_csv],
-    :show_doaj_label => false
+    :show_doaj_label => false,
+    :show_profile_link => false
   } 
 
   set :test_prefixes, ["10.5555", "10.55555"]
