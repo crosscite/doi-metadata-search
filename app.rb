@@ -330,7 +330,7 @@ helpers do
     if prefixes
       prefixes = prefixes.map {|prefix| "http://id.crossref.org/prefix/#{prefix}"}
       prefix_q = prefixes.map {|prefix| "owner_prefix:\"#{prefix}\""}.join(' OR ')
-      query[:q] += " AND (" + prefix_q + ")"
+      query[:q] = "(#{query[:q]}) AND (#{prefix_q})"
     end
       
     fq = facet_query
@@ -660,7 +660,7 @@ helpers do
                   result.type,
                   result.coins_year, 
                   result.coins_atitle,
-                  result.coins_title, 
+                  result.coins_title,
                   result.coins_authors,
                   result.plain_funder_names]
         end
