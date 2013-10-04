@@ -150,7 +150,9 @@ configure do
     :facet_fields => settings.chorus_facet_fields,
     :downloads => [:fundref_csv],
     :show_doaj_label => false,
-    :show_profile_link => false
+    :show_profile_link => false,
+    :filter_prefixes => ['10.1103', '10.1021', '10.1063', '10.1016', 
+                         '10.1093', '10.1109', '10.1002']
   } 
 
   set :test_prefixes, ["10.5555", "10.55555"]
@@ -320,9 +322,17 @@ helpers do
     query
   end
 
-  def fundref_doi_query funder_dois
-    q = funder_dois.map {|doi| "funder_doi:\"#{doi}\""}.join(' OR ')
-    query = base_query.merge({:q => q})
+  def fundref_doi_query funder_dois, prefixes
+
+    doi_q = funder_dois.map {|doi| "funder_doi:\"#{doi}\""}.join(' OR ')
+    query = base_query.merge({:q => doi_q})
+
+    if prefixes
+      prefixes = prefixes.map {|prefix| "http://id.crossref.org/prefix/#{prefix}"}
+      prefix_q = prefixes.map {|prefix| "owner_prefix:\"#{prefix}\""}.join(' OR ')
+      query[:q] += " AND (" + prefix_q + ")"
+    end
+      
     fq = facet_query
     query['fq'] = fq unless fq.empty?
     query
@@ -634,12 +644,13 @@ end
 helpers do
   def handle_fundref branding
     descendants = ['true', 't', '1'].include?(params[:descendants])
+    prefixes = branding[:filter_prefixes]
 
     if !params.has_key?('q')
       haml :splash, :locals => {:page => {:branding => branding}}
     elsif params.has_key?('format') && params['format'] == 'csv'
       funder_dois = funder_doi_from_id(params['q'], descendants)
-      solr_result = select_all(fundref_doi_query(funder_dois))
+      solr_result = select_all(fundref_doi_query(funder_dois, prefixes))
       results = search_results(solr_result)
 
       csv_response = CSV.generate do |csv|
@@ -659,7 +670,7 @@ helpers do
       csv_response
     else
       funder_dois = funder_doi_from_id(params['q'], descendants)
-      solr_result = select(fundref_doi_query(funder_dois))
+      solr_result = select(fundref_doi_query(funder_dois, prefixes))
       funder = settings.funders.find_one({:uri => funder_dois.first})
       funder_info = {
         :nesting => funder['nesting'], 
