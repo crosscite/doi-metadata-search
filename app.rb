@@ -488,15 +488,11 @@ helpers do
     end
   end
 
-  def funder_doi_from_id id, descendants
+  def funder_doi_from_id id
     dois = ["http://dx.doi.org/10.13039/#{id}"]
 
-    if !descendants
-      dois
-    else
-      dois += settings.funders.find_one({:id => id})['descendants'].map do |id|
-        "http://dx.doi.org/10.13039/#{id}"
-      end
+    dois += settings.funders.find_one({:id => id})['descendants'].map do |id|
+      "http://dx.doi.org/10.13039/#{id}"
     end
   end
 
@@ -643,13 +639,12 @@ end
 
 helpers do
   def handle_fundref branding
-    descendants = ['true', 't', '1'].include?(params[:descendants])
     prefixes = branding[:filter_prefixes]
 
     if !params.has_key?('q')
       haml :splash, :locals => {:page => {:branding => branding}}
     elsif params.has_key?('format') && params['format'] == 'csv'
-      funder_dois = funder_doi_from_id(params['q'], descendants)
+      funder_dois = funder_doi_from_id(params['q'])
       solr_result = select_all(fundref_doi_query(funder_dois, prefixes))
       results = search_results(solr_result)
 
@@ -669,7 +664,7 @@ helpers do
       content_type 'text/csv'
       csv_response
     else
-      funder_dois = funder_doi_from_id(params['q'], descendants)
+      funder_dois = funder_doi_from_id(params['q'])
       solr_result = select(fundref_doi_query(funder_dois, prefixes))
       funder = settings.funders.find_one({:uri => funder_dois.first})
       funder_info = {
@@ -703,7 +698,7 @@ end
 
 get '/funders/:id/dois' do
   funder_id = params[:id]
-  funder_doi = funder_doi_from_id(funder_id, false).first
+  funder_doi = funder_doi_from_id(funder_id).first
   
   params = {
     :fl => 'doi,deposited_at,hl_year,month,day',

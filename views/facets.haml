@@ -50,17 +50,6 @@
   
 - if page.has_key?(:funder)
   .facets
-    %ul.nav.nav-list.facet-spacer
-      - if page[:funder][:descendants]
-        %li.active
-          %a{:href => no_descendants_link(page[:funder][:id])}
-            %i.icon-check
-            Include funding from sub-organizations
-      - else
-        %li
-          %a{:href => descendants_link(page[:funder][:id])}
-            %i.icon-check-empty
-            Include funding from sub-organizations
     .funder-header
       - top_funder_id = render_top_funder_id(page[:funder][:nesting])
       - if top_funder_id == page[:funder][:id]
