@@ -51,7 +51,7 @@
             %a{:href => "#{search_link({:sort => 'year'})}"} publication year
           - if page[:branding][:downloads].include?(:fundref_csv) && !page[:items].empty?
             %span{:style => 'margin-left: 10em;'}
-              %a{:href => fundref_csv_link(page[:funder][:id], page[:funder][:descendants])}
+              %a{:href => fundref_csv_link(page[:funder][:id])}
                 %i.icon-download-alt
                 Download as CSV
 

@@ -380,20 +380,8 @@ helpers do
     link
   end
 
-  def descendants_link id
-    "?q=#{id}&descendants=true"
-  end
-
-  def no_descendants_link id
-    "?q=#{id}"
-  end
-
-  def fundref_csv_link id, descendants
-    if descendants
-      "?q=#{id}&descendants=true&format=csv"
-    else
-      "?q=#{id}&format=csv"
-    end
+  def fundref_csv_link id
+    "?q=#{id}&format=csv"
   end
 
   def facet? field_name
@@ -670,8 +658,7 @@ helpers do
       funder_info = {
         :nesting => funder['nesting'], 
         :nesting_names => funder['nesting_names'],
-        :id => funder['id'],
-        :descendants => descendants
+        :id => funder['id']
       }
       page = result_page(solr_result)
 
