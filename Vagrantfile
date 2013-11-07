@@ -6,9 +6,40 @@ Vagrant.configure("2") do |config|
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
 
+  # Install latest version of Chef
+  config.omnibus.chef_version = :latest
+
+
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "precise64"
-  
+
+  # The url from where the 'config.vm.box' box will be fetched if it
+  # doesn't already exist on the user's system.
+  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+
+  # Override settings for specific providers
+
+  # Local virtual machine via Virtualbox
+  config.vm.provider :virtualbox do |vb, override|
+    vb.name = "cr-search"
+    vb.customize ["modifyvm", :id, "--memory", "2048"]
+  end
+
+  # Remote virtual machine in the AWS cloud
+  config.vm.provider :aws do |aws, override|
+    aws.access_key_id = "EXAMPLE"
+    aws.secret_access_key = "EXAMPLE"
+    aws.keypair_name = "EXAMPLE"
+    aws.security_groups = ["EXAMPLE"]
+    aws.instance_type = "m1.small"
+    aws.ami = "ami-e7582d8e"
+    aws.tags = { Name: 'Vagrant cr-search' }
+
+    override.ssh.username = "ubuntu"
+    override.ssh.private_key_path = "EXAMPLE"
+  end
+
+ 
   config.vm.hostname = "cr-search"
 
   # Assign this VM to a host-only network IP, allowing you to access it
