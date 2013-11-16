@@ -316,7 +316,9 @@ helpers do
   end 
 
   def search_query
-    query = base_query.merge({:q => query_terms})
+    terms = query_terms || '*:*'
+    query = base_query.merge({:q => terms})
+
     fq = facet_query
     query['fq'] = fq unless fq.empty?
     query
@@ -444,11 +446,17 @@ helpers do
   end
 
   def scrub_query query_str, remove_short_operators
-    query_str = query_str.gsub(/[{}*\"\.\[\]\(\)\-:;\/%]/, ' ')
+    query_str = query_str.gsub(/[{}*\"\.\[\]\(\)\-:;\/%^]/, ' ')
     query_str = query_str.gsub(/[\+\!\-]/, ' ') if remove_short_operators
     query_str = query_str.gsub(/AND/, ' ')
     query_str = query_str.gsub(/OR/, ' ')
     query_str.gsub(/NOT/, ' ')
+
+    if query_str.empty?
+      nil
+    else
+      query_str
+    end
   end
 
   def render_top_funder_name m, names
@@ -919,7 +927,7 @@ get '/orcids/prefixes' do
 end
 
 get '/' do
-  if !params.has_key?('q')
+  if !params.has_key?('q') || !query_terms
     haml :splash, :locals => {
       :page => {
         :query => '', 
