@@ -452,7 +452,7 @@ helpers do
     query_str = query_str.gsub(/OR/, ' ')
     query_str.gsub(/NOT/, ' ')
 
-    if query_str.empty?
+    if query_str.strip.empty?
       nil
     else
       query_str
