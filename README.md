@@ -21,12 +21,15 @@ The application is a fork of the Sinatra-based [CrossRef Metadata Search](http:/
 - Ruby (any version)
 - git
 - Vagrant: http://www.vagrantup.com
+- Chef: http://www.opscode.com/chef/
 - Virtualbox: https://www.virtualbox.org
 
 ### Installation
 
     git clone https://github.com/ORCID-EU-Labs/cr-search.git
     cd cr-search
+    gem install librarian-chef
+    librarian-chef install
     vagrant up
 
 If you don't see any errors from the last command, you now have a properly

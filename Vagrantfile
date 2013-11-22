@@ -11,11 +11,11 @@ Vagrant.configure("2") do |config|
 
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "precise64"
+  config.vm.box = "dummy"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+#  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
   # Override settings for specific providers
 
@@ -27,16 +27,17 @@ Vagrant.configure("2") do |config|
 
   # Remote virtual machine in the AWS cloud
   config.vm.provider :aws do |aws, override|
-    aws.access_key_id = "EXAMPLE"
-    aws.secret_access_key = "EXAMPLE"
-    aws.keypair_name = "EXAMPLE"
-    aws.security_groups = ["EXAMPLE"]
+    aws.access_key_id = "[REDACTED]"
+    aws.secret_access_key = "[REDACTED]"
+    aws.region = "eu-west-1"
+    aws.keypair_name = "vagrant"
+    #aws.security_groups = ["sg-36e6f354"]
     aws.instance_type = "m1.small"
-    aws.ami = "ami-e7582d8e"
+    aws.ami = "ami-8e987ef9"
     aws.tags = { Name: 'Vagrant cr-search' }
 
     override.ssh.username = "ubuntu"
-    override.ssh.private_key_path = "EXAMPLE"
+    override.ssh.private_key_path = "~/.ssh/aws/vagrant.pem"
   end
 
  
@@ -57,6 +58,7 @@ Vagrant.configure("2") do |config|
   # some recipes and/or roles.
   #
   config.vm.provision :chef_solo do |chef|
+    chef.log_level = :debug
     dna = JSON.parse(File.read("node.json"))
     dna.delete("run_list").each do |recipe|
       chef.add_recipe(recipe)
