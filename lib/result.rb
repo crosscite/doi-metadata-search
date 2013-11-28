@@ -42,7 +42,7 @@ class SearchResult
 
   # Merge a mongo DOI record with solr highlight information.
   def initialize solr_doc, solr_result, citations, user_state
-    logger.debug "initializing a mongo DOI record for work type #{solr_doc['resourceTypeGeneral'] || "unknown"}, DOI name #{solr_doc['doi']}"
+    logger.debug "initializing a mongo DOI record for work w/ resourceTypeGeneral='#{solr_doc['resourceTypeGeneral'] || "unknown"}', resourceType='#{solr_doc['resourceType'] || "unknown"}', DOI name #{solr_doc['doi']}"
     logger.debug {solr_doc.ai}
     @doi = solr_doc['doi']
     @type = solr_doc['resourceTypeGeneral'] || "unknown"

@@ -6,7 +6,56 @@ require 'log4r'
 require_relative 'data'
 require_relative 'helpers'
 
+
 class OrcidClaim
+
+  # Map of DataCite work types to the CASRAI-based ORCID type vocabulary  
+  TYPE_OF_WORK____ENABLE_LATER = {
+
+    'Audiovisual' => 'other',
+    'Collection' => 'other',
+    'Dataset' =>  'data-set',
+    'Event' => 'other',
+    'Image' => 'other',
+    'InteractiveResource' => 'online-resource',
+    'Model' => 'other',
+    'PhysicalObject' => 'other' ,
+    'Service' => 'other',
+    'Software' => 'other',
+    'Sound' => 'other',
+    'Text' => 'other',
+    'Workflow' => 'other',
+    'Other' => 'other',
+
+    # Legacy types from older schema versions
+    'Film' => 'other',
+    # pick up other legacy types as we go along
+  }
+
+ # Map of DataCite work types to ORCID original BibTeX-based type vocabulary. Derived from
+  # DataCite metadata schema v3 (current as of Nov 2013)
+  
+  TYPE_OF_WORK = {
+    'Audiovisual' => 'audiovisual',
+    'Collection' => 'other',
+    'Dataset' =>  'other',
+    'Event' => 'other',
+    'Image' => 'digital-image',
+    'InteractiveResource' => 'other',
+    'Model' => 'other',
+    'PhysicalObject' => 'other' ,
+    'Service' => 'other',
+    'Software' => 'software',
+    'Sound' => 'other',
+    'Text' => 'other',
+    'Workflow' => 'other',
+    'Other' => 'other',
+
+    # Legacy types from older schema versions
+    'Film' => 'film-movie',
+    
+  }
+
 
   @queue = :orcid
 
@@ -74,11 +123,9 @@ class OrcidClaim
   end
 
   def orcid_work_type internal_work_type
-    case internal_work_type
-    when 'journal_article' then 'journal-article'
-    when 'conference_paper' then 'conference-proceedings'
-    else 'other'
-    end
+    type = TYPE_OF_WORK[internal_work_type] || 'other'
+    logger.debug "mapping work type: #{internal_work_type} => #{type}"
+    return type
   end
 
   def pad_date_item item
@@ -129,8 +176,7 @@ class OrcidClaim
   end
 
   def insert_type xml
-    # xml.send(:'work-type', orcid_work_type(@work['type']))
-    xml.send(:'work-type', orcid_work_type("misc"))
+    xml.send(:'work-type', orcid_work_type(@work['type']))
   end
 
   def insert_titles xml
@@ -185,14 +231,15 @@ class OrcidClaim
     conn = Faraday.new
     logger.info "Retrieving citation for #{@work['doi']}"
     response = conn.get "http://data.datacite.org/#{@work['doi']}", {}, {
-      'Accept' => 'application/x-bibtex'
+      'Accept' => 'text/x-bibliography'
     }
 
-    citation = response.body.sub(/^@data{/, '@misc{datacite')
+    citation = response.body
+    logger.debug "citation: #{citation}"
 
     if response.status == 200
       xml.send(:'work-citation') {
-        xml.send(:'work-citation-type', 'bibtex')
+        xml.send(:'work-citation-type', 'formatted-apa')
         xml.citation {
           xml.cdata(citation)
         }
@@ -203,13 +250,13 @@ class OrcidClaim
   def to_xml
     root_attributes = {
       :'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance',
-      :'xsi:schemaLocation' => 'http://www.orcid.org/ns/orcid http://orcid.github.com/ORCID-Parent/schemas/orcid-message/1.0.8/orcid-message-1.0.8.xsd',
+      :'xsi:schemaLocation' => 'http://www.orcid.org/ns/orcid http://orcid.github.com/ORCID-Parent/schemas/orcid-message/1.1/orcid-message-1.0.23.xsd',
       :'xmlns' => 'http://www.orcid.org/ns/orcid'
     }
 
     builder = Nokogiri::XML::Builder.new do |xml|
       xml.send(:'orcid-message', root_attributes) {
-        xml.send(:'message-version', '1.0.8')
+        xml.send(:'message-version', '1.0.23')
         xml.send(:'orcid-profile') {
           xml.send(:'orcid-activities') {
             xml.send(:'orcid-works') {
