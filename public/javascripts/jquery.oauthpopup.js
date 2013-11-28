@@ -30,7 +30,7 @@ function oauthIframeCallback() {
       var top = (screen.height - height)/2;
         options = $.extend({
             windowName: 'ConnectWithOAuth' // should not include space for IE
-          , windowOptions: 'location=0,status=0,width=' + width + ',height=' + height + ',left=' + left + ',top=' + top 
+          , windowOptions: 'location=0,status=0,scrollbars=yes,width=' + width + ',height=' + height + ',left=' + left + ',top=' + top 
           , callback: function(){ window.location.reload(); }
         }, options);
 
