@@ -39,7 +39,7 @@
   .span9
     .list-info
       .pull-right
-        %h6.number= "Page #{page[:page]} of #{page[:paginate].total_rows} results"
+        %h6.number= "Page #{page[:page]} of #{page[:paginate].total_rows} results" 
       %span
         %h6
           Sort by:
@@ -65,5 +65,8 @@
 
 %hr
 .footer
-  Feedback:
-  %a{:href => 'mailto:search@crossref.org'} search@crossref.org
+  - if page[:branding][:footer_links_profile] == :chorus
+    %a{:href => 'http://chorusaccess.org/contact-us'} Leave feedback
+  - else
+    Feedback:
+    %a{:href => 'mailto:search@crossref.org'} search@crossref.org

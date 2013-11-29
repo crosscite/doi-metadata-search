@@ -147,6 +147,7 @@ configure do
     :search_typeahead => :funder_name,
     :examples_layout => :fundref_help_list,
     :header_links_profile => :chorus,
+    :footer_links_profile => :chorus,
     :facet_fields => settings.chorus_facet_fields,
     :downloads => [:fundref_csv],
     :show_doaj_label => false,
