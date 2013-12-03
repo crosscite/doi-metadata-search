@@ -408,7 +408,6 @@ get '/auth/orcid/callback' do
   logger.info "Signing in via ORCID iD #{session[:orcid][:uid]}"
   update_profile
   haml :auth_callback
-  end
 end
 
 get '/auth/orcid/check' do
