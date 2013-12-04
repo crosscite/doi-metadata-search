@@ -136,7 +136,8 @@ configure do
       :site => settings.orcid[:site],
       :authorize_url => settings.orcid[:authorize_url],
       :token_url => settings.orcid[:token_url],
-    }
+    },
+    :provider_ignores_state => true
   end
   OmniAuth.config.logger = logger
 
