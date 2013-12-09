@@ -10,7 +10,7 @@ require_relative 'helpers'
 class OrcidClaim
 
   # Map of DataCite work types to the CASRAI-based ORCID type vocabulary  
-  TYPE_OF_WORK____ENABLE_LATER = {
+  TYPE_OF_WORK = {
 
     'Audiovisual' => 'other',
     'Collection' => 'other',
@@ -35,7 +35,7 @@ class OrcidClaim
  # Map of DataCite work types to ORCID original BibTeX-based type vocabulary. Derived from
   # DataCite metadata schema v3 (current as of Nov 2013)
   
-  TYPE_OF_WORK = {
+  TYPE_OF_WORK_DISABLED = {
     'Audiovisual' => 'audiovisual',
     'Collection' => 'other',
     'Dataset' =>  'other',
@@ -162,7 +162,7 @@ class OrcidClaim
             end  # double CASE statement ends
     
     if type.nil?
-      logger.info "Got nothing from heuristic, falling back on generic type mapping or else default to other"
+      logger.info "Got nothing from heuristic, falling back on generic type mapping for '#{internal_work_type}' or else defaulting to other"
       type = TYPE_OF_WORK[internal_work_type] || 'other'
     end
     
