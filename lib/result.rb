@@ -45,8 +45,8 @@ class SearchResult
     logger.debug "initializing a mongo DOI record for work w/ resourceTypeGeneral='#{solr_doc['resourceTypeGeneral'] || "unknown"}', resourceType='#{solr_doc['resourceType'] || "unknown"}', DOI name #{solr_doc['doi']}"
     logger.debug {solr_doc.ai}
     @doi = solr_doc['doi']
-    @type = solr_doc['resourceTypeGeneral'] || "unknown"
-    @subtype = solr_doc['resourceType'].to_s.empty? ? @type : solr_doc['resourceType']
+    @type = solr_doc['resourceTypeGeneral']
+    @subtype = solr_doc['resourceType']
     @doc = solr_doc
     @score = solr_doc['score']
     @normal_score = ((@score / solr_result['response']['maxScore']) * 100).to_i
@@ -76,6 +76,7 @@ class SearchResult
     MongoData.coll('dois').update({ doi: @doi }, {doi: @doi,
                                                   title: @title,
                                                   type: @type,
+                                                  subtype: @subtype,
                                                   publication: @publication,
                                                   contributor: @authors,
                                                   published: {
@@ -114,15 +115,7 @@ class SearchResult
       nil
     end
   end
-  
-  def subtype
-    if ["ConferencePaper", "JournalArticle"].include? @subtype
-      uncamelize(@subtype)
-    else
-      @subtype.capitalize
-    end
-  end
-  
+    
   def related
     return nil unless @related
     @related.map { |item| { relation: uncamelize(item.split(":", 3)[0]), 

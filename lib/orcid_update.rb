@@ -35,7 +35,7 @@ class OrcidUpdate
       client = OAuth2::Client.new(@conf['orcid']['client_id'], @conf['orcid']['client_secret'], opts)
       token = OAuth2::AccessToken.new(client, @oauth['credentials']['token'])
       headers = {'Accept' => 'application/json'}
-      response = token.get "/#{uid}/orcid-works", {:headers => headers}
+      response = token.get "/v1.1/#{uid}/orcid-works", {:headers => headers}
 
       if response.status == 200
         puts response.body

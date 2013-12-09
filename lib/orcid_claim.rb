@@ -95,7 +95,7 @@ class OrcidClaim
     client = OAuth2::Client.new( @conf['orcid']['client_id'],  @conf['orcid']['client_secret'], opts)
     token = OAuth2::AccessToken.new(client, @oauth['credentials']['token'])
     headers = {'Accept' => 'application/json'}
-    response = token.post("/#{uid}/orcid-works") do |post|
+    response = token.post("/v1.1/#{uid}/orcid-works") do |post|
       post.headers['Content-Type'] = 'application/orcid+xml'
       post.body = to_xml
     end
@@ -122,9 +122,51 @@ class OrcidClaim
     loc != nil
   end
 
-  def orcid_work_type internal_work_type
-    type = TYPE_OF_WORK[internal_work_type] || 'other'
-    logger.debug "mapping work type: #{internal_work_type} => #{type}"
+  # Heuristic for determing the type of the work based on A) the general, high-level label 
+  # from the `resourceTypeGeneral field` (controlled list) and B)) the value of the  more specific
+  # `resourceType` field which is not from a controlled list but rather free-form input from data centres.
+  def orcid_work_type internal_work_type, internal_work_subtype
+    logger.debug "Determining ORCID work type term from  #{internal_work_type} / #{internal_work_subtype}"
+    type =  case  internal_work_type
+            when "Text"
+              case internal_work_subtype
+              when /^(Article|Articles|Journal Article|JournalArticle)$/i
+                "journal-article"
+              when /^(Book|ebook|Monografie|Monograph\w*|)$/i
+                "book"
+              when /^(chapter|chapters)$/i
+                "book-chapter"
+              when /^(Project report|Report|Research report|Technical Report|TechnicalReport|Text\/Report|XFEL.EU Annual Report|XFEL.EU Technical Report)$/i
+                "report"
+              when /^(Dissertation|thesis|Doctoral thesis|Academic thesis|Master thesis|Masterthesis|Postdoctoral thesis)$/i
+                "dissertation"
+              when /^(Conference Abstract|Conference extended abstract)$/i
+                "conference-abstract"                
+              when /^(Conference full text|Conference paper|ConferencePaper)$/i
+                "conference-paper"
+              when /^(poster|Conference poster)$/i
+                "conference-poster"
+              when /^(working paper|workingpaper|preprint)$/i
+                "working-paper"
+              when /^(dataset$)/i
+                "data-set"
+              end
+              
+            when "Collection"
+              case internal_work_subtype
+              when /^(Collection of Datasets|Data Files|Dataset|Supplementary Collection of Datasets)$/i
+                "data-set"
+              when "Report"
+                "report"
+              end
+            end  # double CASE statement ends
+    
+    if type.nil?
+      logger.info "Got nothing from heuristic, falling back on generic type mapping or else default to other"
+      type = TYPE_OF_WORK[internal_work_type] || 'other'
+    end
+    
+    logger.debug "Final work type mapping: #{internal_work_type||'undef'} / #{internal_work_subtype||'undef'} => #{type || 'undef'}"
     return type
   end
 
@@ -176,7 +218,7 @@ class OrcidClaim
   end
 
   def insert_type xml
-    xml.send(:'work-type', orcid_work_type(@work['type']))
+    xml.send(:'work-type', orcid_work_type(@work['type'], @work['subtype']))
   end
 
   def insert_titles xml
@@ -250,13 +292,13 @@ class OrcidClaim
   def to_xml
     root_attributes = {
       :'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance',
-      :'xsi:schemaLocation' => 'http://www.orcid.org/ns/orcid http://orcid.github.com/ORCID-Parent/schemas/orcid-message/1.1/orcid-message-1.0.23.xsd',
+      :'xsi:schemaLocation' => 'http://www.orcid.org/ns/orcid http://orcid.github.com/ORCID-Parent/schemas/orcid-message/1.1/orcid-message-1.1.xsd',
       :'xmlns' => 'http://www.orcid.org/ns/orcid'
     }
 
     builder = Nokogiri::XML::Builder.new do |xml|
       xml.send(:'orcid-message', root_attributes) {
-        xml.send(:'message-version', '1.0.23')
+        xml.send(:'message-version', '1.1')
         xml.send(:'orcid-profile') {
           xml.send(:'orcid-activities') {
             xml.send(:'orcid-works') {
