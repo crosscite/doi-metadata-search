@@ -6,7 +6,7 @@
       %b.caret
     %ul.dropdown-menu{'role' => 'menu', :style => 'right: 0; left: auto;'}
       %li
-        %a{:href => "#{@conf['orcid']['site']}/#{session[:orcid][:uid]}", :target => '_blank'}
+        %a{:href => "#{@conf['orcid']['site'].gsub('http://api.','http://') }/#{session[:orcid][:uid]}", :target => '_blank'}
           %i.icon-external-link
           My ORCID: #{session[:orcid][:uid]}
       %li
