@@ -273,15 +273,19 @@ class OrcidClaim
     conn = Faraday.new
     logger.info "Retrieving citation for #{@work['doi']}"
     response = conn.get "http://data.datacite.org/#{@work['doi']}", {}, {
-      'Accept' => 'text/x-bibliography'
+      #'Accept' => 'text/x-bibliography'
+      'Accept' => 'application/x-bibtex'
     }
 
-    citation = response.body
-    logger.debug "citation: #{citation}"
+    #citation = response.body
+    citation = response.body.sub(/^@data{/, '@misc{datacite')
+
+    logger.debug "Got citation:\n #{citation}"
 
     if response.status == 200
       xml.send(:'work-citation') {
-        xml.send(:'work-citation-type', 'formatted-apa')
+        #xml.send(:'work-citation-type', 'formatted-apa')
+        xml.send(:'work-citation-type', 'bibtex')
         xml.citation {
           xml.cdata(citation)
         }
