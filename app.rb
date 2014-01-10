@@ -485,6 +485,18 @@ helpers do
     end
   end
 
+  def render_funders_full id, indent, &block
+    funder = settings.funders.find_one({:id => id})
+    descendants = funder['descendants']
+    names = funder['descendant_names']
+
+    block.call(indent, id, funder['primary_name_display'])
+
+    descendants.each do |d|
+      render_funders_full(d, indent + 1, &block)
+    end
+  end
+
   def funder_doi_from_id id
     dois = ["http://dx.doi.org/10.13039/#{id}"]
 
@@ -743,13 +755,11 @@ get '/funders/:id/hierarchy' do
 end
 
 get '/funders/:id/hierarchy.csv' do
-  funder = settings.funders.find_one({:id => params[:id]})
-
+  content_type 'text/csv'
   CSV.generate do |csv|
     csv << ['Level 1', 'Level 2', 'Level 3']
-    render_funder(funder['nesting'], 
-                  funder['nesting_names'], 0) do |indent, id, name, more|
-      csv << ([""] * (indent - 1)) + name
+    render_funders_full(params[:id], 0) do |indent, id, name|
+      csv << ([""] * indent) + [name]
     end
   end
 end
