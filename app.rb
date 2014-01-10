@@ -743,7 +743,7 @@ get '/funders/:id/hierarchy' do
 end
 
 get '/funders/:id/hierarchy.csv' do
-  funder = settings.funders.find_one({:id -> params[:id]})
+  funder = settings.funders.find_one({:id => params[:id]})
 
   CSV.generate do |csv|
     csv << ['Level 1', 'Level 2', 'Level 3']
