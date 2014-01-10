@@ -742,6 +742,18 @@ get '/funders/:id/hierarchy' do
   haml :funder, :locals => {:page => page}
 end
 
+get '/funders/:id/hierarchy.csv' do
+  funder = settings.funders.find_one({:id -> params[:id]})
+
+  CSV.generate do |csv|
+    csv << ['Level 1', 'Level 2', 'Level 3']
+    render_funder(funder['nesting'], 
+                  funder['nesting_names'], 0) do |indent, id, name, more|
+      csv << ([""] * (indent - 1)) + name
+    end
+  end
+end
+
 get '/funders/hierarchy' do
   funder_doi = params['doi']
   funder = settings.funders.find_one({:uri => funder_doi})
