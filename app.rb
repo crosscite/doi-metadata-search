@@ -485,16 +485,33 @@ helpers do
     end
   end
 
+  def render_funders_full_children indent, current_id, children_map, names, &block
+    block.call(indent, current_id, names[current_id])
+    
+    if !children_map[current_id].nil?
+      children_map[current_id].each do |c|
+        render_funders_full_children(indent + 1, c[:id], children_map, names, &block)
+      end
+    end
+  end
+
   def render_funders_full id, indent, &block
     funder = settings.funders.find_one({:id => id})
-    descendants = funder['descendants']
     names = funder['descendant_names']
+    names[id] = funder['primary_name_display']
 
-    block.call(indent, id, funder['primary_name_display'])
-
-    descendants.each do |d|
-      render_funders_full(d, indent + 1, &block)
+    descendants = funder['descendants'].map do |d_id|
+      d = settings.funders.find_one({:id => d_id})
+      {:id => d_id, :parent => d['parent']}
     end
+
+    children = descendants.reduce({}) do |memo, d|
+      memo[d[:parent]] ||= []
+      memo[d[:parent]] << d
+      memo
+    end
+
+    render_funders_full_children(indent, id, children, names, &block)
   end
 
   def funder_doi_from_id id
