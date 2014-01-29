@@ -252,6 +252,10 @@ class SearchResult
     CGI.escapeHTML title
   end
 
+  def hashed
+    @hashed
+  end
+
   def coins_span
     "<span class=\"Z3988\" title=\"#{coins}\"><!-- coins --></span>"
   end

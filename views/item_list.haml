@@ -42,14 +42,14 @@
         %h3
           Add
           = item.doi
-          to your ORCID profile
+          to your ORCID record
       .modal-body
         %p
           You are adding
           %b= item.coins_atitle
-          to your ORCID profile. Double check that you were a
+          to your ORCID record. Double check that you were a
           contributor to this work.
-        %p Add this work to your ORCID profile?  
+        %p Add this work to your ORCID record?  
       .modal-footer
         %button.btn{'type' => 'button', 'data-dismiss' => 'modal'} No, thanks
         %button.btn.btn-primary{:id => "claim-button-#{item.hashed}"} Yes, do it

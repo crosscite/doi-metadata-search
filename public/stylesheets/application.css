@@ -1,7 +1,4 @@
 /* status_help.haml */
-span {
-  color: #333;
-}
   
 .stat-value {
   font-size: 4em;
@@ -347,7 +344,7 @@ pre.example {
   height: 3em;
 }
 
-p, span, h2 {
+p, h2 {
   color: #333;
 }
 

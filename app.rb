@@ -228,7 +228,6 @@ get '/orcid/claim' do
           claim_ok = OrcidClaim.perform(session_info, doi_record)          
         rescue => e
           # ToDo: need more useful error messaging here, for displaying to user
-          status = "could not claim work"
           logger.error "Caught exception from claim process: #{e}: \n" + e.backtrace.join("\n")
         end
         
