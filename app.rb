@@ -153,7 +153,7 @@ configure do
     :show_doaj_label => false,
     :show_profile_link => false,
     :filter_prefixes => ['10.1103', '10.1021', '10.1063', '10.1016', 
-                         '10.1093', '10.1109', '10.1002']
+                         '10.1093', '10.1109', '10.1002', '10.1126']
   } 
 
   set :test_prefixes, ["10.5555", "10.55555"]
