@@ -17,6 +17,7 @@ require 'resque'
 require 'open-uri'
 require 'uri'
 require 'csv'
+require 'parallel'
 
 require_relative 'lib/paginate'
 require_relative 'lib/result'
@@ -1159,7 +1160,8 @@ post '/links' do
         :reason => "Too many citations. Maximum is #{MAX_MATCH_TEXTS}"
       }
     else
-      results = citation_texts.take(MAX_MATCH_TEXTS).map do |citation_text|
+      results = Parallel.map(citation_texts.take(MAX_MATCH_TEXTS),
+                             :in_threads => 20) do |citation_text|
         terms = scrub_query(citation_text, true)
 
         if terms.strip.empty?
