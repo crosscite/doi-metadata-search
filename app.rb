@@ -1161,7 +1161,7 @@ post '/links' do
       }
     else
       results = Parallel.map(citation_texts.take(MAX_MATCH_TEXTS),
-                             :in_threads => 20) do |citation_text|
+                             :in_processes => settings.links_process_count) do |citation_text|
         terms = scrub_query(citation_text, true)
 
         if terms.strip.empty?
