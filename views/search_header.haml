@@ -44,7 +44,7 @@
   }
   .simple-nav-outer {
     position: relative;
-    width: 35em;
+    width: 45em;
   }
   .simple-nav-bump-up {
     margin-top: -1em;
@@ -103,6 +103,7 @@
               %a{:href => '/'} Metadata Search
             - elsif page[:branding][:header_links_profile] == :crmds
               %a{:href => '/fundref'} FundRef
+              %a{:href => '/references'} Link References
               %a{:href => '/help/status'} Status
               %a{:href => '/help/api'} API
               %a{:href => '/help/search'} Help
@@ -127,6 +128,7 @@
               %a{:href => '/'} Metadata Search
             - elsif page[:branding][:header_links_profile] == :crmds
               %a{:href => '/fundref'} FundRef
+              %a{:href => '/references'} Link References
               %a{:href => '/help/status'} Status
               %a{:href => '/help/api'} API
               %a{:href => '/help/search'} Help

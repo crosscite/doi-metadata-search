@@ -1,0 +1,29 @@
+= partial :search_header, :page => page
+
+.row-fluid
+  .span2
+  .span8
+    .page-header
+      %h2 Link References
+    - if !page[:query_ok]
+      %span.lead= "Unable to match citations"
+      %p= page[:reason]
+
+    - else  
+      %span.lead= "Queried for #{page[:results].count} references"
+      %table.table.table-striped{:style => 'margin-top: 20px'}
+        %tr
+          %th Textual Reference
+          %th Matched DOI
+          - page[:results].each do |ref|
+            - if ref[:match]
+              %tr
+                %td= ref[:text]
+                %td
+                  %a{:href => ref[:doi]}= ref[:doi]
+            - else
+              %tr.error
+                %td= ref[:text]
+                %td= ref[:reason]
+
+    

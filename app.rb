@@ -712,6 +712,78 @@ helpers do
       }
     end
   end
+
+  def resolve_references citation_texts
+    page = {}
+    begin
+      if citation_texts.count > MAX_MATCH_TEXTS
+        page = {
+          :results => [],
+          :query_ok => false,
+          :reason => "Too many citations. Maximum is #{MAX_MATCH_TEXTS}"
+        }
+      else
+        results = Parallel.map(citation_texts.take(MAX_MATCH_TEXTS),
+                               :in_processes => settings.links_process_count) do |citation_text|
+          terms = scrub_query(citation_text, true)
+
+          if terms.strip.empty?
+            {
+              :text => citation_text,
+              :reason => 'Citation text contains no characters or digits',
+              :match => false
+            }
+          else
+            params = base_query.merge({:q => terms, :rows => 1})
+            result = settings.solr.paginate 0, 1, settings.solr_select, :params => params
+            match = result['response']['docs'].first
+
+            if citation_text.split.count < MIN_MATCH_TERMS
+              {
+                :text => citation_text,
+                :reason => 'Too few terms',
+                :match => false
+              }
+            elsif match['score'].to_f < MIN_MATCH_SCORE
+              {
+                :text => citation_text,
+                :reason => 'Result score too low',
+                :match => false
+              }
+            else
+              {
+                :text => citation_text,
+                :match => true,
+                :doi => match['doi'],
+                :coins => search_results(result).first.coins,
+                :score => match['score'].to_f
+              }
+            end
+          end
+        end
+
+        page = {
+          :results => results,
+          :query_ok => true
+        }
+      end
+    rescue JSON::ParserError => e
+      page = {
+        :results => [],
+        :query_ok => false,
+        :reason => 'Request contained malformed JSON'
+      }
+    rescue Exception => e
+      page = {
+        :results => [],
+        :query_ok => false,
+        :reason => e.message,
+        :trace => e.backtrace
+      }
+    end
+
+    page
+  end
 end
 
 get '/fundref' do
@@ -985,6 +1057,27 @@ get '/' do
   end
 end
 
+get '/references' do
+  haml :references, :locals => {
+    :page => {:branding => settings.crmds_branding}
+  }
+end
+
+post '/references' do
+  refs_text = params['references'].strip
+
+  if refs_text.empty?
+    redirect '/references'
+  else
+    refs = refs_text.split("\n").reject{|r| r.nil? || r.strip.empty?}.map {|r| r.strip}
+    resolved_refs = resolve_references(refs)
+
+    haml :references_result, :locals => {
+      :page => resolved_refs.merge({:branding => settings.crmds_branding})
+    }
+  end
+end
+
 get '/help/api' do
   haml :api_help, :locals => {
     :page => {
@@ -1148,76 +1241,8 @@ get '/dois' do
 end
 
 post '/links' do
-  page = {}
-
-  begin
-    citation_texts = JSON.parse(request.env['rack.input'].read)
-
-    if citation_texts.count > MAX_MATCH_TEXTS
-      page = {
-        :results => [],
-        :query_ok => false,
-        :reason => "Too many citations. Maximum is #{MAX_MATCH_TEXTS}"
-      }
-    else
-      results = Parallel.map(citation_texts.take(MAX_MATCH_TEXTS),
-                             :in_processes => settings.links_process_count) do |citation_text|
-        terms = scrub_query(citation_text, true)
-
-        if terms.strip.empty?
-          {
-            :text => citation_text,
-            :reason => 'Citation text contains no characters or digits',
-            :match => false
-          }
-        else
-          params = base_query.merge({:q => terms, :rows => 1})
-          result = settings.solr.paginate 0, 1, settings.solr_select, :params => params
-          match = result['response']['docs'].first
-
-          if citation_text.split.count < MIN_MATCH_TERMS
-            {
-              :text => citation_text,
-              :reason => 'Too few terms',
-              :match => false
-            }
-          elsif match['score'].to_f < MIN_MATCH_SCORE
-            {
-              :text => citation_text,
-              :reason => 'Result score too low',
-              :match => false
-            }
-          else
-            {
-              :text => citation_text,
-              :match => true,
-              :doi => match['doi'],
-              :coins => search_results(result).first.coins,
-              :score => match['score'].to_f
-            }
-          end
-        end
-      end
-
-      page = {
-        :results => results,
-        :query_ok => true
-      }
-    end
-  rescue JSON::ParserError => e
-    page = {
-      :results => [],
-      :query_ok => false,
-      :reason => 'Request contained malformed JSON'
-    }
-  rescue Exception => e
-    page = {
-      :results => [],
-      :query_ok => false,
-      :reason => e.message,
-      :trace => e.backtrace
-    }
-  end
+  citation_texts = JSON.parse(request.env['rack.input'].read)
+  page = resolve_references(citation_texts)
 
   settings.ga.event('API', '/links', nil, page[:results].count, true)
 
