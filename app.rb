@@ -197,9 +197,9 @@ helpers do
   end
 
   def select_all query_params
-    page = 0
-    rows = 60000000 # TODO collect pages instead
-    results = settings.solr.paginate page, rows, settings.solr_select, :params => query_params
+    query_params[:rows] = 60000000
+    query_params[:page] = 0
+    results = settings.solr.get settings.solr_select, :params => query_params
   end
 
   def response_format
