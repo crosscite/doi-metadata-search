@@ -58,7 +58,7 @@
 
       var suggestionLayout = Hogan.compile('<p>{{value}} <small>{{country}}</small></p>');
 
-      $('#search-input').typeahead({
+      $('#search-input').typeahead(null, {
         name: 'funders',
         source: fundersRemote.ttAdapter(),
         templates: {
