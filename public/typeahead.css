@@ -8,7 +8,7 @@
 }
 
 .tt-dropdown-menu {
-  min-width: 700px;
+  min-width: 36em;
   margin-top: 2px;
   padding: 5px 0px;
   background-color: #fff;
@@ -28,11 +28,12 @@
 }
 
 .tt-suggestion {
+  cursor: pointer;
   display: block;
   padding: 3px 20px;
 }
 
-.tt-suggestion.tt-is-under-cursor {
+.tt-suggestion.tt-cursor {
   color: #fff;
   background-color: #0081c2;
   background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
@@ -44,7 +45,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0)
 }
 
-.tt-suggestion.tt-is-under-cursor a {
+.tt-suggestion.tt-cursor a {
   color: #555;
 }
 
@@ -52,4 +53,8 @@
   font-size: 1.2em;
   line-height: 1.3em;
   margin: 0;
+}
+
+.tt-suggestion.tt-cursor a p span {
+  color: #fff;
 }
