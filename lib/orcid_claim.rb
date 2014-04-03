@@ -128,8 +128,8 @@ class OrcidClaim
 
   def insert_titles xml
     subtitle = nil
-    if @work['hl_publication'] && !@work['hl_publication'].empty?
-      subtitle = @work['hl_publication'].first
+    if @work['hl_subtitle'] && !@work['hl_subtitle'].empty?
+      subtitle = @work['hl_subtitle'].first
     end
 
     if subtitle || @work['hl_title']
@@ -142,14 +142,32 @@ class OrcidClaim
         end
       }
     end
+
+    container_title = nil
+    if @work['hl_publication'] && !@work['hl_publication'].empty?
+      container_title = @work['hl_publication'].last
+    end
+
+    if container_title
+      xml.send(:'journal-title', container_title)
+    end
   end
 
   def insert_contributors xml
-    # TODO Insert contributor roles and sequence once available
-    # in 'dois' mongo collection.
-    # xml.send(:'contributor-attributes') {
-    #   xml.send(:'contributor-role', 'author')
-    # }
+    ['author', 'editor'].each do |t|
+      if !@work["hl_#{t}s"].nil?
+        xml.send(:'work-contributors') {
+          @work['hl_authors'].each do |c|
+            xml.contributor {
+              xml.send(:'credit-name', c)
+              xml.send(:'contributor-attributes') {
+                xml.send(:'contributor-role', t)
+              }
+            }
+          end
+        }
+      end
+    end 
   end
 
   def insert_citation xml
@@ -179,13 +197,13 @@ class OrcidClaim
   def to_xml
     root_attributes = {
       :'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance',
-      :'xsi:schemaLocation' => 'http://www.orcid.org/ns/orcid http://orcid.github.com/ORCID-Parent/schemas/orcid-message/1.0.8/orcid-message-1.0.8.xsd',
+      :'xsi:schemaLocation' => 'http://www.orcid.org/ns/orcid https://raw.github.com/ORCID/ORCID-Source/master/orcid-model/src/main/resources/orcid-message-1.1.xsd',
       :'xmlns' => 'http://www.orcid.org/ns/orcid'
     }
 
     Nokogiri::XML::Builder.new do |xml|
       xml.send(:'orcid-message', root_attributes) {
-        xml.send(:'message-version', '1.0.8')
+        xml.send(:'message-version', '1.1')
         xml.send(:'orcid-profile') {
           xml.send(:'orcid-activities') {
             xml.send(:'orcid-works') {
