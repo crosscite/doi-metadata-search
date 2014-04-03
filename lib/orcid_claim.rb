@@ -52,20 +52,14 @@ class OrcidClaim
   def orcid_work_type internal_work_type
     case internal_work_type
     when 'Journal Article' then 'journal-article'
-    when 'Conference Paper' then 'conference-proceedings'
+    when 'Conference Paper' then 'conference-paper'
     when 'Dissertation' then 'dissertation'
     when 'Report' then 'report'
-    when 'Standard' then 'standards'
-    when 'Dataset' then 'database'
+    when 'Standard' then 'standards-and-policy'
+    when 'Dataset' then 'data-set'
     when 'Book' then 'book'
     when 'Reference' then 'book'
     when 'Monograph' then 'book'
-    when 'Chapter' then 'components'
-    when 'Section' then 'components'
-    when 'Part' then 'components'
-    when 'Track' then 'components'
-    when 'Component' then 'components'
-    when 'Entry' then 'components'
     else 'other'
     end
   end
