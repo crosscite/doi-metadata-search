@@ -12,12 +12,18 @@
     - else  
       %span.lead= "Queried for #{page[:results].count} references"
       %table.table.table-striped{:style => 'margin-top: 20px'}
+        %tr
+          %td Reference
+          %td Match score
         - page[:results].each do |ref|
           - if ref[:match]
             %tr
               %td
                 %a{:href => ref[:doi]}= ref[:text]
+              %td= ref[:score]
           - else
-            %tr
+            %tr.error
               %td= ref[:text]
+              %td= ref[:reason]
+
     
