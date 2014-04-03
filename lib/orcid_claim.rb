@@ -74,7 +74,7 @@ class OrcidClaim
     result = nil
     if item
       begin
-        item_int = item.strip.to_i
+        item_int = item.to_s.strip.to_i
         if item_int >= 0 && item_int <= 11
           item_str = item_int.to_s
           if item_str.length < 2
