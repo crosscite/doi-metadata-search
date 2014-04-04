@@ -32,7 +32,6 @@ class OrcidUpdate
       response = token.get "#{@conf['orcid_site']}/#{uid}/orcid-works", {:headers => headers}
 
       if response.status == 200
-        puts response.body
         response_json = JSON.parse(response.body)
         parsed_dois = parse_dois(response_json)
         query = {:orcid => uid}
@@ -49,7 +48,7 @@ class OrcidUpdate
         oauth_expired = true
       end
     rescue StandardError => e
-      puts e
+      $stderr.puts e
     end
 
     !oauth_expired
@@ -69,7 +68,7 @@ class OrcidUpdate
   end
 
   def parse_dois json
-    if !has_path?(json, ['orcid-profile', 'orcid-activities'])
+    if !has_path?(json, ['orcid-profile', 'orcid-activities', 'orcid-works'])
       []
     else
       works = json['orcid-profile']['orcid-activities']['orcid-works']['orcid-work']
