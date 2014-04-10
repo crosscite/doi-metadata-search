@@ -151,9 +151,9 @@ class OrcidClaim
   end
 
   def insert_contributors xml
-    ['author', 'editor'].each do |t|
-      if !@work["hl_#{t}s"].nil?
-        xml.send(:'work-contributors') {
+    xml.send(:'work-contributors') {
+      ['author', 'editor'].each do |t|
+        if !@work["hl_#{t}s"].nil?
           @work["hl_#{t}s"].split(',').each do |c|
             xml.contributor {
               xml.send(:'credit-name', c.strip())
@@ -162,9 +162,9 @@ class OrcidClaim
               }
             }
           end
-        }
+        end
       end
-    end 
+    }
   end
 
   def insert_citation xml
