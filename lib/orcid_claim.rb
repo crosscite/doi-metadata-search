@@ -11,6 +11,8 @@ class OrcidClaim
 
   @queue = :orcid
 
+  ORCID_VERSION = '1.1'
+
   def initialize oauth, work
     @oauth = oauth
     @work = work
@@ -35,7 +37,7 @@ class OrcidClaim
       client = OAuth2::Client.new(@conf['orcid_client_id'], @conf['orcid_client_secret'], opts)
       token = OAuth2::AccessToken.new(client, @oauth['credentials']['token'])
       headers = {'Accept' => 'application/json'}
-      response = token.post("#{@conf['orcid_site']}/#{uid}/orcid-works") do |post|
+      response = token.post("#{@conf['orcid_site']}/v#{ORCID_VERSION}/#{uid}/orcid-works") do |post|
         post.headers['Content-Type'] = 'application/orcid+xml'
         post.body = to_xml
       end
@@ -200,7 +202,7 @@ class OrcidClaim
 
     Nokogiri::XML::Builder.new do |xml|
       xml.send(:'orcid-message', root_attributes) {
-        xml.send(:'message-version', '1.1')
+        xml.send(:'message-version', ORCID_VERSION)
         xml.send(:'orcid-profile') {
           xml.send(:'orcid-activities') {
             xml.send(:'orcid-works') {
