@@ -73,13 +73,28 @@
 - if page[:branding][:search_typeahead] == :funder_name
   :javascript
     $(document).ready(function() {
-      $('#search-input').typeahead({
+      var fundersRemote = new Bloodhound({
         name: 'funders',
+        datumTokenizer: function(d) { return d.tokens; },
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
         remote: '/funders?q=%QUERY',
-        template: '<p>{{value}} <small>{{country}}</small></p>',
-        engine: Hogan,
+        limit: 16,
+        dupDetector: function(r, l) { return false; }
+      });
+
+      fundersRemove.initialize();
+
+      var suggestionLayout = Hogan.compile('<p>{{value}} <small>{{country}}</small></p>');
+
+      $('#search-input').typeahead(null, {
+        name: 'funders',
+        source: fundersRemote.ttAdapter(),
+        templates: {
+          suggestion: function(d) { return suggestionLayout.render(d) }
+        },
         limit: 16
       });
+
       $('#search-input').bind('typeahead:autocompleted typeahead:selected', function(e, datum) {
         $('#fundref-input').val(datum['id']);
         $('#fundref-form').submit();
