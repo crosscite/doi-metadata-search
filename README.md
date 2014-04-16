@@ -3,7 +3,7 @@
 An online tool for searching for works in the DataCite metadata
 catalogue and adding them to an ORCID profile.
 
-This is a project by [ORCID EU labs](https://github.com/ORCID-EU-Labs/)  and [ODIN - ORCID and DataCite Interoperability Network](http://odin-project.eu)
+This is a project by [ORCID EU labs](https://github.com/ORCID-EU-Labs/) and [ODIN - ORCID and DataCite Interoperability Network](http://odin-project.eu)
 
 Try out our live running instance at [http://datacite.labs.orcid-eu.org](http://datacite.labs.orcid-eu.org)
 
