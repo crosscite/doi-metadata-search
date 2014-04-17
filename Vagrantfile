@@ -37,7 +37,7 @@ Vagrant.configure("2") do |config|
     aws.tags = { Name: 'Vagrant cr-search' }
 
     override.ssh.username = "ubuntu"
-    override.ssh.private_key_path = "~/.ssh/aws/vagrant.pem"
+    override.ssh.private_key_path = ENV['SSH_KEY_PATH']
   end
 
  
