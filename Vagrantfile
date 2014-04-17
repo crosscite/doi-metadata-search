@@ -27,8 +27,8 @@ Vagrant.configure("2") do |config|
 
   # Remote virtual machine in the AWS cloud
   config.vm.provider :aws do |aws, override|
-    aws.access_key_id = "[REDACTED]"
-    aws.secret_access_key = "[REDACTED]"
+    aws.access_key_id = ENV['AWS_ACCESS_KEY']
+    aws.secret_access_key = ENV['AWS_SECRET']
     aws.region = "eu-west-1"
     aws.keypair_name = "vagrant"
     #aws.security_groups = ["sg-36e6f354"]
@@ -37,7 +37,7 @@ Vagrant.configure("2") do |config|
     aws.tags = { Name: 'Vagrant cr-search' }
 
     override.ssh.username = "ubuntu"
-    override.ssh.private_key_path = "~/.ssh/aws/vagrant.pem"
+    override.ssh.private_key_path = ENV['SSH_KEY_PATH']
   end
 
  

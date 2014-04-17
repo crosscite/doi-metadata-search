@@ -24,6 +24,7 @@ The application is a fork of the Sinatra-based [CrossRef Metadata Search](http:/
 - Chef: http://www.opscode.com/chef/
 - Virtualbox: https://www.virtualbox.org
 
+
 ### Installation
 
     git clone https://github.com/ORCID-EU-Labs/cr-search.git
@@ -37,6 +38,24 @@ The application is a fork of the Sinatra-based [CrossRef Metadata Search](http:/
 If you don't see any errors from the last command, you now have a properly
 configured Ubuntu virtual machine running `cr-search`. You can point your
 browser to `http://localhost:8088`.
+
+
+## Vagrant Pluggins
+
+- vagrant-aws (0.4.1)
+- vagrant-login (1.0.1, system)
+- vagrant-omnibus (1.3.1)
+- vagrant-share (1.0.1, system)
+- vagrant-vbguest (0.10.0)
+
+
+## Environment Variables
+
+| Variable       | Notes               |   
+|----------------|---------------------|
+| AWS_ACCESS_KEY | Used for production |
+| AWS_SECRET     | Used for production |
+
 
 ## Testing
 
