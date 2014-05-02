@@ -55,6 +55,7 @@ browser to `http://localhost:8088`.
 |----------------|---------------------|
 | AWS_ACCESS_KEY | Used for production |
 | AWS_SECRET     | Used for production |
+| SSH_KEY_PATH   | Used for production |
 
 
 ## Testing
