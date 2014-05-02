@@ -385,7 +385,7 @@ helpers do
   end
 
   def fundref_csv_link id
-    "?q=#{id}&format=csv"
+    "/fundref.csv?q=#{id}&format=csv"
   end
 
   def facet? field_name

@@ -83,19 +83,20 @@ class SearchResult
   def award_numbers
     award_numbers = []
 
-    funders_with_awards = @grant_info.split('|')
-    funders_with_awards.each do |funder_awards|
+    @grant_info.each do |funder_awards|
       funder_awards = funder_awards.strip()
-      if funder_awards.ends_with?(')')
-        from = funder_awards.rindex(/\([^\)]+)/)
-        awards = funder_awards[from, -1]
-        awards.split(',').each do |award_number|
-          award_numbers << award_number.strip
+      if funder_awards.end_with?(')')
+        from = funder_awards.rindex(/\([^\)]+\)\Z/)
+        if !from.nil?
+          awards = funder_awards[(from+1)..-2]
+          awards.split(',').each do |award_number|
+            award_numbers << award_number.strip
+          end
         end
       end
     end
 
-    award_numbers
+    award_numbers.join(', ')
   end
      
   def doi
