@@ -33,6 +33,7 @@ The application is a fork of the Sinatra-based [CrossRef Metadata Search](http:/
     librarian-chef install
     vagrant plugin install vagrant-omnibus
     vagrant plugin install vagrant-aws
+    vagrant box add dummy https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box
     cp config/settings.yml.example config/settings.yml 
     vagrant up
 **Note:** You'll seed to populate the client secret and client id in settings.yml.
