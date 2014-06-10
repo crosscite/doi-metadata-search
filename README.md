@@ -27,7 +27,7 @@ The application is a fork of the Sinatra-based [CrossRef Metadata Search](http:/
 
 ### Installation
 
-    git clone git@github.com:ORCID-EU-Labs/DataCite-ORCID.git
+    git clone https://github.com/ORCID-EU-Labs/DataCite-ORCID.git
     cd DataCite-ORCID
     gem install librarian-chef
     librarian-chef install
