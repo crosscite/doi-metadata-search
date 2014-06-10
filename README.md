@@ -31,13 +31,14 @@ The application is a fork of the Sinatra-based [CrossRef Metadata Search](http:/
     cd cr-search
     gem install librarian-chef
     librarian-chef install
+    vagrant plugin install vagrant-omnibus
     cp config/settings.yml.example config/settings.yml 
     vagrant up
 **Note:** You'll seed to populate the client secret and client id in settings.yml.
 
 If you don't see any errors from the last command, you now have a properly
 configured Ubuntu virtual machine running `cr-search`. You can point your
-browser to `http://localhost:8088`.
+browser to `http://localhost:8080`.
 
 
 ## Vagrant Pluggins
