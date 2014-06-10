@@ -27,8 +27,8 @@ The application is a fork of the Sinatra-based [CrossRef Metadata Search](http:/
 
 ### Installation
 
-    git clone https://github.com/ORCID-EU-Labs/cr-search.git
-    cd cr-search
+    git clone git@github.com:ORCID-EU-Labs/DataCite-ORCID.git
+    cd DataCite-ORCID
     gem install librarian-chef
     librarian-chef install
     vagrant plugin install vagrant-omnibus
@@ -37,7 +37,7 @@ The application is a fork of the Sinatra-based [CrossRef Metadata Search](http:/
 **Note:** You'll seed to populate the client secret and client id in settings.yml.
 
 If you don't see any errors from the last command, you now have a properly
-configured Ubuntu virtual machine running `cr-search`. You can point your
+configured Ubuntu virtual machine running `DataCite-ORCID`. You can point your
 browser to `http://localhost:8080`.
 
 

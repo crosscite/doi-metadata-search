@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
 
   # Local virtual machine via Virtualbox
   config.vm.provider :virtualbox do |vb, override|
-    vb.name = "cr-search"
+    vb.name = "DataCite-ORCID"
     vb.customize ["modifyvm", :id, "--memory", "2048"]
     config.vm.box = "precise64"
     # The url from where the 'config.vm.box' box will be fetched if it
@@ -42,7 +42,7 @@ Vagrant.configure("2") do |config|
   end
 
  
-  config.vm.hostname = "cr-search"
+  config.vm.hostname = "DataCite-ORCID"
 
   # Assign this VM to a host-only network IP, allowing you to access it
   # via the IP. Host-only networks can talk to the host machine as well as
