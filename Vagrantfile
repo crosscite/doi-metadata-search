@@ -11,11 +11,6 @@ Vagrant.configure("2") do |config|
 
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "precise64"
-
-  # The url from where the 'config.vm.box' box will be fetched if it
-  # doesn't already exist on the user's system.
-  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
   # Override settings for specific providers
 
@@ -23,12 +18,16 @@ Vagrant.configure("2") do |config|
   config.vm.provider :virtualbox do |vb, override|
     vb.name = "cr-search"
     vb.customize ["modifyvm", :id, "--memory", "2048"]
+    config.vm.box = "precise64"
+    # The url from where the 'config.vm.box' box will be fetched if it
+    # doesn't already exist on the user's system.
+    config.vm.box_url = "http://files.vagrantup.com/precise64.box"
   end
 
   # Remote virtual machine in the AWS cloud
   config.vm.provider :aws do |aws, override|
-    aws.access_key_id = "[REDACTED]"
-    aws.secret_access_key = "[REDACTED]"
+    aws.access_key_id = ENV['AWS_ACCESS_KEY']
+    aws.secret_access_key = ENV['AWS_SECRET']
     aws.region = "eu-west-1"
     aws.keypair_name = "vagrant"
     #aws.security_groups = ["sg-36e6f354"]
@@ -37,7 +36,9 @@ Vagrant.configure("2") do |config|
     aws.tags = { Name: 'Vagrant cr-search' }
 
     override.ssh.username = "ubuntu"
-    override.ssh.private_key_path = "~/.ssh/aws/vagrant.pem"
+    override.ssh.private_key_path = ENV['SSH_KEY_PATH']
+    config.vm.box = "dummy"
+
   end
 
  
