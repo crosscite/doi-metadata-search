@@ -33,7 +33,7 @@ Vagrant.configure("2") do |config|
     #aws.security_groups = ["sg-36e6f354"]
     aws.instance_type = "m1.small"
     aws.ami = "ami-8e987ef9"
-    aws.tags = { Name: 'Vagrant cr-search' }
+    aws.tags = { Name: ENV['AWS_TAGS_NAME'] }
 
     override.ssh.username = "ubuntu"
     override.ssh.private_key_path = ENV['SSH_KEY_PATH']
