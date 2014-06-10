@@ -32,6 +32,7 @@ The application is a fork of the Sinatra-based [CrossRef Metadata Search](http:/
     gem install librarian-chef
     librarian-chef install
     vagrant plugin install vagrant-omnibus
+    vagrant plugin install vagrant-aws
     cp config/settings.yml.example config/settings.yml 
     vagrant up
 **Note:** You'll seed to populate the client secret and client id in settings.yml.
