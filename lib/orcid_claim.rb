@@ -103,9 +103,11 @@ class OrcidClaim
 
   def insert_ids xml
      xml.send(:'work-external-identifiers') {
-      insert_id(xml, 'doi', to_doi(@work['doi_key']))
-      insert_id(xml, 'isbn', to_isbn(@work['isbn'].first)) if @work['isbn'] && !@work['isbn'].empty?
-      insert_id(xml, 'issn', to_issn(@work['issn'].first)) if @work['issn'] && !@work['issn'].empty?
+       insert_id(xml, 'doi', to_doi(@work['doi_key']))
+       # Do not insert ISSNs and ISBNs as currently they are treated
+       # as unique per work by ORCID
+       #insert_id(xml, 'isbn', to_isbn(@work['isbn'].first)) if @work['isbn'] && !@work['isbn'].empty?
+       #insert_id(xml, 'issn', to_issn(@work['issn'].first)) if @work['issn'] && !@work['issn'].empty?
     }
   end
 
