@@ -118,7 +118,7 @@ class OrcidClaim
       xml.send(:'publication-date') {
         xml.year(@work['hl_year'].to_i.to_s)
         xml.month(month_str) if month_str
-        xml.day(day_str) if day_str
+        xml.day(day_str) if month_str && day_str
       }
     end
   end
