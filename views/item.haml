@@ -2,9 +2,6 @@
   %td.item-data
     - unless item.title.nil?
       %p.lead  
-        - if page[:branding][:show_doaj_label] && item.open_access?
-          %a.oa-tooltip{:href => "http://www.doaj.org/doaj?func=search&uiLanguage=en&template=&query=#{item.coins_title}", :target => '_blank'}
-            %span.small{:style => 'font-size: 0.8em;'} DOAJ
         = item.title.first
         
       %p.extra{:style => 'margin-top: .5em;'}

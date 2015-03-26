@@ -84,9 +84,9 @@ configure do
   }
 
   # Set facet fields
-  set :facet_fields, ['type', 'year', 'oa_status', 'publication', 'category', 'publisher', 'funder_name', 'source']
-  set :crmds_facet_fields, ['type', 'year', 'oa_status', 'publication', 'category', 'publisher', 'funder_name', 'source']
-  set :fundref_facet_fields, ['type', 'year', 'oa_status', 'publication', 'category', 'publisher', 'source']
+  set :facet_fields, ['type', 'year', 'publication', 'category', 'publisher', 'funder_name', 'source']
+  set :crmds_facet_fields, ['type', 'year', 'publication', 'category', 'publisher', 'funder_name', 'source']
+  set :fundref_facet_fields, ['type', 'year', 'publication', 'category', 'publisher', 'source']
   set :chorus_facet_fields, ['category', 'type', 'year', 'publication', 'publisher', 'source']
 
   # Google analytics event tracking
