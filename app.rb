@@ -1303,9 +1303,9 @@ get '/heartbeat' do
     # Attempt some queries with mongo
     result_list = search_results(solr_result)
 
-    {:status => :ok}.to_json
+    {:version => '1.0', :status => :ok}.to_json
   rescue StandardError => e
-    {:status => :error, :type => e.class, :message => e}.to_json
+    {:version => '1.0', :status => :error, :type => e.class, :message => e}.to_json
   end
 end
 
