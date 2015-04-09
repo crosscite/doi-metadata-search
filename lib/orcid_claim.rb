@@ -11,7 +11,7 @@ class OrcidClaim
 
   @queue = :orcid
 
-  ORCID_VERSION = '1.1'
+  ORCID_VERSION = '1.2'
 
   def initialize oauth, work
     @oauth = oauth
