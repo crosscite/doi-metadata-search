@@ -198,7 +198,7 @@ class OrcidClaim
   def to_xml
     root_attributes = {
       :'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance',
-      :'xsi:schemaLocation' => 'http://www.orcid.org/ns/orcid https://raw.github.com/ORCID/ORCID-Source/master/orcid-model/src/main/resources/orcid-message-1.1.xsd',
+      :'xsi:schemaLocation' => 'http://www.orcid.org/ns/orcid https://raw.github.com/ORCID/ORCID-Source/master/orcid-model/src/main/resources/orcid-message-1.2.xsd',
       :'xmlns' => 'http://www.orcid.org/ns/orcid'
     }
 
