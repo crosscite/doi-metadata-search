@@ -23,6 +23,11 @@
             %a{:href => "#{facet_link('publication', item.coins_title)}"}
               %i.icon-filter
               Filter on this publication
+        %li
+          %a{:href => "https://api.crossref.org/v1/works/#{item.doi}"}
+            %i.icon-file
+            Metadata as JSON
+            
     - if signed_in?
       - if item.in_user_profile?
         %span.well-transparent.claim-ok{:id => item.doi}

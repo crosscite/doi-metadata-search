@@ -61,7 +61,7 @@
     - unless item.contributors.empty?
       %p.expand= "Contributors: #{item.contributors.first}"
 
-    - unless item.supplementary_ids.empty?
+    - unless item.supplementary_ids.empty? || item.type != 'standard'
       %p.expand= "Other IDs: #{item.supplementary_ids.join(', ')}"
 
     = partial :item_links, :item => item
