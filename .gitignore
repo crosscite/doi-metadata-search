@@ -10,3 +10,5 @@ Gemfile.lock
 *.un~
 tmp/*
 log/*
+/vendor/bundle/*
+/vendor/cookbooks/*
