@@ -9,7 +9,7 @@ require_relative 'helpers'
 
 class OrcidClaim
 
-  # Map of DataCite work types to the CASRAI-based ORCID type vocabulary  
+  # Map of DataCite work types to the CASRAI-based ORCID type vocabulary
   TYPE_OF_WORK = {
 
     'Audiovisual' => 'other',
@@ -34,7 +34,7 @@ class OrcidClaim
 
  # Map of DataCite work types to ORCID original BibTeX-based type vocabulary. Derived from
   # DataCite metadata schema v3 (current as of Nov 2013)
-  
+
   TYPE_OF_WORK_DISABLED = {
     'Audiovisual' => 'audiovisual',
     'Collection' => 'other',
@@ -53,14 +53,14 @@ class OrcidClaim
 
     # Legacy types from older schema versions
     'Film' => 'film-movie',
-    
+
   }
 
 
   @queue = :orcid
 
   def logger
-    Log4r::Logger['test']    
+    Log4r::Logger['test']
   end
 
   def initialize oauth, work
@@ -71,9 +71,9 @@ class OrcidClaim
   def self.perform oauth, work
     OrcidClaim.new(oauth, work).perform
   end
-  
+
   def logger
-    Log4r::Logger['test']    
+    Log4r::Logger['test']
   end
 
   def perform
@@ -83,7 +83,7 @@ class OrcidClaim
     logger.debug {@oauth.ai}
     logger.debug {@work.ai}
     logger.debug "Works XML: " + to_xml
-    
+
     load_config
 
     # Need to check both since @oauth may or may not have been serialized back and forth from JSON.
@@ -91,8 +91,8 @@ class OrcidClaim
 
     opts = {:site => @conf['orcid']['site']}
     logger.info "Connecting to ORCID OAuth API at site #{opts[:site]} to post claim data"
-    
-    client = OAuth2::Client.new( @conf['orcid']['client_id'],  @conf['orcid']['client_secret'], opts)
+
+    client = OAuth2::Client.new(ENV['ORCID_CLIENT_ID'], ENV['ORCID_CLIENT_SECRET'], opts)
     token = OAuth2::AccessToken.new(client, @oauth['credentials']['token'])
     headers = {'Accept' => 'application/json'}
     response = token.post("/v1.1/#{uid}/orcid-works") do |post|
@@ -100,9 +100,9 @@ class OrcidClaim
       post.body = to_xml
     end
     logger.debug "response obj=" + response.ai
-    
+
     # Raise firm exception if we do NOT get an a-OK response back from the POST operation
-    if response.status == 201 
+    if response.status == 201
       return response.status
     else
       raise OAuth2::Error "Bad response from ORCID API: HTTP status=#{response.status}, error message=" + response.body
@@ -122,7 +122,7 @@ class OrcidClaim
     loc != nil
   end
 
-  # Heuristic for determing the type of the work based on A) the general, high-level label 
+  # Heuristic for determing the type of the work based on A) the general, high-level label
   # from the `resourceTypeGeneral field` (controlled list) and B)) the value of the  more specific
   # `resourceType` field which is not from a controlled list but rather free-form input from data centres.
   def orcid_work_type internal_work_type, internal_work_subtype
@@ -141,7 +141,7 @@ class OrcidClaim
               when /^(Dissertation|thesis|Doctoral thesis|Academic thesis|Master thesis|Masterthesis|Postdoctoral thesis)$/i
                 "dissertation"
               when /^(Conference Abstract|Conference extended abstract)$/i
-                "conference-abstract"                
+                "conference-abstract"
               when /^(Conference full text|Conference paper|ConferencePaper)$/i
                 "conference-paper"
               when /^(poster|Conference poster)$/i
@@ -151,7 +151,7 @@ class OrcidClaim
               when /^(dataset$)/i
                 "data-set"
               end
-              
+
             when "Collection"
               case internal_work_subtype
               when /^(Collection of Datasets|Data Files|Dataset|Supplementary Collection of Datasets)$/i
@@ -160,12 +160,12 @@ class OrcidClaim
                 "report"
               end
             end  # double CASE statement ends
-    
+
     if type.nil?
       logger.info "Got nothing from heuristic, falling back on generic type mapping for '#{internal_work_type}' or else defaulting to other"
       type = TYPE_OF_WORK[internal_work_type] || 'other'
     end
-    
+
     logger.debug "Final work type mapping: #{internal_work_type||'undef'} / #{internal_work_subtype||'undef'} => #{type || 'undef'}"
     return type
   end
@@ -320,5 +320,5 @@ class OrcidClaim
       }
     end.to_xml
   end
-  
+
 end

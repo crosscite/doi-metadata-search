@@ -10,4 +10,3 @@ Gemfile.lock
 *.un~
 tmp/*
 log/*
-config/settings.yml
