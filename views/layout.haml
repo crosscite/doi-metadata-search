@@ -2,23 +2,23 @@
 %html
   %head
     %title
-      = settings.app_name
+      = ENV['APPLICATION']
     %link{:rel => 'stylesheet', :href => '/stylesheets/bootstrap.min.css', :type => 'text/css', :media => 'screen'}
     %link{:rel => 'stylesheet', :href => '/stylesheets/font-awesome.min.css', :type => 'text/css', :media => 'screen'}
     %link{:rel => 'stylesheet', :href => '/stylesheets/application.css', :type => 'text/css', :media => 'screen'}
-    %link{:rel =>'search', :href => '/opensearch.xml', :type => 'application/opensearchdescription+xml', :title => 'CrossRef Metadata Search'}  
+    %link{:rel =>'search', :href => '/opensearch.xml', :type => 'application/opensearchdescription+xml', :title => 'CrossRef Metadata Search'}
     %script{:type => 'text/javascript', :src => 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'}
     %script{:type => 'text/javascript', :src => '/javascripts/bootstrap.js'}
     %script{:type => 'text/javascript', :src => '/javascripts/spin.min.js'}
     %script{:type => 'text/javascript', :src => '/javascripts/format.min.js'}
     %script{:type => 'text/javascript', :src => '/javascripts/jquery.oauthpopup.js'}
     %script{:type => 'text/javascript', :src => '/javascripts/bootstrap.notify.js'}
-    - if settings.gabba[:cookie]
+    - if ENV['GABBA_COOKIE']
       :javascript
          var _gaq = _gaq || [];
-         _gaq.push(['_setAccount', '#{settings.gabba[:cookie]}']);
+         _gaq.push(['_setAccount', '#{ENV['GABBA_COOKIE']}']);
          _gaq.push(['_trackPageview']);
-       
+
          (function() {
            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
@@ -32,7 +32,7 @@
     .notifications.top-left
     .container-fluid
       = yield
-    - if expired_session?  
+    - if expired_session?
       :javascript
         $(document).ready(function() {
           $('.top-left').notify({

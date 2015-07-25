@@ -48,7 +48,7 @@ helpers do
     logger.debug "building query to send to #{ENV['SOLR_URL']}#{ENV['SOLR_SELECT']}, with params:\n" + query_params.ai
     page = query_page
     rows = query_rows
-    results = settings.solr.paginate page, rows, settings.solr_select, :params => query_params
+    results = settings.solr.paginate page, rows, ENV['SOLR_SELECT'], :params => query_params
   end
 
   def response_format
@@ -255,24 +255,24 @@ helpers do
   end
 
   def index_stats
-    count_result = settings.solr.get settings.solr_select, :params => {
+    count_result = settings.solr.get ENV['SOLR_SELECT'], :params => {
       :q => '*:*',
       :fq => 'has_metadata:true',
       :rows => 0
     }
-    dataset_result = settings.solr.get settings.solr_select, :params => {
+    dataset_result = settings.solr.get ENV['SOLR_SELECT'], :params => {
       :q => 'resourceTypeGeneral:Dataset',
       :rows => 0
     }
-    text_result = settings.solr.get settings.solr_select, :params => {
+    text_result = settings.solr.get ENV['SOLR_SELECT'], :params => {
       :q => 'resourceTypeGeneral:Text',
       :rows => 0
     }
-    software_result = settings.solr.get settings.solr_select, :params => {
+    software_result = settings.solr.get ENV['SOLR_SELECT'], :params => {
       :q => 'resourceTypeGeneral:Software',
       :rows => 0
     }
-    oldest_result = settings.solr.get settings.solr_select, :params => {
+    oldest_result = settings.solr.get ENV['SOLR_SELECT'], :params => {
       :q => 'publicationYear:[1 TO *]',
       :rows => 1,
       :sort => 'publicationYear asc'

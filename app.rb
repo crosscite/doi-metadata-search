@@ -12,6 +12,7 @@ end
 
 require 'sinatra'
 require 'sinatra/config_file'
+require 'active_support/all'
 require 'json'
 require 'rsolr'
 require 'mongo'
@@ -140,7 +141,7 @@ configure do
                                        site: ENV['ORCID_URL'])
 
   # Set up session and auth middlewares for ORCiD sign in
-  use Rack::Session::Mongo, ENV['DB_NAME']
+  use Rack::Session::Mongo, settings.mongo[ENV['DB_NAME']]
   use Rack::Flash
   use OmniAuth::Builder do
     provider :orcid, ENV['ORCID_CLIENT_ID'], ENV['ORCID_CLIENT_SECRET'],
@@ -163,7 +164,6 @@ end
 before do
   logger.info "Fetching #{url}, params " + params.inspect
   #logger.debug {"request.env:\n" + request.env.ai}
-  load_config
 end
 
 get '/' do
@@ -360,7 +360,7 @@ post '/links' do
       results = citation_texts.take(MAX_MATCH_TEXTS).map do |citation_text|
         terms = scrub_query(citation_text, true)
         params = {:q => terms, :fl => 'doi,score'}
-        result = settings.solr.paginate 0, 1, settings.solr_select, :params => params
+        result = settings.solr.paginate 0, 1, ENV['SOLR_SELECT'], :params => params
         match = result['response']['docs'].first
 
         if citation_text.split.count < MIN_MATCH_TERMS

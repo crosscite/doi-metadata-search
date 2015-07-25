@@ -23,8 +23,6 @@ class OrcidUpdate
     oauth_expired = false
 
     begin
-      load_config
-
       # Need to check both since @oauth may or may not have been serialized back and forth from JSON.
       uid = @oauth[:uid] || @oauth['uid']
 
