@@ -12,12 +12,8 @@ helpers do
   #ap logger
 
   def logger
-    Log4r::Logger['test']    
+    Log4r::Logger['test']
   end
-
-#  def load_config
-#    @conf ||= YAML.load_file('config/settings.yml')
-#  end
 
   def partial template, locals
     haml template.to_sym, :layout => false, :locals => locals
@@ -44,7 +40,7 @@ helpers do
   end
 
   def select query_params
-    logger.debug "building query to send to #{settings.solr_url}#{settings.solr_select}, with params:\n" + query_params.ai
+    logger.debug "building query to send to #{ENV['SOLR_URL']}#{ENV['SOLR_SELECT']}, with params:\n" + query_params.ai
     page = query_page
     rows = query_rows
     results = settings.solr.paginate page, rows, settings.solr_select, :params => query_params
@@ -156,7 +152,7 @@ helpers do
       :fl => query_columns,
       :rows => query_rows,
       :facet => settings.facet ? 'true' : 'false',
-      'facet.field' => settings.facet_fields, 
+      'facet.field' => settings.facet_fields,
       'facet.mincount' => 1,
       :hl => settings.highlighting ? 'true' : 'false',
       'hl.fl' => 'hl_*',
@@ -266,7 +262,7 @@ helpers do
     text_result = settings.solr.get settings.solr_select, :params => {
       :q => 'resourceTypeGeneral:Text',
       :rows => 0
-    }    
+    }
     software_result = settings.solr.get settings.solr_select, :params => {
       :q => 'resourceTypeGeneral:Software',
       :rows => 0
@@ -296,7 +292,7 @@ helpers do
       :name => 'Number of indexed text documents',
       :number => true
     }
-    
+
     stats << {
       :value => software_result['response']['numFound'],
       :name => 'Number of indexed software',

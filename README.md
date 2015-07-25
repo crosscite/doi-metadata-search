@@ -8,7 +8,7 @@ This is a project by [ORCID EU labs](https://github.com/ORCID-EU-Labs/) and [ODI
 Try out our live running instance at [http://datacite.labs.orcid-eu.org](http://datacite.labs.orcid-eu.org)
 
 
-## Background 
+## Background
 
 The application is a fork of the Sinatra-based [CrossRef Metadata Search](http://search.crossref.org) tool by by [CrossRef Labs](http://labs.crossref.org)
 
@@ -27,20 +27,18 @@ The application is a fork of the Sinatra-based [CrossRef Metadata Search](http:/
 
 ### Installation
 
-    git clone https://github.com/ORCID-EU-Labs/DataCite-ORCID.git
+    git clone https://github.com/datacite/DataCite-ORCID.git
     cd DataCite-ORCID
     gem install librarian-chef
     librarian-chef install
     vagrant plugin install vagrant-omnibus
     vagrant plugin install vagrant-aws
-    vagrant box add dummy https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box
-    cp config/settings.yml.example config/settings.yml 
+    cp .env.example .env
     vagrant up
-**Note:** You'll seed to populate the client secret and client id in settings.yml.
 
 If you don't see any errors from the last command, you now have a properly
 configured Ubuntu virtual machine running `DataCite-ORCID`. You can point your
-browser to `http://localhost:8080`.
+browser to `http://10.2.2.12`.
 
 
 ## Vagrant Pluggins
@@ -54,7 +52,7 @@ browser to `http://localhost:8080`.
 
 ## Environment Variables
 
-| Variable       | Notes               |   
+| Variable       | Notes               |
 |----------------|---------------------|
 | AWS_ACCESS_KEY | Used for production |
 | AWS_SECRET     | Used for production |
@@ -64,12 +62,11 @@ browser to `http://localhost:8080`.
 
 ## Testing
 
-We use Rspec for unit testing and Cucumber for acceptance testing:
+We use Rspec for unit and acceptance testing:
 
--   `rake spec`
-
--   `rake features`
-
+```
+bundle exec rspec
+```
 
 ## License
 
@@ -77,7 +74,7 @@ The MIT License (OSI approved, see more at http://www.opensource.org/licenses/mi
 
 =============================================================================
 
-Copyright (C) 2013 by ORCID EU
+Copyright (C) 2013-2015 by ORCID EU
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

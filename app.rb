@@ -1,4 +1,6 @@
-# -*- coding: utf-8 -*-
+require 'dotenv'
+Dotenv.load
+
 require 'sinatra'
 require 'sinatra/config_file'
 require 'json'
@@ -10,7 +12,7 @@ require 'cgi'
 require 'faraday'
 require 'faraday_middleware'
 require 'haml'
-# require 'gabba' uncomment to use Google Analytics
+require 'gabba'
 require 'rack-session-mongo'
 require 'rack-flash'
 require 'omniauth-orcid'
@@ -24,11 +26,11 @@ require 'log4r'
 include Log4r
 logger = Log4r::Logger.new('test')
 logger.trace = true
-logger.level = DEBUG
+logger.level = ENV['LOG_LEVEL'].upcase.constantize
 
 formatter = Log4r::PatternFormatter.new(:pattern => "[%l] %t  %M")
 Log4r::Logger['test'].outputters << Log4r::Outputter.stdout
-Log4r::Logger['test'].outputters << Log4r::FileOutputter.new('logtest', 
+Log4r::Logger['test'].outputters << Log4r::FileOutputter.new('logtest',
                                               :filename =>  'log/app.log',
                                               :formatter => formatter)
 logger.info 'got log4r set up'
@@ -60,36 +62,40 @@ MIN_MATCH_SCORE = 2
 MIN_MATCH_TERMS = 3
 MAX_MATCH_TEXTS = 1000
 
+FACET = false
+HIGHLIGHTING = false
+TYPICAL_ROWS = [10, 20, 50, 100, 500]
+DEFAULT_ROWS = 20
+MONTH_SHORT_NAMES = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+
 after do
   response.headers['Access-Control-Allow-Origin'] = '*'
 end
 
 configure do
-  config_file 'config/settings.yml'
-  
   set :logging, Logger::INFO
 
   # Work around rack protection referrer bug
   set :protection, :except => :json_csrf
 
   # Configure solr
-  logger.info "Configuring Solr to connect to " + settings.solr_url
-  set :solr, RSolr.connect(:url => settings.solr_url)
+  logger.info "Configuring Solr to connect to #{ENV['SOLR_URL']}"
+  set :solr, RSolr.connect(url: ENV['SOLR_URL'])
 
   # Configure mongo
-  set :mongo, Mongo::Connection.new(settings.mongo_host)
-  logger.info "Configuring Mongo: url=" + settings.mongo_host
-  set :dois, settings.mongo[settings.mongo_db]['dois']
-  set :shorts, settings.mongo[settings.mongo_db]['shorts']
-  set :issns, settings.mongo[settings.mongo_db]['issns']
-  set :citations, settings.mongo[settings.mongo_db]['citations']
-  set :patents, settings.mongo[settings.mongo_db]['patents']
-  set :claims, settings.mongo[settings.mongo_db]['claims']
-  set :orcids, settings.mongo[settings.mongo_db]['orcids']
-  set :links, settings.mongo[settings.mongo_db]['links']
+  set :mongo, Mongo::Connection.new(ENV['DB_HOST'])
+  logger.info "Configuring Mongo: url=#{ENV['DB_HOST']}"
+  set :dois, ENV['DB_NAME']['dois']
+  set :shorts, ENV['DB_NAME']['shorts']
+  set :issns, ENV['DB_NAME']['issns']
+  set :citations, ENV['DB_NAME']['citations']
+  set :patents, ENV['DB_NAME']['patents']
+  set :claims, ENV['DB_NAME']['claims']
+  set :orcids, ENV['DB_NAME']['orcids']
+  set :links, ENV['DB_NAME']['links']
 
   # Set up for http requests to data.datacite.org and dx.doi.org
-  dx_doi_org = Faraday.new(:url => 'http://dx.doi.org') do |c|
+  dx_doi_org = Faraday.new(:url => 'http://doi.org') do |c|
     c.use FaradayMiddleware::FollowRedirects, :limit => 5
     c.adapter :net_http
   end
@@ -113,32 +119,33 @@ configure do
   set :facet_fields, ['type', 'year', 'oa_status', 'publication', 'category']
 
   # Google analytics event tracking
-  set :ga, Gabba::Gabba.new(settings.gabba[:cookie], settings.gabba[:url]) if settings.gabba[:cookie]
+  set :ga, Gabba::Gabba.new(ENV['GABBA_COOKIE'], ENV['GABBA_URL']) if ENV['GABBA_COOKIE']
 
   # Orcid endpoint
-  logger.info "Configuring ORCID, client app ID #{settings.orcid[:client_id]} connecting to #{settings.orcid[:site]}"
-  set :orcid_service, Faraday.new(:url => settings.orcid[:site])
+  logger.info "Configuring ORCID, client app ID #{ENV['ORCID_CLIENT_ID']} connecting to #{ENV['ORCID_URL']}"
+  set :orcid_service, Faraday.new(:url => ENV['ORCID_URL'])
 
   # Orcid oauth2 object we can use to make API calls
-  set :orcid_oauth, OAuth2::Client.new(settings.orcid[:client_id],
-                                       settings.orcid[:client_secret],
-                                       {:site => settings.orcid[:site]})
+  set :orcid_oauth, OAuth2::Client.new(ENV['ORCID_CLIENT_ID'],
+                                       ENV['ORCID_CLIENT_SECRET'],
+                                       site: ENV['ORCID_URL'])
 
   # Set up session and auth middlewares for ORCiD sign in
-  use Rack::Session::Mongo, settings.mongo[settings.mongo_db]
+  use Rack::Session::Mongo, ENV['DB_NAME']
   use Rack::Flash
   use OmniAuth::Builder do
-    provider :orcid, settings.orcid[:client_id], settings.orcid[:client_secret],
-    :authorize_params => {
-      :scope => '/orcid-profile/read-limited /orcid-works/create'
+    provider :orcid, ENV['ORCID_CLIENT_ID'], ENV['ORCID_CLIENT_SECRET'],
+    authorize_params: {
+      scope: '/orcid-profile/read-limited /orcid-works/create'
     },
-    :client_options => {
-      :site => settings.orcid[:site],
-      :authorize_url => settings.orcid[:authorize_url],
-      :token_url => settings.orcid[:token_url],
+    client_options: {
+      site: ENV['ORCID_URL'],
+      authorize_url: "#{ENV['ORCID_URL']}/oauth/authorize",
+      token_url: "#{ENV['ORCID_URL']}/oauth/token",
     },
-    :provider_ignores_state => true
+    provider_ignores_state: true
   end
+
   OmniAuth.config.logger = logger
 
   set :show_exceptions, true
@@ -173,7 +180,7 @@ get '/' do
       },
       :items => search_results(solr_result),
       :paginate => Paginate.new(query_page, query_rows, solr_result),
-      :facets => !solr_result['facet_counts'].nil? ? solr_result['facet_counts']['facet_fields'] 
+      :facets => !solr_result['facet_counts'].nil? ? solr_result['facet_counts']['facet_fields']
                                                    : {}
     }
 
@@ -210,7 +217,7 @@ get '/orcid/claim' do
     already_added = !orcid_record.nil? && orcid_record['locked_dois'].include?(doi)
 
     logger.info "Initiating claim for #{doi}"
-   
+
     if already_added
       logger.info "DOI #{doi} is already claimed, not doing anything!"
       status = 'ok'
@@ -220,18 +227,18 @@ get '/orcid/claim' do
 
       if !doi_record
         status = 'no_such_doi'
-      else       
+      else
         logger.debug "Got some DOI metadata from MongoDB: " + doi_record.ai
 
         claim_ok = false
         begin
-          claim_ok = OrcidClaim.perform(session_info, doi_record)          
+          claim_ok = OrcidClaim.perform(session_info, doi_record)
         rescue => e
           # ToDo: need more useful error messaging here, for displaying to user
           logger.error "Caught exception from claim process: #{e}: \n" + e.backtrace.join("\n")
         end
-        
-        if claim_ok          
+
+        if claim_ok
           if orcid_record
             orcid_record['updated'] = true
             orcid_record['locked_dois'] << doi
@@ -241,12 +248,12 @@ get '/orcid/claim' do
             doc = {:orcid => sign_in_id, :dois => [], :locked_dois => [doi]}
             settings.orcids.insert(doc)
           end
-          
+
           # The work could have been added as limited or public. If so we need
           # to tell the UI.
           OrcidUpdate.perform(session_info)
           updated_orcid_record = settings.orcids.find_one({:orcid => sign_in_id})
-          
+
           if updated_orcid_record['dois'].include?(doi)
             status = 'ok_visible'
           else
@@ -265,7 +272,7 @@ get '/orcid/unclaim' do
   if signed_in? && params['doi']
     doi = params['doi']
 
-    logger.info "Initiating unclaim for #{doi}"    
+    logger.info "Initiating unclaim for #{doi}"
     orcid_record = settings.orcids.find_one({:orcid => sign_in_id})
 
     if orcid_record
@@ -294,7 +301,7 @@ get '/orcid/sync' do
 end
 
 get '/dois' do
-  settings.ga.event('API', '/dois', query_terms, nil, true) if settings.gabba[:cookie]
+  settings.ga.event('API', '/dois', query_terms, nil, true) if ENV['GABBA_COOKIE']
   solr_result = select(search_query)
   items = search_results(solr_result).map do |result|
     {
@@ -382,7 +389,7 @@ post '/links' do
     }
   end
 
-  settings.ga.event('API', '/links', nil, page[:results].count, true) if settings.gabba[:cookie]
+  settings.ga.event('API', '/links', nil, page[:results].count, true) if ENV['GABBA_COOKIE']
 
   content_type 'application/json'
   JSON.pretty_generate(page)
@@ -396,7 +403,7 @@ get '/citation' do
     req.headers['Accept'] = citation_format
   end
 
-  settings.ga.event('Citations', '/citation', citation_format, nil, true) if settings.gabba[:cookie]
+  settings.ga.event('Citations', '/citation', citation_format, nil, true) if ENV['GABBA_COOKIE']
 
   content_type citation_format
   res.body if res.success?
@@ -446,8 +453,3 @@ get '/heartbeat' do
     {:status => :error, :type => e.class, :message => e}.to_json
   end
 end
-
- def load_config
-    @conf ||= YAML.load_file('config/settings.yml')
-  end
-

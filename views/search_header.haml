@@ -6,10 +6,10 @@
           .simple-nav
             .pull-right
               = partial :profile_link, {}
-            %a{:href => '/help/search'} Help  
+            %a{:href => '/help/search'} Help
             %a{:href => '/help/status'} Status
             %a{:href => '/help/api'} API
-            %a{:href => settings.contact_url} Contact
+            %a{:href => ENV['CONTACT_URL']} Contact
   - else
     .span-header.span3
       %a.home-link{:href => '/'}
@@ -24,6 +24,6 @@
         %form{:method => 'GET', :action => '/'}
           .search-in-header
             %input.input.input-xlarge.search-input{:placeholder => 'Search', :style => 'width: 22em; padding-left: 2em;', :name => 'q', :type => 'text', :value => page[:bare_query]}
-            %i.icon-search      
+            %i.icon-search
 %hr
-    
+
