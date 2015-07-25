@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 module Doi
 
   JSON_TYPE = 'application/vnd.citationstyles.csl+json'
@@ -14,7 +13,7 @@ module Doi
   end
 
   # Very short DOIs are of the form abcde. These must be used with
-  # doi.org. We check for doi.org/ since characters only preclude 
+  # doi.org. We check for doi.org/ since characters only preclude
   # search terms.
   def very_short_doi? s
     s.strip =~ /\A(https?:\/\/)?doi\.org\/[a-z0-9]+\Z/
@@ -23,15 +22,15 @@ module Doi
   def issn? s
     s.strip.upcase =~ /\A[0-9]{4}\-[0-9]{3}[0-9X]\Z/
   end
-  
+
   def orcid? s
     s.strip =~ /\A[0-9]{4}\-[0-9]{4}\-[0-9]{4}\-[0-9]{3}[0-9X]\Z/
   end
-  
+
   def urn? s
     s.strip =~ /\A(urn|URN):[a-zA-Z0-9\.\/:_-]+\Z/
   end
-  
+
   def name? s
     signed_in? && s.strip.downcase == session[:orcid][:info][:name].downcase
   end
@@ -54,7 +53,7 @@ module Doi
         req.url "/10/#{normal_short_doi}"
         req.headers['Accept'] = JSON_TYPE
       end
-      
+
       if res.success?
         doi = JSON.parse(res.body)['DOI']
         settings.shorts.insert({:short_doi => normal_short_doi, :doi => doi})

@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 require 'cgi'
 require 'log4r'
 require_relative 'helpers'
@@ -16,7 +14,7 @@ class SearchResult
                     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
   def logger
-    Log4r::Logger['test']    
+    Log4r::Logger['test']
   end
 
   def has_path? hash, path
@@ -82,7 +80,7 @@ class SearchResult
                                                   published: {
                                                     year: @year,
                                                     month: @month,
-                                                    day: @day } }, 
+                                                    day: @day } },
                                                 { :upsert => true })
   end
 
@@ -93,17 +91,17 @@ class SearchResult
   def open_access?
     @doc['oa_status'] == 'Open Access'
   end
-  
+
   def creative_commons
     if @rights =~ /Creative Commons|creativecommons/
-      if @rights =~ /BY-NC-ND|Attribution-NonCommercial-NoDerivs/ 
-        "by-nc-nd"     
-      elsif @rights =~ /BY-NC-SA/ 
-        "by-nc-sa"  
-      elsif @rights =~ /BY-NC|Attribution-NonCommercial/ 
-        "by-nc"     
-      elsif @rights =~ /BY-SA/ 
-        "by-sa"       
+      if @rights =~ /BY-NC-ND|Attribution-NonCommercial-NoDerivs/
+        "by-nc-nd"
+      elsif @rights =~ /BY-NC-SA/
+        "by-nc-sa"
+      elsif @rights =~ /BY-NC|Attribution-NonCommercial/
+        "by-nc"
+      elsif @rights =~ /BY-SA/
+        "by-sa"
       elsif @rights =~ /CC-BY|Attribution|Attribuzione/
         "by"
       elsif @rights =~ /zero/
@@ -115,25 +113,25 @@ class SearchResult
       nil
     end
   end
-    
+
   def related
     return nil unless @related
-    @related.map { |item| { relation: uncamelize(item.split(":", 3)[0]), 
+    @related.map { |item| { relation: uncamelize(item.split(":", 3)[0]),
                             id: item.split(":", 3)[1],
                             text: item.split(":", 3)[2] } }
   end
-  
+
   def alternate
     return nil unless @alternate
     @alternate.map { |item| { id: item.split(":", 2)[0],
                             text: item.split(":", 2)[1] } }
   end
-  
+
   def authors
     return nil unless @authors
     @authors.map { |author| parse_author(author) }
   end
-  
+
   def parse_author(name)
     # revert order if single words, separated by comma
     name = name.split(",")
@@ -143,7 +141,7 @@ class SearchResult
       name.reverse.join(" ")
     end
   end
-  
+
   def uncamelize(string)
     string.split(/(?=[A-Z])/).join(" ").capitalize
   end

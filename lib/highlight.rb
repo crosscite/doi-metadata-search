@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 require 'cgi'
 
 class SearchResult
@@ -169,7 +168,7 @@ class SearchResult
     end
 
     title = title_parts.join('&')
-    
+
     coins_authors.drop(1).each { |author| title += "&rft.au=#{CGI.escape(author)}" }
 
     "<span class=\"Z3988\" title=\"#{CGI.escapeHTML(title)}\"><!-- coins --></span>"
@@ -177,6 +176,6 @@ class SearchResult
 
 end
 
-    
 
-    
+
+
