@@ -10,15 +10,14 @@ Try out our live running instance at [http://datacite.labs.orcid-eu.org](http://
 
 ## Background
 
-The application is a fork of the Sinatra-based [CrossRef Metadata Search](http://search.crossref.org) tool by by [CrossRef Labs](http://labs.crossref.org)
-
+The application is a fork of the Sinatra-based [CrossRef Metadata Search](http://search.crossref.org) tool by [CrossRef](http://crossref.org).
 
 
 ## Installation
 
 ### Requirements
 
-- Ruby (any version)
+- Ruby (2.1 or higher)
 - git
 - Vagrant: http://www.vagrantup.com
 - Chef: http://www.opscode.com/chef/

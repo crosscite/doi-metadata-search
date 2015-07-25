@@ -56,9 +56,9 @@ SITE
 GIT
   remote: git@github.com:lagotto/capistrano-cookbook.git
   ref: master
-  sha: 75d89fcf6d8c0340773c17f2129c5d19d10c5391
+  sha: c0998f2eef4efadd273d38ed7d1c8ab3d681a2d9
   specs:
-    capistrano (0.10.5)
+    capistrano (0.10.7)
       consul (>= 0.0.0)
       nodejs (>= 0.0.0)
       ruby (~> 0.7.0)
