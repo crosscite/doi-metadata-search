@@ -1,6 +1,7 @@
 source "http://rubygems.org"
 
 gem "dotenv"
+gem 'sentry-raven'
 gem 'awesome_print'
 gem 'sinatra'
 gem 'sinatra-contrib'

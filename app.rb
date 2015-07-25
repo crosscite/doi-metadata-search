@@ -1,6 +1,15 @@
 require 'dotenv'
 Dotenv.load
 
+# optionally use sentry for error logging
+if ENV['SENTRY_DSN']
+  require 'raven'
+  Raven.configure do |config|
+    config.dsn = ENV['SENTRY_DSN']
+    # config.environments = %w[staging production]
+  end
+end
+
 require 'sinatra'
 require 'sinatra/config_file'
 require 'json'
@@ -452,4 +461,9 @@ get '/heartbeat' do
   rescue StandardError => e
     {:status => :error, :type => e.class, :message => e}.to_json
   end
+end
+
+error do
+  capture_exception env['sinatra.error'], env
+  { message: env['sinatra.error'].message }.to_json
 end

@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 require_relative 'doi'
 require_relative 'session'
 require_relative 'paginate'
@@ -13,6 +11,13 @@ helpers do
 
   def logger
     Log4r::Logger['test']
+  end
+
+  def capture_exception(e, env)
+    if ENV['SENTRY_DSN']
+      evt = Raven::Event.capture_rack_exception(e, env)
+      Raven.send(evt) if evt
+    end
   end
 
   def partial template, locals
