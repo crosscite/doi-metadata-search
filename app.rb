@@ -73,7 +73,7 @@ MIN_MATCH_SCORE = 2
 MIN_MATCH_TERMS = 3
 MAX_MATCH_TEXTS = 1000
 
-FACET = false
+FACET = true
 HIGHLIGHTING = false
 TYPICAL_ROWS = [10, 20, 50, 100, 500]
 DEFAULT_ROWS = 20
@@ -96,14 +96,14 @@ configure do
   # Configure mongo
   set :mongo, Mongo::Connection.new(ENV['DB_HOST'])
   logger.info "Configuring Mongo: url=#{ENV['DB_HOST']}"
-  set :dois, ENV['DB_NAME']['dois']
-  set :shorts, ENV['DB_NAME']['shorts']
-  set :issns, ENV['DB_NAME']['issns']
-  set :citations, ENV['DB_NAME']['citations']
-  set :patents, ENV['DB_NAME']['patents']
-  set :claims, ENV['DB_NAME']['claims']
-  set :orcids, ENV['DB_NAME']['orcids']
-  set :links, ENV['DB_NAME']['links']
+  set :dois, settings.mongo[ENV['DB_NAME']]['dois']
+  set :shorts, settings.mongo[ENV['DB_NAME']]['shorts']
+  set :issns, settings.mongo[ENV['DB_NAME']]['issns']
+  set :citations, settings.mongo[ENV['DB_NAME']]['citations']
+  set :patents, settings.mongo[ENV['DB_NAME']]['patents']
+  set :claims, settings.mongo[ENV['DB_NAME']]['claims']
+  set :orcids, settings.mongo[ENV['DB_NAME']]['orcids']
+  set :links, settings.mongo[ENV['DB_NAME']]['links']
 
   # Set up for http requests to data.datacite.org and dx.doi.org
   dx_doi_org = Faraday.new(:url => 'http://doi.org') do |c|
@@ -127,7 +127,7 @@ configure do
   }
 
   # Set facet fields
-  set :facet_fields, ['type', 'year', 'oa_status', 'publication', 'category']
+  set :facet_fields, ['resourceType_facet', 'publicationYear_facet', 'publisher_facet']
 
   # Google analytics event tracking
   set :ga, Gabba::Gabba.new(ENV['GABBA_COOKIE'], ENV['GABBA_URL']) if ENV['GABBA_COOKIE']
@@ -168,7 +168,7 @@ before do
 end
 
 get '/' do
-  if !signed_in?
+  if !params.has_key?('q') || !query_terms
     haml :splash, :locals => {:page => {:query => ""}}
   else
     params['q'] = session[:orcid][:info][:name] if !params.has_key?('q')
@@ -185,7 +185,7 @@ get '/' do
       :facet_query => abstract_facet_query,
       :page => query_page,
       :rows => {
-        :options => settings.typical_rows,
+        :options => TYPICAL_ROWS,
         :actual => query_rows
       },
       :items => search_results(solr_result),
