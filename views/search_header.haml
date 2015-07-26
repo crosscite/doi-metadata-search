@@ -1,29 +1,18 @@
 .row-fluid
   - if page[:mini_header]
-    .span-header
-      .pull-right
-        .simple-nav-outer.simple-nav-bump-up
-          .simple-nav
-            .pull-right
-              = partial :profile_link, {}
-            %a{:href => '/help/search'} Help
-            %a{:href => '/help/status'} Status
-            %a{:href => '/help/api'} API
-            %a{:href => ENV['CONTACT_URL']} Contact
+    .span9
   - else
-    .span-header.span3
+    .span1
       %a.home-link{:href => '/'}
-        %img{:src => '/images/logo.png', :alt => ''}
-    .span-header.span9.search-header
-      .pull-right
-        .simple-nav-outer
-          .simple-nav.smaller
-            .pull-right
-              = partial :profile_link, {}
-      - if signed_in?
-        %form{:method => 'GET', :action => '/'}
-          .search-in-header
-            %input.input.input-xlarge.search-input{:placeholder => 'Search', :style => 'width: 22em; padding-left: 2em;', :name => 'q', :type => 'text', :value => page[:bare_query]}
-            %i.icon-search
-%hr
+        %img{class: 'logo-small', src: '/images/logo-small.png', alt: 'DataCite' }
+    .span8
+      %form{:method => 'GET', :action => '/'}
+        .search-in-header
+          %input.search-input{placeholder: 'Enter search term', name: 'q', type: 'text', value: page[:bare_query]}
 
+  .span3
+    .pull-right
+      .simple-nav-outer
+        .simple-nav.smaller
+          .pull-right
+            = partial :profile_link, {}

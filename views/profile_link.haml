@@ -1,11 +1,11 @@
-- if signed_in?  
+- if signed_in?
   %img{:style =>'margin-left: 5px;', :src=> '/images/orcid_32x32.gif', :alt=>""}
   %a{:href  =>"#{@conf['orcid']['site'].gsub('http://api.','http://')}/#{session[:orcid][:uid]}", :target => "_blank", :style => " font-size: 120%; font-weight: bold;"}
     #{session[:orcid][:uid]}
     <br />
   %div{:class => 'pull-right dropdown'}
     %i.icon-user
-    %a.dropdown-toggle{:href => '#', :role => 'button', 'data-toggle' => 'dropdown'}      
+    %a.dropdown-toggle{:href => '#', :role => 'button', 'data-toggle' => 'dropdown'}
       = user_display
       %b.caret
     %ul.dropdown-menu{'role' => 'menu', :style => 'right: 0; left: auto;'}

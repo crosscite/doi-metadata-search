@@ -71,12 +71,12 @@ helpers do
     if params.has_key? 'rows'
       params['rows'].to_i
     else
-      settings.default_rows
+      DEFAULT_ROWS
     end
   end
 
   def query_columns
-    ['doi','creator','title','publisher','publicationYear','relatedIdentifier','alternateIdentifier','resourceTypeGeneral','resourceType','nameIdentifier','rights','version', 'score']
+    ['doi','creator','title','publisher','publicationYear','relatedIdentifier','alternateIdentifier','resourceTypeGeneral','resourceType','nameIdentifier','subject', 'rights','version', 'score']
   end
 
   def query_terms
@@ -156,10 +156,10 @@ helpers do
       :q => query_terms,
       :fl => query_columns,
       :rows => query_rows,
-      :facet => settings.facet ? 'true' : 'false',
+      :facet => FACET ? 'true' : 'false',
       'facet.field' => settings.facet_fields,
       'facet.mincount' => 1,
-      :hl => settings.highlighting ? 'true' : 'false',
+      :hl => HIGHLIGHTING ? 'true' : 'false',
       'hl.fl' => 'hl_*',
       'hl.simple.pre' => '<span class="hl">',
       'hl.simple.post' => '</span>',

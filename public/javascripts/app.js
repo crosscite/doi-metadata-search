@@ -3,7 +3,7 @@ function normaliseDoi(text) {
   var dxPrefixPattern = /^dx\.doi\.org\//;
   var httpPrefixPattern = /^http:\/\/dx\.doi\.org\//;
   var trimmedText = $.trim(text);
-  
+
   if (doiPrefixPattern.test(trimmedText)) {
     return trimmedText.slice(4);
   } else if (dxPrefixPattern.test(trimmedText)) {
@@ -14,7 +14,7 @@ function normaliseDoi(text) {
     return trimmedText;
   }
 }
-      
+
 function isDoi(text) {
   var normalisedText = normaliseDoi(text);
   var doiPattern = /^10\.[0-9]+\/.+$/;
@@ -72,7 +72,7 @@ function refreshAdvForm() {
             }
           } else {
             controlGroup.addClass('success');
-          }        
+          }
         }
       }
 
@@ -95,20 +95,20 @@ function refreshAdvForm() {
     var isAdded = FIELD_VALUES[field.id];
     var addLink = $('<a>');
     var icon = $('<i>').appendTo(addLink);
-    
+
     if (isAdded) {
       addLink.addClass('added');
       icon.addClass('icon-check');
     } else {
       icon.addClass('icon-check-empty');
     }
-      
+
     addLink.addClass('label label-add');
     addLink.attr('href', '#');
     addLink.append(icon);
     addLink.append('&nbsp;' + field.label);
     addLink.attr('id', field.id);
-      
+
     addLink.click(function(e) {
       if (isAdded) {
         delete FIELD_VALUES[field.id];
@@ -138,36 +138,36 @@ function refreshAdvForm() {
       var t = 'At least one of:';
       var td = $('<td>');
       var tr = $('<tr>');
-      
+
       if (isOptionalSet) {
         t = 'Optional:';
       }
-      
+
       var labelTd = $('<td>').addClass('set-label');
       labelTd.append(t);
-      
+
       tr.append(labelTd);
       td.appendTo(tr);
-      
+
       if (isOptionalSet) {
         tr.appendTo(table);
       } else {
         tr.prependTo(table);
       }
-      
+
       requiredSetTds[requiredSetName] = td;
     }
-    
+
     var requiredSetTd = requiredSetTds[requiredSetName];
     requiredSetTd.append(addLink);
   });
-  
+
   addMoreArea.appendTo(form);
 }
 
 function makeFieldQuery() {
   var fields = $('#adv-search-expander').data('form');
-  
+
   var url = 'http://www.crossref.org/openurl/?';
   url += 'noredirect=true&pid=kward@crossref.org&format=unixref';
 
@@ -176,41 +176,41 @@ function makeFieldQuery() {
     var fieldValue = FIELD_VALUES[fieldId].val;
     url += '&' + fieldId + '=' + encodeURIComponent(fieldValue);
   });
-    
+
   return url;
 }
-        
+
 $(document).ready(function() {
   var simpleSearchHandler = function(e) {
     var searchText = $('#simple-search-text').val();
-    
+
     if (searchText.length === 0) {
       return;
     }
-    
+
     if (isDoi(searchText)) {
-      var url = 'http://dx.doi.org/' + normaliseDoi(searchText);
+      var url = 'http://doi.org/' + normaliseDoi(searchText);
       window.location.href = url;
     } else {
       var url = '/dois?q=';
       url += encodeURIComponent(searchText);
       window.location.href = url;
     }
-    
+
     e.preventDefault();
     return false;
   }
-  
+
   $('#simple-search-btn').click(simpleSearchHandler);
   $('#simple-search').submit(simpleSearchHandler);
-  
+
   $('#adv-search-kind').change(function(e) {
     var selectedKind = $(this).val();
     var searchForm = $('#adv-search-expander');
     searchForm.data('form', FIELD_KIND_LOOKUP[selectedKind]);
     refreshAdvForm();
   });
-  
+
   $(window).resize(function (e) {
     $('#bib-search-text').width($('#bib-search-well').width() - 10);
   });
@@ -220,7 +220,7 @@ $(document).ready(function() {
   });
 
   $('#bib-search-text').height(200);
-  
+
   var selectedKind = $('#adv-search-kind').val();
   $('#adv-search-expander').data('form', FIELD_KIND_LOOKUP[selectedKind]);
   refreshAdvForm();

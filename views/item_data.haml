@@ -1,14 +1,14 @@
 %div.item-data
   - unless item.title.nil?
-    %p.lead
+    %h3
       = item.title
-      
+
     %p.extra
       %span
         - if item.version
           = "Version " + item.version + " of "
         %strong
-          = item.subtype
+          = item.subtype ? item.subtype : item.type
         published
         %b
           - unless item.day.nil?
@@ -16,7 +16,7 @@
           - unless item.month.nil?
             = item.month
           - unless (item.year.nil? || item.year.to_i == 0)
-            = item.year              
+            = item.year
       - unless item.publication.nil?
         %span
           via
@@ -42,7 +42,7 @@
 
   - unless item.authors.nil?
     %p.expand= item.authors[0..19].join(", ")
-    
+
   - if item.creative_commons
     %p
       - if item.creative_commons == "zero"

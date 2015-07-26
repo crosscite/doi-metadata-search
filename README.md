@@ -1,6 +1,6 @@
 # DataCite-ORCID metadata search and claim
 
-[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.21430.svg)](http://dx.doi.org/10.5281/zenodo.21430)
+[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.21430.svg)](http://doi.org/10.5281/zenodo.21430)
 
 An online tool for searching for works in the DataCite metadata
 catalogue and adding them to an ORCID profile.

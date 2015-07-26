@@ -1,15 +1,11 @@
-.row-centered.break-below
-  = partial :search_header, :page => page.merge({:mini_header => true})
-  - unless flash[:error].nil?
-    %div.alert.alert-error
-      = flash[:error]
-  
-.spacer  
-.row-centered
-  %h1.logo
-    %img{:src => '/images/logo.png', :alt => ''}
-  %p.lead
-    Make your research data count. Claim them and add to your ORCID record.
-  %div.alert
-    This site is in beta. Please use the contact link for feedback.
+= partial :search_header, :page => page.merge({:mini_header => true})
 
+.row-centered
+  %img{class: 'logo-big', src: '/images/datacite-logo.png'}
+
+  %form{:method => 'GET', :action => '/'}
+    .search-in-header
+      %input.search-input{placeholder: 'Enter search term', name: 'q', type: 'text', value: page[:bare_query]}
+  .splash
+
+= partial :search_footer, :page => page

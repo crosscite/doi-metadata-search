@@ -1,8 +1,6 @@
 = partial :search_header, :page => page
-        
-.row-fluid
-  .span3
 
+.row-fluid
   .span9
     - unless flash[:error].nil?
       %div.alert.alert-error
@@ -11,18 +9,14 @@
       = partial :search_box, :page => page
       .list-info
         .pull-right
-          %h6.number= "#{page[:paginate].total_rows} results - page #{page[:page]} of #{page[:paginate].total_pages}"
-        %div
-          %h6
-            Sort by:
-            - if page[:bare_sort] == 'publicationYear'
-              %a{:href => "#{search_link({:sort => 'score'})}"} relevance
-              %b publication year
-            - else
-              %b relevance
-              %a{:href => "#{search_link({:sort => 'publicationYear'})}"} publication year
-      .item-paging.bottom
-        = will_paginate page[:paginate], :renderer => BootstrapLinkRenderer, :inner_window => 2
+          = "#{page[:paginate].total_rows} results - page #{page[:page]} of #{page[:paginate].total_pages}"
+        Sort by
+        - if page[:bare_sort] == 'publicationYear'
+          %a{:href => "#{search_link({:sort => 'score'})}"} Relevance
+          %b Publication Year
+        - else
+          %b Relevance
+          %a{:href => "#{search_link({:sort => 'publicationYear'})}"} Publication Year
       = partial :item_list, :page => page
       .item-paging.bottom
         = will_paginate page[:paginate], :renderer => BootstrapLinkRenderer, :inner_window => 2
@@ -30,6 +24,7 @@
       %h2
         Example Queries
       = partial :help_list, :page => page
+  .span3
 
 = partial :cite_box, :page => page
 

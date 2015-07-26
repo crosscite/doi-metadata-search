@@ -5,14 +5,14 @@
       %a{:href => "javascript:showCitationsBox('#{item.hashed}');"}
         %i.icon-resize-small
           = item.citations.count
-          citations from patents     
-    %a{:href => 'http://dx.doi.org/' + item.doi}
+          citations from patents
+    %a{:href => 'http://doi.org/' + item.doi}
       %i.icon-external-link
-      = "dx.doi.org/#{item.doi}"
+      = "http://doi.org/#{item.doi}"
     %a.cite-link{:href => "javascript:showCiteBox('#{item.doi}', '#{item.title}');"}
       %i.icon-quote-left
       Cite
-    
+
     - if item.related && item.related.any? { |related| related[:id] == "DOI" }
       %span.dropdown
         %a.dropdown-toggle{:role => 'button', 'data-toggle' => 'dropdown', :href => '#'}
@@ -22,12 +22,12 @@
           - item.related.each do |related|
             - if related[:id] == "DOI"
               %li
-                %a.cite-link{:href => 'http://dx.doi.org/' + related[:text]}
+                %a.cite-link{:href => 'http://doi.org/' + related[:text]}
                   %strong
                     = related[:relation]
                   %i.icon-external-link
-                  = "dx.doi.org/#{related[:text]}"
-                  
+                  = "http://doi.org/#{related[:text]}"
+
     - if item.alternate
       %span.dropdown
         %a.dropdown-toggle{:role => 'button', 'data-toggle' => 'dropdown', :href => '#'}
@@ -53,5 +53,5 @@
         %span.well-transparent.claim-none{:id => item.doi}
           %img{:src => '/images/orcid_16x16.gif', :alt => ''}
           %span YES, this is my work - add to ORCID
-  
-    
+
+
