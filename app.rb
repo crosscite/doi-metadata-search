@@ -133,13 +133,13 @@ configure do
   set :ga, Gabba::Gabba.new(ENV['GABBA_COOKIE'], ENV['GABBA_URL']) if ENV['GABBA_COOKIE']
 
   # Orcid endpoint
-  logger.info "Configuring ORCID, client app ID #{ENV['ORCID_CLIENT_ID']} connecting to #{ENV['ORCID_URL']}"
-  set :orcid_service, Faraday.new(:url => ENV['ORCID_URL'])
+  logger.info "Configuring ORCID, client app ID #{ENV['ORCID_CLIENT_ID']} connecting to #{ENV['ORCID_API_URL']}"
+  set :orcid_service, Faraday.new(:url => ENV['ORCID_API_URL'])
 
   # Orcid oauth2 object we can use to make API calls
   set :orcid_oauth, OAuth2::Client.new(ENV['ORCID_CLIENT_ID'],
                                        ENV['ORCID_CLIENT_SECRET'],
-                                       site: ENV['ORCID_URL'])
+                                       site: ENV['ORCID_API_URL'])
 
   # Set up session and auth middlewares for ORCiD sign in
   use Rack::Session::Mongo, settings.mongo[ENV['DB_NAME']]
@@ -150,9 +150,9 @@ configure do
       scope: '/orcid-profile/read-limited /orcid-works/create'
     },
     client_options: {
-      site: ENV['ORCID_URL'],
+      site: ENV['ORCID_API_URL'],
       authorize_url: "#{ENV['ORCID_URL']}/oauth/authorize",
-      token_url: "#{ENV['ORCID_URL']}/oauth/token",
+      token_url: "#{ENV['ORCID_API_URL']}/oauth/token"
     },
     provider_ignores_state: true
   end
@@ -171,7 +171,7 @@ get '/' do
   if !params.has_key?('q') || !query_terms
     haml :splash, :locals => {:page => {:query => ""}}
   else
-    params['q'] = session[:orcid][:info][:name] if !params.has_key?('q')
+    params['q'] = session[:orcid][:uid] if signed_in? && !params.has_key?('q')
     logger.debug "Initiating Solr search with query string '#{params['q']}'"
     solr_result = select search_query
     logger.debug "Got some Solr results: "

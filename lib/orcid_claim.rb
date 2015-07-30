@@ -86,7 +86,7 @@ class OrcidClaim
     # Need to check both since @oauth may or may not have been serialized back and forth from JSON.
     uid = @oauth[:uid] || @oauth['uid']
 
-    opts = {:site => @conf['orcid']['site']}
+    opts = { site: ENV['ORCID_API_URL'] }
     logger.info "Connecting to ORCID OAuth API at site #{opts[:site]} to post claim data"
 
     client = OAuth2::Client.new(ENV['ORCID_CLIENT_ID'], ENV['ORCID_CLIENT_SECRET'], opts)
@@ -293,13 +293,13 @@ class OrcidClaim
   def to_xml
     root_attributes = {
       :'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance',
-      :'xsi:schemaLocation' => 'http://www.orcid.org/ns/orcid http://orcid.github.com/ORCID-Parent/schemas/orcid-message/1.1/orcid-message-1.1.xsd',
+      :'xsi:schemaLocation' => 'http://www.orcid.org/ns/orcid http://orcid.github.com/ORCID-Parent/schemas/orcid-message/1.2/orcid-message-1.2.xsd',
       :'xmlns' => 'http://www.orcid.org/ns/orcid'
     }
 
     builder = Nokogiri::XML::Builder.new do |xml|
       xml.send(:'orcid-message', root_attributes) {
-        xml.send(:'message-version', '1.1')
+        xml.send(:'message-version', '1.2')
         xml.send(:'orcid-profile') {
           xml.send(:'orcid-activities') {
             xml.send(:'orcid-works') {
