@@ -4,11 +4,11 @@ require_relative 'helpers'
 
 class SearchResult
 
-  attr_accessor :date, :year, :month, :day
-  attr_accessor :title, :publication, :authors, :volume, :issue
-  attr_accessor :first_page, :last_page
-  attr_accessor :type, :subtype, :doi, :score, :normal_score
-  attr_accessor :citations, :hashed, :related, :alternate, :version
+  attr_accessor :date, :year, :month, :day,
+                :title, :publication, :authors, :volume, :issue, :first_page, :last_page,
+                :type, :subtype, :doi, :score, :normal_score,
+                :citations, :hashed, :related, :alternate, :version,
+                :rights, :subject, :description, :creative_commons
 
   ENGLISH_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -93,22 +93,18 @@ class SearchResult
   end
 
   def creative_commons
-    if @rights =~ /Creative Commons|creativecommons/
-      if @rights =~ /BY-NC-ND|Attribution-NonCommercial-NoDerivs/
-        "by-nc-nd"
-      elsif @rights =~ /BY-NC-SA/
-        "by-nc-sa"
-      elsif @rights =~ /BY-NC|Attribution-NonCommercial/
-        "by-nc"
-      elsif @rights =~ /BY-SA/
-        "by-sa"
-      elsif @rights =~ /CC-BY|Attribution|Attribuzione/
-        "by"
-      elsif @rights =~ /zero/
-        "zero"
-      else
-        nil
-      end
+    if @rights =~ /BY-NC-ND|Attribution-NonCommercial-NoDerivs/
+      "by-nc-nd"
+    elsif @rights =~ /BY-NC-SA/
+      "by-nc-sa"
+    elsif @rights =~ /BY-NC|Attribution-NonCommercial/
+      "by-nc"
+    elsif @rights =~ /BY-SA/
+      "by-sa"
+    elsif @rights =~ /CC-BY|Attribution|Attribuzione/
+      "by"
+    elsif @rights =~ /zero|cc0/
+      "zero"
     else
       nil
     end

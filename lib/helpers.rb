@@ -76,7 +76,7 @@ helpers do
   end
 
   def query_columns
-    ['doi','creator','title','publisher','publicationYear','relatedIdentifier','alternateIdentifier','resourceTypeGeneral','resourceType','nameIdentifier','subject', 'rights','version', 'score']
+    ['doi','creator','title','publisher','publicationYear','relatedIdentifier','alternateIdentifier','resourceTypeGeneral','resourceType','nameIdentifier','subject','rights','version','description','descriptionType','score']
   end
 
   def query_terms
@@ -86,17 +86,37 @@ helpers do
       "doi:\"#{query_info[:value]}\""
     when :short_doi
       "doi:\"#{query_info[:value]}\""
-    when :issn
-      "*:#{query_info[:value]}"
     when :orcid
-      "nameIdentifier:ORCID\:#{query_info[:value]}"
+      orcid = query_info[:value][0]
+      names = query_info[:value][1..-1].uniq
+      orcid_terms(orcid, names)
+    when :contributpr
+      "creator:#{query_info[:value]} OR contributor:#{query_info[:value]}"
+    when :year
+      "publicationYear:\"#{query_info[:value]}\""
+    when :publisher
+      "publisher:#{query_info[:value]} OR datacentre:#{query_info[:value]}"
+    when :type
+      "resourceType:#{query_info[:value]} OR resourceTypeGeneral:#{query_info[:value]}"
+    when :subject
+      "subject:#{query_info[:value]}"
+    when :rights
+      "rights:#{query_info[:value]}"
     when :urn
       "alternateIdentifier:#{query_info[:value]}"
-    when :name
-      query_info[:value].map { |name| "creator:\"#{name.strip}\"~4"}.join(" OR ")
+    when :issn
+      "*:#{query_info[:value]}"
     else
       scrub_query(params['q'], false)
     end
+  end
+
+  def orcid_terms(orcid, names)
+    name_identifier = ["nameIdentifier:ORCID\:#{orcid}"]
+    creators = names.map { |name| "creator:\"#{name.strip}\"~4" }
+    contributors = names.map { |name| "contributor:\"#{name.strip}\"~4" }
+
+    (name_identifier + creators + contributors).join(" OR ")
   end
 
   def query_type
@@ -104,15 +124,24 @@ helpers do
       {:type => :doi, :value => to_doi(params['q']).downcase}
     elsif short_doi?(params['q']) || very_short_doi?(params['q'])
       {:type => :short_doi, :value => to_long_doi(params['q'])}
+    elsif value = orcid?(params['q'])
+      {:type => :orcid, :value => value}
+    elsif value = contributor?(params['q'])
+      {:type => :contributor, :value => value }
+    elsif value = year?(params['q'])
+      {:type => :year, :value => value }
+    elsif value = publisher?(params['q'])
+      {:type => :publisher, :value => value }
+    elsif value = type?(params['q'])
+      {:type => :type, :value => value }
+    elsif value = subject?(params['q'])
+      {:type => :subject, :value => value }
+    elsif value = rights?(params['q'])
+      {:type => :rights, :value => value }
     elsif issn? params['q']
       {:type => :issn, :value => params['q'].strip.upcase}
-    elsif orcid? params['q']
-      {:type => :orcid, :value => params['q'].strip}
     elsif urn? params['q']
       {:type => :urn, :value => params['q'].strip}
-    elsif name? params['q']
-      names = session[:orcid][:info][:other_names].nil? ? [session[:orcid][:info][:name]] : [session[:orcid][:info][:name]] | session[:orcid][:info][:other_names]
-      {:type => :name, :value => names.uniq}
     else
       {:type => :normal}
     end

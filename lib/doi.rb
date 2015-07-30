@@ -24,15 +24,35 @@ module Doi
   end
 
   def orcid? s
-    s.strip =~ /\A[0-9]{4}\-[0-9]{4}\-[0-9]{4}\-[0-9]{3}[0-9X]\Z/
+    s.gsub!(/\A[0-9]{4}\-[0-9]{4}\-[0-9]{4}\-[0-9]{3}[0-9X]\Z/, '\1')
   end
 
   def urn? s
     s.strip =~ /\A(urn|URN):[a-zA-Z0-9\.\/:_-]+\Z/
   end
 
-  def name? s
-    signed_in? && s.strip.downcase == session[:orcid][:info][:name].downcase
+  def contributor? s
+    s.gsub!(/\A(creator|contributor|author):\s*.+\Z/, '\2')
+  end
+
+  def year? s
+    s.gsub!(/\A(year|publicationYear):\s*([0-9]{4})\Z/, '\2')
+  end
+
+  def publisher? s
+    s.gsub!(/\A(publisher|datacentre):\s*.+\Z/, '\2')
+  end
+
+  def type? s
+    s.gsub!(/\A(type|resourceType|resourceTypeGeneral):\s*(.+)\Z/, '\2')
+  end
+
+  def subject? s
+    s.gsub!(/\Asubject:\s*(.+)\Z/, '\1')
+  end
+
+  def rights? s
+    s.gsub!(/\A(rights|license):\s*(.+)\Z/, '\2')
   end
 
   def to_doi s
@@ -61,5 +81,4 @@ module Doi
       end
     end
   end
-
 end
