@@ -123,6 +123,7 @@ Vagrant.configure("2") do |config|
       aws.tags = { Name: ENV["APPLICATION"] }
 
       override.ssh.username = "ubuntu"
+      override.nfs.functional = false
       override.vm.box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
     end
 
