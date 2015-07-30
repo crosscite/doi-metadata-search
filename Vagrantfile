@@ -120,7 +120,7 @@ Vagrant.configure("2") do |config|
       aws.instance_type = ENV.fetch('AWS_INSTANCE_TYPE', nil)
       aws.ami = ENV.fetch('AWS_AMI', nil)
       aws.region = ENV.fetch('AWS_REGION', "us-east-1")
-      aws.tags = { name: ENV["APPLICATION"], group: ENV["AWS_SECURITY_GROUP"] }
+      aws.tags = { Name: ENV["APPLICATION"] }
 
       override.ssh.username = "ubuntu"
       override.vm.box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
