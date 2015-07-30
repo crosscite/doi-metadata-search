@@ -1,11 +1,11 @@
 %div.item-data
   - unless item.title.nil?
-    %p.lead
+    %h3
       - if item.open_access?
         %a.oa-tooltip{:href => '#'}
           %i.icon-unlock
       = item.title
-      
+
     %p.extra
       %span
         Published
@@ -15,7 +15,7 @@
           - unless item.month.nil?
             = item.month
           - unless item.year.nil?
-            = item.year              
+            = item.year
       - unless item.publication.nil?
         %span
           in
@@ -38,9 +38,9 @@
         %span
           , on page
             %b= item.first_page
-  
+
     - unless item.authors.nil?
       %p.expand= item.authors
 
     = partial :item_links, :item => item
-        
+

@@ -7,7 +7,7 @@ $(document).ready(function() {
 
   $('.expand').each(function() {
     if ($(this).text().length > MAX_EXPAND_CHARS) {
-      $(this).data('full-text', $(this).text());        
+      $(this).data('full-text', $(this).text());
       $(this).text($(this).text().substring(0, MAX_EXPAND_CHARS));
       $(this).append($('<a>').addClass('expander').text('...').attr('href', '#'));
     }
@@ -46,7 +46,7 @@ $(document).ready(function() {
       return false;
     });
   }
-  
+
   var performSync = function($popover) {
     $.ajax({
       url: '/orcid/sync',
@@ -57,7 +57,7 @@ $(document).ready(function() {
           replacePopoverWithLogin($popover);
         } else {
           location.reload();
-        }  
+        }
       },
       error: function() {
         location.reload();
@@ -145,19 +145,19 @@ $(document).ready(function() {
         }
     });
   }
-        
+
   var claimNoneClickFn = function(e) {
     $('.claim-none').popover('destroy');
     $('.claim-warn').popover('destroy');
     $('.claim-ok').popover('destroy');
-    
+
     var $p = $('<p>').text('Are you sure you want to add this work to your ORCID record?');
     var $btnNo = $('<button>').addClass('btn').addClass('claim-no-btn').text('No');
     var $btnOk = $('<button>').addClass('btn').addClass('btn-success').addClass('claim-ok-btn').text('Yes');
     var $btns = $('<div>').addClass('btn-container').append($btnNo).append($btnOk);
     var $content = $('<div>').append($p).append($btns);
     var $popover = $(this);
-    
+
     $(this).popover({
       placement: 'bottom',
       html: true,
@@ -167,7 +167,7 @@ $(document).ready(function() {
     });
 
     $(this).popover('show');
-    
+
     $('.claim-no-btn').click(function(e) {
       if (!$(this).hasClass('disabled')) {
         $popover.popover('destroy');
@@ -180,13 +180,13 @@ $(document).ready(function() {
       if ($(this).hasClass('disabled')) {
         return;
       }
-      
+
       $(this).prepend($('<i>').addClass('icon-refresh').addClass('icon-spin'));
       $(this).addClass('disabled');
       $(this).parent().find('.btn').addClass('disabled');
 
       performClaim($popover);
-      
+
       e.preventDefault();
       return false;
     });
@@ -207,7 +207,7 @@ $(document).ready(function() {
     var $btns = $('<div>').addClass('btn-container').append($btnClose).append($btnRefresh).append($btnRemove);
     var $content = $('<div>').append($text).append($btns);
     var $popover = $(this);
-    
+
     $(this).popover({
       placement: 'bottom',
       html: true,
@@ -217,7 +217,7 @@ $(document).ready(function() {
     });
 
     $(this).popover('show');
-    
+
     $('.claim-close-btn').click(function(e) {
       if (!$(this).hasClass('disabled')) {
         $popover.popover('destroy');
@@ -235,12 +235,12 @@ $(document).ready(function() {
       e.preventDefault();
       return false;
     });
-    
+
     $('.claim-remove-btn').click(function(e) {
       if ($(this).hasClass('disabled')) {
         return;
       }
-      
+
       $(this).prepend($('<i>').addClass('icon-refresh').addClass('icon-spin'));
       $(this).parent().find('.btn').addClass('disabled');
 
@@ -253,7 +253,7 @@ $(document).ready(function() {
           $popover.addClass('claim-none');
           $popover.unbind('click');
           $popover.click(claimNoneClickFn);
-          $popover.find('span').text('Add to ORCID');
+          $popover.find('span').text('Yes, this is my work - add to ORCID');
           $popover.find('i').removeClass('icon-circle');
           $popover.find('i').addClass('icon-circle-blank');
         },

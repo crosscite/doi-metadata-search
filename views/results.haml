@@ -13,9 +13,9 @@
         Sort by
         - if page[:bare_sort] == 'publicationYear'
           %a{:href => "#{search_link({:sort => 'score'})}"} Relevance
-          %b Publication Year
+          %b - Publication Year
         - else
-          %b Relevance
+          %b Relevance -
           %a{:href => "#{search_link({:sort => 'publicationYear'})}"} Publication Year
       = partial :item_list, :page => page
       .item-paging.bottom

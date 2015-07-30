@@ -54,7 +54,11 @@ h1 {
 .break-below {
   margin-bottom: 6em;
 }
-
+.page-header {
+  border-bottom-width: 0;
+  margin:18px 0;
+  padding-bottom:17px;
+}
 /* results.haml */
 .item-paging {
   text-align: center;
@@ -147,7 +151,11 @@ h3 {
   text-decoration: none;
 }
 .claim-ok {
+  font-size: 1em;
   color: rgb(167, 204, 145);
+}
+.btn-container .btn {
+  font-size: 1em;
 }
 .claim-ok:hover {
   color: rgb(137, 194, 115);
@@ -159,10 +167,21 @@ h3 {
   color: rgb(216, 100, 0);
 }
 .claim-none {
-  color: #ccc;
+  font-size: 1em;
+  color: #999999;
+}
+.claim-none span {
+  margin-left: .2em;
 }
 .claim-none:hover {
   color: rgb(167, 204, 145);
+}
+.popover-inner {
+  padding: 2px;
+}
+.popover-inner .popover-title {
+  margin-top: 1px;
+  margin-bottom: 1px;
 }
 .item-links-outer {
   margin-top: 1.5em;
@@ -193,8 +212,6 @@ h3 {
 }
 .well-transparent {
   border: none;
-  text-transform: uppercase;
-  font-size: .9em;1
   padding: .8em;
   cursor: pointer;
   border-radius: 4px;
@@ -453,8 +470,12 @@ p, h2 {
   margin-left: .4em;
 }
 .simple-nav.smaller {
+  font-size: 1em;
+  line-height: 1.4em;
+}
+.orcid_id {
   font-size: 1.25em;
-  line-height: 2em;
+  line-height: 1.5em;
 }
 .alternate {
   padding-left: 0.75em;
