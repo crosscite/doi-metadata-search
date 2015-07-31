@@ -88,7 +88,7 @@ helpers do
       "doi:\"#{query_info[:value]}\""
     when :orcid
       orcid = query_info[:value][0]
-      names = query_info[:value][1..-1].uniq
+      names = Array(query_info[:value][1..-1]).uniq
       orcid_terms(orcid, names)
     when :contributpr
       "creator:#{query_info[:value]} OR contributor:#{query_info[:value]}"

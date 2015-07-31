@@ -203,10 +203,6 @@ get '/' do
   end
 end
 
-get '/help/api' do
-  haml :api_help, :locals => {:page => {:query => ''}}
-end
-
 get '/help/search' do
   haml :search_help, :locals => {:page => {:query => ''}}
 end
@@ -313,115 +309,6 @@ get '/orcid/sync' do
 
   content_type 'application/json'
   {:status => status}.to_json
-end
-
-get '/dois' do
-  settings.ga.event('API', '/dois', query_terms, nil, true) if ENV['GABBA_COOKIE']
-  solr_result = select(search_query)
-  items = search_results(solr_result).map do |result|
-    {
-      :doi => result.doi,
-      :score => result.score,
-      :normalizedScore => result.normal_score,
-      :title => result.coins_atitle,
-      :fullCitation => result.citation,
-      :coins => result.coins,
-      :year => result.coins_year
-    }
-  end
-
-  content_type 'application/json'
-
-  if ['true', 't', '1'].include?(params[:header])
-    page = {
-      :totalResults => solr_result['response']['numFound'],
-      :startIndex => solr_result['response']['start'],
-      :itemsPerPage => query_rows,
-      :query => {
-        :searchTerms => params['q'],
-        :startPage => query_page
-      },
-      :items => items,
-    }
-
-    JSON.pretty_generate(page)
-  else
-    JSON.pretty_generate(items)
-  end
-end
-
-post '/links' do
-  page = {}
-
-  begin
-    citation_texts = JSON.parse(request.env['rack.input'].read)
-
-    if citation_texts.count > MAX_MATCH_TEXTS
-      page = {
-        :results => [],
-        :query_ok => false,
-        :reason => "Too many citations. Maximum is #{MAX_MATCH_TEXTS}"
-      }
-    else
-      results = citation_texts.take(MAX_MATCH_TEXTS).map do |citation_text|
-        terms = scrub_query(citation_text, true)
-        params = {:q => terms, :fl => 'doi,score'}
-        result = settings.solr.paginate 0, 1, ENV['SOLR_SELECT'], :params => params
-        match = result['response']['docs'].first
-
-        if citation_text.split.count < MIN_MATCH_TERMS
-          {
-            :text => citation_text,
-            :reason => 'Too few terms',
-            :match => false
-          }
-        elsif match['score'].to_f < MIN_MATCH_SCORE
-          {
-            :text => citation_text,
-            :reason => 'Result score too low',
-            :match => false
-          }
-        else
-          {
-            :text => citation_text,
-            :match => true,
-            :doi => match['doi'],
-            :score => match['score'].to_f
-          }
-        end
-      end
-
-      page = {
-        :results => results,
-        :query_ok => true
-      }
-    end
-  rescue JSON::ParseError => e
-    page = {
-      :results => [],
-      :query_ok => false,
-      :reason => 'Request contained malformed JSON'
-    }
-  end
-
-  settings.ga.event('API', '/links', nil, page[:results].count, true) if ENV['GABBA_COOKIE']
-
-  content_type 'application/json'
-  JSON.pretty_generate(page)
-end
-
-get '/citation' do
-  citation_format = settings.citation_formats[params[:format]]
-
-  res = settings.data_service.get do |req|
-    req.url "/#{params[:doi]}"
-    req.headers['Accept'] = citation_format
-  end
-
-  settings.ga.event('Citations', '/citation', citation_format, nil, true) if ENV['GABBA_COOKIE']
-
-  content_type citation_format
-  res.body if res.success?
 end
 
 get '/auth/orcid/callback' do
