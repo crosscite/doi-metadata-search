@@ -346,5 +346,31 @@ helpers do
     stats
   end
 
+  def get_alt_count(page)
+    url = "http://api.crossref.org/works"
+
+    if page[:query_type][:type] == :doi
+      query = "/#{page[:query_type][:value]}"
+    else
+      query = "?query=#{page[:bare_query]}&rows=0"
+    end
+
+    conn = Faraday.new
+    response = conn.get url + query
+
+    if response.status == 200 && page[:query_type][:type] == :doi
+      JSON.parse(response.body).fetch("message", {}).length > 0 ? "DOI found" : "DOI not found"
+    elsif response.status == 200
+      JSON.parse(response.body).fetch("message", {}).fetch("total-results", 0).to_s + " results"
+    else
+      "0 results"
+    end
+  rescue JSON::ParserError
+    "DOI not found"
+  end
+
+  def get_alt_doi
+
+  end
 end
 

@@ -6,17 +6,18 @@
       %div.alert.alert-error
         = flash[:error]
     - unless page[:page].nil? || page[:paginate].nil? || params['q'] == ""
-      = partial :search_box, :page => page
-      .list-info
-        .pull-right
-          = "#{page[:paginate].total_rows} results - page #{page[:page]} of #{page[:paginate].total_pages}"
-        Sort by
-        - if page[:bare_sort] == 'publicationYear'
-          %a{:href => "#{search_link({:sort => 'score'})}"} Relevance
-          %b - Publication Year
-        - else
-          %b Relevance -
-          %a{:href => "#{search_link({:sort => 'publicationYear'})}"} Publication Year
+      - if page[:items].length > 0
+        = partial :search_box, :page => page
+        .list-info
+          .pull-right
+            = "#{page[:paginate].total_rows} results - page #{page[:page]} of #{page[:paginate].total_pages}"
+          Sort by
+          - if page[:bare_sort] == 'publicationYear'
+            %a{:href => "#{search_link({:sort => 'score'})}"} Relevance
+            %b - Publication Year
+          - else
+            %b Relevance -
+            %a{:href => "#{search_link({:sort => 'publicationYear'})}"} Publication Year
       = partial :item_list, :page => page
       .item-paging.bottom
         = will_paginate page[:paginate], :renderer => BootstrapLinkRenderer, :inner_window => 2

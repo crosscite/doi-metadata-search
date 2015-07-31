@@ -54,8 +54,10 @@
           %button.btn{'type' => 'button', 'data-dismiss' => 'modal'} No, thanks
           %button.btn.btn-primary{:id => "claim-button-#{item.hashed}"} Yes, do it
 - else
-  %div.alert.alert-warn
-    No results.
+  %div.alert.alert-info
+    Nothing found.
+    %b
+      %a{ href: "#{page[:alt_url]}" } #{page[:alt_text] } in the CrossRef Metadata Search.
 
 :javascript
   function showCitationsBox(hashed) {
