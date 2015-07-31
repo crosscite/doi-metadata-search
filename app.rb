@@ -119,9 +119,7 @@ configure do
     'bibtex' => 'application/x-bibtex',
     'ris' => 'application/x-research-info-systems',
     'apa' => 'text/x-bibliography; style=apa',
-    'harvard' => 'text/x-bibliography; style=harvard3',
     'ieee' => 'text/x-bibliography; style=ieee',
-    'mla' => 'text/x-bibliography; style=mla',
     'vancouver' => 'text/x-bibliography; style=vancouver',
     'chicago' => 'text/x-bibliography; style=chicago-fullnote-bibliography'
   }
@@ -309,6 +307,20 @@ get '/orcid/sync' do
 
   content_type 'application/json'
   {:status => status}.to_json
+end
+
+get '/citation' do
+  citation_format = settings.citation_formats[params[:format]]
+
+  res = settings.data_service.get do |req|
+    req.url "/#{params[:doi]}"
+    req.headers['Accept'] = citation_format
+  end
+
+  settings.ga.event('Citations', '/citation', citation_format, nil, true) if ENV['GABBA_COOKIE']
+
+  content_type citation_format
+  res.body if res.success?
 end
 
 get '/auth/orcid/callback' do
