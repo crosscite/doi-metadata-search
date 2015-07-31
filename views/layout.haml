@@ -13,6 +13,16 @@
     %script{:type => 'text/javascript', :src => '/javascripts/format.min.js'}
     %script{:type => 'text/javascript', :src => '/javascripts/jquery.oauthpopup.js'}
     %script{:type => 'text/javascript', :src => '/javascripts/bootstrap.notify.js'}
+    - if ENV['SENTRY_JS_DSN']
+      %script{:type => 'text/javascript', :src => '//cdn.ravenjs.com/1.1.19/jquery,native/raven.min.js'}
+      :javascript
+          Raven.config('#{ENV['SENTRY_JS_DSN']}', {
+              // pass along the version of your application
+              // release: '1.0.0',
+
+              // we highly recommend restricting exceptions to a domain in order to filter out clutter
+              whitelistUrls: ['#{ENV['HOSTNAME']}']
+          }).install();
     - if ENV['GABBA_COOKIE']
       :javascript
          var _gaq = _gaq || [];

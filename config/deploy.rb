@@ -36,11 +36,13 @@ set :repo_url, "#{ENV['GITHUB_URL']}.git"
 set :stage, ENV["STAGE"]
 set :pty, false
 
+set :ssh_options, {
+  user: ENV['DEPLOY_USER'],
+  keys: [ENV['AWS_KEYPATH']],
+  forward_agent: false }
+
 # Default branch is :master
 set :branch, ENV["REVISION"] || ENV["BRANCH_NAME"] || "master"
-
-# install/update npm modules and bower components
-set :npm_target_path, -> { release_path.join('frontend') }
 
 # restart passenger method
 set :passenger_restart_with_touch, true
