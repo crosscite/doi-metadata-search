@@ -25,6 +25,13 @@ gem 'nokogiri'
 gem 'rake'
 gem 'log4r'
 
+group :development do
+  gem 'capistrano-passenger', '~> 0.1.1'
+  gem 'capistrano-rails', '~> 1.1.1', :require => false
+  gem 'capistrano-bundler', '~> 1.1.2', :require => false
+  gem 'capistrano-npm', '~> 1.0.0'
+end
+
 group :test do
   gem 'rspec'
   gem 'capybara'

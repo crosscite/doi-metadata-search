@@ -44,7 +44,7 @@ SITE
     runit (1.7.2)
       packagecloud (>= 0.0.0)
     ulimit (0.3.3)
-    windows (1.37.0)
+    windows (1.38.1)
       chef_handler (>= 0.0.0)
     yum (3.6.3)
     yum-epel (0.6.2)
@@ -90,9 +90,9 @@ GIT
 GIT
   remote: https://github.com/datacite/datacite_orcid-cookbook.git
   ref: master
-  sha: c513f57294f3af82fc27de50830f8f66606572ea
+  sha: 293b8de5bd9a4e1e31e0b266815bc282bb3c7d54
   specs:
-    datacite_orcid (2.0.5)
+    datacite_orcid (2.0.6)
       apt (>= 0.0.0)
       capistrano (~> 0.10.0)
       consul (>= 0.0.0)
