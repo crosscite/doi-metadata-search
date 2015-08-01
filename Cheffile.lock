@@ -88,9 +88,9 @@ GIT
 GIT
   remote: https://github.com/datacite/datacite_orcid-cookbook.git
   ref: master
-  sha: 4e68eb25a867c31809919aff47d7d9e3fb3c5596
+  sha: 4f3bc0d920305c8e8f0fb831758fbf46cc467f79
   specs:
-    datacite_orcid (2.1.1)
+    datacite_orcid (2.1.3)
       apt (>= 0.0.0)
       capistrano (~> 0.10.0)
       consul (>= 0.0.0)
