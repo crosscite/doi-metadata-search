@@ -1,16 +1,21 @@
 require 'dotenv'
 Dotenv.load
 
+require_relative 'lib/version'
+
 # optionally use Bugsnag for error logging
 if ENV['BUGSNAG_KEY']
   require "bugsnag"
   Bugsnag.configure do |config|
     config.api_key = ENV['BUGSNAG_KEY']
+    config.project_root = "/var/www/#{ENV['APPLICATION']}/shared"
+    config.app_version = App::VERSION
   end
 end
 
 require 'sinatra'
 require 'sinatra/config_file'
+require 'sinatra/json'
 require 'active_support/all'
 require 'json'
 require 'rsolr'
@@ -20,6 +25,7 @@ require 'will_paginate'
 require 'cgi'
 require 'faraday'
 require 'faraday_middleware'
+require 'faraday/encoding'
 require 'haml'
 require 'gabba'
 require 'rack-session-mongo'
@@ -29,7 +35,8 @@ require 'oauth2'
 require 'resque'
 require 'open-uri'
 require 'uri'
-#require 'ap'
+
+Dir[File.join(File.dirname(__FILE__), 'lib', '*.rb')].each { |f| require f }
 
 use Bugsnag::Rack
 enable :raise_errors
@@ -45,10 +52,6 @@ Log4r::Logger['test'].outputters << Log4r::Outputter.stdout
 Log4r::Logger['test'].outputters << Log4r::FileOutputter.new('logtest',
                                               :filename =>  'log/app.log',
                                               :formatter => formatter)
-logger.info 'got log4r set up'
-logger.debug "This is a message with level DEBUG"
-logger.info "This is a message with level INFO"
-
 
 #logger.datetime_format = "%Y-%m-%d %H:%M:%S"
 #root_dir = ::File.dirname(__FILE__)
@@ -59,17 +62,6 @@ logger.info "This is a message with level INFO"
 #  "#{datetime} #{severity} -- #{filename}: #{msg}\n"
 #end
 use Rack::Logger, logger
-
-require_relative 'lib/helpers'
-require_relative 'lib/paginate'
-require_relative 'lib/result'
-require_relative 'lib/bootstrap'
-require_relative 'lib/doi'
-require_relative 'lib/session'
-require_relative 'lib/version'
-require_relative 'lib/data'
-require_relative 'lib/orcid_update'
-require_relative 'lib/orcid_claim'
 
 MIN_MATCH_SCORE = 2
 MIN_MATCH_TERMS = 3
@@ -92,12 +84,10 @@ configure do
   set :protection, :except => :json_csrf
 
   # Configure solr
-  logger.info "Configuring Solr to connect to #{ENV['SOLR_URL']}"
   set :solr, RSolr.connect(url: ENV['SOLR_URL'])
 
   # Configure mongo
   set :mongo, Mongo::Connection.new(ENV['DB_HOST'])
-  logger.info "Configuring Mongo: url=#{ENV['DB_HOST']}"
   set :dois, settings.mongo[ENV['DB_NAME']]['dois']
   set :shorts, settings.mongo[ENV['DB_NAME']]['shorts']
   set :issns, settings.mongo[ENV['DB_NAME']]['issns']
@@ -108,20 +98,28 @@ configure do
   set :links, settings.mongo[ENV['DB_NAME']]['links']
 
   # Set up for http requests to data.datacite.org and dx.doi.org
-  dx_doi_org = Faraday.new(:url => 'http://doi.org') do |c|
+  dx_doi_org = Faraday.new(url: 'http://doi.org') do |c|
     c.use FaradayMiddleware::FollowRedirects, :limit => 5
-    c.adapter :net_http
+    c.response :encoding
+    c.adapter Faraday.default_adapter
   end
 
-  set :data_service, Faraday.new(:url => 'http://data.datacite.org')
+  data_service = Faraday.new(url: 'http://data.datacite.org') do |c|
+    c.response :encoding
+    c.adapter Faraday.default_adapter
+  end
+
   set :dx_doi_org, dx_doi_org
+  set :data_service, data_service
 
   # Citation format types
   set :citation_formats, {
     'bibtex' => 'application/x-bibtex',
     'ris' => 'application/x-research-info-systems',
     'apa' => 'text/x-bibliography; style=apa',
+    'harvard' => 'text/x-bibliography; style=harvard1',
     'ieee' => 'text/x-bibliography; style=ieee',
+    'mla' => 'text/x-bibliography; style=modern-language-association',
     'vancouver' => 'text/x-bibliography; style=vancouver',
     'chicago' => 'text/x-bibliography; style=chicago-fullnote-bibliography'
   }
@@ -132,9 +130,13 @@ configure do
   # Google analytics event tracking
   set :ga, Gabba::Gabba.new(ENV['GABBA_COOKIE'], ENV['GABBA_URL']) if ENV['GABBA_COOKIE']
 
-  # Orcid endpoint
-  logger.info "Configuring ORCID, client app ID #{ENV['ORCID_CLIENT_ID']} connecting to #{ENV['ORCID_API_URL']}"
-  set :orcid_service, Faraday.new(:url => ENV['ORCID_API_URL'])
+  # ORCID endpoint
+  orcid_service = Faraday.new(:url => ENV['ORCID_API_URL']) do |c|
+    c.response :encoding
+    c.adapter Faraday.default_adapter
+  end
+
+  set :orcid_service, orcid_service
 
   # Orcid oauth2 object we can use to make API calls
   set :orcid_oauth, OAuth2::Client.new(ENV['ORCID_CLIENT_ID'],
@@ -160,11 +162,6 @@ configure do
   OmniAuth.config.logger = logger
 
   set :show_exceptions, true
-end
-
-before do
-  logger.info "Fetching #{url}, params " + params.inspect
-  #logger.debug {"request.env:\n" + request.env.ai}
 end
 
 get '/' do
@@ -312,28 +309,31 @@ get '/orcid/sync' do
 end
 
 get '/citation' do
-  citation_format = settings.citation_formats[params[:format]]
+  halt 422, json(status: "error", message: "DOI missing or wrong format.") unless params[:doi] && doi?(params[:doi])
 
-  res = settings.data_service.get do |req|
+  citation_format = settings.citation_formats.fetch(params[:format], nil)
+  halt 415, json(status: "error", message: "Format missing or not supported.") unless citation_format
+
+  response = settings.data_service.get do |req|
     req.url "/#{params[:doi]}"
     req.headers['Accept'] = citation_format
   end
 
+  body = force_utf8(response.body)
+
+  halt response.status, json(status: "error", message: body) unless response.success?
+
   settings.ga.event('Citations', '/citation', citation_format, nil, true) if ENV['GABBA_COOKIE']
 
-  content_type citation_format
-  res.body if res.success?
+  content_type citation_format + '; charset=utf-8'
+  body
 end
 
 get '/auth/orcid/callback' do
   session[:orcid] = request.env['omniauth.auth']
   Resque.enqueue(OrcidUpdate, session_info)
-  logger.info "Signing in via ORCID iD #{session[:orcid][:uid]}"
   update_profile
   haml :auth_callback
-end
-
-get '/auth/orcid/check' do
 end
 
 # Used to sign out a user but can also be used to mark that a user has seen the
@@ -348,8 +348,8 @@ get "/auth/failure" do
   haml :auth_callback
 end
 
-get '/auth/:provider/deauthorized' do
-  haml "#{params[:provider]} has deauthorized this app."
+get '/auth/orcid/deauthorized' do
+  haml "ORCID has deauthorized this app."
 end
 
 get '/heartbeat' do

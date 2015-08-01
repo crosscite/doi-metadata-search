@@ -347,16 +347,21 @@ helpers do
   end
 
   def get_alt_count(page)
-    url = "http://api.crossref.org/works"
-
     if page[:query_type][:type] == :doi
       query = "/#{page[:query_type][:value]}"
     else
       query = "?query=#{page[:bare_query]}&rows=0"
     end
 
-    conn = Faraday.new
-    response = conn.get url + query
+    conn = Faraday.new(url: "http://api.crossref.org/works") do |c|
+      c.response :encoding
+      c.adapter Faraday.default_adapter
+    end
+
+    response = conn.get do |req|
+      req.url query
+      req.headers['Accept'] = citation_format
+    end
 
     if response.status == 200 && page[:query_type][:type] == :doi
       JSON.parse(response.body).fetch("message", {}).length > 0 ? "DOI found" : "DOI not found"
@@ -369,8 +374,8 @@ helpers do
     "DOI not found"
   end
 
-  def get_alt_doi
-
+  def force_utf8(str)
+    str.strip.force_encoding('UTF-8')
   end
 end
 

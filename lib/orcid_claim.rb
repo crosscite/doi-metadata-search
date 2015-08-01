@@ -267,17 +267,16 @@ class OrcidClaim
   end
 
   def insert_citation xml
-    conn = Faraday.new
-    logger.info "Retrieving citation for #{@work['doi']}"
-    response = conn.get "http://data.datacite.org/#{@work['doi']}", {}, {
-      #'Accept' => 'text/x-bibliography'
+    conn = Faraday.new(url: "http://data.datacite.org") do |c|
+      c.response :encoding
+      c.adapter Faraday.default_adapter
+    end
+
+    response = conn.get "/#{@work['doi']}", {}, {
       'Accept' => 'application/x-bibtex'
     }
 
-    #citation = response.body
     citation = response.body.sub(/^@data{/, '@misc{datacite')
-
-    logger.debug "Got citation:\n #{citation}"
 
     if response.status == 200
       xml.send(:'work-citation') {

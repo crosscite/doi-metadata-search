@@ -15,16 +15,16 @@ function updateCiteBox() {
 
   $('#cite-nav li').removeClass('active');
   $('#' + citationInfo['format']).addClass('active');
-  
+
   var path = '/citation?format=' + citationInfo['format'];
   path += '&doi=' + encodeURIComponent(citationInfo['doi']);
-  
+
   $.ajax({
     url: path,
     success: function(body) {
       $('#citation-text').text(body);
       spinner.stop();
-    }  
+    }
   });
 }
 
@@ -39,7 +39,7 @@ $(document).ready(function(e) {
   citationInfo = {format: 'bibtex'};
   spinnerOpts = {shadow: true, width: 2, speed: 2};
   spinner = new Spinner(spinnerOpts);
-  
+
   $('#citation-modal-close').click(function(e) {
     $('#citation-modal').modal('hide');
   });
