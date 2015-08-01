@@ -15,4 +15,3 @@ cookbook "dotenv",
          :git => "git@github.com:lagotto/dotenv-cookbook.git"
 cookbook "mongodb",
          :git => "https://github.com/edelight/chef-mongodb.git"
-cookbook "phantomjs"

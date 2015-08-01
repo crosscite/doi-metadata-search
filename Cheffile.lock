@@ -22,7 +22,7 @@ SITE
     golang (1.5.1)
     homebrew (1.13.0)
       build-essential (>= 2.1.2)
-    libarchive (0.6.0)
+    libarchive (0.6.1)
       apt (~> 2.5)
       yum-epel (~> 0.6)
     nodejs (2.4.0)
@@ -32,9 +32,7 @@ SITE
       homebrew (>= 0.0.0)
       yum-epel (>= 0.0.0)
     packagecloud (0.0.19)
-    phantomjs (1.0.3)
-      build-essential (>= 0.0.0)
-      chocolatey (>= 0.0.0)
+    papertrail_remote_syslog (0.3.4)
     python (1.4.6)
       build-essential (>= 0.0.0)
       yum-epel (>= 0.0.0)
@@ -90,14 +88,15 @@ GIT
 GIT
   remote: https://github.com/datacite/datacite_orcid-cookbook.git
   ref: master
-  sha: 293b8de5bd9a4e1e31e0b266815bc282bb3c7d54
+  sha: 802d2092e2300f256b7b4f9a915e4060d649fe0b
   specs:
-    datacite_orcid (2.0.6)
+    datacite_orcid (2.1.0)
       apt (>= 0.0.0)
       capistrano (~> 0.10.0)
       consul (>= 0.0.0)
       dotenv (~> 0.2.0)
       mongodb (>= 0.0.0)
+      papertrail_remote_syslog (>= 0.0.0)
       passenger_nginx (~> 0.5.0)
       redisio (>= 0.0.0)
       ruby (~> 0.7.0)
@@ -118,6 +117,5 @@ DEPENDENCIES
   dotenv (>= 0)
   mongodb (>= 0)
   passenger_nginx (>= 0)
-  phantomjs (>= 0)
   ruby (>= 0)
 
