@@ -114,7 +114,8 @@ Vagrant.configure("2") do |config|
       aws.access_key_id = ENV.fetch('AWS_KEY', nil)
       aws.secret_access_key = ENV.fetch('AWS_SECRET', nil)
       aws.keypair_name = ENV.fetch('AWS_KEYNAME', nil)
-      override.ssh.private_key_path = ENV.fetch('AWS_KEYPATH', nil)
+      override.ssh.username = "ubuntu"
+      override.ssh.private_key_path = ENV.fetch('SSH_PRIVATE_KEY', nil)
 
       aws.security_groups = ENV.fetch('AWS_SECURITY_GROUP', "default")
       aws.instance_type = ENV.fetch('AWS_INSTANCE_TYPE', nil)
@@ -122,8 +123,9 @@ Vagrant.configure("2") do |config|
       aws.region = ENV.fetch('AWS_REGION', "us-east-1")
       aws.tags = { Name: ENV["APPLICATION"] }
 
-      override.ssh.username = "ubuntu"
       override.nfs.functional = false
+      override.vm.synced_folder ".", "/var/www/#{ENV['APPLICATION']}/shared", type: "rsync", rsync__exclude: [".git/", "vendor/bundle/ruby"]
+
       override.vm.box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
     end
 
