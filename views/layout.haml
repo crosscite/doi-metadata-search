@@ -14,7 +14,7 @@
     %script{:type => 'text/javascript', :src => '/javascripts/jquery.oauthpopup.js'}
     %script{:type => 'text/javascript', :src => '/javascripts/bootstrap.notify.js'}
     - if ENV['BUGSNAG_JS_KEY']
-      %script{type: 'text/javascript', src: '//d2wy8f7a9ursnm.cloudfront.net/bugsnag-2.min.js', "data-apikey" => '#{ENV['BUGSNAG_JS_KEY']}'}
+      %script{:type => 'text/javascript', :src => '//d2wy8f7a9ursnm.cloudfront.net/bugsnag-2.min.js', :data => { 'apikey' => "#{ENV['BUGSNAG_JS_KEY']}" }}
     - if ENV['GABBA_COOKIE']
       :javascript
          var _gaq = _gaq || [];
