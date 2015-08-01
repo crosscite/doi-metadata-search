@@ -1,7 +1,7 @@
 source "http://rubygems.org"
 
 gem 'dotenv'
-gem 'sentry-raven'
+gem "bugsnag"
 gem 'awesome_print'
 gem 'activesupport'
 gem 'sinatra'

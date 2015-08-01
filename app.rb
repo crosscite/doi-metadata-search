@@ -1,12 +1,11 @@
 require 'dotenv'
 Dotenv.load
 
-# optionally use sentry for error logging
-if ENV['SENTRY_DSN']
-  require 'raven'
-  Raven.configure do |config|
-    config.dsn = ENV['SENTRY_DSN']
-    # config.environments = %w[staging production]
+# optionally use Bugsnag for error logging
+if ENV['BUGSNAG_KEY']
+  require "bugsnag"
+  Bugsnag.configure do |config|
+    config.api_key = ENV['BUGSNAG_KEY']
   end
 end
 
@@ -31,6 +30,9 @@ require 'resque'
 require 'open-uri'
 require 'uri'
 #require 'ap'
+
+use Bugsnag::Rack
+enable :raise_errors
 
 require 'log4r'
 include Log4r
@@ -366,9 +368,4 @@ get '/heartbeat' do
   rescue StandardError => e
     {:status => :error, :type => e.class, :message => e}.to_json
   end
-end
-
-error do
-  capture_exception env['sinatra.error'], env
-  { message: env['sinatra.error'].message }.to_json
 end

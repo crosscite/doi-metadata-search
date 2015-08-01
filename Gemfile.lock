@@ -12,6 +12,8 @@ GEM
     bson (1.12.3)
     bson_ext (1.12.3)
       bson (~> 1.12.3)
+    bugsnag (2.8.11)
+      json (~> 1.7, >= 1.7.7)
     builder (3.2.2)
     capistrano (3.4.0)
       i18n
@@ -28,7 +30,6 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    certifi (14.5.14)
     cliver (0.3.2)
     colorize (0.7.7)
     diff-lcs (1.2.5)
@@ -116,9 +117,6 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
-    sentry-raven (0.14.0)
-      certifi
-      faraday (>= 0.7.6)
     sinatra (1.4.6)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -155,6 +153,7 @@ DEPENDENCIES
   awesome_print
   bson
   bson_ext
+  bugsnag
   capistrano-bundler (~> 1.1.2)
   capistrano-passenger (~> 0.1.1)
   capybara
@@ -177,7 +176,6 @@ DEPENDENCIES
   resque
   rsolr
   rspec
-  sentry-raven
   sinatra
   sinatra-contrib
   will_paginate
