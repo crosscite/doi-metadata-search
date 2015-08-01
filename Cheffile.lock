@@ -32,13 +32,13 @@ SITE
       homebrew (>= 0.0.0)
       yum-epel (>= 0.0.0)
     packagecloud (0.0.19)
-    papertrail_remote_syslog (0.3.4)
     python (1.4.6)
       build-essential (>= 0.0.0)
       yum-epel (>= 0.0.0)
     redisio (2.3.0)
       build-essential (>= 0.0.0)
       ulimit (>= 0.1.2)
+    remote_syslog2 (0.2.3)
     runit (1.7.2)
       packagecloud (>= 0.0.0)
     ulimit (0.3.3)
@@ -88,17 +88,17 @@ GIT
 GIT
   remote: https://github.com/datacite/datacite_orcid-cookbook.git
   ref: master
-  sha: 802d2092e2300f256b7b4f9a915e4060d649fe0b
+  sha: 4e68eb25a867c31809919aff47d7d9e3fb3c5596
   specs:
-    datacite_orcid (2.1.0)
+    datacite_orcid (2.1.1)
       apt (>= 0.0.0)
       capistrano (~> 0.10.0)
       consul (>= 0.0.0)
       dotenv (~> 0.2.0)
       mongodb (>= 0.0.0)
-      papertrail_remote_syslog (>= 0.0.0)
       passenger_nginx (~> 0.5.0)
       redisio (>= 0.0.0)
+      remote_syslog2 (>= 0.0.0)
       ruby (~> 0.7.0)
 
 GIT
