@@ -38,7 +38,7 @@ set :pty, false
 
 set :ssh_options, {
   user: ENV['DEPLOY_USER'],
-  keys: [ENV['AWS_KEYPATH']],
+  keys: [ENV['SSH_PRIVATE_KEY']],
   forward_agent: false }
 
 # Default branch is :master
