@@ -1,18 +1,12 @@
-.row-fluid
-  - if page[:mini_header]
-    .span9
-  - else
-    .span1
-      %a.home-link{:href => '/'}
-        %img{class: 'logo-small', src: '/images/logo-small.png', alt: 'DataCite' }
-    .span8
-      %form{:method => 'GET', :action => '/'}
-        .search-in-header
-          %input.search-input{placeholder: 'Enter search term', name: 'q', type: 'text', value: page[:bare_query]}
-
-  .span3
-    .pull-right
-      .simple-nav-outer
-        .simple-nav.smaller
-          .pull-right
-            = partial :profile_link, {}
+- if page[:mini_header]
+  .profile.pull-right
+    = partial :profile_link, {}
+- else
+  .logo.pull-left
+    %a{:href => '/'}
+      %img.logo-small{src: '/images/logo-small.png', alt: 'DataCite' }
+  .profile.pull-right
+    = partial :profile_link, {}
+  %form{:method => 'GET', :action => '/'}
+    .search-in-header
+      %input.search-input{placeholder: 'Enter search term', name: 'q', type: 'text', value: page[:bare_query]}
