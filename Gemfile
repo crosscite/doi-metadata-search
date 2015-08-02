@@ -37,4 +37,6 @@ group :test do
   gem 'capybara'
   gem 'factory_girl'
   gem 'poltergeist'
+  gem "webmock", "~> 1.20.0"
+  gem 'vcr', '~> 2.9.3'
 end
