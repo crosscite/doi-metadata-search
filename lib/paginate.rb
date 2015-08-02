@@ -1,8 +1,7 @@
 require 'will_paginate'
 
 class Paginate
-
-  def initialize page, per_page, solr_response
+  def initialize(page, per_page, solr_response)
     @page = page
     @per_page = per_page
     @response = solr_response['response']
@@ -13,9 +12,7 @@ class Paginate
     @response['docs']
   end
 
-  def per_page
-    @per_page
-  end
+  attr_reader :per_page
 
   def current_page
     @page
@@ -28,5 +25,4 @@ class Paginate
   def total_rows
     @response['numFound']
   end
-
 end

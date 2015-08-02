@@ -7,7 +7,7 @@ helpers do
   include Doi
   include Session
   include Log4r
-  #ap logger
+  # ap logger
 
   def logger
     Log4r::Logger['test']
@@ -20,22 +20,22 @@ helpers do
     end
   end
 
-  def partial template, locals
-    haml template.to_sym, :layout => false, :locals => locals
+  def partial(template, locals)
+    haml template.to_sym, layout: false, locals: locals
   end
 
-  def citations doi
-    citations = settings.citations.find({'to.id' => doi})
+  def citations(doi)
+    citations = settings.citations.find('to.id' => doi)
 
     citations.map do |citation|
       hsh = {
-        :id => citation['from']['id'],
-        :authority => citation['from']['authority'],
-        :type => citation['from']['type'],
+        id: citation['from']['id'],
+        authority: citation['from']['authority'],
+        type: citation['from']['type']
       }
 
       if citation['from']['authority'] == 'cambia'
-        patent = settings.patents.find_one({:patent_key => citation['from']['id']})
+        patent = settings.patents.find_one(patent_key: citation['from']['id'])
         hsh[:url] = "http://lens.org/lens/patent/#{patent['pub_key']}"
         hsh[:title] = patent['title']
       end
@@ -44,15 +44,15 @@ helpers do
     end
   end
 
-  def select query_params
+  def select(query_params)
     logger.debug "building query to send to #{ENV['SOLR_URL']}#{ENV['SOLR_SELECT']}, with params:\n" + query_params.ai
     page = query_page
     rows = query_rows
-    results = settings.solr.paginate page, rows, ENV['SOLR_SELECT'], :params => query_params
+    results = settings.solr.paginate page, rows, ENV['SOLR_SELECT'], params: query_params
   end
 
   def response_format
-    if params.has_key?('format') && params['format'] == 'json'
+    if params.key?('format') && params['format'] == 'json'
       'json'
     else
       'html'
@@ -60,7 +60,7 @@ helpers do
   end
 
   def query_page
-    if params.has_key? 'page'
+    if params.key? 'page'
       params['page'].to_i
     else
       1
@@ -68,7 +68,7 @@ helpers do
   end
 
   def query_rows
-    if params.has_key? 'rows'
+    if params.key? 'rows'
       params['rows'].to_i
     else
       DEFAULT_ROWS
@@ -76,7 +76,7 @@ helpers do
   end
 
   def query_columns
-    ['doi','creator','title','publisher','publicationYear','relatedIdentifier','alternateIdentifier','resourceTypeGeneral','resourceType','nameIdentifier','subject','rights','version','description','descriptionType','score']
+    %w(doi creator title publisher publicationYear relatedIdentifier alternateIdentifier resourceTypeGeneral resourceType nameIdentifier subject rights version description descriptionType score)
   end
 
   def query_terms
@@ -116,41 +116,41 @@ helpers do
     creators = names.map { |name| "creator:\"#{name.strip}\"~4" }
     contributors = names.map { |name| "contributor:\"#{name.strip}\"~4" }
 
-    (name_identifier + creators + contributors).join(" OR ")
+    (name_identifier + creators + contributors).join(' OR ')
   end
 
   def query_type
     if doi? params['q']
-      {:type => :doi, :value => to_doi(params['q']).downcase}
+      { type: :doi, value: to_doi(params['q']).downcase }
     elsif short_doi?(params['q']) || very_short_doi?(params['q'])
-      {:type => :short_doi, :value => to_long_doi(params['q'])}
+      { type: :short_doi, value: to_long_doi(params['q']) }
     elsif value = orcid?(params['q'])
-      {:type => :orcid, :value => value}
+      { type: :orcid, value: value }
     elsif value = contributor?(params['q'])
-      {:type => :contributor, :value => value }
+      { type: :contributor, value: value }
     elsif value = year?(params['q'])
-      {:type => :year, :value => value }
+      { type: :year, value: value }
     elsif value = publisher?(params['q'])
-      {:type => :publisher, :value => value }
+      { type: :publisher, value: value }
     elsif value = type?(params['q'])
-      {:type => :type, :value => value }
+      { type: :type, value: value }
     elsif value = subject?(params['q'])
-      {:type => :subject, :value => value }
+      { type: :subject, value: value }
     elsif value = rights?(params['q'])
-      {:type => :rights, :value => value }
+      { type: :rights, value: value }
     elsif issn? params['q']
-      {:type => :issn, :value => params['q'].strip.upcase}
+      { type: :issn, value: params['q'].strip.upcase }
     elsif urn? params['q']
-      {:type => :urn, :value => params['q'].strip}
+      { type: :urn, value: params['q'].strip }
     else
-      {:type => :normal}
+      { type: :normal }
     end
   end
 
   def abstract_facet_query
     fq = {}
     settings.facet_fields.each do |field|
-      if params.has_key? field
+      if params.key? field
         params[field].split(';').each do |val|
           fq[field] ||= []
           fq[field] << val
@@ -161,7 +161,7 @@ helpers do
   end
 
   def facet_query
-    fq = ['has_metadata:true','NOT relatedIdentifier:IsPartOf\:*']
+    fq = ['has_metadata:true', 'NOT relatedIdentifier:IsPartOf\:*']
     abstract_facet_query.each_pair do |name, values|
       values.each do |value|
         fq << "#{name}: \"#{value}\""
@@ -201,7 +201,7 @@ helpers do
     query
   end
 
-  def facet_link_not field_name, field_value
+  def facet_link_not(field_name, field_value)
     fq = abstract_facet_query
     fq[field_name].delete field_value
     fq.delete(field_name) if fq[field_name].empty?
@@ -213,7 +213,7 @@ helpers do
     link
   end
 
-  def facet_link field_name, field_value
+  def facet_link(field_name, field_value)
     fq = abstract_facet_query
     fq[field_name] ||= []
     fq[field_name] << field_value
@@ -225,17 +225,17 @@ helpers do
     link
   end
 
-  def facet? field_name
-    abstract_facet_query.has_key? field_name
+  def facet?(field_name)
+    abstract_facet_query.key? field_name
   end
 
-  def search_link opts
-    fields = settings.facet_fields + ['q', 'sort'] # 'filter' ??
+  def search_link(opts)
+    fields = settings.facet_fields + %w(q sort) # 'filter' ??
     parts = fields.map do |field|
-      if opts.has_key? field.to_sym
+      if opts.key? field.to_sym
         "#{field}=#{CGI.escape(opts[field.to_sym])}"
-      elsif params.has_key? field
-        params[field].split(';').map do |field_value|
+      elsif params.key? field
+        params[field].split(';').map do |_field_value|
           "#{field}=#{CGI.escape(params[field])}"
         end
       end
@@ -244,19 +244,19 @@ helpers do
     "#{request.path_info}?#{parts.compact.flatten.join('&')}"
   end
 
-  def authors_text contributors
+  def authors_text(contributors)
     authors = contributors.map do |c|
       "#{c['given_name']} #{c['surname']}"
     end
     authors.join ', '
   end
 
-  def search_results solr_result, oauth = nil
+  def search_results(solr_result, _oauth = nil)
     claimed_dois = []
     profile_dois = []
 
     if signed_in?
-      orcid_record = settings.orcids.find_one({:orcid => sign_in_id})
+      orcid_record = settings.orcids.find_one(orcid: sign_in_id)
       unless orcid_record.nil?
         claimed_dois = orcid_record['dois'] + orcid_record['locked_dois'] if orcid_record
         profile_dois = orcid_record['dois']
@@ -268,14 +268,14 @@ helpers do
       in_profile = profile_dois.include?(doi)
       claimed = claimed_dois.include?(doi)
       user_state = {
-        :in_profile => in_profile,
-        :claimed => claimed
+        in_profile: in_profile,
+        claimed: claimed
       }
       SearchResult.new solr_doc, solr_result, citations(solr_doc['doi']), user_state
     end
   end
 
-  def scrub_query query_str, remove_short_operators
+  def scrub_query(query_str, remove_short_operators)
     query_str = query_str.gsub(/[\"\.\[\]\(\)\-:;\/%]/, ' ')
     query_str = query_str.gsub(/[\+\!\-]/, ' ') if remove_short_operators
     query_str = query_str.gsub(/AND/, ' ')
@@ -284,63 +284,63 @@ helpers do
   end
 
   def index_stats
-    count_result = settings.solr.get ENV['SOLR_SELECT'], :params => {
-      :q => '*:*',
-      :fq => 'has_metadata:true',
-      :rows => 0
+    count_result = settings.solr.get ENV['SOLR_SELECT'], params: {
+      q: '*:*',
+      fq: 'has_metadata:true',
+      rows: 0
     }
-    dataset_result = settings.solr.get ENV['SOLR_SELECT'], :params => {
-      :q => 'resourceTypeGeneral:Dataset',
-      :rows => 0
+    dataset_result = settings.solr.get ENV['SOLR_SELECT'], params: {
+      q: 'resourceTypeGeneral:Dataset',
+      rows: 0
     }
-    text_result = settings.solr.get ENV['SOLR_SELECT'], :params => {
-      :q => 'resourceTypeGeneral:Text',
-      :rows => 0
+    text_result = settings.solr.get ENV['SOLR_SELECT'], params: {
+      q: 'resourceTypeGeneral:Text',
+      rows: 0
     }
-    software_result = settings.solr.get ENV['SOLR_SELECT'], :params => {
-      :q => 'resourceTypeGeneral:Software',
-      :rows => 0
+    software_result = settings.solr.get ENV['SOLR_SELECT'], params: {
+      q: 'resourceTypeGeneral:Software',
+      rows: 0
     }
-    oldest_result = settings.solr.get ENV['SOLR_SELECT'], :params => {
-      :q => 'publicationYear:[1 TO *]',
-      :rows => 1,
-      :sort => 'publicationYear asc'
+    oldest_result = settings.solr.get ENV['SOLR_SELECT'], params: {
+      q: 'publicationYear:[1 TO *]',
+      rows: 1,
+      sort: 'publicationYear asc'
     }
 
     stats = []
 
     stats << {
-      :value => count_result['response']['numFound'],
-      :name => 'Total number of indexed DOIs',
-      :number => true
+      value: count_result['response']['numFound'],
+      name: 'Total number of indexed DOIs',
+      number: true
     }
 
     stats << {
-      :value => dataset_result['response']['numFound'],
-      :name => 'Number of indexed datasets',
-      :number => true
+      value: dataset_result['response']['numFound'],
+      name: 'Number of indexed datasets',
+      number: true
     }
 
     stats << {
-      :value => text_result['response']['numFound'],
-      :name => 'Number of indexed text documents',
-      :number => true
+      value: text_result['response']['numFound'],
+      name: 'Number of indexed text documents',
+      number: true
     }
 
     stats << {
-      :value => software_result['response']['numFound'],
-      :name => 'Number of indexed software',
-      :number => true
+      value: software_result['response']['numFound'],
+      name: 'Number of indexed software',
+      number: true
     }
 
     stats << {
-      :value => oldest_result['response']['docs'].first['publicationYear'],
-      :name => 'Oldest indexed publication year'
+      value: oldest_result['response']['docs'].first['publicationYear'],
+      name: 'Oldest indexed publication year'
     }
 
     stats << {
-      :value => MongoData.coll('orcids').count({:query => {:updated => true}}),
-      :name => 'Number of ORCID profiles updated'
+      value: MongoData.coll('orcids').count(query: { updated: true }),
+      name: 'Number of ORCID profiles updated'
     }
 
     stats
@@ -353,7 +353,7 @@ helpers do
       query = "?query=#{page[:bare_query]}&rows=0"
     end
 
-    conn = Faraday.new(url: "http://api.crossref.org/works") do |c|
+    conn = Faraday.new(url: 'http://api.crossref.org/works') do |c|
       c.response :encoding
       c.adapter Faraday.default_adapter
     end
@@ -364,18 +364,17 @@ helpers do
     end
 
     if response.status == 200 && page[:query_type][:type] == :doi
-      JSON.parse(response.body).fetch("message", {}).length > 0 ? "DOI found" : "DOI not found"
+      JSON.parse(response.body).fetch('message', {}).length > 0 ? 'DOI found' : 'DOI not found'
     elsif response.status == 200
-      JSON.parse(response.body).fetch("message", {}).fetch("total-results", 0).to_s + " results"
+      JSON.parse(response.body).fetch('message', {}).fetch('total-results', 0).to_s + ' results'
     else
-      "0 results"
+      '0 results'
     end
   rescue JSON::ParserError
-    "DOI not found"
+    'DOI not found'
   end
 
   def force_utf8(str)
     str.strip.force_encoding('UTF-8')
   end
 end
-

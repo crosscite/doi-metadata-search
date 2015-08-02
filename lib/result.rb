@@ -3,24 +3,22 @@ require 'log4r'
 require_relative 'helpers'
 
 class SearchResult
-
   attr_accessor :date, :year, :month, :day,
                 :title, :publication, :authors, :volume, :issue, :first_page, :last_page,
                 :type, :subtype, :doi, :score, :normal_score,
                 :citations, :hashed, :related, :alternate, :version,
                 :rights, :subject, :description, :creative_commons
 
-  ENGLISH_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  ENGLISH_MONTHS = %w(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec)
 
   def logger
     Log4r::Logger['test']
   end
 
-  def has_path? hash, path
+  def has_path?(hash, path)
     path_found = true
     path.each do |node|
-      if hash.has_key?(node) && !hash[node].nil?
+      if hash.key?(node) && !hash[node].nil?
         hash = hash[node]
       else
         path_found = false
@@ -30,7 +28,7 @@ class SearchResult
     path_found
   end
 
-  def find_value key
+  def find_value(key)
     if has_path? @highlights, [@doi, key]
       @highlights[@doi][key].first
     else
@@ -39,9 +37,9 @@ class SearchResult
   end
 
   # Merge a mongo DOI record with solr highlight information.
-  def initialize solr_doc, solr_result, citations, user_state
-    logger.debug "initializing a mongo DOI record for work w/ resourceTypeGeneral='#{solr_doc['resourceTypeGeneral'] || "unknown"}', resourceType='#{solr_doc['resourceType'] || "unknown"}', DOI name #{solr_doc['doi']}"
-    logger.debug {solr_doc.ai}
+  def initialize(solr_doc, solr_result, citations, user_state)
+    logger.debug "initializing a mongo DOI record for work w/ resourceTypeGeneral='#{solr_doc['resourceTypeGeneral'] || 'unknown'}', resourceType='#{solr_doc['resourceType'] || 'unknown'}', DOI name #{solr_doc['doi']}"
+    logger.debug { solr_doc.ai }
     @doi = solr_doc['doi']
     @type = solr_doc['resourceTypeGeneral']
     @subtype = solr_doc['resourceType']
@@ -71,22 +69,20 @@ class SearchResult
 
     # Insert/update record in MongoDB
     # Hack Alert (possibly)
-    MongoData.coll('dois').update({ doi: @doi }, {doi: @doi,
-                                                  title: @title,
-                                                  type: @type,
-                                                  subtype: @subtype,
-                                                  publication: @publication,
-                                                  contributor: @authors,
-                                                  published: {
-                                                    year: @year,
-                                                    month: @month,
-                                                    day: @day } },
-                                                { :upsert => true })
+    MongoData.coll('dois').update({ doi: @doi }, { doi: @doi,
+                                                   title: @title,
+                                                   type: @type,
+                                                   subtype: @subtype,
+                                                   publication: @publication,
+                                                   contributor: @authors,
+                                                   published: {
+                                                     year: @year,
+                                                     month: @month,
+                                                     day: @day } },
+                                  { upsert: true })
   end
 
-  def doi
-    @doi
-  end
+  attr_reader :doi
 
   def open_access?
     @doc['oa_status'] == 'Open Access'
@@ -94,17 +90,17 @@ class SearchResult
 
   def creative_commons
     if @rights =~ /BY-NC-ND|Attribution-NonCommercial-NoDerivs/
-      "by-nc-nd"
+      'by-nc-nd'
     elsif @rights =~ /BY-NC-SA/
-      "by-nc-sa"
+      'by-nc-sa'
     elsif @rights =~ /BY-NC|Attribution-NonCommercial/
-      "by-nc"
+      'by-nc'
     elsif @rights =~ /BY-SA/
-      "by-sa"
+      'by-sa'
     elsif @rights =~ /CC-BY|Attribution|Attribuzione/
-      "by"
+      'by'
     elsif @rights =~ /zero|cc0/
-      "zero"
+      'zero'
     else
       nil
     end
@@ -112,15 +108,19 @@ class SearchResult
 
   def related
     return nil unless @related
-    @related.map { |item| { relation: uncamelize(item.split(":", 3)[0]),
-                            id: item.split(":", 3)[1],
-                            text: item.split(":", 3)[2] } }
+    @related.map do |item|
+      { relation: uncamelize(item.split(':', 3)[0]),
+        id: item.split(':', 3)[1],
+        text: item.split(':', 3)[2] }
+    end
   end
 
   def alternate
     return nil unless @alternate
-    @alternate.map { |item| { id: item.split(":", 2)[0],
-                            text: item.split(":", 2)[1] } }
+    @alternate.map do |item|
+      { id: item.split(':', 2)[0],
+        text: item.split(':', 2)[1] }
+    end
   end
 
   def authors
@@ -130,16 +130,16 @@ class SearchResult
 
   def parse_author(name)
     # revert order if single words, separated by comma
-    name = name.split(",")
-    if name.all? { |i| i.split(" ").size > 1 }
-      name.join(", ")
+    name = name.split(',')
+    if name.all? { |i| i.split(' ').size > 1 }
+      name.join(', ')
     else
-      name.reverse.join(" ")
+      name.reverse.join(' ')
     end
   end
 
   def uncamelize(string)
-    string.split(/(?=[A-Z])/).join(" ").capitalize
+    string.split(/(?=[A-Z])/).join(' ').capitalize
   end
 
   def user_claimed?
@@ -151,7 +151,7 @@ class SearchResult
   end
 
   def coins_atitle
-    @title || ""
+    @title || ''
   end
 
   def coins_title
@@ -180,7 +180,7 @@ class SearchResult
 
   def coins_authors
     if @authors
-      @authors.join(", ")
+      @authors.join(', ')
     else
       ''
     end
@@ -246,9 +246,7 @@ class SearchResult
     CGI.escapeHTML title
   end
 
-  def hashed
-    @hashed
-  end
+  attr_reader :hashed
 
   def coins_span
     "<span class=\"Z3988\" title=\"#{coins}\"><!-- coins --></span>"
@@ -273,4 +271,3 @@ class SearchResult
     a.join ', '
   end
 end
-

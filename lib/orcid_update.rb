@@ -7,11 +7,11 @@ require_relative 'data'
 class OrcidUpdate
   @queue = :orcid
 
-  def initialize oauth
+  def initialize(oauth)
     @oauth = oauth
   end
 
-  def self.perform oauth
+  def self.perform(oauth)
     OrcidUpdate.new(oauth).perform
   end
 
@@ -23,29 +23,27 @@ class OrcidUpdate
     oauth_expired = false
 
     begin
-      # Need to check both since @oauth may or may not have been serialized back and forth from JSON.
+      #  Need to check both since @oauth may or may not have been serialized back and forth from JSON.
       uid = @oauth[:uid] || @oauth['uid']
 
-      logger.info "Updating user #{uid}"
-
-      opts = {:site => @conf['orcid']['site']}
+      opts = { site: ENV['ORCID_API_URL'] }
       client = OAuth2::Client.new(ENV['ORCID_CLIENT_ID'], ENV['ORCID_CLIENT_SECRET'], opts)
       token = OAuth2::AccessToken.new(client, @oauth['credentials']['token'])
-      headers = {'Accept' => 'application/json'}
-      response = token.get "/v1.2/#{uid}/orcid-works", {:headers => headers}
+      headers = { 'Accept' => 'application/json' }
+      response = token.get "/v1.2/#{uid}/orcid-works", headers: headers
 
       if response.status == 200
         puts response.body
         response_json = JSON.parse(response.body)
         parsed_dois = parse_dois(response_json)
-        query = {:orcid => uid}
+        query = { orcid: uid }
         orcid_record = MongoData.coll('orcids').find_one(query)
 
         if orcid_record
           orcid_record['dois'] = parsed_dois
           MongoData.coll('orcids').save(orcid_record)
         else
-          doc = {:orcid => uid, :dois => parsed_dois, :locked_dois => []}
+          doc = { orcid: uid, dois: parsed_dois, locked_dois: [] }
           MongoData.coll('orcids').insert(doc)
         end
       else
@@ -58,7 +56,7 @@ class OrcidUpdate
     !oauth_expired
   end
 
-  def has_path? hsh, path
+  def has_path?(hsh, path)
     loc = hsh
     path.each do |path_item|
       if loc[path_item]
@@ -71,7 +69,7 @@ class OrcidUpdate
     loc != nil
   end
 
-  def parse_dois json
+  def parse_dois(json)
     if !has_path?(json, ['orcid-profile', 'orcid-activities'])
       []
     else

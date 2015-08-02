@@ -1,9 +1,8 @@
 require 'json'
 
 module Session
-
   def logger
-    Log4r::Logger['test']    
+    Log4r::Logger['test']
   end
 
   def auth_token
@@ -12,7 +11,7 @@ module Session
 
   def update_profile
     logger.debug "retrieving ORCID profile for #{session[:orcid][:uid]}"
-    response = auth_token.get "/#{session[:orcid][:uid]}/orcid-profile", :headers => {'Accept' => 'application/json'}
+    response = auth_token.get "/#{session[:orcid][:uid]}/orcid-profile", headers: { 'Accept' => 'application/json' }
     if response.status == 200
       json = JSON.parse(response.body)
       given_name = json['orcid-profile']['orcid-bio']['personal-details']['given-names']['value']
@@ -20,7 +19,7 @@ module Session
       other_names = json['orcid-profile']['orcid-bio']['personal-details']['other-names'].nil? ? nil : json['orcid-profile']['orcid-bio']['personal-details']['other-names']['other-name']
       session[:orcid][:info][:name] = "#{given_name} #{family_name}"
       session[:orcid][:info][:other_names] = other_names.nil? ? nil : other_names.map { |other_name| other_name['value'] }
-      logger.info "Got updated profile data: " + session[:orcid].ai
+      logger.info 'Got updated profile data: ' + session[:orcid].ai
     end
   end
 
@@ -57,5 +56,3 @@ module Session
     session[:orcid]
   end
 end
-
-

@@ -4,7 +4,7 @@ require File.join(File.dirname(__FILE__), '..', 'app.rb')
 
 require 'rspec'
 require 'rack/test'
-require "webmock/rspec"
+require 'webmock/rspec'
 require 'vcr'
 require 'factory_girl'
 
@@ -31,11 +31,11 @@ WebMock.disable_net_connect!(
 )
 
 VCR.configure do |c|
-  c.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+  c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
   c.hook_into :webmock
   c.ignore_localhost = true
-  c.ignore_hosts "codeclimate.com"
-  c.filter_sensitive_data("<API_KEY>") { ENV["API_KEY"] }
+  c.ignore_hosts 'codeclimate.com'
+  c.filter_sensitive_data('<API_KEY>') { ENV['API_KEY'] }
   c.allow_http_connections_when_no_cassette = true
   c.configure_rspec_metadata!
 end

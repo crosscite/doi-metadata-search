@@ -1,22 +1,22 @@
 require 'spec_helper'
 
-describe "oauth" do
-  it "callback" do
+describe 'oauth' do
+  it 'callback' do
     get '/auth/orcid/callback'
     expect(last_response.status).to eq(302)
   end
 
-  it "failure" do
+  it 'failure' do
     get '/auth/orcid/failure'
     expect(last_response.status).to eq(404)
   end
 
-  it "signout" do
+  it 'signout' do
     get '/auth/signout'
     expect(last_response.status).to eq(302)
   end
 
-  it "deauthorized" do
+  it 'deauthorized' do
     get '/auth/orcid/deauthorized'
     expect(last_response).to be_ok
   end

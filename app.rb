@@ -5,7 +5,7 @@ require_relative 'lib/version'
 
 # optionally use Bugsnag for error logging
 if ENV['BUGSNAG_KEY']
-  require "bugsnag"
+  require 'bugsnag'
   Bugsnag.configure do |config|
     config.api_key = ENV['BUGSNAG_KEY']
     config.project_root = "/var/www/#{ENV['APPLICATION']}/shared"
@@ -47,20 +47,20 @@ logger = Log4r::Logger.new('test')
 logger.trace = true
 logger.level = ENV['LOG_LEVEL'].upcase.constantize
 
-formatter = Log4r::PatternFormatter.new(:pattern => "[%l] %t  %M")
+formatter = Log4r::PatternFormatter.new(pattern: '[%l] %t  %M')
 Log4r::Logger['test'].outputters << Log4r::Outputter.stdout
 Log4r::Logger['test'].outputters << Log4r::FileOutputter.new('logtest',
-                                              :filename =>  'log/app.log',
-                                              :formatter => formatter)
+                                                             filename: 'log/app.log',
+                                                             formatter: formatter)
 
-#logger.datetime_format = "%Y-%m-%d %H:%M:%S"
-#root_dir = ::File.dirname(__FILE__)
-#logger.debug "root = #{root_dir}"
-#logger.formatter = proc do |severity, datetime, progname, msg|
+# logger.datetime_format = "%Y-%m-%d %H:%M:%S"
+# root_dir = ::File.dirname(__FILE__)
+# logger.debug "root = #{root_dir}"
+# logger.formatter = proc do |severity, datetime, progname, msg|
 #  filename = Kernel.caller[4].gsub(root_dir+'/', '')
 #  filename = filename.gsub(/\:in.+/, '')
 #  "#{datetime} #{severity} -- #{filename}: #{msg}\n"
-#end
+# end
 use Rack::Logger, logger
 
 MIN_MATCH_SCORE = 2
@@ -71,7 +71,9 @@ FACET = true
 HIGHLIGHTING = false
 TYPICAL_ROWS = [10, 20, 50, 100, 500]
 DEFAULT_ROWS = 20
-MONTH_SHORT_NAMES = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+MONTH_SHORT_NAMES = %w(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec)
+
+ORCID_VERSION = '1.2'
 
 after do
   response.headers['Access-Control-Allow-Origin'] = '*'
@@ -81,7 +83,7 @@ configure do
   set :logging, Logger::INFO
 
   # Work around rack protection referrer bug
-  set :protection, :except => :json_csrf
+  set :protection, except: :json_csrf
 
   # Configure solr
   set :solr, RSolr.connect(url: ENV['SOLR_URL'])
@@ -99,7 +101,7 @@ configure do
 
   # Set up for http requests to data.datacite.org and dx.doi.org
   dx_doi_org = Faraday.new(url: 'http://doi.org') do |c|
-    c.use FaradayMiddleware::FollowRedirects, :limit => 5
+    c.use FaradayMiddleware::FollowRedirects, limit: 5
     c.response :encoding
     c.adapter Faraday.default_adapter
   end
@@ -113,25 +115,24 @@ configure do
   set :data_service, data_service
 
   # Citation format types
-  set :citation_formats, {
-    'bibtex' => 'application/x-bibtex',
-    'ris' => 'application/x-research-info-systems',
-    'apa' => 'text/x-bibliography; style=apa',
-    'harvard' => 'text/x-bibliography; style=harvard1',
-    'ieee' => 'text/x-bibliography; style=ieee',
-    'mla' => 'text/x-bibliography; style=modern-language-association',
-    'vancouver' => 'text/x-bibliography; style=vancouver',
-    'chicago' => 'text/x-bibliography; style=chicago-fullnote-bibliography'
-  }
+  set :citation_formats,
+      'bibtex' => 'application/x-bibtex',
+      'ris' => 'application/x-research-info-systems',
+      'apa' => 'text/x-bibliography; style=apa',
+      'harvard' => 'text/x-bibliography; style=harvard1',
+      'ieee' => 'text/x-bibliography; style=ieee',
+      'mla' => 'text/x-bibliography; style=modern-language-association',
+      'vancouver' => 'text/x-bibliography; style=vancouver',
+      'chicago' => 'text/x-bibliography; style=chicago-fullnote-bibliography'
 
   # Set facet fields
-  set :facet_fields, ['resourceType_facet', 'publicationYear_facet', 'publisher_facet']
+  set :facet_fields, %w(resourceType_facet publicationYear_facet publisher_facet)
 
   # Google analytics event tracking
   set :ga, Gabba::Gabba.new(ENV['GABBA_COOKIE'], ENV['GABBA_URL']) if ENV['GABBA_COOKIE']
 
   # ORCID endpoint
-  orcid_service = Faraday.new(:url => ENV['ORCID_API_URL']) do |c|
+  orcid_service = Faraday.new(url: ENV['ORCID_API_URL']) do |c|
     c.response :encoding
     c.adapter Faraday.default_adapter
   end
@@ -148,15 +149,15 @@ configure do
   use Rack::Flash
   use OmniAuth::Builder do
     provider :orcid, ENV['ORCID_CLIENT_ID'], ENV['ORCID_CLIENT_SECRET'],
-    authorize_params: {
-      scope: '/orcid-profile/read-limited /orcid-works/create'
-    },
-    client_options: {
-      site: ENV['ORCID_API_URL'],
-      authorize_url: "#{ENV['ORCID_URL']}/oauth/authorize",
-      token_url: "#{ENV['ORCID_API_URL']}/oauth/token"
-    },
-    provider_ignores_state: true
+             authorize_params: {
+               scope: '/orcid-profile/read-limited /orcid-works/create'
+             },
+             client_options: {
+               site: ENV['ORCID_API_URL'],
+               authorize_url: "#{ENV['ORCID_URL']}/oauth/authorize",
+               token_url: "#{ENV['ORCID_API_URL']}/oauth/token"
+             },
+             provider_ignores_state: true
   end
 
   OmniAuth.config.logger = logger
@@ -165,29 +166,29 @@ configure do
 end
 
 get '/' do
-  if !params.has_key?('q') || !query_terms
-    haml :splash, :locals => {:page => {:query => ""}}
+  if !params.key?('q') || !query_terms
+    haml :splash, locals: { page: { query: '' } }
   else
-    params['q'] = session[:orcid][:uid] if signed_in? && !params.has_key?('q')
+    params['q'] = session[:orcid][:uid] if signed_in? && !params.key?('q')
     logger.debug "Initiating Solr search with query string '#{params['q']}'"
     solr_result = select search_query
-    logger.debug "Got some Solr results: "
+    logger.debug 'Got some Solr results: '
 
     page = {
-      :bare_sort => params['sort'],
-      :bare_query => params['q'],
-      :query_type => query_type,
-      :bare_filter => params['filter'],
-      :query => query_terms,
-      :facet_query => abstract_facet_query,
-      :page => query_page,
-      :rows => {
-        :options => TYPICAL_ROWS,
-        :actual => query_rows
+      bare_sort: params['sort'],
+      bare_query: params['q'],
+      query_type: query_type,
+      bare_filter: params['filter'],
+      query: query_terms,
+      facet_query: abstract_facet_query,
+      page: query_page,
+      rows: {
+        options: TYPICAL_ROWS,
+        actual: query_rows
       },
-      :items => search_results(solr_result),
-      :paginate => Paginate.new(query_page, query_rows, solr_result),
-      :facets => !solr_result['facet_counts'].nil? ? solr_result['facet_counts']['facet_fields']
+      items: search_results(solr_result),
+      paginate: Paginate.new(query_page, query_rows, solr_result),
+      facets: !solr_result['facet_counts'].nil? ? solr_result['facet_counts']['facet_fields']
                                                    : {}
     }
 
@@ -196,21 +197,21 @@ get '/' do
       page[:alt_text] = get_alt_count(page)
     end
 
-    haml :results, :locals => {:page => page}
+    haml :results, locals: { page: page }
   end
 end
 
 get '/help/search' do
-  haml :search_help, :locals => {:page => {:query => ''}}
+  haml :search_help, locals: { page: { query: '' } }
 end
 
 get '/help/status' do
-  haml :status_help, :locals => {:page => {:query => '', :stats => index_stats}}
+  haml :status_help, locals: { page: { query: '', stats: index_stats } }
 end
 
 get '/orcid/activity' do
   if signed_in?
-    haml :activity, :locals => {:page => {:query => ''}}
+    haml :activity, locals: { page: { query: '' } }
   else
     redirect '/'
   end
@@ -221,59 +222,54 @@ get '/orcid/claim' do
 
   if signed_in? && params['doi']
     doi = params['doi']
-    orcid_record = settings.orcids.find_one({:orcid => sign_in_id})
-    already_added = !orcid_record.nil? && orcid_record['locked_dois'].include?(doi)
-
-    logger.info "Initiating claim for #{doi}"
+    plain_doi = to_doi(doi)
+    orcid_record = settings.orcids.find_one(orcid: sign_in_id)
+    already_added = !orcid_record.nil? && orcid_record['locked_dois'].include?(plain_doi)
 
     if already_added
-      logger.info "DOI #{doi} is already claimed, not doing anything!"
       status = 'ok'
     else
-      logger.debug "Retrieving metadata from MongoDB for #{doi}"
-      doi_record = settings.dois.find_one({:doi => doi})
+      # TODO escape DOI characters
+      params = {
+        q: "doi:\"#{doi}\"",
+        fl: '*'
+      }
+      result = settings.solr.paginate 0, 1, ENV['SOLR_SELECT'], params: params
+      doi_record = result['response']['docs'].first
 
       if !doi_record
         status = 'no_such_doi'
       else
-        logger.debug "Got some DOI metadata from MongoDB: " + doi_record.ai
-
-        claim_ok = false
-        begin
-          claim_ok = OrcidClaim.perform(session_info, doi_record)
-        rescue => e
-          # ToDo: need more useful error messaging here, for displaying to user
-          logger.error "Caught exception from claim process: #{e}: \n" + e.backtrace.join("\n")
-        end
-
-        if claim_ok
+        if OrcidClaim.perform(session_info, doi_record)
           if orcid_record
             orcid_record['updated'] = true
-            orcid_record['locked_dois'] << doi
+            orcid_record['locked_dois'] << plain_doi
             orcid_record['locked_dois'].uniq!
             settings.orcids.save(orcid_record)
           else
-            doc = {:orcid => sign_in_id, :dois => [], :locked_dois => [doi]}
+            doc = { orcid: sign_in_id, dois: [], locked_dois: [plain_doi] }
             settings.orcids.insert(doc)
           end
 
-          # The work could have been added as limited or public. If so we need
-          # to tell the UI.
+          # The work could have been added as limited or public. If so we need
+          # to tell the UI.
           OrcidUpdate.perform(session_info)
-          updated_orcid_record = settings.orcids.find_one({:orcid => sign_in_id})
+          updated_orcid_record = settings.orcids.find_one(orcid: sign_in_id)
 
-          if updated_orcid_record['dois'].include?(doi)
+          if updated_orcid_record['dois'].include?(plain_doi)
             status = 'ok_visible'
           else
             status = 'ok'
           end
+        else
+          status = 'oauth_timeout'
         end
       end
     end
   end
 
   content_type 'application/json'
-  {:status => status}.to_json
+  { status: status }.to_json
 end
 
 get '/orcid/unclaim' do
@@ -281,7 +277,7 @@ get '/orcid/unclaim' do
     doi = params['doi']
 
     logger.info "Initiating unclaim for #{doi}"
-    orcid_record = settings.orcids.find_one({:orcid => sign_in_id})
+    orcid_record = settings.orcids.find_one(orcid: sign_in_id)
 
     if orcid_record
       orcid_record['locked_dois'].delete(doi)
@@ -290,7 +286,7 @@ get '/orcid/unclaim' do
   end
 
   content_type 'application/json'
-  {:status => 'ok'}.to_json
+  { status: 'ok' }.to_json
 end
 
 get '/orcid/sync' do
@@ -305,14 +301,14 @@ get '/orcid/sync' do
   end
 
   content_type 'application/json'
-  {:status => status}.to_json
+  { status: status }.to_json
 end
 
 get '/citation' do
-  halt 422, json(status: "error", message: "DOI missing or wrong format.") unless params[:doi] && doi?(params[:doi])
+  halt 422, json(status: 'error', message: 'DOI missing or wrong format.') unless params[:doi] && doi?(params[:doi])
 
   citation_format = settings.citation_formats.fetch(params[:format], nil)
-  halt 415, json(status: "error", message: "Format missing or not supported.") unless citation_format
+  halt 415, json(status: 'error', message: 'Format missing or not supported.') unless citation_format
 
   response = settings.data_service.get do |req|
     req.url "/#{params[:doi]}"
@@ -321,7 +317,7 @@ get '/citation' do
 
   body = force_utf8(response.body)
 
-  halt response.status, json(status: "error", message: body) unless response.success?
+  halt response.status, json(status: 'error', message: body) unless response.success?
 
   settings.ga.event('Citations', '/citation', citation_format, nil, true) if ENV['GABBA_COOKIE']
 
@@ -343,13 +339,13 @@ get '/auth/signout' do
   redirect(params[:redirect_uri])
 end
 
-get "/auth/failure" do
+get '/auth/failure' do
   flash[:error] = "Authentication failed with message \"#{params['message']}\"."
   haml :auth_callback
 end
 
 get '/auth/orcid/deauthorized' do
-  haml "ORCID has deauthorized this app."
+  haml 'ORCID has deauthorized this app.'
 end
 
 get '/heartbeat' do
@@ -364,8 +360,8 @@ get '/heartbeat' do
     # Attempt some queries with mongo
     result_list = search_results(solr_result)
 
-    {:status => :ok}.to_json
+    { status: :ok }.to_json
   rescue StandardError => e
-    {:status => :error, :type => e.class, :message => e}.to_json
+    { status: :error, type: e.class, message: e }.to_json
   end
 end

@@ -29,7 +29,7 @@ gem 'log4r'
 
 group :development do
   gem 'capistrano-passenger', '~> 0.1.1'
-  gem 'capistrano-bundler', '~> 1.1.2', :require => false
+  gem 'capistrano-bundler', '~> 1.1.2', require: false
 end
 
 group :test do
@@ -39,4 +39,8 @@ group :test do
   gem 'poltergeist'
   gem "webmock", "~> 1.20.0"
   gem 'vcr', '~> 2.9.3'
+end
+
+group :test, :development do
+  gem 'rubocop', '~> 0.27.0', require: false
 end
