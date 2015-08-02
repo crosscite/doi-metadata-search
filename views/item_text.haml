@@ -1,47 +1,44 @@
 %div.item-data
-  - unless item.title.nil?
-    %h3
+  %h3
+    - if item.title
       = item.title
-
-    %p.extra
-      %span
-        - if item.version
-          = "Version " + item.version + " of "
-        %strong
-          = item.subtype
-        published
-        %b
-          - unless item.day.nil?
-            = item.day
-          - unless item.month.nil?
-            = item.month
-          - unless (item.year.nil? || item.year.to_i == 0)
-            = item.year
-      - unless item.publication.nil?
-        %span
-          via
-          %b= item.publication
-      - unless item.volume.nil?
-        %span
-          , volume
-          %b= item.volume
-      - unless item.issue.nil?
-        %span
-          , issue
-          %b= item.issue
-      - if !item.first_page.nil? && !item.last_page.nil?
-        %span
-          , on pages
-          %b= item.first_page
-          to
-          %b= item.last_page
-      - elsif !item.first_page.nil?
-        %span
-          , on page
-          %b= item.first_page
+    - else
+      No title
 
   - unless item.authors.nil?
-    %p.expand= item.authors[0..19].join(", ")
+    %p= item.authors[0..19].join(", ")
+
+  %p
+    - if item.version
+      = "Version " + item.version + " of "
+    - if item.subtype
+      = item.subtype.titleize
+      published
+    - else
+      Text published
+    - unless item.day.nil?
+      = item.day
+    - unless item.month.nil?
+      = item.month
+    - unless (item.year.nil? || item.year.to_i == 0)
+      = item.year
+    - unless item.publication.nil?
+      via
+      = item.publication
+    - unless item.volume.nil?
+      , volume
+      = item.volume
+    - unless item.issue.nil?
+      , issue
+      = item.issue
+    - if !item.first_page.nil? && !item.last_page.nil?
+      , on pages
+      = item.first_page
+      to
+      = item.last_page
+    - elsif !item.first_page.nil?
+      , on page
+      = item.first_page
 
   - if item.creative_commons
     %p

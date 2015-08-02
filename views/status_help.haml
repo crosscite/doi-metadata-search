@@ -1,17 +1,16 @@
 = partial :search_header, :page => page
 
 .row-fluid
-  .span2
-  .span8
+  .span9
     .page-header
-      %h1 Indexing
+      %h2 Status
     - page[:stats].each do |stat|
-      .pull-right
-        - if stat[:number]
-          %span.stat-value.number= stat[:value]
-        - else
-          %span.stat-value= stat[:value]
-      %span.stat-name= stat[:name]
-      %hr
+      .stat-list
+        .pull-right
+          - if stat[:number]
+            %span.stat-value.number= stat[:value]
+          - else
+            %span.stat-value= stat[:value]
+        %span.stat-name= stat[:name]
 
 = partial :search_footer, :page => page

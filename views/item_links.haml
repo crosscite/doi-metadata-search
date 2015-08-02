@@ -1,57 +1,57 @@
 = item.coins_span
-.item-links-outer
-  .item-links
-    - unless item.citations.empty?
-      %a{:href => "javascript:showCitationsBox('#{item.hashed}');"}
-        %i.icon-resize-small
-          = item.citations.count
-          citations from patents
-    %a{:href => 'http://doi.org/' + item.doi}
-      %i.icon-external-link
-      = "http://doi.org/#{item.doi}"
-    %a.cite-link{:href => "javascript:showCiteBox('#{item.doi}', '#{item.title}');"}
-      %i.icon-quote-left
-      Cite
 
-    - if item.related && item.related.any? { |related| related[:id] == "DOI" }
-      %span.dropdown
-        %a.dropdown-toggle{:role => 'button', 'data-toggle' => 'dropdown', :href => '#'}
-          %i.icon-double-angle-down
-          Related Content
-        %ul.dropdown-menu{:role => 'menu'}
-          - item.related.each do |related|
-            - if related[:id] == "DOI"
-              %li
-                %a.cite-link{:href => 'http://doi.org/' + related[:text]}
-                  %strong
-                    = related[:relation]
-                  %i.icon-external-link
-                  = "http://doi.org/#{related[:text]}"
+.item-links
+  - unless item.citations.empty?
+    %a{:href => "javascript:showCitationsBox('#{item.hashed}');"}
+      %i.icon-resize-small
+        = item.citations.count
+        citations from patents
+  %a{:href => 'http://doi.org/' + item.doi}
+    %i.icon-external-link
+    = "http://doi.org/#{item.doi}"
+  %a.cite-link.nowrap{:href => "javascript:showCiteBox('#{item.doi}', '#{item.title}');"}
+    %i.icon-quote-left
+    Cite
 
-    - if item.alternate
-      %span.dropdown
-        %a.dropdown-toggle{:role => 'button', 'data-toggle' => 'dropdown', :href => '#'}
-          %i.icon-double-angle-down
-          Other Identifiers
-        %ul.dropdown-menu{:role => 'menu'}
-          - item.alternate.each do |alternate|
-            %li.alternate
-              %strong
-                = alternate[:id]
-              = alternate[:text]
+  - if item.related && item.related.any? { |related| related[:id] == "DOI" }
+    %span.dropdown.nowrap
+      %a.dropdown-toggle{:role => 'button', 'data-toggle' => 'dropdown', :href => '#'}
+        %i.icon-double-angle-down
+        Related Content
+      %ul.dropdown-menu{:role => 'menu'}
+        - item.related.each do |related|
+          - if related[:id] == "DOI"
+            %li
+              %a.cite-link{:href => 'http://doi.org/' + related[:text]}
+                %strong
+                  = related[:relation]
+                %i.icon-external-link
+                = "http://doi.org/#{related[:text]}"
 
-    - if signed_in?
-      - if item.in_user_profile?
-        %span.well-transparent.claim-ok{:id => item.doi}
-          %img{:src => '/images/orcid_16x16.gif', :alt => ''}
-          %span In your ORCID record
-      - elsif item.user_claimed?
-        %span.well-transparent.claim-warn{:id => item.doi}
-          %img{:src => '/images/orcid_16x16.gif', :alt => ''}
-          %span Not visible
-      - else
-        %span.well-transparent.claim-none{:id => item.doi}
-          %img{:src => '/images/orcid_16x16.gif', :alt => ''}
-          %span Yes, this is my work - add to ORCID
+  - if item.alternate
+    %span.dropdown.nowrap
+      %a.dropdown-toggle{:role => 'button', 'data-toggle' => 'dropdown', :href => '#'}
+        %i.icon-double-angle-down
+        Other Identifiers
+      %ul.dropdown-menu{:role => 'menu'}
+        - item.alternate.each do |alternate|
+          %li.alternate
+            %strong
+              = alternate[:id]
+            = alternate[:text]
+
+  - if signed_in?
+    - if item.in_user_profile?
+      %span.claim-ok.nowrap{:id => item.doi}
+        %img{:src => '/images/orcid_16x16.gif', :alt => ''}
+        In your ORCID record
+    - elsif item.user_claimed?
+      %span.claim-warn.nowrap{:id => item.doi}
+        %img{:src => '/images/orcid_16x16.gif', :alt => ''}
+        Not visible
+    - else
+      %span.claim-none.nowrap{:id => item.doi}
+        %img{:src => '/images/orcid_16x16.gif', :alt => ''}
+        This is my work - add to ORCID
 
 

@@ -170,9 +170,7 @@ get '/' do
     haml :splash, locals: { page: { query: '' } }
   else
     params['q'] = session[:orcid][:uid] if signed_in? && !params.key?('q')
-    logger.debug "Initiating Solr search with query string '#{params['q']}'"
     solr_result = select search_query
-    logger.debug 'Got some Solr results: '
 
     page = {
       bare_sort: params['sort'],

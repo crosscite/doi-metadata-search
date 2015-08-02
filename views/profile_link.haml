@@ -1,34 +1,35 @@
 - if signed_in?
-  %img{ style: 'margin-left: 5px;', src: '/images/orcid_32x32.gif', alt: ""}
-  %a{ href: "#{ENV['ORCID_URL']}/#{session[:orcid][:uid]}", class: "orcid_id", target: "_blank"}
-    #{session[:orcid][:uid]}
-    <br />
-  %div{ class: 'pull-right dropdown' }
-    %i.icon-user
+  %div{ class: 'dropdown' }
+    %img.logo{src: '/images/orcid_24x24.gif'}
     %a.dropdown-toggle{:href => '#', :role => 'button', 'data-toggle' => 'dropdown'}
-      = user_display
+      = session[:orcid][:uid]
       %b.caret
-    %ul.dropdown-menu{'role' => 'menu', :style => 'right: 0; left: auto;'}
+    %ul.dropdown-menu.pull-right{'role' => 'menu'}
       %li
         %a{:href => '/orcid/activity'}
           %i.icon-th-list
           Settings
+      %li
+        %a{:href => "#{ENV['ORCID_URL']}/#{session[:orcid][:uid]}"}
+          %i.icon-user
+          ORCID Profile
       %li.divider
       %li
         %a{:href => "/auth/signout?redirect_uri=#{URI.encode(request.fullpath)}"}
           %i.icon-signout
           Sign out
 - else
-  %a.sign-in-link{:href => '#'}
-    %img{:src => '/images/orcid_24x24.gif'}
+  %img.logo{src: '/images/orcid_24x24.gif'}
+  %a#sign-in-link{:href => '#'}
     Sign in with ORCID
+
   :javascript
     $(document).ready(function() {
-      $('.sign-in-link').click(function(e) {
+      $('#sign-in-link').click(function(e) {
         $.oauthpopup({path: '/auth/orcid',
-                      callback: function() {
-                        document.location.reload(true);
-                      }});
+          callback: function() {
+            document.location.reload(true);
+          }});
         e.preventDefault();
         return false;
       });

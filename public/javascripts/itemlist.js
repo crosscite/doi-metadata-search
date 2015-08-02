@@ -253,7 +253,7 @@ $(document).ready(function() {
           $popover.addClass('claim-none');
           $popover.unbind('click');
           $popover.click(claimNoneClickFn);
-          $popover.find('span').text('Yes, this is my work - add to ORCID');
+          $popover.find('span').text('This is my work - add to ORCID');
           $popover.find('i').removeClass('icon-circle');
           $popover.find('i').addClass('icon-circle-blank');
         },

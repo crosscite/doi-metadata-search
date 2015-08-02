@@ -1,29 +1,15 @@
 = partial :search_header, :page => page
 
-:css
-  .well-transparent {
-    background-color: transparent;
-  }
-  #sync-ok {
-    color: rgb(166, 206, 57);
-    font-size: 1.4em;
-    display: none;
-  }
-
 .row-fluid
-  .span2
-  .span8
-    .page-header
-      %h2 Synchronize with ORCID
-    .well.well-large
+  .span9
+    .sync-info
       .pull-right
-        %i.icon-ok.lead#sync-ok
+        %i.icon-ok#sync-ok
         %button.btn.btn-warning#sync-button
           %i.icon-refresh#sync-icon
-          Sync with ORCID
-      %span.lead
-        Sync changes from your ORCID record to this site
-        
+          Sync
+      Sync changes from your ORCID record to this site
+
 = partial :search_footer, :page => page
 
 :javascript
@@ -35,7 +21,7 @@
                   $.oauthpopup({path: '/auth/orcid',
                                 callback: function() {
                                   performSync();
-                                }});  
+                                }});
                 } else {
                   $('#sync-icon').removeClass('icon-spin');
                   $('#sync-button').removeClass('disabled');
@@ -51,16 +37,16 @@
               }
       });
     }
-    
+
     $('#sync-button').click(function(e) {
       if ($(this).hasClass('disabled')) {
         return;
       }
-      
+
       $('#sync-icon').addClass('icon-spin');
       $(this).addClass('disabled');
       performSync();
-      
+
       e.preventDefault();
       return false;
     });

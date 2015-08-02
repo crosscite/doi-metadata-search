@@ -13,13 +13,6 @@ helpers do
     Log4r::Logger['test']
   end
 
-  def capture_exception(e, env)
-    if ENV['SENTRY_DSN']
-      evt = Raven::Event.capture_rack_exception(e, env)
-      Raven.send(evt) if evt
-    end
-  end
-
   def partial(template, locals)
     haml template.to_sym, layout: false, locals: locals
   end
@@ -360,7 +353,6 @@ helpers do
 
     response = conn.get do |req|
       req.url query
-      req.headers['Accept'] = citation_format
     end
 
     if response.status == 200 && page[:query_type][:type] == :doi
