@@ -38,8 +38,10 @@ require 'uri'
 
 Dir[File.join(File.dirname(__FILE__), 'lib', '*.rb')].each { |f| require f }
 
-use Bugsnag::Rack
-enable :raise_errors
+if ENV['BUGSNAG_KEY']
+  use Bugsnag::Rack
+  enable :raise_errors
+end
 
 require 'log4r'
 include Log4r
