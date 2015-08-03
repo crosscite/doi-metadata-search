@@ -1,19 +1,20 @@
-# DataCite-ORCID metadata search and claim
+# DOI Metadata Search
 
+[![Build Status](https://travis-ci.org/crosscite/doi-metadata-search.svg?branch=datacite)](https://travis-ci.org/crosscite/doi-metadata-search)
 [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.21430.svg)](http://doi.org/10.5281/zenodo.21430)
 
-An online tool for searching for works in the DataCite metadata
+An online tool for searching for works in the CrossRef or DataCite metadata
 catalogue and adding them to an ORCID profile.
 
-This is a project by [ORCID EU labs](https://github.com/ORCID-EU-Labs/) and [ODIN - ORCID and DataCite Interoperability Network](http://odin-project.eu)
+This project was started as [CrossRef Metadata Search](http://search.crossref.org) tool
+by [CrossRef](http://crossref.org), the original code repository is
+[here](https://github.com/crossref/doi-metadata-search). Later the code was extended
+to also work with the DataCite metadata Search in a project by
+[ORCID EU labs](https://github.com/ORCID-EU-Labs/) and the
+[ODIN - ORCID and DataCite Interoperability Network](http://odin-project.eu).
 
-Try out our live running instance at [http://datacite.labs.orcid-eu.org](http://datacite.labs.orcid-eu.org)
-
-
-## Background
-
-The application is a fork of the Sinatra-based [CrossRef Metadata Search](http://search.crossref.org) tool by [CrossRef](http://crossref.org).
-
+DOI Metadata Search combines these activities into a single codebase that works
+with both CrossRef and DataCite DOIs.
 
 ## Installation
 
