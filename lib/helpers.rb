@@ -367,6 +367,6 @@ helpers do
   end
 
   def force_utf8(str)
-    str.gsub(/\s+\/n/, "\/n").force_encoding('UTF-8')
+    str.gsub(/\s+\n/, "\n").strip.force_encoding('UTF-8')
   end
 end

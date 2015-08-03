@@ -21,7 +21,7 @@ describe 'citation' do
       ER  -
     EOS
     expect(last_response).to be_ok
-    expect(last_response.body).to eq(output)
+    expect(last_response.body).to eq(output.strip)
   end
 
   it 'format apa' do
