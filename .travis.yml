@@ -1,0 +1,16 @@
+language: ruby
+cache: bundler
+sudo: false
+rvm:
+  - 2.2.0
+
+services:
+  - mongodb
+  - redis-server
+
+before_script:
+  - cp .env.travis .env
+  - mkdir -p tmp/pids
+
+script:
+  - bundle exec rspec
