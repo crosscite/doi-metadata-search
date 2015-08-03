@@ -39,6 +39,7 @@ group :test do
   gem 'poltergeist'
   gem "webmock", "~> 1.20.0"
   gem 'vcr', '~> 2.9.3'
+  gem "codeclimate-test-reporter", require: nil
 end
 
 group :test, :development do

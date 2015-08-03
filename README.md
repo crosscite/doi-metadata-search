@@ -1,6 +1,8 @@
 # DOI Metadata Search
 
 [![Build Status](https://travis-ci.org/crosscite/doi-metadata-search.svg?branch=datacite)](https://travis-ci.org/crosscite/doi-metadata-search)
+[![Code Climate](https://codeclimate.com/github/crosscite/doi-metadata-search/badges/gpa.svg)](https://codeclimate.com/github/crosscite/doi-metadata-search)
+[![Test Coverage](https://codeclimate.com/github/crosscite/doi-metadata-search/badges/coverage.svg)](https://codeclimate.com/github/crosscite/doi-metadata-search/coverage)
 [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.21430.svg)](http://doi.org/10.5281/zenodo.21430)
 
 An online tool for searching for works in the CrossRef or DataCite metadata

@@ -4,6 +4,9 @@ sudo: false
 rvm:
   - 2.2.0
 
+env:
+  - CODECLIMATE_REPO_TOKEN=477bc3dabff86493ea83d7051e498f64ab924aa2d4697c89249e89be60d1abc1
+
 services:
   - mongodb
   - redis-server
