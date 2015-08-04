@@ -1,6 +1,6 @@
 {
   "run_list": [
-    "recipe[datacite_orcid]"
+    "recipe[doi_metadata_search]"
   ],
   "phantomjs": {
     "version": "1.9.7",
