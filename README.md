@@ -6,12 +6,12 @@
 [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.21430.svg)](http://doi.org/10.5281/zenodo.21430)
 
 An online tool for searching for works in the CrossRef or DataCite metadata
-catalogue and adding them to an ORCID profile.
+catalogue. Also allows users to find their works and add them to their ORCID profile.
 
 This project was started as [CrossRef Metadata Search](http://search.crossref.org) tool
 by [CrossRef](http://crossref.org), the original code repository is
 [here](https://github.com/crossref/doi-metadata-search). Later the code was extended
-to also work with the DataCite metadata Search in a project by
+to also work with the DataCite Metadata Search in a project by
 [ORCID EU labs](https://github.com/ORCID-EU-Labs/) and the
 [ODIN - ORCID and DataCite Interoperability Network](http://odin-project.eu).
 
@@ -75,5 +75,3 @@ bundle exec rspec
 
 ## License
 doi-metadata-search is released under the [MIT License](https://github.com/crosscite/doi-metadata-search/blob/master/LICENSE.md).
-
-![Open Source Initiative Approved License](http://www.opensource.org/trademarks/opensource/web/opensource-110x95.jpg)
