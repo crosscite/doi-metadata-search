@@ -38,6 +38,7 @@ SITE
     redisio (2.3.0)
       build-essential (>= 0.0.0)
       ulimit (>= 0.1.2)
+    remote_syslog2 (0.2.3)
     runit (1.7.2)
       packagecloud (>= 0.0.0)
     ulimit (0.3.3)
@@ -53,19 +54,20 @@ SITE
 GIT
   remote: git@github.com:lagotto/capistrano-cookbook.git
   ref: master
-  sha: c0998f2eef4efadd273d38ed7d1c8ab3d681a2d9
+  sha: 54b4dccb2c3cef244fdf6591638ff2023fbf2dc4
   specs:
-    capistrano (0.10.7)
+    capistrano (0.10.9)
       consul (>= 0.0.0)
       nodejs (>= 0.0.0)
+      remote_syslog2 (>= 0.0.0)
       ruby (~> 0.7.0)
 
 GIT
   remote: git@github.com:lagotto/dotenv-cookbook.git
   ref: master
-  sha: 3818435f4506f80a45f5a924ef880a3b371e0798
+  sha: 96d6427f4b35b1ab0c7281b46db48ece968fc3d0
   specs:
-    dotenv (0.2.2)
+    dotenv (0.2.3)
 
 GIT
   remote: git@github.com:lagotto/passenger_nginx-cookbook.git
