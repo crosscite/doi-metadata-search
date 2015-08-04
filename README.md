@@ -31,21 +31,22 @@ with both CrossRef and DataCite DOIs.
 
 ### Installation
 
-    git clone https://github.com/datacite/DataCite-ORCID.git
-    cd DataCite-ORCID
-    gem install librarian-chef
-    librarian-chef install
-    vagrant plugin install vagrant-omnibus
-    vagrant plugin install vagrant-aws
-    cp .env.example .env
-    vagrant up
+```
+git clone https://github.com/crosscite/doi-metadata-search.git
+cd doi-metadata-search
+gem install librarian-chef
+librarian-chef install
+vagrant plugin install vagrant-omnibus
+vagrant plugin install vagrant-aws
+cp .env.example .env
+vagrant up
+```
 
 If you don't see any errors from the last command, you now have a properly
-configured Ubuntu virtual machine running `DataCite-ORCID`. You can point your
+configured Ubuntu virtual machine running `doi-metadata-search`. You can point your
 browser to `http://10.2.2.12`.
 
-
-## Vagrant Pluggins
+### Vagrant Pluggins
 
 - vagrant-aws (0.4.1)
 - vagrant-login (1.0.1, system)
@@ -54,7 +55,7 @@ browser to `http://10.2.2.12`.
 - vagrant-vbguest (0.10.0)
 
 
-## Environment Variables
+### Environment Variables
 
 | Variable       | Notes               |
 |----------------|---------------------|
@@ -73,31 +74,6 @@ bundle exec rspec
 ```
 
 ## License
-
-The MIT License (OSI approved, see more at http://www.opensource.org/licenses/mit-license.php)
-
-=============================================================================
-
-Copyright (C) 2013-2015 by ORCID EU
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-=============================================================================
+doi-metadata-search is released under the [MIT License](https://github.com/crosscite/doi-metadata-search/blob/master/LICENSE.md).
 
 ![Open Source Initiative Approved License](http://www.opensource.org/trademarks/opensource/web/opensource-110x95.jpg)
