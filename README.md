@@ -75,7 +75,7 @@ bundle exec rspec
 
 Follow along via [Github Issues](https://github.com/crosscite/doi-metadata-search/issues).
 
-[![Stories in Progress](https://badge.waffle.io/crosscite/doi-metadata-search.svg?label=ready&title=In Progress)](http://waffle.io/crosscite/doi-metadata-search)
+[![Stories in Progress](https://badge.waffle.io/crosscite/doi-metadata-search.svg?label=in%20progress&title=In%20Progress)](http://waffle.io/crosscite/doi-metadata-search)
 
 ### Note on Patches/Pull Requests
 
