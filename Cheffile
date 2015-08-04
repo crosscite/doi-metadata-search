@@ -3,8 +3,8 @@
 
 site 'http://community.opscode.com/api/v1'
 
-cookbook "datacite_orcid",
-         :git => "https://github.com/datacite/datacite_orcid-cookbook.git"
+cookbook "doi_metadata_search",
+         :git => "https://github.com/crosscite/doi_metadata_search-cookbook.git"
 cookbook "ruby",
          :git => "git@github.com:lagotto/ruby-cookbook.git"
 cookbook "passenger_nginx",
