@@ -65,7 +65,7 @@ browser to `http://10.2.2.12`.
 | SSH_KEY_PATH   | Used for production |
 
 
-## Testing
+## Development
 
 We use Rspec for unit and acceptance testing:
 
@@ -73,5 +73,17 @@ We use Rspec for unit and acceptance testing:
 bundle exec rspec
 ```
 
+Follow along via [Github Issues](https://github.com/crosscite/doi-metadata-search/issues).
+
+[![Stories in Progress](https://badge.waffle.io/crosscite/doi-metadata-search.svg?label=ready&title=In Progress)](http://waffle.io/crosscite/doi-metadata-search)
+
+### Note on Patches/Pull Requests
+
+* Fork the project
+* Write tests for your new feature or a test that reproduces a bug
+* Implement your feature or make a bug fix
+* Do not mess with Rakefile, version or history
+* Commit, push and make a pull request. Bonus points for topical branches.
+
 ## License
-doi-metadata-search is released under the [MIT License](https://github.com/crosscite/doi-metadata-search/blob/master/LICENSE.md).
+**doi-metadata-search** is released under the [MIT License](https://github.com/crosscite/doi-metadata-search/blob/master/LICENSE.md).
