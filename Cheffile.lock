@@ -65,9 +65,9 @@ GIT
 GIT
   remote: git@github.com:lagotto/dotenv-cookbook.git
   ref: master
-  sha: 96d6427f4b35b1ab0c7281b46db48ece968fc3d0
+  sha: 43e41027d53795ce8ba0325469151b6a5e7f2539
   specs:
-    dotenv (0.2.3)
+    dotenv (0.2.4)
 
 GIT
   remote: git@github.com:lagotto/passenger_nginx-cookbook.git
