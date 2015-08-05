@@ -376,6 +376,9 @@ p, h2 {
   border-color: #e6e6e6;
   width: 50%;
 }
+.row-centered .search-in-header input {
+  width: 26em;
+}
 .span-header {
   margin-top: 1.2em;
   margin-bottom: -1.3em;
