@@ -86,7 +86,7 @@ Vagrant.configure("2") do |config|
   config.vm.define ENV["DOTENV"] do |machine|
     # Override settings for specific providers
     machine.vm.provider :virtualbox do |vb, override|
-      vb.name = ENV["APPLICATION"]
+      vb.name = "#{ENV["APPLICATION"]}.virtualbox"
       vb.customize ["modifyvm", :id, "--memory", "2048"]
       unless Vagrant::Util::Platform.windows?
         # Disable default synced folder before bindfs tries to bind to it
