@@ -27,7 +27,7 @@
   "post-processors": [
     {
       "type": "atlas",
-      "artifact": "crosscite/doi-metadata-search",
+      "artifact": "mfenner/doi-metadata-search",
       "artifact_type": "amazon.ami",
       "token": "{{user `atlas_token`}}",
       "metadata": {
@@ -47,7 +47,7 @@
     "atlas_token": "{{env `ATLAS_TOKEN`}}"
   },
    "push": {
-    "name": "crosscite/doi-metadata-search",
+    "name": "mfenner/doi-metadata-search",
     "vcs": true
   }
 }
