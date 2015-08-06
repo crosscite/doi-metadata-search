@@ -27,7 +27,7 @@
   "post-processors": [
     {
       "type": "atlas",
-      "artifact": "crosscite/{{user `atlas_name`}}",
+      "artifact": "crosscite/doi-metadata-search",
       "artifact_type": "amazon.ami",
       "token": "{{user `atlas_token`}}",
       "metadata": {
@@ -44,12 +44,10 @@
     "mirror": "http://releases.ubuntu.com",
     "access_key": "{{env `AWS_KEY`}}",
     "secret_key": "{{env `AWS_SECRET`}}",
-    "atlas_username": "{{env `ATLAS_USERNAME`}}",
-    "atlas_name": "{{env `ATLAS_NAME`}}",
     "atlas_token": "{{env `ATLAS_TOKEN`}}"
   },
    "push": {
-    "name": "crosscite/{{user `atlas_name`}}",
+    "name": "crosscite/doi-metadata-search",
     "vcs": true
   }
 }
