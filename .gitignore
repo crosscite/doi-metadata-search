@@ -15,3 +15,6 @@ log/*
 .env.*
 !.env.example
 !.env.travis
+*.box
+packer_cache/*
+output-*

@@ -54,9 +54,9 @@ SITE
 GIT
   remote: git@github.com:lagotto/capistrano-cookbook.git
   ref: master
-  sha: 54b4dccb2c3cef244fdf6591638ff2023fbf2dc4
+  sha: 35ce0c1a019328bc7d04f0048656183f689ccff1
   specs:
-    capistrano (0.10.9)
+    capistrano (0.10.11)
       consul (>= 0.0.0)
       nodejs (>= 0.0.0)
       remote_syslog2 (>= 0.0.0)
@@ -65,9 +65,9 @@ GIT
 GIT
   remote: git@github.com:lagotto/dotenv-cookbook.git
   ref: master
-  sha: 43e41027d53795ce8ba0325469151b6a5e7f2539
+  sha: 1c615c332f97d73f07e976dccf4e33266aba2317
   specs:
-    dotenv (0.2.4)
+    dotenv (0.2.11)
 
 GIT
   remote: git@github.com:lagotto/passenger_nginx-cookbook.git
@@ -89,9 +89,9 @@ GIT
 GIT
   remote: https://github.com/crosscite/doi_metadata_search-cookbook.git
   ref: master
-  sha: e6e79a7e353bc38a9a4f6bd3ba5b22ea4a3c17e2
+  sha: da92542eab93dcbe92cd2a0858b4f122402a5871
   specs:
-    doi_metadata_search (2.1.7)
+    doi_metadata_search (2.2.1)
       apt (>= 0.0.0)
       capistrano (~> 0.10.0)
       consul (>= 0.0.0)
