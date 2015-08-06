@@ -88,6 +88,8 @@ ENV['SERVERS'].split(',').each_with_index do |s, i|
 end
 
 namespace :deploy do
+  before :starting, "files:upload"
+
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
