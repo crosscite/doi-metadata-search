@@ -7,7 +7,7 @@ DEPENDENCIES
     revision: f7eea9503c4d046554c5a28ef3b7d79e519bc256
   dotenv
     git: git@github.com:lagotto/dotenv-cookbook.git
-    revision: 1c615c332f97d73f07e976dccf4e33266aba2317
+    revision: df20ee6b6b48a22d1f975b9ce466dd54131bbddf
   mongodb
     git: https://github.com/edelight/chef-mongodb.git
     revision: dc5836318a27331f605f264d946931927dd26bb8
@@ -55,7 +55,7 @@ GRAPH
     passenger_nginx (~> 0.5.0)
     redisio (>= 0.0.0)
     ruby (~> 0.7.0)
-  dotenv (0.2.11)
+  dotenv (0.2.12)
   firewall (1.6.1)
     poise (~> 2.0)
   golang (1.5.1)
