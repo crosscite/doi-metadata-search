@@ -25,9 +25,11 @@
       .item-paging.bottom
         = will_paginate page[:paginate], :renderer => BootstrapLinkRenderer, :inner_window => 2
     - else
-      %h2
-        Example Queries
-      = partial :help_list, :page => page
+      .example
+        %h2 Examples
+        %p Click on an example to put it in the search box.
+
+      = partial :examples_list, :page => page
   .span3
 
 = partial :cite_box, :page => page

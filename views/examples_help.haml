@@ -1,0 +1,11 @@
+= partial :search_header, :page => page
+
+.row-fluid
+  .span9
+    .example
+      %h2 Examples
+      %p Click on an example to put it in the search box.
+
+    = partial :examples_list, :page => page
+
+= partial :search_footer, :page => page
