@@ -83,7 +83,7 @@ helpers do
       orcid = query_info[:value][0]
       names = Array(query_info[:value][1..-1]).uniq
       orcid_terms(orcid, names)
-    when :contributpr
+    when :contributor
       "creator:#{query_info[:value]} OR contributor:#{query_info[:value]}"
     when :year
       "publicationYear:\"#{query_info[:value]}\""
