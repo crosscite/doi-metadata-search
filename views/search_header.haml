@@ -1,12 +1,18 @@
-- if page[:mini_header]
-  .profile.pull-right
-    = partial :profile_link, {}
-- else
-  .logo.pull-left
-    %a{:href => '/'}
-      %img.logo-small{src: '/images/logo-small.png', alt: 'DataCite' }
-  .profile.pull-right
-    = partial :profile_link, {}
-  %form{:method => 'GET', :action => '/'}
-    .search-in-header
-      %input.search-input{placeholder: 'Enter search term', name: 'q', type: 'text', value: page[:bare_query]}
+.row-fluid
+  - if page[:mini_header]
+    .span12
+      .profile.pull-right
+        = partial :profile_link, {}
+  - else
+    .span2
+      .logo
+        %a{:href => '/'}
+          %img.logo-small{src: '/images/logo-small.png', alt: 'DataCite' }
+    .span10
+      .profile.pull-right
+        = partial :profile_link, {}
+      %form{:method => 'GET', :action => '/'}
+        .search-in-header
+          %input.search-input{placeholder: 'Enter search term', name: 'q', type: 'text', value: page[:bare_query]}
+          %button.btn.btn-large{type: "submit"}
+            %i.icon-search
