@@ -201,8 +201,8 @@ get '/' do
   end
 end
 
-get '/help/search' do
-  haml :search_help, locals: { page: { query: '' } }
+get '/help/examples' do
+  haml :examples_help, locals: { page: { query: '' } }
 end
 
 get '/help/status' do
