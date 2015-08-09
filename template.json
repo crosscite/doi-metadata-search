@@ -18,6 +18,11 @@
       "cookbook_paths": ["vendor/cookbooks"],
       "run_list": ["recipe[doi_metadata_search]"],
       "json": {
+        "ruby": {
+          "deploy_user": "ubuntu",
+          "deploy_group": "ubuntu",
+          "rails_env": "production"
+        },
         "phantomjs": {
           "version": "1.9.7",
           "base_url": "https://bitbucket.org/ariya/phantomjs/downloads" }
