@@ -80,9 +80,10 @@ helpers do
     when :short_doi
       "doi:\"#{query_info[:value]}\""
     when :orcid
-      orcid = query_info[:value][0]
-      names = Array(query_info[:value][1..-1]).uniq
-      orcid_terms(orcid, names)
+      "nameIdentifier:ORCID\:#{query_info[:value]}"
+      # orcid = query_info[:value][0]
+      # names = Array(query_info[:value][1..-1]).uniq
+      # orcid_terms(orcid, names)
     when :contributor
       "creator:#{query_info[:value]} OR contributor:#{query_info[:value]}"
     when :year
@@ -117,8 +118,8 @@ helpers do
       { type: :doi, value: to_doi(params['q']).downcase }
     elsif short_doi?(params['q']) || very_short_doi?(params['q'])
       { type: :short_doi, value: to_long_doi(params['q']) }
-    elsif value = orcid?(params['q'])
-      { type: :orcid, value: value }
+    elsif orcid?(params['q'])
+      { type: :orcid, value: params['q'].strip }
     elsif value = contributor?(params['q'])
       { type: :contributor, value: value }
     elsif value = year?(params['q'])
