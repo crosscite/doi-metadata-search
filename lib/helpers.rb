@@ -323,7 +323,7 @@ helpers do
 
     stats << {
       value: software_result['response']['numFound'],
-      name: 'Number of indexed software',
+      name: 'Number of indexed software packages',
       number: true
     }
 
