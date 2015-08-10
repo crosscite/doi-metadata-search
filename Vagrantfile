@@ -117,7 +117,7 @@ Vagrant.configure("2") do |config|
       aws.tags = { Name: ENV["APPLICATION"] }
 
       override.nfs.functional = false
-      override.vm.synced_folder ".", "/var/www/#{ENV['APPLICATION']}/shared", type: "rsync", rsync__exclude: [".git/", "vendor/bundle/ruby"]
+      override.vm.synced_folder ".", "/var/www/#{ENV['APPLICATION']}/shared", type: "rsync", rsync__exclude: [".git/", ".bundle/", "vendor/bundle/ruby"]
 
       override.vm.box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
     end
