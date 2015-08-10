@@ -194,7 +194,7 @@ get '/' do
 
     unless page[:items].length > 0
       page[:alt_url] = "http://search.crossref.org/?q=#{params['q']}"
-      page[:alt_text] = get_alt_count(page)
+      page[:alt_text] = get_alt_text(page)
     end
 
     haml :results, locals: { page: page }

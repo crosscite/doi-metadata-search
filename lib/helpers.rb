@@ -340,14 +340,14 @@ helpers do
     stats
   end
 
-  def get_alt_count(page)
+  def get_alt_text(page)
     if page[:query_type][:type] == :doi
-      query = "/#{page[:query_type][:value]}"
+      query = "/works/#{page[:query_type][:value]}"
     else
       query = "?query=#{page[:bare_query]}&rows=0"
     end
 
-    conn = Faraday.new(url: 'http://api.crossref.org/works') do |c|
+    conn = Faraday.new(url: 'http://api.crossref.org') do |c|
       c.response :encoding
       c.adapter Faraday.default_adapter
     end
