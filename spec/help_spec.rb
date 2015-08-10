@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'help' do
   it 'search' do
-    get '/help/search'
+    get '/help/examples'
     expect(last_response).to be_ok
   end
 
