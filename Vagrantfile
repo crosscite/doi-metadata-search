@@ -27,8 +27,8 @@ def load_env
   # requires dotenv plugin/gem
   require "dotenv"
 
-  # make sure DOTENV is set
-  ENV["DOTENV"] ||= "default"
+  # make sure DOTENV is set, defaults to "dev"
+  ENV["DOTENV"] ||= "dev"
 
   # load ENV variables from file specified by DOTENV
   # use .env with DOTENV=default
@@ -75,7 +75,7 @@ Vagrant.configure("2") do |config|
     chef.log_level = ENV["LOG_LEVEL"].to_sym
   end
 
-  # allow multiple machines, specified by APP_ENV
+  # allow multiple machines, specified by DOTENV
   config.vm.define ENV["DOTENV"] do |machine|
     # Override settings for specific providers
     machine.vm.provider :virtualbox do |vb, override|
