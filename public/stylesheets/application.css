@@ -54,7 +54,7 @@ h1 {
   margin-bottom: 6em;
 }
 .page-header {
-  padding-left: 1em;
+  padding-left: 1.25em;
   padding-bottom: 0;
   border-bottom-width: 0;
 }
@@ -314,13 +314,6 @@ li {
 
 .mini-header {
   margin-top: 1em;
-}
-
-.example h2, .status {
-  margin-left: .8em;
-}
-.example p {
-  margin-left: 1.2em;
 }
 
 .example span, pre.example {

@@ -2,7 +2,8 @@
 
 .row-fluid
   .span9
-    %h2.status Status
+    .page-header
+      %h2 Status
     - page[:stats].each do |stat|
       .stat-list
         .pull-right
