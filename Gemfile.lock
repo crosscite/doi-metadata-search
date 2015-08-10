@@ -34,6 +34,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-screenshot (1.0.11)
+      capybara (>= 1.0, < 3)
+      launchy
     cliver (0.3.2)
     codeclimate-test-reporter (0.4.7)
       simplecov (>= 0.7.1, < 1.0.0)
@@ -58,6 +61,8 @@ GEM
     i18n (0.7.0)
     json (1.8.3)
     jwt (1.5.1)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     log4r (1.1.10)
     mime-types (2.6.1)
     mini_portile (0.6.2)
@@ -190,6 +195,7 @@ DEPENDENCIES
   capistrano-bundler (~> 1.1.2)
   capistrano-passenger (~> 0.1.1)
   capybara
+  capybara-screenshot
   codeclimate-test-reporter
   dotenv
   factory_girl
