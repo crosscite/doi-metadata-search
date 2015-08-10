@@ -22,7 +22,7 @@
         - item.related.each do |related|
           - if related[:id] == "DOI"
             %li
-              %a.cite-link{:href => 'http://doi.org/' + related[:text]}
+              %a.cite-link{:href => "?q=" + related[:text]}
                 %strong
                   = related[:relation]
                 %i.icon-external-link
