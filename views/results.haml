@@ -6,8 +6,8 @@
       %div.alert.alert-error
         = flash[:error]
     - unless page[:page].nil? || page[:paginate].nil? || params['q'] == ""
-      - if page[:items].length > 0
-        = partial :search_box, :page => page
+      = partial :search_box, :page => page
+
       - if page[:items].length > 1
         .list-info
           .pull-right
