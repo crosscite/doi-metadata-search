@@ -2,12 +2,14 @@ require 'net/smtp'
 require 'timeout'
 require 'mongo'
 
+require_relative 'lib/version'
+
 class Heartbeat < Sinatra::Base
   get '' do
     content_type :json
 
     { services: services,
-      version: ::VERSION,
+      version: ::App::VERSION,
       status: human_status(services_up?) }.to_json
   end
 
