@@ -1,0 +1,1049 @@
+{
+  "message-version": "1.2",
+  "orcid-profile": {
+    "orcid": null,
+    "orcid-id": null,
+    "orcid-identifier": {
+      "value": null,
+      "uri": "http://sandbox.orcid.org/0000-0001-6528-2027",
+      "path": "0000-0001-6528-2027",
+      "host": "sandbox.orcid.org"
+    },
+    "orcid-deprecated": null,
+    "orcid-preferences": {
+      "locale": "EN"
+    },
+    "orcid-history": {
+      "creation-method": "MEMBER_REFERRED",
+      "completion-date": null,
+      "submission-date": {
+        "value": 1438058214189
+      },
+      "last-modified-date": {
+        "value": 1439230715453
+      },
+      "claimed": {
+        "value": true
+      },
+      "source": null,
+      "deactivation-date": null,
+      "verified-email": {
+        "value": false
+      },
+      "verified-primary-email": {
+        "value": false
+      },
+      "visibility": null
+    },
+    "orcid-bio": null,
+    "orcid-activities": {
+      "affiliations": null,
+      "orcid-works": {
+        "orcid-work": [
+          {
+            "put-code": "487179",
+            "work-title": {
+              "title": {
+                "value": "omniauth-orcid: v.1.0"
+              },
+              "subtitle": null,
+              "translated-title": null
+            },
+            "journal-title": null,
+            "short-description": null,
+            "work-citation": {
+              "work-citation-type": "BIBTEX",
+              "citation": "@misc{datacite12855666-9ec8-4e9b-afe7-d89d06bf55ec,\n  doi = {10.5281/ZENODO.21429},\n  url = {http://dx.doi.org/10.5281/ZENODO.21429},\n  author = {Gudmundur A. Thorisson; Martin Fenner; },\n  publisher = {Zenodo},\n  title = {omniauth-orcid: v.1.0},\n  year = {2015}\n}"
+            },
+            "work-type": "OTHER",
+            "publication-date": {
+              "year": {
+                "value": "2015"
+              },
+              "month": null,
+              "day": null,
+              "media-type": null
+            },
+            "work-external-identifiers": {
+              "work-external-identifier": [
+                {
+                  "work-external-identifier-type": "DOI",
+                  "work-external-identifier-id": {
+                    "value": "10.5281/ZENODO.21429"
+                  }
+                }
+              ],
+              "scope": null
+            },
+            "url": null,
+            "work-contributors": null,
+            "work-source": null,
+            "source": {
+              "source-orcid": null,
+              "source-client-id": {
+                "value": null,
+                "uri": "http://sandbox.orcid.org/client/APP-127VAQ5PMV9OKM9F",
+                "path": "APP-127VAQ5PMV9OKM9F",
+                "host": "sandbox.orcid.org"
+              },
+              "source-name": {
+                "value": "DataCite/ORCID Claim Tool"
+              },
+              "source-date": {
+                "value": 1438469732844
+              }
+            },
+            "created-date": {
+              "value": 1438469732844
+            },
+            "last-modified-date": {
+              "value": 1438469732844
+            },
+            "language-code": null,
+            "country": null,
+            "visibility": "PUBLIC"
+          },
+          {
+            "put-code": "486211",
+            "work-title": {
+              "title": {
+                "value": "Data from: Novel R pipeline for analyzing Biolog phenotypic microarray data"
+              },
+              "subtitle": null,
+              "translated-title": null
+            },
+            "journal-title": null,
+            "short-description": null,
+            "work-citation": {
+              "work-citation-type": "BIBTEX",
+              "citation": "@misc{datacite52115e90-8ff3-4c52-8f7b-4aca6d823a16,\n  doi = {10.5061/DRYAD.R98G7},\n  url = {http://dx.doi.org/10.5061/DRYAD.R98G7},\n  author = {Vehkala, Minna; Shubin, Mikhail; Connor, Thomas R.; Thomson, Nicholas R.; Corander, Jukka; },\n  publisher = {Dryad Digital Repository},\n  title = {Data from: Novel R pipeline for analyzing Biolog phenotypic microarray data},\n  year = {2015}\n}"
+            },
+            "work-type": "DATA_SET",
+            "publication-date": {
+              "year": {
+                "value": "2015"
+              },
+              "month": null,
+              "day": null,
+              "media-type": null
+            },
+            "work-external-identifiers": {
+              "work-external-identifier": [
+                {
+                  "work-external-identifier-type": "DOI",
+                  "work-external-identifier-id": {
+                    "value": "10.5061/DRYAD.R98G7"
+                  }
+                }
+              ],
+              "scope": null
+            },
+            "url": null,
+            "work-contributors": null,
+            "work-source": null,
+            "source": {
+              "source-orcid": null,
+              "source-client-id": {
+                "value": null,
+                "uri": "http://sandbox.orcid.org/client/APP-127VAQ5PMV9OKM9F",
+                "path": "APP-127VAQ5PMV9OKM9F",
+                "host": "sandbox.orcid.org"
+              },
+              "source-name": {
+                "value": "DataCite/ORCID Claim Tool"
+              },
+              "source-date": {
+                "value": 1438209773173
+              }
+            },
+            "created-date": {
+              "value": 1438209773173
+            },
+            "last-modified-date": {
+              "value": 1438209773173
+            },
+            "language-code": null,
+            "country": null,
+            "visibility": "PUBLIC"
+          },
+          {
+            "put-code": "486206",
+            "work-title": {
+              "title": {
+                "value": "miR-30c-2-3p and miR-30a-3p: New pieces of the Jigsaw puzzle in HIF2α regulation"
+              },
+              "subtitle": null,
+              "translated-title": null
+            },
+            "journal-title": null,
+            "short-description": null,
+            "work-citation": {
+              "work-citation-type": "BIBTEX",
+              "citation": "@misc{datacite8f63aa9c-4fbe-4e7c-af6a-5cc8c46610a6,\n  doi = {10.5167/UZH-92715},\n  url = {http://dx.doi.org/10.5167/UZH-92715},\n  author = {Lukamowicz-Rajska, Magdalena; Moch, Holger; },\n  publisher = {American Association for Cancer Research},\n  title = {miR-30c-2-3p and miR-30a-3p: New pieces of the Jigsaw puzzle in HIF2α regulation},\n  year = {2014}\n}"
+            },
+            "work-type": "OTHER",
+            "publication-date": {
+              "year": {
+                "value": "2014"
+              },
+              "month": null,
+              "day": null,
+              "media-type": null
+            },
+            "work-external-identifiers": {
+              "work-external-identifier": [
+                {
+                  "work-external-identifier-type": "DOI",
+                  "work-external-identifier-id": {
+                    "value": "10.5167/UZH-92715"
+                  }
+                }
+              ],
+              "scope": null
+            },
+            "url": null,
+            "work-contributors": null,
+            "work-source": null,
+            "source": {
+              "source-orcid": null,
+              "source-client-id": {
+                "value": null,
+                "uri": "http://sandbox.orcid.org/client/APP-127VAQ5PMV9OKM9F",
+                "path": "APP-127VAQ5PMV9OKM9F",
+                "host": "sandbox.orcid.org"
+              },
+              "source-name": {
+                "value": "DataCite/ORCID Claim Tool"
+              },
+              "source-date": {
+                "value": 1438209228496
+              }
+            },
+            "created-date": {
+              "value": 1438209228496
+            },
+            "last-modified-date": {
+              "value": 1438209240146
+            },
+            "language-code": null,
+            "country": null,
+            "visibility": "PUBLIC"
+          },
+          {
+            "put-code": "487171",
+            "work-title": {
+              "title": {
+                "value": "Metrics and Attribution"
+              },
+              "subtitle": null,
+              "translated-title": null
+            },
+            "journal-title": null,
+            "short-description": null,
+            "work-citation": {
+              "work-citation-type": "BIBTEX",
+              "citation": "@misc{datacited120c708-1945-4e9e-abca-35636499788a,\n  doi = {10.6084/M9.FIGSHARE.706340},\n  url = {http://dx.doi.org/10.6084/M9.FIGSHARE.706340},\n  author = {Martin Fenner; },\n  publisher = {Figshare},\n  title = {Metrics and Attribution},\n  year = {2013}\n}"
+            },
+            "work-type": "DATA_SET",
+            "publication-date": {
+              "year": {
+                "value": "2013"
+              },
+              "month": null,
+              "day": null,
+              "media-type": null
+            },
+            "work-external-identifiers": {
+              "work-external-identifier": [
+                {
+                  "work-external-identifier-type": "DOI",
+                  "work-external-identifier-id": {
+                    "value": "10.6084/M9.FIGSHARE.706340"
+                  }
+                }
+              ],
+              "scope": null
+            },
+            "url": null,
+            "work-contributors": null,
+            "work-source": null,
+            "source": {
+              "source-orcid": null,
+              "source-client-id": {
+                "value": null,
+                "uri": "http://sandbox.orcid.org/client/APP-127VAQ5PMV9OKM9F",
+                "path": "APP-127VAQ5PMV9OKM9F",
+                "host": "sandbox.orcid.org"
+              },
+              "source-name": {
+                "value": "DataCite/ORCID Claim Tool"
+              },
+              "source-date": {
+                "value": 1438364619021
+              }
+            },
+            "created-date": {
+              "value": 1438364619021
+            },
+            "last-modified-date": {
+              "value": 1438470284211
+            },
+            "language-code": null,
+            "country": null,
+            "visibility": "PUBLIC"
+          },
+          {
+            "put-code": "487173",
+            "work-title": {
+              "title": {
+                "value": "D2.1 Kick off preparation, Communication plan and Website"
+              },
+              "subtitle": null,
+              "translated-title": null
+            },
+            "journal-title": null,
+            "short-description": null,
+            "work-citation": {
+              "work-citation-type": "BIBTEX",
+              "citation": "@misc{datacite5a636ecf-d65b-4b0b-9b80-48c0d74818a0,\n  doi = {10.6084/M9.FIGSHARE.154691},\n  url = {http://dx.doi.org/10.6084/M9.FIGSHARE.154691},\n  author = {ODIN Consortium; Gudmundur Thorisson; Martin Fenner; },\n  publisher = {Figshare},\n  title = {D2.1 Kick off preparation, Communication plan and Website},\n  year = {2013}\n}"
+            },
+            "work-type": "DATA_SET",
+            "publication-date": {
+              "year": {
+                "value": "2013"
+              },
+              "month": null,
+              "day": null,
+              "media-type": null
+            },
+            "work-external-identifiers": {
+              "work-external-identifier": [
+                {
+                  "work-external-identifier-type": "DOI",
+                  "work-external-identifier-id": {
+                    "value": "10.6084/M9.FIGSHARE.154691"
+                  }
+                }
+              ],
+              "scope": null
+            },
+            "url": null,
+            "work-contributors": null,
+            "work-source": null,
+            "source": {
+              "source-orcid": null,
+              "source-client-id": {
+                "value": null,
+                "uri": "http://sandbox.orcid.org/client/APP-127VAQ5PMV9OKM9F",
+                "path": "APP-127VAQ5PMV9OKM9F",
+                "host": "sandbox.orcid.org"
+              },
+              "source-name": {
+                "value": "DataCite/ORCID Claim Tool"
+              },
+              "source-date": {
+                "value": 1438367152165
+              }
+            },
+            "created-date": {
+              "value": 1438367152165
+            },
+            "last-modified-date": {
+              "value": 1438367152165
+            },
+            "language-code": null,
+            "country": null,
+            "visibility": "PUBLIC"
+          },
+          {
+            "put-code": "486205",
+            "work-title": {
+              "title": {
+                "value": "A novel human-derived antibody against NY-ESO-1 improves the efficacy of chemotherapy"
+              },
+              "subtitle": null,
+              "translated-title": null
+            },
+            "journal-title": null,
+            "short-description": null,
+            "work-citation": {
+              "work-citation-type": "BIBTEX",
+              "citation": "@misc{datacitef2b62c8a-e725-46ec-a093-66d722a77f69,\n  doi = {10.5167/UZH-81963},\n  url = {http://dx.doi.org/10.5167/UZH-81963},\n  author = {Nuber, Natko; Knuth, Alexander; Old, Lloyd; Kelly, Marcus; Treder, Martin; Gupta, Anurag; von Boehmer, Lotta; Ritter, Erika; Shiku, Hiroshi; Esslinger, Christoph; Gnjatic, Sacha; Landshammer, Alexandro; Wittenbrink, Mareike; Ritter, Gerd; van den Broek, Maries; Nishikawa, Hiroyoshi; Noguchi, Takuro; },\n  publisher = {Academy of Cancer Immunology},\n  title = {A novel human-derived antibody against NY-ESO-1 improves the efficacy of chemotherapy},\n  year = {2013}\n}"
+            },
+            "work-type": "OTHER",
+            "publication-date": {
+              "year": {
+                "value": "2013"
+              },
+              "month": null,
+              "day": null,
+              "media-type": null
+            },
+            "work-external-identifiers": {
+              "work-external-identifier": [
+                {
+                  "work-external-identifier-type": "DOI",
+                  "work-external-identifier-id": {
+                    "value": "10.5167/UZH-81963"
+                  }
+                }
+              ],
+              "scope": null
+            },
+            "url": null,
+            "work-contributors": null,
+            "work-source": null,
+            "source": {
+              "source-orcid": null,
+              "source-client-id": {
+                "value": null,
+                "uri": "http://sandbox.orcid.org/client/APP-127VAQ5PMV9OKM9F",
+                "path": "APP-127VAQ5PMV9OKM9F",
+                "host": "sandbox.orcid.org"
+              },
+              "source-name": {
+                "value": "DataCite/ORCID Claim Tool"
+              },
+              "source-date": {
+                "value": 1438209133896
+              }
+            },
+            "created-date": {
+              "value": 1438209133896
+            },
+            "last-modified-date": {
+              "value": 1438209133896
+            },
+            "language-code": null,
+            "country": null,
+            "visibility": "PUBLIC"
+          },
+          {
+            "put-code": "487178",
+            "work-title": {
+              "title": {
+                "value": "5000 random journal article CrossRef DOIs from 2012"
+              },
+              "subtitle": null,
+              "translated-title": null
+            },
+            "journal-title": null,
+            "short-description": null,
+            "work-citation": {
+              "work-citation-type": "BIBTEX",
+              "citation": "@misc{datacite8c92bdc7-c528-4959-8d92-85f772dd886d,\n  doi = {10.6084/M9.FIGSHARE.821213},\n  url = {http://dx.doi.org/10.6084/M9.FIGSHARE.821213},\n  author = {Martin Fenner; Zohreh Zahedi; },\n  publisher = {Figshare},\n  title = {5000 random journal article CrossRef DOIs from 2012},\n  year = {2013}\n}"
+            },
+            "work-type": "DATA_SET",
+            "publication-date": {
+              "year": {
+                "value": "2013"
+              },
+              "month": null,
+              "day": null,
+              "media-type": null
+            },
+            "work-external-identifiers": {
+              "work-external-identifier": [
+                {
+                  "work-external-identifier-type": "DOI",
+                  "work-external-identifier-id": {
+                    "value": "10.6084/M9.FIGSHARE.821213"
+                  }
+                }
+              ],
+              "scope": null
+            },
+            "url": null,
+            "work-contributors": null,
+            "work-source": null,
+            "source": {
+              "source-orcid": null,
+              "source-client-id": {
+                "value": null,
+                "uri": "http://sandbox.orcid.org/client/APP-127VAQ5PMV9OKM9F",
+                "path": "APP-127VAQ5PMV9OKM9F",
+                "host": "sandbox.orcid.org"
+              },
+              "source-name": {
+                "value": "DataCite/ORCID Claim Tool"
+              },
+              "source-date": {
+                "value": 1438469245160
+              }
+            },
+            "created-date": {
+              "value": 1438469245160
+            },
+            "last-modified-date": {
+              "value": 1438469245160
+            },
+            "language-code": null,
+            "country": null,
+            "visibility": "PUBLIC"
+          },
+          {
+            "put-code": "486207",
+            "work-title": {
+              "title": {
+                "value": "Wie kann die Bibliothek die Sichtbarkeit ihrer Wissenschaftler erhöhen?"
+              },
+              "subtitle": null,
+              "translated-title": null
+            },
+            "journal-title": null,
+            "short-description": null,
+            "work-citation": {
+              "work-citation-type": "BIBTEX",
+              "citation": "@misc{datacitebb93ae13-0274-45d5-8d82-9b0a82d1abb3,\n  doi = {10.3205/12AGMB03},\n  url = {http://dx.doi.org/10.3205/12AGMB03},\n  author = {Fenner, Martin; },\n  publisher = {German Medical Science GMS Publishing House},\n  title = {Wie kann die Bibliothek die Sichtbarkeit ihrer Wissenschaftler erhöhen?},\n  year = {2012}\n}"
+            },
+            "work-type": "CONFERENCE_PAPER",
+            "publication-date": {
+              "year": {
+                "value": "2012"
+              },
+              "month": null,
+              "day": null,
+              "media-type": null
+            },
+            "work-external-identifiers": {
+              "work-external-identifier": [
+                {
+                  "work-external-identifier-type": "DOI",
+                  "work-external-identifier-id": {
+                    "value": "10.3205/12AGMB03"
+                  }
+                }
+              ],
+              "scope": null
+            },
+            "url": null,
+            "work-contributors": null,
+            "work-source": null,
+            "source": {
+              "source-orcid": null,
+              "source-client-id": {
+                "value": null,
+                "uri": "http://sandbox.orcid.org/client/APP-127VAQ5PMV9OKM9F",
+                "path": "APP-127VAQ5PMV9OKM9F",
+                "host": "sandbox.orcid.org"
+              },
+              "source-name": {
+                "value": "DataCite/ORCID Claim Tool"
+              },
+              "source-date": {
+                "value": 1438209299988
+              }
+            },
+            "created-date": {
+              "value": 1438209299988
+            },
+            "last-modified-date": {
+              "value": 1438364629059
+            },
+            "language-code": null,
+            "country": null,
+            "visibility": "PUBLIC"
+          },
+          {
+            "put-code": "487172",
+            "work-title": {
+              "title": {
+                "value": "CrowdoMeter Tweets"
+              },
+              "subtitle": null,
+              "translated-title": null
+            },
+            "journal-title": null,
+            "short-description": null,
+            "work-citation": {
+              "work-citation-type": "BIBTEX",
+              "citation": "@misc{datacite677abda0-1c5a-44f2-845e-31cb025356d0,\n  doi = {10.6084/M9.FIGSHARE.90828},\n  url = {http://dx.doi.org/10.6084/M9.FIGSHARE.90828},\n  author = {Martin Fenner; Euan Adie; },\n  publisher = {Figshare},\n  title = {CrowdoMeter Tweets},\n  year = {2012}\n}"
+            },
+            "work-type": "DATA_SET",
+            "publication-date": {
+              "year": {
+                "value": "2012"
+              },
+              "month": null,
+              "day": null,
+              "media-type": null
+            },
+            "work-external-identifiers": {
+              "work-external-identifier": [
+                {
+                  "work-external-identifier-type": "DOI",
+                  "work-external-identifier-id": {
+                    "value": "10.6084/M9.FIGSHARE.90828"
+                  }
+                }
+              ],
+              "scope": null
+            },
+            "url": null,
+            "work-contributors": null,
+            "work-source": null,
+            "source": {
+              "source-orcid": null,
+              "source-client-id": {
+                "value": null,
+                "uri": "http://sandbox.orcid.org/client/APP-127VAQ5PMV9OKM9F",
+                "path": "APP-127VAQ5PMV9OKM9F",
+                "host": "sandbox.orcid.org"
+              },
+              "source-name": {
+                "value": "DataCite/ORCID Claim Tool"
+              },
+              "source-date": {
+                "value": 1438364633252
+              }
+            },
+            "created-date": {
+              "value": 1438364633252
+            },
+            "last-modified-date": {
+              "value": 1438470322218
+            },
+            "language-code": null,
+            "country": null,
+            "visibility": "PUBLIC"
+          },
+          {
+            "put-code": "487177",
+            "work-title": {
+              "title": {
+                "value": "CrowdoMeter Tweet Classifications"
+              },
+              "subtitle": null,
+              "translated-title": null
+            },
+            "journal-title": null,
+            "short-description": null,
+            "work-citation": {
+              "work-citation-type": "BIBTEX",
+              "citation": "@misc{dataciteb5087b75-1ba8-483d-a16f-9dea3b887765,\n  doi = {10.6084/M9.FIGSHARE.90829},\n  url = {http://dx.doi.org/10.6084/M9.FIGSHARE.90829},\n  author = {Martin Fenner; Euan Adie; },\n  publisher = {Figshare},\n  title = {CrowdoMeter Tweet Classifications},\n  year = {2012}\n}"
+            },
+            "work-type": "DATA_SET",
+            "publication-date": {
+              "year": {
+                "value": "2012"
+              },
+              "month": null,
+              "day": null,
+              "media-type": null
+            },
+            "work-external-identifiers": {
+              "work-external-identifier": [
+                {
+                  "work-external-identifier-type": "DOI",
+                  "work-external-identifier-id": {
+                    "value": "10.6084/M9.FIGSHARE.90829"
+                  }
+                }
+              ],
+              "scope": null
+            },
+            "url": null,
+            "work-contributors": null,
+            "work-source": null,
+            "source": {
+              "source-orcid": null,
+              "source-client-id": {
+                "value": null,
+                "uri": "http://sandbox.orcid.org/client/APP-127VAQ5PMV9OKM9F",
+                "path": "APP-127VAQ5PMV9OKM9F",
+                "host": "sandbox.orcid.org"
+              },
+              "source-name": {
+                "value": "DataCite/ORCID Claim Tool"
+              },
+              "source-date": {
+                "value": 1438469223224
+              }
+            },
+            "created-date": {
+              "value": 1438469223224
+            },
+            "last-modified-date": {
+              "value": 1438469223224
+            },
+            "language-code": null,
+            "country": null,
+            "visibility": "PUBLIC"
+          },
+          {
+            "put-code": "486210",
+            "work-title": {
+              "title": {
+                "value": "NFHAP National HCI Scores - by HUC8"
+              },
+              "subtitle": null,
+              "translated-title": null
+            },
+            "journal-title": null,
+            "short-description": null,
+            "work-citation": {
+              "work-citation-type": "BIBTEX",
+              "citation": "@misc{datacite0c083c49-d106-424c-9494-46e151d4b742,\n  doi = {10.5066/F7862DCT},\n  url = {http://dx.doi.org/10.5066/F7862DCT},\n  author = {Esselman Peter C.; Infante Dana M.; Wang Lizhu; Taylor William W.; Daniel Wesley M.; Tingley Ralph; Fenner Jacqueline; Cooper Arthur; Wieferich Daniel; Thornbrugh Darren; Ross Jared; Department of Fisheries and Wildlife; Michigan State University; },\n  publisher = {U.S. Geological Survey},\n  title = {NFHAP National HCI Scores - by HUC8},\n  year = {2011}\n}"
+            },
+            "work-type": "DATA_SET",
+            "publication-date": {
+              "year": {
+                "value": "2011"
+              },
+              "month": null,
+              "day": null,
+              "media-type": null
+            },
+            "work-external-identifiers": {
+              "work-external-identifier": [
+                {
+                  "work-external-identifier-type": "DOI",
+                  "work-external-identifier-id": {
+                    "value": "10.5066/F7862DCT"
+                  }
+                }
+              ],
+              "scope": null
+            },
+            "url": null,
+            "work-contributors": null,
+            "work-source": null,
+            "source": {
+              "source-orcid": null,
+              "source-client-id": {
+                "value": null,
+                "uri": "http://sandbox.orcid.org/client/APP-127VAQ5PMV9OKM9F",
+                "path": "APP-127VAQ5PMV9OKM9F",
+                "host": "sandbox.orcid.org"
+              },
+              "source-name": {
+                "value": "DataCite/ORCID Claim Tool"
+              },
+              "source-date": {
+                "value": 1438209545930
+              }
+            },
+            "created-date": {
+              "value": 1438209545930
+            },
+            "last-modified-date": {
+              "value": 1438209626091
+            },
+            "language-code": null,
+            "country": null,
+            "visibility": "PUBLIC"
+          },
+          {
+            "put-code": "486204",
+            "work-title": {
+              "title": {
+                "value": "Sequential cancer immunotherapy: targeted activity of dimeric TNF and IL-8"
+              },
+              "subtitle": null,
+              "translated-title": null
+            },
+            "journal-title": null,
+            "short-description": null,
+            "work-citation": {
+              "work-citation-type": "BIBTEX",
+              "citation": "@misc{datacitedeec40a1-92bf-4eee-8d4a-9d26b3b01472,\n  doi = {10.5167/UZH-19531},\n  url = {http://dx.doi.org/10.5167/UZH-19531},\n  author = {Siebenborn, U; Fischer, E; Fadle, N; Adrian, N; Bauer, S; Old, L J; Wüest, T; Plesko, M; Knuth, A; Mertens, J C; Renner, C; Ritter, G; Stenner, F; },\n  publisher = {Cancer Immunity},\n  title = {Sequential cancer immunotherapy: targeted activity of dimeric TNF and IL-8},\n  year = {2009}\n}"
+            },
+            "work-type": "OTHER",
+            "publication-date": {
+              "year": {
+                "value": "2009"
+              },
+              "month": null,
+              "day": null,
+              "media-type": null
+            },
+            "work-external-identifiers": {
+              "work-external-identifier": [
+                {
+                  "work-external-identifier-type": "DOI",
+                  "work-external-identifier-id": {
+                    "value": "10.5167/UZH-19531"
+                  }
+                }
+              ],
+              "scope": null
+            },
+            "url": null,
+            "work-contributors": null,
+            "work-source": null,
+            "source": {
+              "source-orcid": null,
+              "source-client-id": {
+                "value": null,
+                "uri": "http://sandbox.orcid.org/client/APP-127VAQ5PMV9OKM9F",
+                "path": "APP-127VAQ5PMV9OKM9F",
+                "host": "sandbox.orcid.org"
+              },
+              "source-name": {
+                "value": "DataCite/ORCID Claim Tool"
+              },
+              "source-date": {
+                "value": 1438209051054
+              }
+            },
+            "created-date": {
+              "value": 1438209051054
+            },
+            "last-modified-date": {
+              "value": 1438209051054
+            },
+            "language-code": null,
+            "country": null,
+            "visibility": "PUBLIC"
+          },
+          {
+            "put-code": "486209",
+            "work-title": {
+              "title": {
+                "value": "CCDC 608115: Experimental Crystal Structure Determination"
+              },
+              "subtitle": null,
+              "translated-title": null
+            },
+            "journal-title": null,
+            "short-description": null,
+            "work-citation": {
+              "work-citation-type": "BIBTEX",
+              "citation": "@misc{datacitefc7bbe2f-7778-4bd0-bd70-fd9e71b22bfe,\n  doi = {10.5517/CCNDSMF},\n  url = {http://dx.doi.org/10.5517/CCNDSMF},\n  author = {Horner, M.; Silva, A.; Fenner, H.; },\n  publisher = {Cambridge Crystallographic Data Centre},\n  title = {CCDC 608115: Experimental Crystal Structure Determination},\n  year = {2007}\n}"
+            },
+            "work-type": "OTHER",
+            "publication-date": {
+              "year": {
+                "value": "2007"
+              },
+              "month": null,
+              "day": null,
+              "media-type": null
+            },
+            "work-external-identifiers": {
+              "work-external-identifier": [
+                {
+                  "work-external-identifier-type": "DOI",
+                  "work-external-identifier-id": {
+                    "value": "10.5517/CCNDSMF"
+                  }
+                }
+              ],
+              "scope": null
+            },
+            "url": null,
+            "work-contributors": null,
+            "work-source": null,
+            "source": {
+              "source-orcid": null,
+              "source-client-id": {
+                "value": null,
+                "uri": "http://sandbox.orcid.org/client/APP-127VAQ5PMV9OKM9F",
+                "path": "APP-127VAQ5PMV9OKM9F",
+                "host": "sandbox.orcid.org"
+              },
+              "source-name": {
+                "value": "DataCite/ORCID Claim Tool"
+              },
+              "source-date": {
+                "value": 1438209470315
+              }
+            },
+            "created-date": {
+              "value": 1438209470315
+            },
+            "last-modified-date": {
+              "value": 1438209470315
+            },
+            "language-code": null,
+            "country": null,
+            "visibility": "PUBLIC"
+          },
+          {
+            "put-code": "486208",
+            "work-title": {
+              "title": {
+                "value": "Fextal, 1950 m, Hotel Sonne"
+              },
+              "subtitle": null,
+              "translated-title": null
+            },
+            "journal-title": null,
+            "short-description": null,
+            "work-citation": {
+              "work-citation-type": "BIBTEX",
+              "citation": "@misc{datacite634dcb5e-384b-4982-866b-d6bc5d7401f2,\n  doi = {10.3932/ETHZ-A-000130313},\n  url = {http://dx.doi.org/10.3932/ETHZ-A-000130313},\n  author = {Feller, Elisabeth, Empfänger, Kopp, Hugo, Fotograf; },\n  publisher = {ETH-Bibliothek Zürich, Bildarchiv},\n  title = {Fextal, 1950 m, Hotel Sonne},\n  year = {1948}\n}"
+            },
+            "work-type": "OTHER",
+            "publication-date": {
+              "year": {
+                "value": "1948"
+              },
+              "month": null,
+              "day": null,
+              "media-type": null
+            },
+            "work-external-identifiers": {
+              "work-external-identifier": [
+                {
+                  "work-external-identifier-type": "DOI",
+                  "work-external-identifier-id": {
+                    "value": "10.3932/ETHZ-A-000130313"
+                  }
+                }
+              ],
+              "scope": null
+            },
+            "url": null,
+            "work-contributors": null,
+            "work-source": null,
+            "source": {
+              "source-orcid": null,
+              "source-client-id": {
+                "value": null,
+                "uri": "http://sandbox.orcid.org/client/APP-127VAQ5PMV9OKM9F",
+                "path": "APP-127VAQ5PMV9OKM9F",
+                "host": "sandbox.orcid.org"
+              },
+              "source-name": {
+                "value": "DataCite/ORCID Claim Tool"
+              },
+              "source-date": {
+                "value": 1438209316227
+              }
+            },
+            "created-date": {
+              "value": 1438209316227
+            },
+            "last-modified-date": {
+              "value": 1438209479253
+            },
+            "language-code": null,
+            "country": null,
+            "visibility": "PUBLIC"
+          },
+          {
+            "put-code": "487180",
+            "work-title": {
+              "title": {
+                "value": "[\"Die Bedeutung der Tellfigur im 17. und fr\\u00FChen 18. Jahrhundert\"]"
+              },
+              "subtitle": null,
+              "translated-title": null
+            },
+            "journal-title": null,
+            "short-description": null,
+            "work-citation": {
+              "work-citation-type": "BIBTEX",
+              "citation": "@misc{datacitecea205c9-06bd-4bb2-b458-3ed226347b32,\n  doi = {10.5169/SEALS-118645},\n  url = {http://dx.doi.org/10.5169/SEALS-118645},\n  author = {Fenner, Martin; },\n  publisher = {Historischer Verein der Fünf Orte Luzern, Uri, Schwyz, Unterwalden und Zug},\n  title = {Die Bedeutung der Tellfigur im 17. und frühen 18. Jahrhundert},\n  year = {1973}\n}"
+            },
+            "work-type": "OTHER",
+            "publication-date": null,
+            "work-external-identifiers": {
+              "work-external-identifier": [
+                {
+                  "work-external-identifier-type": "DOI",
+                  "work-external-identifier-id": {
+                    "value": "10.5169/SEALS-118645"
+                  }
+                }
+              ],
+              "scope": null
+            },
+            "url": null,
+            "work-contributors": null,
+            "work-source": null,
+            "source": {
+              "source-orcid": null,
+              "source-client-id": {
+                "value": null,
+                "uri": "http://sandbox.orcid.org/client/APP-127VAQ5PMV9OKM9F",
+                "path": "APP-127VAQ5PMV9OKM9F",
+                "host": "sandbox.orcid.org"
+              },
+              "source-name": {
+                "value": "DataCite/ORCID Claim Tool"
+              },
+              "source-date": {
+                "value": 1438471915255
+              }
+            },
+            "created-date": {
+              "value": 1438471915255
+            },
+            "last-modified-date": {
+              "value": 1438471915255
+            },
+            "language-code": null,
+            "country": null,
+            "visibility": "PUBLIC"
+          },
+          {
+            "put-code": "487181",
+            "work-title": {
+              "title": {
+                "value": "[\"Der Landesstreik von 1918 im sp\\u00E4teren Urteil\"]"
+              },
+              "subtitle": null,
+              "translated-title": null
+            },
+            "journal-title": null,
+            "short-description": null,
+            "work-citation": {
+              "work-citation-type": "BIBTEX",
+              "citation": "@misc{datacited22631b1-1b5c-4bb5-a041-052658ed4977,\n  doi = {10.5169/SEALS-355044},\n  url = {http://dx.doi.org/10.5169/SEALS-355044},\n  author = {Fenner, Martin; },\n  publisher = {Schweizerischer Gewerkschaftsbund},\n  title = {Der Landesstreik von 1918 im späteren Urteil},\n  year = {1981}\n}"
+            },
+            "work-type": "OTHER",
+            "publication-date": null,
+            "work-external-identifiers": {
+              "work-external-identifier": [
+                {
+                  "work-external-identifier-type": "DOI",
+                  "work-external-identifier-id": {
+                    "value": "10.5169/SEALS-355044"
+                  }
+                }
+              ],
+              "scope": null
+            },
+            "url": null,
+            "work-contributors": null,
+            "work-source": null,
+            "source": {
+              "source-orcid": null,
+              "source-client-id": {
+                "value": null,
+                "uri": "http://sandbox.orcid.org/client/APP-127VAQ5PMV9OKM9F",
+                "path": "APP-127VAQ5PMV9OKM9F",
+                "host": "sandbox.orcid.org"
+              },
+              "source-name": {
+                "value": "DataCite/ORCID Claim Tool"
+              },
+              "source-date": {
+                "value": 1438472033789
+              }
+            },
+            "created-date": {
+              "value": 1438472033789
+            },
+            "last-modified-date": {
+              "value": 1438472033789
+            },
+            "language-code": null,
+            "country": null,
+            "visibility": "PUBLIC"
+          }
+        ],
+        "scope": null
+      },
+      "funding-list": null
+    },
+    "orcid-internal": null,
+    "type": "USER",
+    "group-type": null,
+    "client-type": null
+  },
+  "orcid-search-results": null,
+  "error-desc": null
+}

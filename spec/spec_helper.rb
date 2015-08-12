@@ -1,6 +1,22 @@
 ENV['RACK_ENV'] = 'test'
 
+require 'sinatra'
+require 'rspec'
+require 'rack/test'
+require 'webmock/rspec'
+require 'vcr'
+require 'factory_girl'
+require "capybara/rspec"
+require "capybara/poltergeist"
+require "capybara-screenshot/rspec"
+
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
+require File.join(File.dirname(__FILE__), '..', 'heartbeat.rb')
+
+# require support files, factories and files in lib folder
+Dir[File.join(File.dirname(__FILE__), 'support', '*.rb')].each { |f| require f }
+Dir[File.join(File.dirname(__FILE__), 'factories', '*.rb')].each { |f| require f }
+Dir[File.join(File.dirname(__FILE__), '..', 'lib', '*.rb')].each { |f| require f }
 
 # set up Code Climate
 require "codeclimate-test-reporter"
@@ -8,12 +24,6 @@ CodeClimate::TestReporter.configure do |config|
   config.logger.level = Logger::WARN
 end
 CodeClimate::TestReporter.start
-
-require 'rspec'
-require 'rack/test'
-require 'webmock/rspec'
-require 'vcr'
-require 'factory_girl'
 
 # setup test environment
 set :environment, :test
@@ -27,9 +37,38 @@ def app
   Sinatra::Application
 end
 
-RSpec.configure do |c|
-  c.include Rack::Test::Methods
-  c.order = :random
+RSpec.configure do |config|
+  config.include Rack::Test::Methods
+  config.include FactoryGirl::Syntax::Methods
+  config.order = :random
+
+  OmniAuth.config.test_mode = true
+  config.before(:each) do
+    OmniAuth.config.mock_auth[:default] = OmniAuth::AuthHash.new({
+      provider: 'orcid',
+      uid: '0000-0002-1825-0097',
+      info: { 'email' => nil,
+              'name' => "Josiah Carberry" },
+      extra: {}
+    })
+  end
+end
+
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(app, {
+    timeout: 60,
+    inspector: true,
+    debug: false,
+    window_size: [1024, 768]
+  })
+end
+
+Capybara.javascript_driver = :poltergeist
+Capybara.default_selector = :css
+
+Capybara.configure do |config|
+  config.match = :prefer_exact
+  config.ignore_hidden_elements = true
 end
 
 WebMock.disable_net_connect!(

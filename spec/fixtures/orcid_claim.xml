@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<orcid-message xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.orcid.org/ns/orcid" xsi:schemaLocation="http://www.orcid.org/ns/orcid https://raw.github.com/ORCID/ORCID-Source/master/orcid-model/src/main/resources/orcid-message-1.2.xsd">
+  <message-version>1.2</message-version>
+  <orcid-profile>
+    <orcid-activities>
+      <orcid-works>
+        <orcid-work>
+          <work-title>
+            <title>Data from: Data reuse and the open data citation advantage</title>
+          </work-title>
+          <short-description/>
+          <work-citation>
+            <work-citation-type>bibtex</work-citation-type>
+            <citation>@data{e371619a-811a-4cf4-8aee-bc4d80a236bb,  doi = {10.5061/DRYAD.781PV},  url = {http://dx.doi.org/10.5061/DRYAD.781PV},  author = {Piwowar, Heather A.; Vision, Todd J.; },  publisher = {Dryad Digital Repository},  title = {Data from: Data reuse and the open data citation advantage},  year = {2013}}</citation>
+          </work-citation>
+          <work-type>other</work-type>
+          <publication-date>
+            <year>2013</year>
+          </publication-date>
+          <work-external-identifiers>
+            <work-external-identifier>
+              <work-external-identifier-type>doi</work-external-identifier-type>
+              <work-external-identifier-id>10.5061/DRYAD.781PV</work-external-identifier-id>
+            </work-external-identifier>
+          </work-external-identifiers>
+          <work-contributors>
+            <contributor>
+              <credit-name>Piwowar, Heather A.</credit-name>
+            </contributor>
+            <contributor>
+              <credit-name>Vision, Todd J.</credit-name>
+            </contributor>
+          </work-contributors>
+        </orcid-work>
+      </orcid-works>
+    </orcid-activities>
+  </orcid-profile>
+</orcid-message>
