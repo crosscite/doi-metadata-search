@@ -7,7 +7,7 @@ gem 'activesupport'
 gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'haml'
-gem 'mongo'
+gem 'mongo', '~> 1.12.3'
 gem 'multi_json'
 gem 'oj'
 gem 'bson_ext'
@@ -19,13 +19,13 @@ gem 'faraday_middleware'
 gem 'faraday-encoding'
 gem 'gabba'
 gem 'omniauth-orcid'
-gem 'rack-session-mongo'
 gem 'rack-flash3'
 gem 'oauth2'
-gem "resque"
+gem "sidekiq"
 gem 'nokogiri'
 gem 'rake'
 gem 'log4r'
+gem 'whenever', :require => false
 
 group :development do
   gem 'capistrano-passenger', '~> 0.1.1'

@@ -1,14 +1,9 @@
-require 'resque/tasks'
+#!/usr/bin/env rake
+require "./app"
 require 'rspec/core/rake_task'
+Dir.glob('lib/tasks/*.rake').each { |r| load r}
 
-task default: %w(spec features)
-
-namespace 'resque' do
-  task 'setup' do
-    require_relative 'lib/orcid_claim'
-    require_relative 'lib/orcid_update'
-  end
-end
+task default: %w(spec)
 
 desc 'run specs'
 task :spec do
