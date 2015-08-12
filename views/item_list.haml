@@ -3,15 +3,15 @@
   - page[:items].each do |item|
     - case item.type
     - when 'Text'
-      = partial :item_text, :page => page, :item => item
+      = haml :item_text, locals: { page: page, item: item }
     - when 'Data'
-      = partial :item_data, :page => page, :item => item
+      = haml :item_data, locals: { page: page, item: item }
     - when 'journal_article'
-      = partial :item_article, :page => page, :item => item
+      = haml :item_article, locals: { page: page, item: item }
     - when 'conference_paper'
-      = partial :item_conf_proc, :page => page, :item => item
+      = haml :item_conf_proc, locals: { page: page, item: item }
     - else
-      = partial :item_other, :page => page, :item => item
+      = haml :item_other, locals: { page: page, item: item }
 
     - unless item.citations.empty?
       .modal.hide{:id => "citations-#{item.hashed}"}

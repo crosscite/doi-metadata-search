@@ -1,4 +1,4 @@
-= partial :search_header, :page => page
+= haml :search_header, locals: { page: page }
 
 .row-fluid
   .span9
@@ -12,7 +12,7 @@
           Sync
       Sync changes from your ORCID record to this site
 
-= partial :search_footer, :page => page
+= haml :search_footer, locals: { page: page }
 
 :javascript
   $(document).ready(function() {

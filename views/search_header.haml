@@ -2,7 +2,7 @@
   - if page[:mini_header]
     .span12
       .profile.pull-right
-        = partial :profile_link, {}
+        = haml :profile_link
   - else
     .span2
       .logo
@@ -10,7 +10,7 @@
           %img.logo-small{src: '/images/logo-small.png', alt: 'DataCite' }
     .span10
       .profile.pull-right
-        = partial :profile_link, {}
+        = haml :profile_link
       %form{:method => 'GET', :action => '/'}
         .search-in-header
           %input.search-input{placeholder: 'Enter search term', name: 'q', type: 'text', value: page[:bare_query]}

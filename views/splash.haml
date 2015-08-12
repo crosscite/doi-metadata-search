@@ -1,4 +1,4 @@
-= partial :search_header, :page => page.merge({:mini_header => true})
+= haml :search_header, locals: { page: page.merge({:mini_header => true}) }
 
 .row-centered
   %img{class: 'logo-big', src: '/images/logo-big.png'}
@@ -8,4 +8,4 @@
       %input.search-input{placeholder: 'Enter search term', name: 'q', type: 'text', value: page[:bare_query]}
   .splash
 
-= partial :search_footer, :page => page
+= haml :search_footer, locals: { page: page }

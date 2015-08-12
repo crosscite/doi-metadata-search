@@ -37,5 +37,5 @@
       , on page
       = item.first_page
 
-  = partial :item_links, :item => item
+  = haml :item_links, locals: { item: item }
 

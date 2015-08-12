@@ -1,4 +1,4 @@
-= partial :search_header, :page => page
+= haml :search_header, locals: { page: page }
 
 .row-fluid
   .span9
@@ -6,6 +6,6 @@
       %h2 Examples
       %p Click on an example to put it in the search box.
 
-    = partial :examples_list, :page => page
+    = haml :examples_list, locals: { page: page }
 
-= partial :search_footer, :page => page
+= haml :search_footer, locals: { page: page }

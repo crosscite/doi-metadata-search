@@ -49,4 +49,4 @@
         %a{:href => "http://creativecommons.org/licenses/#{item.creative_commons}/4.0/"}
           %img{:src => "http://i.creativecommons.org/l/#{item.creative_commons}/4.0/80x15.png"}
 
-  = partial :item_links, :item => item
+  = haml :item_links, locals: { item: item }

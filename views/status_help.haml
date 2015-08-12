@@ -1,4 +1,4 @@
-= partial :search_header, :page => page
+= haml :search_header, locals: { page: page }
 
 .row-fluid
   .span9
@@ -13,4 +13,4 @@
             %span.stat-value= stat[:value]
         %span.stat-name= stat[:name]
 
-= partial :search_footer, :page => page
+= haml :search_footer, locals: { page: page }
