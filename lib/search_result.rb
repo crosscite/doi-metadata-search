@@ -1,5 +1,4 @@
 require 'cgi'
-require 'log4r'
 require_relative 'helpers'
 
 class SearchResult
@@ -8,38 +7,10 @@ class SearchResult
                 :type, :subtype, :doi, :score, :normal_score,
                 :citations, :hashed, :related, :alternate, :version,
                 :rights, :subject, :description, :creative_commons
-
-  ENGLISH_MONTHS = %w(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec)
-
-  def logger
-    Log4r::Logger['test']
-  end
-
-  def has_path?(hash, path)
-    path_found = true
-    path.each do |node|
-      if hash.key?(node) && !hash[node].nil?
-        hash = hash[node]
-      else
-        path_found = false
-        break
-      end
-    end
-    path_found
-  end
-
-  def find_value(key)
-    if has_path? @highlights, [@doi, key]
-      @highlights[@doi][key].first
-    else
-      @doc[key]
-    end
-  end
+  attr_reader :hashed
 
   # Merge a mongo DOI record with solr highlight information.
   def initialize(solr_doc, solr_result, citations, user_state)
-    logger.debug "initializing a mongo DOI record for work w/ resourceTypeGeneral='#{solr_doc['resourceTypeGeneral'] || 'unknown'}', resourceType='#{solr_doc['resourceType'] || 'unknown'}', DOI name #{solr_doc['doi']}"
-    logger.debug { solr_doc.ai }
     @doi = solr_doc['doi']
     @type = solr_doc['resourceTypeGeneral']
     @subtype = solr_doc['resourceType']
@@ -55,7 +26,7 @@ class SearchResult
     @title = solr_doc['title'] ? solr_doc['title'].first.strip : nil
     @date = solr_doc['date'] ? solr_doc['date'].last : nil
     @year = find_value('publicationYear')
-    @month = solr_doc['month'] ? ENGLISH_MONTHS[solr_doc['month'] - 1] : (@date && @date.size > 6 ? ENGLISH_MONTHS[@date[5..6].to_i - 1] : nil)
+    @month = solr_doc['month'] ? MONTH_SHORT_NAMES[solr_doc['month'] - 1] : (@date && @date.size > 6 ? MONTH_SHORT_NAMES[@date[5..6].to_i - 1] : nil)
     @day = solr_doc['day'] || @date && @date.size > 9 ? @date[8..9].to_i : nil
     # @volume = find_value('hl_volume')
     # @issue = find_value('hl_issue')
@@ -246,8 +217,6 @@ class SearchResult
     CGI.escapeHTML title
   end
 
-  attr_reader :hashed
-
   def coins_span
     "<span class=\"Z3988\" title=\"#{coins}\"><!-- coins --></span>"
   end
@@ -269,5 +238,26 @@ class SearchResult
     end
 
     a.join ', '
+  end
+
+  def has_path?(hash, path)
+    path_found = true
+    path.each do |node|
+      if hash.key?(node) && !hash[node].nil?
+        hash = hash[node]
+      else
+        path_found = false
+        break
+      end
+    end
+    path_found
+  end
+
+  def find_value(key)
+    if has_path? @highlights, [@doi, key]
+      @highlights[@doi][key].first
+    else
+      @doc[key]
+    end
   end
 end
