@@ -5,14 +5,13 @@
       "access_key": "{{user `access_key`}}",
       "secret_key": "{{user `secret_key`}}",
       "region": "eu-west-1",
-      "source_ami": "ami-06d88f71",
+      "source_ami": "ami-3603072b",
       "instance_type": "m1.small",
       "ssh_username": "ubuntu",
       "ami_name": "doi-metadata-search {{timestamp}}"
     }
   ],
   "provisioners": [
-
     {
       "type": "chef-solo",
       "cookbook_paths": ["vendor/cookbooks"],
