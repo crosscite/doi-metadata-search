@@ -89,6 +89,7 @@ end
 
 namespace :deploy do
   before :starting, "files:upload"
+  before :starting, "sidekiq:quiet"
 
   desc 'Restart application'
   task :restart do
@@ -99,4 +100,6 @@ namespace :deploy do
 
   after :publishing, :restart
   after :finishing, 'deploy:cleanup'
+  after :finishing, "sidekiq:stop"
+  after :finished, "sidekiq:start"
 end
