@@ -1,21 +1,10 @@
 require_relative 'doi'
 require_relative 'session'
-require_relative 'paginate'
-require 'log4r'
+equire_relative 'paginate'
 
 helpers do
-  include Doi
-  include Session
-  include Log4r
-  # ap logger
-
-  def logger
-    Log4r::Logger['test']
-  end
-
-  def partial(template, locals)
-    haml template.to_sym, layout: false, locals: locals
-  end
+  include Sinatra::Doi
+  include Sinatra::Session
 
   def citations(doi)
     citations = settings.citations.find('to.id' => doi)
@@ -38,7 +27,6 @@ helpers do
   end
 
   def select(query_params)
-    logger.debug "building query to send to #{ENV['SOLR_URL']}#{ENV['SOLR_SELECT']}, with params:\n" + query_params.ai
     page = query_page
     rows = query_rows
     results = settings.solr.paginate page, rows, ENV['SOLR_SELECT'], params: query_params
