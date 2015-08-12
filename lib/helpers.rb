@@ -1,6 +1,6 @@
 require_relative 'doi'
 require_relative 'session'
-equire_relative 'paginate'
+require_relative 'paginate'
 
 helpers do
   include Sinatra::Doi
