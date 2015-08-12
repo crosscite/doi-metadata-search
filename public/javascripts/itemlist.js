@@ -47,6 +47,22 @@ $(document).ready(function() {
     });
   }
 
+  var replacePopoverWithErrorMessage = function($popover, message) {
+    var $p = $('<p>').text('An error has occured: ' + message)
+    var $btnClose = $('<button>').addClass('btn').addClass('btn-info').addClass('close-btn').text('Ok');
+    var $btns = $('<div>').addClass('btn-container').append($btnClose);
+    var $content = $('<div>').append($p).append($btns);
+    var $newPopoverContent = $('<div>').addClass('popover-content').append($content);
+
+    $('.popover-content').replaceWith($newPopoverContent);
+
+    $('.close-btn').click(function(e) {
+      $popover.popover('destroy');
+      e.preventDefault();
+      return false;
+    });
+  }
+
   var performSync = function($popover) {
     $.ajax({
       url: '/orcid/sync',
@@ -70,7 +86,7 @@ $(document).ready(function() {
     $('.claim-warn').popover('destroy');
     $('.claim-ok').popover('destroy');
 
-    var $p = $('<p>').text('Last time we checked, this work was in your ORCID record. Refresh to retrieve changes to your works from ORCID.');
+    var $p = $('<p>').text('Last time we checked, this work was in your ORCID profile. Refresh to retrieve changes to your works from ORCID.');
     var $btnClose = $('<button>').addClass('btn').addClass('claim-close-btn').text('Close');
     var $btnRefresh = $('<button>').addClass('btn').addClass('btn-warning').addClass('claim-refresh-btn').text('Refresh');
     var $btns = $('<div>').addClass('btn-container').append($btnClose).append($btnRefresh);
@@ -80,7 +96,7 @@ $(document).ready(function() {
     $(this).popover({
       placement: 'bottom',
       html: true,
-      title: 'Work is in your ORCID record',
+      title: 'Work is in your ORCID profile',
       content: $('<div>').append($content).html(),
       trigger: 'manual'
     });
@@ -112,7 +128,7 @@ $(document).ready(function() {
   var performClaim = function($popover) {
     $.ajax({
         url: '/orcid/claim',
-        data: {doi: $popover.attr('id')},
+        data: { "doi": $popover.attr('id') },
         success: function(data) {
           if (data['status'] == 'ok' || data['status'] == 'ok_visible') {
             $popover.popover('destroy');
@@ -128,15 +144,13 @@ $(document).ready(function() {
             } else {
               $popover.addClass('claim-ok');
               $popover.click(claimOkClickFn);
-              $popover.find('span').text('In your ORCID record');
+              $popover.find('span').text('In your profile');
             }
+          } else if (data['status'] == 'error') {
+            replacePopoverWithErrorMessage($popover, data['message']);
           } else if (data['status'] == 'oauth_timeout') {
             replacePopoverWithLogin($popover);
-          } else if (data['status'] == 'no_such_doi') {
-            $popover.find('span').text('No such DOI');
-            $popover.popover('destroy');
           } else {
-            $popover.find('span').text('ERROR: ' + data['status']);
             $popover.popover('destroy');
           }
         },
@@ -151,7 +165,7 @@ $(document).ready(function() {
     $('.claim-warn').popover('destroy');
     $('.claim-ok').popover('destroy');
 
-    var $p = $('<p>').text('Are you sure you want to add this work to your ORCID record?');
+    var $p = $('<p>').text('Are you sure you want to add this work to your ORCID profile?');
     var $btnNo = $('<button>').addClass('btn').addClass('claim-no-btn').text('No');
     var $btnOk = $('<button>').addClass('btn').addClass('btn-success').addClass('claim-ok-btn').text('Yes');
     var $btns = $('<div>').addClass('btn-container').append($btnNo).append($btnOk);
@@ -200,7 +214,7 @@ $(document).ready(function() {
     $('.claim-warn').popover('destroy');
     $('.claim-ok').popover('destroy');
 
-    var $text = $('<div>').html('<span>Work has been added to your ORCID record but is marked as private. Visit your <a href="https://orcid.org/my-orcid" target="_blank"><i class="icon-external-link"></i>ORCID record</a> to set this work\'s visibility to public or limited.<br/><br/>If you have removed this private work from your ORCID record you can click the button below to remove it from DataCite Metadata Search.</span>');
+    var $text = $('<div>').html('<span>Work has been added to your ORCID profile but is marked as private. Visit your <a href="https://orcid.org/my-orcid" target="_blank"><i class="icon-external-link"></i>ORCID profile</a> to set this work\'s visibility to public or limited.<br/><br/>If you have removed this private work from your ORCID profile you can click the button below to remove it from CrossRef Metadata Search.</span>');
     var $btnClose = $('<button>').addClass('btn').addClass('claim-close-btn').text('Close');
     var $btnRefresh = $('<button>').addClass('btn').addClass('btn-warning').addClass('claim-refresh-btn').text('Refresh');
     var $btnRemove = $('<button>').addClass('btn').addClass('btn-danger').addClass('claim-remove-btn').text('Remove');
@@ -211,7 +225,7 @@ $(document).ready(function() {
     $(this).popover({
       placement: 'bottom',
       html: true,
-      title: 'Work is private in your ORCID record',
+      title: 'Work is private in your ORCID profile',
       content: $('<div>').append($content).html(),
       trigger: 'manual'
     });
@@ -253,7 +267,7 @@ $(document).ready(function() {
           $popover.addClass('claim-none');
           $popover.unbind('click');
           $popover.click(claimNoneClickFn);
-          $popover.find('span').text('This is my work - add to ORCID');
+          $popover.find('span').text('Add to ORCID');
           $popover.find('i').removeClass('icon-circle');
           $popover.find('i').addClass('icon-circle-blank');
         },
