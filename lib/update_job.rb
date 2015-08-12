@@ -1,4 +1,5 @@
 require_relative 'mongo_data'
+require_relative 'orcid_profile'
 
 class UpdateJob
   include Sidekiq::Worker
@@ -10,16 +11,16 @@ class UpdateJob
     response = orcid_client.get
 
     if response.status == 200
-      profile = Profile.new(response.body)
+      profile = OrcidProfile.new(response.body)
 
-      query = { orcid: oauth['uid'] }
+      query = { orcid: session_info.fetch('uid', nil) }
       orcid_record = MongoData.coll('orcids').find_one(query)
 
       if orcid_record
         orcid_record['dois'] = profile.dois
         MongoData.coll('orcids').save(orcid_record)
       else
-        doc = { orcid: oauth['uid'], dois: profile.dois, locked_dois: [] }
+        doc = { orcid: session_info.fetch('uid', nil), dois: profile.dois, locked_dois: [] }
         MongoData.coll('orcids').insert(doc)
       end
     else
