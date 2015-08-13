@@ -4,9 +4,7 @@ namespace :sidekiq do
   task :quiet do
     on roles(:db) do
       within release_path do
-        with rails_env: fetch(:rails_env) do
-          rake 'sidekiq:quiet'
-        end
+        rake 'sidekiq:quiet'
       end
     end
   end
@@ -15,9 +13,7 @@ namespace :sidekiq do
   task :stop do
     on roles(:db) do
       within release_path do
-        with rails_env: fetch(:rails_env) do
-          rake 'sidekiq:stop'
-        end
+        rake 'sidekiq:stop'
       end
     end
   end
@@ -26,9 +22,7 @@ namespace :sidekiq do
   task :start do
     on roles(:db) do
       within release_path do
-        with rails_env: fetch(:rails_env) do
-          rake 'sidekiq:start'
-        end
+        rake 'sidekiq:start'
       end
     end
   end
@@ -37,11 +31,8 @@ namespace :sidekiq do
   task :monitor do
     on roles(:db) do
       within release_path do
-        with rails_env: fetch(:rails_env) do
-          rake 'sidekiq:monitor'
-        end
+        rake 'sidekiq:monitor'
       end
     end
   end
-
 end
