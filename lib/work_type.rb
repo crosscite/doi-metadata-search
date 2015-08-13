@@ -24,29 +24,6 @@ module Sinatra
       # pick up other legacy types as we go along
     }
 
-    # Map of DataCite work types to ORCID original BibTeX-based type vocabulary. Derived from
-    # DataCite metadata schema v3 (current as of Nov 2013)
-
-    TYPE_OF_WORK_DISABLED = {
-      'Audiovisual' => 'audiovisual',
-      'Collection' => 'other',
-      'Dataset' =>  'other',
-      'Event' => 'other',
-      'Image' => 'digital-image',
-      'InteractiveResource' => 'other',
-      'Model' => 'other',
-      'PhysicalObject' => 'other',
-      'Service' => 'other',
-      'Software' => 'software',
-      'Sound' => 'other',
-      'Text' => 'other',
-      'Workflow' => 'other',
-      'Other' => 'other',
-
-      # Legacy types from older schema versions
-      'Film' => 'film-movie'
-    }
-
     # Heuristic for determing the type of the work based on A) the general, high-level label
     # from the `resourceTypeGeneral field` (controlled list) and B)) the value of the more specific
     # `resourceType` field which is not from a controlled list but rather free-form input from data centres.
