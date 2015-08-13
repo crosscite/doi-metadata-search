@@ -8,6 +8,14 @@ class ClaimJob
     oauth_expired = false
 
     orcid_claim = OrcidClaim.new(work)
+
+    Bugsnag.before_notify_callbacks << lambda {|notif|
+      notif.add_tab(:orcid_claim, {
+        orcid_claim: orcid_claim.to_xml
+      })
+    }
+
+
     orcid_client = OrcidClient.new(session_info)
     response = orcid_client.post(orcid_claim.to_xml)
     oauth_expired = response.status >= 400
