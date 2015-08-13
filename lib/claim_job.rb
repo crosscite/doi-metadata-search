@@ -15,7 +15,6 @@ class ClaimJob
       })
     }
 
-
     orcid_client = OrcidClient.new(session_info)
     response = orcid_client.post(orcid_claim.to_xml)
     oauth_expired = response.status >= 400
