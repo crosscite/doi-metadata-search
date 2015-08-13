@@ -1,7 +1,5 @@
 function showCiteBox(doi, title) {
-  citationInfo['doi'] = doi;
-  citationInfo['title'] = title;
-  citationInfo['format'] = 'bibtex';
+  var citationInfo = { doi: doi, title: title, format: 'bibtex' }
 
   $('#citation-text').html('');
   updateCiteBox();
@@ -10,14 +8,14 @@ function showCiteBox(doi, title) {
 }
 
 function updateCiteBox() {
-  $('#citation-description').text(citationInfo['doi']);
-  $('#citation-modal-title').text(citationInfo['title']);
+  $('#citation-description').text(citationInfo.doi);
+  $('#citation-modal-title').text(citationInfo.title);
 
   $('#cite-nav li').removeClass('active');
-  $('#' + citationInfo['format']).addClass('active');
+  $('#' + citationInfo.format).addClass('active');
 
-  var path = '/citation?format=' + citationInfo['format'];
-  path += '&doi=' + encodeURIComponent(citationInfo['doi']);
+  var path = '/citation?format=' + citationInfo.format;
+  path += '&doi=' + encodeURIComponent(citationInfo.doi);
 
   $.ajax({
     url: path,
@@ -29,7 +27,7 @@ function updateCiteBox() {
 }
 
 function setCiteBoxFormat(format) {
-  citationInfo['format'] = format;
+  citationInfo.format = format;
   $('#citation-text').html('');
   spinner.spin(document.getElementById('citation-text'));
   updateCiteBox();

@@ -45,7 +45,7 @@ $(document).ready(function() {
       e.preventDefault();
       return false;
     });
-  }
+  };
 
   var replacePopoverWithErrorMessage = function($popover, message) {
     var $p = $('<p>').text('An error has occured: ' + message)
@@ -61,15 +61,15 @@ $(document).ready(function() {
       e.preventDefault();
       return false;
     });
-  }
+  };
 
   var performSync = function($popover) {
     $.ajax({
       url: '/orcid/sync',
       success: function(data) {
-        if (data['status'] == 'ok') {
+        if (data.status === 'ok') {
           location.reload();
-        } else if (data['status'] == 'oauth_timeout') {
+        } else if (data.status === 'oauth_timeout') {
           replacePopoverWithLogin($popover);
         } else {
           location.reload();
@@ -79,7 +79,7 @@ $(document).ready(function() {
         location.reload();
       }
     });
-  }
+  };
 
   var claimOkClickFn = function(e) {
     $('.claim-none').popover('destroy');
@@ -123,21 +123,21 @@ $(document).ready(function() {
 
     e.preventDefault();
     return false;
-  }
+  };
 
   var performClaim = function($popover) {
     $.ajax({
         url: '/orcid/claim',
         data: { "doi": $popover.attr('id') },
         success: function(data) {
-          if (data['status'] == 'ok' || data['status'] == 'ok_visible') {
+          if (data.status === 'ok' || data.status === 'ok_visible') {
             $popover.popover('destroy');
             $popover.removeClass('claim-none');
             $popover.unbind('click');
             $popover.find('i').removeClass('icon-circle-blank');
             $popover.find('i').addClass('icon-circle');
 
-            if (data['status'] == 'ok') {
+            if (data.status === 'ok') {
               $popover.addClass('claim-warn');
               $popover.click(claimWarnClickFn);
               $popover.find('span').text('Not visible');
@@ -146,9 +146,9 @@ $(document).ready(function() {
               $popover.click(claimOkClickFn);
               $popover.find('span').text('In your profile');
             }
-          } else if (data['status'] == 'error') {
-            replacePopoverWithErrorMessage($popover, data['message']);
-          } else if (data['status'] == 'oauth_timeout') {
+          } else if (data.status === 'error') {
+            replacePopoverWithErrorMessage($popover, data.message);
+          } else if (data.status === 'oauth_timeout') {
             replacePopoverWithLogin($popover);
           } else {
             $popover.popover('destroy');
@@ -158,7 +158,7 @@ $(document).ready(function() {
           $popover.popover('destroy');
         }
     });
-  }
+  };
 
   var claimNoneClickFn = function(e) {
     $('.claim-none').popover('destroy');
@@ -207,7 +207,7 @@ $(document).ready(function() {
 
     e.preventDefault();
     return false;
-  }
+  };
 
   var claimWarnClickFn = function(e) {
     $('.claim-none').popover('destroy');
@@ -281,7 +281,7 @@ $(document).ready(function() {
 
     e.preventDefault();
     return false;
-  }
+  };
 
   $('.claim-ok').click(claimOkClickFn);
   $('.claim-warn').click(claimWarnClickFn);

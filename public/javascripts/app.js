@@ -60,7 +60,7 @@ function refreshAdvForm() {
         controlGroup.removeClass('success');
         controlGroup.removeClass('error');
 
-        if (fieldVal.length != 0) {
+        if (fieldVal.length !== 0) {
           if (field.validate) {
             var validResult = field.validate(fieldVal);
             if (validResult.valid) {
@@ -74,7 +74,7 @@ function refreshAdvForm() {
             controlGroup.addClass('success');
           }
         }
-      }
+      };
 
       input.data('validate', updateValidation);
 
@@ -199,7 +199,7 @@ $(document).ready(function() {
 
     e.preventDefault();
     return false;
-  }
+  };
 
   $('#simple-search-btn').click(simpleSearchHandler);
   $('#simple-search').submit(simpleSearchHandler);
