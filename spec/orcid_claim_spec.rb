@@ -35,11 +35,8 @@ describe OrcidClaim, :type => :model, vcr: true do
     expect(subject.publication_year).to eq("2013")
   end
 
-  context 'to_xml' do
-
-    it 'initialize' do
-      xml = File.read(fixture_path + 'orcid_claim.xml')
-      expect(subject.to_xml).to eq(xml)
-    end
+  it 'to_xml' do
+    xml = File.read(fixture_path + 'orcid_claim.xml')
+    expect(subject.to_xml).to eq(xml)
   end
 end

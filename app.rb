@@ -277,14 +277,14 @@ get '/orcid/claim' do
             orcid_record['locked_dois'].uniq!
             settings.orcids.save(orcid_record)
           else
-            doc = {:orcid => sign_in_id, :dois => [], :locked_dois => [plain_doi]}
+            doc = { orcid: sign_in_id, dois: [], locked_dois: [plain_doi] }
             settings.orcids.insert(doc)
           end
 
           # The work could have been added as limited or public. If so we need
           # to tell the UI.
           UpdateJob.perform_async(session_info)
-          updated_orcid_record = settings.orcids.find_one({:orcid => sign_in_id})
+          updated_orcid_record = settings.orcids.find_one({ orcid: sign_in_id })
 
           if updated_orcid_record['dois'].include?(plain_doi)
             status = 'ok_visible'
