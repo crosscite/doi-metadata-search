@@ -16,4 +16,4 @@ before_script:
   - mkdir -p tmp/pids
 
 script:
-  - bundle exec rspec
+  - bundle exec rake

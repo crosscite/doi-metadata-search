@@ -1,5 +1,9 @@
 ENV['RACK_ENV'] = 'test'
 
+# set up Code Climate
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+
 require 'sinatra'
 require 'rspec'
 require 'rack/test'
@@ -17,13 +21,6 @@ require File.join(File.dirname(__FILE__), '..', 'heartbeat.rb')
 Dir[File.join(File.dirname(__FILE__), 'support', '*.rb')].each { |f| require f }
 Dir[File.join(File.dirname(__FILE__), 'factories', '*.rb')].each { |f| require f }
 Dir[File.join(File.dirname(__FILE__), '..', 'lib', '*.rb')].each { |f| require f }
-
-# set up Code Climate
-require "codeclimate-test-reporter"
-CodeClimate::TestReporter.configure do |config|
-  config.logger.level = Logger::WARN
-end
-CodeClimate::TestReporter.start
 
 # setup test environment
 set :environment, :test
