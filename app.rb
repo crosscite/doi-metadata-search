@@ -212,8 +212,8 @@ get '/help/examples' do
   haml :examples_help, locals: { page: { query: '' } }
 end
 
-get '/help/status' do
-  haml :status_help, locals: { page: { query: '', stats: index_stats } }
+get '/help/stats' do
+  haml :stats_help, locals: { page: { query: '', stats: stats } }
 end
 
 get '/auth/orcid/callback' do

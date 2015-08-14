@@ -7,7 +7,7 @@ describe "help", type: :feature, js: true do
   end
 
   it 'status' do
-    visit '/help/status'
-    expect(page).to have_css "h2", "Status"
+    visit '/help/stats'
+    expect(page).to have_css "h2", "Stats"
   end
 end

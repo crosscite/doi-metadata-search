@@ -7,7 +7,7 @@ describe 'help' do
   end
 
   it 'status' do
-    get '/help/status'
+    get '/help/stats'
     expect(last_response).to be_ok
   end
 end
