@@ -93,14 +93,14 @@ class OrcidClaim
     end
   end
 
+  def root_attributes
+    { :'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance',
+      :'xsi:schemaLocation' => 'http://www.orcid.org/ns/orcid https://raw.github.com/ORCID/ORCID-Source/master/orcid-model/src/main/resources/orcid-message-1.2.xsd',
+      :'xmlns' => 'http://www.orcid.org/ns/orcid' }
+  end
+
   def to_xml
     # return nil unless doi && creator && title && publisher && publication_year
-
-    root_attributes = {
-      :'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance',
-      :'xsi:schemaLocation' => 'http://www.orcid.org/ns/orcid https://raw.github.com/ORCID/ORCID-Source/master/orcid-model/src/main/resources/orcid-message-1.2.xsd',
-      :'xmlns' => 'http://www.orcid.org/ns/orcid'
-    }
 
     Nokogiri::XML::Builder.new do |xml|
       xml.send(:'orcid-message', root_attributes) do
