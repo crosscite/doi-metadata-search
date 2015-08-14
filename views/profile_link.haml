@@ -2,17 +2,17 @@
   %div{ class: 'dropdown' }
     %img.logo{src: '/images/orcid_24x24.gif'}
     %a.dropdown-toggle{:href => '#', :role => 'button', 'data-toggle' => 'dropdown'}
-      = session[:orcid][:uid]
+      = user_display
       %b.caret
     %ul.dropdown-menu.pull-right{'role' => 'menu'}
       %li
-        %a{:href => '/orcid/activity'}
-          %i.icon-th-list
-          Settings
-      %li
         %a{:href => "#{ENV['ORCID_URL']}/#{session[:orcid][:uid]}"}
-          %i.icon-user
+          %i.icon-external-link
           ORCID Profile
+      %li
+        %a{:href => '/orcid/activity'}
+          %i.icon-cog
+          Settings
       %li.divider
       %li
         %a{:href => "/auth/signout?redirect_uri=#{URI.encode(request.fullpath)}"}
