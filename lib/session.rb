@@ -20,7 +20,7 @@ module Sinatra
       if session[:orcid].nil?
         false
       else
-        creds = session.fetch(:orcid, {}).fetch('credentials', {})
+        creds = session[:orcid]['credentials']
         creds['expires'] && creds['expires_at'] <= Time.now.to_i
       end
     end
