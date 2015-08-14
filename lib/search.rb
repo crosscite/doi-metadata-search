@@ -212,9 +212,9 @@ module Sinatra
       end
       response = ActiveSupport::JSON.decode(res.body)
 
-      if response.status == 200 && page[:query_type][:type] == :doi
+      if res.status == 200 && page[:query_type][:type] == :doi
         response.fetch('message', {}).length > 0 ? 'DOI found' : 'DOI not found'
-      elsif response.status == 200
+      elsif res.status == 200
         response.fetch('message', {}).fetch('total-results', 0).to_s + ' results'
       else
         '0 results'
