@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'json'
 
 module Sinatra
   module Doi
@@ -33,30 +34,6 @@ module Sinatra
       s.strip =~ /\A(urn|URN):[a-zA-Z0-9\.\/:_-]+\Z/
     end
 
-    def contributor?(s)
-      s.gsub!(/\A(creator|contributor|author):\s*.+\Z/, '\2')
-    end
-
-    def year?(s)
-      s.gsub!(/\A(year|publicationYear):\s*([0-9]{4})\Z/, '\2')
-    end
-
-    def publisher?(s)
-      s.gsub!(/\A(publisher|datacentre):\s*.+\Z/, '\2')
-    end
-
-    def type?(s)
-      s.gsub!(/\A(type|resourceType|resourceTypeGeneral):\s*(.+)\Z/, '\2')
-    end
-
-    def subject?(s)
-      s.gsub!(/\Asubject:\s*(.+)\Z/, '\1')
-    end
-
-    def rights?(s)
-      s.gsub!(/\A(rights|license):\s*(.+)\Z/, '\2')
-    end
-
     def to_doi(s)
       s = s.to_s.strip.sub(/\A(https?:\/\/)?dx\.doi\.org\//, '').sub(/\Adoi:/, '')
       s.sub(/\A(https?:\/\/)?doi.org\//, '')
@@ -77,7 +54,7 @@ module Sinatra
         end
 
         if res.success?
-          doi = JSON.parse(res.body)['DOI']
+          doi = ActiveSupport::JSON.decode(res.body).fetch('DOI', nil)
           settings.shorts.insert(short_doi: normal_short_doi, doi: doi)
           doi
         end

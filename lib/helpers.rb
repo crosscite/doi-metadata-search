@@ -33,27 +33,15 @@ helpers do
   end
 
   def response_format
-    if params.key?('format') && params['format'] == 'json'
-      'json'
-    else
-      'html'
-    end
+    params.fetch('format', nil) == 'json' ? 'json' : 'html'
   end
 
   def query_page
-    if params.key? 'page'
-      params['page'].to_i
-    else
-      1
-    end
+    params.fetch('page', 1).to_i
   end
 
   def query_rows
-    if params.key? 'rows'
-      params['rows'].to_i
-    else
-      DEFAULT_ROWS
-    end
+    params.fetch('rows', DEFAULT_ROWS).to_i
   end
 
   def query_columns
@@ -69,21 +57,6 @@ helpers do
       "doi:\"#{query_info[:value]}\""
     when :orcid
       "nameIdentifier:ORCID\:#{query_info[:value]}"
-      # orcid = query_info[:value][0]
-      # names = Array(query_info[:value][1..-1]).uniq
-      # orcid_terms(orcid, names)
-    when :contributor
-      "creator:#{query_info[:value]} OR contributor:#{query_info[:value]}"
-    when :year
-      "publicationYear:\"#{query_info[:value]}\""
-    when :publisher
-      "publisher:#{query_info[:value]} OR datacentre:#{query_info[:value]}"
-    when :type
-      "resourceType:#{query_info[:value]} OR resourceTypeGeneral:#{query_info[:value]}"
-    when :subject
-      "subject:#{query_info[:value]}"
-    when :rights
-      "rights:#{query_info[:value]}"
     when :urn
       "alternateIdentifier:#{query_info[:value]}"
     when :issn
@@ -93,14 +66,6 @@ helpers do
     end
   end
 
-  def orcid_terms(orcid, names)
-    name_identifier = ["nameIdentifier:ORCID\:#{orcid}"]
-    creators = names.map { |name| "creator:\"#{name.strip}\"~4" }
-    contributors = names.map { |name| "contributor:\"#{name.strip}\"~4" }
-
-    (name_identifier + creators + contributors).join(' OR ')
-  end
-
   def query_type
     if doi? params['q']
       { type: :doi, value: to_doi(params['q']).downcase }
@@ -108,18 +73,6 @@ helpers do
       { type: :short_doi, value: to_long_doi(params['q']) }
     elsif orcid?(params['q'])
       { type: :orcid, value: params['q'].strip }
-    elsif value = contributor?(params['q'])
-      { type: :contributor, value: value }
-    elsif value = year?(params['q'])
-      { type: :year, value: value }
-    elsif value = publisher?(params['q'])
-      { type: :publisher, value: value }
-    elsif value = type?(params['q'])
-      { type: :type, value: value }
-    elsif value = subject?(params['q'])
-      { type: :subject, value: value }
-    elsif value = rights?(params['q'])
-      { type: :rights, value: value }
     elsif issn? params['q']
       { type: :issn, value: params['q'].strip.upcase }
     elsif urn? params['q']
