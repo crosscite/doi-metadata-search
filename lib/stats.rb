@@ -7,64 +7,78 @@ require_relative 'paginate'
 
 module Sinatra
   module Stats
-    def stats
-      count_result = settings.solr.get ENV['SOLR_SELECT'], params: {
+    def count_result
+      settings.solr.get ENV['SOLR_SELECT'], params: {
         q: '*:*',
         fq: 'has_metadata:true',
         rows: 0
       }
-      dataset_result = settings.solr.get ENV['SOLR_SELECT'], params: {
+    end
+
+    def dataset_result
+      settings.solr.get ENV['SOLR_SELECT'], params: {
         q: 'resourceTypeGeneral:Dataset',
         rows: 0
       }
-      text_result = settings.solr.get ENV['SOLR_SELECT'], params: {
+    end
+
+    def text_result
+      settings.solr.get ENV['SOLR_SELECT'], params: {
         q: 'resourceTypeGeneral:Text',
         rows: 0
       }
-      software_result = settings.solr.get ENV['SOLR_SELECT'], params: {
+    end
+
+    def software_result
+      settings.solr.get ENV['SOLR_SELECT'], params: {
         q: 'resourceTypeGeneral:Software',
         rows: 0
       }
-      oldest_result = settings.solr.get ENV['SOLR_SELECT'], params: {
+    end
+
+    def oldest_result
+      settings.solr.get ENV['SOLR_SELECT'], params: {
         q: 'publicationYear:[1 TO *]',
         rows: 1,
         sort: 'publicationYear asc'
       }
+    end
 
-      count_stats = {
-        value: count_result['response']['numFound'],
+    def count_stats
+      { value: count_result['response']['numFound'],
         name: 'Total number of indexed DOIs',
-        number: true
-      }
+        number: true }
+    end
 
-      dataset_stats = {
-        value: dataset_result['response']['numFound'],
+    def dataset_stats
+      { value: dataset_result['response']['numFound'],
         name: 'Number of indexed datasets',
-        number: true
-      }
+        number: true }
+    end
 
-      text_stats = {
-        value: text_result['response']['numFound'],
+    def text_stats
+      { value: text_result['response']['numFound'],
         name: 'Number of indexed text documents',
-        number: true
-      }
+        number: true }
+    end
 
-      software_stats = {
-        value: software_result['response']['numFound'],
+    def software_stats
+      { value: software_result['response']['numFound'],
         name: 'Number of indexed software packages',
-        number: true
-      }
+        number: true }
+    end
 
-      oldest_stats = {
-        value: oldest_result['response']['docs'].first['publicationYear'],
-        name: 'Oldest indexed publication year'
-      }
+    def oldest_stats
+      { value: oldest_result['response']['docs'].first['publicationYear'],
+        name: 'Oldest indexed publication year' }
+    end
 
-      orcid_stats = {
-        value: MongoData.coll('orcids').count(query: { updated: true }),
-        name: 'Number of ORCID profiles updated'
-      }
+    def orcid_stats
+      { value: MongoData.coll('orcids').count(query: { updated: true }),
+        name: 'Number of ORCID profiles updated' }
+    end
 
+    def stats
       [count_stats, dataset_stats, text_stats, software_stats, oldest_stats, orcid_stats]
     end
   end
