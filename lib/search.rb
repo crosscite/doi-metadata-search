@@ -35,9 +35,7 @@ module Sinatra
     def query_terms
       query_info = query_type
       case query_info[:type]
-      when :doi
-        "doi:\"#{query_info[:value]}\""
-      when :short_doi
+      when :doi || :short_doi
         "doi:\"#{query_info[:value]}\""
       when :orcid
         "nameIdentifier:ORCID\:#{query_info[:value]}"
@@ -183,7 +181,7 @@ module Sinatra
           in_profile: in_profile,
           claimed: claimed
         }
-        SearchResult.new solr_doc, solr_result, citations(solr_doc['doi']), user_state
+        SearchResult.new(solr_doc, solr_result, citations(solr_doc['doi']), user_state)
       end
     end
 
