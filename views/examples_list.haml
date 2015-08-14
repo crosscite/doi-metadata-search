@@ -1,7 +1,7 @@
 :javascript
   $(document).ready(function() {
     $('.example-link').click(function(e) {
-      var $searchInput = $('.search-input');
+      var $searchInput = $('#search-input');
       $searchInput.val($(this).text());
       $searchInput.focus();
       $('html, body').animate({scrollTop:0});

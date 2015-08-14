@@ -1,7 +1,10 @@
 ENV['RACK_ENV'] = 'test'
 
 # set up Code Climate
-require "codeclimate-test-reporter"
+require 'codeclimate-test-reporter'
+CodeClimate::TestReporter.configure do |config|
+  config.logger.level = Logger::WARN
+end
 CodeClimate::TestReporter.start
 
 require 'sinatra'
@@ -10,9 +13,10 @@ require 'rack/test'
 require 'webmock/rspec'
 require 'vcr'
 require 'factory_girl'
-require "capybara/rspec"
-require "capybara/poltergeist"
-require "capybara-screenshot/rspec"
+require 'capybara/rspec'
+require 'capybara/poltergeist'
+require 'capybara-screenshot/rspec'
+require 'tilt/haml'
 
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
 require File.join(File.dirname(__FILE__), '..', 'heartbeat.rb')
@@ -34,6 +38,8 @@ def app
   Sinatra::Application
 end
 
+Capybara.app = app
+
 RSpec.configure do |config|
   config.include Rack::Test::Methods
   config.include FactoryGirl::Syntax::Methods
@@ -41,7 +47,7 @@ RSpec.configure do |config|
 
   OmniAuth.config.test_mode = true
   config.before(:each) do
-    OmniAuth.config.mock_auth[:default] = OmniAuth::AuthHash.new({
+    OmniAuth.config.mock_auth[:orcid] = OmniAuth::AuthHash.new({
       provider: 'orcid',
       uid: '0000-0002-1825-0097',
       info: { 'email' => nil,
@@ -62,6 +68,8 @@ end
 
 Capybara.javascript_driver = :poltergeist
 Capybara.default_selector = :css
+Capybara.save_and_open_page_path = "tmp/capybara"
+Capybara::Screenshot.prune_strategy = :keep_last_run
 
 Capybara.configure do |config|
   config.match = :prefer_exact

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe OrcidClaim, :type => :model, vcr: true do
   let(:fixture_path) { "#{Sinatra::Application.root}/spec/fixtures/" }
-  let(:work) { { "doi_key" => "10.5061/DRYAD.781PV",
+  let(:work) { { "doi" => "10.5061/DRYAD.781PV",
                  "creator" => ["Piwowar, Heather A.", "Vision, Todd J."],
                  "title" => "Data from: Data reuse and the open data citation advantage",
                  "publisher" => "Dryad Digital Repository",

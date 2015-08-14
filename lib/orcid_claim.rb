@@ -1,6 +1,7 @@
 # Construct an XML object that can be deposited with ORCID
 
 require 'nokogiri'
+require_relative 'doi'
 require_relative 'work_type'
 
 class OrcidClaim
@@ -19,7 +20,7 @@ class OrcidClaim
   end
 
   def doi
-    to_doi(work.fetch('doi_key', nil))
+    to_doi(work.fetch('doi', nil))
   end
 
   def contributors
@@ -46,7 +47,7 @@ class OrcidClaim
   end
 
   def description
-    work.fetch('description', nil)
+    Array(work.fetch('description', [])).first
   end
 
   def url
@@ -108,19 +109,23 @@ class OrcidClaim
           xml.send(:'orcid-activities') do
             xml.send(:'orcid-works') do
               xml.send(:'orcid-work') do
-                insert_titles(xml)
-                insert_description(xml)
-                insert_citation(xml)
-                insert_type(xml)
-                insert_pub_date(xml)
-                insert_ids(xml)
-                insert_contributors(xml)
+                insert_work(xml)
               end
             end
           end
         end
       end
     end.to_xml
+  end
+
+  def insert_work(xml)
+    insert_titles(xml)
+    insert_description(xml)
+    insert_citation(xml)
+    insert_type(xml)
+    insert_pub_date(xml)
+    insert_ids(xml)
+    insert_contributors(xml)
   end
 
   def insert_titles(xml)
@@ -208,14 +213,18 @@ class OrcidClaim
     xml.send(:'work-contributors') do
       contributors.each do |contributor|
         xml.contributor do
-          xml.send(:'contributor-orcid', contributor[:orcid]) if contributor[:orcid]
-          xml.send(:'credit-name', contributor[:credit_name])
-          if contributor[:role]
-            xml.send(:'contributor-attributes') do
-              xml.send(:'contributor-role', contributor[:role])
-            end
-          end
+          insert_contributor(xml, contributor)
         end
+      end
+    end
+  end
+
+  def insert_contributor(xml, contributor)
+    xml.send(:'contributor-orcid', contributor[:orcid]) if contributor[:orcid]
+    xml.send(:'credit-name', contributor[:credit_name])
+    if contributor[:role]
+      xml.send(:'contributor-attributes') do
+        xml.send(:'contributor-role', contributor[:role])
       end
     end
   end

@@ -9,6 +9,7 @@ class ClaimJob
 
     orcid_claim = OrcidClaim.new(work)
 
+    # send error message to bugsnag with problematic xml
     Bugsnag.before_notify_callbacks << lambda {|notif|
       notif.add_tab(:orcid_claim, {
         orcid_claim: orcid_claim.to_xml

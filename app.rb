@@ -36,7 +36,6 @@ ORCID_VERSION = '1.2'
 require 'sinatra'
 require 'sinatra/json'
 require 'active_support/all'
-require 'json'
 require 'rsolr'
 require 'mongo'
 require 'haml'
@@ -141,6 +140,8 @@ configure do
       config.api_key = ENV['BUGSNAG_KEY']
       config.project_root = settings.root
       config.app_version = App::VERSION
+      config.release_stage = ENV['RACK_ENV']
+      config.notify_release_stages = ["production", "development"]
     end
 
     use Bugsnag::Rack
