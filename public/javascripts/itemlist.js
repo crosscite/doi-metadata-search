@@ -136,7 +136,6 @@ $(document).ready(function() {
             $popover.unbind('click');
             $popover.find('i').removeClass('icon-circle-blank');
             $popover.find('i').addClass('icon-circle');
-
             if (data.status === 'ok') {
               $popover.addClass('claim-warn');
               $popover.click(claimWarnClickFn);

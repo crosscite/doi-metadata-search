@@ -271,7 +271,7 @@ get '/orcid/claim' do
       if !doi_record
         status = 'no_such_doi'
       else
-        if ClaimJob.perform_async(session_info, doi_record)
+        if ClaimJob.new.perform(session_info, doi_record)
           if orcid_record
             orcid_record['updated'] = true
             orcid_record['locked_dois'] << plain_doi
@@ -284,7 +284,7 @@ get '/orcid/claim' do
 
           # The work could have been added as limited or public. If so we need
           # to tell the UI.
-          UpdateJob.perform_async(session_info)
+          UpdateJob.new.perform(session_info)
           updated_orcid_record = settings.orcids.find_one({ orcid: sign_in_id })
 
           if updated_orcid_record['dois'].include?(plain_doi)
