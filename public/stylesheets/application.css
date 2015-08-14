@@ -1,3 +1,9 @@
+// make the scrollbar always visible
+html {
+  overflow: -moz-scrollbars-vertical;
+  overflow-y: scroll;
+}
+
 .stat-list, .help-list {
   font-size: 1.25em;
   line-height: 1.5em;
@@ -292,8 +298,8 @@ li {
 }
 
 .modal pre {
-  font-size: 1em;
-  line-height: 1.4em;
+  font-size: .8em;
+  line-height: 1.2em;
   margin-top: 1em;
   max-height: 300px;
   min-height: 100px;
