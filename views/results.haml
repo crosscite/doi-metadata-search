@@ -1,36 +1,45 @@
 = haml :search_header, locals: { page: page }
 
+- unless flash[:error].nil?
+  %div.alert.alert-error
+    = flash[:error]
+- unless page[:page].nil? || page[:paginate].nil? || params['q'] == ""
+  = haml :search_box, locals: { page: page }
+
+  - if page[:items].length > 1
+    .list-info
+      .pull-right
+        = "#{page[:paginate].total_rows} results - page #{page[:page]} of #{page[:paginate].total_pages}"
+      Sort by
+      - if page[:bare_sort] == 'publicationYear'
+        %a{:href => "#{search_link({:sort => 'score'})}"} Relevance
+        %b - Publication Year
+      - else
+        %b Relevance -
+        %a{:href => "#{search_link({:sort => 'publicationYear'})}"} Publication Year
+
+  - elsif page[:alt_text]
+    %div.alert.alert-info
+      Nothing found.
+      %b
+        %a{ href: "#{page[:alt_url]}" } #{page[:alt_text] } in the CrossRef Metadata Search.
+
+  - elsif page[:items].length == 0
+    .page-header
+      %h2 Examples
+      %p Click on an example to put it in the search box.
+
+    = haml :examples_list, locals: { page: page }
+
 .row-fluid
   .span9
-    - unless flash[:error].nil?
-      %div.alert.alert-error
-        = flash[:error]
-    - unless page[:page].nil? || page[:paginate].nil? || params['q'] == ""
-      = haml :search_box, locals: { page: page }
+    = haml :item_list, locals: { page: page }
 
-      - if page[:items].length > 1
-        .list-info
-          .pull-right
-            = "#{page[:paginate].total_rows} results - page #{page[:page]} of #{page[:paginate].total_pages}"
-          Sort by
-          - if page[:bare_sort] == 'publicationYear'
-            %a{:href => "#{search_link({:sort => 'score'})}"} Relevance
-            %b - Publication Year
-          - else
-            %b Relevance -
-            %a{:href => "#{search_link({:sort => 'publicationYear'})}"} Publication Year
+    .item-paging.bottom
+      = will_paginate page[:paginate], :renderer => BootstrapLinkRenderer, :inner_window => 2
 
-      = haml :item_list, locals: { page: page }
-
-      .item-paging.bottom
-        = will_paginate page[:paginate], :renderer => BootstrapLinkRenderer, :inner_window => 2
-    - else
-      .page-header
-        %h2 Examples
-        %p Click on an example to put it in the search box.
-
-      = haml :examples_list, locals: { page: page }
   .span3
+    = haml :facets, locals: { page: page }
 
 = haml :cite_box, locals: { page: page }
 

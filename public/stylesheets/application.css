@@ -96,27 +96,6 @@ h1 {
 .splash {
   margin-bottom: 3em;
 }
-.nav-list > .active > a {
-  background-color: rgb(56, 166, 203);
-}
-
-.nav-list > .active > a:hover {
-  background-color: rgb(6, 116, 153);
-}
-
-h6 {
-  font-size: 13px;
-}
-
-h6 b, h6 a {
-  font-size: 1.2em;
-  line-height: 1.3em;
-  margin-left: 0.3em;
-}
-
-h6 b {
-  color: black;
-}
 
 /* layout.haml */
 a, a:visited {
@@ -170,6 +149,26 @@ h2 {
 h3 {
   font-size: 1.25em;
   line-height: 1.3em;
+}
+.facets {
+  color: gray;
+  font-size: 1em;
+  padding: .5em;
+}
+.facets h3 {
+  font-weight: normal;
+  border-bottom: 1px solid gray;
+  margin: .65em 0 .5em 0;
+}
+.facets div {
+  border: 0;
+}
+.facets li a, .facets li.active a, .facets li a:hover, .facets li.active a:hover {
+  font-size: .75em;
+  display: inline;
+  color: gray;
+  background-color: white;
+  padding: 0 1.25em 0 0;
 }
 .oa-tooltip, .oa-tooltip:visited, .oa-tooltip:hover {
   color: rgb(246, 130, 18);
@@ -285,10 +284,6 @@ dt, dd {
   line-height: 1.25em;
 }
 
-.facets {
-  background-color: #f8f8f8;
-  padding: 1em;
-}
 li {
   margin: 0.1em 0em;
 }

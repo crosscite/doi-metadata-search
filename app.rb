@@ -24,9 +24,6 @@ ENV_VARS = Hash[env_vars.map { |env| [env, ENV[env]] }]
 MIN_MATCH_SCORE = 2
 MIN_MATCH_TERMS = 3
 MAX_MATCH_TEXTS = 1000
-
-FACET = true
-HIGHLIGHTING = false
 TYPICAL_ROWS = [10, 20, 50, 100, 500]
 DEFAULT_ROWS = 20
 MONTH_SHORT_NAMES = %w(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec)
@@ -126,7 +123,7 @@ configure do
       'chicago' => 'text/x-bibliography; style=chicago-fullnote-bibliography'
 
   # Set facet fields
-  set :facet_fields, %w(resourceType_facet publicationYear_facet publisher_facet)
+  set :facet_fields, %w(resourceType_facet publicationYear publisher_facet rightsURI)
 
   # Google analytics event tracking
   set :ga, Gabba::Gabba.new(ENV['GABBA_COOKIE'], ENV['GABBA_URL']) if ENV['GABBA_COOKIE']
@@ -157,6 +154,7 @@ get '/' do
   if !params.key?('q') || !query_terms
     haml :splash, locals: { page: { query: '' } }
   else
+    params['q'] = '*' if params['q'] == ''
     params['q'] = session[:orcid][:info][:name] if signed_in? && !params.key?('q')
     solr_result = select search_query
 

@@ -24,6 +24,7 @@ class SearchResult
     @highlights = solr_result['highlighting'] || {}
     @publication = find_value('publisher')
     @title = solr_doc['title'] ? solr_doc['title'].first.strip : nil
+    @description = solr_doc['description']
     @date = solr_doc['date'] ? solr_doc['date'].last : nil
     @year = find_value('publicationYear')
     @month = solr_doc['month'] ? MONTH_SHORT_NAMES[solr_doc['month'] - 1] : (@date && @date.size > 6 ? MONTH_SHORT_NAMES[@date[5..6].to_i - 1] : nil)

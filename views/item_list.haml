@@ -8,6 +8,8 @@
         = haml :item_text, locals: { page: page, item: item }
       - when 'Data'
         = haml :item_data, locals: { page: page, item: item }
+      - when 'Software'
+        = haml :item_software, locals: { page: page, item: item }
       - when 'journal_article'
         = haml :item_article, locals: { page: page, item: item }
       - when 'conference_paper'
@@ -54,11 +56,6 @@
           .modal-footer
             %button.btn{'type' => 'button', 'data-dismiss' => 'modal'} No, thanks
             %button.btn.btn-primary{:id => "claim-button-#{item.hashed}"} Yes, do it
-- else
-  %div.alert.alert-info
-    Nothing found.
-    %b
-      %a{ href: "#{page[:alt_url]}" } #{page[:alt_text] } in the CrossRef Metadata Search.
 
 :javascript
   function showCitationsBox(hashed) {
