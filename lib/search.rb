@@ -87,6 +87,19 @@ module Sinatra
       fq
     end
 
+    def facet_results(solr_result)
+      return {} if solr_result['facet_counts'].nil?
+
+      results = solr_result.fetch('facet_counts', {}).fetch('facet_fields', [])
+      # results.reduce({}) do |sum, facet|
+      #   if facet.last.size > 0
+      #     sum << facet
+      #   else
+      #     sum
+      #   end
+      # end
+    end
+
     def sort_term
       if params.fetch('sort', nil) == 'publicationYear'
         'publicationYear desc, score desc'

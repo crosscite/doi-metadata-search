@@ -172,9 +172,7 @@ get '/' do
       },
       items: search_results(solr_result),
       paginate: Paginate.new(query_page, query_rows, solr_result),
-      facets: !solr_result['facet_counts'].nil? ? solr_result['facet_counts']['facet_fields']
-                                                   : {}
-    }
+      facets: facet_results(solr_result) }
 
     unless page[:items].length > 0
       page[:alt_url] = "http://search.crossref.org/?q=#{params['q']}"
