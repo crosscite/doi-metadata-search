@@ -22,22 +22,29 @@
     %i.icon-quote-left
     Cite
 
-  - if item.related && item.related.any? { |related| related[:id] == "DOI" }
+  - if item.related.present?
     %span.dropdown.nowrap
       %a.dropdown-toggle{:role => 'button', 'data-toggle' => 'dropdown', :href => '#'}
         %i.icon-double-angle-down
         Related Content
-      %ul.dropdown-menu{:role => 'menu'}
+      %ul.dropdown-menu{role: 'menu'}
         - item.related.each do |related|
           - if related[:id] == "DOI"
             %li
-              %a.cite-link{:href => "?q=" + related[:text]}
+              %a.cite-link{href: "?q=" + related[:text]}
                 %strong
                   = related[:relation]
                 %i.icon-external-link
                 = "http://doi.org/#{related[:text]}"
+          - elsif related[:id] == "URL"
+            %li
+              %a.cite-link{href: related[:text]}
+                %strong
+                  = related[:relation]
+                %i.icon-external-link
+                = related[:text]
 
-  - if item.alternate
+  - if item.alternate.present?
     %span.dropdown.nowrap
       %a.dropdown-toggle{:role => 'button', 'data-toggle' => 'dropdown', :href => '#'}
         %i.icon-double-angle-down
