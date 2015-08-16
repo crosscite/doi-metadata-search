@@ -151,16 +151,14 @@ after do
 end
 
 get '/' do
-  if !params.key?('q') || !query_terms
+  if params.empty?
     haml :splash, locals: { page: { query: '' } }
   else
-    params['q'] = '*' if params['q'] == ''
-    params['q'] = session[:orcid][:info][:name] if signed_in? && !params.key?('q')
-    solr_result = select search_query
+    solr_result = select(search_query)
 
     page = {
       bare_sort: params['sort'],
-      bare_query: params['q'],
+      bare_query: bare_query,
       query_type: query_type,
       bare_filter: params['filter'],
       query: query_terms,
