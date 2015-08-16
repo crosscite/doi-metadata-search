@@ -6,7 +6,7 @@ class SearchResult
                 :title, :publication, :authors, :volume, :issue, :first_page, :last_page,
                 :type, :subtype, :doi, :score, :normal_score,
                 :citations, :hashed, :related, :alternate, :version,
-                :rights, :subject, :description, :creative_commons
+                :rights_uri, :subject, :description, :creative_commons
   attr_reader :hashed
 
   # Merge a mongo DOI record with solr highlight information.
@@ -34,7 +34,7 @@ class SearchResult
     @authors = find_value('creator')
     # @first_page = find_value('hl_first_page')
     # @last_page = find_value('hl_last_page')
-    @rights = solr_doc['rights']
+    @rights_uri = Array(solr_doc['rightsURI'])
     @related = solr_doc['relatedIdentifier']
     @alternate = solr_doc['alternateIdentifier']
     @version = solr_doc['version']
@@ -61,17 +61,17 @@ class SearchResult
   end
 
   def creative_commons
-    if @rights =~ /BY-NC-ND|Attribution-NonCommercial-NoDerivs/
+    if rights_uri.find { |uri| /licenses\/by-nc-nd\// =~ uri }
       'by-nc-nd'
-    elsif @rights =~ /BY-NC-SA/
+    elsif rights_uri.find { |uri| /licenses\/by-nc-sa\// =~ uri }
       'by-nc-sa'
-    elsif @rights =~ /BY-NC|Attribution-NonCommercial/
+    elsif rights_uri.find { |uri| /licenses\/by-nc\// =~ uri }
       'by-nc'
-    elsif @rights =~ /BY-SA/
+    elsif rights_uri.find { |uri| /licenses\/by-sa\// =~ uri }
       'by-sa'
-    elsif @rights =~ /CC-BY|Attribution|Attribuzione/
+    elsif rights_uri.find { |uri| /licenses\/by\// =~ uri }
       'by'
-    elsif @rights =~ /zero|cc0/
+    elsif rights_uri.find { |uri| /publicdomain\/zero/ =~ uri }
       'zero'
     else
       nil
