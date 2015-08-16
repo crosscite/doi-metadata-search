@@ -33,7 +33,7 @@ module Sinatra
     end
 
     def query_fields
-      "doi creator title^2 publisher publicationYear relatedIdentifier alternateIdentifier resourceTypeGeneral resourceType nameIdentifier subject rightsURI version description descriptionType score"
+      "doi creator title publisher publicationYear relatedIdentifier alternateIdentifier resourceTypeGeneral resourceType nameIdentifier subject rightsURI version description descriptionType score"
     end
 
     def query_terms
@@ -92,7 +92,7 @@ module Sinatra
     end
 
     def facet_query
-      fq = ['has_metadata:true', 'NOT relatedIdentifier:IsPartOf\:*']
+      fq = ['has_metadata:true']
       abstract_facet_query.each_pair do |name, values|
         values.each do |value|
           fq << "#{name}: \"#{value}\""
@@ -229,7 +229,7 @@ module Sinatra
       if page[:query_type][:type] == :doi
         query = "/works/#{page[:query_type][:value]}"
       else
-        query = "?query=#{page[:bare_query]}&rows=0"
+        query = "/works?query=#{page[:bare_query]}&rows=0"
       end
 
       conn = Faraday.new(url: 'http://api.crossref.org') do |c|
@@ -240,7 +240,7 @@ module Sinatra
       res = conn.get do |req|
         req.url query
       end
-      response = ActiveSupport::JSON.decode(res.body)
+      response = ::ActiveSupport::JSON.decode(res.body)
 
       if res.status == 200 && page[:query_type][:type] == :doi
         response.fetch('message', {}).length > 0 ? 'DOI found' : 'DOI not found'
@@ -249,8 +249,8 @@ module Sinatra
       else
         '0 results'
       end
-    rescue ::JSON::ParserError
-      'DOI not found'
+    rescue ::ActiveSupport::JSON.parse_error
+      page[:query_type][:type] == :doi ? 'DOI not found' : '0 results'
     end
   end
 end
