@@ -13,7 +13,7 @@ module Sinatra
     def select(query_params)
       page = query_page
       rows = query_rows
-      results = settings.solr.paginate page, rows, ENV['SOLR_SELECT'], params: query_params
+      results = settings.solr.paginate(page, rows, ENV['SOLR_SELECT'], params: query_params)
     end
 
     def response_format
@@ -29,13 +29,21 @@ module Sinatra
     end
 
     def query_columns
-      %w(doi creator title publisher publicationYear relatedIdentifier alternateIdentifier resourceTypeGeneral resourceType nameIdentifier subject rights version description descriptionType score)
+      %w(doi creator title publisher publicationYear relatedIdentifier alternateIdentifier resourceTypeGeneral resourceType nameIdentifier rightsURI version description descriptionType score)
+    end
+
+    def query_fields
+      "doi creator title^2 publisher publicationYear relatedIdentifier alternateIdentifier resourceTypeGeneral resourceType nameIdentifier subject rightsURI version description descriptionType score"
     end
 
     def query_terms
+      params['q'] = '*' if params['q'].blank?
+
       query_info = query_type
       case query_info[:type]
-      when :doi || :short_doi
+      when :doi
+        "doi:\"#{query_info[:value]}\""
+      when :short_doi
         "doi:\"#{query_info[:value]}\""
       when :orcid
         "nameIdentifier:ORCID\:#{query_info[:value]}"
@@ -44,7 +52,7 @@ module Sinatra
       when :issn
         "*:#{query_info[:value]}"
       else
-        scrub_query(params['q'], false)
+        params['q']
       end
     end
 
@@ -64,14 +72,20 @@ module Sinatra
       end
     end
 
+    def bare_query
+      params['q'] != '*' ? params['q'] : ''
+    end
+
+    def facet_query_fields
+      settings.facet_fields.select { |field| params.key?(field) }
+    end
+
     def abstract_facet_query
       fq = {}
-      settings.facet_fields.each do |field|
-        if params.key? field
-          params[field].split(';').each do |val|
-            fq[field] ||= []
-            fq[field] << val
-          end
+      facet_query_fields.reduce({}) do |sum, field|
+        params[field].split(';').each do |val|
+          fq[field] ||= []
+          fq[field] << val
         end
       end
       fq
@@ -113,13 +127,15 @@ module Sinatra
       query  = {
         :sort => sort_term,
         :q => query_terms,
+        :qf => query_fields,
         :fl => query_columns,
         :rows => query_rows,
         :facet => 'true',
         'facet.field' => settings.facet_fields,
-        'facet.limit' => 15,
-        'f.rightsURI.facet.limit' => 100,
-        'f.rightsURI.facet.sort' => 'index',
+        'facet.limit' => 10,
+        'f.resourceType_facet.facet.limit' => 15,
+        'f.rightsURI.facet.prefix' => 'http://creativecommons.org',
+        'f.format.facet.prefix' => 'application',
         'facet.mincount' => 1,
         :hl => 'true',
         'hl.fl' => 'hl_*',
