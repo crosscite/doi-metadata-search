@@ -80,11 +80,12 @@ class SearchResult
 
   def related
     return nil unless @related
+
     @related.map do |item|
       { relation: uncamelize(item.split(':', 3)[0]),
         id: item.split(':', 3)[1],
         text: item.split(':', 3)[2] }
-    end
+    end.select { |item| item[:id] =~ /(DOI|URL)/ }
   end
 
   def alternate
