@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 describe 'oauth' do
-  it 'callback' do
-    get '/auth/orcid/callback'
-    expect(last_response.status).to eq(302)
-  end
+  # it 'callback' do
+  #   get '/auth/orcid/callback'
+  #   expect(last_response.status).to eq(302)
+  # end
 
   it 'failure' do
     get '/auth/orcid/failure'
