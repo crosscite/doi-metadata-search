@@ -11,17 +11,50 @@
 .help-list
   %dl
     %dt
-      %a.example-link{:href => '#'} farquhar datacite
-    %dd Find your own works by searching for your name and something else, such as part of a title.
+      %a.example-link{:href => '#'} laser
+    %dd Containing <em>laser</em>.
     %dt
-      %a.example-link{:href => '#'} data citation
-    %dd Discover new articles by searching for query terms.
+      %a.example-link{:href => '#'} laser safety
+    %dd Containing <em>laser</em> and <em>safety</em>.
     %dt
-      %a.example-link{:href => '#'} +cern !physics
-    %dd Put a + in front of a query term to force it to appear in search results (or a ! to exclude it).
+      %a.example-link{:href => '#'} laser -medicine
+    %dd Containing <em>laser</em> and not <em>medicine</em>.
+    %dt
+      %a.example-link{:href => '#'} laser AND (red OR green)
+    %dd Containing <em>laser</em> and <em>red</em> or <em>green</em>.
+    %dt
+      %a.example-link{:href => '#'} "wind turbine"
+    %dd Containing <em>wind turbine</em> as a phrase.
+    %dt
+      %a.example-link{:href => '#'} subject:geology
+    %dd Containing <em>geology</em> in metadata field <em>subject</em>.
+    %dt
+      %a.example-link{:href => '#'} allocator:(BL OR TIB)
+    %dd Belonging to DataCite members <a href="http://datacite.org/britishlibrary">BL</a> or <a href="http://datacite.org/TIB">TIB</a>.
+    %dt
+      %a.example-link{:href => '#'} publicationYear:[2000 TO 2005]
+    %dd Published between 2000 and 2005.
+    %dt
+      %a.example-link{:href => '#'} uploaded:[NOW-5DAYS TO NOW]
+    %dd Uploaded to DataCite in the last 5 days.
+    %dt
+      %a.example-link{:href => '#'} resourceType:poster
+    %dd All posters.
+    %dt
+      %a.example-link{:href => '#'} resourceType:poster title:climate
+    %dd Posters with <em>climate</em> in the title.
+    %dt
+      %a.example-link{:href => '#'} creator:patricia cruse
+    %dd Works by a particular person.
+    %dt
+      %a.example-link{:href => '#'} 0000-0003-1613-5981
+    %dd Works by a particular person, using his/her ORCID.
+    %dt
+      %a.example-link{:href => '#'} creator:lars holm nielsen resourceType:presentation
+    %dd Presentations by a particular person.
     %dt
       %a.example-link{:href => '#'} 10.6084/M9.FIGSHARE.154691
-    %dd Find a particular work by searching for its DOI.
+    %dd Search for work by its DOI.
     %dt
       %a.example-link{:href => '#'} 10/kz6
     %dd
@@ -32,9 +65,6 @@
     %dt
       %a.example-link{:href => '#'} urn:nbn:de:tib-10.1594/WDCC/MB_HEF_1953-20104
     %dd Find a particular work by searching for its URN.
-    %dt
-      %a.example-link{:href => '#'} 0000-0003-1613-5981
-    %dd Find works by searching for the ORCID of one of its creators.
     %dt
       %a.example-link{:href => '#'} John Kaye. (2013). Datasets and Digital Research Resources - Presentation to British Library Doctoral Open Days - Feb 2013. Figshare.
     %dd Find a particular work by searching for a full citation.
