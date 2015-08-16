@@ -1,5 +1,14 @@
 = item.coins_span
 
+- if item.creative_commons
+  %p
+    - if item.creative_commons == "zero"
+      %a{:href => "http://creativecommons.org/publicdomain/zero/1.0/"}
+        %img{:src => "http://i.creativecommons.org/p/zero/1.0/80x15.png"}
+    - else
+      %a{:href => "http://creativecommons.org/licenses/#{item.creative_commons}/4.0/"}
+        %img{:src => "http://i.creativecommons.org/l/#{item.creative_commons}/4.0/80x15.png"}
+
 .item-links
   - unless item.citations.empty?
     %a{:href => "javascript:showCitationsBox('#{item.hashed}');"}
@@ -53,5 +62,3 @@
       %span.well-transparent.claim-none{id: item.doi}
         %img{src: '/images/orcid_16x16.gif'}
         %span Add to ORCID
-
-

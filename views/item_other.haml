@@ -11,7 +11,7 @@
   %p
     - if item.version
       = "Version " + item.version + " of "
-    - if item.subtype
+    - if item.subtype.present?
       = item.subtype
       published
     - elsif item.type
@@ -30,14 +30,4 @@
       via
       = item.publication
 
-  - if item.creative_commons
-    %p
-      - if item.creative_commons == "zero"
-        %a{:href => "http://creativecommons.org/publicdomain/zero/1.0/"}
-          %img{:src => "http://i.creativecommons.org/p/zero/1.0/80x15.png"}
-      - else
-        %a{:href => "http://creativecommons.org/licenses/#{item.creative_commons}/4.0/"}
-          %img{:src => "http://i.creativecommons.org/l/#{item.creative_commons}/4.0/80x15.png"}
-
   = haml :item_links, locals: { item: item }
-
