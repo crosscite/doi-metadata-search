@@ -50,6 +50,7 @@ require 'open-uri'
 require 'uri'
 
 Dir[File.join(File.dirname(__FILE__), 'lib', '*.rb')].each { |f| require f }
+Dir[File.join(File.dirname(__FILE__), 'lib', ENV['RA'], '*.rb')].each { |f| require f }
 
 configure do
   set :root, File.dirname(__FILE__)
@@ -172,10 +173,7 @@ get '/' do
       paginate: Paginate.new(query_page, query_rows, solr_result),
       facets: facet_results(solr_result) }
 
-    unless page[:items].length > 0
-      page[:alt_url] = "http://search.crossref.org/?q=#{params['q']}"
-      page[:alt_text] = get_alt_text(page)
-    end
+    page = get_alt_result(page) unless page[:items].length > 0
 
     haml :results, locals: { page: page }
   end

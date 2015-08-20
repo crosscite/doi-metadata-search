@@ -22,7 +22,7 @@
     %div.alert.alert-info
       Nothing found.
       %b
-        %a{ href: "#{page[:alt_url]}" } #{page[:alt_text] } in the CrossRef Metadata Search.
+        %a{ href: page[:alt_url] } #{page[:alt_text]}
 
   - elsif page[:items].length == 0
     .page-header

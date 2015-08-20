@@ -1,10 +1,6 @@
 require 'sinatra/base'
 require 'json'
 
-require_relative 'doi'
-require_relative 'session'
-require_relative 'paginate'
-
 module Sinatra
   module Stats
     def count_result

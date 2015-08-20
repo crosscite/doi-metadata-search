@@ -25,6 +25,7 @@ require File.join(File.dirname(__FILE__), '..', 'heartbeat.rb')
 Dir[File.join(File.dirname(__FILE__), 'support', '*.rb')].each { |f| require f }
 Dir[File.join(File.dirname(__FILE__), 'factories', '*.rb')].each { |f| require f }
 Dir[File.join(File.dirname(__FILE__), '..', 'lib', '*.rb')].each { |f| require f }
+Dir[File.join(File.dirname(__FILE__), '..', 'lib', ENV['RA'], '*.rb')].each { |f| require f }
 
 # setup test environment
 set :environment, :test

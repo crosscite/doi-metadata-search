@@ -1,7 +1,7 @@
 = haml :search_header, locals: { page: page.merge({:mini_header => true}) }
 
 .row-centered
-  %img{class: 'logo-big', src: '/images/logo-big.png'}
+  %img{class: 'logo-big', src: "/images/#{ENV['RA']}/logo-big.png"}
 
   %form{:method => 'GET', :action => '/'}
     .search-in-header

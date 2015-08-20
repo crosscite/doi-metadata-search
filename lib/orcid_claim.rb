@@ -2,7 +2,7 @@
 
 require 'nokogiri'
 require_relative 'doi'
-require_relative 'work_type'
+require_relative "#{ENV['RA']}/work_type"
 
 class OrcidClaim
   include Sinatra::Doi

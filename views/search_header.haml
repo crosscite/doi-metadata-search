@@ -7,7 +7,7 @@
     .span2
       .logo
         %a{:href => '/'}
-          %img.logo-small{src: '/images/logo-small.png', alt: 'DataCite' }
+          %img.logo-small{src: "/images/#{ENV['RA']}/logo-small.png", alt: ENV['SITENAME'] }
     .span10
       .profile.pull-right
         = haml :profile_link

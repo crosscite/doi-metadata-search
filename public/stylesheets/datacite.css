@@ -1,0 +1,437 @@
+// make the scrollbar always visible
+html {
+  overflow: -moz-scrollbars-vertical;
+  overflow-y: scroll;
+}
+
+.stat-list, .help-list {
+  font-size: 1.25em;
+  line-height: 1.5em;
+  padding: 0 0 .5em 1em;
+}
+
+.stat-name {
+  color: grey;
+}
+
+.stat-value {
+  font-weight: bold;
+}
+
+.logo-small {
+  margin: .5em;
+}
+.logo-big {
+  margin: 5em 0 2em 0;
+}
+.cr-red {
+  color: rgb(192, 70, 62);
+}
+.search {
+  margin-top: 2em;
+  position: relative;
+}
+.search i {
+  position: absolute;
+  top: 0.25em;
+  left: 0.3em;
+  font-size: 2.8em;
+  color: #aaa;
+}
+.search input {
+  padding-left: 1.5em;
+  line-height: 1.2em;
+  height: 1.4em;
+  font-size: 2.1em;
+}
+h1 {
+  font-size: 4em;
+  line-height: 1.2em;
+}
+.row-centered {
+  margin: 0 auto;
+  width: 700px;
+}
+#help-accordion {
+  margin-top: 2em;
+  margin-left: 4px;
+}
+.break-below {
+  margin-bottom: 6em;
+}
+.page-header {
+  padding-left: 1.25em;
+  padding-bottom: 0;
+  border-bottom-width: 0;
+}
+.item-paging {
+  text-align: center;
+  margin-top: 1em;
+}
+.list-info, .alert-info, .sync-info {
+  background-color: #ffffff;
+  border: 1px solid #e6e6e6;
+  border-radius: 4px;
+  color: grey;
+  margin-top: 1em;
+  margin-bottom: .5em;
+  padding: 8px 14px 8px 14px;
+}
+.sync-info {
+  padding: 14px;
+}
+#sync-button {
+  margin-bottom: 8px;
+}
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+.gap {
+  display: none;
+}
+.splash {
+  margin-bottom: 3em;
+}
+
+/* layout.haml */
+a, a:visited {
+  color: rgb(56, 166, 203);
+}
+a:hover {
+  color: rgb(6, 116, 153);
+}
+
+body {
+  font-family: Calibri,Arial,sans-serif;
+  font-size: 16px;
+}
+input, button, select, textarea {
+  font-family: Calibri,Arial,sans-serif;
+}
+.btn-container button {
+  margin-left: .5em;
+  margin-top: 1em;
+}
+.btn-container {
+  text-align: right;
+}
+.btn-container button i {
+  margin-right: 0.4em;
+}
+.item-tab.conf-proc {
+  border-left: 4px solid rgb(49, 145, 177);
+}
+.item-data {
+  padding: 1em;
+}
+.item-data a {
+  margin-left: 0.2em;
+  margin-right: 0.2em;
+}
+.hl {
+  background-color: rgb(235,245,167);
+  border-bottom: 1px dashed grey;
+  color: rgb(51,51,51);
+}
+.item-data p {
+  font-size: 1em;
+  line-height: 1.2em;
+  margin-bottom: 4px;
+}
+h2 {
+  font-size: 1.5em;
+  line-height: 1.8em;
+}
+h3 {
+  font-size: 1.25em;
+  line-height: 1.3em;
+}
+.facets {
+  color: gray;
+  font-size: 1em;
+  padding: .5em;
+}
+.facets h3 {
+  font-weight: normal;
+  border-bottom: 1px solid gray;
+  margin: .65em 0 .5em 0;
+}
+.facets div {
+  border: 0;
+}
+.facets li a, .facets li.active a, .facets li a:hover, .facets li.active a:hover {
+  font-size: .75em;
+  display: inline;
+  color: gray;
+  background-color: white;
+  padding: 0 1.25em 0 0;
+}
+.oa-tooltip, .oa-tooltip:visited, .oa-tooltip:hover {
+  color: rgb(246, 130, 18);
+  text-decoration: none;
+}
+.nowrap {
+  white-space: nowrap;
+}
+.claim-none, .claim-ok, .claim-warn {
+  cursor: pointer;
+  font-size: 1em;
+  line-height: 1.2em;
+  margin-bottom: 4px;
+}
+.claim-ok {
+  color: rgb(167, 204, 145);
+}
+.claim-ok:hover {
+  color: rgb(137, 194, 115);
+}
+.claim-warn {
+  color: rgb(246, 130, 18);
+}
+.claim-warn:hover {
+  color: rgb(216, 100, 0);
+}
+.claim-none {
+  color: #999999;
+}
+.claim-none {
+  margin-left: .2em;
+}
+.claim-none:hover {
+  color: rgb(167, 204, 145);
+}
+.popover-inner {
+  padding: 2px;
+}
+.popover-inner .popover-title {
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+.item-links {
+  margin-top: .5em;
+  line-height: 1.4em;
+}
+.item-links img {
+  margin-top: -0.33em;
+}
+.item-links a {
+  margin-right: 1.5em;
+}
+.item-links span a {
+  margin-right: .2em;
+}
+.label {
+  font-weight: normal;
+}
+.item-data h3 {
+  margin-top: .25em;
+  margin-bottom: 0;
+}
+.modal-body p {
+  font-size: 1.3em;
+  line-height: 1.2em;
+}
+.add-more-area {
+  background-color: #fbfbfb;
+  border: 1px solid rgb(204, 204, 204);
+  padding: 10px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.label-add {
+  background-color: rgb(192, 70, 62);
+  font-size: 0.9em;
+  line-height: 0.9em;
+  margin: 3px;
+  padding: 4px;
+  color: white;
+  display: inline-block;
+}
+
+.label-add.optional {
+  background-color: rgb(49, 145, 177);
+}
+
+.label-add.added {
+  background-color: #8ccb7f;
+}
+
+.set-label {
+  font-size: 0.9em;
+  text-align: right;
+  line-height: 0.9em;
+  color: #a9a9a9;
+  padding: 4px;
+}
+
+#completion-msg {
+  font-size: 1.3em;
+  padding: 2em;
+}
+
+dd {
+  font-size: 1em;
+  margin-left: 0;
+  margin-bottom: 0.5em;
+}
+dt, dd {
+  line-height: 1.25em;
+}
+
+li {
+  margin: 0.1em 0em;
+}
+
+.pre {
+  font-size: 1em;
+}
+
+.modal pre {
+  font-size: .8em;
+  line-height: 1.2em;
+  margin-top: 1em;
+  max-height: 300px;
+  min-height: 100px;
+  overflow-y: scroll;
+}
+.modal {
+  font-size: 1em;
+  width: 75%;
+  margin-left: -37.5%;
+}
+
+.span-help p {
+  font-family: "Bookman", "Times", serif;
+  font-size: 1.5em;
+  line-height: 1.3em;
+}
+
+.small-caps {
+  font-variant: small-caps;
+}
+
+.mini-header {
+  margin-top: 1em;
+}
+
+.example span, pre.example {
+  font-family: "Courier New", monospace;
+  font-size: .9em;
+  background-color: white;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+pre.example {
+  font-family: "Courier New", monospace;
+  font-size: 1.2em;
+  line-height: 1.3em;
+  background-color: white;
+  border: none;
+  padding: .3em .7em;
+  margin-top: .8em;
+  margin-bottom: .8em;
+}
+
+.sep {
+  height: 3em;
+}
+
+p, h2 {
+  color: #333;
+}
+#sync-ok {
+  color: rgb(166, 206, 57);
+  display: none;
+}
+
+.home-link, .home-link:visited, .home-link:hover {
+  text-decoration: none;
+  color: black;
+}
+.simple-nav {
+  font-size: 1.2em;
+  line-height: 1.1em;
+  margin-top: 1em;
+}
+.simple-nav a, .simple-nav a:visited {
+  background-color: grey;
+  padding-left: .4em;
+}
+.search-in-header {
+  position: relative;
+  margin-top: .5em;
+  margin-right: 16em;
+}
+.search-in-header input {
+  line-height: 1.2em;
+  height: 1.45em;
+  font-size: 1.25em;
+  padding-left: 10px;
+  padding-right: 0;
+  margin-top: .5em;
+  margin-left: 1.5em;
+  border-color: #e6e6e6;
+  border-radius: 3px 0 0 3px;
+  width: 75%;
+}
+.search-in-header .btn {
+  height: 2.6em;
+  border-color: #e6e6e6;
+  background-color: #e6e6e6;
+  background-image: none;
+  box-shadow: none;
+  background-repeat: none;
+  margin-left: -3px;
+  border-radius: 0 3px 3px 0;
+}
+.row-centered .search-in-header input {
+  width: 26em;
+}
+.span-header {
+  margin-top: 1.2em;
+  margin-bottom: -1.3em;
+}
+.span-footer {
+  font-size: 1.25em;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+.span-footer a, .span-footer a:visited {
+  color: grey;
+  padding-right: 1em;
+}
+.search-header {
+  padding-top: 1.5em;
+}
+
+.logo {
+
+}
+
+.profile {
+  padding-top: 1.25em;
+}
+.profile img.logo {
+  margin-top: -.15em;
+  padding-right: .25em;
+}
+.profile a {
+  color: grey;
+}
+.profile .dropdown-toggle, #sign-in-link {
+  font-size: 1.25em;
+  line-height: 1.5em;
+}
+.alternate {
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  white-space: nowrap;
+}

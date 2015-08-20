@@ -1,6 +1,6 @@
 require_relative 'doi'
 require_relative 'session'
-require_relative 'stats'
+require_relative "#{ENV['RA']}/stats"
 require_relative 'search'
 require_relative 'paginate'
 
