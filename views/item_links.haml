@@ -1,6 +1,11 @@
 = item.coins_span
 
-- if item.creative_commons
+- if item.grant_info.present?
+  %p
+    Research funded by
+    = item.grant_info.join('  |  ')
+
+- if item.creative_commons.present?
   %p
     - if item.creative_commons == "zero"
       %a{:href => "http://creativecommons.org/publicdomain/zero/1.0/"}
@@ -10,7 +15,7 @@
         %img{:src => "http://i.creativecommons.org/l/#{item.creative_commons}/4.0/80x15.png"}
 
 .item-links
-  - unless item.citations.empty?
+  - if item.citations.present?
     %a{:href => "javascript:showCitationsBox('#{item.hashed}');"}
       %i.icon-resize-small
         = item.citations.count

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://search.datacite.org/api?f.format.facet.prefix=application&f.resourceType_facet.facet.limit=15&f.rightsURI.facet.prefix=http://creativecommons.org&facet=true&facet.field=rightsURI&facet.limit=10&facet.mincount=1&fl=score&fq=has_metadata:true&hl=true&hl.fl=hl_*&hl.fragsize=0&hl.mergeContinuous=true&hl.simple.post=%3C/span%3E&hl.simple.pre=%3Cspan%20class=%22hl%22%3E&hl.snippets=10&q=alternateIdentifier:urn:nbn:de:tib-10.1594/WDCC/MB_HEF_1953-20104&qf=doi%20creator%20title%20publisher%20publicationYear%20relatedIdentifier%20alternateIdentifier%20resourceTypeGeneral%20resourceType%20nameIdentifier%20subject%20rightsURI%20version%20description%20descriptionType%20score&rows=20&sort=score%20desc&start=0&wt=ruby
+    uri: http://search.datacite.org/api?f.format.facet.prefix=application&f.resourceType_facet.facet.limit=15&f.rightsURI.facet.prefix=http://creativecommons.org&facet=true&facet.field=rightsURI&facet.limit=10&facet.mincount=1&fl=score&fq=has_metadata:true&hl=true&hl.fl=hl_*&hl.fragsize=0&hl.mergeContinuous=true&hl.simple.post=%3C/span%3E&hl.simple.pre=%3Cspan%20class=%22hl%22%3E&hl.snippets=10&q=alternateIdentifier:urn:nbn:de:tib-10.1594/WDCC/MB_HEF_1953-20104&qf=doi%20creator%20contributor%20contributorType%20title%20publisher%20publicationYear%20relatedIdentifier%20alternateIdentifier%20resourceTypeGeneral%20resourceType%20nameIdentifier%20subject%20rightsURI%20version%20description%20descriptionType%20score&rows=20&sort=score%20desc&start=0&wt=ruby
     body:
       encoding: US-ASCII
       string: ''
@@ -15,7 +15,7 @@ http_interactions:
       Server:
       - nginx/1.1.19
       Date:
-      - Sun, 16 Aug 2015 17:48:04 GMT
+      - Thu, 20 Aug 2015 08:28:58 GMT
       Content-Type:
       - text/plain;charset=UTF-8
       Transfer-Encoding:
@@ -25,7 +25,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: |
-        {'responseHeader'=>{'status'=>0,'QTime'=>3},'response'=>{'numFound'=>1,'start'=>0,'maxScore'=>8.123619,'docs'=>[{'doi'=>'10.1594/WDCC/MB_HEF_1953-2010','version'=>'1','creator'=>['Fischer, Andrea','Markl, Gerhard','Kuhn, Michael'],'publisher'=>'World Data Center for Climate (WDCC)','title'=>['Glacier Mass Balance of Hintereisferner, Oetztal Alps, Austria, from 1952/53-2009/10'],'description'=>['Project:  Glacier monitoring data of Austria
+        {'responseHeader'=>{'status'=>0,'QTime'=>72},'response'=>{'numFound'=>1,'start'=>0,'maxScore'=>8.125732,'docs'=>[{'doi'=>'10.1594/WDCC/MB_HEF_1953-2010','version'=>'1','creator'=>['Fischer, Andrea','Markl, Gerhard','Kuhn, Michael'],'publisher'=>'World Data Center for Climate (WDCC)','title'=>['Glacier Mass Balance of Hintereisferner, Oetztal Alps, Austria, from 1952/53-2009/10'],'contributor'=>['Fischer, Andrea','Institute for Meteorology and Geophysics Innsbruck'],'description'=>['Project:  Glacier monitoring data of Austria
         Glaciers are the most visible indicators of global change. Mass balance data allow the calculation of the past and current contributions of land ice to the sea level change. Additionally, glaciological data are used to reconstruct former climate states and complement other climate proxies for the holocene. Since the instrumental climate data are biased towards low altitudes, glacier data offer an archive of high mountain climate that is subject to strong gradients and improve our knowledge on climate to remote regions during the instrumental period. For the development of forward and inverse models, the understanding of the glacier-climate relation is essential. Thus the relationships between different types of glaciological data measured worldwide must be studied on benchmark glaciers, where all kinds of glacier and climate data are available.
         In Austria, glacier mass balance is measured at Goldbergkees, Hallstaetter Gletscher, Hintereisferner, Jamtalferner Kesselwandferner, Kleinfleisskees, Mullwitzkees, Pasterzenkees, Stubacher Sonnblickkees, Vernagtferner, and Wurtenkees. Records on glacier length are available from 1891, currently more than 100 glaciers are surveyed. Glacier inventory data is available for 1969, and 1998.
         The project homepages are located at e.g.
@@ -37,7 +37,7 @@ http_interactions:
         Hydrographischer Dienst der Abteilung Wasserwirtschaft des Amtes der Tiroler Landesregierung
         Nationalpark Hohe Tauern
         Kommission fuer Geophysikalische Forschungen der Oesterreichischen Akademie der Wissenschaften
-        Summary: The data represent annual values of the glacier mass balance measured with the direct glaciological method. The mass balance is calculated from ablation of ice measured at about 50 stakes and accumulation of snow measured in about 9 pits for the mass balance year from 1 October to 30 September of the following year. The data comprises the glacier area, the net mass balance for the total glacier area as well as specified for the ablation and accumulation area, the altitude of the equilibrium line (ELA) and the specific mass balance.'],'resourceTypeGeneral'=>'Dataset','relatedIdentifier'=>['IsDocumentedBy:DOI: 10.1016/j.gloplacha.2009.11.014'],'alternateIdentifier'=>['URN:nbn:de:tib-10.1594/WDCC/MB_HEF_1953-20104'],'descriptionType'=>['Abstract'],'resourceType'=>'Digital','publicationYear'=>'2011','score'=>8.123619}]},'facet_counts'=>{'facet_queries'=>{},'facet_fields'=>{'resourceType_facet'=>['Dataset',1],'publicationYear'=>['2011',1],'publisher_facet'=>['World Data Center for Climate (WDCC)',1],'rightsURI'=>[]},'facet_dates'=>{},'facet_ranges'=>{}},'highlighting'=>{'48557'=>{}}}
+        Summary: The data represent annual values of the glacier mass balance measured with the direct glaciological method. The mass balance is calculated from ablation of ice measured at about 50 stakes and accumulation of snow measured in about 9 pits for the mass balance year from 1 October to 30 September of the following year. The data comprises the glacier area, the net mass balance for the total glacier area as well as specified for the ablation and accumulation area, the altitude of the equilibrium line (ELA) and the specific mass balance.'],'resourceTypeGeneral'=>'Dataset','relatedIdentifier'=>['IsDocumentedBy:DOI: 10.1016/j.gloplacha.2009.11.014'],'alternateIdentifier'=>['URN:nbn:de:tib-10.1594/WDCC/MB_HEF_1953-20104'],'descriptionType'=>['Abstract'],'contributorType'=>['ContactPerson','Researcher'],'resourceType'=>'Digital','publicationYear'=>'2011','score'=>8.125732}]},'facet_counts'=>{'facet_queries'=>{},'facet_fields'=>{'resourceType_facet'=>['Dataset',1],'publicationYear'=>['2011',1],'publisher_facet'=>['World Data Center for Climate (WDCC)',1],'rightsURI'=>[]},'facet_dates'=>{},'facet_ranges'=>{}},'highlighting'=>{'48557'=>{}}}
     http_version: 
-  recorded_at: Sun, 16 Aug 2015 17:52:30 GMT
+  recorded_at: Thu, 20 Aug 2015 08:40:38 GMT
 recorded_with: VCR 2.9.3

@@ -4,11 +4,11 @@ require 'json'
 module Sinatra
   module Search
     def query_columns
-      %w(doi creator title publisher publicationYear relatedIdentifier alternateIdentifier resourceTypeGeneral resourceType nameIdentifier rightsURI version description descriptionType score)
+      %w(doi creator contributor contributorType title publisher publicationYear relatedIdentifier alternateIdentifier resourceTypeGeneral resourceType nameIdentifier rightsURI version description descriptionType score)
     end
 
     def query_fields
-      "doi creator title publisher publicationYear relatedIdentifier alternateIdentifier resourceTypeGeneral resourceType nameIdentifier subject rightsURI version description descriptionType score"
+      "doi creator contributor contributorType title publisher publicationYear relatedIdentifier alternateIdentifier resourceTypeGeneral resourceType nameIdentifier subject rightsURI version description descriptionType score"
     end
 
     def query_terms

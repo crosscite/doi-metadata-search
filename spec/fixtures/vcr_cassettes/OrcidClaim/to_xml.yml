@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - nginx/1.1.19
       Date:
-      - Thu, 13 Aug 2015 05:04:41 GMT
+      - Thu, 20 Aug 2015 08:28:52 GMT
       Content-Type:
       - application/x-bibtex
       Transfer-Encoding:
@@ -41,7 +41,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: |-
-        @data{7ca5d8ba-d5aa-4c11-8844-1bc0d4bd3431,
+        @data{4fad6958-7b82-4765-b6da-0faf489fed10,
           doi = {10.5061/DRYAD.781PV},
           url = {http://dx.doi.org/10.5061/DRYAD.781PV},
           author = {Piwowar, Heather A.; Vision, Todd J.; },
@@ -50,5 +50,5 @@ http_interactions:
           year = {2013}
         }
     http_version: 
-  recorded_at: Thu, 13 Aug 2015 05:16:18 GMT
+  recorded_at: Thu, 20 Aug 2015 08:40:32 GMT
 recorded_with: VCR 2.9.3

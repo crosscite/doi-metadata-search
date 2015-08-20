@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://search.datacite.org/api?f.format.facet.prefix=application&f.resourceType_facet.facet.limit=15&f.rightsURI.facet.prefix=http://creativecommons.org&facet=true&facet.field=rightsURI&facet.limit=10&facet.mincount=1&fl=score&fq=has_metadata:true&hl=true&hl.fl=hl_*&hl.fragsize=0&hl.mergeContinuous=true&hl.simple.post=%3C/span%3E&hl.simple.pre=%3Cspan%20class=%22hl%22%3E&hl.snippets=10&q=doi:%2210.6084/M9.FIGSHARE.154691%22&qf=doi%20creator%20title%20publisher%20publicationYear%20relatedIdentifier%20alternateIdentifier%20resourceTypeGeneral%20resourceType%20nameIdentifier%20subject%20rightsURI%20version%20description%20descriptionType%20score&rows=20&sort=score%20desc&start=0&wt=ruby
+    uri: http://search.datacite.org/api?f.format.facet.prefix=application&f.resourceType_facet.facet.limit=15&f.rightsURI.facet.prefix=http://creativecommons.org&facet=true&facet.field=rightsURI&facet.limit=10&facet.mincount=1&fl=score&fq=has_metadata:true&hl=true&hl.fl=hl_*&hl.fragsize=0&hl.mergeContinuous=true&hl.simple.post=%3C/span%3E&hl.simple.pre=%3Cspan%20class=%22hl%22%3E&hl.snippets=10&q=doi:%2210.6084/M9.FIGSHARE.154691%22&qf=doi%20creator%20contributor%20contributorType%20title%20publisher%20publicationYear%20relatedIdentifier%20alternateIdentifier%20resourceTypeGeneral%20resourceType%20nameIdentifier%20subject%20rightsURI%20version%20description%20descriptionType%20score&rows=20&sort=score%20desc&start=0&wt=ruby
     body:
       encoding: US-ASCII
       string: ''
@@ -15,7 +15,7 @@ http_interactions:
       Server:
       - nginx/1.1.19
       Date:
-      - Sun, 16 Aug 2015 17:48:06 GMT
+      - Thu, 20 Aug 2015 08:28:57 GMT
       Content-Type:
       - text/plain;charset=UTF-8
       Transfer-Encoding:
@@ -25,7 +25,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: |
-        {'responseHeader'=>{'status'=>0,'QTime'=>2},'response'=>{'numFound'=>1,'start'=>0,'maxScore'=>16.185455,'docs'=>[{'doi'=>'10.6084/M9.FIGSHARE.154691','creator'=>['ODIN Consortium','Gudmundur Thorisson','Martin Fenner'],'resourceType'=>'Paper','publisher'=>'Figshare','title'=>['D2.1 Kick off preparation, Communication plan and Website'],'nameIdentifier'=>['ORCID:0000-0001-5635-1860','ORCID:0000-0002-2184-6094'],'rightsURI'=>['http://creativecommons.org/licenses/by/3.0/us/'],'publicationYear'=>'2013','resourceTypeGeneral'=>'Dataset','score'=>16.185455}]},'facet_counts'=>{'facet_queries'=>{},'facet_fields'=>{'resourceType_facet'=>['Dataset',1],'publicationYear'=>['2013',1],'publisher_facet'=>['Figshare',1],'rightsURI'=>['http://creativecommons.org/licenses/by/3.0/us/',1]},'facet_dates'=>{},'facet_ranges'=>{}},'highlighting'=>{'1558135'=>{}}}
+        {'responseHeader'=>{'status'=>0,'QTime'=>3},'response'=>{'numFound'=>1,'start'=>0,'maxScore'=>16.189697,'docs'=>[{'doi'=>'10.6084/M9.FIGSHARE.154691','creator'=>['ODIN Consortium','Gudmundur Thorisson','Martin Fenner'],'resourceType'=>'Paper','publisher'=>'Figshare','title'=>['D2.1 Kick off preparation, Communication plan and Website'],'nameIdentifier'=>['ORCID:0000-0001-5635-1860','ORCID:0000-0002-2184-6094'],'rightsURI'=>['http://creativecommons.org/licenses/by/3.0/us/'],'publicationYear'=>'2013','resourceTypeGeneral'=>'Dataset','score'=>16.189697}]},'facet_counts'=>{'facet_queries'=>{},'facet_fields'=>{'resourceType_facet'=>['Dataset',1],'publicationYear'=>['2013',1],'publisher_facet'=>['Figshare',1],'rightsURI'=>['http://creativecommons.org/licenses/by/3.0/us/',1]},'facet_dates'=>{},'facet_ranges'=>{}},'highlighting'=>{'1558135'=>{}}}
     http_version: 
-  recorded_at: Sun, 16 Aug 2015 17:52:32 GMT
+  recorded_at: Thu, 20 Aug 2015 08:40:37 GMT
 recorded_with: VCR 2.9.3

@@ -6,7 +6,8 @@ class SearchResult
                 :title, :publication, :authors, :volume, :issue, :first_page, :last_page,
                 :type, :subtype, :doi, :score, :normal_score,
                 :citations, :hashed, :related, :alternate, :version,
-                :rights_uri, :subject, :description, :creative_commons
+                :rights_uri, :subject, :description, :creative_commons,
+                :contributor, :contributor_type, :contributors_with_type, :grant_info
   attr_reader :hashed
 
   # Merge a mongo DOI record with solr highlight information.
@@ -38,6 +39,8 @@ class SearchResult
     @related = solr_doc['relatedIdentifier']
     @alternate = solr_doc['alternateIdentifier']
     @version = solr_doc['version']
+    @contributor = Array(solr_doc['contributor'])
+    @contributor_type = Array(solr_doc['contributorType'])
 
     # Insert/update record in MongoDB
     # Hack Alert (possibly)
@@ -76,6 +79,20 @@ class SearchResult
     else
       nil
     end
+  end
+
+  def contributors_with_type
+    contributor_type.zip(contributor).map { |c| {c[0] => c[1] }}
+  end
+
+  def contributors_by_type(type)
+    contributors_with_type.map do |hsh|
+      hsh.select { |key, value| key == type }
+    end
+  end
+
+  def grant_info
+    contributors_by_type("Funder").map { |c| c["Funder"] }.compact.uniq
   end
 
   def related
