@@ -8,7 +8,7 @@ class SearchResult
                 :citations, :hashed, :related, :alternate, :version,
                 :rights_uri, :subject, :description, :creative_commons,
                 :contributor, :contributor_type, :contributors_with_type, :grant_info
-  attr_reader :hashed
+  attr_reader :hashed, :doi, :title_escaped
 
   # Merge a mongo DOI record with solr highlight information.
   def initialize(solr_doc, solr_result, citations, user_state)
@@ -57,7 +57,9 @@ class SearchResult
                                   { upsert: true })
   end
 
-  attr_reader :doi
+  def title_escaped
+    title.gsub("'", %q(\\\'))
+  end
 
   def open_access?
     @doc['oa_status'] == 'Open Access'

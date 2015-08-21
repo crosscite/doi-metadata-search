@@ -23,7 +23,7 @@
   %a{:href => 'http://doi.org/' + item.doi}
     %i.icon-external-link
     = "http://doi.org/#{item.doi}"
-  %a.cite-link.nowrap{:href => "javascript:showCiteBox('#{item.doi}', '#{item.title}');"}
+  %a.cite-link.nowrap{:href => "javascript:showCiteBox('#{item.doi}', '#{item.title_escaped}');"}
     %i.icon-quote-left
     Cite
 
