@@ -58,7 +58,7 @@ class SearchResult
   end
 
   def title_escaped
-    title.gsub("'", %q(\\\'))
+    title.gsub("'", %q(\\\')) if title.present?
   end
 
   def open_access?
