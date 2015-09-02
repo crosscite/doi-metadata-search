@@ -1,6 +1,6 @@
 # DOI Metadata Search
 
-[![Build Status](https://travis-ci.org/crosscite/doi-metadata-search.svg?branch=datacite)](https://travis-ci.org/crosscite/doi-metadata-search)
+[![Build Status](https://travis-ci.org/crosscite/doi-metadata-search.svg)](https://travis-ci.org/crosscite/doi-metadata-search)
 [![Code Climate](https://codeclimate.com/github/crosscite/doi-metadata-search/badges/gpa.svg)](https://codeclimate.com/github/crosscite/doi-metadata-search)
 [![Test Coverage](https://codeclimate.com/github/crosscite/doi-metadata-search/badges/coverage.svg)](https://codeclimate.com/github/crosscite/doi-metadata-search/coverage)
 
@@ -23,9 +23,9 @@ with both CrossRef and DataCite DOIs.
 
 - Ruby (2.1 or higher)
 - git
-- Virtualbox: https://www.virtualbox.org
-- Vagrant: http://www.vagrantup.com
-- Vagrant omnibus plugin: `vagrant plugin install vagrant-omnibus
+- Virtualbox: [https://www.virtualbox.org](https://www.virtualbox.org)
+- Vagrant: [http://www.vagrantup.com](http://www.vagrantup.com)
+- Vagrant omnibus plugin: `vagrant plugin install vagrant-omnibus`
 
 ### Installation
 
@@ -35,7 +35,7 @@ Using Virtualbox.
 git clone https://github.com/crosscite/doi-metadata-search.git
 cd doi-metadata-search
 cp .env.example .env
-vagrant up
+vagrant up --provider=virtualbox
 ```
 
 If you don't see any errors from the last command, you now have a properly
