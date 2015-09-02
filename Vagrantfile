@@ -27,8 +27,8 @@ def load_env
   # requires dotenv plugin/gem
   require "dotenv"
 
-  # make sure DOTENV is set, defaults to "dev"
-  ENV["DOTENV"] ||= "dev"
+  # make sure DOTENV is set, defaults to "default"
+  ENV["DOTENV"] ||= "default"
 
   # load ENV variables from file specified by DOTENV
   # use .env with DOTENV=default

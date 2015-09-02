@@ -17,26 +17,23 @@ to also work with the DataCite Metadata Search in a project by
 DOI Metadata Search combines these activities into a single codebase that works
 with both CrossRef and DataCite DOIs.
 
-## Installation
+## Local Installation
 
 ### Requirements
 
 - Ruby (2.1 or higher)
 - git
-- Vagrant: http://www.vagrantup.com
-- Chef: http://www.opscode.com/chef/
 - Virtualbox: https://www.virtualbox.org
-
+- Vagrant: http://www.vagrantup.com
+- Vagrant omnibus plugin: `vagrant plugin install vagrant-omnibus
 
 ### Installation
+
+Using Virtualbox.
 
 ```
 git clone https://github.com/crosscite/doi-metadata-search.git
 cd doi-metadata-search
-gem install librarian-chef
-librarian-chef install
-vagrant plugin install vagrant-omnibus
-vagrant plugin install vagrant-aws
 cp .env.example .env
 vagrant up
 ```
@@ -44,25 +41,6 @@ vagrant up
 If you don't see any errors from the last command, you now have a properly
 configured Ubuntu virtual machine running `doi-metadata-search`. You can point your
 browser to `http://10.2.2.12`.
-
-### Vagrant Pluggins
-
-- vagrant-aws (0.4.1)
-- vagrant-login (1.0.1, system)
-- vagrant-omnibus (1.3.1)
-- vagrant-share (1.0.1, system)
-- vagrant-vbguest (0.10.0)
-
-
-### Environment Variables
-
-| Variable       | Notes               |
-|----------------|---------------------|
-| AWS_ACCESS_KEY | Used for production |
-| AWS_SECRET     | Used for production |
-| AWS_TAGS_NAME  | Used for production |
-| SSH_KEY_PATH   | Used for production |
-
 
 ## Development
 
