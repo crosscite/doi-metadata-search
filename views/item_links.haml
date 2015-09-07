@@ -5,54 +5,23 @@
     Research funded by
     = item.grant_info.join('  |  ')
 
-- if item.creative_commons.present?
-  %p
-    - if item.creative_commons == "zero"
-      %a{:href => "http://creativecommons.org/publicdomain/zero/1.0/"}
-        %img{:src => "http://i.creativecommons.org/p/zero/1.0/80x15.png"}
-    - else
-      %a{:href => "http://creativecommons.org/licenses/#{item.creative_commons}/4.0/"}
-        %img{:src => "http://i.creativecommons.org/l/#{item.creative_commons}/4.0/80x15.png"}
-
 .item-links
   - if item.citations.present?
     %a{:href => "javascript:showCitationsBox('#{item.hashed}');"}
-      %i.icon-resize-small
+      %i.fa.fa-quote-left
         = item.citations.count
         citations from patents
   %a{:href => 'http://doi.org/' + item.doi}
-    %i.icon-external-link
+    %i.fa.fa-external-link
     = "http://doi.org/#{item.doi}"
   %a.cite-link.nowrap{:href => "javascript:showCiteBox('#{item.doi}', '#{item.title_escaped}');"}
-    %i.icon-quote-left
+    %i.fa.fa-quote-left
     Cite
-
-  - if item.related.present?
-    %span.dropdown.nowrap
-      %a.dropdown-toggle{:role => 'button', 'data-toggle' => 'dropdown', :href => '#'}
-        %i.icon-double-angle-down
-        Related Content
-      %ul.dropdown-menu{role: 'menu'}
-        - item.related.each do |related|
-          - if related[:id] == "DOI"
-            %li
-              %a.cite-link{href: "?q=" + related[:text]}
-                %strong
-                  = related[:relation]
-                %i.icon-external-link
-                = "http://doi.org/#{related[:text]}"
-          - elsif related[:id] == "URL"
-            %li
-              %a.cite-link{href: related[:text]}
-                %strong
-                  = related[:relation]
-                %i.icon-external-link
-                = related[:text]
 
   - if item.alternate.present?
     %span.dropdown.nowrap
       %a.dropdown-toggle{:role => 'button', 'data-toggle' => 'dropdown', :href => '#'}
-        %i.icon-double-angle-down
+        %i.fa.fa-icon-info
         Other Identifiers
       %ul.dropdown-menu{:role => 'menu'}
         - item.alternate.each do |alternate|
@@ -74,3 +43,31 @@
       %span.well-transparent.claim-none{id: item.doi}
         %img{src: '/images/orcid_16x16.gif'}
         %span Add to ORCID
+
+- if item.related.present?
+  .item-links
+    - item.related.each do |key, array|
+      %span.dropdown.nowrap
+        %a.label.dropdown-toggle{:role => 'button', 'data-toggle' => 'dropdown', :href => '#'}
+          =key + " #{array.count}"
+        %ul.dropdown-menu{role: 'menu'}
+          - array.each do |related|
+            - if related[:id] == "DOI"
+              %li
+                %a.cite-link{href: "?q=" + related[:text]}
+                  %i.fa.fa-external-link
+                  = "http://doi.org/#{related[:text]}"
+            - elsif related[:id] == "URL"
+              %li
+                %a.cite-link{href: related[:text]}
+                  %i.fa.fa-external-link
+                  = related[:text]
+
+- if item.creative_commons.present?
+  .item-links.license
+    - if item.creative_commons == "zero"
+      %a{:href => "http://creativecommons.org/publicdomain/zero/1.0/"}
+        %img{:src => "http://i.creativecommons.org/p/zero/1.0/80x15.png"}
+    - else
+      %a{:href => "http://creativecommons.org/licenses/#{item.creative_commons}/4.0/"}
+        %img{:src => "http://i.creativecommons.org/l/#{item.creative_commons}/4.0/80x15.png"}

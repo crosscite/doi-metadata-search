@@ -106,24 +106,21 @@ class SearchResult
   end
 
   def related
-    return nil unless @related
-
     Array(@related).map do |item|
       { relation: uncamelize(item.split(':', 3)[0]),
         id: item.split(':', 3)[1],
         text: item.split(':', 3)[2] }
-    end.select { |item| item[:id] =~ /(DOI|URL)/ }
+    end.select { |item| item[:text].present? && item[:id] =~ /(DOI|URL)/ }.group_by { |item| item[:relation] }
   end
 
   def alternate
     Array(@alternate).map do |item|
       { id: item.split(':', 2)[0],
         text: item.split(':', 2)[1] }
-    end
+    end.select { |item| item[:id] !~ /citation/ }
   end
 
   def authors
-    return nil unless @authors
     Array(@authors).map do |author|
       names = Namae.parse(author.fetch("creatorName", nil))
       name = names.first || OpenStruct.new(family: nil, given: nil)
