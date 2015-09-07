@@ -98,7 +98,7 @@ configure do
   set :links, settings.mongo[ENV['DB_NAME']]['links']
 
   # Set up for http requests to data.datacite.org and dx.doi.org
-  dx_doi_org = Faraday.new(url: 'http://doi.org') do |c|
+  doi_org = Faraday.new(url: 'http://doi.org') do |c|
     c.use FaradayMiddleware::FollowRedirects, limit: 5
     c.response :encoding
     c.adapter Faraday.default_adapter
@@ -109,7 +109,7 @@ configure do
     c.adapter Faraday.default_adapter
   end
 
-  set :dx_doi_org, dx_doi_org
+  set :doi_org, doi_org
   set :data_service, data_service
 
   # Citation format types

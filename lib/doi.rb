@@ -48,7 +48,7 @@ module Sinatra
       if short_doi_doc.has_next?
         short_doi_doc.next['doi']
       else
-        res = settings.dx_doi_org.get do |req|
+        res = settings.doi_org.get do |req|
           req.url "/10/#{normal_short_doi}"
           req.headers['Accept'] = JSON_TYPE
         end
