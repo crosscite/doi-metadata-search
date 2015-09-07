@@ -25,6 +25,7 @@ gem "sidekiq"
 gem 'nokogiri'
 gem 'rake'
 gem 'log4r'
+gem 'namae'
 gem 'whenever', :require => false
 
 group :development do

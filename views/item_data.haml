@@ -6,7 +6,7 @@
       [no metadata registered]
 
   - unless item.authors.nil?
-    %p= item.authors[0..19].join(", ")
+    %p= item.authors_as_string
 
   %p
     - if item.version

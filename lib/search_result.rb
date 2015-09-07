@@ -1,4 +1,8 @@
 require 'cgi'
+require 'nokogiri'
+require 'base64'
+require 'namae'
+require 'ostruct'
 require_relative 'helpers'
 
 class SearchResult
@@ -8,7 +12,7 @@ class SearchResult
                 :citations, :hashed, :related, :alternate, :version,
                 :rights_uri, :subject, :description, :creative_commons,
                 :contributor, :contributor_type, :contributors_with_type, :grant_info
-  attr_reader :hashed, :doi, :title_escaped
+  attr_reader :hashed, :doi, :title_escaped, :xml
 
   # Merge a mongo DOI record with solr highlight information.
   def initialize(solr_doc, solr_result, citations, user_state)
@@ -32,7 +36,7 @@ class SearchResult
     @day = solr_doc['day'] || @date && @date.size > 9 ? @date[8..9].to_i : nil
     # @volume = find_value('hl_volume')
     # @issue = find_value('hl_issue')
-    @authors = find_value('creator')
+    # @authors = find_value('creator')
     # @first_page = find_value('hl_first_page')
     # @last_page = find_value('hl_last_page')
     @rights_uri = Array(solr_doc['rightsURI'])
@@ -41,6 +45,10 @@ class SearchResult
     @version = solr_doc['version']
     @contributor = Array(solr_doc['contributor'])
     @contributor_type = Array(solr_doc['contributorType'])
+    xml = Base64.decode64(solr_doc['xml']).force_encoding('UTF-8')
+    @xml = Hash.from_xml(xml).fetch("resource", {})
+    @authors = @xml.fetch("creators", {}).fetch("creator", [])
+    @authors = [@authors] if @authors.is_a?(Hash)
 
     # Insert/update record in MongoDB
     # Hack Alert (possibly)
@@ -100,7 +108,7 @@ class SearchResult
   def related
     return nil unless @related
 
-    @related.map do |item|
+    Array(@related).map do |item|
       { relation: uncamelize(item.split(':', 3)[0]),
         id: item.split(':', 3)[1],
         text: item.split(':', 3)[2] }
@@ -108,8 +116,7 @@ class SearchResult
   end
 
   def alternate
-    return nil unless @alternate
-    @alternate.map do |item|
+    Array(@alternate).map do |item|
       { id: item.split(':', 2)[0],
         text: item.split(':', 2)[1] }
     end
@@ -117,7 +124,21 @@ class SearchResult
 
   def authors
     return nil unless @authors
-    @authors.map { |author| parse_author(author) }
+    Array(@authors).map do |author|
+      names = Namae.parse(author.fetch("creatorName", nil))
+      name = names.first || OpenStruct.new(family: nil, given: nil)
+
+      { "family" => name.family,
+        "given" => name.given,
+        "credit-name" => [name.given, name.family].join(" "),
+        "id" => author.fetch("nameIdentifier", nil) }
+    end
+  end
+
+  def authors_as_string
+    authors[0..19].map do |author|
+      author["id"].present? ? "<a href=\"/?q=#{author["id"]}\">#{author["credit-name"]}</a>" : author["credit-name"]
+    end.join(", ")
   end
 
   def parse_author(name)
@@ -172,7 +193,7 @@ class SearchResult
 
   def coins_authors
     if @authors
-      @authors.join(', ')
+      authors_as_string
     else
       ''
     end

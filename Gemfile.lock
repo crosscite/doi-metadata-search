@@ -77,6 +77,7 @@ GEM
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    namae (0.10.1)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
@@ -210,6 +211,7 @@ DEPENDENCIES
   log4r
   mongo (~> 1.12.3)
   multi_json
+  namae
   nokogiri
   oauth2
   oj
