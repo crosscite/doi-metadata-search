@@ -7,6 +7,8 @@
           - unless value_count.zero?
             - if name == 'rightsURI'
               - label_name = rights_hash.fetch(value_name, nil)
+            - elsif name == 'datacentre_facet'
+              - label_name = center_text(value_name)
             - else
               - label_name = value_name
             - next unless label_name

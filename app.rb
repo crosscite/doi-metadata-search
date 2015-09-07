@@ -124,7 +124,7 @@ configure do
       'chicago' => 'text/x-bibliography; style=chicago-fullnote-bibliography'
 
   # Set facet fields
-  set :facet_fields, %w(resourceType_facet publicationYear publisher_facet rightsURI)
+  set :facet_fields, %w(resourceType_facet publicationYear datacentre_facet rightsURI)
 
   # Google analytics event tracking
   set :ga, Gabba::Gabba.new(ENV['GABBA_COOKIE'], ENV['GABBA_URL']) if ENV['GABBA_COOKIE']

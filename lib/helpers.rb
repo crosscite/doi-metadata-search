@@ -38,7 +38,16 @@ helpers do
   end
 
   def facet_text(name)
-    name.gsub(/(_facet|URI)/, '_id').underscore.humanize
+    if name == "datacentre_facet"
+      "Data center"
+    else
+      name.gsub(/(_facet|URI)/, '_id').underscore.humanize
+    end
+  end
+
+  def center_text(name)
+    start = name.index("- ") + 2
+    name[start..-1]
   end
 
   def rights_hash
