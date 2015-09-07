@@ -6,7 +6,7 @@
     %h1
       %span.cr-red DataCite
       %span Search
-.row-fluid  
+.row-fluid
   %p.lead
     This page will help you find metadata held by DataCite.
     Using this page you can
@@ -21,29 +21,29 @@
     %li.active
       %a{:href => '#simple-search', 'data-toggle' => 'tab'}
         %h6.simple-search
-          %i.icon-search
+          %i.fa.fa-search
           Simple
     %li
       %a{:href => '#adv-search', 'data-toggle' => 'tab'}
         %h6.adv-search
-          %i.icon-wrench
+          %i.fa-fa-wrench
           Advanced
     %li
       %a#bib-search-link{:href => '#bib-search', 'data-toggle' => 'tab'}
         %h6.bib-search
-          %i.icon-list
+          %i.fa.fa-list
           Bibliography
 
 .row-fluid
   .tab-content
     .tab-pane.fade.active.in#simple-search
       %form.form-search.well
-        %p.lead Find a work and its metadata by entering a DOI, citation or any terms      
+        %p.lead Find a work and its metadata by entering a DOI, citation or any terms
         .middle
           %input.input-xxlarge.search-query#simple-search-text{:type => 'text', :placeholder => 'DOI, citation, anything...'}
           %button.btn#simple-search-btn{:type => 'submit'} Search
 
-    .tab-pane.fade#adv-search              
+    .tab-pane.fade#adv-search
       %form.form-horizontal.well
         %p.lead Find a work, its metadata and DOI by entering bibliographic information
         .control-group
@@ -64,12 +64,12 @@
           %span#completion-msg Pick fields above. Be sure to pick required fields.
           %button.btn.disabled#adv-search-btn{:type => 'submit'} Search
 
-    .tab-pane.fade#bib-search                  
+    .tab-pane.fade#bib-search
       %form.form-vertical.well#bib-search-well
         %p.lead Give us a bunch of citations and we'll find DOIs for them
         %label
           Citations (one per line)
         %textarea#bib-search-text
-        .form-actions.right         
+        .form-actions.right
           %button.btn{:type => 'submit'} Find DOIs
 

@@ -98,9 +98,9 @@ function refreshAdvForm() {
 
     if (isAdded) {
       addLink.addClass('added');
-      icon.addClass('icon-check');
+      icon.addClass('fa fa-check-square-o');
     } else {
-      icon.addClass('icon-check-empty');
+      icon.addClass('fa fa-square-o');
     }
 
     addLink.addClass('label label-add');

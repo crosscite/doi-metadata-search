@@ -7,16 +7,16 @@
     %ul.dropdown-menu.pull-right{'role' => 'menu'}
       %li
         %a{:href => "#{ENV['ORCID_URL']}/#{session[:orcid][:uid]}"}
-          %i.icon-external-link
+          %i.fa.fa-external-link
           ORCID Profile
       %li
         %a{:href => '/orcid/activity'}
-          %i.icon-cog
+          %i.fa.fa-cog
           Settings
       %li.divider
       %li
         %a{:href => "/auth/signout?redirect_uri=#{URI.encode(request.fullpath)}"}
-          %i.icon-signout
+          %i.fa.fa-sign-out
           Sign out
 - else
   %img.logo{src: '/images/orcid_24x24.gif'}

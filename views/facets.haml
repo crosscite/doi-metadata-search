@@ -16,12 +16,12 @@
             - if page[:facet_query].has_key?(name) && page[:facet_query][name].include?(value_name)
               %li.active
                 %a{:href => "#{facet_link_not(name, value_name)}"}
-                  %i.icon-check
+                  %i.fa.fa-check-square-o
                 = label_name
                 %span.number.pull-right= "#{value_count}"
             - else
               %li
                 %a{:href => "#{facet_link(name, value_name)}"}
-                  %i.icon-check-empty
+                  %i.fa.fa-square-o
                 = label_name
                 %span.number.pull-right= "#{value_count}"

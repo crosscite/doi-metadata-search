@@ -36,7 +36,7 @@ var ARTICLE_FIELDS = [
     label: 'Journal title',
     id: 'journal-title',
     help: '<a href="http://www.crossref.org/titleList/" target="_blank">'
-          + '<i class="icon-external-link"></i>&nbsp;Browse title list'
+          + '<i class="fa fa-external-link"></i>&nbsp;Browse title list'
            + '</a>'
   },
   {

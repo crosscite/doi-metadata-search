@@ -114,7 +114,7 @@ $(document).ready(function() {
     $('.claim-refresh-btn').click(function(e) {
       if (!$(this).hasClass('disabled')) {
         $(this).parent().find('.btn').addClass('disabled');
-        $(this).prepend($('<i>').addClass('icon-refresh').addClass('icon-spin'));
+        $(this).prepend($('<i>').addClass('fa').addClass('fa-refresh').addClass('fa-spin'));
         performSync($popover);
       }
       e.preventDefault();
@@ -134,8 +134,8 @@ $(document).ready(function() {
             $popover.popover('destroy');
             $popover.removeClass('claim-none');
             $popover.unbind('click');
-            $popover.find('i').removeClass('icon-circle-blank');
-            $popover.find('i').addClass('icon-circle');
+            $popover.find('i').removeClass('fa-circle-o');
+            $popover.find('i').addClass('fa-check-circle-o');
             if (data.status === 'ok') {
               $popover.addClass('claim-warn');
               $popover.click(claimWarnClickFn);
@@ -194,7 +194,7 @@ $(document).ready(function() {
         return;
       }
 
-      $(this).prepend($('<i>').addClass('icon-refresh').addClass('icon-spin'));
+      $(this).prepend($('<i>').addClass('fa').addClass('fa-refresh').addClass('fa-spin'));
       $(this).addClass('disabled');
       $(this).parent().find('.btn').addClass('disabled');
 
@@ -213,7 +213,7 @@ $(document).ready(function() {
     $('.claim-warn').popover('destroy');
     $('.claim-ok').popover('destroy');
 
-    var $text = $('<div>').html('<span>Work has been added to your ORCID profile but is marked as private. Visit your <a href="https://orcid.org/my-orcid" target="_blank"><i class="icon-external-link"></i>ORCID profile</a> to set this work\'s visibility to public or limited.<br/><br/>If you have removed this private work from your ORCID profile you can click the button below to remove it from CrossRef Metadata Search.</span>');
+    var $text = $('<div>').html('<span>Work has been added to your ORCID profile but is marked as private. Visit your <a href="https://orcid.org/my-orcid" target="_blank"><i class="fa fa-external-link"></i>ORCID profile</a> to set this work\'s visibility to public or limited.<br/><br/>If you have removed this private work from your ORCID profile you can click the button below to remove it from CrossRef Metadata Search.</span>');
     var $btnClose = $('<button>').addClass('btn').addClass('claim-close-btn').text('Close');
     var $btnRefresh = $('<button>').addClass('btn').addClass('btn-warning').addClass('claim-refresh-btn').text('Refresh');
     var $btnRemove = $('<button>').addClass('btn').addClass('btn-danger').addClass('claim-remove-btn').text('Remove');
@@ -242,7 +242,7 @@ $(document).ready(function() {
     $('.claim-refresh-btn').click(function(e) {
       if (!$(this).hasClass('disabled')) {
         $(this).parent().find('.btn').addClass('disabled');
-        $(this).prepend($('<i>').addClass('icon-refresh').addClass('icon-spin'));
+        $(this).prepend($('<i>').addClass('fa').addClass('fa-refresh').addClass('fa-spin'));
         performSync($popover);
       }
       e.preventDefault();
@@ -254,7 +254,7 @@ $(document).ready(function() {
         return;
       }
 
-      $(this).prepend($('<i>').addClass('icon-refresh').addClass('icon-spin'));
+      $(this).prepend($('<i>').addClass('fa').addClass('fa-refresh').addClass('fa-spin'));
       $(this).parent().find('.btn').addClass('disabled');
 
       $.ajax({
@@ -267,8 +267,8 @@ $(document).ready(function() {
           $popover.unbind('click');
           $popover.click(claimNoneClickFn);
           $popover.find('span').text('Add to ORCID');
-          $popover.find('i').removeClass('icon-circle');
-          $popover.find('i').addClass('icon-circle-blank');
+          $popover.find('i').removeClass('fa-check-circle-o');
+          $popover.find('i').addClass('fa-circle-o');
         },
         error: function() {
           $popover.popover('destroy');
