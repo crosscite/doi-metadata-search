@@ -1,16 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-begin
-  # workaround for shared folders with vmware and lxc providers
-  class Librarian::Action::Install < Librarian::Action::Base
-    def create_install_path
-      FileUtils.rm_rf("#{install_path}/.", secure: true) if install_path.exist?
-      install_path.mkpath
-    end
-  end
-end
-
 def installed_plugins(required_plugins)
   required_plugins.reduce([]) do |missing, plugin|
     if Vagrant.has_plugin?(plugin)
@@ -46,7 +36,7 @@ Vagrant.configure("2") do |config|
   # All Vagrant configuration is done here.
 
   # Check if required plugins are installed.
-  required_plugins = %w{ vagrant-omnibus vagrant-bindfs vagrant-capistrano-push dotenv }
+  required_plugins = %w{ vagrant-omnibus vagrant-bindfs dotenv }
 
   unless installed_plugins(required_plugins).empty?
     puts "Plugins have been installed, please rerun vagrant."
@@ -141,7 +131,7 @@ Vagrant.configure("2") do |config|
     machine.vm.synced_folder ".", "/var/www/#{ENV['APPLICATION']}/shared", id: "vagrant-root"
   end
 
-  config.push.define "capistrano" do |push|
-    push.stage = ENV.fetch("STAGE", "production")
-  end
+  # config.push.define "capistrano" do |push|
+  #   push.stage = ENV.fetch("STAGE", "production")
+  # end
 end
