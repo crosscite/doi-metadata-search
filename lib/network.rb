@@ -64,10 +64,10 @@ module Sinatra
     end
 
     def parse_error_response(string)
-      if is_json?(string)
-        string = ::ActiveSupport::JSON.decode(string)
-      elsif is_xml?(string)
-        string = Hash.from_xml(string)
+      if json = as_json(string)
+        string = json
+      elsif xml = as_xml(string)
+        string = xml
       end
       string = string['error'] if string.is_a?(Hash) && string['error']
       string
