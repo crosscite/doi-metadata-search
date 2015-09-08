@@ -49,7 +49,8 @@ require 'sidekiq/api'
 require 'open-uri'
 require 'uri'
 
-NETWORKABLE_EXCEPTIONS = [Faraday::Error::ClientError,
+NETWORKABLE_EXCEPTIONS = [Faraday::ClientError,
+                          Faraday::TimeoutError,
                           URI::InvalidURIError,
                           Encoding::UndefinedConversionError,
                           ArgumentError,

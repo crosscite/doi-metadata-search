@@ -2,124 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: http://doi.org/10/kz6
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v0.9.1
-      Accept:
-      - application/vnd.citationstyles.csl+json
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-  response:
-    status:
-      code: 301
-      message: Moved Permanently
-    headers:
-      Server:
-      - Apache-Coyote/1.1
-      Location:
-      - http://doi.org/10.6084/M9.FIGSHARE.154691
-      Expires:
-      - Tue, 08 Sep 2015 13:39:40 GMT
-      Content-Length:
-      - '0'
-      Date:
-      - Mon, 07 Sep 2015 13:39:40 GMT
-    body:
-      encoding: UTF-8
-      string: ''
-    http_version: 
-  recorded_at: Mon, 07 Sep 2015 13:38:45 GMT
-- request:
-    method: get
-    uri: http://doi.org/10.6084/M9.FIGSHARE.154691
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v0.9.1
-      Accept:
-      - application/vnd.citationstyles.csl+json
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-  response:
-    status:
-      code: 303
-      message: See Other
-    headers:
-      Server:
-      - Apache-Coyote/1.1
-      Vary:
-      - Accept
-      Location:
-      - http://data.datacite.org/10.6084%2FM9.FIGSHARE.154691
-      Expires:
-      - Mon, 07 Sep 2015 19:46:58 GMT
-      Content-Type:
-      - text/html;charset=utf-8
-      Content-Length:
-      - '192'
-      Date:
-      - Mon, 07 Sep 2015 13:39:41 GMT
-    body:
-      encoding: UTF-8
-      string: |2-
-
-        <HTML><HEAD><TITLE>Handle Redirect</TITLE></HEAD>
-        <BODY><A HREF="http://data.datacite.org/10.6084%2FM9.FIGSHARE.154691">http://data.datacite.org/10.6084%2FM9.FIGSHARE.154691</A></BODY></HTML>
-    http_version: 
-  recorded_at: Mon, 07 Sep 2015 13:38:46 GMT
-- request:
-    method: get
-    uri: http://data.datacite.org/10.6084%2FM9.FIGSHARE.154691
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v0.9.1
-      Accept:
-      - application/vnd.citationstyles.csl+json
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx/1.1.19
-      Date:
-      - Mon, 07 Sep 2015 13:26:31 GMT
-      Content-Type:
-      - application/vnd.citationstyles.csl+json
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Cache-Control:
-      - no-transform, max-age=3600
-      Last-Modified:
-      - Tue, 29 Jan 2013 15:26:48 GMT
-      Vary:
-      - Accept
-      Access-Control-Allow-Origin:
-      - "*"
-      Access-Control-Allow-Headers:
-      - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
-    body:
-      encoding: UTF-8
-      string: '{"type":"dataset","DOI":"10.6084\/M9.FIGSHARE.154691","URL":"http:\/\/dx.doi.org\/10.6084\/M9.FIGSHARE.154691","title":"D2.1
-        Kick off preparation, Communication plan and Website","publisher":"Figshare","issued":{"raw":"2013"},"author":[{"literal":"ODIN
-        Consortium"},{"literal":"Gudmundur Thorisson"},{"literal":"Martin Fenner"}]}'
-    http_version: 
-  recorded_at: Mon, 07 Sep 2015 13:38:46 GMT
-- request:
-    method: get
     uri: http://search.datacite.org/api?f.format.facet.prefix=application&f.resourceType_facet.facet.limit=15&f.rightsURI.facet.prefix=http://creativecommons.org&facet=true&facet.field=rightsURI&facet.limit=10&facet.mincount=1&fl=score&fq=has_metadata:true&hl=true&hl.fl=hl_*&hl.fragsize=0&hl.mergeContinuous=true&hl.simple.post=%3C/span%3E&hl.simple.pre=%3Cspan%20class=%22hl%22%3E&hl.snippets=10&q=doi:%2210.6084/M9.FIGSHARE.154691%22&qf=doi%20creator%20contributor%20contributorType%20title%20publisher%20publicationYear%20relatedIdentifier%20alternateIdentifier%20resourceTypeGeneral%20resourceType%20nameIdentifier%20subject%20rightsURI%20version%20description%20descriptionType&rows=20&sort=score%20desc&start=0&wt=ruby
     body:
       encoding: US-ASCII
@@ -133,17 +15,80 @@ http_interactions:
       Server:
       - nginx/1.1.19
       Date:
-      - Mon, 07 Sep 2015 13:26:32 GMT
+      - Tue, 08 Sep 2015 15:51:38 GMT
       Content-Type:
       - text/plain;charset=UTF-8
       Transfer-Encoding:
       - chunked
       Connection:
       - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
       encoding: UTF-8
       string: |
-        {'responseHeader'=>{'status'=>0,'QTime'=>3},'response'=>{'numFound'=>1,'start'=>0,'maxScore'=>16.196663,'docs'=>[{'xml'=>'PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMyIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMyBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC0zL21ldGFkYXRhLnhzZCI+PGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuNjA4NC9NOS5GSUdTSEFSRS4xNTQ2OTE8L2lkZW50aWZpZXI+PHRpdGxlcz48dGl0bGU+RDIuMSBLaWNrIG9mZiBwcmVwYXJhdGlvbiwgQ29tbXVuaWNhdGlvbiBwbGFuIGFuZCBXZWJzaXRlPC90aXRsZT48L3RpdGxlcz48cHVibGlzaGVyPkZpZ3NoYXJlPC9wdWJsaXNoZXI+PHB1YmxpY2F0aW9uWWVhcj4yMDEzPC9wdWJsaWNhdGlvblllYXI+PHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJEYXRhc2V0Ij5QYXBlcjwvcmVzb3VyY2VUeXBlPjxyaWdodHNMaXN0PjxyaWdodHMgcmlnaHRzVVJJPSJodHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9saWNlbnNlcy9ieS8zLjAvdXMvIj5DQy1CWTwvcmlnaHRzPjwvcmlnaHRzTGlzdD48Y3JlYXRvcnM+PGNyZWF0b3I+PGNyZWF0b3JOYW1lPk9ESU4gQ29uc29ydGl1bTwvY3JlYXRvck5hbWU+PC9jcmVhdG9yPjxjcmVhdG9yPjxjcmVhdG9yTmFtZT5HdWRtdW5kdXIgVGhvcmlzc29uPC9jcmVhdG9yTmFtZT48bmFtZUlkZW50aWZpZXIgbmFtZUlkZW50aWZpZXJTY2hlbWU9Ik9SQ0lEIj4wMDAwLTAwMDEtNTYzNS0xODYwPC9uYW1lSWRlbnRpZmllcj48L2NyZWF0b3I+PGNyZWF0b3I+PGNyZWF0b3JOYW1lPk1hcnRpbiBGZW5uZXI8L2NyZWF0b3JOYW1lPjxuYW1lSWRlbnRpZmllciBuYW1lSWRlbnRpZmllclNjaGVtZT0iT1JDSUQiPjAwMDAtMDAwMi0yMTg0LTYwOTQ8L25hbWVJZGVudGlmaWVyPjwvY3JlYXRvcj48L2NyZWF0b3JzPjwvcmVzb3VyY2U+','doi'=>'10.6084/M9.FIGSHARE.154691','creator'=>['ODIN Consortium','Gudmundur Thorisson','Martin Fenner'],'resourceType'=>'Paper','publisher'=>'Figshare','title'=>['D2.1 Kick off preparation, Communication plan and Website'],'nameIdentifier'=>['ORCID:0000-0001-5635-1860','ORCID:0000-0002-2184-6094'],'rightsURI'=>['http://creativecommons.org/licenses/by/3.0/us/'],'publicationYear'=>'2013','resourceTypeGeneral'=>'Dataset','score'=>16.196663}]},'facet_counts'=>{'facet_queries'=>{},'facet_fields'=>{'resourceType_facet'=>['Dataset',1],'publicationYear'=>['2013',1],'publisher_facet'=>['Figshare',1],'rightsURI'=>['http://creativecommons.org/licenses/by/3.0/us/',1]},'facet_dates'=>{},'facet_ranges'=>{}},'highlighting'=>{'1558135'=>{}}}
+        {'responseHeader'=>{'status'=>0,'QTime'=>236},'response'=>{'numFound'=>1,'start'=>0,'maxScore'=>16.203411,'docs'=>[{'xml'=>'PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMyIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMyBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC0zL21ldGFkYXRhLnhzZCI+PGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuNjA4NC9NOS5GSUdTSEFSRS4xNTQ2OTE8L2lkZW50aWZpZXI+PHRpdGxlcz48dGl0bGU+RDIuMSBLaWNrIG9mZiBwcmVwYXJhdGlvbiwgQ29tbXVuaWNhdGlvbiBwbGFuIGFuZCBXZWJzaXRlPC90aXRsZT48L3RpdGxlcz48cHVibGlzaGVyPkZpZ3NoYXJlPC9wdWJsaXNoZXI+PHB1YmxpY2F0aW9uWWVhcj4yMDEzPC9wdWJsaWNhdGlvblllYXI+PHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJEYXRhc2V0Ij5QYXBlcjwvcmVzb3VyY2VUeXBlPjxyaWdodHNMaXN0PjxyaWdodHMgcmlnaHRzVVJJPSJodHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9saWNlbnNlcy9ieS8zLjAvdXMvIj5DQy1CWTwvcmlnaHRzPjwvcmlnaHRzTGlzdD48Y3JlYXRvcnM+PGNyZWF0b3I+PGNyZWF0b3JOYW1lPk9ESU4gQ29uc29ydGl1bTwvY3JlYXRvck5hbWU+PC9jcmVhdG9yPjxjcmVhdG9yPjxjcmVhdG9yTmFtZT5HdWRtdW5kdXIgVGhvcmlzc29uPC9jcmVhdG9yTmFtZT48bmFtZUlkZW50aWZpZXIgbmFtZUlkZW50aWZpZXJTY2hlbWU9Ik9SQ0lEIj4wMDAwLTAwMDEtNTYzNS0xODYwPC9uYW1lSWRlbnRpZmllcj48L2NyZWF0b3I+PGNyZWF0b3I+PGNyZWF0b3JOYW1lPk1hcnRpbiBGZW5uZXI8L2NyZWF0b3JOYW1lPjxuYW1lSWRlbnRpZmllciBuYW1lSWRlbnRpZmllclNjaGVtZT0iT1JDSUQiPjAwMDAtMDAwMi0yMTg0LTYwOTQ8L25hbWVJZGVudGlmaWVyPjwvY3JlYXRvcj48L2NyZWF0b3JzPjwvcmVzb3VyY2U+','doi'=>'10.6084/M9.FIGSHARE.154691','creator'=>['ODIN Consortium','Gudmundur Thorisson','Martin Fenner'],'resourceType'=>'Paper','publisher'=>'Figshare','title'=>['D2.1 Kick off preparation, Communication plan and Website'],'nameIdentifier'=>['ORCID:0000-0001-5635-1860','ORCID:0000-0002-2184-6094'],'rightsURI'=>['http://creativecommons.org/licenses/by/3.0/us/'],'publicationYear'=>'2013','resourceTypeGeneral'=>'Dataset','score'=>16.203411}]},'facet_counts'=>{'facet_queries'=>{},'facet_fields'=>{'resourceType_facet'=>['Dataset',1],'publicationYear'=>['2013',1],'datacentre_facet'=>['CDL.DIGSCI - Digital Science',1],'rightsURI'=>['http://creativecommons.org/licenses/by/3.0/us/',1]},'facet_dates'=>{},'facet_ranges'=>{}},'highlighting'=>{'1558135'=>{}}}
     http_version: 
-  recorded_at: Mon, 07 Sep 2015 13:38:47 GMT
+  recorded_at: Tue, 08 Sep 2015 16:03:56 GMT
+- request:
+    method: get
+    uri: http://dlm.labs.datacite.org/api/references?work_ids=http://doi.org/10.6084/M9.FIGSHARE.154691
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - doi-metadata-search - http://search.labs.datacite.org
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Date:
+      - Tue, 08 Sep 2015 16:04:03 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Access-Control-Max-Age:
+      - '1728000'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 75ccba5c-5b37-446a-ab10-528b388013f1
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Etag:
+      - W/"6766d3ed4d1ca3f3c24279827c550b42"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.028479'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.0.16
+    body:
+      encoding: ASCII-8BIT
+      string: '{"meta":{"status":"ok","message-type":"reference-list","message-version":"6.0.0","total":0,"total_pages":1,"page":1},"references":[]}'
+    http_version: 
+  recorded_at: Tue, 08 Sep 2015 16:03:57 GMT
 recorded_with: VCR 2.9.3

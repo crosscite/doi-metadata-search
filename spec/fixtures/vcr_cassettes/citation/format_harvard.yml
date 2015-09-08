@@ -31,7 +31,7 @@ http_interactions:
       Content-Length:
       - '180'
       Date:
-      - Tue, 08 Sep 2015 09:21:22 GMT
+      - Tue, 08 Sep 2015 16:04:38 GMT
     body:
       encoding: UTF-8
       string: |2-
@@ -39,7 +39,7 @@ http_interactions:
         <HTML><HEAD><TITLE>Handle Redirect</TITLE></HEAD>
         <BODY><A HREF="http://data.datacite.org/10.5281%2FZENODO.21430">http://data.datacite.org/10.5281%2FZENODO.21430</A></BODY></HTML>
     http_version: 
-  recorded_at: Tue, 08 Sep 2015 09:20:27 GMT
+  recorded_at: Tue, 08 Sep 2015 16:03:43 GMT
 - request:
     method: get
     uri: http://data.datacite.org/10.5281%2FZENODO.21430
@@ -61,7 +61,7 @@ http_interactions:
       Server:
       - nginx/1.1.19
       Date:
-      - Tue, 08 Sep 2015 09:08:10 GMT
+      - Tue, 08 Sep 2015 15:51:25 GMT
       Content-Type:
       - text/x-bibliography
       Transfer-Encoding:
@@ -83,51 +83,5 @@ http_interactions:
       string: |
         Martin Fenner et al., 2015. DataCite-ORCID: 1.0. Available at: http://dx.doi.org/10.5281/ZENODO.21430.
     http_version: 
-  recorded_at: Tue, 08 Sep 2015 09:20:27 GMT
-- request:
-    method: get
-    uri: http://www.google-analytics.com/__utm.gif?utmac=UA-22806196-5&utmcc=__utma=1.973516449700145214523.1090524822.1441704027.1441704027.15%3B%2B__utmz=1.1441704027.1.1.utmcsr=(direct)%7Cutmccn=(direct)%7Cutmcmd=(none)%3B&utmcs=UTF-8&utme=5(Citations*/citation*text/x-bibliography%3B%20style=harvard1)&utmhid=182713008&utmhn=search.labs.datacite.org&utmip=&utmn=6736538210&utmni=1&utmr=&utmt=event&utmul=en-us&utmwv=4.4sh
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Gabba%201.0.1%20Agent
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Pragma:
-      - no-cache
-      Expires:
-      - Mon, 07 Aug 1995 23:30:00 GMT
-      Access-Control-Allow-Origin:
-      - "*"
-      Last-Modified:
-      - Sun, 17 May 1998 03:00:00 GMT
-      X-Content-Type-Options:
-      - nosniff
-      Content-Type:
-      - image/gif
-      Date:
-      - Wed, 02 Sep 2015 18:05:43 GMT
-      Server:
-      - Golfe2
-      Content-Length:
-      - '35'
-      Cache-Control:
-      - private, no-cache, no-cache=Set-Cookie, proxy-revalidate
-      Age:
-      - '486884'
-    body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        R0lGODlhAQABAID/AP///wAAACwAAAAAAQABAAACAkQBADs=
-    http_version: 
-  recorded_at: Tue, 08 Sep 2015 09:20:27 GMT
+  recorded_at: Tue, 08 Sep 2015 16:03:43 GMT
 recorded_with: VCR 2.9.3

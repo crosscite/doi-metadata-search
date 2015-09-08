@@ -31,7 +31,7 @@ http_interactions:
       Content-Length:
       - '178'
       Date:
-      - Tue, 08 Sep 2015 09:19:02 GMT
+      - Tue, 08 Sep 2015 16:04:58 GMT
     body:
       encoding: UTF-8
       string: |2-
@@ -39,7 +39,7 @@ http_interactions:
         <HTML><HEAD><TITLE>Handle Redirect</TITLE></HEAD>
         <BODY><A HREF="http://data.datacite.org/10.5061%2FDRYAD.781PV">http://data.datacite.org/10.5061%2FDRYAD.781PV</A></BODY></HTML>
     http_version: 
-  recorded_at: Tue, 08 Sep 2015 09:18:07 GMT
+  recorded_at: Tue, 08 Sep 2015 16:04:04 GMT
 - request:
     method: get
     uri: http://data.datacite.org/10.5061%2FDRYAD.781PV
@@ -61,7 +61,7 @@ http_interactions:
       Server:
       - nginx/1.1.19
       Date:
-      - Tue, 08 Sep 2015 09:05:50 GMT
+      - Tue, 08 Sep 2015 15:51:46 GMT
       Content-Type:
       - application/x-bibtex
       Transfer-Encoding:
@@ -81,7 +81,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: |-
-        @data{602d9e1d-d89f-4e8d-a50c-b1398f321d74,
+        @data{b1d25cc8-3f9f-4e7d-b9f7-24af08d5e895,
           doi = {10.5061/DRYAD.781PV},
           url = {http://dx.doi.org/10.5061/DRYAD.781PV},
           author = {Piwowar, Heather A.; Vision, Todd J.; },
@@ -90,5 +90,5 @@ http_interactions:
           year = {2013}
         }
     http_version: 
-  recorded_at: Tue, 08 Sep 2015 09:18:08 GMT
+  recorded_at: Tue, 08 Sep 2015 16:04:04 GMT
 recorded_with: VCR 2.9.3

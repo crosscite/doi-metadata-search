@@ -52,12 +52,9 @@ module Sinatra
 
     def rescue_faraday_error(url, error, options={})
       if error.is_a?(Faraday::ResourceNotFound)
-        if error.response.blank? && error.response[:body].blank?
-          message = "resource not found"
-        else
-          message = parse_error_response(error.response[:body])
-        end
-        { "error" => message }
+        { error: "resource not found", status: 404 }
+      elsif error.is_a?(Faraday::TimeoutError) || (error.respond_to?('response') && error.response[:status] == 408)
+        { error: "execution expired", status: 408 }
       else
         raise error
       end
