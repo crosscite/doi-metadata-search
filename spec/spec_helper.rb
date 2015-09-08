@@ -86,7 +86,7 @@ VCR.configure do |c|
   c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
   c.hook_into :webmock
   c.ignore_localhost = true
-  c.ignore_hosts 'codeclimate.com'
+  c.ignore_hosts 'codeclimate.com', 'www.google-analytics.com'
   c.filter_sensitive_data('<API_KEY>') { ENV['API_KEY'] }
   c.allow_http_connections_when_no_cassette = true
   c.configure_rspec_metadata!

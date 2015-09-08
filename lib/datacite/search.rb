@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'json'
+require_relative '../network'
 
 module Sinatra
   module Search
@@ -71,34 +72,22 @@ module Sinatra
       page[:alt_url] = "http://search.crossref.org/?q=#{page[:bare_query]}"
 
       if page[:query_type][:type] == :doi
-        query = "/works/#{page[:query_type][:value]}"
+        query = "/#{page[:query_type][:value]}"
       else
-        query = "/works?query=#{page[:bare_query]}&rows=0"
+        query = "?query=#{page[:bare_query]}&rows=0"
       end
 
-      conn = Faraday.new(url: 'http://api.crossref.org') do |c|
-        c.response :encoding
-        c.adapter Faraday.default_adapter
-      end
+      url = "http://api.crossref.org/works#{query}"
+      result = get_result(url)
 
-      res = conn.get do |req|
-        req.url query
-      end
-      response = ::ActiveSupport::JSON.decode(res.body)
-
-      if res.status == 200 && page[:query_type][:type] == :doi
-        page[:alt_text] = response.fetch('message', {}).length > 0 ? 'DOI found' : 'DOI not found'
-      elsif res.status == 200
-        page[:alt_text] = response.fetch('message', {}).fetch('total-results', 0).to_s + ' results'
+      if result.empty?
+        page[:alt_text] = page[:query_type][:type] == :doi ? 'DOI not found' : '0 results'
+      elsif page[:query_type][:type] == :doi
+        page[:alt_text] = result.fetch('message', {}).length > 0 ? 'DOI found' : 'DOI not found'
       else
-        page[:alt_text] = '0 results'
+        page[:alt_text] = result.fetch('message', {}).fetch('total-results', 0).to_s + ' results'
       end
 
-      page[:alt_text] += " in the CrossRef Metadata Search."
-
-      page
-    rescue ::ActiveSupport::JSON.parse_error
-      page[:alt_text] = page[:query_type][:type] == :doi ? 'DOI not found' : '0 results'
       page[:alt_text] += " in the CrossRef Metadata Search."
 
       page

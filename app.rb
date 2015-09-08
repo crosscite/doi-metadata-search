@@ -27,8 +27,8 @@ MAX_MATCH_TEXTS = 1000
 TYPICAL_ROWS = [10, 20, 50, 100, 500]
 DEFAULT_ROWS = 20
 MONTH_SHORT_NAMES = %w(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec)
-
 ORCID_VERSION = '1.2'
+DEFAULT_TIMEOUT = 60
 
 require 'sinatra'
 require 'sinatra/json'
@@ -48,6 +48,13 @@ require 'sidekiq'
 require 'sidekiq/api'
 require 'open-uri'
 require 'uri'
+
+NETWORKABLE_EXCEPTIONS = [Faraday::Error::ClientError,
+                          URI::InvalidURIError,
+                          Encoding::UndefinedConversionError,
+                          ArgumentError,
+                          NoMethodError,
+                          TypeError]
 
 Dir[File.join(File.dirname(__FILE__), 'lib', '*.rb')].each { |f| require f }
 Dir[File.join(File.dirname(__FILE__), 'lib', ENV['RA'], '*.rb')].each { |f| require f }
@@ -96,21 +103,6 @@ configure do
   set :claims, settings.mongo[ENV['DB_NAME']]['claims']
   set :orcids, settings.mongo[ENV['DB_NAME']]['orcids']
   set :links, settings.mongo[ENV['DB_NAME']]['links']
-
-  # Set up for http requests to data.datacite.org and dx.doi.org
-  doi_org = Faraday.new(url: 'http://doi.org') do |c|
-    c.use FaradayMiddleware::FollowRedirects, limit: 5
-    c.response :encoding
-    c.adapter Faraday.default_adapter
-  end
-
-  data_service = Faraday.new(url: 'http://data.datacite.org') do |c|
-    c.response :encoding
-    c.adapter Faraday.default_adapter
-  end
-
-  set :doi_org, doi_org
-  set :data_service, data_service
 
   # Citation format types
   set :citation_formats,
@@ -185,19 +177,15 @@ get '/citation' do
   citation_format = settings.citation_formats.fetch(params[:format], nil)
   halt 415, json(status: 'error', message: 'Format missing or not supported.') unless citation_format
 
-  response = settings.data_service.get do |req|
-    req.url "/#{params[:doi]}"
-    req.headers['Accept'] = citation_format
-  end
+  # use doi content negotiation to get formatted citation
+  result = get_result("http://doi.org/#{params[:doi]}", content_type: citation_format)
 
-  body = force_utf8(response.body)
+  halt result["status"], json(status: 'error', message: response["error"]) if result["error"]
 
-  halt response.status, json(status: 'error', message: body) unless response.success?
-
-  settings.ga.event('Citations', '/citation', citation_format, nil, true) if ENV['GABBA_COOKIE']
+  settings.ga.event('Citations', '/citation', citation_format, nil, true) if ENV['GABBA_COOKIE'] && ENV['RACK_ENV'] != "test"
 
   content_type citation_format + '; charset=utf-8'
-  body
+  result
 end
 
 get '/help/examples' do

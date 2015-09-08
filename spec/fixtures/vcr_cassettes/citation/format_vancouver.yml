@@ -1,0 +1,133 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://doi.org/10.5281/ZENODO.21430
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - text/x-bibliography; style=vancouver
+      User-Agent:
+      - doi-metadata-search - http://search.labs.datacite.org
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 303
+      message: See Other
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Vary:
+      - Accept
+      Location:
+      - http://data.datacite.org/10.5281%2FZENODO.21430
+      Expires:
+      - Tue, 08 Sep 2015 19:47:06 GMT
+      Content-Type:
+      - text/html;charset=utf-8
+      Content-Length:
+      - '180'
+      Date:
+      - Tue, 08 Sep 2015 09:21:48 GMT
+    body:
+      encoding: UTF-8
+      string: |2-
+
+        <HTML><HEAD><TITLE>Handle Redirect</TITLE></HEAD>
+        <BODY><A HREF="http://data.datacite.org/10.5281%2FZENODO.21430">http://data.datacite.org/10.5281%2FZENODO.21430</A></BODY></HTML>
+    http_version: 
+  recorded_at: Tue, 08 Sep 2015 09:20:53 GMT
+- request:
+    method: get
+    uri: http://data.datacite.org/10.5281%2FZENODO.21430
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - text/x-bibliography; style=vancouver
+      User-Agent:
+      - doi-metadata-search - http://search.labs.datacite.org
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.1.19
+      Date:
+      - Tue, 08 Sep 2015 09:08:36 GMT
+      Content-Type:
+      - text/x-bibliography
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-transform, max-age=3600
+      Last-Modified:
+      - Sat, 25 Jul 2015 16:44:23 GMT
+      Vary:
+      - Accept
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
+    body:
+      encoding: UTF-8
+      string: |
+        1. Martin Fenner, Karl Jonathan Ward, Gudmundur A. Thorisson, Robert Peters. DataCite-ORCID: 1.0 [Internet]. Zenodo; 2015. Available from: http://dx.doi.org/10.5281/ZENODO.21430
+    http_version: 
+  recorded_at: Tue, 08 Sep 2015 09:20:54 GMT
+- request:
+    method: get
+    uri: http://www.google-analytics.com/__utm.gif?utmac=UA-22806196-5&utmcc=__utma=1.973516449700145214523.1090524822.1441704027.1441704027.15%3B%2B__utmz=1.1441704027.1.1.utmcsr=(direct)%7Cutmccn=(direct)%7Cutmcmd=(none)%3B&utmcs=UTF-8&utme=5(Citations*/citation*text/x-bibliography%3B%20style=vancouver)&utmhid=273067984&utmhn=search.labs.datacite.org&utmip=&utmn=6736538210&utmni=1&utmr=&utmt=event&utmul=en-us&utmwv=4.4sh
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gabba%201.0.1%20Agent
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Pragma:
+      - no-cache
+      Expires:
+      - Mon, 07 Aug 1995 23:30:00 GMT
+      Access-Control-Allow-Origin:
+      - "*"
+      Last-Modified:
+      - Sun, 17 May 1998 03:00:00 GMT
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - image/gif
+      Date:
+      - Wed, 02 Sep 2015 18:05:40 GMT
+      Server:
+      - Golfe2
+      Content-Length:
+      - '35'
+      Cache-Control:
+      - private, no-cache, no-cache=Set-Cookie, proxy-revalidate
+      Age:
+      - '486914'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        R0lGODlhAQABAID/AP///wAAACwAAAAAAQABAAACAkQBADs=
+    http_version: 
+  recorded_at: Tue, 08 Sep 2015 09:20:54 GMT
+recorded_with: VCR 2.9.3

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'citation' do
+describe 'citation', vcr: true do
   let(:doi) { '10.5281/ZENODO.21430' }
 
   it 'format bibtex' do

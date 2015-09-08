@@ -9,6 +9,7 @@ helpers do
   include Sinatra::Session
   include Sinatra::Stats
   include Sinatra::Search
+  include Sinatra::Network
 
   def citations(doi)
     citations = settings.citations.find('to.id' => doi)
@@ -83,9 +84,5 @@ helpers do
       'applicationxspsssav' => 'SPSS SAV',
       'applicationxstata' => 'Stata',
       'applicationxr' => 'R' }
-  end
-
-  def force_utf8(str)
-    str.gsub(/\s+\n/, "\n").strip.force_encoding('UTF-8')
   end
 end

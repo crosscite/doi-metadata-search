@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'json'
+require_relative 'network'
 
 module Sinatra
   module Doi
@@ -42,19 +43,15 @@ module Sinatra
     def to_long_doi(s)
       doi = to_doi(s)
       normal_short_doi = doi.sub(/10\//, '').downcase
-
       short_doi_doc = settings.shorts.find(short_doi: normal_short_doi)
 
       if short_doi_doc.has_next?
         short_doi_doc.next['doi']
       else
-        res = settings.doi_org.get do |req|
-          req.url "/10/#{normal_short_doi}"
-          req.headers['Accept'] = JSON_TYPE
-        end
+        result = get_result("http://doi.org/10/#{normal_short_doi}", content_type: JSON_TYPE)
 
-        if res.success?
-          doi = ActiveSupport::JSON.decode(res.body).fetch('DOI', nil)
+        if result.is_a?(Hash) && !result["error"]
+          doi = result.fetch('DOI', nil)
           settings.shorts.insert(short_doi: normal_short_doi, doi: doi)
           doi
         end

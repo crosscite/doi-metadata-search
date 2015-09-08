@@ -2,10 +2,12 @@
 
 require 'nokogiri'
 require_relative 'doi'
+require_relative 'network'
 require_relative "#{ENV['RA']}/work_type"
 
 class OrcidClaim
   include Sinatra::Doi
+  include Sinatra::Network
   include Sinatra::WorkType
 
   # required attributes DataCite:
@@ -78,19 +80,10 @@ class OrcidClaim
   end
 
   def citation
-    conn = Faraday.new(url: 'http://data.datacite.org') do |c|
-      c.response :encoding
-      c.adapter Faraday.default_adapter
-    end
+    result = get_result("http://doi.org/#{doi}", content_type: "application/x-bibtex")
+    return nil unless result.is_a?(String)
 
-    response = conn.get "/#{URI.encode(doi)}", {},
-                        'Accept' => 'application/x-bibtex'
-
-    if response.status == 200
-      without_control(response.body)
-    else
-      nil
-    end
+    without_control(result)
   end
 
   def root_attributes
