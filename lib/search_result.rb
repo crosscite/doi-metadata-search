@@ -6,31 +6,35 @@ require 'ostruct'
 require_relative 'helpers'
 
 class SearchResult
+  include Sinatra::Search
+  include Sinatra::Session
+
   attr_accessor :date, :year, :month, :day,
                 :title, :publication, :authors, :volume, :issue, :first_page, :last_page,
                 :type, :subtype, :doi, :score, :normal_score,
                 :citations, :hashed, :related, :alternate, :version,
                 :rights_uri, :subject, :description, :creative_commons,
-                :contributor, :contributor_type, :contributors_with_type, :grant_info
+                :contributor, :contributor_type, :contributors_with_type, :grant_info,
+                :related_identifiers, :combined_related
   attr_reader :hashed, :doi, :title_escaped, :xml
 
   # Merge a mongo DOI record with solr highlight information.
-  def initialize(solr_doc, solr_result, citations, user_state)
-    @doi = solr_doc['doi']
-    @type = solr_doc['resourceTypeGeneral']
-    @subtype = solr_doc['resourceType']
+  def initialize(solr_doc, solr_result, citations, user_state, related_identifiers)
+    @doi = solr_doc.fetch('doi')
+    @type = solr_doc.fetch('resourceTypeGeneral', nil)
+    @subtype = solr_doc.fetch('resourceType', nil)
     @doc = solr_doc
-    @score = solr_doc['score']
-    @normal_score = ((@score / solr_result['response']['maxScore']) * 100).to_i
+    @score = solr_doc.fetch('score', nil).to_i
+    @normal_score = (@score / solr_result.fetch('response', {}).fetch('maxScore', 1) * 100).to_i
     @citations = citations
-    @hashed = solr_doc['mongo_id']
-    @user_claimed = user_state[:claimed]
-    @in_user_profile = user_state[:in_profile]
-    @highlights = solr_result['highlighting'] || {}
+    @hashed = solr_doc.fetch('mongo_id', nil)
+    @user_claimed = user_state.fetch(:claimed, false)
+    @in_user_profile = user_state.fetch(:in_profile, false)
+    @highlights = solr_result.fetch('highlighting', {})
     @publication = find_value('publisher')
-    @title = solr_doc['title'] ? solr_doc['title'].first.strip : nil
-    @description = solr_doc['description']
-    @date = solr_doc['date'] ? solr_doc['date'].last : nil
+    @title = solr_doc.fetch('title', [""]).first.strip
+    @description = solr_doc.fetch('description', nil)
+    @date = solr_doc.fetch('date', []).last
     @year = find_value('publicationYear')
     @month = solr_doc['month'] ? MONTH_SHORT_NAMES[solr_doc['month'] - 1] : (@date && @date.size > 6 ? MONTH_SHORT_NAMES[@date[5..6].to_i - 1] : nil)
     @day = solr_doc['day'] || @date && @date.size > 9 ? @date[8..9].to_i : nil
@@ -39,13 +43,14 @@ class SearchResult
     # @authors = find_value('creator')
     # @first_page = find_value('hl_first_page')
     # @last_page = find_value('hl_last_page')
-    @rights_uri = Array(solr_doc['rightsURI'])
-    @related = solr_doc['relatedIdentifier']
-    @alternate = solr_doc['alternateIdentifier']
-    @version = solr_doc['version']
-    @contributor = Array(solr_doc['contributor'])
-    @contributor_type = Array(solr_doc['contributorType'])
-    xml = Base64.decode64(solr_doc['xml']).force_encoding('UTF-8')
+    @rights_uri = Array(solr_doc.fetch('rightsURI', nil))
+    @related = solr_doc.fetch('relatedIdentifier', nil)
+    @related_identifiers = related_identifiers
+    @alternate = solr_doc.fetch('alternateIdentifier', nil)
+    @version = solr_doc.fetch('version', nil)
+    @contributor = Array(solr_doc.fetch('contributor', []))
+    @contributor_type = Array(solr_doc.fetch('contributorType', []))
+    xml = Base64.decode64(solr_doc.fetch('xml', "PGhzaD48L2hzaD4=\n")).force_encoding('UTF-8')
     @xml = Hash.from_xml(xml).fetch("resource", {})
     @authors = @xml.fetch("creators", {}).fetch("creator", [])
     @authors = [@authors] if @authors.is_a?(Hash)
@@ -107,10 +112,15 @@ class SearchResult
 
   def related
     Array(@related).map do |item|
-      { relation: uncamelize(item.split(':', 3)[0]),
+      { relation: item.split(':', 3)[0],
         id: item.split(':', 3)[1],
-        text: item.split(':', 3)[2] }
-    end.select { |item| item[:text].present? && item[:id] =~ /(DOI|URL)/ }.group_by { |item| item[:relation] }
+        text: item.split(':', 3)[2],
+        source: "Datacite" }
+    end.select { |item| item[:text].present? && item[:id] =~ /(DOI|URL)/ }
+  end
+
+  def combined_related
+    (related + related_identifiers).group_by { |item| item[:relation] }
   end
 
   def alternate
@@ -146,10 +156,6 @@ class SearchResult
     else
       name.reverse.join(' ')
     end
-  end
-
-  def uncamelize(string)
-    string.split(/(?=[A-Z])/).join(' ').capitalize
   end
 
   def user_claimed?

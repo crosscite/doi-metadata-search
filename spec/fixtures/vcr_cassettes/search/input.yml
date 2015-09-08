@@ -15,7 +15,7 @@ http_interactions:
       Server:
       - nginx/1.1.19
       Date:
-      - Tue, 08 Sep 2015 15:51:41 GMT
+      - Tue, 08 Sep 2015 19:04:09 GMT
       Content-Type:
       - text/plain;charset=UTF-8
       Transfer-Encoding:
@@ -29,7 +29,7 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        eydyZXNwb25zZUhlYWRlcic9Pnsnc3RhdHVzJz0+MCwnUVRpbWUnPT4zNX0s
+        eydyZXNwb25zZUhlYWRlcic9Pnsnc3RhdHVzJz0+MCwnUVRpbWUnPT4xOH0s
         J3Jlc3BvbnNlJz0+eydudW1Gb3VuZCc9PjM4ODQyLCdzdGFydCc9PjAsJ21h
         eFNjb3JlJz0+Ny40MTYyNzEsJ2RvY3MnPT5beyd4bWwnPT4nUEQ5NGJXd2dk
         bVZ5YzJsdmJqMGlNUzR3SWlCbGJtTnZaR2x1WnowaVZWUkdMVGdpUHo0OGNt
@@ -1909,16 +1909,16 @@ http_interactions:
         ODEwJz0+e30sJzU2OTgxMSc9Pnt9LCc1Njk4MTInPT57fSwnNTU4NjI0Jz0+
         e30sJzU1ODYyNSc9Pnt9fX0K
     http_version: 
-  recorded_at: Tue, 08 Sep 2015 16:03:59 GMT
+  recorded_at: Tue, 08 Sep 2015 19:16:28 GMT
 - request:
-    method: get
-    uri: http://dlm.labs.datacite.org/api/references?work_ids=http://doi.org/10.5065/D6RN35ST,http://doi.org/10.2312/FRISP_14,http://doi.org/10.2312/FRISP_17,http://doi.org/10.2312/FRISP_16,http://doi.org/10.2312/FRISP_15,http://doi.org/10.5061/DRYAD.68MJ4/1,http://doi.org/10.2312/WDCC/DKRZ_REPORT_NO13,http://doi.org/10.2312/WDCC/DKRZ_REPORT_NO14,http://doi.org/10.2312/WDCC/DKRZ_REPORT_NO15,http://doi.org/10.2312/WDCC/DKRZ_REPORT_NO16,http://doi.org/10.2312/WDCC/DKRZ_REPORT_NO17,http://doi.org/10.2312/WDCC/DKRZ_REPORT_NO18,http://doi.org/10.2312/WDCC/DKRZ_REPORT_NO19,http://doi.org/10.2312/WDCC/DKRZ_REPORT_NO20,http://doi.org/10.2312/WDCC/DKRZ_REPORT_NO21,http://doi.org/10.2312/WDCC/MAD_TEREPORT_NO01,http://doi.org/10.2312/WDCC/MAD_TEREPORT_NO02,http://doi.org/10.2312/WDCC/MAD_TEREPORT_NO03,http://doi.org/10.1594/WDCC/EH41066H1CO2IS92A_SPEED400,http://doi.org/10.1594/WDCC/EH41066H1CO2IS92A_SPEED50
+    method: post
+    uri: http://dlm.labs.datacite.org/api/references
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: work_ids=http://doi.org/10.5065/D6RN35ST,http://doi.org/10.2312/FRISP_14,http://doi.org/10.2312/FRISP_17,http://doi.org/10.2312/FRISP_16,http://doi.org/10.2312/FRISP_15,http://doi.org/10.5061/DRYAD.68MJ4/1,http://doi.org/10.2312/WDCC/DKRZ_REPORT_NO13,http://doi.org/10.2312/WDCC/DKRZ_REPORT_NO14,http://doi.org/10.2312/WDCC/DKRZ_REPORT_NO15,http://doi.org/10.2312/WDCC/DKRZ_REPORT_NO16,http://doi.org/10.2312/WDCC/DKRZ_REPORT_NO17,http://doi.org/10.2312/WDCC/DKRZ_REPORT_NO18,http://doi.org/10.2312/WDCC/DKRZ_REPORT_NO19,http://doi.org/10.2312/WDCC/DKRZ_REPORT_NO20,http://doi.org/10.2312/WDCC/DKRZ_REPORT_NO21,http://doi.org/10.2312/WDCC/MAD_TEREPORT_NO01,http://doi.org/10.2312/WDCC/MAD_TEREPORT_NO02,http://doi.org/10.2312/WDCC/MAD_TEREPORT_NO03,http://doi.org/10.1594/WDCC/EH41066H1CO2IS92A_SPEED400,http://doi.org/10.1594/WDCC/EH41066H1CO2IS92A_SPEED50
     headers:
       Accept:
-      - application/json
+      - text/html
       User-Agent:
       - doi-metadata-search - http://search.labs.datacite.org
       Accept-Encoding:
@@ -1931,7 +1931,7 @@ http_interactions:
       Server:
       - nginx/1.4.6 (Ubuntu)
       Date:
-      - Tue, 08 Sep 2015 16:04:06 GMT
+      - Tue, 08 Sep 2015 19:16:34 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -1951,15 +1951,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 28cf3297-51c0-4e35-affd-dae862a483be
+      - 4707c28c-2b55-4c96-9ca9-95d65b26f283
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
-      - W/"4ca4734e9a290ed7d2dcb1c2035e7301"
+      - W/"9724d740ad094667fbfe12fe958e149b"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.021423'
+      - '0.008179'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -1968,5 +1968,5 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"meta":{"status":"ok","message-type":"reference-list","message-version":"6.0.0","total":0,"total_pages":1,"page":1},"references":[]}'
     http_version: 
-  recorded_at: Tue, 08 Sep 2015 16:04:00 GMT
+  recorded_at: Tue, 08 Sep 2015 19:16:28 GMT
 recorded_with: VCR 2.9.3

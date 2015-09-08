@@ -3,11 +3,11 @@ require 'json'
 module Sinatra
   module Session
     def auth_token
-      OAuth2::AccessToken.new(settings.orcid_oauth, session[:orcid]['credentials']['token'])
+      OAuth2::AccessToken.new(Sinatra::Application.settings.orcid_oauth, session_info['credentials']['token'])
     end
 
     def signed_in?
-      if session[:orcid].nil?
+      if session_info.nil?
         false
       else
         !expired_session?
@@ -17,26 +17,26 @@ module Sinatra
     # Returns true if there is a session and it has expired, or false if the
     # session has not expired or if there is no session.
     def expired_session?
-      if session[:orcid].nil?
+      if session_info.nil?
         false
       else
-        creds = session[:orcid]['credentials']
+        creds = session_info['credentials']
         creds['expires'] && creds['expires_at'] <= Time.now.to_i
       end
     end
 
     def sign_in_id
-      session[:orcid][:uid]
+      session_info[:uid]
     end
 
     def user_display
       if signed_in?
-        session[:orcid][:info][:name] || session[:orcid][:uid]
+        session_info[:info][:name] || session_info[:uid]
       end
     end
 
     def session_info
-      session[:orcid]
+      defined?(session) ? session[:orcid] : { "credentials" => {} }
     end
   end
 

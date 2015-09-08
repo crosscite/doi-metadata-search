@@ -2,16 +2,20 @@ require 'sinatra/base'
 require 'json'
 
 require_relative 'doi'
+require_relative 'network'
+require_relative 'lagotto'
 require_relative "#{ENV['RA']}/search"
 
 module Sinatra
   module Search
     include Sinatra::Doi
+    include Sinatra::Network
+    include Sinatra::Lagotto
 
     def select(query_params)
       page = query_page
       rows = query_rows
-      results = settings.solr.paginate(page, rows, ENV['SOLR_SELECT'], params: query_params)
+      results = Sinatra::Application.settings.solr.paginate(page, rows, ENV['SOLR_SELECT'], params: query_params)
     end
 
     def response_format
@@ -47,7 +51,7 @@ module Sinatra
     end
 
     def facet_query_fields
-      settings.facet_fields.select { |field| params.key?(field) }
+      Sinatra::Application.settings.facet_fields.select { |field| params.key?(field) }
     end
 
     def abstract_facet_query
@@ -113,7 +117,7 @@ module Sinatra
     end
 
     def search_link(opts)
-      fields = settings.facet_fields + %w(q sort) # 'filter' ??
+      fields = Sinatra::Application.settings.facet_fields + %w(q sort) # 'filter' ??
       parts = fields.map do |field|
         if opts.key? field.to_sym
           "#{field}=#{CGI.escape(opts[field.to_sym])}"
@@ -128,26 +132,24 @@ module Sinatra
     end
 
     def search_results(solr_result, _oauth = nil)
-      claimed_dois = []
-      profile_dois = []
+      found_dois = solr_result.fetch('response', {}).fetch('docs', []).map { |solr_doc| solr_doc['doi'] }
+      references = get_references(found_dois)
 
-      if signed_in?
-        orcid_record = settings.orcids.find_one(orcid: sign_in_id)
-        unless orcid_record.nil?
-          claimed_dois = orcid_record['dois'] + orcid_record['locked_dois'] if orcid_record
-          profile_dois = orcid_record['dois']
-        end
+      if signed_in? && orcid_record = Sinatra::Application.settings.orcids.find_one(orcid: sign_in_id)
+        claimed_dois = orcid_record.fetch('dois', nil) + orcid_record.fetch('locked_dois', nil) if orcid_record
+        profile_dois = orcid_record.fetch('dois', nil)
+      else
+        claimed_dois = []
+        profile_dois = []
       end
 
-      solr_result['response']['docs'].map do |solr_doc|
+      solr_result.fetch('response', {}).fetch('docs', []).map do |solr_doc|
         doi = solr_doc['doi']
         in_profile = profile_dois.include?(doi)
         claimed = claimed_dois.include?(doi)
-        user_state = {
-          in_profile: in_profile,
-          claimed: claimed
-        }
-        SearchResult.new(solr_doc, solr_result, citations(solr_doc['doi']), user_state)
+        related_identifiers = references.fetch(doi, [])
+        user_state = { in_profile: in_profile, claimed: claimed }
+        SearchResult.new(solr_doc, solr_result, citations(solr_doc['doi']), user_state, related_identifiers)
       end
     end
 
@@ -159,4 +161,6 @@ module Sinatra
       query_str.gsub(/NOT/, ' ')
     end
   end
+
+
 end

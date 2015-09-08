@@ -12,7 +12,7 @@ helpers do
   include Sinatra::Network
 
   def citations(doi)
-    citations = settings.citations.find('to.id' => doi)
+    citations = Sinatra::Application.settings.citations.find('to.id' => doi)
 
     citations.map do |citation|
       hsh = {
@@ -22,7 +22,7 @@ helpers do
       }
 
       if citation['from']['authority'] == 'cambia'
-        patent = settings.patents.find_one(patent_key: citation['from']['id'])
+        patent = Sinatra::Application.settings.patents.find_one(patent_key: citation['from']['id'])
         hsh[:url] = "http://lens.org/lens/patent/#{patent['pub_key']}"
         hsh[:title] = patent['title']
       end
@@ -49,6 +49,10 @@ helpers do
   def center_text(name)
     start = name.index("- ") + 2
     name[start..-1]
+  end
+
+  def uncamelize(string)
+    string.split(/(?=[A-Z])/).join(' ').capitalize
   end
 
   def rights_hash

@@ -3,11 +3,13 @@
 require 'nokogiri'
 require_relative 'doi'
 require_relative 'network'
+require_relative 'lagotto'
 require_relative "#{ENV['RA']}/work_type"
 
 class OrcidClaim
   include Sinatra::Doi
   include Sinatra::Network
+  include Sinatra::Lagotto
   include Sinatra::WorkType
 
   # required attributes DataCite:

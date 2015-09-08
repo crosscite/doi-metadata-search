@@ -1,0 +1,510 @@
+{
+  "responseHeader": {
+    "status": 0,
+    "QTime": 9
+  },
+  "response": {
+    "numFound": 56,
+    "start": 0,
+    "docs": [
+      {
+        "minted": "2014-12-04T04:00:24Z",
+        "refQuality": false,
+        "has_metadata": true,
+        "is_active": true,
+        "datacentre_symbol": "CDL.RUTGERS",
+        "uploaded": "2014-12-04T04:00:23Z",
+        "xml": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMi4yIiB4bWxuczp4c2k9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIiB4c2k6c2NoZW1hTG9jYXRpb249Imh0dHA6Ly9kYXRhY2l0ZS5vcmcvc2NoZW1hL2tlcm5lbC0yLjIgaHR0cDovL3NjaGVtYS5kYXRhY2l0ZS5vcmcvbWV0YS9rZXJuZWwtMi4yL21ldGFkYXRhLnhzZCI+ICA8aWRlbnRpZmllciBpZGVudGlmaWVyVHlwZT0iRE9JIj4xMC43MjgyL1QzQ1ozNVhHPC9pZGVudGlmaWVyPiAgPGNyZWF0b3JzPiAgICA8Y3JlYXRvcj4gICAgICA8Y3JlYXRvck5hbWU+UGl3b3dhciwgRGFuaWVsPC9jcmVhdG9yTmFtZT4gICAgPC9jcmVhdG9yPiAgPC9jcmVhdG9ycz4gIDx0aXRsZXM+ICAgIDx0aXRsZT5DaGFyYWN0ZXJpemF0aW9uIGFuZCBwZXJmb3JtYW5jZSBvZiB0aGUgZWxlY3Ryb29zbW90aWMgcHVtcGluZyBlZmZlY3QgZm9yIGRpZmZlcmVudCBwb3JvdXMgbWVkaWE8L3RpdGxlPiAgPC90aXRsZXM+ICA8cHVibGlzaGVyPk5vIFB1Ymxpc2hlciBTdXBwbGllZDwvcHVibGlzaGVyPiAgPHB1YmxpY2F0aW9uWWVhcj4yMDEyPC9wdWJsaWNhdGlvblllYXI+ICA8cmVzb3VyY2VUeXBlIHJlc291cmNlVHlwZUdlbmVyYWw9IlRleHQiLz4gIDxkZXNjcmlwdGlvbnM+ICAgIDxkZXNjcmlwdGlvbiBkZXNjcmlwdGlvblR5cGU9IkFic3RyYWN0Ij5IaWdoIGZsb3cgcmF0ZSBlbGVjdHJvb3Ntb3RpYywgRU8sIHB1bXBzIGFyZSBvZiBncmVhdCBpbnRlcmVzdCBkdWUgdG8gdGhlaXIgc2ltcGxlIGRlc2lnbiBhbmQgbm9uLW1vdmluZyBwYXJ0cy4gRU8gcHVtcHMgd2VyZSBmYWJyaWNhdGVkIGZyb20gdHdvIHR5cGVzIG9mIG1lbWJyYW5lczogYSBuZXZlciBiZWZvcmUgdGVzdGVkLCBtaWNyb2NhcGlsbGFyeSBhcnJheSBhbmQgdGhlIHBvcHVsYXIsIGFub2RpYyBhbHVtaW51bSBveGlkZSAoQUFPKS4gRmxvdyByYXRlcyBhbmQgcG93ZXIgY29uc3VtcHRpb24gd2VyZSBtZWFzdXJlZCBkaXJlY3RseSBmb3IgYm90aCBtZW1icmFuZXMgd2hpbGUgZWZmaWNpZW5jeSB3YXMgbWVhc3VyZWQgaW5kaXJlY3RseSBmb3IgdGhlIEFBT3MuIEEgbm9ybWFsaXplZCBmbG93IHJhdGUgb2YgMS45MCBtTC9taW4vVi9jbTIgd2FzIHJlY29yZGVkIHdoaWNoIGlzIHRoZSBoaWdoZXN0IG5vcm1hbGl6ZWQgZmxvdyByYXRlIHB1Ymxpc2hlZC4gTGFyZ2UgaW5lZmZpY2llbmNpZXMgY2FuIG9jY3VyIGR1ZSB0byBlbGVjdHJvbHlzaXMgYW5kIGVsZWN0cm9kZSBzcGFjaW5nIGFuZCB0aHVzIG1ldGhvZHMgdG8gZGVjcmVhc2luZyB0aGVzZSBwcm9ibGVtcyBhcmUgZGlzY3Vzc2VkLiBFbGVjdHJvb3Ntb3RpYyBwdW1wcyB3ZXJlIGRyaXZlbiBieSBjb25zdGFudCB2b2x0YWdlIGFuZCBhc3ltbWV0cmljIHZvbHRhZ2UgcHVsc2VzLiBUaGUgYXN5bW1ldHJpYyB2b2x0YWdlIHB1bHNlcyBuZWdhdGVkIGVsZWN0cm9seXNpcyB3aGlsZSBwcm9kdWNpbmcgYSBuZXQgZmxvdy4gVm9sdGFnZSBsb3NzZXMgZHVlIHRvIGVsZWN0cm9kZSBzcGFjaW5nIHdlcmUgbWluaW1pemVkIGJ5IHBsYXRpbnVtIGNvYXRpbmdzLjwvZGVzY3JpcHRpb24+ICA8L2Rlc2NyaXB0aW9ucz48L3Jlc291cmNlPg==",
+        "allocator_symbol": "CDL",
+        "allocator": "CDL - California Digital Library",
+        "allocator_facet": "CDL - California Digital Library",
+        "namespace": "http://datacite.org/schema/kernel-2.2",
+        "datacentre": "CDL.RUTGERS - Rutgers University Library",
+        "datacentre_facet": "CDL.RUTGERS - Rutgers University Library",
+        "created": "2014-12-04T04:00:23Z",
+        "updated": "2014-12-04T04:00:24Z",
+        "prefix": "10.7282",
+        "has_media": false,
+        "dataset_id": "4285034",
+        "doi": "10.7282/T3CZ35XG",
+        "schema_version": "2.2",
+        "title": [
+          "Characterization and performance of the electroosmotic pumping effect for different porous media"
+        ],
+        "description": [
+          "High flow rate electroosmotic, EO, pumps are of great interest due to their simple design and non-moving parts. EO pumps were fabricated from two types of membranes: a never before tested, microcapillary array and the popular, anodic aluminum oxide (AAO). Flow rates and power consumption were measured directly for both membranes while efficiency was measured indirectly for the AAOs. A normalized flow rate of 1.90 mL/min/V/cm2 was recorded which is the highest normalized flow rate published. Large inefficiencies can occur due to electrolysis and electrode spacing and thus methods to decreasing these problems are discussed. Electroosmotic pumps were driven by constant voltage and asymmetric voltage pulses. The asymmetric voltage pulses negated electrolysis while producing a net flow. Voltage losses due to electrode spacing were minimized by platinum coatings."
+        ],
+        "descriptionType": [
+          "Abstract"
+        ],
+        "publicationYear": "2012",
+        "resourceTypeGeneral": "Text",
+        "creator": [
+          "Piwowar, Daniel"
+        ],
+        "publisher": "No Publisher Supplied",
+        "resourceType": "",
+        "_version_": 1500359216661004300,
+        "indexed": "2015-05-05T19:27:30.313Z"
+      },
+      {
+        "minted": "2012-06-06T15:26:35Z",
+        "refQuality": false,
+        "has_metadata": true,
+        "is_active": true,
+        "datacentre_symbol": "CDL.DIGSCI",
+        "uploaded": "2012-06-06T15:26:37Z",
+        "xml": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMyIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMyBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC0zL21ldGFkYXRhLnhzZCI+PGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuNjA4NC9NOS5GSUdTSEFSRS4xNDQ8L2lkZW50aWZpZXI+PHRpdGxlcz48dGl0bGU+VXNlIGFuZCByZXVzZSBvZiAyMDA3IEdFTyBkYXRhICh2ZXJzaW9uIDEuMSk8L3RpdGxlPjwvdGl0bGVzPjxwdWJsaXNoZXI+Rmlnc2hhcmU8L3B1Ymxpc2hlcj48cHVibGljYXRpb25ZZWFyPjIwMTE8L3B1YmxpY2F0aW9uWWVhcj48cmVzb3VyY2VUeXBlIHJlc291cmNlVHlwZUdlbmVyYWw9IkltYWdlIj5GaWd1cmU8L3Jlc291cmNlVHlwZT48cmlnaHRzTGlzdD48cmlnaHRzIHJpZ2h0c1VSST0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5zZXMvYnkvMy4wL3VzLyI+Q0MtQlk8L3JpZ2h0cz48L3JpZ2h0c0xpc3Q+PGNyZWF0b3JzPjxjcmVhdG9yPjxjcmVhdG9yTmFtZT5IZWF0aGVyIFBpd293YXI8L2NyZWF0b3JOYW1lPjxuYW1lSWRlbnRpZmllciBuYW1lSWRlbnRpZmllclNjaGVtZT0iT1JDSUQiPjAwMDAtMDAwMy0xNjEzLTU5ODE8L25hbWVJZGVudGlmaWVyPjwvY3JlYXRvcj48L2NyZWF0b3JzPjwvcmVzb3VyY2U+",
+        "allocator_symbol": "CDL",
+        "allocator": "CDL - California Digital Library",
+        "allocator_facet": "CDL - California Digital Library",
+        "namespace": "http://datacite.org/schema/kernel-3",
+        "datacentre": "CDL.DIGSCI - Digital Science",
+        "datacentre_facet": "CDL.DIGSCI - Digital Science",
+        "created": "2012-06-06T15:26:36Z",
+        "updated": "2014-06-30T10:52:14Z",
+        "prefix": "10.6084",
+        "has_media": false,
+        "dataset_id": "903381",
+        "doi": "10.6084/M9.FIGSHARE.144",
+        "schema_version": "3",
+        "rights": [
+          "CC-BY"
+        ],
+        "creator": [
+          "Heather Piwowar"
+        ],
+        "resourceType": "Figure",
+        "publisher": "Figshare",
+        "title": [
+          "Use and reuse of 2007 GEO data (version 1.1)"
+        ],
+        "nameIdentifier": [
+          "ORCID:0000-0003-1613-5981"
+        ],
+        "rightsURI": [
+          "http://creativecommons.org/licenses/by/3.0/us/"
+        ],
+        "publicationYear": "2011",
+        "resourceTypeGeneral": "Image",
+        "_version_": 1500293968323149800,
+        "indexed": "2015-05-05T02:10:24.649Z"
+      },
+      {
+        "minted": "2012-06-06T15:26:36Z",
+        "refQuality": false,
+        "has_metadata": true,
+        "is_active": true,
+        "datacentre_symbol": "CDL.DIGSCI",
+        "uploaded": "2012-06-06T15:26:37Z",
+        "xml": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMyIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMyBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC0zL21ldGFkYXRhLnhzZCI+PGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuNjA4NC9NOS5GSUdTSEFSRS4xNDU8L2lkZW50aWZpZXI+PHRpdGxlcz48dGl0bGU+SGlzdG9ncmFtIG9mIEdFTyBkYXRhIHJldXNlICh2ZXJzaW9uIDEuMSk8L3RpdGxlPjwvdGl0bGVzPjxwdWJsaXNoZXI+Rmlnc2hhcmU8L3B1Ymxpc2hlcj48cHVibGljYXRpb25ZZWFyPjIwMTE8L3B1YmxpY2F0aW9uWWVhcj48cmVzb3VyY2VUeXBlIHJlc291cmNlVHlwZUdlbmVyYWw9IkltYWdlIj5GaWd1cmU8L3Jlc291cmNlVHlwZT48cmlnaHRzTGlzdD48cmlnaHRzIHJpZ2h0c1VSST0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5zZXMvYnkvMy4wL3VzLyI+Q0MtQlk8L3JpZ2h0cz48L3JpZ2h0c0xpc3Q+PGNyZWF0b3JzPjxjcmVhdG9yPjxjcmVhdG9yTmFtZT5IZWF0aGVyIFBpd293YXI8L2NyZWF0b3JOYW1lPjxuYW1lSWRlbnRpZmllciBuYW1lSWRlbnRpZmllclNjaGVtZT0iT1JDSUQiPjAwMDAtMDAwMy0xNjEzLTU5ODE8L25hbWVJZGVudGlmaWVyPjwvY3JlYXRvcj48L2NyZWF0b3JzPjwvcmVzb3VyY2U+",
+        "allocator_symbol": "CDL",
+        "allocator": "CDL - California Digital Library",
+        "allocator_facet": "CDL - California Digital Library",
+        "namespace": "http://datacite.org/schema/kernel-3",
+        "datacentre": "CDL.DIGSCI - Digital Science",
+        "datacentre_facet": "CDL.DIGSCI - Digital Science",
+        "created": "2012-06-06T15:26:36Z",
+        "updated": "2014-06-30T10:52:18Z",
+        "prefix": "10.6084",
+        "has_media": false,
+        "dataset_id": "903382",
+        "doi": "10.6084/M9.FIGSHARE.145",
+        "schema_version": "3",
+        "rights": [
+          "CC-BY"
+        ],
+        "creator": [
+          "Heather Piwowar"
+        ],
+        "resourceType": "Figure",
+        "publisher": "Figshare",
+        "title": [
+          "Histogram of GEO data reuse (version 1.1)"
+        ],
+        "nameIdentifier": [
+          "ORCID:0000-0003-1613-5981"
+        ],
+        "rightsURI": [
+          "http://creativecommons.org/licenses/by/3.0/us/"
+        ],
+        "publicationYear": "2011",
+        "resourceTypeGeneral": "Image",
+        "_version_": 1500293968324198400,
+        "indexed": "2015-05-05T02:10:24.65Z"
+      },
+      {
+        "minted": "2012-07-16T17:15:09Z",
+        "refQuality": false,
+        "has_metadata": true,
+        "is_active": true,
+        "datacentre_symbol": "CDL.DIGSCI",
+        "uploaded": "2012-07-16T17:15:12Z",
+        "xml": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMyIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMyBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC0zL21ldGFkYXRhLnhzZCI+PGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuNjA4NC9NOS5GSUdTSEFSRS45Mjk1OTwvaWRlbnRpZmllcj48dGl0bGVzPjx0aXRsZT5Qcm9iYWJpbGl0eSBvZiBvYnNlcnZlZCB0aGlyZC1wYXJ0eSBkYXRhIHJldXNlPC90aXRsZT48L3RpdGxlcz48cHVibGlzaGVyPkZpZ3NoYXJlPC9wdWJsaXNoZXI+PHB1YmxpY2F0aW9uWWVhcj4yMDEyPC9wdWJsaWNhdGlvblllYXI+PHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJJbWFnZSI+RmlndXJlPC9yZXNvdXJjZVR5cGU+PHJpZ2h0c0xpc3Q+PHJpZ2h0cyByaWdodHNVUkk9Imh0dHA6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LzMuMC91cy8iPkNDLUJZPC9yaWdodHM+PC9yaWdodHNMaXN0PjxjcmVhdG9ycz48Y3JlYXRvcj48Y3JlYXRvck5hbWU+SGVhdGhlciBQaXdvd2FyPC9jcmVhdG9yTmFtZT48bmFtZUlkZW50aWZpZXIgbmFtZUlkZW50aWZpZXJTY2hlbWU9Ik9SQ0lEIj4wMDAwLTAwMDMtMTYxMy01OTgxPC9uYW1lSWRlbnRpZmllcj48L2NyZWF0b3I+PC9jcmVhdG9ycz48L3Jlc291cmNlPg==",
+        "allocator_symbol": "CDL",
+        "allocator": "CDL - California Digital Library",
+        "allocator_facet": "CDL - California Digital Library",
+        "namespace": "http://datacite.org/schema/kernel-3",
+        "datacentre": "CDL.DIGSCI - Digital Science",
+        "datacentre_facet": "CDL.DIGSCI - Digital Science",
+        "created": "2012-07-16T17:15:11Z",
+        "updated": "2014-07-03T20:38:11Z",
+        "prefix": "10.6084",
+        "has_media": false,
+        "dataset_id": "1018542",
+        "doi": "10.6084/M9.FIGSHARE.92959",
+        "schema_version": "3",
+        "rights": [
+          "CC-BY"
+        ],
+        "creator": [
+          "Heather Piwowar"
+        ],
+        "resourceType": "Figure",
+        "publisher": "Figshare",
+        "title": [
+          "Probability of observed third-party data reuse"
+        ],
+        "nameIdentifier": [
+          "ORCID:0000-0003-1613-5981"
+        ],
+        "rightsURI": [
+          "http://creativecommons.org/licenses/by/3.0/us/"
+        ],
+        "publicationYear": "2012",
+        "resourceTypeGeneral": "Image",
+        "_version_": 1500294190380089300,
+        "indexed": "2015-05-05T02:13:56.419Z"
+      },
+      {
+        "minted": "2011-05-26T16:28:11Z",
+        "refQuality": false,
+        "has_metadata": true,
+        "is_active": true,
+        "datacentre_symbol": "CDL.DRYAD",
+        "uploaded": "2011-11-22T18:23:29Z",
+        "xml": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMi4yIiB4bWxuczpkcnlhZD0iaHR0cDovL3B1cmwub3JnL2RyeWFkL3Rlcm1zLyIgeG1sbnM6ZGltPSJodHRwOi8vd3d3LmRzcGFjZS5vcmcveG1sbnMvZHNwYWNlL2RpbSIgeG1sbnM6ZHNwYWNlPSJodHRwOi8vd3d3LmRzcGFjZS5vcmcveG1sbnMvZHNwYWNlL2RpbSIgeG1sbnM6bWV0cz0iaHR0cDovL3d3dy5sb2MuZ292L01FVFMvIiB4bWxuczp4c2k9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIiBtZXRhZGF0YVZlcnNpb25OdW1iZXI9IjEiIGxhc3RNZXRhZGF0YVVwZGF0ZT0iMjAwNi0wNS0wNCIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMi4yIGh0dHA6Ly9zY2hlbWEuZGF0YWNpdGUub3JnL21ldGEva2VybmVsLTIuMi9tZXRhZGF0YS54c2QiPgogIDxpZGVudGlmaWVyIGlkZW50aWZpZXJUeXBlPSJET0kiPjEwLjUwNjEvRFJZQUQuTUYxU0Q8L2lkZW50aWZpZXI+CiAgPGNyZWF0b3JzPgogICAgPGNyZWF0b3I+CiAgICAgIDxjcmVhdG9yTmFtZT5QaXdvd2FyLCBIZWF0aGVyIEEuPC9jcmVhdG9yTmFtZT4KICAgIDwvY3JlYXRvcj4KICAgIDxjcmVhdG9yPgogICAgICA8Y3JlYXRvck5hbWU+UGl3b3dhciwgSGVhdGhlciBBLjwvY3JlYXRvck5hbWU+CiAgICA8L2NyZWF0b3I+CiAgPC9jcmVhdG9ycz4KICA8dGl0bGVzPgogICAgPHRpdGxlPkRhdGEgZnJvbTogV2hvIHNoYXJlcz8gV2hvIGRvZXNu4oCZdD8gRmFjdG9ycyBhc3NvY2lhdGVkIHdpdGggb3Blbmx5IGFyY2hpdmluZyByYXcgcmVzZWFyY2ggZGF0YTwvdGl0bGU+CiAgPC90aXRsZXM+CiAgPHB1Ymxpc2hlcj5EcnlhZCBEaWdpdGFsIFJlcG9zaXRvcnk8L3B1Ymxpc2hlcj4KICA8cHVibGljYXRpb25ZZWFyPjIwMTE8L3B1YmxpY2F0aW9uWWVhcj4KICA8c3ViamVjdHM+CiAgICA8c3ViamVjdD5kYXRhIHNoYXJpbmc8L3N1YmplY3Q+CiAgICA8c3ViamVjdD5iaWJsaW9tZXRyaWNzPC9zdWJqZWN0PgogICAgPHN1YmplY3Q+Z2VuZSBleHByZXNzaW9uIG1pY3JvYXJyYXk8L3N1YmplY3Q+CiAgICA8c3ViamVjdD5zY2llbmNlIGNvbW11bmljYXRpb248L3N1YmplY3Q+CiAgICA8c3ViamVjdD5wb2xpY3k8L3N1YmplY3Q+CiAgPC9zdWJqZWN0cz4KICA8cmVzb3VyY2VUeXBlIHJlc291cmNlVHlwZUdlbmVyYWw9IkRhdGFzZXQiPkRhdGFQYWNrYWdlPC9yZXNvdXJjZVR5cGU+CiAgPGFsdGVybmF0ZUlkZW50aWZpZXJzPgogICAgPGFsdGVybmF0ZUlkZW50aWZpZXIgYWx0ZXJuYXRlSWRlbnRpZmllclR5cGU9ImNpdGF0aW9uIj5QaXdvd2FyIEhBICgyMDExKSBXaG8gc2hhcmVzPyBXaG8gZG9lc27igJl0PyBGYWN0b3JzIGFzc29jaWF0ZWQgd2l0aCBvcGVubHkgYXJjaGl2aW5nIHJhdyByZXNlYXJjaCBkYXRhLiBQTG9TIE9ORSA2KDcpOiBlMTg2NTcuPC9hbHRlcm5hdGVJZGVudGlmaWVyPgogIDwvYWx0ZXJuYXRlSWRlbnRpZmllcnM+CiAgPHJlbGF0ZWRJZGVudGlmaWVycz4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGlvblR5cGU9Ikhhc1BhcnQiIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIj4xMC41MDYxL0RSWUFELk1GMVNELzE8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0aW9uVHlwZT0iSGFzUGFydCIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiPjEwLjUwNjEvRFJZQUQuTUYxU0QvMjwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRpb25UeXBlPSJIYXNQYXJ0IiByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSI+MTAuNTA2MS9EUllBRC5NRjFTRC8zPC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGlvblR5cGU9Ikhhc1BhcnQiIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIj4xMC41MDYxL0RSWUFELk1GMVNELzQ8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0aW9uVHlwZT0iSXNSZWZlcmVuY2VkQnkiIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIj4xMC4xMzcxL0pPVVJOQUwuUE9ORS4wMDE4NjU3PC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGlvblR5cGU9IklzUmVmZXJlbmNlZEJ5IiByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIvPgogIDwvcmVsYXRlZElkZW50aWZpZXJzPgogIDxyaWdodHM+aHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvcHVibGljZG9tYWluL3plcm8vMS4wLzwvcmlnaHRzPgo8L3Jlc291cmNlPg==",
+        "allocator_symbol": "CDL",
+        "allocator": "CDL - California Digital Library",
+        "allocator_facet": "CDL - California Digital Library",
+        "namespace": "http://datacite.org/schema/kernel-2.2",
+        "datacentre": "CDL.DRYAD - Dryad",
+        "datacentre_facet": "CDL.DRYAD - Dryad",
+        "created": "2011-11-22T18:23:29Z",
+        "updated": "2015-08-21T05:59:25Z",
+        "prefix": "10.5061",
+        "has_media": false,
+        "dataset_id": "82104",
+        "doi": "10.5061/DRYAD.MF1SD",
+        "schema_version": "2.2",
+        "subject": [
+          "data sharing",
+          "bibliometrics",
+          "gene expression microarray",
+          "science communication",
+          "policy"
+        ],
+        "relatedIdentifier": [
+          "HasPart:DOI:10.5061/DRYAD.MF1SD/1",
+          "HasPart:DOI:10.5061/DRYAD.MF1SD/2",
+          "HasPart:DOI:10.5061/DRYAD.MF1SD/3",
+          "HasPart:DOI:10.5061/DRYAD.MF1SD/4",
+          "IsReferencedBy:DOI:10.1371/JOURNAL.PONE.0018657",
+          "IsReferencedBy:DOI:"
+        ],
+        "alternateIdentifier": [
+          "citation:Piwowar HA (2011) Who shares? Who doesn’t? Factors associated with openly archiving raw research data. PLoS ONE 6(7): e18657."
+        ],
+        "rights": [
+          "http://creativecommons.org/publicdomain/zero/1.0/"
+        ],
+        "creator": [
+          "Piwowar, Heather A.",
+          "Piwowar, Heather A."
+        ],
+        "publisher": "Dryad Digital Repository",
+        "resourceType": "DataPackage",
+        "title": [
+          "Data from: Who shares? Who doesn’t? Factors associated with openly archiving raw research data"
+        ],
+        "publicationYear": "2011",
+        "resourceTypeGeneral": "Dataset",
+        "_version_": 1510168445923098600,
+        "indexed": "2015-08-22T02:01:00.325Z"
+      },
+      {
+        "minted": "2011-05-26T16:28:41Z",
+        "refQuality": false,
+        "has_metadata": true,
+        "is_active": true,
+        "datacentre_symbol": "CDL.DRYAD",
+        "uploaded": "2011-11-22T17:42:33Z",
+        "xml": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMi4yIiB4bWxuczpkcnlhZD0iaHR0cDovL3B1cmwub3JnL2RyeWFkL3Rlcm1zLyIgeG1sbnM6ZGltPSJodHRwOi8vd3d3LmRzcGFjZS5vcmcveG1sbnMvZHNwYWNlL2RpbSIgeG1sbnM6ZHNwYWNlPSJodHRwOi8vd3d3LmRzcGFjZS5vcmcveG1sbnMvZHNwYWNlL2RpbSIgeG1sbnM6bWV0cz0iaHR0cDovL3d3dy5sb2MuZ292L01FVFMvIiB4bWxuczp4c2k9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIiBtZXRhZGF0YVZlcnNpb25OdW1iZXI9IjEiIGxhc3RNZXRhZGF0YVVwZGF0ZT0iMjAwNi0wNS0wNCIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMi4yIGh0dHA6Ly9zY2hlbWEuZGF0YWNpdGUub3JnL21ldGEva2VybmVsLTIuMi9tZXRhZGF0YS54c2QiPgogIDxpZGVudGlmaWVyIGlkZW50aWZpZXJUeXBlPSJET0kiPjEwLjUwNjEvRFJZQUQuTUYxU0QvMzwvaWRlbnRpZmllcj4KICA8Y3JlYXRvcnM+CiAgICA8Y3JlYXRvcj4KICAgICAgPGNyZWF0b3JOYW1lPlBpd293YXIsIEhlYXRoZXIgQS48L2NyZWF0b3JOYW1lPgogICAgPC9jcmVhdG9yPgogIDwvY3JlYXRvcnM+CiAgPHRpdGxlcz4KICAgIDx0aXRsZT5TdGF0aXN0aWNhbCBhbmFseXNpcyBSIHNjcmlwdDwvdGl0bGU+CiAgPC90aXRsZXM+CiAgPHB1Ymxpc2hlcj5EcnlhZCBEaWdpdGFsIFJlcG9zaXRvcnk8L3B1Ymxpc2hlcj4KICA8cHVibGljYXRpb25ZZWFyPjIwMTE8L3B1YmxpY2F0aW9uWWVhcj4KICA8c3ViamVjdHM+CiAgICA8c3ViamVjdD5SPC9zdWJqZWN0PgogICAgPHN1YmplY3Q+c3RhdGlzdGljYWwgYW5hbHlzaXM8L3N1YmplY3Q+CiAgICA8c3ViamVjdD5iaWJsaW9tZXRyaWNzPC9zdWJqZWN0PgogIDwvc3ViamVjdHM+CiAgPGRhdGVzPgogICAgPGRhdGUgZGF0ZVR5cGU9IkFjY2VwdGVkIj4yMDExLTA1LTI2PC9kYXRlPgogIDwvZGF0ZXM+CiAgPHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJEYXRhc2V0Ij5EYXRhRmlsZTwvcmVzb3VyY2VUeXBlPgogIDxyZWxhdGVkSWRlbnRpZmllcnM+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRpb25UeXBlPSJJc1BhcnRPZiIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiPjEwLjUwNjEvRFJZQUQuTUYxU0Q8L3JlbGF0ZWRJZGVudGlmaWVyPgogIDwvcmVsYXRlZElkZW50aWZpZXJzPgogIDxyaWdodHM+aHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvcHVibGljZG9tYWluL3plcm8vMS4wLzwvcmlnaHRzPgogIDxkZXNjcmlwdGlvbnM+CiAgICA8ZGVzY3JpcHRpb24gZGVzY3JpcHRpb25UeXBlPSJPdGhlciIvPgogIDwvZGVzY3JpcHRpb25zPgo8L3Jlc291cmNlPg==",
+        "allocator_symbol": "CDL",
+        "allocator": "CDL - California Digital Library",
+        "allocator_facet": "CDL - California Digital Library",
+        "namespace": "http://datacite.org/schema/kernel-2.2",
+        "datacentre": "CDL.DRYAD - Dryad",
+        "datacentre_facet": "CDL.DRYAD - Dryad",
+        "created": "2011-11-22T17:42:33Z",
+        "updated": "2014-05-29T18:08:03Z",
+        "prefix": "10.5061",
+        "has_media": false,
+        "dataset_id": "81207",
+        "doi": "10.5061/DRYAD.MF1SD/3",
+        "schema_version": "2.2",
+        "subject": [
+          "R",
+          "statistical analysis",
+          "bibliometrics"
+        ],
+        "relatedIdentifier": [
+          "IsPartOf:DOI:10.5061/DRYAD.MF1SD"
+        ],
+        "rights": [
+          "http://creativecommons.org/publicdomain/zero/1.0/"
+        ],
+        "descriptionType": [
+          "Other"
+        ],
+        "dateType": [
+          "Accepted"
+        ],
+        "date": [
+          "2011-05-26"
+        ],
+        "creator": [
+          "Piwowar, Heather A."
+        ],
+        "publisher": "Dryad Digital Repository",
+        "resourceType": "DataFile",
+        "title": [
+          "Statistical analysis R script"
+        ],
+        "description": [
+          ""
+        ],
+        "publicationYear": "2011",
+        "resourceTypeGeneral": "Dataset",
+        "_version_": 1500293450666344400,
+        "indexed": "2015-05-05T02:02:10.973Z"
+      },
+      {
+        "minted": "2011-05-26T16:28:31Z",
+        "refQuality": false,
+        "has_metadata": true,
+        "is_active": true,
+        "datacentre_symbol": "CDL.DRYAD",
+        "uploaded": "2011-11-22T17:23:34Z",
+        "xml": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMi4yIiB4bWxuczpkcnlhZD0iaHR0cDovL3B1cmwub3JnL2RyeWFkL3Rlcm1zLyIgeG1sbnM6ZGltPSJodHRwOi8vd3d3LmRzcGFjZS5vcmcveG1sbnMvZHNwYWNlL2RpbSIgeG1sbnM6ZHNwYWNlPSJodHRwOi8vd3d3LmRzcGFjZS5vcmcveG1sbnMvZHNwYWNlL2RpbSIgeG1sbnM6bWV0cz0iaHR0cDovL3d3dy5sb2MuZ292L01FVFMvIiB4bWxuczp4c2k9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIiBtZXRhZGF0YVZlcnNpb25OdW1iZXI9IjEiIGxhc3RNZXRhZGF0YVVwZGF0ZT0iMjAwNi0wNS0wNCIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMi4yIGh0dHA6Ly9zY2hlbWEuZGF0YWNpdGUub3JnL21ldGEva2VybmVsLTIuMi9tZXRhZGF0YS54c2QiPgogIDxpZGVudGlmaWVyIGlkZW50aWZpZXJUeXBlPSJET0kiPjEwLjUwNjEvRFJZQUQuTUYxU0QvMjwvaWRlbnRpZmllcj4KICA8Y3JlYXRvcnM+CiAgICA8Y3JlYXRvcj4KICAgICAgPGNyZWF0b3JOYW1lPlBpd293YXIsIEhlYXRoZXIgQS48L2NyZWF0b3JOYW1lPgogICAgPC9jcmVhdG9yPgogIDwvY3JlYXRvcnM+CiAgPHRpdGxlcz4KICAgIDx0aXRsZT5Kb3VybmFsIHBvbGljeSBkZXRhaWxzIGZvciBtaWNyb2FycmF5IGRhdGE8L3RpdGxlPgogIDwvdGl0bGVzPgogIDxwdWJsaXNoZXI+RHJ5YWQgRGlnaXRhbCBSZXBvc2l0b3J5PC9wdWJsaXNoZXI+CiAgPHB1YmxpY2F0aW9uWWVhcj4yMDExPC9wdWJsaWNhdGlvblllYXI+CiAgPHN1YmplY3RzPgogICAgPHN1YmplY3Q+ZGF0YSBzaGFyaW5nPC9zdWJqZWN0PgogICAgPHN1YmplY3Q+YmlibGlvbWV0cmljczwvc3ViamVjdD4KICAgIDxzdWJqZWN0PmdlbmUgZXhwcmVzc2lvbiBtaWNyb2FycmF5PC9zdWJqZWN0PgogICAgPHN1YmplY3Q+c2NpZW5jZSBjb21tdW5pY2F0aW9uPC9zdWJqZWN0PgogICAgPHN1YmplY3Q+cG9saWN5PC9zdWJqZWN0PgogICAgPHN1YmplY3Q+aW5zdHJ1Y3Rpb25zIHRvIGF1dGhvcnM8L3N1YmplY3Q+CiAgICA8c3ViamVjdD5wdWJsaXNoaW5nPC9zdWJqZWN0PgogIDwvc3ViamVjdHM+CiAgPGRhdGVzPgogICAgPGRhdGUgZGF0ZVR5cGU9IkFjY2VwdGVkIj4yMDExLTA1LTI2PC9kYXRlPgogIDwvZGF0ZXM+CiAgPHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJEYXRhc2V0Ij5EYXRhRmlsZTwvcmVzb3VyY2VUeXBlPgogIDxyZWxhdGVkSWRlbnRpZmllcnM+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRpb25UeXBlPSJJc1BhcnRPZiIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiPjEwLjUwNjEvRFJZQUQuTUYxU0Q8L3JlbGF0ZWRJZGVudGlmaWVyPgogIDwvcmVsYXRlZElkZW50aWZpZXJzPgogIDxyaWdodHM+aHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvcHVibGljZG9tYWluL3plcm8vMS4wLzwvcmlnaHRzPgogIDxkZXNjcmlwdGlvbnM+CiAgICA8ZGVzY3JpcHRpb24gZGVzY3JpcHRpb25UeXBlPSJPdGhlciIvPgogIDwvZGVzY3JpcHRpb25zPgo8L3Jlc291cmNlPg==",
+        "allocator_symbol": "CDL",
+        "allocator": "CDL - California Digital Library",
+        "allocator_facet": "CDL - California Digital Library",
+        "namespace": "http://datacite.org/schema/kernel-2.2",
+        "datacentre": "CDL.DRYAD - Dryad",
+        "datacentre_facet": "CDL.DRYAD - Dryad",
+        "created": "2011-11-22T17:23:34Z",
+        "updated": "2014-05-29T17:59:48Z",
+        "prefix": "10.5061",
+        "has_media": false,
+        "dataset_id": "80705",
+        "doi": "10.5061/DRYAD.MF1SD/2",
+        "schema_version": "2.2",
+        "subject": [
+          "data sharing",
+          "bibliometrics",
+          "gene expression microarray",
+          "science communication",
+          "policy",
+          "instructions to authors",
+          "publishing"
+        ],
+        "relatedIdentifier": [
+          "IsPartOf:DOI:10.5061/DRYAD.MF1SD"
+        ],
+        "rights": [
+          "http://creativecommons.org/publicdomain/zero/1.0/"
+        ],
+        "descriptionType": [
+          "Other"
+        ],
+        "dateType": [
+          "Accepted"
+        ],
+        "date": [
+          "2011-05-26"
+        ],
+        "creator": [
+          "Piwowar, Heather A."
+        ],
+        "publisher": "Dryad Digital Repository",
+        "resourceType": "DataFile",
+        "title": [
+          "Journal policy details for microarray data"
+        ],
+        "description": [
+          ""
+        ],
+        "publicationYear": "2011",
+        "resourceTypeGeneral": "Dataset",
+        "_version_": 1500293449081946000,
+        "indexed": "2015-05-05T02:02:09.462Z"
+      },
+      {
+        "minted": "2011-05-26T16:28:54Z",
+        "refQuality": false,
+        "has_metadata": true,
+        "is_active": true,
+        "datacentre_symbol": "CDL.DRYAD",
+        "uploaded": "2011-11-22T17:23:41Z",
+        "xml": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMi4yIiB4bWxuczpkcnlhZD0iaHR0cDovL3B1cmwub3JnL2RyeWFkL3Rlcm1zLyIgeG1sbnM6ZGltPSJodHRwOi8vd3d3LmRzcGFjZS5vcmcveG1sbnMvZHNwYWNlL2RpbSIgeG1sbnM6ZHNwYWNlPSJodHRwOi8vd3d3LmRzcGFjZS5vcmcveG1sbnMvZHNwYWNlL2RpbSIgeG1sbnM6bWV0cz0iaHR0cDovL3d3dy5sb2MuZ292L01FVFMvIiB4bWxuczp4c2k9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIiBtZXRhZGF0YVZlcnNpb25OdW1iZXI9IjEiIGxhc3RNZXRhZGF0YVVwZGF0ZT0iMjAwNi0wNS0wNCIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMi4yIGh0dHA6Ly9zY2hlbWEuZGF0YWNpdGUub3JnL21ldGEva2VybmVsLTIuMi9tZXRhZGF0YS54c2QiPgogIDxpZGVudGlmaWVyIGlkZW50aWZpZXJUeXBlPSJET0kiPjEwLjUwNjEvRFJZQUQuTUYxU0QvNDwvaWRlbnRpZmllcj4KICA8Y3JlYXRvcnM+CiAgICA8Y3JlYXRvcj4KICAgICAgPGNyZWF0b3JOYW1lPlBpd293YXIsIEhlYXRoZXIgQS48L2NyZWF0b3JOYW1lPgogICAgPC9jcmVhdG9yPgogIDwvY3JlYXRvcnM+CiAgPHRpdGxlcz4KICAgIDx0aXRsZT5IZWxwZXIgUiBzY3JpcHQgZnVuY3Rpb25zPC90aXRsZT4KICA8L3RpdGxlcz4KICA8cHVibGlzaGVyPkRyeWFkIERpZ2l0YWwgUmVwb3NpdG9yeTwvcHVibGlzaGVyPgogIDxwdWJsaWNhdGlvblllYXI+MjAxMTwvcHVibGljYXRpb25ZZWFyPgogIDxkYXRlcz4KICAgIDxkYXRlIGRhdGVUeXBlPSJBY2NlcHRlZCI+MjAxMS0wNS0yNjwvZGF0ZT4KICA8L2RhdGVzPgogIDxyZXNvdXJjZVR5cGUgcmVzb3VyY2VUeXBlR2VuZXJhbD0iRGF0YXNldCI+RGF0YUZpbGU8L3Jlc291cmNlVHlwZT4KICA8cmVsYXRlZElkZW50aWZpZXJzPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0aW9uVHlwZT0iSXNQYXJ0T2YiIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIj4xMC41MDYxL0RSWUFELk1GMVNEPC9yZWxhdGVkSWRlbnRpZmllcj4KICA8L3JlbGF0ZWRJZGVudGlmaWVycz4KICA8cmlnaHRzPmh0dHA6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL3B1YmxpY2RvbWFpbi96ZXJvLzEuMC88L3JpZ2h0cz4KICA8ZGVzY3JpcHRpb25zPgogICAgPGRlc2NyaXB0aW9uIGRlc2NyaXB0aW9uVHlwZT0iT3RoZXIiLz4KICA8L2Rlc2NyaXB0aW9ucz4KPC9yZXNvdXJjZT4=",
+        "allocator_symbol": "CDL",
+        "allocator": "CDL - California Digital Library",
+        "allocator_facet": "CDL - California Digital Library",
+        "namespace": "http://datacite.org/schema/kernel-2.2",
+        "datacentre": "CDL.DRYAD - Dryad",
+        "datacentre_facet": "CDL.DRYAD - Dryad",
+        "created": "2011-11-22T17:23:41Z",
+        "updated": "2014-05-29T17:59:55Z",
+        "prefix": "10.5061",
+        "has_media": false,
+        "dataset_id": "80708",
+        "doi": "10.5061/DRYAD.MF1SD/4",
+        "schema_version": "2.2",
+        "relatedIdentifier": [
+          "IsPartOf:DOI:10.5061/DRYAD.MF1SD"
+        ],
+        "rights": [
+          "http://creativecommons.org/publicdomain/zero/1.0/"
+        ],
+        "descriptionType": [
+          "Other"
+        ],
+        "dateType": [
+          "Accepted"
+        ],
+        "date": [
+          "2011-05-26"
+        ],
+        "creator": [
+          "Piwowar, Heather A."
+        ],
+        "publisher": "Dryad Digital Repository",
+        "resourceType": "DataFile",
+        "title": [
+          "Helper R script functions"
+        ],
+        "description": [
+          ""
+        ],
+        "publicationYear": "2011",
+        "resourceTypeGeneral": "Dataset",
+        "_version_": 1500293449090334700,
+        "indexed": "2015-05-05T02:02:09.47Z"
+      },
+      {
+        "minted": "2011-05-26T16:28:21Z",
+        "refQuality": false,
+        "has_metadata": true,
+        "is_active": true,
+        "datacentre_symbol": "CDL.DRYAD",
+        "uploaded": "2011-11-22T17:31:48Z",
+        "xml": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMi4yIiB4bWxuczpkcnlhZD0iaHR0cDovL3B1cmwub3JnL2RyeWFkL3Rlcm1zLyIgeG1sbnM6ZGltPSJodHRwOi8vd3d3LmRzcGFjZS5vcmcveG1sbnMvZHNwYWNlL2RpbSIgeG1sbnM6ZHNwYWNlPSJodHRwOi8vd3d3LmRzcGFjZS5vcmcveG1sbnMvZHNwYWNlL2RpbSIgeG1sbnM6bWV0cz0iaHR0cDovL3d3dy5sb2MuZ292L01FVFMvIiB4bWxuczp4c2k9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIiBtZXRhZGF0YVZlcnNpb25OdW1iZXI9IjEiIGxhc3RNZXRhZGF0YVVwZGF0ZT0iMjAwNi0wNS0wNCIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMi4yIGh0dHA6Ly9zY2hlbWEuZGF0YWNpdGUub3JnL21ldGEva2VybmVsLTIuMi9tZXRhZGF0YS54c2QiPgogIDxpZGVudGlmaWVyIGlkZW50aWZpZXJUeXBlPSJET0kiPjEwLjUwNjEvRFJZQUQuTUYxU0QvMTwvaWRlbnRpZmllcj4KICA8Y3JlYXRvcnM+CiAgICA8Y3JlYXRvcj4KICAgICAgPGNyZWF0b3JOYW1lPlBpd293YXIsIEhlYXRoZXIgQS48L2NyZWF0b3JOYW1lPgogICAgPC9jcmVhdG9yPgogIDwvY3JlYXRvcnM+CiAgPHRpdGxlcz4KICAgIDx0aXRsZT5NaWNyb2FycmF5IHB1YmxpY2F0aW9ucyBhbmQgcHVibGljYXRpb24gYXR0cmlidXRlczwvdGl0bGU+CiAgPC90aXRsZXM+CiAgPHB1Ymxpc2hlcj5EcnlhZCBEaWdpdGFsIFJlcG9zaXRvcnk8L3B1Ymxpc2hlcj4KICA8cHVibGljYXRpb25ZZWFyPjIwMTE8L3B1YmxpY2F0aW9uWWVhcj4KICA8c3ViamVjdHM+CiAgICA8c3ViamVjdD5kYXRhIHNoYXJpbmc8L3N1YmplY3Q+CiAgICA8c3ViamVjdD5iaWJsaW9tZXRyaWNzPC9zdWJqZWN0PgogICAgPHN1YmplY3Q+Z2VuZSBleHByZXNzaW9uIG1pY3JvYXJyYXk8L3N1YmplY3Q+CiAgICA8c3ViamVjdD5zY2llbmNlIGNvbW11bmljYXRpb248L3N1YmplY3Q+CiAgICA8c3ViamVjdD5wb2xpY3k8L3N1YmplY3Q+CiAgPC9zdWJqZWN0cz4KICA8ZGF0ZXM+CiAgICA8ZGF0ZSBkYXRlVHlwZT0iQWNjZXB0ZWQiPjIwMTEtMDUtMjY8L2RhdGU+CiAgPC9kYXRlcz4KICA8cmVzb3VyY2VUeXBlIHJlc291cmNlVHlwZUdlbmVyYWw9IkRhdGFzZXQiPkRhdGFGaWxlPC9yZXNvdXJjZVR5cGU+CiAgPHJlbGF0ZWRJZGVudGlmaWVycz4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGlvblR5cGU9IklzUGFydE9mIiByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSI+MTAuNTA2MS9EUllBRC5NRjFTRDwvcmVsYXRlZElkZW50aWZpZXI+CiAgPC9yZWxhdGVkSWRlbnRpZmllcnM+CiAgPHJpZ2h0cz5odHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9wdWJsaWNkb21haW4vemVyby8xLjAvPC9yaWdodHM+CiAgPGRlc2NyaXB0aW9ucz4KICAgIDxkZXNjcmlwdGlvbiBkZXNjcmlwdGlvblR5cGU9Ik90aGVyIi8+CiAgPC9kZXNjcmlwdGlvbnM+CjwvcmVzb3VyY2U+",
+        "allocator_symbol": "CDL",
+        "allocator": "CDL - California Digital Library",
+        "allocator_facet": "CDL - California Digital Library",
+        "namespace": "http://datacite.org/schema/kernel-2.2",
+        "datacentre": "CDL.DRYAD - Dryad",
+        "datacentre_facet": "CDL.DRYAD - Dryad",
+        "created": "2011-11-22T17:31:48Z",
+        "updated": "2014-05-29T18:03:12Z",
+        "prefix": "10.5061",
+        "has_media": false,
+        "dataset_id": "80916",
+        "doi": "10.5061/DRYAD.MF1SD/1",
+        "schema_version": "2.2",
+        "subject": [
+          "data sharing",
+          "bibliometrics",
+          "gene expression microarray",
+          "science communication",
+          "policy"
+        ],
+        "relatedIdentifier": [
+          "IsPartOf:DOI:10.5061/DRYAD.MF1SD"
+        ],
+        "rights": [
+          "http://creativecommons.org/publicdomain/zero/1.0/"
+        ],
+        "descriptionType": [
+          "Other"
+        ],
+        "dateType": [
+          "Accepted"
+        ],
+        "date": [
+          "2011-05-26"
+        ],
+        "creator": [
+          "Piwowar, Heather A."
+        ],
+        "publisher": "Dryad Digital Repository",
+        "resourceType": "DataFile",
+        "title": [
+          "Microarray publications and publication attributes"
+        ],
+        "description": [
+          ""
+        ],
+        "publicationYear": "2011",
+        "resourceTypeGeneral": "Dataset",
+        "_version_": 1500293449705848800,
+        "indexed": "2015-05-05T02:02:10.057Z"
+      },
+      {
+        "minted": "2013-02-13T14:46:00Z",
+        "refQuality": false,
+        "has_metadata": true,
+        "is_active": true,
+        "datacentre_symbol": "CDL.DIGSCI",
+        "uploaded": "2013-02-13T14:45:59Z",
+        "xml": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMyIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMyBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC0zL21ldGFkYXRhLnhzZCI+PGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuNjA4NC9NOS5GSUdTSEFSRS4xNTY1OTU8L2lkZW50aWZpZXI+PHRpdGxlcz48dGl0bGU+VW5jb3ZlcmluZyBJbXBhY3QgLSBNb3ZpbmcgYmV5b25kIHRoZSBqb3VybmFsIGFydGljbGUgYW5kIGJleW9uZCB0aGUgaW1wYWN0IGZhY3RvcjwvdGl0bGU+PC90aXRsZXM+PHB1Ymxpc2hlcj5GaWdzaGFyZTwvcHVibGlzaGVyPjxwdWJsaWNhdGlvblllYXI+MjAxMzwvcHVibGljYXRpb25ZZWFyPjxyZXNvdXJjZVR5cGUgcmVzb3VyY2VUeXBlR2VuZXJhbD0iRGF0YXNldCI+UHJlc2VudGF0aW9uPC9yZXNvdXJjZVR5cGU+PHJpZ2h0c0xpc3Q+PHJpZ2h0cyByaWdodHNVUkk9Imh0dHA6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LzMuMC91cy8iPkNDLUJZPC9yaWdodHM+PC9yaWdodHNMaXN0PjxjcmVhdG9ycz48Y3JlYXRvcj48Y3JlYXRvck5hbWU+UmVzZWFyY2ggVHJlbmRzPC9jcmVhdG9yTmFtZT48L2NyZWF0b3I+PGNyZWF0b3I+PGNyZWF0b3JOYW1lPkhlYXRoZXIgUGl3b3dhcjwvY3JlYXRvck5hbWU+PG5hbWVJZGVudGlmaWVyIG5hbWVJZGVudGlmaWVyU2NoZW1lPSJPUkNJRCI+MDAwMC0wMDAzLTE2MTMtNTk4MTwvbmFtZUlkZW50aWZpZXI+PC9jcmVhdG9yPjwvY3JlYXRvcnM+PC9yZXNvdXJjZT4=",
+        "allocator_symbol": "CDL",
+        "allocator": "CDL - California Digital Library",
+        "allocator_facet": "CDL - California Digital Library",
+        "namespace": "http://datacite.org/schema/kernel-3",
+        "datacentre": "CDL.DIGSCI - Digital Science",
+        "datacentre_facet": "CDL.DIGSCI - Digital Science",
+        "created": "2013-02-13T14:45:59Z",
+        "updated": "2014-07-03T23:19:30Z",
+        "prefix": "10.6084",
+        "has_media": false,
+        "dataset_id": "1580615",
+        "doi": "10.6084/M9.FIGSHARE.156595",
+        "schema_version": "3",
+        "rights": [
+          "CC-BY"
+        ],
+        "creator": [
+          "Research Trends",
+          "Heather Piwowar"
+        ],
+        "resourceType": "Presentation",
+        "publisher": "Figshare",
+        "title": [
+          "Uncovering Impact - Moving beyond the journal article and beyond the impact factor"
+        ],
+        "nameIdentifier": [
+          "ORCID:0000-0003-1613-5981"
+        ],
+        "rightsURI": [
+          "http://creativecommons.org/licenses/by/3.0/us/"
+        ],
+        "publicationYear": "2013",
+        "resourceTypeGeneral": "Dataset",
+        "_version_": 1500300660260733000,
+        "indexed": "2015-05-05T03:56:46.578Z"
+      }
+    ]
+  }
+}
