@@ -43,7 +43,7 @@ module Sinatra
     def to_long_doi(s)
       doi = to_doi(s)
       normal_short_doi = doi.sub(/10\//, '').downcase
-      short_doi_doc = settings.shorts.find(short_doi: normal_short_doi)
+      short_doi_doc = Sinatra::Application.settings.shorts.find(short_doi: normal_short_doi)
 
       if short_doi_doc.has_next?
         short_doi_doc.next['doi']
@@ -52,7 +52,7 @@ module Sinatra
 
         if result.is_a?(Hash) && !result["error"]
           doi = result.fetch('DOI', nil)
-          settings.shorts.insert(short_doi: normal_short_doi, doi: doi)
+          Sinatra::Application.settings.shorts.insert(short_doi: normal_short_doi, doi: doi)
           doi
         end
       end

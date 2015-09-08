@@ -198,7 +198,7 @@ get '/help/stats' do
 end
 
 get '/auth/orcid/callback' do
-  session[:orcid] = request.env['omniauth.auth']
+  session[:orcid] = request.env.fetch('omniauth.auth', nil)
   UpdateJob.perform_async(session[:orcid])
 
   haml :auth_callback
