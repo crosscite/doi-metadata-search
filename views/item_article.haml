@@ -36,6 +36,9 @@
     - elsif !item.first_page.nil?
       , on page
       = item.first_page
+  - if item.description.present?
+    %p
+      = sanitize(item.description)
 
   = haml :item_links, locals: { item: item }
 

@@ -38,7 +38,7 @@
       = item.first_page
   - if item.description.present?
     %p
-      = item.description
+      = sanitize(item.description)
 
     = partial :item_links, :item => item
 

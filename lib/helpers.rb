@@ -3,6 +3,7 @@ require_relative 'session'
 require_relative "#{ENV['RA']}/stats"
 require_relative 'search'
 require_relative 'paginate'
+require 'sanitize'
 
 helpers do
   include Sinatra::Doi
@@ -53,6 +54,10 @@ helpers do
 
   def uncamelize(string)
     string.split(/(?=[A-Z])/).join(' ').capitalize
+  end
+
+  def sanitize(string)
+    Sanitize.fragment(string, :elements => ['br'])
   end
 
   def rights_hash

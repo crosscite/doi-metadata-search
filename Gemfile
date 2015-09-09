@@ -23,6 +23,7 @@ gem 'rack-flash3'
 gem 'oauth2'
 gem "sidekiq"
 gem 'nokogiri'
+gem 'sanitize'
 gem 'rake'
 gem 'log4r'
 gem 'namae'

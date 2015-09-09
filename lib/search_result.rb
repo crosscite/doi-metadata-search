@@ -34,7 +34,7 @@ class SearchResult
     @publication = find_value('publisher')
     @title = solr_doc.fetch('title', [""]).first.strip
     description = solr_doc.fetch('description', []).first
-    @description = description.to_s.truncate_words(100)
+    @description = description.to_s.truncate_words(100).gsub(/\\n\\n/, "<br/>")
     @date = solr_doc.fetch('date', []).last
     @year = find_value('publicationYear')
     @month = solr_doc['month'] ? MONTH_SHORT_NAMES[solr_doc['month'] - 1] : (@date && @date.size > 6 ? MONTH_SHORT_NAMES[@date[5..6].to_i - 1] : nil)

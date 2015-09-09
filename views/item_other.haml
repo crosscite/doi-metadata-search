@@ -31,6 +31,6 @@
       = item.publication
   - if item.description.present?
     %p
-      = item.description
+      = sanitize(item.description)
 
   = haml :item_links, locals: { item: item }
