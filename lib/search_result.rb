@@ -33,7 +33,8 @@ class SearchResult
     @highlights = solr_result.fetch('highlighting', {})
     @publication = find_value('publisher')
     @title = solr_doc.fetch('title', [""]).first.strip
-    @description = solr_doc.fetch('description', nil)
+    description = solr_doc.fetch('description', []).first
+    @description = description.to_s.truncate_words(100)
     @date = solr_doc.fetch('date', []).last
     @year = find_value('publicationYear')
     @month = solr_doc['month'] ? MONTH_SHORT_NAMES[solr_doc['month'] - 1] : (@date && @date.size > 6 ? MONTH_SHORT_NAMES[@date[5..6].to_i - 1] : nil)

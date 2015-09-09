@@ -1,11 +1,11 @@
 %div.item-data
   %h3
-    - if item.title
+    - if item.title.present?
       = item.title
     - else
       No title
 
-  - unless item.authors.nil?
+  - if item.authors.present?
     %p= item.authors_as_string
 
   %p
@@ -16,19 +16,19 @@
       published
     - else
       Text published
-    - unless item.day.nil?
+    - if item.day.present?
       = item.day
-    - unless item.month.nil?
+    - if item.month.present?
       = item.month
     - unless (item.year.nil? || item.year.to_i == 0)
       = item.year
-    - unless item.publication.nil?
+    - if item.publication.present?
       via
       = item.publication
-    - unless item.volume.nil?
+    - if item.volume.present?
       , volume
       = item.volume
-    - unless item.issue.nil?
+    - if item.issue.present?
       , issue
       = item.issue
     - if !item.first_page.nil? && !item.last_page.nil?
@@ -36,8 +36,11 @@
       = item.first_page
       to
       = item.last_page
-    - elsif !item.first_page.nil?
+    - elsif item.first_page.present?
       , on page
       = item.first_page
+  - if item.description.present?
+    %p
+      = item.description
 
   = haml :item_links, locals: { item: item }

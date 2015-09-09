@@ -29,5 +29,8 @@
     - unless item.publication.nil?
       via
       = item.publication
+  - if item.description.present?
+    %p
+      = item.description
 
   = haml :item_links, locals: { item: item }
