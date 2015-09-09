@@ -114,7 +114,8 @@ configure do
       'ieee' => 'text/x-bibliography; style=ieee',
       'mla' => 'text/x-bibliography; style=modern-language-association',
       'vancouver' => 'text/x-bibliography; style=vancouver',
-      'chicago' => 'text/x-bibliography; style=chicago-fullnote-bibliography'
+      'chicago' => 'text/x-bibliography; style=chicago-fullnote-bibliography',
+      'citeproc' => 'application/vnd.citationstyles.csl+json'
 
   # Set facet fields
   set :facet_fields, %w(resourceType_facet publicationYear datacentre_facet rightsURI)
