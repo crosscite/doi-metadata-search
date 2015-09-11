@@ -167,7 +167,10 @@ get '/' do
       paginate: Paginate.new(query_page, query_rows, solr_result),
       facets: facet_results(solr_result) }
 
-    page = get_alt_result(page) unless page[:items].length > 0
+    unless page[:items].length > 0
+      page = get_alt_result(page)
+      redirect to(page[:alt_url]) if page[:alt_text] =~ /^DOI found/
+    end
 
     haml :results, locals: { page: page }
   end
