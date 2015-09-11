@@ -133,12 +133,14 @@ class SearchResult
 
   def authors
     Array(@authors).map do |author|
-      names = Namae.parse(author.fetch("creatorName", nil))
-      name = names.first || OpenStruct.new(family: nil, given: nil)
+      creator_name = author.fetch("creatorName", nil)
+      names = Namae.parse(creator_name)
+      name = names.first || OpenStruct.new(family: nil, given: nil, literal: creator_name)
+      credit_name = name.family ? [name.given, name.family].join(" ") : name.literal
 
       { "family" => name.family,
         "given" => name.given,
-        "credit-name" => [name.given, name.family].join(" "),
+        "credit-name" => credit_name,
         "id" => author.fetch("nameIdentifier", nil) }
     end
   end
