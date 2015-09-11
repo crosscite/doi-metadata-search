@@ -136,7 +136,7 @@ class SearchResult
       creator_name = author.fetch("creatorName", nil)
       names = Namae.parse(creator_name)
       name = names.first || OpenStruct.new(family: nil, given: nil, literal: creator_name)
-      credit_name = name.family ? [name.given, name.family].join(" ") : name.literal
+      credit_name = name.given ? [name.given, name.family].join(" ") : name.literal
 
       { "family" => name.family,
         "given" => name.given,
