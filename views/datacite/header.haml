@@ -1,0 +1,8 @@
+.header
+  .profile.pull-right
+    = haml :profile_link
+
+  - unless page[:mini_header]
+    .logo
+      %a{:href => '/'}
+        %img.logo-small{src: "/images/#{ENV['RA']}/logo-small.png", alt: ENV['SITENAME'] }

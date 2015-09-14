@@ -1,11 +1,11 @@
-= haml :search_header, locals: { page: page }
+= haml :"#{ENV['RA']}/header", locals: { page: page }
 
-.row-fluid
-  .span9
+.row
+  .col-md-9
     .page-header
       %h2 Examples
       %p Click on an example to put it in the search box.
 
     = haml :"#{ENV['RA']}/examples_list", locals: { page: page }
 
-= haml :search_footer, locals: { page: page }
+= haml :"#{ENV['RA']}/footer", locals: { page: page }

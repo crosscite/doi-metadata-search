@@ -1,36 +1,71 @@
-- if signed_in?
-  %div{ class: 'dropdown' }
-    %img.logo{src: '/images/orcid_24x24.gif'}
-    %a.dropdown-toggle{:href => '#', :role => 'button', 'data-toggle' => 'dropdown'}
-      = user_display
-      %b.caret
-    %ul.dropdown-menu.pull-right{'role' => 'menu'}
+.btn-toolbar.profile
+  .btn-group{role: "group"}
+    %button.btn.btn-default.dropdown-toggle{role: "button", data: { toggle: "dropdown"}, aria: { haspopup: "true", expanded: "false" }}
+      %i.fa.fa-navicon
+    %ul.dropdown-menu{role: 'menu'}
+      %li.dropdown-header DataCite Labs
       %li
-        %a{:href => "#{ENV['ORCID_URL']}/#{session[:orcid][:uid]}"}
-          %i.fa.fa-external-link
-          ORCID Profile
+        %a{:href => 'http://blog.labs.datacite.org'}
+          %i.fa.fa-rss.fa-fw
+          Blog
       %li
-        %a{:href => '/orcid/activity'}
-          %i.fa.fa-cog
-          Settings
+        %a{:href => 'http://search.labs.datacite.org'}
+          %i.fa.fa-search.fa-fw
+          Search
       %li.divider
+      %li.dropdown-header DataCite
       %li
-        %a{:href => "/auth/signout?redirect_uri=#{URI.encode(request.fullpath)}"}
-          %i.fa.fa-sign-out
-          Sign out
-- else
-  %img.logo{src: '/images/orcid_24x24.gif'}
-  %a#sign-in-link{:href => '#'}
-    Sign in with ORCID
+        %a{:href => 'http://www.datacite.org'}
+          %i.fa.fa-globe.fa-fw
+          Home
+      %li
+        %a{:href => 'http://mds.datacite.org'}
+          %i.fa.fa-database.fa-fw
+          MDS
+      %li
+        %a{:href => 'http://schema.datacite.org'}
+          %i.fa.fa-file-code-o.fa-fw
+          Schema
 
-  :javascript
-    $(document).ready(function() {
-      $('#sign-in-link').click(function(e) {
-        $.oauthpopup({path: '/auth/orcid',
-          callback: function() {
-            document.location.reload(true);
-          }});
-        e.preventDefault();
-        return false;
+      %li
+        %a{:href => 'http://statss.datacite.org'}
+          %i.fa.fa-bar-chart.fa-fw
+          Stats
+
+  - if signed_in?
+    .btn-group{role: "group"}
+      %button.btn.btn-default.dropdown-toggle{role: "button", data: { toggle: "dropdown"}, aria: { haspopup: "true", expanded: "false" }}
+        = user_display
+      %ul.dropdown-menu.dropdown-menu-right{role: 'menu'}
+        %li
+          %a{:href => '/orcid/activity'}
+            %i.fa.fa-cog
+            Settings
+        %li.divider
+        %li
+          %a{:href => "#{ENV['ORCID_URL']}/#{session[:orcid][:uid]}"}
+            %i.fa.fa-external-link
+            ORCID Profile
+        %li.divider
+        %li
+          %a{:href => "/auth/signout?redirect_uri=#{URI.encode(request.fullpath)}"}
+            %i.fa.fa-sign-out
+            Sign out
+  - else
+    .btn-group{role: "group"}
+      %button.btn.btn-default
+        %img.logo{src: '/images/orcid_24x24.png'}
+        %a#sign-in-link{:href => '#'}
+          Sign in with ORCID
+
+    :javascript
+      $(document).ready(function() {
+        $('#sign-in-link').click(function(e) {
+          $.oauthpopup({path: '/auth/orcid',
+            callback: function() {
+              document.location.reload(true);
+            }});
+          e.preventDefault();
+          return false;
+        });
       });
-    });

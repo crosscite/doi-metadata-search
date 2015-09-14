@@ -4,13 +4,14 @@
     %title
       = ENV['APPLICATION']
     %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
-    %link{:rel => 'stylesheet', :href => '/stylesheets/bootstrap.min.css', :type => 'text/css', :media => 'screen'}
-    %link{:rel => 'stylesheet', :href => 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css', :type => 'text/css', :media => 'screen'}
-    %link{:rel => 'stylesheet', :href => '/stylesheets/application.css', :type => 'text/css', :media => 'screen'}
-    %link{:rel => 'stylesheet', :href => "/stylesheets/#{ENV['RA']}.css", :type => 'text/css', :media => 'screen'}
-    %link{:rel =>'search', :href => '/opensearch.xml', :type => 'application/opensearchdescription+xml', :title => 'CrossRef Metadata Search'}
-    %script{:type => 'text/javascript', :src => 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'}
-    %script{:type => 'text/javascript', :src => '/javascripts/bootstrap.js'}
+
+    %link{:rel => 'stylesheet', :href => 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css', :type => 'text/css'}
+    %link{:rel => 'stylesheet', :href => 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css', :type => 'text/css'}
+    %link{:rel => 'stylesheet', :href => "/stylesheets/#{ENV['RA']}.css", :type => 'text/css'}
+    %link{:rel => 'stylesheet', :href => "https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic", :type => 'text/css'}
+
+    %script{:type => 'text/javascript', :src => 'https://code.jquery.com/jquery-1.11.3.min.js'}
+    %script{:type => 'text/javascript', :src => 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'}
     %script{:type => 'text/javascript', :src => '/javascripts/spin.min.js'}
     %script{:type => 'text/javascript', :src => '/javascripts/format.min.js'}
     %script{:type => 'text/javascript', :src => '/javascripts/jquery.oauthpopup.js'}
@@ -34,8 +35,7 @@
       });
   %body
     .notifications.top-left
-    .container-fluid
-      = yield
+    = yield
     - if expired_session?
       :javascript
         $(document).ready(function() {
@@ -49,4 +49,3 @@
             url: '/auth/signout',
           });
         });
-

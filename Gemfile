@@ -1,7 +1,7 @@
-source "http://rubygems.org"
+source 'http://rubygems.org'
 
 gem 'dotenv'
-gem "bugsnag"
+gem 'bugsnag'
 gem 'awesome_print'
 gem 'activesupport'
 gem 'sinatra'
@@ -13,6 +13,7 @@ gem 'oj'
 gem 'bson_ext'
 gem 'rsolr'
 gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 gem 'bson'
 gem 'faraday'
 gem 'faraday_middleware'
@@ -21,13 +22,14 @@ gem 'gabba'
 gem 'omniauth-orcid'
 gem 'rack-flash3'
 gem 'oauth2'
-gem "sidekiq"
+gem 'sidekiq'
 gem 'nokogiri'
 gem 'sanitize'
 gem 'rake'
 gem 'log4r'
 gem 'namae'
-gem 'whenever', :require => false
+gem 'sass'
+gem 'whenever', require: false
 
 group :development do
   gem 'capistrano-passenger', '~> 0.1.1'
@@ -40,9 +42,9 @@ group :test do
   gem 'capybara-screenshot'
   gem 'factory_girl'
   gem 'poltergeist'
-  gem "webmock", "~> 1.20.0"
+  gem 'webmock', '~> 1.20.0'
   gem 'vcr', '~> 2.9.3'
-  gem "codeclimate-test-reporter", require: nil
+  gem 'codeclimate-test-reporter', require: nil
 end
 
 group :test, :development do

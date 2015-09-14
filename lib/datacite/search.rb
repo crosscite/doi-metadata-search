@@ -8,10 +8,6 @@ module Sinatra
       %w(doi creator contributor contributorType title publisher publicationYear relatedIdentifier alternateIdentifier resourceTypeGeneral resourceType nameIdentifier rightsURI version description descriptionType xml score)
     end
 
-    def query_fields
-      "doi creator contributor contributorType title publisher publicationYear relatedIdentifier alternateIdentifier resourceTypeGeneral resourceType nameIdentifier subject rightsURI version description descriptionType"
-    end
-
     def query_terms
       params['q'] = '*' if params['q'].blank?
 
@@ -27,6 +23,8 @@ module Sinatra
         "alternateIdentifier:#{query_info[:value]}"
       when :issn
         "*:#{query_info[:value]}"
+      when :creator
+        "creator::#{query_info[:value]}"
       else
         params['q']
       end
@@ -45,7 +43,6 @@ module Sinatra
       query  = {
         :sort => sort_term,
         :q => query_terms,
-        :qf => query_fields,
         :fl => query_columns,
         :rows => query_rows,
         :facet => 'true',

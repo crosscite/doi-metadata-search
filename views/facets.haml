@@ -2,7 +2,7 @@
   - page[:facets].each_pair do |name, values|
     - if values.size > 0
       %h3= facet_text(name)
-      %ul.nav.nav-list
+      %ul
         - values.each_slice(2) do |value_name, value_count|
           - unless value_count.zero?
             - if name == 'rightsURI'

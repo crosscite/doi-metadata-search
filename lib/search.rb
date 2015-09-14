@@ -31,7 +31,9 @@ module Sinatra
     end
 
     def query_type
-      if doi? params['q']
+      if params['qf']
+        { type: params['qf'].to_sym, value: params['q'].strip }
+      elsif doi? params['q']
         { type: :doi, value: to_doi(params['q']).downcase }
       elsif short_doi?(params['q']) || very_short_doi?(params['q'])
         { type: :short_doi, value: to_long_doi(params['q']) }

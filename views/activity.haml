@@ -1,7 +1,7 @@
-= haml :search_header, locals: { page: page }
+= haml :"#{ENV['RA']}/header", locals: { page: page }
 
-.row-fluid
-  .span9
+.row
+  .col-md-9
     .page-header
       %h2 Settings
     .sync-info
@@ -12,7 +12,7 @@
           Sync
       Sync changes from your ORCID record to this site
 
-= haml :search_footer, locals: { page: page }
+= haml :"#{ENV['RA']}/footer", locals: { page: page }
 
 :javascript
   $(document).ready(function() {
