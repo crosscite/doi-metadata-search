@@ -1,5 +1,13 @@
 .btn-toolbar.profile
   .btn-group{role: "group"}
+    %button.btn.btn-default#home
+      %a{href: '/'}
+        %i.fa.fa-home
+  .btn-group{role: "group"}
+    %button.btn.btn-default#help
+      %a{href: '/help/examples'}
+        %i.fa.fa-question
+  .btn-group{role: "group"}
     %button.btn.btn-default.dropdown-toggle{role: "button", data: { toggle: "dropdown"}, aria: { haspopup: "true", expanded: "false" }}
       %i.fa.fa-navicon
     %ul.dropdown-menu{role: 'menu'}
@@ -17,7 +25,7 @@
       %li
         %a{:href => 'http://www.datacite.org'}
           %i.fa.fa-globe.fa-fw
-          Home
+          Homepage
       %li
         %a{:href => 'http://mds.datacite.org'}
           %i.fa.fa-database.fa-fw
@@ -31,7 +39,6 @@
         %a{:href => 'http://statss.datacite.org'}
           %i.fa.fa-bar-chart.fa-fw
           Stats
-
   - if signed_in?
     .btn-group{role: "group"}
       %button.btn.btn-default.dropdown-toggle{role: "button", data: { toggle: "dropdown"}, aria: { haspopup: "true", expanded: "false" }}

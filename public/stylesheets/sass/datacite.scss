@@ -52,7 +52,7 @@ html {
   margin: .8em 0 0 0;
 }
 .logo-big {
-  margin: 10em 0 0 0;
+  margin: 10em 0 2em 0;
 }
 h1,h2,h3 {
   font-weight: 600;
@@ -119,8 +119,9 @@ a, a:visited, .pagination li a, .pagination li a:visited {
 a:hover {
   color: $link-hover-color;
 }
-.pagination li.active {
+.pagination li.active span {
   background-color: gray;
+  border-color: gray;
 }
 
 body {
@@ -175,8 +176,10 @@ b, strong {
   margin-bottom: 4px;
 }
 h2 {
-  font-size: 1.5em;
-  line-height: 1.8em;
+  font-size: 1.75em;
+  font-weight: bold;
+  line-height: 1.9em;
+  margin-bottom: 0;
 }
 h3 {
   font-size: $font-size-large;
@@ -332,6 +335,9 @@ dd {
 dt, dd {
   line-height: $line-height-base;
 }
+dt a {
+  font-weight: normal;
+}
 
 li {
   margin: 0.1em 0em;
@@ -461,13 +467,13 @@ p, h2 {
 }
 .profile img.logo {
   padding-right: .25em;
-  padding-bottom: 4px;
+  padding-bottom: 8px;
 }
 .profile a {
-  color: gray;
+  color: black;
   text-decoration: none;
 }
-.profile .dropdown-toggle, #sign-in-link {
+.profile .dropdown-toggle, #sign-in-link, #help, #home {
   font-size: $font-size-large;
   line-height: 1.5em;
 }
@@ -475,4 +481,8 @@ p, h2 {
   padding-left: 0.75em;
   padding-right: 0.75em;
   white-space: nowrap;
+}
+.btn-primary {
+  background-color: gray;
+  border-color: gray;
 }
