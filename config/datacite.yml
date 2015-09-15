@@ -6,7 +6,7 @@ labs_links:
    url: http://schema.labs.datacite.org
    icon: file-code-o
  - name: Search
-   url: http://schema.labs.datacite.org
+   url: http://search.labs.datacite.org
    icon: search
 production_links:
  - name: Homepage
