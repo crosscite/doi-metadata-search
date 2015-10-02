@@ -36,7 +36,7 @@ module Sinatra
           container_title: reference.fetch("container-title", nil),
           author: reference.fetch("author", nil),
           issued: reference.fetch("issued", nil) }
-      end.select { |item| item[:source] !~ /datacite_orcid/ }.group_by { |item| item[:doi] }
+      end.uniq.select { |item| item[:source] !~ /datacite_orcid/ }.group_by { |item| item[:doi] }
     end
 
     def dois_as_string(dois)
