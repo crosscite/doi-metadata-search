@@ -44,28 +44,23 @@
         %img{src: '/images/orcid_16x16.gif'}
         %span Add to ORCID
 
-- if item.combined_related.present?
+- if item.grouped_related.present?
   .item-links.related
-    - item.combined_related.each do |key, array|
+    - item.grouped_related.each do |key, array|
       %span.dropdown.nowrap
         %a.label.dropdown-toggle{:role => 'button', 'data-toggle' => 'dropdown', :href => '#'}
           =uncamelize(key) + " #{array.count}"
         %ul.dropdown-menu{role: 'menu'}
           - array.each do |related|
-            - if related[:id] == "DOI"
-              %li
-                %a.cite-link{href: "?q=" + related[:text]}
-                  %b
-                    = related[:source] + " "
-                  %i.fa.fa-external-link
-                  = "http://doi.org/#{related[:text]}"
-            - elsif related[:id] == "URL"
-              %li
-                %a.cite-link{href: related[:text]}
-                  %b
-                    = related[:source] + " "
-                  %i.fa.fa-external-link
-                  = related[:text]
+            %li
+              %a.cite-link{href: "?q=" + related[:id]}
+                %b
+                  = related[:title]
+                %br
+                = issued_text(related[:issued]) + " "
+                %i.fa.fa-external-link
+                = "http://doi.org/#{related[:id]}"
+                = " via #{related[:source]}"
 
 - if item.creative_commons.present?
   .item-links

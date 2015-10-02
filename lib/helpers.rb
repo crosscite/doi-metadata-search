@@ -52,6 +52,17 @@ helpers do
     name[start..-1]
   end
 
+  def issued_text(issued)
+    date_parts = issued["date-parts"].first
+    date = Date.new(*date_parts)
+
+    case date_parts.length
+    when 1 then date.strftime("%Y")
+    when 2 then date.strftime("%B %Y")
+    when 3 then date.strftime("%B %-d, %Y")
+    end
+  end
+
   def uncamelize(string)
     string.split(/(?=[A-Z])/).join(' ').capitalize
   end

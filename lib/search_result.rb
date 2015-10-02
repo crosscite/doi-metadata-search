@@ -12,10 +12,10 @@ class SearchResult
   attr_accessor :date, :year, :month, :day,
                 :title, :publication, :authors, :volume, :issue, :first_page, :last_page,
                 :type, :subtype, :doi, :score, :normal_score,
-                :citations, :hashed, :related, :alternate, :version,
+                :citations, :hashed, :alternate, :version,
                 :rights_uri, :subject, :description, :creative_commons,
                 :contributor, :contributor_type, :contributors_with_type, :grant_info,
-                :related_identifiers, :combined_related
+                :related_identifiers
   attr_reader :hashed, :doi, :title_escaped, :xml
 
   # Merge a mongo DOI record with solr highlight information.
@@ -45,7 +45,6 @@ class SearchResult
     # @first_page = find_value('hl_first_page')
     # @last_page = find_value('hl_last_page')
     @rights_uri = Array(solr_doc.fetch('rightsURI', nil))
-    @related = solr_doc.fetch('relatedIdentifier', nil)
     @related_identifiers = related_identifiers
     @alternate = solr_doc.fetch('alternateIdentifier', nil)
     @version = solr_doc.fetch('version', nil)
@@ -111,17 +110,8 @@ class SearchResult
     contributors_by_type("Funder").map { |c| c["Funder"] }.compact.uniq
   end
 
-  def related
-    Array(@related).map do |item|
-      { relation: item.split(':', 3)[0],
-        id: item.split(':', 3)[1],
-        text: item.split(':', 3)[2],
-        source: "Datacite" }
-    end.select { |item| item[:text].present? && item[:id] =~ /(DOI|URL)/ }
-  end
-
-  def combined_related
-    (related + related_identifiers).group_by { |item| item[:relation] }
+  def grouped_related
+    related_identifiers.group_by { |item| item[:relation] }
   end
 
   def alternate

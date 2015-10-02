@@ -9,6 +9,7 @@ module Sinatra
     SOURCES = {
       "bmc_fulltext" => "BioMed Central",
       "citeulike" => "CiteULike",
+      "datacite_related" => "DataCite",
       "europe_pmc_fulltext" => "Europe PMC",
       "orcid" => "ORCID",
       "nature_opensearch" => "Nature OpenSearch",
@@ -24,25 +25,23 @@ module Sinatra
       response = get_result(url, content_type: "text/html", data: dois_as_string(dois))
 
       references = response.fetch("references", []).map do |reference|
-        doi = reference.fetch("work_id", "")[15..-1].upcase
+        doi = reference.fetch("work_id", "")[15..-1]
+        id = reference.fetch("id", "")[15..-1]
         relation = reference.fetch("relation_type_id", "references").camelize
         source = reference.fetch("source_id", nil)
         source = SOURCES.fetch(source, source)
-
-        if text = reference.fetch("DOI", nil)
-          text = text.upcase
-          id = "DOI"
-        else
-          text = reference.fetch("URL", nil)
-          id = "URL"
-        end
+        title = reference.fetch("title", nil)
+        author = reference.fetch("author", nil)
+        issued = reference.fetch("issued", nil)
 
         { doi: doi,
-          relation: relation,
           id: id,
-          text: text,
-          source: source }
-      end.select { |item| item[:text].present? && item[:source] !~ /datacite_data/ }.group_by { |item| item[:doi] }
+          relation: relation,
+          source: source,
+          title: title,
+          author: author,
+          issued: issued }
+      end.select { |item| item[:source] !~ /datacite_orcid/ }.group_by { |item| item[:doi] }
     end
 
     def dois_as_string(dois)
