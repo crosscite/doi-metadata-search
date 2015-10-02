@@ -6,7 +6,7 @@
       [no metadata registered]
 
   - unless item.authors.nil?
-    %p= item.authors_as_string
+    %p= author_format(item.authors)
 
   %p
     - if item.version

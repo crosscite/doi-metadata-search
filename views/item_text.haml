@@ -6,7 +6,7 @@
       No title
 
   - if item.authors.present?
-    %p= item.authors_as_string
+    %p= author_format(item.authors)
 
   %p
     - if item.version

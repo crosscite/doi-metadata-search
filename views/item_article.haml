@@ -9,7 +9,7 @@
       [no metadata registered]
 
   - unless item.authors.nil?
-    %p= item.authors_as_string
+    %p= author_format(item.authors)
 
   %p
     Article published
@@ -41,4 +41,3 @@
       = sanitize(item.description)
 
   = haml :item_links, locals: { item: item }
-

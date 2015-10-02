@@ -32,11 +32,21 @@ helpers do
     end
   end
 
-  def authors_text(contributors)
-    authors = contributors.map do |c|
-      "#{c['given_name']} #{c['surname']}"
+  def author_format(author)
+    authors = Array(author).map do |author|
+      name = author.fetch("given", nil).to_s + " " + author.fetch("family", nil).to_s
+      author["id"].present? ? "<a href=\"/?q=#{author["id"]}\">#{name}</a>" : name
     end
-    authors.join ', '
+
+    case authors.length
+    when 0, 1, 2 then authors.join(" & ")
+    when 3, 4, 5, 6, 7 then authors[0..-2].join(", ") + " & " + authors.last
+    else authors[0..5].join(", ") + " … & " + authors.last
+    end
+  end
+
+  def container_text(container_title)
+    container_title.present? ? " in " + container_title + ". " : ". "
   end
 
   def facet_text(name)

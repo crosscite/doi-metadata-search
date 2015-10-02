@@ -9,7 +9,7 @@
       [no metadata registered]
 
   - unless item.authors.nil?
-    %p.expand= item.authors[0..19].join(", ")
+    %p= author_format(item.authors)
 
   %p.extra
     Published
@@ -41,4 +41,3 @@
       = sanitize(item.description)
 
     = partial :item_links, :item => item
-

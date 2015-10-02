@@ -136,9 +136,7 @@ class SearchResult
   end
 
   def authors_as_string
-    authors[0..19].map do |author|
-      author["id"].present? ? "<a href=\"/?q=#{author["id"]}\">#{author["credit-name"]}</a>" : author["credit-name"]
-    end.join(", ")
+    authors[0..19].map { |author| author["credit-name"] }.join(", ")
   end
 
   def parse_author(name)

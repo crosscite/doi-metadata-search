@@ -57,10 +57,14 @@
                 %b
                   = related[:title]
                 %br
-                = issued_text(related[:issued]) + " "
+                = author_format(related[:author])
+                %br
+                Published
+                = issued_text(related[:issued]) + container_text(related[:container_title])
+                = "Link via #{related[:source]}"
+                %br
                 %i.fa.fa-external-link
                 = "http://doi.org/#{related[:id]}"
-                = " via #{related[:source]}"
 
 - if item.creative_commons.present?
   .item-links

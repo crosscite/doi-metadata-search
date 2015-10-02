@@ -24,23 +24,18 @@ module Sinatra
       url = "#{ENV['LAGOTTO_URL']}/api/references"
       response = get_result(url, content_type: "text/html", data: dois_as_string(dois))
 
-      references = response.fetch("references", []).map do |reference|
-        doi = reference.fetch("work_id", "")[15..-1]
-        id = reference.fetch("id", "")[15..-1]
-        relation = reference.fetch("relation_type_id", "references").camelize
+      response.fetch("references", []).map do |reference|
         source = reference.fetch("source_id", nil)
         source = SOURCES.fetch(source, source)
-        title = reference.fetch("title", nil)
-        author = reference.fetch("author", nil)
-        issued = reference.fetch("issued", nil)
 
-        { doi: doi,
-          id: id,
-          relation: relation,
+        { doi: reference.fetch("work_id", "")[15..-1],
+          id: reference.fetch("id", "")[15..-1],
+          relation: reference.fetch("relation_type_id", "references").camelize,
           source: source,
-          title: title,
-          author: author,
-          issued: issued }
+          title: reference.fetch("title", nil),
+          container_title: reference.fetch("container-title", nil),
+          author: reference.fetch("author", nil),
+          issued: reference.fetch("issued", nil) }
       end.select { |item| item[:source] !~ /datacite_orcid/ }.group_by { |item| item[:doi] }
     end
 
