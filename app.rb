@@ -213,7 +213,7 @@ get '/auth/orcid/callback' do
 end
 
 get '/auth/orcid/import' do
-  session[:orcid] ||= request.env.fetch('omniauth.auth', nil)
+  make_and_set_token(params[:code], '/auth/orcid/callback')
   UpdateJob.perform_async(session[:orcid])
 
   redirect to("/?q=#{session[:orcid][:info][:name]}")
@@ -223,7 +223,7 @@ end
 # 'You have been signed out' message. Clears the user's session cookie.
 get '/auth/signout' do
   session.clear
-  redirect(params[:redirect_uri])
+  redirect to(params[:redirect_uri])
 end
 
 get '/auth/failure' do

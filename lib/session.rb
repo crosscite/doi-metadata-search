@@ -6,6 +6,20 @@ module Sinatra
       OAuth2::AccessToken.new(Sinatra::Application.settings.orcid_oauth, session_info['credentials']['token'])
     end
 
+    def make_and_set_token(code, redirect)
+      client = OAuth2::Client.new(ENV['ORCID_CLIENT_ID'],
+                                  ENV['ORCID_CLIENT_SECRET'],
+                                  site: ENV['ORCID_API_URL'])
+      token_obj = client.auth_code.get_token(code, { redirect_uri: redirect })
+      session[:orcid] = {
+        'credentials' => {
+          'token' => token_obj.token
+        },
+        :uid => token_obj.params['orcid'],
+        :info => {}
+      }
+    end
+
     def signed_in?
       if session_info.nil?
         false
