@@ -212,6 +212,13 @@ get '/auth/orcid/callback' do
   haml :auth_callback
 end
 
+get '/auth/orcid/import' do
+  session[:orcid] = request.env.fetch('omniauth.auth', nil)
+  UpdateJob.perform_async(session[:orcid])
+  
+  redirect to("/?q=#{session[:orcid][:info][:name]}")
+end
+
 # Used to sign out a user but can also be used to mark that a user has seen the
 # 'You have been signed out' message. Clears the user's session cookie.
 get '/auth/signout' do
