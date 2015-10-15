@@ -19,7 +19,7 @@ module Sinatra
         :info => {}
       }
     rescue OAuth2::Error => e
-      { error: e.fetch('error-desc', {}).fetch('value', "An error occured") }
+      { error: e['error-desc']['value'] }
     end
 
     def signed_in?
