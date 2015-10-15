@@ -18,6 +18,8 @@ module Sinatra
         :uid => token_obj.params['orcid'],
         :info => {}
       }
+    rescue OAuth2::Error => e
+      { error: e.fetch('error-desc', {}).fetch('value', "An error occured") }
     end
 
     def signed_in?

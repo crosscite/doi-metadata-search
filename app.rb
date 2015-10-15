@@ -213,10 +213,14 @@ get '/auth/orcid/callback' do
 end
 
 get '/auth/orcid/import' do
-  make_and_set_token(params[:code], '/auth/orcid/callback')
-  UpdateJob.perform_async(session[:orcid])
-
-  redirect to("/?q=#{session[:orcid][:info][:name]}")
+  response = make_and_set_token(params[:code], '/auth/orcid/import')
+  if response.is_a?(Hash) && response[:error]
+    flash[:error] = "Authentication failed with message \"#{response[:error]}\"."
+    haml :auth_callback
+  else
+    UpdateJob.perform_async(session[:orcid])
+    redirect to("/?q=#{session[:orcid][:info][:name]}")
+  end
 end
 
 # Used to sign out a user but can also be used to mark that a user has seen the
