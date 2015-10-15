@@ -1,13 +1,13 @@
 = haml :"#{ENV['RA']}/header", locals: { page: page }
 = haml :search, locals: { page: page }
 
-- unless flash[:error].nil?
-  %div.alert.alert-error
-    = flash[:error]
-- unless page[:page].nil? || page[:paginate].nil? || params['q'] == ""
-  = haml :search_box, locals: { page: page }
-
 .container-fluid
+  - unless flash[:error].nil?
+    %div.alert.alert-error
+      = flash[:error]
+  - unless page[:page].nil? || page[:paginate].nil? || params['q'] == ""
+    = haml :search_box, locals: { page: page }
+
   - if page[:items].length > 1
     .h3
       = "#{page[:paginate].total_rows} Results"
