@@ -136,9 +136,15 @@ body {
 }
 .header {
   padding: 0 1.5em;
+
+  .container-fluid {
+    padding: 0 1em;
+    max-width: 1150px;
+  }
 }
 .container-fluid {
   padding: 2em;
+  max-width: 1150px;
 }
 .search input {
   font-size: 1em;
@@ -440,25 +446,30 @@ p, h2 {
   background-color: #393939;
   padding: 1em;
   margin: 0;
-}
-.footer h4, h5 {
-  font-size: $font-size-large;
-  font-weight: 300;
-  margin-top: .5em;
-  margin-bottom: .1em;
-}
-.footer ul {
-  list-style: none;
-  padding-left: 0;
-}
-.footer a, footer a:hover, footer a:visited {
-  color: $inverse;
-}
-.footer .share h4 {
-  margin-bottom: .5em;
-}
-.footer .share a {
-  margin-right: 1em;
+  
+  .container-fluid {
+    max-width: 1150px;
+    padding: 0 1em;
+  }
+  h4, h5 {
+    font-size: $font-size-large;
+    font-weight: 300;
+    margin-top: .5em;
+    margin-bottom: .1em;
+  }
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  a, a:hover, a:visited {
+    color: $inverse;
+  }
+  .share h4 {
+    margin-bottom: .5em;
+  }
+  .share a {
+    margin-right: 1em;
+  }
 }
 .logo {
   padding-bottom: .75em;

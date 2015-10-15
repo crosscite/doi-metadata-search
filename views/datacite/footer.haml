@@ -1,35 +1,36 @@
 .row.footer
-  .col-md-2.col-md-offset-2
-    %h4
-      %a{href: "https://www.datacite.org/about-datacite"} About DataCite
-    %ul
-      - settings.about_links.each do |item|
-        %li
-          %a{:href => item['url']}
-            = item['name']
-  .col-md-2
-    %h4
-      %a{href: "https://www.datacite.org/services"} DataCite for You
-    %ul
-      - settings.foryou_links.each do |item|
-        %li
-          %a{:href => item['url']}
-            = item['name']
-  .col-md-2
-    %h4
-      %a{href: "https://www.datacite.org/participate"} Participate
-    %ul
-      - settings.participate_links.each do |item|
-        %li
-          %a{:href => item['url']}
-            = item['name']
-  .col-md-3.share
-    %h4 Join us on
-    %a{href: "https://twitter.com/datacite"}
-      %i.fa.fa-twitter.fa-2x
-    %a{href: "https://www.facebook.com/datacite"}
-      %i.fa.fa-facebook.fa-2x
-    %a{href: "https://www.youtube.com/user/datacite"}
-      %i.fa.fa-youtube.fa-2x
-    %a{href: "https://www.linkedin.com/company/datacite"}
-      %i.fa.fa-linkedin.fa-2x
+  .container-fluid
+    .col-md-3
+      %h4
+        %a{href: "https://www.datacite.org/about-datacite"} About DataCite
+      %ul
+        - settings.about_links.each do |item|
+          %li
+            %a{:href => item['url']}
+              = item['name']
+    .col-md-3
+      %h4
+        %a{href: "https://www.datacite.org/services"} DataCite for You
+      %ul
+        - settings.foryou_links.each do |item|
+          %li
+            %a{:href => item['url']}
+              = item['name']
+    .col-md-3
+      %h4
+        %a{href: "https://www.datacite.org/participate"} Participate
+      %ul
+        - settings.participate_links.each do |item|
+          %li
+            %a{:href => item['url']}
+              = item['name']
+    .col-md-3.share
+      %h4 Join us on
+      %a{href: "https://twitter.com/datacite"}
+        %i.fa.fa-twitter.fa-2x
+      %a{href: "https://www.facebook.com/datacite"}
+        %i.fa.fa-facebook.fa-2x
+      %a{href: "https://www.youtube.com/user/datacite"}
+        %i.fa.fa-youtube.fa-2x
+      %a{href: "https://www.linkedin.com/company/datacite"}
+        %i.fa.fa-linkedin.fa-2x

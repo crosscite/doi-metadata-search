@@ -1,58 +1,59 @@
 .header
-  .profile.pull-right
-    .btn-toolbar.profile
-      .btn-group{role: "group"}
-        %button.btn.btn-default#help
-          %a{href: '/help/examples'}
-            %i.fa.fa-question
-      .btn-group{role: "group"}
-        %button.btn.btn-default.dropdown-toggle{role: "button", data: { toggle: "dropdown"}, aria: { haspopup: "true", expanded: "false" }}
-          %i.fa.fa-navicon
-        %ul.dropdown-menu{role: 'menu'}
-          %li.dropdown-header DataCite Labs
-          - settings.labs_links.each do |item|
-            %li
-              %a{:href => item['url']}
-                %i.fa.fa-fw{class: "fa-#{item['icon']}"}
-                = item['name']
-          %li.divider
-          %li.dropdown-header DataCite
-          - settings.production_links.each do |item|
-            %li
-              %a{:href => item['url']}
-                %i.fa.fa-fw{class: "fa-#{item['icon']}"}
-                = item['name']
-
-      - if signed_in?
+  .container-fluid
+    .profile.pull-right
+      .btn-toolbar.profile
+        .btn-group{role: "group"}
+          %button.btn.btn-default#help
+            %a{href: '/help/examples'}
+              %i.fa.fa-question
         .btn-group{role: "group"}
           %button.btn.btn-default.dropdown-toggle{role: "button", data: { toggle: "dropdown"}, aria: { haspopup: "true", expanded: "false" }}
-            = user_display
-          %ul.dropdown-menu.dropdown-menu-right{role: 'menu'}
-            %li
-              %a{:href => '/orcid/activity'}
-                %i.fa.fa-cog
-                Settings
+            %i.fa.fa-navicon
+          %ul.dropdown-menu{role: 'menu'}
+            %li.dropdown-header DataCite Labs
+            - settings.labs_links.each do |item|
+              %li
+                %a{:href => item['url']}
+                  %i.fa.fa-fw{class: "fa-#{item['icon']}"}
+                  = item['name']
             %li.divider
-            %li
-              %a{:href => "#{ENV['ORCID_URL']}/#{session[:orcid][:uid]}"}
-                %i.fa.fa-external-link
-                ORCID Profile
-            %li.divider
-            %li
-              %a{:href => "/auth/signout?redirect_uri=#{URI.encode(request.fullpath)}"}
-                %i.fa.fa-sign-out
-                Sign out
-      - else
-        .btn-group{role: "group"}
-          %button.btn.btn-default
-            %img.logo{src: '/images/orcid_24x24.png'}
-            %a#sign-in-link{:href => '#'}
-              Sign in with ORCID
+            %li.dropdown-header DataCite
+            - settings.production_links.each do |item|
+              %li
+                %a{:href => item['url']}
+                  %i.fa.fa-fw{class: "fa-#{item['icon']}"}
+                  = item['name']
 
-  - unless page[:mini_header]
-    .logo
-      %a{:href => '/'}
-        %img.logo-small{src: "/images/#{ENV['RA']}/logo-small.png", alt: ENV['SITENAME'] }
+        - if signed_in?
+          .btn-group{role: "group"}
+            %button.btn.btn-default.dropdown-toggle{role: "button", data: { toggle: "dropdown"}, aria: { haspopup: "true", expanded: "false" }}
+              = user_display
+            %ul.dropdown-menu.dropdown-menu-right{role: 'menu'}
+              %li
+                %a{:href => '/orcid/activity'}
+                  %i.fa.fa-cog
+                  Settings
+              %li.divider
+              %li
+                %a{:href => "#{ENV['ORCID_URL']}/#{session[:orcid][:uid]}"}
+                  %i.fa.fa-external-link
+                  ORCID Profile
+              %li.divider
+              %li
+                %a{:href => "/auth/signout?redirect_uri=#{URI.encode(request.fullpath)}"}
+                  %i.fa.fa-sign-out
+                  Sign out
+        - else
+          .btn-group{role: "group"}
+            %button.btn.btn-default
+              %img.logo{src: '/images/orcid_24x24.png'}
+              %a#sign-in-link{:href => '#'}
+                Sign in with ORCID
+
+    - unless page[:mini_header]
+      .logo
+        %a{:href => '/'}
+          %img.logo-small{src: "/images/#{ENV['RA']}/logo-small.png", alt: ENV['SITENAME'] }
 
 :javascript
   $(document).ready(function() {
