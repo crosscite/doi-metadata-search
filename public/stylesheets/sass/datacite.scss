@@ -89,6 +89,15 @@ h4 {
   margin-bottom: .5em;
   padding: .5em 1em;
 }
+.alert-error {
+  background-color: $body-bg;
+  border: 1px solid #e88832;
+  border-radius: 4px;
+  color: #e88832;
+  margin-top: 1em;
+  margin-bottom: .5em;
+  padding: .5em 1em;
+}
 .sync-info {
   padding: 14px;
 }
