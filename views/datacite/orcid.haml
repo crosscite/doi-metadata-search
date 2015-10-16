@@ -41,7 +41,7 @@
                     %i.fa.fa-search
 
 %p.orcid
-  - if params[:referrer].start_with?("http://#{ENV['HOSTNAME']}")
+  - if params[:referrer].present? && params[:referrer].start_with?("http://#{ENV['HOSTNAME']}")
     %a{:href => params[:referrer]}
       Send me back to the page where I was before signing in.
   - else
