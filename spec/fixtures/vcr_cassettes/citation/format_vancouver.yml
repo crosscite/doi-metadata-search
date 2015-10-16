@@ -10,7 +10,7 @@ http_interactions:
       Accept:
       - text/x-bibliography; style=vancouver
       User-Agent:
-      - doi-metadata-search - http://search.labs.datacite.org
+      - doi-metadata-search - http://doi-metadata-search.local
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -25,21 +25,20 @@ http_interactions:
       Location:
       - http://data.datacite.org/10.5281%2FZENODO.21430
       Expires:
-      - Tue, 08 Sep 2015 19:47:06 GMT
+      - Fri, 16 Oct 2015 08:09:08 GMT
       Content-Type:
       - text/html;charset=utf-8
       Content-Length:
-      - '180'
+      - '179'
       Date:
-      - Tue, 08 Sep 2015 16:04:40 GMT
+      - Thu, 15 Oct 2015 22:12:42 GMT
     body:
       encoding: UTF-8
-      string: |2-
-
-        <HTML><HEAD><TITLE>Handle Redirect</TITLE></HEAD>
-        <BODY><A HREF="http://data.datacite.org/10.5281%2FZENODO.21430">http://data.datacite.org/10.5281%2FZENODO.21430</A></BODY></HTML>
+      string: |-
+        <html><head><title>Handle Redirect</title></head>
+        <body><a href="http://data.datacite.org/10.5281%2FZENODO.21430">http://data.datacite.org/10.5281%2FZENODO.21430</a></body></html>
     http_version: 
-  recorded_at: Tue, 08 Sep 2015 16:03:46 GMT
+  recorded_at: Thu, 15 Oct 2015 22:12:42 GMT
 - request:
     method: get
     uri: http://data.datacite.org/10.5281%2FZENODO.21430
@@ -50,7 +49,7 @@ http_interactions:
       Accept:
       - text/x-bibliography; style=vancouver
       User-Agent:
-      - doi-metadata-search - http://search.labs.datacite.org
+      - doi-metadata-search - http://doi-metadata-search.local
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -61,7 +60,7 @@ http_interactions:
       Server:
       - nginx/1.1.19
       Date:
-      - Tue, 08 Sep 2015 15:51:28 GMT
+      - Thu, 15 Oct 2015 21:59:26 GMT
       Content-Type:
       - text/x-bibliography
       Transfer-Encoding:
@@ -83,5 +82,5 @@ http_interactions:
       string: |
         1. Martin Fenner, Karl Jonathan Ward, Gudmundur A. Thorisson, Robert Peters. DataCite-ORCID: 1.0 [Internet]. Zenodo; 2015. Available from: http://dx.doi.org/10.5281/ZENODO.21430
     http_version: 
-  recorded_at: Tue, 08 Sep 2015 16:03:46 GMT
+  recorded_at: Thu, 15 Oct 2015 22:12:43 GMT
 recorded_with: VCR 2.9.3

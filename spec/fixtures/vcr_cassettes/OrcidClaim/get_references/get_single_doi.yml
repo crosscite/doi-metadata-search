@@ -10,7 +10,7 @@ http_interactions:
       Accept:
       - text/html
       User-Agent:
-      - doi-metadata-search - http://search.labs.datacite.org
+      - doi-metadata-search - http://doi-metadata-search.local
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - nginx/1.4.6 (Ubuntu)
       Date:
-      - Tue, 08 Sep 2015 18:23:59 GMT
+      - Thu, 15 Oct 2015 22:13:02 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -41,19 +41,17 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 644805f3-87eb-4c72-87fc-281719163977
+      - 9b02e96c-ecde-4eb1-8d1b-f08c5f9bf61e
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
-      - W/"61684d0e8028f43c5725e48c951513cf"
+      - W/"ef8e359281f5f6e3755a03d5481b606e"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.082332'
+      - '0.076744'
       X-Content-Type-Options:
       - nosniff
-      Set-Cookie:
-      - __profilin=p%3Dt; path=/
       X-Powered-By:
       - Phusion Passenger 5.0.16
     body:
@@ -772,5 +770,5 @@ http_interactions:
         OiIzMzk3OTU1IiwiZXZlbnRzIjp7fSwidGltZXN0YW1wIjoiMjAxNS0wOS0w
         M1QxMToxNjo1NVoifV19
     http_version: 
-  recorded_at: Tue, 08 Sep 2015 18:23:53 GMT
+  recorded_at: Thu, 15 Oct 2015 22:12:33 GMT
 recorded_with: VCR 2.9.3

@@ -10,9 +10,9 @@
         .input-group-btn
           %button.btn.btn-primary{type: "submit"}
             %i.fa.fa-search
-            
+
   - unless flash[:error].nil?
-    %div.alert.alert-error
+    .alert.alert-error
       = flash[:error]
 
   .splash

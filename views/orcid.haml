@@ -1,0 +1,10 @@
+= haml :"#{ENV['RA']}/header", locals: { page: page }
+
+.container-fluid
+  - unless flash[:error].nil?
+    %div.alert.alert-error
+      = flash[:error]
+
+  = haml :"#{ENV['RA']}/orcid", locals: { page: page }
+
+= haml :"#{ENV['RA']}/footer", locals: { page: page }

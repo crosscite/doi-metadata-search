@@ -1,17 +1,30 @@
 = haml :"#{ENV['RA']}/header", locals: { page: page }
 
 .container-fluid
+  .page-header
+    %h1 Settings
   .row
     .col-md-9
-      .page-header
-        %h2 Settings
-      .sync-info
-        .pull-right
-          %i.fa.fa-check#sync-ok
-          %button.btn.btn-warning#sync-button
-            %i.fa.fa-refresh#sync-icon
-            Sync
-        Sync changes from your ORCID record to this site
+      .panel{:class => auto_update_text}
+        .panel-heading
+          %h2.panel-title
+            Auto-Update
+            = enabled_text
+        .panel-body
+          %i.fa.fa-exchange.fa-3x.fa-pull-left
+          By signing in with ORCID you enabled DataCite to automatically add works with your ORCID identifier to your ORCID profile.
+      .panel.panel-default
+        .panel-heading
+          %h2.panel-title
+            Manual Update
+        .panel-body
+          %i.fa.fa-refresh.fa-3x.fa-pull-left
+          Sync changes from your ORCID record to this site.
+          .pull-right.sync-info
+            %i.fa.fa-check#sync-ok
+            %button.btn.btn-lg.btn-default#sync-button
+              %i.fa.fa-refresh#sync-icon
+              Sync
 
 = haml :"#{ENV['RA']}/footer", locals: { page: page }
 

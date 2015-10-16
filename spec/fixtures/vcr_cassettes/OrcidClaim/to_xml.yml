@@ -10,7 +10,7 @@ http_interactions:
       Accept:
       - application/x-bibtex
       User-Agent:
-      - doi-metadata-search - http://search.labs.datacite.org
+      - doi-metadata-search - http://doi-metadata-search.local
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -25,21 +25,20 @@ http_interactions:
       Location:
       - http://data.datacite.org/10.5061%2FDRYAD.781PV
       Expires:
-      - Tue, 08 Sep 2015 19:47:06 GMT
+      - Fri, 16 Oct 2015 00:08:29 GMT
       Content-Type:
       - text/html;charset=utf-8
       Content-Length:
-      - '178'
+      - '177'
       Date:
-      - Tue, 08 Sep 2015 16:04:58 GMT
+      - Thu, 15 Oct 2015 22:12:31 GMT
     body:
       encoding: UTF-8
-      string: |2-
-
-        <HTML><HEAD><TITLE>Handle Redirect</TITLE></HEAD>
-        <BODY><A HREF="http://data.datacite.org/10.5061%2FDRYAD.781PV">http://data.datacite.org/10.5061%2FDRYAD.781PV</A></BODY></HTML>
+      string: |-
+        <html><head><title>Handle Redirect</title></head>
+        <body><a href="http://data.datacite.org/10.5061%2FDRYAD.781PV">http://data.datacite.org/10.5061%2FDRYAD.781PV</a></body></html>
     http_version: 
-  recorded_at: Tue, 08 Sep 2015 16:04:04 GMT
+  recorded_at: Thu, 15 Oct 2015 22:12:31 GMT
 - request:
     method: get
     uri: http://data.datacite.org/10.5061%2FDRYAD.781PV
@@ -50,7 +49,7 @@ http_interactions:
       Accept:
       - application/x-bibtex
       User-Agent:
-      - doi-metadata-search - http://search.labs.datacite.org
+      - doi-metadata-search - http://doi-metadata-search.local
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -61,7 +60,7 @@ http_interactions:
       Server:
       - nginx/1.1.19
       Date:
-      - Tue, 08 Sep 2015 15:51:46 GMT
+      - Thu, 15 Oct 2015 21:59:15 GMT
       Content-Type:
       - application/x-bibtex
       Transfer-Encoding:
@@ -81,7 +80,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: |-
-        @data{b1d25cc8-3f9f-4e7d-b9f7-24af08d5e895,
+        @data{d77504cb-1306-4558-a76d-10789b956689,
           doi = {10.5061/DRYAD.781PV},
           url = {http://dx.doi.org/10.5061/DRYAD.781PV},
           author = {Piwowar, Heather A.; Vision, Todd J.; },
@@ -90,5 +89,5 @@ http_interactions:
           year = {2013}
         }
     http_version: 
-  recorded_at: Tue, 08 Sep 2015 16:04:04 GMT
+  recorded_at: Thu, 15 Oct 2015 22:12:32 GMT
 recorded_with: VCR 2.9.3

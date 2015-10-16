@@ -137,7 +137,7 @@ configure do
       config.project_root = settings.root
       config.app_version = App::VERSION
       config.release_stage = ENV['RACK_ENV']
-      config.notify_release_stages = ["production", "development"]
+      config.notify_release_stages = %w(production, development)
     end
 
     use Bugsnag::Rack
@@ -205,11 +205,15 @@ get '/help/stats' do
   haml :stats_help, locals: { page: { query: '', stats: stats } }
 end
 
+get '/orcid' do
+  haml :orcid, locals: { page: { query: '' } }
+end
+
 get '/auth/orcid/callback' do
   session[:orcid] = request.env.fetch('omniauth.auth', nil)
   UpdateJob.perform_async(session[:orcid])
 
-  haml :auth_callback
+  redirect to('/orcid')
 end
 
 get '/auth/orcid/import' do
@@ -219,7 +223,7 @@ get '/auth/orcid/import' do
     haml :auth_callback
   else
     UpdateJob.perform_async(session[:orcid])
-    redirect to("/?q=#{session[:orcid][:info][:name]}")
+    redirect to('/orcid')
   end
 end
 
@@ -239,9 +243,9 @@ get '/auth/orcid/deauthorized' do
   haml 'ORCID has deauthorized this app.'
 end
 
-get '/orcid/activity' do
+get '/settings' do
   if signed_in?
-    haml :activity, locals: { page: { query: '' } }
+    haml :settings, locals: { page: { query: '' } }
   else
     redirect '/'
   end

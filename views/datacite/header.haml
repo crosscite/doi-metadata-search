@@ -30,7 +30,7 @@
               = user_display
             %ul.dropdown-menu.dropdown-menu-right{role: 'menu'}
               %li
-                %a{:href => '/orcid/activity'}
+                %a{:href => '/settings'}
                   %i.fa.fa-cog
                   Settings
               %li.divider
@@ -47,22 +47,10 @@
           .btn-group{role: "group"}
             %button.btn.btn-default
               %img.logo{src: '/images/orcid_24x24.png'}
-              %a#sign-in-link{:href => '#'}
+              %a#sign-in-link{:href => "/auth/orcid"}
                 Sign in with ORCID
 
     - unless page[:mini_header]
       .logo
         %a{:href => '/'}
           %img.logo-small{src: "/images/#{ENV['RA']}/logo-small.png", alt: ENV['SITENAME'] }
-
-:javascript
-  $(document).ready(function() {
-    $('#sign-in-link').click(function(e) {
-      $.oauthpopup({path: '/auth/orcid',
-        callback: function() {
-          document.location.reload(true);
-        }});
-      e.preventDefault();
-      return false;
-    });
-  });

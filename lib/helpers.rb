@@ -45,6 +45,22 @@ helpers do
     end
   end
 
+  def auto_update_text
+    if !signed_in?
+      'panel-default'
+    else
+      'panel-success'
+    end
+  end
+
+  def enabled_text
+    if !signed_in?
+      ''
+    else
+      '<span class="small pull-right">enabled</span>'
+    end
+  end
+
   def container_text(container_title)
     container_title.present? ? " in " + container_title + ". " : ". "
   end

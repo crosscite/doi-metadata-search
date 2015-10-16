@@ -54,8 +54,9 @@ h1,h2,h3 {
   font-weight: 600;
 }
 h1 {
-  font-size: 4em;
+  font-size: 3em;
   line-height: $line-height-base;
+  margin-bottom: 0;
 }
 h4 {
   font-weight: 300;
@@ -72,15 +73,32 @@ h4 {
   margin-bottom: 6em;
 }
 .page-header {
-  padding-left: 1.25em;
+  padding-left: 0;
   padding-bottom: 0;
   border-bottom-width: 0;
+
+  p {
+    font-size: 1.25em;
+  }
+}
+.panel {
+  font-size: 1.25em;
+}
+.panel-heading {
+  h2 {
+    font-size: 1em;
+
+    .small {
+      font-size: .75em;
+      padding-top: .75em;
+    }
+  }
 }
 .item-paging {
   text-align: center;
   margin-top: 1em;
 }
-.list-info, .alert-info, .sync-info {
+.list-info, .alert-info {
   background-color: $body-bg;
   border: 1px solid #e6e6e6;
   border-radius: 4px;
@@ -98,8 +116,12 @@ h4 {
   margin-bottom: .5em;
   padding: .5em 1em;
 }
+.alert-success {
+  background-color: $body-bg;
+  border: 1px solid #1bc5a4;
+}
 .sync-info {
-  padding: 14px;
+  padding: 1.5em .75em 0 0;
 }
 #sync-button {
   margin-bottom: 8px;
@@ -147,7 +169,16 @@ body {
   max-width: 1150px;
 }
 .search input {
-  font-size: 1em;
+  font-size: 1.25em;
+}
+.orcid {
+  margin-top: 1em;
+
+  .input-group {
+    font-size: .75em;
+    width: 50%;
+    margin: 0 auto;
+  }
 }
 input, button, select, textarea {
   font-family: $font-family-base;

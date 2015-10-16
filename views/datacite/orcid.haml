@@ -1,0 +1,41 @@
+.page-header
+  %h1
+    Adding Works to ORCID
+  %p
+    - unless signed_in?
+      Please sign in with ORCID to have DataCite add your works to your ORCID profile <br/>
+      via the <strong>Auto-Update</strong> and <strong>Search&nbsp;and&nbsp;Link</strong> Services.
+
+.row
+  .col-md-8
+    .panel{:class => auto_update_text}
+      .panel-heading
+        %h2.panel-title
+          Auto-Update
+          = enabled_text
+      .panel-body
+        %i.fa.fa-exchange.fa-3x.fa-pull-left
+        - if signed_in?
+          By signing in with ORCID you enabled DataCite to automatically add works with your ORCID identifier to your ORCID profile.
+        - else
+          Allow DataCite to automatically add works with your ORCID identifier to your ORCID profile.
+        %p
+          %span.label.label-primary.pull-right
+            coming soon
+.row
+  .col-md-8
+    .panel.panel-default
+      .panel-heading
+        %h2.panel-title
+          Search and Link
+      .panel-body
+        %i.fa.fa-search.fa-3x.fa-pull-left
+        Find your works via DataCite Search and have DataCite add them to your ORCID profile.
+        - if signed_in?
+          .search.orcid
+            %form.inline{:method => 'GET', :action => '/'}
+              .input-group
+                %input.form-control{type: "text", name: 'q', value: session[:orcid][:info][:name], placeholder: "Enter search term"}
+                .input-group-btn
+                  %button.btn.btn-primary{type: "submit"}
+                    %i.fa.fa-search
