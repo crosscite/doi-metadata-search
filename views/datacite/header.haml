@@ -37,7 +37,7 @@
               %li
                 %a{:href => "#{ENV['ORCID_URL']}/#{session[:orcid][:uid]}"}
                   %i.fa.fa-external-link
-                  ORCID Profile
+                  ORCID Record
               %li.divider
               %li
                 %a{:href => "/auth/signout?redirect_uri=#{URI.encode(request.fullpath)}"}
