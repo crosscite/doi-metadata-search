@@ -71,7 +71,7 @@ module Sinatra
 
     def orcid_stats
       { value: MongoData.coll('orcids').count(query: { updated: true }),
-        name: 'Number of ORCID profiles updated' }
+        name: 'Number of ORCID records updated' }
     end
 
     def stats

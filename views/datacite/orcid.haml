@@ -3,7 +3,7 @@
     Adding Works to ORCID
   %p
     - unless signed_in?
-      Please sign in with ORCID to have DataCite add your works to your ORCID profile <br/>
+      Please sign in with ORCID to have DataCite add your works to your ORCID record <br/>
       via the <strong>Auto-Update</strong> and <strong>Search&nbsp;and&nbsp;Link</strong> Services.
 
 .row
@@ -16,9 +16,9 @@
       .panel-body
         %i.fa.fa-exchange.fa-3x.fa-pull-left
         - if signed_in?
-          By signing in with ORCID you enabled DataCite to automatically add works with your ORCID identifier to your ORCID profile.
+          By signing in with ORCID you enabled DataCite to automatically add works with your ORCID identifier to your ORCID record.
         - else
-          Allow DataCite to automatically add works with your ORCID identifier to your ORCID profile.
+          Allow DataCite to automatically add works with your ORCID identifier to your ORCID record.
         %p
           %span.label.label-primary.pull-right
             coming soon
@@ -30,7 +30,7 @@
           Search and Link
       .panel-body
         %i.fa.fa-search.fa-3x.fa-pull-left
-        Find your works via DataCite Search and have DataCite add them to your ORCID profile.
+        Find your works via DataCite Search and have DataCite add them to your ORCID record.
         - if signed_in?
           .search.orcid
             %form.inline{:method => 'GET', :action => '/'}
