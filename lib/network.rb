@@ -24,8 +24,8 @@ module Sinatra
       else
         force_utf8(response.body)
       end
-    # rescue *NETWORKABLE_EXCEPTIONS => e
-    #   rescue_faraday_error(url, e, options)
+    rescue *NETWORKABLE_EXCEPTIONS => e
+      rescue_faraday_error(url, e, options)
     end
 
     def faraday_conn(content_type = 'json', options = {})
