@@ -53,7 +53,7 @@
         %ul.dropdown-menu{role: 'menu'}
           - array.each do |related|
             %li
-              %a.cite-link{href: "?q=" + related[:id]}
+              %a.cite-link{href: related_link(related[:id])}
                 %b
                   = related[:title]
                 %br
@@ -64,7 +64,7 @@
                 = "Link via #{related[:source]}"
                 %br
                 %i.fa.fa-external-link
-                = "http://doi.org/#{related[:id]}"
+                = related[:id]
 
 - if item.creative_commons.present?
   .item-links

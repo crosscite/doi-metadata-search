@@ -10,6 +10,7 @@ module Sinatra
       "bmc_fulltext" => "BioMed Central",
       "citeulike" => "CiteULike",
       "datacite_related" => "DataCite",
+      "datacite_github" => "DataCite",
       "europe_pmc_fulltext" => "Europe PMC",
       "orcid" => "ORCID",
       "nature_opensearch" => "Nature OpenSearch",
@@ -29,14 +30,14 @@ module Sinatra
         source = SOURCES.fetch(source, source)
 
         { doi: reference.fetch("work_id", "")[15..-1],
-          id: reference.fetch("id", "")[15..-1],
+          id: reference.fetch("id", ""),
           relation: reference.fetch("relation_type_id", "references").camelize,
           source: source,
           title: reference.fetch("title", nil),
           container_title: reference.fetch("container-title", nil),
           author: reference.fetch("author", nil),
           issued: reference.fetch("issued", nil) }
-      end.uniq.select { |item| item[:source] !~ /datacite_orcid/ }.group_by { |item| item[:doi] }
+      end.uniq.select { |item| item[:source] !~ /orcid.*/ }.group_by { |item| item[:doi] }
     end
 
     def dois_as_string(dois)
