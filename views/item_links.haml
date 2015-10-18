@@ -48,7 +48,7 @@
   .item-links.related
     - item.grouped_related.each do |key, array|
       %span.dropdown.nowrap
-        %a.label.dropdown-toggle{:role => 'button', 'data-toggle' => 'dropdown', :href => '#'}
+        %a.label.dropdown-toggle.boxed{:role => 'button', 'data-toggle' => 'dropdown', :href => '#'}
           =uncamelize(key) + " #{array.count}"
         %ul.dropdown-menu{role: 'menu'}
           - array.each do |related|
