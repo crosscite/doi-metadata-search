@@ -392,18 +392,19 @@ li {
   font-size: 1em;
 }
 
-.modal pre {
-  font-size: .8em;
-  line-height: $line-height-base;
-  margin-top: 1em;
-  max-height: 300px;
-  min-height: 100px;
-  overflow-y: scroll;
-}
 .modal {
   font-size: 1em;
-  width: 75%;
-  margin-top: 25%;
+  max-width: 100%;
+  overflow-y: auto;
+
+  .pre {
+    font-size: .8em;
+    line-height: $line-height-base;
+    margin-top: 1em;
+    max-height: 300px;
+    min-height: 100px;
+    overflow-y: scroll;
+  }
 }
 
 .span-help p {

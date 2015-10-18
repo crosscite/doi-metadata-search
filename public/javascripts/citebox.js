@@ -11,7 +11,7 @@ function showCiteBox(doi, title) {
 
 function updateCiteBox() {
   $('#citation-description').text(citationInfo['doi']);
-  $('#citation-modal-title').html('Citing &lsquo;' + citationInfo['title'] + '&rsquo;');
+  $('#citation-modal-title').html(citationInfo['title']);
 
   $('#cite-nav li').removeClass('active');
   $('#' + citationInfo['format']).addClass('active');
