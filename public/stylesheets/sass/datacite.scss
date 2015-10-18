@@ -305,6 +305,9 @@ p.description {
   margin-top: .25em;
   line-height: 1.4em;
 }
+.item-links .dropdown .dropdown-toggle {
+  color: black;
+}
 .item-links img {
   margin-top: -0.33em;
 }
@@ -312,7 +315,6 @@ p.description {
   margin-right: 1.5em;
 }
 .item-links a:hover {
-  color: black;
   text-decoration: underline;
 }
 .item-links span a {
