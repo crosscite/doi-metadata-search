@@ -127,8 +127,6 @@ configure do
   # Google analytics event tracking
   set :ga, Gabba::Gabba.new(ENV['GABBA_COOKIE'], ENV['GABBA_URL']) if ENV['GABBA_COOKIE']
 
-  set :show_exceptions, true
-
   # optionally use Bugsnag for error logging
   if ENV['BUGSNAG_KEY']
     require 'bugsnag'
