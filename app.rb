@@ -238,8 +238,7 @@ get '/auth/jwt/callback' do
   session[:orcid] = request.env.fetch('omniauth.auth', nil)
   UpdateJob.perform_async(session[:orcid])
 
-  redirect_url = request.referrer.present? ? "/orcid?referrer=#{request.referrer}" : "/orcid"
-  redirect to(redirect_url)
+  redirect to('/')
 end
 
 # Used to sign out a user but can also be used to mark that a user has seen the
