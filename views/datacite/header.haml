@@ -37,8 +37,12 @@
                       Sign out
           - else
             %li
-              %a{:href => "/auth/orcid"}
-                Sign in
+              - if ENV['JWT_URL'].present?
+                %a{:href => "/auth/jwt"}
+                  Sign in
+              - else
+                %a{:href => "/auth/orcid"}
+                  Sign in
 
         %ul.nav.navbar-nav.navbar-right
           %li.dropdown
