@@ -12,7 +12,7 @@
             %img.logo{src: "/images/#{ENV['RA']}/logo.png", alt: ENV['SITENAME'] }
       .navbar-collapse.collapse
         %a.navbar-brand{:href => "/"}
-          %i.fa.fa-link
+          %i.fa.fa-search
           Search
         %ul.nav.navbar-nav.navbar-right
           - if signed_in?
@@ -22,9 +22,14 @@
                 %span.caret
               %ul.dropdown-menu{role: 'menu'}
                 %li
-                  %a{:href => '/settings'}
-                    %i.fa.fa-user
-                    Settings
+                  - if ENV['JWT_URL'].present?
+                    %a{:href => 'https://profiles.labs.datacite.org/users/me'}
+                      %i.fa.fa-user
+                      Settings
+                  - else
+                    %a{:href => '/settings'}
+                      %i.fa.fa-user
+                      Settings
                 %li.divider
                 %li
                   %a{:href => "#{ENV['ORCID_URL']}/#{session[:orcid][:uid]}"}
