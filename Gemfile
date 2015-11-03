@@ -33,8 +33,10 @@ gem 'sass'
 gem 'whenever', require: false
 
 group :development do
+  gem 'capistrano', '~> 3.4.0'
   gem 'capistrano-passenger', '~> 0.1.1'
   gem 'capistrano-bundler', '~> 1.1.2', require: false
+  gem 'capistrano-npm', '~> 1.0.0'
 end
 
 group :test do
