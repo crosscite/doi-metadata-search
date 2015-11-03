@@ -53,10 +53,10 @@ module Sinatra
     def rescue_faraday_error(url, error, options={})
       if error.is_a?(Faraday::ResourceNotFound)
         { error: "resource not found", status: 404 }
-      elsif error.is_a?(Faraday::TimeoutError) || (error.try(:response) && error.response[:status] == 408)
+      elsif error.is_a?(Faraday::TimeoutError) || error.is_a?(Faraday::ConnectionFailed) || (error.try(:response) && error.response[:status] == 408)
         { error: "execution expired", status: 408 }
       else
-        raise error
+        raise error if ENV['RACK_ENV'] != 'production'
       end
     end
 

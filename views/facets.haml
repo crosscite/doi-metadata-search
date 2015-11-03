@@ -1,27 +1,29 @@
-.facets
-  - page[:facets].each_pair do |name, values|
-    - if values.size > 0
-      %h3= facet_text(name)
-      %ul
-        - values.each_slice(2) do |value_name, value_count|
-          - unless value_count.zero?
-            - if name == 'rightsURI'
-              - label_name = rights_hash.fetch(value_name, nil)
-            - elsif name == 'datacentre_facet'
-              - label_name = center_text(value_name)
-            - else
-              - label_name = value_name
-            - next unless label_name
+.panel
+  .panel-body
+    .facets
+      - page[:facets].each_pair do |name, values|
+        - if values.size > 0
+          %h4= facet_text(name)
+          %ul
+            - values.each_slice(2) do |value_name, value_count|
+              - unless value_count.zero?
+                - if name == 'rightsURI'
+                  - label_name = rights_hash.fetch(value_name, nil)
+                - elsif name == 'datacentre_facet'
+                  - label_name = center_text(value_name)
+                - else
+                  - label_name = value_name
+                - next unless label_name
 
-            - if page[:facet_query].has_key?(name) && page[:facet_query][name].include?(value_name)
-              %li.active
-                %a{:href => "#{facet_link_not(name, value_name)}"}
-                  %i.fa.fa-check-square-o
-                = label_name
-                %span.number.pull-right= "#{value_count}"
-            - else
-              %li
-                %a{:href => "#{facet_link(name, value_name)}"}
-                  %i.fa.fa-square-o
-                = label_name
-                %span.number.pull-right= "#{value_count}"
+                - if page[:facet_query].has_key?(name) && page[:facet_query][name].include?(value_name)
+                  %li.active
+                    %a{:href => "#{facet_link_not(name, value_name)}"}
+                      %i.fa.fa-check-square-o
+                    = label_name
+                    %span.number.pull-right= "#{value_count}"
+                - else
+                  %li
+                    %a{:href => "#{facet_link(name, value_name)}"}
+                      %i.fa.fa-square-o
+                    = label_name
+                    %span.number.pull-right= "#{value_count}"

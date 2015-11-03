@@ -24,7 +24,8 @@ module Sinatra
 
       url = "#{ENV['LAGOTTO_URL']}/api/references"
       response = get_result(url, content_type: "text/html", data: dois_as_string(dois))
-
+      response = {} unless response.is_a?(Hash)
+      
       response.fetch("references", []).map do |reference|
         source = reference.fetch("source_id", nil)
         source = SOURCES.fetch(source, source)

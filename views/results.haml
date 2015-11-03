@@ -1,39 +1,30 @@
 = haml :"#{ENV['RA']}/header", locals: { page: page }
-= haml :search, locals: { page: page }
 
-.container-fluid
+.container
+  = haml :search, locals: { page: page }
+
   - unless flash[:error].nil?
     %div.alert.alert-error
       = flash[:error]
   - unless page[:page].nil? || page[:paginate].nil? || params['q'] == ""
     = haml :search_box, locals: { page: page }
 
-  - if page[:items].length > 1
-    .h3
-      = "#{page[:paginate].total_rows} Results"
-
-  - elsif page[:alt_text]
+  - unless page[:items].length > 0
     %div.alert.alert-info
       Nothing found.
       %b
         %a{ href: page[:alt_url] } #{page[:alt_text]}
 
-  - elsif page[:items].length == 0
-    .page-header
-      %h2 Examples
-      %p Click on an example to put it in the search box.
+  - if page[:items].length > 0
+    .row
+      .col-md-9
+        = haml :item_list, locals: { page: page }
 
-    = haml :"#{ENV['RA']}/examples_list", locals: { page: page }
+        .text-center
+          = will_paginate page[:paginate], renderer: BootstrapPagination::Sinatra, :inner_window => 2
 
-  .row
-    .col-md-9
-      = haml :item_list, locals: { page: page }
-
-      .item-paging.bottom
-        = will_paginate page[:paginate], renderer: BootstrapPagination::Sinatra, :inner_window => 2
-
-    .col-md-3
-      = haml :facets, locals: { page: page }
+      .col-md-3
+        = haml :facets, locals: { page: page }
 
 = haml :cite_box, locals: { page: page }
 

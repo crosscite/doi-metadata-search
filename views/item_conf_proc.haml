@@ -1,43 +1,42 @@
-%div.item-data
-  %h3
-    - if item.open_access?
-    %a.oa-tooltip{:href => '#'}
-      %i.fa.fa-unlock
-    - if item.title
-      = item.title
-    - else
-      [no metadata registered]
+%h4.work
+  - if item.open_access?
+  %a.oa-tooltip{:href => '#'}
+    %i.fa.fa-unlock
+  - if item.title
+    = item.title
+  - else
+    [no metadata registered]
 
-  - unless item.authors.nil?
-    %p= author_format(item.authors)
+- unless item.authors.nil?
+  = author_format(item.authors)
 
-  %p.extra
-    Published
-    - unless item.day.nil?
-      = item.day
-    - unless item.month.nil?
-      = item.month
-    - unless item.year.nil?
-      = item.year
-    - unless item.publication.nil?
-      in
-      = item.publication
-    - unless item.volume.nil?
-      , volume
-      = item.volume
-    - unless item.issue.nil?
-      , issue
-      = item.issue
-    - if !item.first_page.nil? && !item.last_page.nil?
-      , on pages
-      = item.first_page
-      to
-      = item.last_page
-    - elsif !item.first_page.nil?
-      , on page
-      = item.first_page
-  - if item.description.present?
-    %p.description
-      = sanitize(item.description)
+%br
+  Published
+  - unless item.day.nil?
+    = item.day
+  - unless item.month.nil?
+    = item.month
+  - unless item.year.nil?
+    = item.year
+  - unless item.publication.nil?
+    in
+    = item.publication
+  - unless item.volume.nil?
+    , volume
+    = item.volume
+  - unless item.issue.nil?
+    , issue
+    = item.issue
+  - if !item.first_page.nil? && !item.last_page.nil?
+    , on pages
+    = item.first_page
+    to
+    = item.last_page
+  - elsif !item.first_page.nil?
+    , on page
+    = item.first_page
+- if item.description.present?
+  .description
+    = sanitize(item.description)
 
-    = partial :item_links, :item => item
+  = partial :item_links, :item => item

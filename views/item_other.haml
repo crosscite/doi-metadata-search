@@ -1,36 +1,35 @@
-%div.item-data
-  %h3
-    - if item.title
-      = item.title
-    - else
-      [no metadata registered]
+%h4.work
+  - if item.title
+    = item.title
+  - else
+    [no metadata registered]
 
-  - unless item.authors.nil?
-    %p= author_format(item.authors)
+- unless item.authors.nil?
+  = author_format(item.authors)
 
-  %p
-    - if item.version
-      = "Version " + item.version + " of "
-    - if item.subtype.present?
-      = item.subtype
-      published
-    - elsif item.type
-      = item.type
-      published
-    - else
-      Work published
+%br
+  - if item.version
+    = "Version " + item.version + " of "
+  - if item.subtype.present?
+    = item.subtype
+    published
+  - elsif item.type
+    = item.type
+    published
+  - else
+    Work published
+  - unless (item.year.nil? || item.year.to_i == 0)
+    - unless item.day.nil?
+      = item.day
+    - unless item.month.nil?
+      = item.month
     - unless (item.year.nil? || item.year.to_i == 0)
-      - unless item.day.nil?
-        = item.day
-      - unless item.month.nil?
-        = item.month
-      - unless (item.year.nil? || item.year.to_i == 0)
-        = item.year
-    - unless item.publication.nil?
-      via
-      = item.publication
-  - if item.description.present?
-    %p.description
-      = sanitize(item.description)
+      = item.year
+  - unless item.publication.nil?
+    via
+    = item.publication
+- if item.description.present?
+  .description
+    = sanitize(item.description)
 
-  = haml :item_links, locals: { item: item }
+= haml :item_links, locals: { item: item }

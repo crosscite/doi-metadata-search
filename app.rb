@@ -16,7 +16,7 @@ end
 
 # Check for required ENV variables, can be set in .env file
 # ENV_VARS is hash of required ENV variables
-env_vars = %w(HOSTNAME SERVERS SITENAME SOLR_URL ORCID_CLIENT_ID ORCID_CLIENT_SECRET ORCID_URL ORCID_API_URL)
+env_vars = %w(HOSTNAME SERVERS SITENAME SOLR_URL)
 env_vars.each { |env| fail ArgumentError,  "ENV[#{env}] is not set" unless ENV[env] }
 ENV_VARS = Hash[env_vars.map { |env| [env, ENV[env]] }]
 
@@ -46,6 +46,7 @@ require 'faraday/encoding'
 require 'gabba'
 require 'rack-flash'
 require 'omniauth-orcid'
+require 'omniauth/jwt'
 require 'sidekiq'
 require 'sidekiq/api'
 require 'open-uri'
@@ -53,6 +54,8 @@ require 'uri'
 
 NETWORKABLE_EXCEPTIONS = [Faraday::ClientError,
                           Faraday::TimeoutError,
+                          Faraday::SSLError,
+                          Faraday::ConnectionFailed,
                           URI::InvalidURIError,
                           Encoding::UndefinedConversionError,
                           ArgumentError,
@@ -85,16 +88,23 @@ configure do
 
   # Configure ORCID client, scope and site are different from defaults
   use OmniAuth::Builder do
-    provider :orcid, ENV['ORCID_CLIENT_ID'], ENV['ORCID_CLIENT_SECRET'],
-      authorize_params: {
-        scope: '/orcid-profile/read-limited /orcid-works/create'
-      },
-      client_options: {
-        site: ENV['ORCID_API_URL'],
-        authorize_url: "#{ENV['ORCID_URL']}/oauth/authorize",
-        token_url: "#{ENV['ORCID_API_URL']}/oauth/token"
-      },
-      provider_ignores_state: true
+    if ENV['JWT_URL'].present?
+      provider :jwt, ENV['JWT_SECRET_KEY'],
+        auth_url: ENV['JWT_URL'],
+        uid_claim: 'uid',
+        required_claims: ['uid', 'name']
+    else
+      provider :orcid, ENV['ORCID_CLIENT_ID'], ENV['ORCID_CLIENT_SECRET'],
+        authorize_params: {
+          scope: '/orcid-profile/read-limited /orcid-works/create'
+        },
+        client_options: {
+          site: ENV['ORCID_API_URL'],
+          authorize_url: "#{ENV['ORCID_URL']}/oauth/authorize",
+          token_url: "#{ENV['ORCID_API_URL']}/oauth/token"
+        },
+        provider_ignores_state: true
+    end
   end
   # OmniAuth.config.logger = logger
 
@@ -224,6 +234,14 @@ get '/auth/orcid/import' do
     UpdateJob.perform_async(session[:orcid])
     redirect to('/orcid')
   end
+end
+
+get '/auth/jwt/callback' do
+  session[:orcid] = request.env.fetch('omniauth.auth', nil)
+  UpdateJob.perform_async(session[:orcid])
+
+  redirect_url = request.referrer.present? ? "/orcid?referrer=#{request.referrer}" : "/orcid"
+  redirect to(redirect_url)
 end
 
 # Used to sign out a user but can also be used to mark that a user has seen the

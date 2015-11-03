@@ -1,56 +1,61 @@
-.header
-  .container-fluid
-    .profile.pull-right
-      .btn-toolbar.profile
-        .btn-group{role: "group"}
-          %button.btn.btn-default#help
-            %a{href: '/help/examples'}
-              %i.fa.fa-question
-        .btn-group{role: "group"}
-          %button.btn.btn-default.dropdown-toggle{role: "button", data: { toggle: "dropdown"}, aria: { haspopup: "true", expanded: "false" }}
-            %i.fa.fa-navicon
-          %ul.dropdown-menu{role: 'menu'}
-            %li.dropdown-header DataCite Labs
-            - settings.labs_links.each do |item|
-              %li
-                %a{:href => item['url']}
-                  %i.fa.fa-fw{class: "fa-#{item['icon']}"}
-                  = item['name']
-            %li.divider
-            %li.dropdown-header DataCite
-            - settings.production_links.each do |item|
-              %li
-                %a{:href => item['url']}
-                  %i.fa.fa-fw{class: "fa-#{item['icon']}"}
-                  = item['name']
+.header{id: "navtop"}
+  .navbar.navbar-default.navbar-static-top{role: "navigation"}
+    .container
+      .navbar-header
+        %button.navbar-toggle{type: 'button', data: { toggle: "collapse", target: ".navbar-collapse"}}
+          %span.sr-only Toggle Navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        - unless page[:mini_header]
+          %a{:href => 'http://www.datacite.org'}
+            %img.logo{src: "/images/#{ENV['RA']}/logo.png", alt: ENV['SITENAME'] }
+      .navbar-collapse.collapse
+        %a.navbar-brand{:href => "/"}
+          %i.fa.fa-link
+          Search
+        %ul.nav.navbar-nav.navbar-right
+          - if signed_in?
+            %li.dropdown
+              %a.dropdown-toggle{href: '#', id: "account_menu_link", data: { toggle: "dropdown"}, aria: { haspopup: "true", expanded: "false" }}
+                = user_display
+                %span.caret
+              %ul.dropdown-menu{role: 'menu'}
+                %li
+                  %a{:href => '/settings'}
+                    %i.fa.fa-user
+                    Settings
+                %li.divider
+                %li
+                  %a{:href => "#{ENV['ORCID_URL']}/#{session[:orcid][:uid]}"}
+                    %i.fa.fa-external-link
+                    ORCID Record
+                %li.divider
+                  %li
+                    %a{:href => '/auth/signout'}
+                      %i.fa.fa-sign-out
+                      Sign out
+          - else
+            %li
+              %a{:href => "/auth/orcid"}
+                Sign in
 
-        - if signed_in?
-          .btn-group{role: "group"}
-            %button.btn.btn-default.dropdown-toggle{role: "button", data: { toggle: "dropdown"}, aria: { haspopup: "true", expanded: "false" }}
-              = user_display
-            %ul.dropdown-menu.dropdown-menu-right{role: 'menu'}
-              %li
-                %a{:href => '/settings'}
-                  %i.fa.fa-cog
-                  Settings
+        %ul.nav.navbar-nav.navbar-right
+          %li.dropdown
+            %a.dropdown-toggle{href: '#', data: { toggle: "dropdown"}, aria: { haspopup: "true", expanded: "false" }}
+              %i.fa.fa-th
+              %span.caret
+            %ul.dropdown-menu{role: 'menu'}
+              %li.dropdown-header DataCite Labs
+              - settings.labs_links.each do |item|
+                %li
+                  %a{:href => item['url']}
+                    %i.fa{class: "fa-#{item['icon']}"}
+                    = item['name']
               %li.divider
-              %li
-                %a{:href => "#{ENV['ORCID_URL']}/#{session[:orcid][:uid]}"}
-                  %i.fa.fa-external-link
-                  ORCID Record
-              %li.divider
-              %li
-                %a{:href => "/auth/signout?redirect_uri=#{URI.encode(request.fullpath)}"}
-                  %i.fa.fa-sign-out
-                  Sign out
-        - else
-          .btn-group{role: "group"}
-            %button.btn.btn-default
-              %img.logo{src: '/images/orcid_24x24.png'}
-              %a#sign-in-link{:href => "/auth/orcid"}
-                Sign in with ORCID
-
-    - unless page[:mini_header]
-      .logo
-        %a{:href => '/'}
-          %img.logo-small{src: "/images/#{ENV['RA']}/logo-small.png", alt: ENV['SITENAME'] }
+              %li.dropdown-header DataCite
+              - settings.production_links.each do |item|
+                %li
+                  %a{:href => item['url']}
+                    %i.fa.fa-fw{class: "fa-#{item['icon']}"}
+                    = item['name']

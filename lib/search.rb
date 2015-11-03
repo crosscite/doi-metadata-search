@@ -15,7 +15,7 @@ module Sinatra
     def select(query_params)
       page = query_page
       rows = query_rows
-      results = Sinatra::Application.settings.solr.paginate(page, rows, ENV['SOLR_SELECT'], params: query_params)
+      Sinatra::Application.settings.solr.paginate(page, rows, ENV['SOLR_SELECT'], params: query_params)
     end
 
     def response_format
@@ -80,7 +80,7 @@ module Sinatra
     def facet_results(solr_result)
       return {} if solr_result['facet_counts'].nil?
 
-      results = solr_result.fetch('facet_counts', {}).fetch('facet_fields', [])
+      solr_result.fetch('facet_counts', {}).fetch('facet_fields', [])
       # results.reduce({}) do |sum, facet|
       #   if facet.last.size > 0
       #     sum << facet

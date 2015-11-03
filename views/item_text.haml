@@ -1,46 +1,45 @@
-%div.item-data
-  %h3
-    - if item.title.present?
-      = item.title
-    - else
-      No title
+%h4.work
+  - if item.title.present?
+    = item.title
+  - else
+    No title
 
-  - if item.authors.present?
-    %p= author_format(item.authors)
+- if item.authors.present?
+  = author_format(item.authors)
 
-  %p
-    - if item.version
-      = "Version " + item.version + " of "
-    - if item.subtype.present?
-      = item.subtype.titleize
-      published
-    - else
-      Text published
-    - if item.day.present?
-      = item.day
-    - if item.month.present?
-      = item.month
-    - unless (item.year.nil? || item.year.to_i == 0)
-      = item.year
-    - if item.publication.present?
-      via
-      = item.publication
-    - if item.volume.present?
-      , volume
-      = item.volume
-    - if item.issue.present?
-      , issue
-      = item.issue
-    - if !item.first_page.nil? && !item.last_page.nil?
-      , on pages
-      = item.first_page
-      to
-      = item.last_page
-    - elsif item.first_page.present?
-      , on page
-      = item.first_page
-  - if item.description.present?
-    %p.description
-      = sanitize(item.description)
+%br
+  - if item.version
+    = "Version " + item.version + " of "
+  - if item.subtype.present?
+    = item.subtype.titleize
+    published
+  - else
+    Text published
+  - if item.day.present?
+    = item.day
+  - if item.month.present?
+    = item.month
+  - unless (item.year.nil? || item.year.to_i == 0)
+    = item.year
+  - if item.publication.present?
+    via
+    = item.publication
+  - if item.volume.present?
+    , volume
+    = item.volume
+  - if item.issue.present?
+    , issue
+    = item.issue
+  - if !item.first_page.nil? && !item.last_page.nil?
+    , on pages
+    = item.first_page
+    to
+    = item.last_page
+  - elsif item.first_page.present?
+    , on page
+    = item.first_page
+- if item.description.present?
+  .description
+    = sanitize(item.description)
 
-  = haml :item_links, locals: { item: item }
+= haml :item_links, locals: { item: item }
