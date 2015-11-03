@@ -245,7 +245,7 @@ end
 # 'You have been signed out' message. Clears the user's session cookie.
 get '/auth/signout' do
   session.clear
-  redirect to(params[:redirect_uri])
+  redirect to('/')
 end
 
 get '/auth/failure' do
