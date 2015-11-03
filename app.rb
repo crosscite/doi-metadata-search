@@ -221,8 +221,7 @@ get '/auth/orcid/callback' do
   session[:orcid] = request.env.fetch('omniauth.auth', nil)
   UpdateJob.perform_async(session[:orcid])
 
-  redirect_url = request.referrer.present? ? "/orcid?referrer=#{request.referrer}" : "/orcid"
-  redirect to(redirect_url)
+  redirect to('/')
 end
 
 get '/auth/orcid/import' do
@@ -232,7 +231,6 @@ get '/auth/orcid/import' do
     haml :auth_callback
   else
     UpdateJob.perform_async(session[:orcid])
-    redirect to('/orcid')
   end
 end
 
