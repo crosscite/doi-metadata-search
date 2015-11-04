@@ -8,12 +8,11 @@
           %span.icon-bar
           %span.icon-bar
         - unless page[:mini_header]
-          %a{:href => 'http://www.datacite.org'}
-            %img.logo{src: "/images/#{ENV['RA']}/logo.png", alt: ENV['SITENAME'] }
+          %a.navbar-brand{:href => "/"}
+            %img.logo{src: "/images/#{ENV['RA']}/logo.png" }
+            %span.logo> Data
+            %span Cite Search
       .navbar-collapse.collapse
-        %a.navbar-brand{:href => "/"}
-          %i.fa.fa-search
-          Search
         %ul.nav.navbar-nav.navbar-right
           - if signed_in?
             %li.dropdown
@@ -43,10 +42,10 @@
           - else
             %li
               - if ENV['JWT_URL'].present?
-                %a{:href => "/auth/jwt"}
+                %a.btn.btn-default{:href => "/auth/jwt", id: 'sign-in'}
                   Sign in
               - else
-                %a{:href => "/auth/orcid"}
+                %a.btn.btn-default{:href => "/auth/orcid", id: 'sign-in'}
                   Sign in
 
         %ul.nav.navbar-nav.navbar-right

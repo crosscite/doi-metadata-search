@@ -8,8 +8,12 @@
 }
 .facets {
   color: $gray-darker;
+  background-color: $gray-light;
   font-size: 1em;
   padding: 0;
+  border: 0;
+  box-shadow: none;
+
   ul {
     list-style: none;
     list-style-position: outside;
@@ -18,7 +22,7 @@
   h4 {
     font-weight: normal;
     font-size: 1.25em;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid $gray-darker;
     margin: 0 0 .5em 0;
   }
   div {
@@ -28,8 +32,8 @@
     font-size: .75em;
     line-height: 18px;
     display: inline;
-    color: gray;
-    background-color: white;
+    color: $gray-darker;
+    background-color: $gray-light;
     padding: 0 .5em 0 0;
     margin-left: 0;
   }
