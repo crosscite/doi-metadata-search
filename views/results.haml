@@ -1,6 +1,6 @@
 = haml :"#{ENV['RA']}/header", locals: { page: page }
 
-.container
+.container-fluid
   = haml :search, locals: { page: page }
 
   - unless flash[:error].nil?
