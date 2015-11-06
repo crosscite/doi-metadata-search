@@ -221,11 +221,14 @@ $(document).ready(function() {
     $('.claim-ok').popover('destroy');
 
     var $text = $('<div>').html('<span>Work has been added to your ORCID record but is marked as private. Visit your <a href="https://orcid.org/my-orcid" target="_blank"><i class="fa fa-external-link"></i>ORCID record</a> to set this work\'s visibility to public or limited.<br/><br/>If you have removed this private work from your ORCID record you can click the button below to remove it here.</span>');
-    var $btnClose = $('<button>').addClass('btn').addClass('claim-close-btn').text('Close');
-    var $btnRefresh = $('<button>').addClass('btn').addClass('btn-warning').addClass('claim-refresh-btn').text('Refresh');
-    var $btnRemove = $('<button>').addClass('btn').addClass('btn-danger').addClass('claim-remove-btn').text('Remove');
-    var $btns = $('<div>').addClass('btn-container').append($btnClose).append($btnRefresh).append($btnRemove);
-    var $content = $('<div>').append($text).append($btns);
+    var $btnClose = $('<button>').addClass('btn').addClass('claim-close-btn').addClass('btn-sm').text('Close');
+    var $btnRefresh = $('<button>').addClass('btn').addClass('btn-warning').addClass('btn-sm').addClass('claim-refresh-btn').text('Refresh');
+    var $btnRemove = $('<button>').addClass('btn').addClass('btn-danger').addClass('btn-sm').addClass('claim-remove-btn').text('Remove');
+    var $btnsClose = $('<div>').addClass('btn-group').addClass('btn-group-sm').append($btnClose);
+    var $btnsRefresh = $('<div>').addClass('btn-group').addClass('btn-group-sm').append($btnRefresh);
+    var $btnsRemove = $('<div>').addClass('btn-group').addClass('btn-group-sm').append($btnRemove);
+    var $btnToolbar = $('<div>').addClass('btn-toolbar').addClass('pull-right').append($btnsClose).append($btnsRefresh).append($btnsRemove);
+    var $content = $('<div>').append($p).append($btnToolbar);
     var $popover = $(this);
 
     $(this).popover({
