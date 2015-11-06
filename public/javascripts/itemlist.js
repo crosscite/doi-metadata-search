@@ -228,7 +228,7 @@ $(document).ready(function() {
     var $btnsRefresh = $('<div>').addClass('btn-group').addClass('btn-group-sm').append($btnRefresh);
     var $btnsRemove = $('<div>').addClass('btn-group').addClass('btn-group-sm').append($btnRemove);
     var $btnToolbar = $('<div>').addClass('btn-toolbar').addClass('pull-right').append($btnsClose).append($btnsRefresh).append($btnsRemove);
-    var $content = $('<div>').append($p).append($btnToolbar);
+    var $content = $('<div>').append($text).append($btnToolbar);
     var $popover = $(this);
 
     $(this).popover({
