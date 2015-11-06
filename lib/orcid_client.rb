@@ -4,7 +4,11 @@ class OrcidClient
   attr_reader :uid, :token, :client, :access_token, :get, :post
 
   def initialize(session_info)
-    token = session_info.fetch('credentials', {}).fetch('token', nil)
+    if ENV['JWT_URL'].present?
+      token = session_info.fetch('info', {}).fetch('authentication_token', nil)
+    else
+      token = session_info.fetch('credentials', {}).fetch('token', nil)
+    end
     client = OAuth2::Client.new(ENV['ORCID_CLIENT_ID'],
                                 ENV['ORCID_CLIENT_SECRET'],
                                 site: ENV['ORCID_API_URL'])

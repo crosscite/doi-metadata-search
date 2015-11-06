@@ -22,10 +22,13 @@ $(document).ready(function() {
 
   var replacePopoverWithLogin = function($popover) {
     var $p = $('<p>').text('Your sign in to ORCID has expired. Please sign back in.')
-    var $btnLogin = $('<button>').addClass('btn').addClass('btn-info').addClass('login-btn').text('Sign in to ORCID');
-    var $btnClose = $('<button>').addClass('btn').addClass('close-btn').text('Close');
-    var $btns = $('<div>').addClass('btn-container').append($btnClose).append($btnLogin);
-    var $content = $('<div>').append($p).append($btns);
+    var $btnClose = $('<button>').addClass('btn').addClass('close-btn').addClass('btn-sm').text('Close');
+    var $btnLogin = $('<button>').addClass('btn').addClass('btn-info').addClass('btn-sm').addClass('login-btn').text('Sign in to ORCID');
+    var $btnsClose = $('<div>').addClass('btn-group').addClass('btn-group-sm').append($btnClose);
+    var $btnsLogin = $('<div>').addClass('btn-group').addClass('btn-group-sm').append($btnLogin);
+    var $btnToolbar = $('<div>').addClass('btn-toolbar').addClass('pull-right').append($btnsClose).append($btnsLogin);
+    var $content = $('<div>').append($p).append($btnToolbar);
+
     var $newPopoverContent = $('<div>').addClass('popover-content').append($content);
 
     $('.popover-content').replaceWith($newPopoverContent);
@@ -87,10 +90,12 @@ $(document).ready(function() {
     $('.claim-ok').popover('destroy');
 
     var $p = $('<p>').text('Last time we checked, this work was in your ORCID record. Refresh to retrieve changes to your works from ORCID.');
-    var $btnClose = $('<button>').addClass('btn').addClass('claim-close-btn').text('Close');
-    var $btnRefresh = $('<button>').addClass('btn').addClass('btn-warning').addClass('claim-refresh-btn').text('Refresh');
-    var $btns = $('<div>').addClass('btn-container').append($btnClose).append($btnRefresh);
-    var $content = $('<div>').append($p).append($btns);
+    var $btnClose = $('<button>').addClass('btn').addClass('btn-sm').addClass('claim-close-btn').text('Cancel');
+    var $btnRefresh = $('<button>').addClass('btn').addClass('btn-default').addClass('btn-sm').addClass('claim-refresh-btn').text('Refresh');
+    var $btnsClose = $('<div>').addClass('btn-group').addClass('btn-group-sm').append($btnClose);
+    var $btnsRefresh = $('<div>').addClass('btn-group').addClass('btn-group-sm').append($btnRefresh);
+    var $btnToolbar = $('<div>').addClass('btn-toolbar').addClass('pull-right').append($btnsClose).append($btnsRefresh);
+    var $content = $('<div>').append($p).append($btnToolbar);
     var $popover = $(this);
 
     $(this).popover({
@@ -165,10 +170,12 @@ $(document).ready(function() {
     $('.claim-ok').popover('destroy');
 
     var $p = $('<p>').text('Are you sure you want to add this work to your ORCID record?');
-    var $btnNo = $('<button>').addClass('btn').addClass('claim-no-btn').text('No');
-    var $btnOk = $('<button>').addClass('btn').addClass('btn-success').addClass('claim-ok-btn').text('Yes');
-    var $btns = $('<div>').addClass('btn-container').append($btnNo).append($btnOk);
-    var $content = $('<div>').append($p).append($btns);
+    var $btnNo = $('<button>').addClass('btn').addClass('btn-sm').addClass('claim-no-btn').text('Cancel');
+    var $btnOk = $('<button>').addClass('btn').addClass('btn-default').addClass('btn-sm').addClass('claim-ok-btn').text('Ok');
+    var $btnsNo = $('<div>').addClass('btn-group').addClass('btn-group-sm').append($btnNo);
+    var $btnsOk = $('<div>').addClass('btn-group').addClass('btn-group-sm').append($btnOk);
+    var $btnToolbar = $('<div>').addClass('btn-toolbar').addClass('pull-right').append($btnsNo).append($btnsOk);
+    var $content = $('<div>').append($p).append($btnToolbar);
     var $popover = $(this);
 
     $(this).popover({

@@ -92,7 +92,9 @@ configure do
       provider :jwt, ENV['JWT_SECRET_KEY'],
         auth_url: ENV['JWT_URL'],
         uid_claim: 'uid',
-        required_claims: ['uid', 'name']
+        required_claims: ['uid', 'name'],
+        info_map: { "name" => "name",
+                    "authentication_token" => "authentication_token" }
     else
       provider :orcid, ENV['ORCID_CLIENT_ID'], ENV['ORCID_CLIENT_SECRET'],
         authorize_params: {
@@ -218,10 +220,10 @@ get '/orcid' do
 end
 
 get '/auth/orcid/callback' do
-  session[:orcid] = request.env.fetch('omniauth.auth', nil)
+  session[:orcid] = request.env["omniauth.auth"]
   UpdateJob.perform_async(session[:orcid])
 
-  redirect to('/')
+  redirect to request.env['omniauth.origin'] || '/'
 end
 
 get '/auth/orcid/import' do
@@ -235,10 +237,10 @@ get '/auth/orcid/import' do
 end
 
 get '/auth/jwt/callback' do
-  session[:orcid] = request.env.fetch('omniauth.auth', nil)
+  session[:orcid] = request.env["omniauth.auth"]
   UpdateJob.perform_async(session[:orcid])
 
-  redirect to('/')
+  redirect to request.env['omniauth.origin'] || '/'
 end
 
 # Used to sign out a user but can also be used to mark that a user has seen the

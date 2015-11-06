@@ -15,11 +15,23 @@ module Sinatra
         'credentials' => {
           'token' => token_obj.token
         },
-        :uid => token_obj.params['orcid'],
-        :info => {}
+        uid: token_obj.params['orcid'],
+        info: {}
       }
     rescue OAuth2::Error => e
       { error: e.inspect }
+    end
+
+    def parse_token(auth)
+      session[:orcid] = {
+        'credentials' => {
+          'token' => auth.info.authentication_token
+        },
+        uid: auth.uid,
+        info: {
+          name: auth.info && auth.info.name
+        }
+      }
     end
 
     def signed_in?

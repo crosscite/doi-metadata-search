@@ -97,3 +97,33 @@
 .cite-link {
   font-size: .85em;
 }
+.claim-none, .claim-ok, .claim-warn {
+  cursor: pointer;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  margin-bottom: 4px;
+}
+.claim-ok {
+  color: rgb(167, 204, 145);
+}
+.claim-ok:hover {
+  color: rgb(137, 194, 115);
+}
+.claim-warn {
+  color: rgb(246, 130, 18);
+}
+.claim-warn:hover {
+  color: rgb(216, 100, 0);
+}
+.claim-none {
+  color: #999999;
+}
+.claim-none {
+  margin-left: .2em;
+}
+.claim-none:hover {
+  color: rgb(167, 204, 145);
+}
+.popover {
+  padding-bottom: 10px;
+}
