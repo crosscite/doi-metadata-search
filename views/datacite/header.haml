@@ -7,11 +7,11 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        - unless page[:mini_header]
-          %a.navbar-brand{:href => "/"}
-            %img.logo{src: "/images/#{ENV['RA']}/logo.png" }
-            %span.logo> Data
-            %span Cite Search
+      - unless page[:mini_header]
+        %a.navbar-brand{:href => "/"}
+          %img.logo{src: "/images/#{ENV['RA']}/logo.png" }
+          %span.logo> Data
+          %span Cite Search
       .navbar-collapse.collapse
         %ul.nav.navbar-nav.navbar-right
           - if signed_in?
