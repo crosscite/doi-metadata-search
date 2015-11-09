@@ -240,7 +240,7 @@ get '/auth/jwt/callback' do
   session[:orcid] = request.env["omniauth.auth"]
   UpdateJob.perform_async(session[:orcid])
 
-  redirect to request.env['omniauth.origin'] || '/'
+  redirect to request.env['omniauth.origin'] || params[:origin] || '/'
 end
 
 # Used to sign out a user but can also be used to mark that a user has seen the
