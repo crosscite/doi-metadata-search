@@ -20,7 +20,7 @@ module Sinatra
     def get_references(dois)
       return [] unless dois.present? && ENV["LAGOTTO_URL"].present?
 
-      response = Maremma.post "#{ENV['LAGOTTO_URL']}/api/references", content_type: "text/html", data: dois_as_string(dois), timeout: 30
+      response = Maremma.post "#{ENV['LAGOTTO_URL']}/api/references", content_type: "text/html", data: dois_as_string(dois)
       response = {} unless response.is_a?(Hash)
 
       response.fetch("references", []).map do |reference|
