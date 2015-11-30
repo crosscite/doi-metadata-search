@@ -15,7 +15,7 @@ http_interactions:
       Server:
       - nginx/1.1.19
       Date:
-      - Thu, 15 Oct 2015 21:59:18 GMT
+      - Sat, 28 Nov 2015 14:35:57 GMT
       Content-Type:
       - text/plain;charset=UTF-8
       Transfer-Encoding:
@@ -29,35 +29,31 @@ http_interactions:
     body:
       encoding: UTF-8
       string: |
-        {'responseHeader'=>{'status'=>0,'QTime'=>18},'response'=>{'numFound'=>1,'start'=>0,'maxScore'=>16.334421,'docs'=>[{'xml'=>'PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMyIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMyBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC0zL21ldGFkYXRhLnhzZCI+PGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuNjA4NC9NOS5GSUdTSEFSRS4xNTQ2OTE8L2lkZW50aWZpZXI+PHRpdGxlcz48dGl0bGU+RDIuMSBLaWNrIG9mZiBwcmVwYXJhdGlvbiwgQ29tbXVuaWNhdGlvbiBwbGFuIGFuZCBXZWJzaXRlPC90aXRsZT48L3RpdGxlcz48cHVibGlzaGVyPkZpZ3NoYXJlPC9wdWJsaXNoZXI+PHB1YmxpY2F0aW9uWWVhcj4yMDEzPC9wdWJsaWNhdGlvblllYXI+PHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJEYXRhc2V0Ij5QYXBlcjwvcmVzb3VyY2VUeXBlPjxyaWdodHNMaXN0PjxyaWdodHMgcmlnaHRzVVJJPSJodHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9saWNlbnNlcy9ieS8zLjAvdXMvIj5DQy1CWTwvcmlnaHRzPjwvcmlnaHRzTGlzdD48Y3JlYXRvcnM+PGNyZWF0b3I+PGNyZWF0b3JOYW1lPk9ESU4gQ29uc29ydGl1bTwvY3JlYXRvck5hbWU+PC9jcmVhdG9yPjxjcmVhdG9yPjxjcmVhdG9yTmFtZT5HdWRtdW5kdXIgVGhvcmlzc29uPC9jcmVhdG9yTmFtZT48bmFtZUlkZW50aWZpZXIgbmFtZUlkZW50aWZpZXJTY2hlbWU9Ik9SQ0lEIj4wMDAwLTAwMDEtNTYzNS0xODYwPC9uYW1lSWRlbnRpZmllcj48L2NyZWF0b3I+PGNyZWF0b3I+PGNyZWF0b3JOYW1lPk1hcnRpbiBGZW5uZXI8L2NyZWF0b3JOYW1lPjxuYW1lSWRlbnRpZmllciBuYW1lSWRlbnRpZmllclNjaGVtZT0iT1JDSUQiPjAwMDAtMDAwMi0yMTg0LTYwOTQ8L25hbWVJZGVudGlmaWVyPjwvY3JlYXRvcj48L2NyZWF0b3JzPjwvcmVzb3VyY2U+','doi'=>'10.6084/M9.FIGSHARE.154691','creator'=>['ODIN Consortium','Gudmundur Thorisson','Martin Fenner'],'resourceType'=>'Paper','publisher'=>'Figshare','title'=>['D2.1 Kick off preparation, Communication plan and Website'],'nameIdentifier'=>['ORCID:0000-0001-5635-1860','ORCID:0000-0002-2184-6094'],'rightsURI'=>['http://creativecommons.org/licenses/by/3.0/us/'],'publicationYear'=>'2013','resourceTypeGeneral'=>'Dataset','score'=>16.334421}]},'facet_counts'=>{'facet_queries'=>{},'facet_fields'=>{'resourceType_facet'=>['Dataset',1],'publicationYear'=>['2013',1],'datacentre_facet'=>['CDL.DIGSCI - Digital Science',1],'rightsURI'=>['http://creativecommons.org/licenses/by/3.0/us/',1]},'facet_dates'=>{},'facet_ranges'=>{}},'highlighting'=>{'1558135'=>{}}}
+        {'responseHeader'=>{'status'=>0,'QTime'=>2},'response'=>{'numFound'=>1,'start'=>0,'maxScore'=>16.347282,'docs'=>[{'xml'=>'PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMyIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMyBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC0zL21ldGFkYXRhLnhzZCI+PGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuNjA4NC9NOS5GSUdTSEFSRS4xNTQ2OTE8L2lkZW50aWZpZXI+PHRpdGxlcz48dGl0bGU+RDIuMSBLaWNrIG9mZiBwcmVwYXJhdGlvbiwgQ29tbXVuaWNhdGlvbiBwbGFuIGFuZCBXZWJzaXRlPC90aXRsZT48L3RpdGxlcz48cHVibGlzaGVyPkZpZ3NoYXJlPC9wdWJsaXNoZXI+PHB1YmxpY2F0aW9uWWVhcj4yMDEzPC9wdWJsaWNhdGlvblllYXI+PHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJEYXRhc2V0Ij5QYXBlcjwvcmVzb3VyY2VUeXBlPjxyaWdodHNMaXN0PjxyaWdodHMgcmlnaHRzVVJJPSJodHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9saWNlbnNlcy9ieS8zLjAvdXMvIj5DQy1CWTwvcmlnaHRzPjwvcmlnaHRzTGlzdD48Y3JlYXRvcnM+PGNyZWF0b3I+PGNyZWF0b3JOYW1lPk9ESU4gQ29uc29ydGl1bTwvY3JlYXRvck5hbWU+PC9jcmVhdG9yPjxjcmVhdG9yPjxjcmVhdG9yTmFtZT5HdWRtdW5kdXIgVGhvcmlzc29uPC9jcmVhdG9yTmFtZT48bmFtZUlkZW50aWZpZXIgbmFtZUlkZW50aWZpZXJTY2hlbWU9Ik9SQ0lEIj4wMDAwLTAwMDEtNTYzNS0xODYwPC9uYW1lSWRlbnRpZmllcj48L2NyZWF0b3I+PGNyZWF0b3I+PGNyZWF0b3JOYW1lPk1hcnRpbiBGZW5uZXI8L2NyZWF0b3JOYW1lPjxuYW1lSWRlbnRpZmllciBuYW1lSWRlbnRpZmllclNjaGVtZT0iT1JDSUQiPjAwMDAtMDAwMi0yMTg0LTYwOTQ8L25hbWVJZGVudGlmaWVyPjwvY3JlYXRvcj48L2NyZWF0b3JzPjwvcmVzb3VyY2U+','doi'=>'10.6084/M9.FIGSHARE.154691','creator'=>['ODIN Consortium','Gudmundur Thorisson','Martin Fenner'],'resourceType'=>'Paper','publisher'=>'Figshare','title'=>['D2.1 Kick off preparation, Communication plan and Website'],'nameIdentifier'=>['ORCID:0000-0001-5635-1860','ORCID:0000-0002-2184-6094'],'rightsURI'=>['http://creativecommons.org/licenses/by/3.0/us/'],'publicationYear'=>'2013','resourceTypeGeneral'=>'Dataset','score'=>16.347282}]},'facet_counts'=>{'facet_queries'=>{},'facet_fields'=>{'resourceType_facet'=>['Dataset',1],'publicationYear'=>['2013',1],'datacentre_facet'=>['CDL.DIGSCI - Digital Science',1],'rightsURI'=>['http://creativecommons.org/licenses/by/3.0/us/',1]},'facet_dates'=>{},'facet_ranges'=>{}},'highlighting'=>{'1558135'=>{}}}
     http_version: 
-  recorded_at: Thu, 15 Oct 2015 22:12:35 GMT
+  recorded_at: Sat, 28 Nov 2015 14:50:24 GMT
 - request:
     method: post
-    uri: http://dlm.labs.datacite.org/api/references
+    uri: http://cls.labs.datacite.org/api/references
     body:
       encoding: UTF-8
       string: work_ids=http://doi.org/10.6084/M9.FIGSHARE.154691
     headers:
+      User-Agent:
+      - spinone - http://doi-metadata-search.local
       Accept:
       - text/html
-      User-Agent:
-      - doi-metadata-search - http://doi-metadata-search.local
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
     status:
       code: 200
-      message: OK
+      message: ''
     headers:
       Server:
       - nginx/1.4.6 (Ubuntu)
       Date:
-      - Thu, 15 Oct 2015 22:13:03 GMT
+      - Sat, 28 Nov 2015 14:50:39 GMT
       Content-Type:
       - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
       Connection:
       - keep-alive
       Status:
@@ -73,22 +69,22 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - a64455a6-0521-427a-9db8-24fb71604e7f
+      - 84aff67c-f8e3-4370-96ea-7feb4a723efc
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
-      - W/"d07a7e0e183958a4ce57c809aeeceffb"
+      - W/"362198fc2b03f097c95e2c9713143d47"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.006757'
+      - '0.007155'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
-      - Phusion Passenger 5.0.16
+      - Phusion Passenger 5.0.21
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: '{"meta":{"status":"ok","message-type":"reference-list","message-version":"6.0.0","total":0,"total_pages":1,"page":1},"references":[]}'
     http_version: 
-  recorded_at: Thu, 15 Oct 2015 22:12:35 GMT
+  recorded_at: Sat, 28 Nov 2015 14:50:25 GMT
 recorded_with: VCR 2.9.3

@@ -1,6 +1,6 @@
 require 'sinatra/base'
 require 'json'
-require_relative 'network'
+require 'maremma'
 
 module Sinatra
   module Doi
@@ -48,7 +48,7 @@ module Sinatra
       if short_doi_doc.has_next?
         short_doi_doc.next['doi']
       else
-        result = get_result("http://doi.org/10/#{normal_short_doi}", content_type: JSON_TYPE)
+        result = Maremma.get "http://doi.org/10/#{normal_short_doi}", content_type: JSON_TYPE
 
         if result.is_a?(Hash) && !result["error"]
           doi = result.fetch('DOI', nil)

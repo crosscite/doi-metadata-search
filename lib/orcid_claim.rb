@@ -1,14 +1,13 @@
 # Construct an XML object that can be deposited with ORCID
 
 require 'nokogiri'
+require 'maremma'
 require_relative 'doi'
-require_relative 'network'
 require_relative 'lagotto'
 require_relative "#{ENV['RA']}/work_type"
 
 class OrcidClaim
   include Sinatra::Doi
-  include Sinatra::Network
   include Sinatra::Lagotto
   include Sinatra::WorkType
 
@@ -82,7 +81,7 @@ class OrcidClaim
   end
 
   def citation
-    result = get_result("http://doi.org/#{doi}", content_type: "application/x-bibtex")
+    result = Maremma.get "http://doi.org/#{doi}", content_type: "application/x-bibtex"
     return nil unless result.is_a?(String)
 
     without_control(result)

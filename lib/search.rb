@@ -2,14 +2,12 @@ require 'sinatra/base'
 require 'json'
 
 require_relative 'doi'
-require_relative 'network'
 require_relative 'lagotto'
 require_relative "#{ENV['RA']}/search"
 
 module Sinatra
   module Search
     include Sinatra::Doi
-    include Sinatra::Network
     include Sinatra::Lagotto
 
     def select(query_params)

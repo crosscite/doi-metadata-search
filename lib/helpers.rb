@@ -10,7 +10,6 @@ helpers do
   include Sinatra::Session
   include Sinatra::Stats
   include Sinatra::Search
-  include Sinatra::Network
 
   def citations(doi)
     citations = Sinatra::Application.settings.citations.find('to.id' => doi)

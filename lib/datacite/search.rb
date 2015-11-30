@@ -1,6 +1,6 @@
 require 'sinatra/base'
 require 'json'
-require_relative '../network'
+require 'maremma'
 
 module Sinatra
   module Search
@@ -74,8 +74,7 @@ module Sinatra
         query = "?query=#{page[:bare_query]}&rows=0"
       end
 
-      url = "http://api.crossref.org/works#{query}"
-      result = get_result(url)
+      result = Maremma.get  "http://api.crossref.org/works#{query}"
 
       if result.empty?
         page[:alt_text] = page[:query_type][:type] == :doi ? 'DOI not found' : '0 results'

@@ -28,6 +28,8 @@ Dir[File.join(File.dirname(__FILE__), 'factories', '*.rb')].each { |f| require f
 Dir[File.join(File.dirname(__FILE__), '..', 'lib', '*.rb')].each { |f| require f }
 Dir[File.join(File.dirname(__FILE__), '..', 'lib', ENV['RA'], '*.rb')].each { |f| require f }
 
+config_file "config/#{ENV['RA']}.yml"
+
 # setup test environment
 set :environment, :test
 set :run, false

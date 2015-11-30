@@ -28,7 +28,6 @@ TYPICAL_ROWS = [10, 20, 50, 100, 500]
 DEFAULT_ROWS = 20
 MONTH_SHORT_NAMES = %w(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec)
 ORCID_VERSION = '1.2'
-DEFAULT_TIMEOUT = 60
 
 require 'sinatra'
 require 'sinatra/json'
@@ -36,13 +35,12 @@ require 'sinatra/config_file'
 require 'active_support/all'
 require 'rsolr'
 require 'mongo'
+require 'tilt/haml'
 require 'haml'
 require 'will_paginate'
 require 'will_paginate-bootstrap'
 require 'cgi'
-require 'faraday'
-require 'faraday_middleware'
-require 'faraday/encoding'
+require 'maremma'
 require 'gabba'
 require 'rack-flash'
 require 'omniauth-orcid'
@@ -51,16 +49,6 @@ require 'sidekiq'
 require 'sidekiq/api'
 require 'open-uri'
 require 'uri'
-
-NETWORKABLE_EXCEPTIONS = [Faraday::ClientError,
-                          Faraday::TimeoutError,
-                          Faraday::SSLError,
-                          Faraday::ConnectionFailed,
-                          URI::InvalidURIError,
-                          Encoding::UndefinedConversionError,
-                          ArgumentError,
-                          NoMethodError,
-                          TypeError]
 
 Dir[File.join(File.dirname(__FILE__), 'lib', '*.rb')].each { |f| require f }
 Dir[File.join(File.dirname(__FILE__), 'lib', ENV['RA'], '*.rb')].each { |f| require f }
@@ -94,7 +82,8 @@ configure do
         uid_claim: 'uid',
         required_claims: ['uid', 'name'],
         info_map: { "name" => "name",
-                    "authentication_token" => "authentication_token" }
+                    "authentication_token" => "authentication_token",
+                    "role" => "role" }
     else
       provider :orcid, ENV['ORCID_CLIENT_ID'], ENV['ORCID_CLIENT_SECRET'],
         authorize_params: {
@@ -197,7 +186,7 @@ get '/citation' do
   halt 415, json(status: 'error', message: 'Format missing or not supported.') unless citation_format
 
   # use doi content negotiation to get formatted citation
-  result = get_result("http://doi.org/#{params[:doi]}", content_type: citation_format)
+  result = Maremma.get "http://doi.org/#{params[:doi]}", content_type: citation_format
 
   halt result["status"], json(status: 'error', message: response["error"]) if result["error"]
 
