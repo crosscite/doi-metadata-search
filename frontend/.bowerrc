@@ -1,4 +1,4 @@
 {
-  "directory": "bower_components",
+  "directory": "../public/assets",
   "analytics": false
 }

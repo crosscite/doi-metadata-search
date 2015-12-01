@@ -21,3 +21,4 @@ output-*
 /frontend/node_modules/*
 /frontend/bower_components/*
 /frontend/npm-debug.log
+/public/assets/*
