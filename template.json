@@ -4,9 +4,9 @@
       "type": "amazon-ebs",
       "access_key": "{{user `access_key`}}",
       "secret_key": "{{user `secret_key`}}",
-      "region": "us-east-1",
-      "source_ami": "ami-77fb5d1c",
-      "instance_type": "m1.small",
+      "region": "{{user `region`}}",
+      "source_ami": "{{user `source_ami`}}",
+      "instance_type": "{{user `instance_type`}}",
       "ssh_username": "ubuntu",
       "ami_name": "doi-metadata-search {{timestamp}}"
     }
@@ -46,8 +46,11 @@
     "headless": "false",
     "memory": "2048",
     "mirror": "http://releases.ubuntu.com",
-    "access_key": "{{env `AWS_KEY`}}",
-    "secret_key": "{{env `AWS_SECRET`}}",
+    "access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
+    "secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
+    "region": "{{env `AWS_REGION`}}",
+    "source_ami": "{{env `AWS_SOURCE_AMI`}}",
+    "instance_type": "{{env `AWS_INSTANCE_TYPE`}}",
     "atlas_token": "{{env `ATLAS_TOKEN`}}"
   },
    "push": {
