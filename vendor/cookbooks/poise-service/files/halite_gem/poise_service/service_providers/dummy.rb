@@ -14,6 +14,8 @@
 # limitations under the License.
 #
 
+require 'shellwords'
+
 require 'poise_service/service_providers/base'
 
 
@@ -24,25 +26,47 @@ module PoiseService
 
       def action_start
         return if pid
+        Chef::Log.debug("[#{new_resource}] Starting #{new_resource.command}")
+        # Clear the pid file if it exists.
+        ::File.unlink(pid_file) if ::File.exist?(pid_file)
         if Process.fork
           # Parent, wait for the final child to write the pid file.
-          until pid
+          now = Time.now
+          until ::File.exist?(pid_file)
             sleep(1)
+            # After 30 seconds, show output at a higher level to avoid too much
+            # confusing on failed process launches.
+            if Time.now - now <= 30
+              Chef::Log.debug("[#{new_resource}] Waiting for PID file")
+            else
+              Chef::Log.warning("[#{new_resource}] Waiting for PID file at #{pid_file} to be created")
+            end
           end
         else
           # :nocov:
+          Chef::Log.debug("[#{new_resource}] Forked")
           # First child, daemonize and go to town.
           Process.daemon(true)
+          Chef::Log.debug("[#{new_resource}] Daemonized")
           # Daemonized, set up process environment.
           Dir.chdir(new_resource.directory)
+          Chef::Log.debug("[#{new_resource}] Directory changed to #{new_resource.directory}")
+          ENV['HOME'] = Dir.home(new_resource.user)
           new_resource.environment.each do |key, val|
             ENV[key.to_s] = val.to_s
           end
-          Process.uid = new_resource.user
+          Chef::Log.debug("[#{new_resource}] Process environment configured")
           IO.write(pid_file, Process.pid)
-          Kernel.exec(new_resource.command)
+          Chef::Log.debug("[#{new_resource}] PID written to #{pid_file}, dropping privs and execing")
+          Process::UID.change_privilege(new_resource.user)
+          # Split the command so we don't get an extra sh -c.
+          Chef::Log.debug("[#{new_resource}] Execing #{new_resource.command}")
+          Kernel.exec(*Shellwords.split(new_resource.command))
+          # Just in case, bail out.
+          exit!
           # :nocov:
         end
+        Chef::Log.debug("[#{new_resource}] Started.")
       end
 
       def action_stop
@@ -61,7 +85,7 @@ module PoiseService
       end
 
       def pid
-        return nil unless ::File.exists?(pid_file)
+        return nil unless ::File.exist?(pid_file)
         pid = IO.read(pid_file).to_i
         begin
           # Check if the PID is running.
@@ -82,15 +106,34 @@ module PoiseService
       def enable_service
       end
 
+      # Write all major service parameters to a file so that if they change, we
+      # can restart the service. This also makes debuggin a bit easier so you
+      # can still see what it thinks it was starting without sifting through
+      # piles of debug output.
       def create_service
+        service_template(run_file, 'dummy.json.erb')
       end
 
       def disable_service
       end
 
+      # Delete the tracking file.
       def destroy_service
+        file run_file do
+          action :delete
+        end
+
+        file pid_file do
+          action :delete
+        end
       end
 
+      # Path to the run parameters tracking file.
+      def run_file
+        "/var/run/#{new_resource.service_name}.json"
+      end
+
+      # Path to the PID file.
       def pid_file
         "/var/run/#{new_resource.service_name}.pid"
       end

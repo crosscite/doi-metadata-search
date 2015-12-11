@@ -9,7 +9,8 @@
     "ubuntu": ">= 0.0.0"
   },
   "dependencies": {
-    "apt": ">= 0.0.0"
+    "apt": ">= 0.0.0",
+    "build-essential": ">= 0.0.0"
   },
   "recommendations": {
   },
@@ -27,7 +28,7 @@
   },
   "recipes": {
   },
-  "version": "0.7.4",
+  "version": "0.7.6",
   "source_url": "",
   "issues_url": ""
 }

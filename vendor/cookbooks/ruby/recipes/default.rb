@@ -1,4 +1,5 @@
-include_recipe "apt"
+include_recipe 'apt'
+include_recipe 'build-essential'
 
 execute "apt-get update" do
   action :nothing

@@ -1,22 +1,22 @@
 {
   "name": "doi_metadata_search",
-  "description": "Configures datacite_orcid",
-  "long_description": "datacite_orcid Cookbook\n=======================\n\nChef cookbook for installing [doi-metadata-search](https://github.com/crosscite/doi-metadata-search).\n",
+  "description": "Configures doi-metadata-search",
+  "long_description": "doi-metadata-search Cookbook\n============================\n\nChef cookbook for installing [doi-metadata-search](https://github.com/crosscite/doi-metadata-search).\n",
   "maintainer": "Martin Fenner",
-  "maintainer_email": "martin.fenner@datacite.org",
+  "maintainer_email": "mfenner@datacite.org",
   "license": "Apache 2.0",
   "platforms": {
     "ubuntu": ">= 0.0.0"
   },
   "dependencies": {
     "apt": ">= 0.0.0",
-    "redisio": ">= 0.0.0",
     "consul": ">= 0.0.0",
     "mongodb": ">= 0.0.0",
+    "nodejs": ">= 0.0.0",
     "ruby": "~> 0.7.0",
-    "dotenv": "~> 0.2.0",
-    "passenger_nginx": "~> 0.5.0",
-    "capistrano": "~> 0.10.0"
+    "dotenv": "~> 1.0.0",
+    "passenger_nginx": "~> 1.0.0",
+    "capistrano": "~> 1.0.0"
   },
   "recommendations": {
   },
@@ -34,7 +34,7 @@
   },
   "recipes": {
   },
-  "version": "2.2.2",
+  "version": "2.5.0",
   "source_url": "",
   "issues_url": ""
 }

@@ -37,6 +37,10 @@ module Poise
             @resource = resource
           end
 
+          def inspect
+            to_text
+          end
+
           def to_text
             if @resource.nil?
               'nil'
@@ -61,7 +65,7 @@ module Poise
           if self.class.parent_type == true
             raise NoMethodError.new("undefined method `parent' for #{self}")
           end
-          _parent(:parent, self.class.parent_type, self.class.parent_optional, self.class.parent_auto, *args)
+          _parent(:parent, self.class.parent_type, self.class.parent_optional, self.class.parent_auto, self.class.parent_default, *args)
         end
 
         # Register ourself with parents in case this is not a nested resource.
@@ -71,7 +75,7 @@ module Poise
           super
           self.class.parent_attributes.each_key do |name|
             parent = self.send(name)
-            parent.register_subresource(self) if parent
+            parent.register_subresource(self) if parent && parent.respond_to?(:register_subresource)
           end
         end
 
@@ -81,7 +85,7 @@ module Poise
         #
         # @since 2.0.0
         # @see #parent
-        def _parent(name, parent_type, parent_optional, parent_auto, *args)
+        def _parent(name, parent_type, parent_optional, parent_auto, parent_default, *args)
           # Allow using a DSL symbol as the parent type.
           if parent_type.is_a?(Symbol)
             parent_type = Chef::Resource.resource_for_node(parent_type, node)
@@ -92,11 +96,22 @@ module Poise
             val = args.first
             if val.nil?
               # Unsetting the parent.
-              parent = nil
+              parent = parent_ref = nil
             else
               if val.is_a?(String) && !val.include?('[')
                 raise Poise::Error.new("Cannot use a string #{name} without defining a parent type") if parent_type == Chef::Resource
-                val = "#{parent_type.resource_name}[#{val}]"
+                # Try to find the most recent instance of parent_type with a
+                # matching name. This takes subclassing parent_type into account.
+                found_val = nil
+                iterator = run_context.resource_collection.respond_to?(:recursive_each) ? :recursive_each : :each
+                # This will find the last matching value due to overwriting
+                # found_val as it goes. Will be the nearest match.
+                run_context.resource_collection.public_send(iterator) do |res|
+                  found_val = res if res.is_a?(parent_type) && res.name == val
+                end
+                # If found_val is nil, fall back to using lookup even though
+                # it won't work with subclassing, better than nothing?
+                val = found_val || "#{parent_type.resource_name}[#{val}]"
               end
               if val.is_a?(String) || val.is_a?(Hash)
                 parent = @run_context.resource_collection.find(val)
@@ -106,14 +121,24 @@ module Poise
               if !parent.is_a?(parent_type)
                 raise Poise::Error.new("Parent resource is not an instance of #{parent_type.name}: #{val.inspect}")
               end
+              parent_ref = ParentRef.new(parent)
             end
-            parent_ref = ParentRef.new(parent)
           elsif !parent_ref || !parent_ref.resource
-            if parent_auto
+            if parent_default
+              parent = if parent_default.is_a?(Chef::DelayedEvaluator)
+                instance_eval(&parent_default)
+              else
+                parent_default
+              end
+            end
+            # The @parent_ref means we won't run this if we previously set
+            # ParentRef.new(nil). This means auto-lookup only happens during
+            # after_created.
+            if !parent && !parent_ref && parent_auto
               # Automatic sibling lookup for sequential composition.
               # Find the last instance of the parent class as the default parent.
               # This is super flaky and should only be a last resort.
-              parent = Poise::Helpers::Subresources::DefaultContainers.find(parent_type, run_context)
+              parent = Poise::Helpers::Subresources::DefaultContainers.find(parent_type, run_context, self_resource: self)
             end
             # Can't find a valid parent, if it wasn't optional raise an error.
             raise Poise::Error.new("No #{name} found for #{self}") unless parent || parent_optional
@@ -121,6 +146,7 @@ module Poise
           else
             parent = parent_ref.resource
           end
+          raise Poise::Error.new("Cannot set the #{name} of #{self} to itself") if parent.equal?(self)
           # Store the ivar back.
           instance_variable_set(:"@#{name}", parent_ref)
           # Return the actual resource.
@@ -141,7 +167,9 @@ module Poise
               # Setting to true shouldn't actually do anything if a type was already set.
               @parent_type = type unless type == true && !@parent_type.nil?
             end
-            @parent_type || Poise::Utils.ancestor_send(self, :parent_type, default: Chef::Resource)
+            # First ancestor_send looks for a non-true && non-default value,
+            # second one is to check for default vs true if no real value is found.
+            @parent_type || Poise::Utils.ancestor_send(self, :parent_type, ignore: [Chef::Resource, true]) || Poise::Utils.ancestor_send(self, :parent_type, default: Chef::Resource)
           end
 
           # @overload parent_optional()
@@ -180,6 +208,26 @@ module Poise
             end
           end
 
+          # @overload parent_default()
+          #   Get the default value for the default parent link on this resource.
+          #   @since 2.3.0
+          #   @return [Object, Chef::DelayedEvaluator]
+          # @overload parent_default(val)
+          #   Set the default value for the default parent link on this resource.
+          #   @since 2.3.0
+          #   @param val [Object, Chef::DelayedEvaluator] Default value to set.
+          #   @return [Object, Chef::DelayedEvaluator]
+          def parent_default(*args)
+            unless args.empty?
+              @parent_default = args.first
+            end
+            if defined?(@parent_default)
+              @parent_default
+            else
+              Poise::Utils.ancestor_send(self, :parent_default)
+            end
+          end
+
           # Create a new kind of parent link.
           #
           # @since 2.0.0
@@ -189,11 +237,11 @@ module Poise
           # @param optional [Boolean] If the parent is optional.
           # @param auto [Boolean] If the parent is auto-detected.
           # @return [void]
-          def parent_attribute(name, type: Chef::Resource, optional: false, auto: true)
+          def parent_attribute(name, type: Chef::Resource, optional: false, auto: true, default: nil)
             name = :"parent_#{name}"
             (@parent_attributes ||= {})[name] = type
             define_method(name) do |*args|
-              _parent(name, type, optional, auto, *args)
+              _parent(name, type, optional, auto, default, *args)
             end
           end
 
@@ -204,7 +252,7 @@ module Poise
           def parent_attributes
             {}.tap do |attrs|
               # Grab superclass's attributes if possible.
-              attrs.update(superclass.parent_attributes) if superclass.respond_to?(:parent_attributes)
+              attrs.update(Poise::Utils.ancestor_send(self, :parent_attributes, default: {}))
               # Local default parent.
               attrs[:parent] = parent_type
               # Extra locally defined parents.

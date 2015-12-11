@@ -1,4 +1,34 @@
-## v2.0.0 (unreleased)
+## 2.4.4
+  * Use HTTPS prefix URLs for node download #98
+  * Update NPM symlink when installing from source #105
+  * Add support for NPM private modules #107
+
+## v2.4.2
+  * Fix check version
+  * Support iojs package install
+
+## v2.4.0
+  * Move `npm_packages` to his own recipe
+  * Fix different race conditions when using direct recipe call
+  * Fix npm recipe
+
+## v2.3.2
+  * Fix package recipe
+
+## v2.3.0
+  * Support io.js. Use node['nodejs']['engine'].
+  * Add MacOS support via homebrew
+
+## v2.2.0
+  * Add node['nodejs']['keyserver']
+  * Update arm checksum
+  * Fix `npm_packages` JSON
+
+## v2.1.0
+  * Use official nodesource repository
+  * Add node['nodejs']['npm_packages'] to install npm package with `default` recipe
+
+## v2.0.0 
   * Travis integration
   * Gems updated
   * Rewrite cookbook dependencies
@@ -64,3 +94,6 @@
 [@vaskas]: https://github.com/vaskas
 [@robertkowalski]: https://github.com/robertkowalski
 [@wanelo-pair]: https://github.com/wanelo-pair
+[@predominant]: https://github.com/predominant
+[@sjlu]: https://github.com/sjlu
+[@gmccue]: https://github.com/gmccue

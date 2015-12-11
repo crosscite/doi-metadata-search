@@ -7,10 +7,9 @@ end.run_action(:load)
 
 # install and configure dependencies
 include_recipe "apt"
-include_recipe "redisio"
-include_recipe "redisio::enable"
 include_recipe "mongodb::10gen_repo"
 include_recipe "mongodb::default"
+include_recipe "nodejs"
 
 # install nginx and create configuration file and application root
 passenger_nginx node["application"] do
@@ -24,5 +23,5 @@ capistrano node["application"] do
   user            ENV['DEPLOY_USER']
   group           ENV['DEPLOY_GROUP']
   rails_env       ENV['RAILS_ENV']
-  action          [:config, :bundle_install, :consul_install, :remote_syslog_install, :restart]
+  action          [:config, :bundle_install, :npm_install, :consul_install, :precompile_assets, :whenever, :restart]
 end

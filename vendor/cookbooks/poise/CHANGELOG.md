@@ -1,5 +1,38 @@
 # Changelog
 
+## v2.4.0
+
+* Added return value to `Container#register_subresource` to track if the resource
+  was already added.
+* Improve inspect output for subresources and containers.
+* Ensure notifications work with subresources.
+* Inversion providers process name equivalences.
+
+## v2.3.2
+
+* Improve handling of deeply nested subresources.
+
+## v2.3.1
+
+* Ensure a container with a parent link to its own type doesn't use self as the
+  default parent.
+* Improve handling of `load_current_resource` in providers that call it via
+  `super`.
+
+## v2.3.0
+
+* New helper: `ResourceSubclass`, a helper for subclassing a resource while
+  still using the providers as the base class.
+* New feature: Non-default containers. Use `container_default: false` to mark
+  a container class as ineligible for default lookup.
+* New feature: parent attribute defaults. You can set a `parent_default` to
+  provide a default value for the parent of a resource. This supports the
+  `lazy { }` helper as with normal default values.
+* New feature: use `forced_keys: [:name]` on an option collector property to
+  force keys that would otherwise be clobbered by resource methods.
+* Can enable verbose logging mode via a node attribute in addition to an
+  environment variable.
+
 ## v2.2.3
 
 * Add `ancestor_send` utility method for use in other helpers.
