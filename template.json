@@ -24,7 +24,7 @@
     "type": "chef-solo",
     "install_command": "curl -L https://www.chef.io/chef/install.sh | {{if .Sudo}}sudo{{end}} bash -s -- -v {{user `chef_version`}}",
     "cookbook_paths": ["vendor/cookbooks"],
-    "run_list": ["recipe[doi-metadata-search]"],
+    "run_list": ["recipe[doi_metadata_search]"],
     "override": {
       "amazon-ebs": {
         "json": {
