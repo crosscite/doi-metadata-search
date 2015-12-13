@@ -4,7 +4,7 @@ DEPENDENCIES
     revision: 55249e6930f847eaaa88aeed4ef079cc89798faa
   doi_metadata_search
     git: git@github.com:crosscite/doi_metadata_search-cookbook.git
-    revision: 66c5fbc7b849924a01a218d6d85a5f37e9d0c580
+    revision: 1b94b1417e50ddc51ea21617aa51df7a5836ba07
   dotenv
     git: git@github.com:lagotto/dotenv-cookbook.git
     revision: 0343aaa39aaed6a91b05211cd3a2ae9da95e89ba
@@ -46,7 +46,7 @@ GRAPH
     poise (~> 2.2)
     poise-service (~> 1.0)
     selinux (~> 0.9)
-  doi_metadata_search (2.5.0)
+  doi_metadata_search (2.5.1)
     apt (>= 0.0.0)
     capistrano (~> 1.0.0)
     consul (>= 0.0.0)
