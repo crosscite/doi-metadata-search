@@ -62,15 +62,16 @@ end
 configure do
   set :root, File.dirname(__FILE__)
 
-  # Configure logging
-  enable :logging
-  file = File.new("#{settings.root}/log/#{settings.environment}.log", 'a+')
-  file.sync = true
-  use Rack::CommonLogger, file
-
   # Configure sessions and flash
   enable :sessions
   use Rack::Flash
+
+  # Configure logging
+  Dir.mkdir('log') unless File.exists?('log')
+
+  file = File.new("#{settings.root}/log/#{settings.environment}.log", 'a+')
+  file.sync = true
+  use Rack::CommonLogger, file
 
   # Work around rack protection referrer bug
   set :protection, except: :json_csrf
