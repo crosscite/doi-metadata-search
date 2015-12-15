@@ -33,6 +33,9 @@
             "deploy_group": "ubuntu",
             "rails_env": "production"
           },
+          "nginx": {
+            "behind_proxy": true
+          },
           "phantomjs": {
             "version": "1.9.7",
             "base_url": "https://bitbucket.org/ariya/phantomjs/downloads"

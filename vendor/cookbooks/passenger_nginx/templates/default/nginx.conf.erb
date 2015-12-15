@@ -30,9 +30,18 @@ http {
   ##
   # Logging Settings
   ##
-  error_log syslog:server=<%= @rsyslog_server %>;
-  access_log syslog:server=<%= @rsyslog_server %>,severity=info;
+  <% if node['nginx']['behind_proxy'] %>
+  log_format custom_format '$http_x_real_ip - $remote_user [$time_local]'
+                           '"$request" $status $body_bytes_sent '
+                           '"$http_referer" "$http_user_agent"';
 
+  <% else %>
+  log_format custom_format '$remote_addr - $remote_user [$time_local]'
+                           '"$request" $status $body_bytes_sent '
+                           '"$http_referer" "$http_user_agent"';
+  <% end %>
+  error_log syslog:server=<%= @rsyslog_server %>;
+  access_log syslog:server=<%= @rsyslog_server %>,severity=info custom_format;
   ##
   # Gzip Settings
   ##
