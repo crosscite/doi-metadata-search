@@ -1,8 +1,8 @@
 default['nginx']['user'] = 'www-data'
 default['nginx']['dir'] = '/etc/nginx'
 default['nginx']['log_dir'] = '/var/log/nginx'
-default['nginx']['worker_processes'] = 4
-default['nginx']['worker_connections'] = 768
+default['nginx']['worker_processes'] = 1
+default['nginx']['worker_connections'] = 1024
 default['nginx']['default_site_enabled'] = false
 default['nginx']['behind_proxy'] = false
 default['nginx']['rsyslog_server'] = '127.0.0.1'
