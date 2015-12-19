@@ -4,9 +4,6 @@ sudo: false
 rvm:
   - 2.2.0
 
-env:
-  - CODECLIMATE_REPO_TOKEN=477bc3dabff86493ea83d7051e498f64ab924aa2d4697c89249e89be60d1abc1
-
 services:
   - mongodb
   - redis-server
@@ -14,6 +11,15 @@ services:
 before_script:
   - cp .env.travis .env
   - mkdir -p tmp/pids
+  - cd frontend && npm install
+  - cd ../ && npm install -g istanbul codeclimate-test-reporter
 
 script:
-  - bundle exec rake
+  - bundle exec rspec
+
+addons:
+  code_climate:
+    repo_token: 477bc3dabff86493ea83d7051e498f64ab924aa2d4697c89249e89be60d1abc1
+
+notifications:
+  slack: datacite:Wt8En0ALoTA6Kjc5EOKNDWxN
