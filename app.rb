@@ -16,7 +16,7 @@ end
 
 # Check for required ENV variables, can be set in .env file
 # ENV_VARS is hash of required ENV variables
-env_vars = %w(HOSTNAME SERVERS SITENAME SOLR_URL)
+env_vars = %w(HOSTNAME SOLR_URL)
 env_vars.each { |env| fail ArgumentError,  "ENV[#{env}] is not set" unless ENV[env] }
 ENV_VARS = Hash[env_vars.map { |env| [env, ENV[env]] }]
 
