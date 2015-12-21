@@ -1,5 +1,4 @@
 ENV['RACK_ENV'] = 'test'
-ENV['LAGOTTO_URL'] = 'http://cls.labs.datacite.org'
 
 # set up Code Climate
 require 'codeclimate-test-reporter'

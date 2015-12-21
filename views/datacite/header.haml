@@ -21,8 +21,8 @@
                 %span.caret
               %ul.dropdown-menu{role: 'menu'}
                 %li
-                  - if ENV['JWT_URL'].present?
-                    %a{:href => 'https://profiles.labs.datacite.org/users/me'}
+                  - if ENV['JWT_HOST'].present?
+                    %a{:href => "#{ENV['JWT_HOST']}/users/me"}
                       %i.fa.fa-user
                       Settings
                   - else
@@ -41,7 +41,7 @@
                       Sign out
           - else
             %li
-              - if ENV['JWT_URL'].present?
+              - if ENV['JWT_HOST'].present?
                 %a.btn.btn-default{:href => "/auth/jwt", id: 'sign-in'}
                   Sign in
               - else

@@ -9,6 +9,12 @@ production_links:
  - name: Blog
    url: http://blog.datacite.org
    icon: rss
+ - name: Citation Formatter
+   url: http://crosscite.org/citeproc/
+   icon: file-text-o
+ - name: Content Resolver
+   url: http://data.datacite.org
+   icon: repeat
  - name: Homepage
    url: http://www.datacite.org
    icon: globe
@@ -18,6 +24,9 @@ production_links:
  - name: MDS
    url: http://mds.datacite.org
    icon: database
+ - name: OAI-PMH
+   url: http://oai.datacite.org
+   icon: table
  - name: Schema
    url: http://schema.datacite.org
    icon: file-code-o

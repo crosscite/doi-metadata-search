@@ -13,7 +13,7 @@ DEPENDENCIES
     revision: dc5836318a27331f605f264d946931927dd26bb8
   passenger_nginx
     git: git@github.com:lagotto/passenger_nginx-cookbook.git
-    revision: faea6fe7344cd68273e1f5ef1970e68c47f2c965
+    revision: 32f9a2a280cb326539fab0a69a4e2dd4271d7aef
   ruby
     git: git@github.com:lagotto/ruby-cookbook.git
     revision: 3926fd9a0a25f2fbf5e25831a681ffd046f5d1a5
@@ -84,7 +84,7 @@ GRAPH
     build-essential (>= 0.0.0)
     homebrew (>= 0.0.0)
     yum-epel (>= 0.0.0)
-  passenger_nginx (1.0.12)
+  passenger_nginx (1.0.14)
     apt (>= 0.0.0)
     hostnames (>= 0.0.0)
     nodejs (>= 0.0.0)

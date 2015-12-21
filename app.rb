@@ -81,25 +81,19 @@ configure do
 
   # Configure ORCID client, scope and site are different from defaults
   use OmniAuth::Builder do
-    if ENV['JWT_URL'].present?
+    if ENV['JWT_HOST'].present?
       provider :jwt, ENV['JWT_SECRET_KEY'],
-        auth_url: ENV['JWT_URL'],
+        auth_url: "#{ENV['JWT_HOST']}/services/#{ENV['JWT_NAME']}",
         uid_claim: 'uid',
         required_claims: ['uid', 'name'],
         info_map: { "name" => "name",
                     "authentication_token" => "authentication_token",
                     "role" => "role" }
     else
-      provider :orcid, ENV['ORCID_CLIENT_ID'], ENV['ORCID_CLIENT_SECRET'],
-        authorize_params: {
-          scope: '/orcid-profile/read-limited /orcid-works/create'
-        },
-        client_options: {
-          site: ENV['ORCID_API_URL'],
-          authorize_url: "#{ENV['ORCID_URL']}/oauth/authorize",
-          token_url: "#{ENV['ORCID_API_URL']}/oauth/token"
-        },
-        provider_ignores_state: true
+      provider :orcid, ENV['ORCID_CLIENT_ID'],
+                       ENV['ORCID_CLIENT_SECRET'],
+                       member: ENV['ORCID_MEMBER'],
+                       sandbox: ENV['ORCID_SANDBOX']
     end
   end
   # OmniAuth.config.logger = logger
