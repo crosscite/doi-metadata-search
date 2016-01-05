@@ -41,12 +41,8 @@
                       Sign out
           - else
             %li
-              - if ENV['JWT_HOST'].present?
-                %a.btn.btn-default{:href => "/auth/jwt", id: 'sign-in'}
-                  Sign in
-              - else
-                %a.btn.btn-default{:href => "/auth/orcid", id: 'sign-in'}
-                  Sign in
+              %a.btn.btn-default{:href => "/auth", id: 'sign-in'}
+                Sign in
 
         %ul.nav.navbar-nav.navbar-right
           %li.dropdown

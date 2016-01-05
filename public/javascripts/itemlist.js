@@ -32,9 +32,8 @@ $(document).ready(function() {
     var $newPopoverContent = $('<div>').addClass('popover-content').append($content);
 
     $('.popover-content').replaceWith($newPopoverContent);
-
     $('.login-btn').click(function(e) {
-      $.oauthpopup({path: '/auth/orcid',
+      $.oauthpopup({path: '/auth',
                     callback: function() {
                       location.reload();
                     }

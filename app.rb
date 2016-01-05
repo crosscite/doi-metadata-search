@@ -207,6 +207,14 @@ get '/orcid' do
   haml :orcid, locals: { page: { query: '' } }
 end
 
+get '/auth' do
+  if ENV['JWT_HOST'].present?
+    redirect to '/auth/jwt'
+  else
+    redirect to '/auth/orcid'
+  end
+end
+
 get '/auth/orcid/callback' do
   session[:orcid] = request.env["omniauth.auth"]
   UpdateJob.perform_async(session[:orcid])

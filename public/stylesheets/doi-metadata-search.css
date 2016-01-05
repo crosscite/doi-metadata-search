@@ -8,63 +8,63 @@ Error: Undefined variable: "$gray-darker".
 8: }
 9: .facets {
 10:   color: $gray-darker;
-11:   background-color: $gray-light;
-12:   font-size: 1em;
-13:   padding: 0;
-14:   border: 0;
-15:   box-shadow: none;
+11:   font-size: 1em;
+12:   padding: 0;
+13:   border: 0 !important;
+14:   box-shadow: none !important;
+15: 
 
 Backtrace:
 ./public/stylesheets/sass/doi-metadata-search.scss:10
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/script/tree/variable.rb:49:in `_perform'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/script/tree/node.rb:50:in `perform'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:395:in `visit_prop'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/base.rb:36:in `visit'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/stack.rb:79:in `block in with_base'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/stack.rb:115:in `with_frame'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/stack.rb:79:in `with_base'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:158:in `visit'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:431:in `block (2 levels) in visit_rule'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:431:in `map'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:431:in `block in visit_rule'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:429:in `visit_rule'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/base.rb:36:in `visit'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/stack.rb:79:in `block in with_base'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/stack.rb:115:in `with_frame'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/stack.rb:79:in `with_base'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:158:in `visit'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/base.rb:52:in `map'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/base.rb:36:in `visit'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:157:in `visit'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:8:in `visit'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/root_node.rb:36:in `css_tree'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/engine.rb:378:in `_render_with_sourcemap'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/engine.rb:295:in `render_with_sourcemap'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/plugin/compiler.rb:490:in `update_stylesheet'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/plugin/compiler.rb:209:in `each'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/plugin.rb:82:in `update_stylesheets'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/plugin.rb:54:in `check_for_updates'
-/var/www/doi-metadata-search/shared/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/plugin/rack.rb:51:in `call'
-/usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:94:in `process_request'
-/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:151:in `accept_and_process_next_request'
-/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:112:in `main_loop'
-/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:415:in `block (3 levels) in start_threads'
-/usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:112:in `block in create_thread_and_abort_on_exception'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/script/tree/variable.rb:49:in `_perform'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/script/tree/node.rb:50:in `perform'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:395:in `visit_prop'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/stack.rb:79:in `block in with_base'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/stack.rb:115:in `with_frame'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/stack.rb:79:in `with_base'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:431:in `block (2 levels) in visit_rule'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:431:in `map'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:431:in `block in visit_rule'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:429:in `visit_rule'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/stack.rb:79:in `block in with_base'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/stack.rb:115:in `with_frame'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/stack.rb:79:in `with_base'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/base.rb:52:in `map'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:157:in `visit'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/root_node.rb:36:in `css_tree'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/engine.rb:378:in `_render_with_sourcemap'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/engine.rb:295:in `render_with_sourcemap'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/plugin/compiler.rb:490:in `update_stylesheet'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/plugin/compiler.rb:209:in `each'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/plugin.rb:82:in `update_stylesheets'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/plugin.rb:54:in `check_for_updates'
+/var/www/doi-metadata-search/vendor/bundle/ruby/2.2.0/gems/sass-3.4.19/lib/sass/plugin/rack.rb:51:in `call'
+/usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:152:in `accept_and_process_next_request'
+/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+/usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
 */
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$gray-darker\".\A         on line 10 of ./public/stylesheets/sass/doi-metadata-search.scss\A \A 5: }\A 6: .logo-big {\A 7:   margin: 6em 0 2em 0;\A 8: }\A 9: .facets {\A 10:   color: $gray-darker;\A 11:   background-color: $gray-light;\A 12:   font-size: 1em;\A 13:   padding: 0;\A 14:   border: 0;\A 15:   box-shadow: none;"; }
+  content: "Error: Undefined variable: \"$gray-darker\".\A         on line 10 of ./public/stylesheets/sass/doi-metadata-search.scss\A \A 5: }\A 6: .logo-big {\A 7:   margin: 6em 0 2em 0;\A 8: }\A 9: .facets {\A 10:   color: $gray-darker;\A 11:   font-size: 1em;\A 12:   padding: 0;\A 13:   border: 0 !important;\A 14:   box-shadow: none !important;\A 15: "; }

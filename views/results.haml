@@ -17,13 +17,13 @@
 
   - if page[:items].length > 0
     .row
-      .col-md-9
+      .col-md-8
         = haml :item_list, locals: { page: page }
 
         .text-center
           = will_paginate page[:paginate], renderer: BootstrapPagination::Sinatra, :inner_window => 2
 
-      .col-md-3
+      .col-md-3.col-md-offset-1
         = haml :facets, locals: { page: page }
 
 = haml :cite_box, locals: { page: page }
