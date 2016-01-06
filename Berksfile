@@ -12,3 +12,5 @@ cookbook "mongodb",
          :git => "https://github.com/edelight/chef-mongodb.git"
 cookbook "doi_metadata_search",
          :git => "git@github.com:crosscite/doi_metadata_search-cookbook.git"
+cookbook "rsyslog",
+         :git => "git@github.com:datacite/rsyslog.git"
