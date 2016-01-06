@@ -118,7 +118,7 @@
   color: rgb(216, 100, 0);
 }
 .claim-none {
-  color: #999999;
+  color: $peter-river;
 }
 .claim-none {
   margin-left: .2em;
@@ -128,4 +128,7 @@
 }
 .popover-content .btn-toolbar {
   padding-bottom: 10px;
+}
+.alternate {
+  padding: 0 .5em;
 }

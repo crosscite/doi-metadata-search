@@ -2,10 +2,11 @@
   - if item.open_access?
   %a.oa-tooltip{:href => '#'}
     %i.fa.fa-unlock
-  - if item.title
-    = item.title
-  - else
-    [no metadata registered]
+  %a{:href => 'http://doi.org/' + item.doi}
+    - if item.title
+      = item.title
+    - else
+      [no metadata registered]
 
 - unless item.authors.nil?
   = author_format(item.authors)

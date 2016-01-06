@@ -1,8 +1,9 @@
 %h4.work
-  - if item.title.present?
-    = item.title
-  - else
-    No title
+  %a{:href => 'http://doi.org/' + item.doi}
+    - if item.title.present?
+      = item.title
+    - else
+      No title
 
 - if item.authors.present?
   = author_format(item.authors)

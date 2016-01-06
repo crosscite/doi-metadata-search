@@ -3,10 +3,11 @@
     - if item.open_access?
       %a.oa-tooltip{:href => "http://www.doaj.org/doaj?func=findJournals&uiLanguage=en&hybrid=&query=#{item.coins_title}", :target => '_blank'}
         %span.small{:style => 'font-size: 0.8em;'} DOAJ
-    - if item.title
-      = item.title
-    - else
-      [no metadata registered]
+    %a{:href => 'http://doi.org/' + item.doi}
+      - if item.title
+        = item.title
+      - else
+        [no metadata registered]
 
   - unless item.authors.nil?
     %p= author_format(item.authors)
