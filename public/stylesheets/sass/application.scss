@@ -372,7 +372,7 @@ Panels are the primary way in which content is organized in Lagotto.
 ```
 */
 
-$panel-footer-bg:                $gray;
+$panel-footer-bg:                white;
 $panel-inner-border:             $gray;
 
 $panel-default-text:             $brand-primary;
@@ -383,6 +383,7 @@ $panel-warning-text:             $brand-primary;
 $panel-warning-border:           $brand-warning;
 $panel-warning-heading-bg:       $brand-warning;
 
+.panel-default { margin-bottom: .75em !important; }
 .panel-heading { font-weight: bold; line-height: 1.33; }
 .panel-heading small { font-weight: normal; margin-top: 3px; }
 .panel-heading .label-report { border: 1px solid white; font-size: $font-size-base; }
@@ -529,7 +530,7 @@ select.form-control.date { display: inline; }
 .form-group.has-error input, .form-group.has-error span.help-block, .form-group.has-error label, .has-error { color: $brand-danger; }
 .form-group.has-error input, .form-group.has-error textarea, .form-group.has-error select { border: 1px solid $brand-danger; }
 h1 { margin-top: 0; }
-h5, h4.work { margin-bottom: 0; }
+h5, h4.work { margin-top: 0; margin-bottom: 0; }
 .loading {margin: 1em; color: $gray; }
 td h4 { margin-top: 0; }
 div.search { padding-top: 10px; padding-bottom: 10px; width: 400px; margin-left: auto; margin-right: auto; }

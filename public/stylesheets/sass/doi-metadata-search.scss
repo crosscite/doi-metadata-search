@@ -43,17 +43,18 @@
 .description {
   color: $gray-darker;
 }
-.item-links {
+.item-links, .panel-footer {
   margin-top: .25em;
   line-height: 1.4em;
 
   .dropdown .boxed {
     color: black;
+    vertical-align: 2px;
   }
   img {
     margin-top: -0.33em;
   }
-  a {
+  a, span.well-transparent {
     margin-right: 1.5em;
   }
   a:hover {
@@ -131,4 +132,8 @@
 }
 .alternate {
   padding: 0 .5em;
+}
+.dropdown-menu-right {
+  left:-400px !important;
+  right:0;
 }

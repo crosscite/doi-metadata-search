@@ -1,77 +1,41 @@
-= item.coins_span
+%a{:href => 'http://doi.org/' + item.doi}
+  %i.fa.fa-external-link
+  = "http://doi.org/#{item.doi}"
+%a.cite-link.nowrap{:href => "javascript:showCiteBox('#{item.doi}', '#{item.title_escaped}');"}
+  %i.fa.fa-quote-left
+  Cite
 
-- if item.grant_info.present?
-  %p
-    Research funded by
-    = item.grant_info.join('  |  ')
-
-.item-links
-  - if item.citations.present?
-    %a{:href => "javascript:showCitationsBox('#{item.hashed}');"}
-      %i.fa.fa-quote-left
-        = item.citations.count
-        citations from patents
-  %a{:href => 'http://doi.org/' + item.doi}
-    %i.fa.fa-external-link
-    = "http://doi.org/#{item.doi}"
-  %a.cite-link.nowrap{:href => "javascript:showCiteBox('#{item.doi}', '#{item.title_escaped}');"}
-    %i.fa.fa-quote-left
-    Cite
-
-  - if item.alternate.present?
-    %span.dropdown.nowrap
-      %a.dropdown-toggle{:role => 'button', 'data-toggle' => 'dropdown', :href => '#'}
-        %i.fa.fa-info
-        Other Identifiers
-      %ul.dropdown-menu{:role => 'menu'}
-        - item.alternate.each do |alternate|
-          %li.alternate
-            %strong
-              = alternate[:id]
-            = alternate[:text]
-
-  - if signed_in?
-    - if item.in_user_profile?
-      %span.well-transparent.claim-ok{id: item.doi}
-        %img{src: '/images/orcid_16x16.gif'}
-        %span In your record
-    - elsif item.user_claimed?
-      %span.well-transparent.claim-warn{id: item.doi}
-        %img{src: '/images/orcid_16x16.gif'}
-        %span Not visible
-    - else
-      %span.well-transparent.claim-none{id: item.doi}
-        %img{src: '/images/orcid_16x16.gif'}
-        %span Add to ORCID
+- if signed_in?
+  - if item.in_user_profile?
+    %span.well-transparent.claim-ok{id: item.doi}
+      %img{src: '/images/orcid_16x16.gif'}
+      %span In your record
+  - elsif item.user_claimed?
+    %span.well-transparent.claim-warn{id: item.doi}
+      %img{src: '/images/orcid_16x16.gif'}
+      %span Not visible
+  - else
+    %span.well-transparent.claim-none{id: item.doi}
+      %img{src: '/images/orcid_16x16.gif'}
+      %span Add to ORCID
 
 - if item.grouped_related.present?
-  .item-links.related
-    - item.grouped_related.each do |key, array|
-      %span.dropdown.nowrap
-        %a.btn.btn-default.btn-xs.dropdown-toggle.boxed{:role => 'button', 'data-toggle' => 'dropdown', :href => '#'}
-          =uncamelize(key) + " #{array.count}"
-        %ul.dropdown-menu{role: 'menu'}
-          - array.each do |related|
-            %li
-              %a.cite-link{href: related_link(related[:id])}
-                %h5
-                  = related[:title]
-                = author_format(related[:author])
-                %br
-                Published
-                = issued_text(related[:issued]) + container_text(related[:container_title])
-                = "Link via #{related[:source]}"
-                %br
-                %i.fa.fa-external-link
-                = related[:id]
+  - item.grouped_related.each do |key, array|
+    %span.dropdown.nowrap
+      %a.btn.btn-default.btn-xs.dropdown-toggle.boxed{:role => 'button', 'data-toggle' => 'dropdown', :href => '#'}
+        =uncamelize(key) + " #{array.count}"
+      %ul.dropdown-menu.dropdown-menu-right{role: 'menu'}
+        - array.each do |related|
+          %li
+            %a.cite-link{href: related_link(related[:id])}
+              %h5
+                = related[:title]
+              = author_format(related[:author])
+              %br
+              Published
+              = issued_text(related[:issued]) + container_text(related[:container_title])
+              = "Link via #{related[:source]}"
+              %br
+              %i.fa.fa-external-link
+              = related[:id]
 
-- if item.creative_commons.present?
-  .item-links
-    - if item.creative_commons == "zero"
-      %a{:href => "http://creativecommons.org/publicdomain/zero/1.0/"}
-        %img{:src => "https://licensebuttons.net/p/zero/1.0/80x15.png"}
-    - else
-      %a{:href => "http://creativecommons.org/licenses/#{item.creative_commons}/4.0/"}
-        %img{:src => "https://licensebuttons.net/l/#{item.creative_commons}/4.0/80x15.png"}
-
-.item-list
