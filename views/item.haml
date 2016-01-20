@@ -49,7 +49,7 @@
       .description
         = sanitize(item.description)
     - if item.creative_commons.present?
-      .item-links
+      .item-license
         - if item.creative_commons == "zero"
           %a{:href => "http://creativecommons.org/publicdomain/zero/1.0/"}
             %img{:src => "https://licensebuttons.net/p/zero/1.0/80x15.png"}

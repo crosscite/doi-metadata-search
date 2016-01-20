@@ -18,6 +18,9 @@
   - if page[:items].length > 0
     .row
       .col-md-9
+        %h4.results
+          = "#{page[:paginate].total_rows} Results"
+
         = haml :item_list, locals: { page: page }
 
         .text-center

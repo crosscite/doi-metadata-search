@@ -43,7 +43,7 @@
 .description {
   color: $gray-darker;
 }
-.item-links, .panel-footer {
+.panel-footer {
   margin-top: .25em;
   line-height: 1.4em;
 
@@ -136,4 +136,9 @@
 .dropdown-menu-right {
   left:-400px !important;
   right:0;
+}
+h4.results {
+  font-weight: normal;
+  font-size: 1.25em;
+  margin: 0 0 .5em .75em;
 }
