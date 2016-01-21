@@ -135,8 +135,12 @@
   padding: 0 .5em;
 }
 .dropdown-menu-right {
-  left:-400px !important;
-  right:0;
+  max-width: 600px;
+
+  h5 {
+    font-size: 1em;
+    white-space: normal;
+  }
 }
 h4.results {
   font-weight: normal;
