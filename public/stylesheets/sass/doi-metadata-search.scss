@@ -55,6 +55,7 @@
     margin-top: -0.33em;
   }
   a, span.well-transparent {
+    color: $gray-darker;
     margin-right: 1.5em;
   }
   a:hover {
@@ -67,6 +68,33 @@
     font-size: .75em;
     border: 1px solid black;
     background-color: $inverse;
+  }
+  .claim-none, .claim-ok, .claim-warn {
+    cursor: pointer;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+    margin-bottom: 4px;
+  }
+  span.claim-ok {
+    color: rgb(167, 204, 145);
+  }
+  span.claim-ok:hover {
+    color: rgb(137, 194, 115);
+  }
+  span.claim-warn {
+    color: rgb(246, 130, 18);
+  }
+  span.claim-warn:hover {
+    color: rgb(216, 100, 0);
+  }
+  span.claim-none {
+    color: $gray_darker;
+  }
+  span.claim-none {
+    margin-left: .2em;
+  }
+  span.claim-none:hover {
+    color: rgb(167, 204, 145);
   }
 }
 .modal {
@@ -99,33 +127,6 @@
 }
 .cite-link {
   font-size: .85em;
-}
-.claim-none, .claim-ok, .claim-warn {
-  cursor: pointer;
-  font-size: $font-size-base;
-  line-height: $line-height-base;
-  margin-bottom: 4px;
-}
-.claim-ok {
-  color: rgb(167, 204, 145);
-}
-.claim-ok:hover {
-  color: rgb(137, 194, 115);
-}
-.claim-warn {
-  color: rgb(246, 130, 18);
-}
-.claim-warn:hover {
-  color: rgb(216, 100, 0);
-}
-.claim-none {
-  color: $peter-river;
-}
-.claim-none {
-  margin-left: .2em;
-}
-.claim-none:hover {
-  color: rgb(167, 204, 145);
 }
 .popover-content .btn-toolbar {
   padding-bottom: 10px;
