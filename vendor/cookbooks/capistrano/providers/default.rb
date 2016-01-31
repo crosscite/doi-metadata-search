@@ -108,7 +108,7 @@ action :consul_install do
 end
 
 action :rsyslog_config do
-  # configure rsyslog
+  # configure rsyslog, not on development server
   if ENV['RSYSLOG_HOST']
     node.override['rsyslog']['server'] = false
     node.override['rsyslog']['server_ip'] = ENV['RSYSLOG_HOST']
@@ -116,7 +116,7 @@ action :rsyslog_config do
     node.override['rsyslog']['protocol'] = 'udp'
 
     run_context.include_recipe 'rsyslog::client'
-  else
+  elsif new_resource.rails_env != "development"
     node.override['rsyslog']['server'] = true
 
     run_context.include_recipe 'rsyslog::server'
@@ -205,6 +205,31 @@ action :whenever do
       environment 'RAILS_ENV' => new_resource.rails_env
       cwd  dir
       command "bundle exec whenever --update-crontab -i #{new_resource.name}"
+    end
+  end
+end
+
+action :swagger do
+  run_context.include_recipe 'ruby'
+
+  if node['ruby']['enable_capistrano']
+    file = "/var/www/#{new_resource.name}/current/Gemfile"
+  else
+    file = "/var/www/#{new_resource.name}/Gemfile"
+  end
+
+  if ::File.exist?(file)
+    # make sure we can use the bundle command
+    if node['ruby']['enable_capistrano']
+      dir = "/var/www/#{new_resource.name}/current"
+    else
+      dir = "/var/www/#{new_resource.name}"
+    end
+
+    execute "bundle exec rake swagger:docs" do
+      user new_resource.user
+      environment 'RAILS_ENV' => new_resource.rails_env
+      cwd dir
     end
   end
 end

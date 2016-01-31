@@ -1,5 +1,27 @@
 # Changelog
 
+## v2.6.0
+
+* New backwards-compatibility helper: `Poise::Backports::VERIFY_PATH`. Use it
+  like `verify "myapp -t #{Poise::Backports::VERIFY_PATH}" if defined?(verify)`
+  for backwards-compatible usage of file verifications.
+* Fixed Poise's implementation of lazy defaults to more closely match Chef's
+  even when both are used in conjunction. Lazy defaults will no longer be
+  evaluated when setting a value or getting an existing non-default value.
+
+## v2.5.0
+
+* New property for inversion resources: `provider_no_auto`. Set one or more
+  provider names that will be ignored for automatic resolution for that instance.
+* Support `variables` as an alias for `options` in template content properties
+  to match the `template` resource.
+* Template content properties are no longer validated after creation for
+  non-default actions.
+* Formalize the extra-verbose logging mode for Poise and expose it via helpers.
+* Extra-verbose logging mode can now be enabled by creating a `/poise_debug` file.
+* New helper: `poise_shell_out`. Like normal `shell_out` but sets group and
+  environment variables automatically to better defaults.
+
 ## v2.4.0
 
 * Added return value to `Container#register_subresource` to track if the resource

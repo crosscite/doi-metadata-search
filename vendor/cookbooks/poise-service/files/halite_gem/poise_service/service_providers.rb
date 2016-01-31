@@ -1,5 +1,5 @@
 #
-# Copyright 2015, Noah Kantrowitz
+# Copyright 2015-2016, Noah Kantrowitz
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@
 require 'chef/platform/provider_priority_map'
 
 require 'poise_service/service_providers/dummy'
+require 'poise_service/service_providers/inittab'
 require 'poise_service/service_providers/systemd'
 require 'poise_service/service_providers/sysvinit'
 require 'poise_service/service_providers/upstart'
