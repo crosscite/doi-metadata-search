@@ -6,7 +6,6 @@ require 'bundler'
 Bundler.require
 require 'sass/plugin/rack'
 require './app'
-require './heartbeat'
 
 # use scss for stylesheets
 Sass::Plugin.options[:style] = :compressed
@@ -33,6 +32,5 @@ Sidekiq::Web.instance_eval { @middleware.reverse! } # Last added, First Run
 
 run Rack::URLMap.new(
   '/' => Sinatra::Application,
-  '/heartbeat' => Heartbeat,
   '/sidekiq' => Sidekiq::Web
 )

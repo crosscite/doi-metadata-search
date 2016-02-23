@@ -135,7 +135,7 @@ module Sinatra
       found_dois = solr_result.fetch('response', {}).fetch('docs', []).map { |solr_doc| solr_doc['doi'] }
       references = get_references(found_dois)
 
-      if signed_in? && orcid_record = Sinatra::Application.settings.orcids.find_one(orcid: sign_in_id)
+      if signed_in? && orcid_record = Sinatra::Application.settings.orcids.find_one(orcid: current_user.orcid)
         claimed_dois = orcid_record.fetch('dois', nil) + orcid_record.fetch('locked_dois', nil) if orcid_record
         profile_dois = orcid_record.fetch('dois', nil)
       else
@@ -161,6 +161,4 @@ module Sinatra
       query_str.gsub(/NOT/, ' ')
     end
   end
-
-
 end

@@ -12,22 +12,18 @@ require 'rspec'
 require 'rack/test'
 require 'webmock/rspec'
 require 'vcr'
-require 'factory_girl'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
 require 'capybara-screenshot/rspec'
 require 'tilt/haml'
 
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
-require File.join(File.dirname(__FILE__), '..', 'heartbeat.rb')
 
-# require support files, factories and files in lib folder
-Dir[File.join(File.dirname(__FILE__), 'support', '*.rb')].each { |f| require f }
-Dir[File.join(File.dirname(__FILE__), 'factories', '*.rb')].each { |f| require f }
-Dir[File.join(File.dirname(__FILE__), '..', 'lib', '*.rb')].each { |f| require f }
-Dir[File.join(File.dirname(__FILE__), '..', 'lib', ENV['RA'], '*.rb')].each { |f| require f }
+# require support files, and files in lib folder
+Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |f| require f }
+Dir[File.join(File.dirname(__FILE__), '../lib/**/*.rb')].each { |f| require f }
 
-config_file "config/#{ENV['RA']}.yml"
+config_file "config/settings.yml"
 
 # setup test environment
 set :environment, :test
@@ -45,17 +41,18 @@ Capybara.app = app
 
 RSpec.configure do |config|
   config.include Rack::Test::Methods
-  config.include FactoryGirl::Syntax::Methods
   config.order = :random
 
   OmniAuth.config.test_mode = true
   config.before(:each) do
-    OmniAuth.config.mock_auth[:orcid] = OmniAuth::AuthHash.new({
-      provider: 'orcid',
+    OmniAuth.config.mock_auth[:jwt] = OmniAuth::AuthHash.new({
+      provider: 'jwt',
       uid: '0000-0002-1825-0097',
-      info: { 'email' => nil,
+      info: { 'role' => "admin",
               'name' => "Josiah Carberry" },
-      extra: {}
+      extra: {},
+      credentials: { 'expires' => nil,
+                     'expires_at' => Time.now + 1.year }
     })
   end
 end
@@ -80,7 +77,7 @@ Capybara.configure do |config|
 end
 
 WebMock.disable_net_connect!(
-  allow: ['codeclimate.com', ENV['PRIVATE_IP'], ENV['HOSTNAME']],
+  allow: ['codeclimate.com:443', ENV['PRIVATE_IP'], ENV['HOSTNAME']],
   allow_localhost: true
 )
 
@@ -88,8 +85,19 @@ VCR.configure do |c|
   c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
   c.hook_into :webmock
   c.ignore_localhost = true
-  c.ignore_hosts 'codeclimate.com', 'www.google-analytics.com'
+  c.ignore_hosts 'codeclimate.com'
   c.filter_sensitive_data('<API_KEY>') { ENV['API_KEY'] }
-  c.allow_http_connections_when_no_cassette = true
+  c.allow_http_connections_when_no_cassette = false
   c.configure_rspec_metadata!
+end
+
+def capture_stdout(&block)
+  stdout, string = $stdout, StringIO.new
+  $stdout = string
+
+  yield
+
+  string.tap(&:rewind).read
+ensure
+  $stdout = stdout
 end

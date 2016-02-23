@@ -35,16 +35,3 @@
   %body
     .notifications.top-left
     = yield
-    - if expired_session?
-      :javascript
-        $(document).ready(function() {
-          $('.top-left').notify({
-            message: {text: "You have been signed out of ORCID (sign-ins last for 1 hour)."},
-            type: 'warn',
-            fadeOut: {enabled: true, delay: 4000}
-          }).show();
-
-          $.ajax({
-            url: '/auth/signout',
-          });
-        });

@@ -187,39 +187,39 @@ get '/citation' do
   # use doi content negotiation to get formatted citation
   result = Maremma.get "http://doi.org/#{params[:doi]}", content_type: citation_format
 
-  halt result["status"], json(status: 'error', message: response["error"]) if result["error"]
+  halt result.fetch('errors', {}).fetch('status', 400).to_i, json(result) if result["errors"]
 
   settings.ga.event('Citations', '/citation', citation_format, nil, true) if ENV['GABBA_COOKIE'] && ENV['RACK_ENV'] != "test"
 
   content_type citation_format + '; charset=utf-8'
-  result
+  result.fetch("data", nil)
 end
 
 get '/help/examples' do
   haml :examples_help, locals: { page: { query: '' } }
 end
 
-get '/help/stats' do
-  haml :stats_help, locals: { page: { query: '', stats: stats } }
+get '/auth/:service/callback' do
+  @user = User.new(request.env['omniauth.auth'])
+  self.current_user = @user
+  redirect to request.env['omniauth.origin'] || params[:origin] || '/'
 end
 
-get '/orcid' do
-  haml :orcid, locals: { page: { query: '' } }
+get '/auth/signout' do
+  session.clear
+  redirect to('/')
 end
 
-get '/auth' do
-  if ENV['JWT_HOST'].present?
-    redirect to '/auth/jwt'
-  else
-    redirect to '/auth/orcid'
-  end
+get '/auth/failure' do
+  flash[:error] = "Authentication failed with message \"#{params['message']}\"."
+  redirect to('/')
 end
 
-get '/auth/orcid/callback' do
+get '/auth/jwt/callback' do
   session[:orcid] = request.env["omniauth.auth"]
   UpdateJob.perform_async(session[:orcid])
 
-  redirect to request.env['omniauth.origin'] || '/'
+  redirect to request.env['omniauth.origin'] || params[:origin] || '/'
 end
 
 get '/auth/orcid/import' do
@@ -232,29 +232,6 @@ get '/auth/orcid/import' do
   end
 end
 
-get '/auth/jwt/callback' do
-  session[:orcid] = request.env["omniauth.auth"]
-  UpdateJob.perform_async(session[:orcid])
-
-  redirect to request.env['omniauth.origin'] || params[:origin] || '/'
-end
-
-# Used to sign out a user but can also be used to mark that a user has seen the
-# 'You have been signed out' message. Clears the user's session cookie.
-get '/auth/signout' do
-  session.clear
-  redirect to('/')
-end
-
-get '/auth/failure' do
-  flash[:error] = "Authentication failed with message \"#{params['message']}\"."
-  haml :auth_callback
-end
-
-get '/auth/orcid/deauthorized' do
-  haml 'ORCID has deauthorized this app.'
-end
-
 get '/settings' do
   if signed_in?
     haml :settings, locals: { page: { query: '' } }
@@ -264,90 +241,110 @@ get '/settings' do
 end
 
 get '/orcid/claim' do
-  status = 'oauth_timeout'
-  message = nil
+  halt 401, json("errors" => [{ "title" => "Unauthorized.", "status" => 401 }]) unless signed_in?
+  halt 422, json("errors" => [{ "title" => "Unprocessable entity.", "status" => 422 }]) unless params['doi'].present?
 
-  if signed_in? && params['doi']
-    doi = params['doi']
-    plain_doi = to_doi(doi)
-    orcid_record = settings.orcids.find_one({:orcid => sign_in_id})
-    already_added = !orcid_record.nil? && orcid_record['locked_dois'].include?(plain_doi)
+  message = {
+    "contributors" => {
+      "uid" => "http://orcid.org/#{current_user.orcid}",
+               "related_works" => {
+                 "pid" => "http://doi.org/#{params['doi']}",
+                 "source_id" => "orcid_search" }}}
+  deposit = {
+    deposit: {
+      source_token: ENV['ORCID_UPDATE_UUID'],
+      message: message,
+      message_type: "orcid_search" }}
 
-    if already_added
-      status = 'ok'
-    else
-      # TODO escape DOI characters
-      params = {
-        q: "doi:\"#{doi}\"",
-        fl: '*'
-      }
-      result = settings.solr.paginate(0, 1, ENV['SOLR_SELECT'], params: params)
-      doi_record = result['response']['docs'].first
-
-      if !doi_record
-        status = 'no_such_doi'
-      else
-        if ClaimJob.new.perform(session_info, doi_record)
-          if orcid_record
-            orcid_record['updated'] = true
-            orcid_record['locked_dois'] << plain_doi
-            orcid_record['locked_dois'].uniq!
-            settings.orcids.save(orcid_record)
-          else
-            doc = { orcid: sign_in_id, dois: [], locked_dois: [plain_doi] }
-            settings.orcids.insert(doc)
-          end
-
-          # The work could have been added as limited or public. If so we need
-          # to tell the UI.
-          UpdateJob.new.perform(session_info)
-          updated_orcid_record = settings.orcids.find_one({ orcid: sign_in_id })
-
-          if updated_orcid_record['dois'].include?(plain_doi)
-            status = 'ok_visible'
-          else
-            status = 'ok'
-          end
-        else
-          status = 'error'
-          message = "An error ocucc."
-        end
-      end
-    end
-  end
-
-  content_type 'application/json'
-  { status: status, message: message }.to_json
-end
-
-get '/orcid/unclaim' do
-  if signed_in? && params['doi']
-    doi = params['doi']
-
-    logger.info "Initiating unclaim for #{doi}"
-    orcid_record = settings.orcids.find_one(orcid: sign_in_id)
-
-    if orcid_record
-      orcid_record['locked_dois'].delete(doi)
-      settings.orcids.save(orcid_record)
-    end
-  end
+  result = Maremma.post ENV['ORCID_UPDATE_URL'], data: deposit, token: ENV['ORCID_UPDATE_TOKEN']
 
   content_type 'application/json'
   { status: 'ok' }.to_json
 end
 
-get '/orcid/sync' do
-  status = 'oauth_timeout'
+#   status = 'oauth_timeout'
+#   message = nil
 
-  if signed_in?
-    if UpdateJob.perform_async(session_info)
-      status = 'ok'
-    else
-      status = 'oauth_timeout'
-    end
-  end
+#   if signed_in? && params['doi']
+#     doi = params['doi']
+#     plain_doi = to_doi(doi)
+#     orcid_record = settings.orcids.find_one({:orcid => sign_in_id})
+#     already_added = !orcid_record.nil? && orcid_record['locked_dois'].include?(plain_doi)
+
+#     if already_added
+#       status = 'ok'
+#     else
+#       # TODO escape DOI characters
+#       params = {
+#         q: "doi:\"#{doi}\"",
+#         fl: '*'
+#       }
+#       result = settings.solr.paginate(0, 1, ENV['SOLR_SELECT'], params: params)
+#       doi_record = result['response']['docs'].first
+
+#       if !doi_record
+#         status = 'no_such_doi'
+#       else
+#         if ClaimJob.new.perform(session_info, doi_record)
+#           if orcid_record
+#             orcid_record['updated'] = true
+#             orcid_record['locked_dois'] << plain_doi
+#             orcid_record['locked_dois'].uniq!
+#             settings.orcids.save(orcid_record)
+#           else
+#             doc = { orcid: sign_in_id, dois: [], locked_dois: [plain_doi] }
+#             settings.orcids.insert(doc)
+#           end
+
+#           # The work could have been added as limited or public. If so we need
+#           # to tell the UI.
+#           UpdateJob.new.perform(session_info)
+#           updated_orcid_record = settings.orcids.find_one({ orcid: sign_in_id })
+
+#           if updated_orcid_record['dois'].include?(plain_doi)
+#             status = 'ok_visible'
+#           else
+#             status = 'ok'
+#           end
+#         else
+#           status = 'error'
+#           message = "An error ocucc."
+#         end
+#       end
+#     end
+#   end
+
+#   content_type 'application/json'
+#   { status: status, message: message }.to_json
+# end
+
+get '/orcid/unclaim' do
+  halt 401, json("errors" => [{ "title" => "Unauthorized.", "status" => 401 }]) unless signed_in?
+  halt 422, json("errors" => [{ "title" => "Unprocessable entity.", "status" => 422 }]) unless params['doi'].present?
+
+  message = {
+    "contributors" => {
+      "uid" => "http://orcid.org/#{current_user.orcid}",
+               "related_works" => {
+                 "pid" => "http://doi.org/#{params['doi']}",
+                 "source_id" => "orcid_search" }}}
+  deposit = {
+    deposit: {
+      source_token: ENV['ORCID_UPDATE_UUID'],
+      message_action: "delete",
+      message: message,
+      message_type: "orcid_search" }}
+
+  result = Maremma.post ENV['ORCID_UPDATE_URL'], data: deposit, token: ENV['ORCID_UPDATE_TOKEN']
 
   content_type 'application/json'
-  { status: status }.to_json
+  { status: 'ok' }.to_json
+end
+
+get '/heartbeat' do
+  content_type 'text/html'
+
+  halt 503, 'failed' unless services_up?
+
+  'OK'
 end

@@ -17,7 +17,7 @@
           - if signed_in?
             %li.dropdown
               %a.dropdown-toggle{href: '#', id: "account_menu_link", data: { toggle: "dropdown"}, aria: { haspopup: "true", expanded: "false" }}
-                = user_display
+                = current_user.name
                 %span.caret
               %ul.dropdown-menu{role: 'menu'}
                 %li
@@ -31,7 +31,7 @@
                       Settings
                 %li.divider
                 %li
-                  %a{:href => "#{ENV['ORCID_URL']}/#{session[:orcid][:uid]}"}
+                  %a{:href => "#{ENV['ORCID_URL']}/#{current_user.orcid}"}
                     %i.fa.fa-external-link
                     ORCID Record
                 %li.divider
@@ -41,8 +41,12 @@
                       Sign out
           - else
             %li
-              %a.btn.btn-default{:href => "/auth", id: 'sign-in'}
-                Sign in
+              - if ENV['JWT_HOST'].present?
+                %a.btn.btn-default{:href => "/auth/jwt", id: 'sign-in'}
+                  Sign in
+              - else
+                %a.btn.btn-default{:href => "/auth/jwt", id: 'sign-in'}
+                  Sign in
 
         %ul.nav.navbar-nav.navbar-right
           %li.dropdown
