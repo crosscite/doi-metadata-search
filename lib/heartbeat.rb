@@ -1,16 +1,16 @@
 require 'sinatra/base'
 require 'sidekiq'
-require 'mongo'
 
 module Sinatra
   module Heartbeat
     def services_up?
-      [mongo_up?, redis_up?, sidekiq_up?, solr_up?].all?
+      [memcached_up?, redis_up?, sidekiq_up?, solr_up?].all?
     end
 
-    def mongo_up?
-      mongo_client = Mongo::Connection.new(ENV['DB_HOST'])[ENV['DB_NAME']]
-      mongo_client.collections.size > 0
+    def memcached_up?
+      memcached_client = Dalli::Client.new
+      memcached_client.alive!
+      true
     rescue
       false
     end

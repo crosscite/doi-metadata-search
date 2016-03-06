@@ -43,19 +43,12 @@ module Sinatra
     def to_long_doi(s)
       doi = to_doi(s)
       normal_short_doi = doi.sub(/10\//, '').downcase
-      short_doi_doc = Sinatra::Application.settings.shorts.find(short_doi: normal_short_doi)
 
-      if short_doi_doc.has_next?
-        short_doi_doc.next['doi']
-      else
-        result = Maremma.get "http://doi.org/10/#{normal_short_doi}", content_type: JSON_TYPE
+      result = Maremma.get "http://doi.org/10/#{normal_short_doi}", content_type: JSON_TYPE
 
-        if result.is_a?(Hash) && !result["error"]
-          doi = result.fetch('DOI', nil)
-          Sinatra::Application.settings.shorts.insert(short_doi: normal_short_doi, doi: doi)
-          doi
-        end
-      end
+      return nil if result["errors"]
+
+      result.fetch('data', {}).fetch('DOI', nil)
     end
   end
 

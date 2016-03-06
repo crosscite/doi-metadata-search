@@ -1,5 +1,5 @@
 require_relative 'doi'
-require_relative 'session'
+require_relative 'session_helper'
 require_relative "#{ENV['RA']}/stats"
 require_relative 'search'
 require_relative 'paginate'
@@ -7,29 +7,9 @@ require 'sanitize'
 
 helpers do
   include Sinatra::Doi
-  include Sinatra::Session
+  include Sinatra::SessionHelper
   include Sinatra::Stats
   include Sinatra::Search
-
-  def citations(doi)
-    citations = Sinatra::Application.settings.citations.find('to.id' => doi)
-
-    citations.map do |citation|
-      hsh = {
-        id: citation['from']['id'],
-        authority: citation['from']['authority'],
-        type: citation['from']['type']
-      }
-
-      if citation['from']['authority'] == 'cambia'
-        patent = Sinatra::Application.settings.patents.find_one(patent_key: citation['from']['id'])
-        hsh[:url] = "http://lens.org/lens/patent/#{patent['pub_key']}"
-        hsh[:title] = patent['title']
-      end
-
-      hsh
-    end
-  end
 
   def author_format(author)
     authors = Array(author).map do |a|

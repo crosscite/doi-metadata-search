@@ -33,8 +33,9 @@ require 'sinatra'
 require 'sinatra/json'
 require 'sinatra/config_file'
 require 'active_support/all'
+require 'dalli'
+require 'rack/session/dalli'
 require 'rsolr'
-require 'mongo'
 require 'tilt/haml'
 require 'haml'
 require 'will_paginate'
@@ -63,7 +64,7 @@ configure do
   set :root, File.dirname(__FILE__)
 
   # Configure sessions and flash
-  enable :sessions
+  use Rack::Session::Dalli
   use Rack::Flash
 
   # Configure logging
@@ -97,17 +98,6 @@ configure do
     end
   end
   # OmniAuth.config.logger = logger
-
-  # Configure mongo
-  set :mongo, Mongo::Connection.new(ENV['DB_HOST'])
-  set :dois, settings.mongo[ENV['DB_NAME']]['dois']
-  set :shorts, settings.mongo[ENV['DB_NAME']]['shorts']
-  set :issns, settings.mongo[ENV['DB_NAME']]['issns']
-  set :citations, settings.mongo[ENV['DB_NAME']]['citations']
-  set :patents, settings.mongo[ENV['DB_NAME']]['patents']
-  set :claims, settings.mongo[ENV['DB_NAME']]['claims']
-  set :orcids, settings.mongo[ENV['DB_NAME']]['orcids']
-  set :links, settings.mongo[ENV['DB_NAME']]['links']
 
   # Citation format types
   set :citation_formats,
@@ -195,13 +185,8 @@ get '/citation' do
   result.fetch("data", nil)
 end
 
-get '/help/examples' do
-  haml :examples_help, locals: { page: { query: '' } }
-end
-
 get '/auth/:service/callback' do
-  @user = User.new(request.env['omniauth.auth'])
-  self.current_user = @user
+  self.current_user = User.new(request.env['omniauth.auth'])
   redirect to request.env['omniauth.origin'] || params[:origin] || '/'
 end
 
@@ -215,20 +200,11 @@ get '/auth/failure' do
   redirect to('/')
 end
 
-get '/auth/jwt/callback' do
-  session[:orcid] = request.env["omniauth.auth"]
-  UpdateJob.perform_async(session[:orcid])
-
-  redirect to request.env['omniauth.origin'] || params[:origin] || '/'
-end
-
 get '/auth/orcid/import' do
   response = make_and_set_token(params[:code], '/auth/orcid/import')
   if response.is_a?(Hash) && response[:error]
     flash[:error] = "Authentication failed with message \"#{response[:error]}\"."
     haml :auth_callback
-  else
-    UpdateJob.perform_async(session[:orcid])
   end
 end
 
@@ -241,25 +217,22 @@ get '/settings' do
 end
 
 get '/orcid/claim' do
-  halt 401, json("errors" => [{ "title" => "Unauthorized.", "status" => 401 }]) unless signed_in?
-  halt 422, json("errors" => [{ "title" => "Unprocessable entity.", "status" => 422 }]) unless params['doi'].present?
-
-  message = {
-    "contributors" => {
-      "uid" => "http://orcid.org/#{current_user.orcid}",
-               "related_works" => {
-                 "pid" => "http://doi.org/#{params['doi']}",
-                 "source_id" => "orcid_search" }}}
-  deposit = {
-    deposit: {
-      source_token: ENV['ORCID_UPDATE_UUID'],
-      message: message,
-      message_type: "orcid_search" }}
-
-  result = Maremma.post ENV['ORCID_UPDATE_URL'], data: deposit, token: ENV['ORCID_UPDATE_TOKEN']
-
   content_type 'application/json'
-  { status: 'ok' }.to_json
+
+  token = /^Token token=(.+)$/.match(env['HTTP_AUTHORIZATION']).to_a[1]
+
+  halt 401, json("errors" => [{ "title" => "Unauthorized.", "status" => 401 }]) unless token.present?
+  halt 422, json("errors" => [{ "title" => "Unprocessable entity.", "status" => 422 }]) unless params['orcid'].present? && params['doi'].present?
+
+  claim = { "claim" => { "orcid" => "http://orcid.org/#{params['orcid']}",
+                         "doi" =>  "http://doi.org/#{params['doi']}",
+                         "source_id" => "orcid_search" }}
+
+  result = Maremma.post ENV['ORCID_UPDATE_URL'], data: claim, token: token
+
+  halt result.fetch('errors', [{}]).first.fetch('status', 400).to_i, json(result) if result["errors"]
+
+  json(result)
 end
 
 #   status = 'oauth_timeout'
@@ -319,26 +292,23 @@ end
 # end
 
 get '/orcid/unclaim' do
-  halt 401, json("errors" => [{ "title" => "Unauthorized.", "status" => 401 }]) unless signed_in?
-  halt 422, json("errors" => [{ "title" => "Unprocessable entity.", "status" => 422 }]) unless params['doi'].present?
-
-  message = {
-    "contributors" => {
-      "uid" => "http://orcid.org/#{current_user.orcid}",
-               "related_works" => {
-                 "pid" => "http://doi.org/#{params['doi']}",
-                 "source_id" => "orcid_search" }}}
-  deposit = {
-    deposit: {
-      source_token: ENV['ORCID_UPDATE_UUID'],
-      message_action: "delete",
-      message: message,
-      message_type: "orcid_search" }}
-
-  result = Maremma.post ENV['ORCID_UPDATE_URL'], data: deposit, token: ENV['ORCID_UPDATE_TOKEN']
-
   content_type 'application/json'
-  { status: 'ok' }.to_json
+
+  token = /^Token token=(.+)$/.match(env['HTTP_AUTHORIZATION']).to_a[1]
+
+  halt 401, json("errors" => [{ "title" => "Unauthorized.", "status" => 401 }]) unless token.present?
+  halt 422, json("errors" => [{ "title" => "Unprocessable entity.", "status" => 422 }]) unless params['orcid'].present? && params['doi'].present?
+
+  claim = { "claim" => { "orcid" => "http://orcid.org/#{params['orcid']}",
+                         "doi" =>  "http://doi.org/#{params['doi']}",
+                         "source_id" => "orcid_search",
+                         "message_action" => "delete" }}
+
+  result = Maremma.post ENV['ORCID_UPDATE_URL'], data: claim, token: token
+
+  halt result.fetch('errors', [{}]).first.fetch('status', 400).to_i, json(result) if result["errors"]
+
+  json(result)
 end
 
 get '/heartbeat' do

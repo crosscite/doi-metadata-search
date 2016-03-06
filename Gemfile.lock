@@ -97,7 +97,7 @@ GEM
     launchy (2.4.3)
       addressable (~> 2.3)
     log4r (1.1.10)
-    maremma (2.0.1)
+    maremma (2.1.1)
       activesupport (~> 4.2, >= 4.2.5)
       builder (~> 3.2, >= 3.2.2)
       excon (~> 0.45.0)
@@ -112,8 +112,6 @@ GEM
     mime-types-data (3.2016.0221)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
-    mongo (1.12.5)
-      bson (= 1.12.5)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -256,8 +254,7 @@ DEPENDENCIES
   gabba
   haml
   log4r
-  maremma
-  mongo (~> 1.12.3)
+  maremma (~> 2.1)
   multi_json
   namae
   nokogiri
