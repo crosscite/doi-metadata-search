@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - spinone - http://doi-metadata-search.local
+      - Maremma - http://doi-metadata-search.local
       Accept:
       - text/x-bibliography; style=apa
   response:
@@ -23,18 +23,60 @@ http_interactions:
       Location:
       - http://data.datacite.org/10.5281%2FZENODO.21430
       Expires:
-      - Sun, 29 Nov 2015 03:27:13 GMT
+      - Thu, 03 Mar 2016 00:06:59 GMT
       Content-Type:
       - text/html;charset=utf-8
       Content-Length:
       - '179'
       Date:
-      - Sat, 28 Nov 2015 14:50:54 GMT
+      - Wed, 02 Mar 2016 23:36:05 GMT
     body:
       encoding: UTF-8
       string: |-
         <html><head><title>Handle Redirect</title></head>
         <body><a href="http://data.datacite.org/10.5281%2FZENODO.21430">http://data.datacite.org/10.5281%2FZENODO.21430</a></body></html>
     http_version: 
-  recorded_at: Sat, 28 Nov 2015 14:50:33 GMT
+  recorded_at: Wed, 02 Mar 2016 23:34:37 GMT
+- request:
+    method: get
+    uri: http://data.datacite.org/10.5281%2FZENODO.21430
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Maremma - http://doi-metadata-search.local
+      Accept:
+      - text/x-bibliography; style=apa
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.1.19
+      Date:
+      - Wed, 02 Mar 2016 23:35:24 GMT
+      Content-Type:
+      - text/x-bibliography
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-transform, max-age=3600
+      Last-Modified:
+      - Sat, 25 Jul 2015 16:44:23 GMT
+      Vary:
+      - Accept
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
+    body:
+      encoding: UTF-8
+      string: 'Martin Fenner, Karl Jonathan Ward, Gudmundur A. Thorisson, & Robert
+        Peters. (2015). DataCite-ORCID: 1.0. Zenodo. http://doi.org/10.5281/ZENODO.21430
+
+'
+    http_version: 
+  recorded_at: Wed, 02 Mar 2016 23:34:38 GMT
 recorded_with: VCR 2.9.3

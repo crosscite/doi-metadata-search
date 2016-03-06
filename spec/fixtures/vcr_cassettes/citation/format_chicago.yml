@@ -23,20 +23,20 @@ http_interactions:
       Location:
       - http://data.datacite.org/10.5281%2FZENODO.21430
       Expires:
-      - Tue, 22 Dec 2015 03:32:59 GMT
+      - Thu, 03 Mar 2016 00:17:41 GMT
       Content-Type:
       - text/html;charset=utf-8
       Content-Length:
       - '179'
       Date:
-      - Mon, 21 Dec 2015 10:08:26 GMT
+      - Wed, 02 Mar 2016 23:34:39 GMT
     body:
       encoding: UTF-8
       string: |-
         <html><head><title>Handle Redirect</title></head>
         <body><a href="http://data.datacite.org/10.5281%2FZENODO.21430">http://data.datacite.org/10.5281%2FZENODO.21430</a></body></html>
     http_version: 
-  recorded_at: Mon, 21 Dec 2015 10:07:49 GMT
+  recorded_at: Wed, 02 Mar 2016 23:34:40 GMT
 - request:
     method: get
     uri: http://data.datacite.org/10.5281%2FZENODO.21430
@@ -56,7 +56,7 @@ http_interactions:
       Server:
       - nginx/1.1.19
       Date:
-      - Mon, 21 Dec 2015 09:52:46 GMT
+      - Wed, 02 Mar 2016 23:35:29 GMT
       Content-Type:
       - text/x-bibliography
       Connection:
@@ -79,5 +79,5 @@ http_interactions:
         T1JDSUQ6IDEuMC7igJ0gWmVub2RvLCAyMDE1LiBkb2k6MTAuNTI4MS9aRU5P
         RE8uMjE0MzAuCg==
     http_version: 
-  recorded_at: Mon, 21 Dec 2015 10:07:51 GMT
+  recorded_at: Wed, 02 Mar 2016 23:34:43 GMT
 recorded_with: VCR 2.9.3

@@ -1,0 +1,103 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://10.2.2.12/api/users/0000-0002-1825-0097
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Maremma - http://doi-metadata-search.local
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 404
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 404 Not Found
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Accept-Encoding
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 939d049a-de67-4451-964a-b44d61c4465d
+      X-Runtime:
+      - '0.113397'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Sat, 05 Mar 2016 17:00:08 GMT
+      X-Powered-By:
+      - Phusion Passenger 5.0.24
+      Server:
+      - nginx/1.8.1 + Phusion Passenger 5.0.24
+    body:
+      encoding: UTF-8
+      string: '{"errors":[{"status":"404","title":"The page you are looking for doesn''t
+        exist."}]}'
+    http_version: 
+  recorded_at: Sat, 05 Mar 2016 17:00:08 GMT
+- request:
+    method: post
+    uri: http://10.2.2.12/api/claims
+    body:
+      encoding: UTF-8
+      string: '{"claim":{"orcid":"http://orcid.org/0000-0002-1825-0097","doi":"http://doi.org/10.5061/DRYAD.781PV","source_id":"orcid_search"}}'
+    headers:
+      User-Agent:
+      - Maremma - http://doi-metadata-search.local
+      Accept:
+      - application/json
+      Authorization:
+      - Token token=MZEsj3SaSZkfpeKSXmT1
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 401
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 401 Unauthorized
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Accept-Encoding
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 34ca6536-da26-4148-88e6-de9c4b06c2ec
+      X-Runtime:
+      - '0.358210'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Sat, 05 Mar 2016 17:00:08 GMT
+      X-Powered-By:
+      - Phusion Passenger 5.0.24
+      Server:
+      - nginx/1.8.1 + Phusion Passenger 5.0.24
+    body:
+      encoding: UTF-8
+      string: '{"errors":[{"status":"401","title":"You are not authorized to access
+        this page."}]}'
+    http_version: 
+  recorded_at: Sat, 05 Mar 2016 17:00:09 GMT
+recorded_with: VCR 2.9.3

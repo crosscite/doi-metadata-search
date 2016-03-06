@@ -23,7 +23,7 @@ require File.join(File.dirname(__FILE__), '..', 'app.rb')
 Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |f| require f }
 Dir[File.join(File.dirname(__FILE__), '../lib/**/*.rb')].each { |f| require f }
 
-config_file "config/settings.yml"
+config_file "config/#{ENV['RA']}.yml"
 
 # setup test environment
 set :environment, :test
@@ -49,7 +49,8 @@ RSpec.configure do |config|
       provider: 'jwt',
       uid: '0000-0002-1825-0097',
       info: { 'role' => "admin",
-              'name' => "Josiah Carberry" },
+              'name' => "Josiah Carberry",
+              'authentication_token' => "MZEsj3SaSZkfpeKSXmT1" },
       extra: {},
       credentials: { 'expires' => nil,
                      'expires_at' => Time.now + 1.year }

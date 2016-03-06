@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - spinone - http://doi-metadata-search.local
+      - Maremma - http://doi-metadata-search.local
       Accept:
       - application/x-research-info-systems
   response:
@@ -23,20 +23,20 @@ http_interactions:
       Location:
       - http://data.datacite.org/10.5281%2FZENODO.21430
       Expires:
-      - Sun, 29 Nov 2015 03:27:13 GMT
+      - Wed, 02 Mar 2016 23:46:29 GMT
       Content-Type:
       - text/html;charset=utf-8
       Content-Length:
       - '179'
       Date:
-      - Sat, 28 Nov 2015 14:50:51 GMT
+      - Wed, 02 Mar 2016 23:34:38 GMT
     body:
       encoding: UTF-8
       string: |-
         <html><head><title>Handle Redirect</title></head>
         <body><a href="http://data.datacite.org/10.5281%2FZENODO.21430">http://data.datacite.org/10.5281%2FZENODO.21430</a></body></html>
     http_version: 
-  recorded_at: Sat, 28 Nov 2015 14:50:30 GMT
+  recorded_at: Wed, 02 Mar 2016 23:34:38 GMT
 - request:
     method: get
     uri: http://data.datacite.org/10.5281%2FZENODO.21430
@@ -45,7 +45,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - spinone - http://doi-metadata-search.local
+      - Maremma - http://doi-metadata-search.local
       Accept:
       - application/x-research-info-systems
   response:
@@ -56,7 +56,7 @@ http_interactions:
       Server:
       - nginx/1.1.19
       Date:
-      - Sat, 28 Nov 2015 14:36:03 GMT
+      - Wed, 02 Mar 2016 23:35:25 GMT
       Content-Type:
       - application/x-research-info-systems
       Connection:
@@ -77,5 +77,5 @@ http_interactions:
         Ward; Gudmundur A. Thorisson; Robert Peters; \nPY  - 2015\nPB  - Zenodo\nUR
         \ - http://dx.doi.org/10.5281/ZENODO.21430\nER  -"
     http_version: 
-  recorded_at: Sat, 28 Nov 2015 14:50:31 GMT
+  recorded_at: Wed, 02 Mar 2016 23:34:39 GMT
 recorded_with: VCR 2.9.3

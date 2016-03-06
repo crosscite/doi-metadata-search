@@ -1,0 +1,102 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://10.2.2.12/api/users/0000-0002-1825-0097
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Maremma - http://doi-metadata-search.local
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 404
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 404 Not Found
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Accept-Encoding
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - ac3fef3c-2828-4206-8840-85033b1601b1
+      X-Runtime:
+      - '0.073744'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Sat, 05 Mar 2016 17:00:08 GMT
+      X-Powered-By:
+      - Phusion Passenger 5.0.24
+      Server:
+      - nginx/1.8.1 + Phusion Passenger 5.0.24
+    body:
+      encoding: UTF-8
+      string: '{"errors":[{"status":"404","title":"The page you are looking for doesn''t
+        exist."}]}'
+    http_version: 
+  recorded_at: Sat, 05 Mar 2016 17:00:09 GMT
+- request:
+    method: post
+    uri: http://10.2.2.12/api/claims
+    body:
+      encoding: UTF-8
+      string: '{"claim":{"orcid":"http://orcid.org/0000-0002-1825-0097","doi":"http://doi.org/10.5061/DRYAD.781PV","source_id":"orcid_search","message_action":"delete"}}'
+    headers:
+      User-Agent:
+      - Maremma - http://doi-metadata-search.local
+      Accept:
+      - application/json
+      Authorization:
+      - Token token=MZEsj3SaSZkfpeKSXmT1
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 422
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 422 Unprocessable Entity
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Accept-Encoding
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - cb06a7f8-24aa-44ed-b3a1-6b43cd3a059b
+      X-Runtime:
+      - '0.068511'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Sat, 05 Mar 2016 17:00:08 GMT
+      X-Powered-By:
+      - Phusion Passenger 5.0.24
+      Server:
+      - nginx/1.8.1 + Phusion Passenger 5.0.24
+    body:
+      encoding: UTF-8
+      string: '{"errors":[{"status":"422","title":"found unpermitted parameter: message_action"}]}'
+    http_version: 
+  recorded_at: Sat, 05 Mar 2016 17:00:09 GMT
+recorded_with: VCR 2.9.3
