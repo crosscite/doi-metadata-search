@@ -3,12 +3,16 @@ require 'json'
 
 require_relative 'doi'
 require_relative 'lagotto'
+require_relative 'volpino'
+require_relative 'session_helper'
 require_relative "#{ENV['RA']}/search"
 
 module Sinatra
   module Search
     include Sinatra::Doi
     include Sinatra::Lagotto
+    include Sinatra::Volpino
+    include Sinatra::SessionHelper
 
     def select(query_params)
       page = query_page
@@ -79,13 +83,6 @@ module Sinatra
       return {} if solr_result['facet_counts'].nil?
 
       solr_result.fetch('facet_counts', {}).fetch('facet_fields', [])
-      # results.reduce({}) do |sum, facet|
-      #   if facet.last.size > 0
-      #     sum << facet
-      #   else
-      #     sum
-      #   end
-      # end
     end
 
     def facet_link_not(field_name, field_value)
@@ -133,32 +130,22 @@ module Sinatra
 
     def search_results(solr_result, _oauth = nil)
       found_dois = solr_result.fetch('response', {}).fetch('docs', []).map { |solr_doc| solr_doc['doi'] }
-      references = get_references(found_dois)
+      references = get_relations(found_dois)
 
-      if signed_in? && orcid_record = Sinatra::Application.settings.orcids.find_one(orcid: current_user.orcid)
-        claimed_dois = orcid_record.fetch('dois', nil) + orcid_record.fetch('locked_dois', nil) if orcid_record
-        profile_dois = orcid_record.fetch('dois', nil)
-      else
-        claimed_dois = []
-        profile_dois = []
-      end
+      # check whether dois have been claimed by user
+      # handle search without logged in user, and handle errors
+      claims = current_user.present? ? get_claims(current_user, found_dois) : []
 
       solr_result.fetch('response', {}).fetch('docs', []).map do |solr_doc|
         doi = solr_doc['doi']
-        in_profile = profile_dois.include?(doi)
-        claimed = claimed_dois.include?(doi)
-        related_identifiers = references.fetch(doi, [])
-        user_state = { in_profile: in_profile, claimed: claimed }
-        SearchResult.new(solr_doc, solr_result, citations(solr_doc['doi']), user_state, related_identifiers)
-      end
-    end
+        puts claims
+        claim_status = claims.find { |c| c["doi"] == doi } || { "status" => "none" }
+        claim_status = claim_status["status"]
 
-    def scrub_query(query_str, remove_short_operators)
-      query_str = query_str.gsub(/[\"\.\[\]\(\)\-:;\/%]/, ' ')
-      query_str = query_str.gsub(/[\+\!\-]/, ' ') if remove_short_operators
-      query_str = query_str.gsub(/AND/, ' ')
-      query_str = query_str.gsub(/OR/, ' ')
-      query_str.gsub(/NOT/, ' ')
+        related_identifiers = references.fetch(doi, [])
+
+        SearchResult.new(solr_doc, solr_result, claim_status, related_identifiers)
+      end
     end
   end
 end

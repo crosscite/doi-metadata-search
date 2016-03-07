@@ -6,18 +6,18 @@
   Cite
 
 - if signed_in?
-  - if item.in_user_profile?
-    %span.well-transparent.claim-ok{id: item.doi}
+  - if item.claim_status == "none"
+    %span.well-transparent.claim-none{data: { doi: item.doi, orcid: current_user.orcid, "api-key" => current_user.api_key }}
       %img{src: '/images/orcid_16x16.gif'}
-      %span In your record
-  - elsif item.user_claimed?
-    %span.well-transparent.claim-warn{id: item.doi}
+      %span{id: "#{item.doi}"} Add to ORCID
+  - elsif item.claim_status == "waiting"
+    %span.well-transparent.claim-waiting{data: { doi: item.doi }}
       %img{src: '/images/orcid_16x16.gif'}
-      %span Not visible
-  - else
-    %span.well-transparent.claim-none{id: item.doi}
+      %span{id: "#{item.doi}"} Queued for your ORCID record
+  - elsif item.claim_status == "done"
+    %span.well-transparent.claim-ok{data: { doi: item.doi }}
       %img{src: '/images/orcid_16x16.gif'}
-      %span Add to ORCID
+      %span{id: "#{item.doi}"} In your ORCID record
 
 - if item.grouped_related.present?
   - item.grouped_related.each do |key, array|

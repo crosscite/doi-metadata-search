@@ -16,14 +16,14 @@ module Sinatra
       "wikipedia" => "Wikipedia"
     }
 
-    # query DLM server, fetch references, discard information coming from DataCite
-    def get_references(dois)
+    # query Link Store server, fetch references, discard information coming from DataCite
+    def get_relations(dois)
       return {} unless dois.present? && ENV["LAGOTTO_URL"].present?
 
-      response = Maremma.post "#{ENV['LAGOTTO_URL']}/api/references", content_type: "text/html", data: dois_as_string(dois)
-      response = {} unless response.is_a?(Hash)
+      response = Maremma.post "#{ENV['LAGOTTO_URL']}/api/relations", content_type: "text/html", data: work_ids_as_string(dois)
+      response = {} if response["errors"].present?
 
-      response.fetch("references", []).map do |reference|
+      response.fetch("data", {}).fetch("relations", []).map do |reference|
         source = reference.fetch("source_id", nil)
         source = SOURCES.fetch(source, source)
 
@@ -38,8 +38,10 @@ module Sinatra
       end.uniq.select { |item| item[:source] !~ /orcid.*/ }.group_by { |item| item[:doi] }
     end
 
-    def dois_as_string(dois)
+    def work_ids_as_string(dois)
       "work_ids=" + dois.map { |doi| "http://doi.org/#{doi}" }.join(",")
     end
   end
+
+  helpers Lagotto
 end

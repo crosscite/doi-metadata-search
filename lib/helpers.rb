@@ -1,6 +1,5 @@
 require_relative 'doi'
 require_relative 'session_helper'
-require_relative "#{ENV['RA']}/stats"
 require_relative 'search'
 require_relative 'paginate'
 require 'sanitize'
@@ -8,7 +7,6 @@ require 'sanitize'
 helpers do
   include Sinatra::Doi
   include Sinatra::SessionHelper
-  include Sinatra::Stats
   include Sinatra::Search
 
   def author_format(author)
@@ -22,6 +20,19 @@ helpers do
     when 3, 4, 5, 6, 7 then authors[0..-2].join(", ") + " & " + authors.last
     else authors[0..5].join(", ") + " … & " + authors.last
     end
+  end
+
+  def number_with_delimiter(number)
+    begin
+      Float(number)
+    rescue ArgumentError, TypeError
+      return number
+    end
+
+    options = {delimiter: ',', separator: '.'}
+    parts = number.to_s.to_str.split('.')
+    parts[0].gsub!(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1#{options[:delimiter]}")
+    parts.join(options[:separator])
   end
 
   def related_link(id)

@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ls.datacite.org/api/relations
+    body:
+      encoding: UTF-8
+      string: work_ids=http://doi.org/10.1594/PANGAEA.845725,http://doi.org/10.5517/CC1JZZ2K
+    headers:
+      User-Agent:
+      - Maremma - http://doi-metadata-search.local
+      Accept:
+      - text/html
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.9.9
+      Date:
+      - Mon, 07 Mar 2016 16:17:06 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Access-Control-Max-Age:
+      - '1728000'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - d42a33b2-f7a0-44a6-b5ea-f50e02fc9e92
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Etag:
+      - W/"fda954959bec17c0f3fcf416c2250ca8"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.008557'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.0.25
+    body:
+      encoding: UTF-8
+      string: '{"meta":{"status":"ok","message-type":"relation-list","message-version":"6.0.0","total":2,"total_pages":1,"page":1},"relations":[{"id":"http://doi.org/10.1016/j.ica.2016.02.005","work_id":"http://doi.org/10.5517/CC1JZZ2K","source_id":"datacite_related","relation_type_id":"is_supplement_to","author":[],"title":"A
+        dinuclear iron(II) complex bearing multidentate pyridinyl ligand: Synthesis,
+        characterization and its catalysis on the hydroxylation of aromatic compounds","issued":{"date-parts":[[2016,2,14]]},"DOI":"10.1016/j.ica.2016.02.005","events":{},"timestamp":"2016-02-23T12:47:57Z"},{"id":"http://doi.org/10.5194/essd-2015-38","work_id":"http://doi.org/10.1594/PANGAEA.845725","source_id":"datacite_related","relation_type_id":"is_supplement_to","author":[],"title":"Observational
+        gridded runoff estimates for Europe (E-RUN version 1.0)","issued":{"date-parts":[[2016,1,18]]},"DOI":"10.5194/essd-2015-38","events":{},"timestamp":"2016-02-23T12:47:42Z"}]}'
+    http_version: 
+  recorded_at: Mon, 07 Mar 2016 16:15:03 GMT
+recorded_with: VCR 2.9.3

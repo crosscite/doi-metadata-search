@@ -76,12 +76,12 @@ module Sinatra
 
       result = Maremma.get  "http://api.crossref.org/works#{query}"
 
-      if result.empty?
+      if result.fetch('data', {}).empty?
         page[:alt_text] = page[:query_type][:type] == :doi ? 'DOI not found' : '0 results'
       elsif page[:query_type][:type] == :doi
-        page[:alt_text] = result.fetch('message', {}).length > 0 ? 'DOI found' : 'DOI not found'
+        page[:alt_text] = result.fetch('data', {}).fetch('message', {}).length > 0 ? 'DOI found' : 'DOI not found'
       else
-        page[:alt_text] = result.fetch('message', {}).fetch('total-results', 0).to_s + ' results'
+        page[:alt_text] = result.fetch('data', {}).fetch('message', {}).fetch('total-results', 0).to_s + ' results'
       end
 
       page[:alt_text] += " in the CrossRef Metadata Search."

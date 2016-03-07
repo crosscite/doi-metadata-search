@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "version": "0.0.0",
-  "description": "Volpino frontend",
+  "description": "Frontend",
   "private": true,
   "directories": {
     "doc": "doc",
@@ -17,6 +17,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "bower": "1.6.5"
+    "bower": "1.7.1"
   }
 }

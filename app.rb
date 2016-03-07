@@ -1,16 +1,9 @@
 begin
-  # requires dotenv plugin/gem
+  # load ENV variables from .env file, requires dotenv gem
   require 'dotenv'
-
-  # make sure DOTENV is set, defaults to "default"
-  ENV['DOTENV'] ||= 'default'
-
-  # load ENV variables from file specified by DOTENV
-  # use .env with DOTENV=default
-  filename = ENV['DOTENV'] == 'default' ? '.env' : ".env.#{ENV['DOTENV']}"
-  Dotenv.load! File.expand_path("../#{filename}", __FILE__)
+  Dotenv.load! File.expand_path("../.env", __FILE__)
 rescue Errno::ENOENT
-  $stderr.puts "Please create #{filename} file, or use DOTENV=example for example configuration"
+  $stderr.puts "Please create .env file, e.g. from .env.example"
   exit
 end
 
@@ -33,8 +26,6 @@ require 'sinatra'
 require 'sinatra/json'
 require 'sinatra/config_file'
 require 'active_support/all'
-require 'dalli'
-require 'rack/session/dalli'
 require 'rsolr'
 require 'tilt/haml'
 require 'haml'
@@ -44,10 +35,7 @@ require 'cgi'
 require 'maremma'
 require 'gabba'
 require 'rack-flash'
-require 'omniauth-orcid'
 require 'omniauth/jwt'
-require 'sidekiq'
-require 'sidekiq/api'
 require 'open-uri'
 require 'uri'
 
@@ -56,15 +44,11 @@ Dir[File.join(File.dirname(__FILE__), 'lib', ENV['RA'], '*.rb')].each { |f| requ
 
 config_file "config/#{ENV['RA']}.yml"
 
-Sidekiq.configure_server do |config|
-  config.options[:concurrency] = ENV["CONCURRENCY"].to_i
-end
-
 configure do
   set :root, File.dirname(__FILE__)
 
   # Configure sessions and flash
-  use Rack::Session::Dalli
+  enable :sessions
   use Rack::Flash
 
   # Configure logging
@@ -80,22 +64,15 @@ configure do
   # Configure solr
   set :solr, RSolr.connect(url: ENV['SOLR_URL'])
 
-  # Configure ORCID client, scope and site are different from defaults
+  # Configure omniauth client
   use OmniAuth::Builder do
-    if ENV['JWT_HOST'].present?
-      provider :jwt, ENV['JWT_SECRET_KEY'],
-        auth_url: "#{ENV['JWT_HOST']}/services/#{ENV['JWT_NAME']}",
-        uid_claim: 'uid',
-        required_claims: ['uid', 'name'],
-        info_map: { "name" => "name",
-                    "authentication_token" => "authentication_token",
-                    "role" => "role" }
-    else
-      provider :orcid, ENV['ORCID_CLIENT_ID'],
-                       ENV['ORCID_CLIENT_SECRET'],
-                       member: ENV['ORCID_MEMBER'],
-                       sandbox: ENV['ORCID_SANDBOX']
-    end
+    provider :jwt, ENV['JWT_SECRET_KEY'],
+      auth_url: "#{ENV['JWT_HOST']}/services/#{ENV['JWT_NAME']}",
+      uid_claim: 'uid',
+      required_claims: ['uid', 'name'],
+      info_map: { "name" => "name",
+                  "api_key" => "api_key",
+                  "role" => "role" }
   end
   # OmniAuth.config.logger = logger
 
@@ -186,7 +163,7 @@ get '/citation' do
 end
 
 get '/auth/:service/callback' do
-  self.current_user = User.new(request.env['omniauth.auth'])
+  session[:auth] = request.env['omniauth.auth']
   redirect to request.env['omniauth.origin'] || params[:origin] || '/'
 end
 
@@ -200,115 +177,25 @@ get '/auth/failure' do
   redirect to('/')
 end
 
-get '/auth/orcid/import' do
-  response = make_and_set_token(params[:code], '/auth/orcid/import')
-  if response.is_a?(Hash) && response[:error]
-    flash[:error] = "Authentication failed with message \"#{response[:error]}\"."
-    haml :auth_callback
-  end
-end
-
-get '/settings' do
-  if signed_in?
-    haml :settings, locals: { page: { query: '' } }
-  else
-    redirect '/'
-  end
-end
-
 get '/orcid/claim' do
   content_type 'application/json'
 
-  token = /^Token token=(.+)$/.match(env['HTTP_AUTHORIZATION']).to_a[1]
-
-  halt 401, json("errors" => [{ "title" => "Unauthorized.", "status" => 401 }]) unless token.present?
+  halt 401, json("errors" => [{ "title" => "Unauthorized.", "status" => 401 }]) unless params['api_key'].present?
   halt 422, json("errors" => [{ "title" => "Unprocessable entity.", "status" => 422 }]) unless params['orcid'].present? && params['doi'].present?
 
-  claim = { "claim" => { "orcid" => "http://orcid.org/#{params['orcid']}",
-                         "doi" =>  "http://doi.org/#{params['doi']}",
+  claim = { "claim" => { "orcid" => params['orcid'],
+                         "doi" =>  params['doi'],
                          "source_id" => "orcid_search" }}
 
-  result = Maremma.post ENV['ORCID_UPDATE_URL'], data: claim, token: token
+  result = Maremma.post ENV['ORCID_UPDATE_URL'], data: claim, token: params['api_key']
 
-  halt result.fetch('errors', [{}]).first.fetch('status', 400).to_i, json(result) if result["errors"]
+  if result.fetch('errors', []).present?
+    status = "failed"
+  else
+    status = result.fetch('data', {}).fetch('attributes', {}).fetch('state', 'none')
+  end
 
-  json(result)
-end
-
-#   status = 'oauth_timeout'
-#   message = nil
-
-#   if signed_in? && params['doi']
-#     doi = params['doi']
-#     plain_doi = to_doi(doi)
-#     orcid_record = settings.orcids.find_one({:orcid => sign_in_id})
-#     already_added = !orcid_record.nil? && orcid_record['locked_dois'].include?(plain_doi)
-
-#     if already_added
-#       status = 'ok'
-#     else
-#       # TODO escape DOI characters
-#       params = {
-#         q: "doi:\"#{doi}\"",
-#         fl: '*'
-#       }
-#       result = settings.solr.paginate(0, 1, ENV['SOLR_SELECT'], params: params)
-#       doi_record = result['response']['docs'].first
-
-#       if !doi_record
-#         status = 'no_such_doi'
-#       else
-#         if ClaimJob.new.perform(session_info, doi_record)
-#           if orcid_record
-#             orcid_record['updated'] = true
-#             orcid_record['locked_dois'] << plain_doi
-#             orcid_record['locked_dois'].uniq!
-#             settings.orcids.save(orcid_record)
-#           else
-#             doc = { orcid: sign_in_id, dois: [], locked_dois: [plain_doi] }
-#             settings.orcids.insert(doc)
-#           end
-
-#           # The work could have been added as limited or public. If so we need
-#           # to tell the UI.
-#           UpdateJob.new.perform(session_info)
-#           updated_orcid_record = settings.orcids.find_one({ orcid: sign_in_id })
-
-#           if updated_orcid_record['dois'].include?(plain_doi)
-#             status = 'ok_visible'
-#           else
-#             status = 'ok'
-#           end
-#         else
-#           status = 'error'
-#           message = "An error ocucc."
-#         end
-#       end
-#     end
-#   end
-
-#   content_type 'application/json'
-#   { status: status, message: message }.to_json
-# end
-
-get '/orcid/unclaim' do
-  content_type 'application/json'
-
-  token = /^Token token=(.+)$/.match(env['HTTP_AUTHORIZATION']).to_a[1]
-
-  halt 401, json("errors" => [{ "title" => "Unauthorized.", "status" => 401 }]) unless token.present?
-  halt 422, json("errors" => [{ "title" => "Unprocessable entity.", "status" => 422 }]) unless params['orcid'].present? && params['doi'].present?
-
-  claim = { "claim" => { "orcid" => "http://orcid.org/#{params['orcid']}",
-                         "doi" =>  "http://doi.org/#{params['doi']}",
-                         "source_id" => "orcid_search",
-                         "message_action" => "delete" }}
-
-  result = Maremma.post ENV['ORCID_UPDATE_URL'], data: claim, token: token
-
-  halt result.fetch('errors', [{}]).first.fetch('status', 400).to_i, json(result) if result["errors"]
-
-  json(result)
+  json({ 'status' => status })
 end
 
 get '/heartbeat' do

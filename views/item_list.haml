@@ -3,45 +3,25 @@
 - page[:items].each do |item|
   = haml :item, locals: { page: page, item: item }
 
-  - unless item.citations.empty?
-    .modal.hide{:id => "citations-#{item.hashed}"}
-      .modal-header
-        %button.close{'type' => 'button', 'data-dismiss' => 'modal'} &times;
-        %h3
-          Patent citations for
-          = item.doi
-      .modal-body
-        %table.table
-          %tr
-            %th ID
-            %th Type
-            %th Title
-          - item.citations.each do |citation|
-            %tr
-              %td= citation[:id]
-              %td= "#{citation[:type]} (#{citation[:authority]})"
-              %td
-                %a{:href => citation[:url]}= citation[:title]
-
-      - if signed_in? && !item.user_claimed?
-        .modal.hide{:id => "claim-#{item.hashed}"}
-          .doi{:id => "doi-#{item.hashed}", :style => 'display: none;'}= item.doi
-          .modal-header
-            %button.close{'type' => 'button', 'data-dismiss' => 'modal'} &times;
-            %h3
-              Add
-              = item.doi
-              to your ORCID record
-          .modal-body
-            %p
-              You are adding
-              %b= item.coins_atitle
-              to your ORCID record. Double check that you were a
-              contributor to this work.
-            %p Add this work to your ORCID record?
-          .modal-footer
-            %button.btn{'type' => 'button', 'data-dismiss' => 'modal'} No, thanks
-            %button.btn.btn-primary{:id => "claim-button-#{item.hashed}"} Yes, do it
+  / - if signed_in? && !item.claimed?
+  /   .modal.hide{:id => "claim-#{item.hashed}"}
+  /     .doi{:id => "doi-#{item.hashed}", :style => 'display: none;'}= item.doi
+  /     .modal-header
+  /       %button.close{'type' => 'button', 'data-dismiss' => 'modal'} &times;
+  /       %h3
+  /         Add
+  /         = item.doi
+  /         to your ORCID record
+  /     .modal-body
+  /       %p
+  /         You are adding
+  /         %b= item.coins_atitle
+  /         to your ORCID record. Double check that you were a
+  /         contributor to this work.
+  /       %p Add this work to your ORCID record?
+  /     .modal-footer
+  /       %button.btn{'type' => 'button', 'data-dismiss' => 'modal'} No, thanks
+  /       %button.btn.btn-primary{:id => "claim-button-#{item.hashed}"} Yes, do it
 
 - if page[:items].length == -1
   .page-header

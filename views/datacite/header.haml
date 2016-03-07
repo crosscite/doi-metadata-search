@@ -21,14 +21,9 @@
                 %span.caret
               %ul.dropdown-menu{role: 'menu'}
                 %li
-                  - if ENV['JWT_HOST'].present?
-                    %a{:href => "#{ENV['JWT_HOST']}/users/me"}
-                      %i.fa.fa-user
-                      Settings
-                  - else
-                    %a{:href => '/settings'}
-                      %i.fa.fa-user
-                      Settings
+                  %a{:href => "#{ENV['JWT_HOST']}/users/me"}
+                    %i.fa.fa-user
+                    Settings
                 %li.divider
                 %li
                   %a{:href => "#{ENV['ORCID_URL']}/#{current_user.orcid}"}
@@ -41,12 +36,8 @@
                       Sign out
           - else
             %li
-              - if ENV['JWT_HOST'].present?
-                %a.btn.btn-default{:href => "/auth/jwt", id: 'sign-in'}
-                  Sign in
-              - else
-                %a.btn.btn-default{:href => "/auth/jwt", id: 'sign-in'}
-                  Sign in
+              %a.btn.btn-default{:href => "/auth/jwt", id: 'sign-in'}
+                Sign in
 
         %ul.nav.navbar-nav.navbar-right
           %li.dropdown

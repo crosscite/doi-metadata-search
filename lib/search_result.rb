@@ -1,3 +1,4 @@
+require 'sinatra/base'
 require 'cgi'
 require 'nokogiri'
 require 'base64'
@@ -7,29 +8,27 @@ require_relative 'helpers'
 
 class SearchResult
   include Sinatra::Search
-  include Sinatra::Session
+  include Sinatra::SessionHelper
 
   attr_accessor :date, :year, :month, :day,
                 :title, :publication, :authors, :volume, :issue, :first_page, :last_page,
                 :type, :subtype, :doi, :score, :normal_score,
-                :citations, :hashed, :alternate, :version,
+                :hashed, :alternate, :version,
                 :rights_uri, :subject, :description, :creative_commons,
                 :contributor, :contributor_type, :contributors_with_type, :grant_info,
-                :related_identifiers
+                :claim_status, :related_identifiers
   attr_reader :hashed, :doi, :title_escaped, :xml
 
   # Merge a mongo DOI record with solr highlight information.
-  def initialize(solr_doc, solr_result, citations, user_state, related_identifiers)
+  def initialize(solr_doc, solr_result, claim_status, related_identifiers)
     @doi = solr_doc.fetch('doi')
     @type = solr_doc.fetch('resourceTypeGeneral', nil)
     @subtype = solr_doc.fetch('resourceType', nil)
     @doc = solr_doc
     @score = solr_doc.fetch('score', nil).to_i
     @normal_score = (@score / solr_result.fetch('response', {}).fetch('maxScore', 1) * 100).to_i
-    @citations = citations
     @hashed = solr_doc.fetch('mongo_id', nil)
-    @user_claimed = user_state.fetch(:claimed, false)
-    @in_user_profile = user_state.fetch(:in_profile, false)
+    @claim_status = claim_status
     @highlights = solr_result.fetch('highlighting', {})
     @publication = find_value('publisher')
     @title = solr_doc.fetch('title', [""]).first.strip
@@ -54,20 +53,6 @@ class SearchResult
     @xml = Hash.from_xml(xml).fetch("resource", {})
     @authors = @xml.fetch("creators", {}).fetch("creator", [])
     @authors = [@authors] if @authors.is_a?(Hash)
-
-    # Insert/update record in MongoDB
-    # Hack Alert (possibly)
-    MongoData.coll('dois').update({ doi: @doi }, { doi: @doi,
-                                                   title: @title,
-                                                   type: @type,
-                                                   subtype: @subtype,
-                                                   publication: @publication,
-                                                   contributor: @authors,
-                                                   published: {
-                                                     year: @year,
-                                                     month: @month,
-                                                     day: @day } },
-                                  { upsert: true })
   end
 
   def title_escaped
@@ -147,14 +132,6 @@ class SearchResult
     else
       name.reverse.join(' ')
     end
-  end
-
-  def user_claimed?
-    @user_claimed
-  end
-
-  def in_user_profile?
-    @in_user_profile
   end
 
   def coins_atitle

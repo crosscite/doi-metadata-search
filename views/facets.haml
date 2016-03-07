@@ -19,10 +19,10 @@
                   %a{:href => "#{facet_link_not(name, value_name)}"}
                     %i.fa.fa-check-square-o
                   = label_name
-                  %span.number.pull-right= "#{value_count}"
+                  %span.number.pull-right= "#{number_with_delimiter(value_count)}"
               - else
                 %li
                   %a{:href => "#{facet_link(name, value_name)}"}
                     %i.fa.fa-square-o
                   = label_name
-                  %span.number.pull-right= "#{value_count}"
+                  %span.number.pull-right= "#{number_with_delimiter(value_count)}"

@@ -1,25 +1,25 @@
 require 'spec_helper'
 
-describe User, type: :model, vcr: true do
+describe "Lagotto", type: :model, vcr: true do
   let(:fixture_path) { "#{Sinatra::Application.root}/spec/fixtures/" }
   let(:solr_doc) { { "doi" => "10.5061/dryad.f1cb2" } }
   let(:solr_result) { ::ActiveSupport::JSON.decode(File.read(fixture_path + 'solr_response.json')) }
-  let(:user_state) { {} }
+  let(:claimed) { false }
   let(:related_identifiers) { {} }
 
   let(:doi) { "10.5517/CC1JZZ2K" }
   let(:dois) { ["10.1594/PANGAEA.845725","10.5517/CC1JZZ2K"] }
 
-  subject { SearchResult.new(solr_doc, solr_result, user_state, related_identifiers) }
+  subject { SearchResult.new(solr_doc, solr_result, claimed, related_identifiers) }
 
-  context "dois_as_string" do
+  context "work_ids_as_string" do
     it "get single doi" do
-      response = subject.dois_as_string([doi])
+      response = subject.work_ids_as_string([doi])
       expect(response).to eq("work_ids=http://doi.org/10.5517/CC1JZZ2K")
     end
 
     it "get multiple dois" do
-      response = subject.dois_as_string(dois)
+      response = subject.work_ids_as_string(dois)
       expect(response).to eq("work_ids=http://doi.org/10.1594/PANGAEA.845725,http://doi.org/10.5517/CC1JZZ2K")
     end
   end

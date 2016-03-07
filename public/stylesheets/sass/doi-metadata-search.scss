@@ -69,7 +69,7 @@
     border: 1px solid black;
     background-color: $inverse;
   }
-  .claim-none, .claim-ok, .claim-warn {
+  .claim-none, .claim-ok, .claim-waiting {
     cursor: pointer;
     font-size: $font-size-base;
     line-height: $line-height-base;
@@ -81,10 +81,10 @@
   span.claim-ok:hover {
     color: rgb(137, 194, 115);
   }
-  span.claim-warn {
+  span.claim-waiting {
     color: rgb(246, 130, 18);
   }
-  span.claim-warn:hover {
+  span.claim-waiting:hover {
     color: rgb(216, 100, 0);
   }
   span.claim-none {

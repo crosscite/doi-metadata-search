@@ -47,10 +47,10 @@ RSpec.configure do |config|
   config.before(:each) do
     OmniAuth.config.mock_auth[:jwt] = OmniAuth::AuthHash.new({
       provider: 'jwt',
-      uid: '0000-0002-1825-0097',
+      uid: '0000-0003-1419-2405',
       info: { 'role' => "admin",
               'name' => "Josiah Carberry",
-              'authentication_token' => "MZEsj3SaSZkfpeKSXmT1" },
+              'api_key' => "MZEsj3SaSZkfpeKSXmT1" },
       extra: {},
       credentials: { 'expires' => nil,
                      'expires_at' => Time.now + 1.year }

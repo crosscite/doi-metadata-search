@@ -52,5 +52,5 @@ module Sinatra
     end
   end
 
-  register Doi
+  helpers Doi
 end
