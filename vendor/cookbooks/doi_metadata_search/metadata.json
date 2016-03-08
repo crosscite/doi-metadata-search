@@ -11,8 +11,6 @@
   "dependencies": {
     "apt": ">= 0.0.0",
     "consul": ">= 0.0.0",
-    "memcached": ">= 0.0.0",
-    "mongodb": ">= 0.0.0",
     "nodejs": ">= 0.0.0",
     "ruby": "~> 0.7.0",
     "dotenv": "~> 1.0.0",
@@ -35,7 +33,7 @@
   },
   "recipes": {
   },
-  "version": "2.5.3",
+  "version": "3.0.0",
   "source_url": "",
   "issues_url": ""
 }

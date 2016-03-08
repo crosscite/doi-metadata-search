@@ -8,8 +8,6 @@ cookbook "capistrano",
          :git => "git@github.com:lagotto/capistrano-cookbook.git"
 cookbook "dotenv",
          :git => "git@github.com:lagotto/dotenv-cookbook.git"
-cookbook "mongodb",
-         :git => "https://github.com/edelight/chef-mongodb.git"
 cookbook "doi_metadata_search",
          :git => "git@github.com:crosscite/doi_metadata_search-cookbook.git"
 cookbook "rsyslog",
