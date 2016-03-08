@@ -187,7 +187,7 @@ get '/orcid/claim' do
                          "doi" =>  params['doi'],
                          "source_id" => "orcid_search" }}
 
-  result = Maremma.post "#{ENV['JWT_HOST']}/api/claims", data: claim, token: params['api_key']
+  result = Maremma.post "#{ENV['ORCID_UPDATE_URL']}/api/claims", data: claim, token: params['api_key']
 
   if result.fetch('errors', []).present?
     json(result.fetch('errors', []).first)
