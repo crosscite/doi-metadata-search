@@ -2,15 +2,16 @@ MAX_EXPAND_CHARS = 240;
 
 $(document).ready(function() {
   var replacePopoverWithErrorMessage = function($popover, message) {
-    var $p = $('<p>').text('An error has occured: ' + message)
-    var $btnClose = $('<button>').addClass('btn').addClass('btn-info').addClass('close-btn').text('Ok');
-    var $btns = $('<div>').addClass('btn-container').append($btnClose);
-    var $content = $('<div>').append($p).append($btns);
+    var $p = $('<p>').text('Claim failed with message "' + message.title + '".')
+    var $btnClose = $('<button>').addClass('btn').addClass('btn-default').addClass('btn-sm').addClass('claim-close-btn').text('Close');
+    var $btnsClose = $('<div>').addClass('btn-group').addClass('btn-group-sm').append($btnClose);
+    var $btnToolbar = $('<div>').addClass('btn-toolbar').addClass('pull-right').append($btnsClose);
+    var $content = $('<div>').append($p).append($btnToolbar);
     var $newPopoverContent = $('<div>').addClass('popover-content').append($content);
 
     $('.popover-content').replaceWith($newPopoverContent);
 
-    $('.close-btn').click(function(e) {
+    $('.claim-close-btn').click(function(e) {
       $popover.popover('destroy');
       e.preventDefault();
       return false;
@@ -63,8 +64,7 @@ $(document).ready(function() {
             $popover.removeClass('claim-none');
             $popover.addClass('claim-waiting');
             $popover.find('span').text('Work is queued for your ORCID record');
-            // $("#" + $popover.attr('data-doi')).html('Share');
-          } else if (data.status === 'failed') {
+          } else if (typeof data.title !== "undefined") {
             replacePopoverWithErrorMessage($popover, data);
           }
         },

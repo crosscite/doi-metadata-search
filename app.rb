@@ -48,7 +48,7 @@ configure do
   set :root, File.dirname(__FILE__)
 
   # Configure sessions and flash
-  enable :sessions
+  set :sessions, key: ENV['SESSION_KEY']
   use Rack::Flash
 
   # Configure logging
@@ -187,15 +187,14 @@ get '/orcid/claim' do
                          "doi" =>  params['doi'],
                          "source_id" => "orcid_search" }}
 
-  result = Maremma.post ENV['ORCID_UPDATE_URL'], data: claim, token: params['api_key']
+  result = Maremma.post "#{ENV['JWT_HOST']}/api/claims", data: claim, token: params['api_key']
 
   if result.fetch('errors', []).present?
-    status = "failed"
+    json(result.fetch('errors', []).first)
   else
     status = result.fetch('data', {}).fetch('attributes', {}).fetch('state', 'none')
+    json({ 'status' => status })
   end
-
-  json({ 'status' => status })
 end
 
 get '/heartbeat' do

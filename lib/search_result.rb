@@ -8,6 +8,8 @@ require_relative 'helpers'
 
 class SearchResult
   include Sinatra::Search
+  include Sinatra::Lagotto
+  include Sinatra::Volpino
   include Sinatra::SessionHelper
 
   attr_accessor :date, :year, :month, :day,

@@ -4,7 +4,7 @@
   = haml :search, locals: { page: page }
 
   - unless flash[:error].nil?
-    %div.alert.alert-error
+    %div.alert.alert-warning
       = flash[:error]
   - unless page[:page].nil? || page[:paginate].nil? || params['q'] == ""
     = haml :search_box, locals: { page: page }
