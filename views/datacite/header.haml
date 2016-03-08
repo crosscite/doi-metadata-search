@@ -24,6 +24,10 @@
                   %a{:href => "#{ENV['JWT_HOST']}/users/me"}
                     %i.fa.fa-user
                     Settings
+                %li
+                  %a{:href => "#{ENV['JWT_HOST']}/claims"}
+                    %i.fa.fa-files-o
+                    Claims
                 %li.divider
                 %li
                   %a{:href => "#{ENV['ORCID_URL']}/#{current_user.orcid}"}
