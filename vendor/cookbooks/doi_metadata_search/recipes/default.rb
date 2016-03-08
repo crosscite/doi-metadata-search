@@ -7,6 +7,7 @@ end.run_action(:load)
 
 # install and configure dependencies
 include_recipe "apt"
+include_recipe "memcached"
 include_recipe "mongodb::10gen_repo"
 include_recipe "mongodb::default"
 include_recipe "nodejs"
