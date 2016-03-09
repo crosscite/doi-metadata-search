@@ -10,6 +10,10 @@
     %span.well-transparent.claim-none{id: item.doi, data: { doi: item.doi, orcid: current_user.orcid, "api-key" => current_user.api_key }}
       %img{src: '/images/orcid_16x16.gif'}
       %span Add to ORCID
+  - if item.claim_status == "ignored"
+    %span.well-transparent.claim-none{id: item.doi, data: { doi: item.doi, orcid: current_user.orcid, "api-key" => current_user.api_key }}
+      %img{src: '/images/orcid_16x16.gif'}
+      %span Contains your ORCID ID, add to ORCID
   - elsif item.claim_status == "waiting"
     %span.well-transparent.claim-waiting{id: item.doi, data: { doi: item.doi }}
       %img{src: '/images/orcid_16x16.gif'}
