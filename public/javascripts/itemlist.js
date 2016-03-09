@@ -21,6 +21,7 @@ $(document).ready(function() {
   var claimOkClickFn = function(e) {
     $('.claim-none').popover('destroy');
     $('.claim-waiting').popover('destroy');
+    $('.claim-warn').popover('destroy');
     $('.claim-ok').popover('destroy');
 
     var $p = $('<p>').text('Last time we checked, this work was in your ORCID record.');
@@ -34,6 +35,41 @@ $(document).ready(function() {
       placement: 'bottom',
       html: true,
       title: 'Work is in your ORCID record',
+      content: $('<div>').append($content).html(),
+      trigger: 'manual'
+    });
+
+    $(this).popover('show');
+
+    $('.claim-close-btn').click(function(e) {
+      if (!$(this).hasClass('disabled')) {
+        $popover.popover('destroy');
+      }
+      e.preventDefault();
+      return false;
+    });
+
+    e.preventDefault();
+    return false;
+  };
+
+  var claimWarnClickFn = function(e) {
+    $('.claim-none').popover('destroy');
+    $('.claim-waiting').popover('destroy');
+    $('.claim-warn').popover('destroy');
+    $('.claim-ok').popover('destroy');
+
+    var $p = $('<p>').html('Please check <strong>DataCite Profiles</strong> for more information.');
+    var $btnClose = $('<button>').addClass('btn').addClass('btn-default').addClass('btn-sm').addClass('claim-close-btn').text('Close');
+    var $btnsClose = $('<div>').addClass('btn-group').addClass('btn-group-sm').append($btnClose);
+    var $btnToolbar = $('<div>').addClass('btn-toolbar').addClass('pull-right').append($btnsClose);
+    var $content = $('<div>').append($p).append($btnToolbar);
+    var $popover = $(this);
+
+    $(this).popover({
+      placement: 'bottom',
+      html: true,
+      title: 'An error occured while adding to ORCID record',
       content: $('<div>').append($content).html(),
       trigger: 'manual'
     });
@@ -77,6 +113,7 @@ $(document).ready(function() {
   var claimNoneClickFn = function(e) {
     $('.claim-none').popover('destroy');
     $('.claim-waiting').popover('destroy');
+    $('.claim-warn').popover('destroy');
     $('.claim-ok').popover('destroy');
 
     var $p = $('<p>').text('Are you sure you want to add this work to your ORCID record?');
@@ -128,6 +165,7 @@ $(document).ready(function() {
   var claimWaitingClickFn = function(e) {
     $('.claim-none').popover('destroy');
     $('.claim-waiting').popover('destroy');
+    $('.claim-warn').popover('destroy');
     $('.claim-ok').popover('destroy');
 
     var $text = $('<div>').html('<span>Work has been queued to be added to your ORCID record. Please check back later.');
@@ -191,4 +229,5 @@ $(document).ready(function() {
   $('.claim-ok').click(claimOkClickFn);
   $('.claim-waiting').click(claimWaitingClickFn);
   $('.claim-none').click(claimNoneClickFn);
+  $('.claim-warn').click(claimWarnClickFn);
 });
