@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://10.2.2.6/api/works?ids=10.17600/14000300&type=doi
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Maremma - http://doi-metadata-search.local
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - no-store, must-revalidate, private, max-age=0
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      X-Miniprofiler-Ids:
+      - '["aj400zcfzdj1wdp7fc2","t23saihhjlh9q7nq5ug9","uh3rbm15jzxpw6re6iyi","40hlpxpw6or0xn96sgbx","dpqp6iwjkk8v2ji93tit","dyhv6bjhm2kv6xs95883","vwmobwg93q6n7nz2wahr","vxtn1p7t5w2ty6rhh8cd","7k0fiuhio8q3qjv2d7wy"]'
+      Access-Control-Max-Age:
+      - '1728000'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 8210804e-57eb-44f3-999e-d1005a501b14
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Etag:
+      - W/"79a73c7e21640de16677185ab0ef5492"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '1.130297'
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Wed, 06 Apr 2016 14:25:49 GMT
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/, __profilin=p%3Dt; path=/, __profilin=p%3Dt; path=/
+      X-Powered-By:
+      - Phusion Passenger 5.0.26
+      Server:
+      - nginx/1.8.1 + Phusion Passenger 5.0.26
+    body:
+      encoding: UTF-8
+      string: '{"meta":{"status":"ok","message-type":"work-list","message-version":"v7","total":1,"total_pages":1,"page":1},"works":[{"id":"http://doi.org/10.17600/14000300","author":[],"title":"MOMARSAT2014
+        cruise,Pourquoi pas ? R/V","issued":"2014","updated":"2016-04-06T14:19:42Z","DOI":"10.17600/14000300","events":{"datacite_related":1}}]}'
+    http_version: 
+  recorded_at: Wed, 06 Apr 2016 14:25:49 GMT
+recorded_with: VCR 2.9.3

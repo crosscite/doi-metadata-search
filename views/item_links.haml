@@ -26,24 +26,3 @@
     %span.well-transparent.claim-ok{id: item.doi, data: { doi: item.doi }}
       %img{src: '/images/orcid_16x16.gif'}
       %span In your ORCID record
-
-- if item.grouped_related.present?
-  - item.grouped_related.each do |key, array|
-    %span.dropdown.nowrap
-      %a.btn.btn-default.btn-xs.dropdown-toggle.boxed{:role => 'button', 'data-toggle' => 'dropdown', :href => '#'}
-        =uncamelize(key) + " #{array.count}"
-      %ul.dropdown-menu.dropdown-menu-right{role: 'menu'}
-        - array.each do |related|
-          %li
-            %a.cite-link{href: related_link(related[:id])}
-              %h5
-                = related[:title]
-              = author_format(related[:author])
-              %br
-              Published
-              = issued_text(related[:issued]) + container_text(related[:container_title])
-              = "Link via #{related[:source]}"
-              %br
-              %i.fa.fa-external-link
-              = related[:id]
-

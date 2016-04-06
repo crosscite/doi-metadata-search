@@ -691,3 +691,77 @@ html {
 .navbar-static-top {
   border-bottom: 1px solid $gray;
 }
+.col-md-9#content {
+  padding-bottom: .75em;
+}
+.panel-footer {
+  margin-top: 0;
+  line-height: 1.4em;
+  color: $gray-darker;
+
+  i {
+    padding-right: .2em;
+    font-size: .85em;
+  }
+
+  img {
+    margin-top: -0.33em;
+  }
+  a {
+    color: $gray-darker;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  span a {
+    margin-right: .2em;
+  }
+  .btn-xs {
+    font-size: .75em;
+    border: 1px solid black;
+    background-color: $inverse;
+  }
+}
+.facets {
+  color: $gray-darker;
+  font-size: 1em;
+  padding: 0;
+  margin: 0;
+  border: 0 !important;
+  box-shadow: none !important;
+
+  .panel-body {
+    background-color: $gray-light;
+  }
+
+  ul {
+    list-style: none;
+    list-style-position: outside;
+    padding-left: 0;
+  }
+  h4 {
+    font-weight: normal;
+    font-size: 1.25em;
+    border-bottom: 1px solid $gray-darker;
+    padding-bottom: .15em;
+    margin: 0 0 .5em 0;
+  }
+  .link {
+    border-bottom: 0;
+
+    a {
+      color: $brand-primary;
+    }
+  }
+  div {
+    border: 0;
+  }
+  li a, li.active a, li a:hover, li.active a:hover {
+    font-size: 1em;
+    display: inline;
+    color: $gray-darker;
+    background-color: $gray-light;
+    padding: 0 .5em 0 0;
+    margin-left: 0;
+  }
+}

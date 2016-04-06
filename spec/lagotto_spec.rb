@@ -24,27 +24,27 @@ describe "Lagotto", type: :model, vcr: true do
     end
   end
 
-  context "get_relations" do
+  context "get_events" do
     it "get single doi" do
-      response = subject.get_relations([doi])
+      response = subject.get_events([doi])
       relations = response.fetch(doi.upcase, [])
       expect(relations.length).to eq(1)
-      expect(relations.first).to eq(:doi=>"10.17600/14000300", :signposts=>[{"title"=>"DataCite (RelatedIdentifier)",
-                                                                            "count"=>1,
-                                                                            "name"=>"datacite_related"}])
+      expect(relations.first).to eq(:doi=>"10.17600/14000300", :signposts=>[{title: "DataCite (RelatedIdentifier)",
+                                                                             total: 1,
+                                                                             name: "datacite_related"}])
     end
 
     it "get multiple dois" do
-      response = subject.get_relations(dois)
+      response = subject.get_events(dois)
       expect(response.keys).to eq(["10.15468/DIPJCR", "10.17600/14000300"])
       relations = response.fetch(dois.first.upcase, [])
-      expect(relations.first).to eq(:doi=>"10.15468/DIPJCR", :signposts=>[{"title"=>"DataCite (RelatedIdentifier)",
-                                                                           "count"=>1002,
-                                                                           "name"=>"datacite_related"}])
+      expect(relations.first).to eq(:doi=>"10.15468/DIPJCR", :signposts=>[{title: "DataCite (RelatedIdentifier)",
+                                                                           total: 1002,
+                                                                           name: "datacite_related"}])
     end
 
     it "get no doi" do
-      response = subject.get_relations([])
+      response = subject.get_events([])
       expect(response).to be_empty
     end
   end

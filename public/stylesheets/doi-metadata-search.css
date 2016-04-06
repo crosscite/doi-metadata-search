@@ -6,12 +6,12 @@ Error: Undefined variable: "$gray-darker".
 6: .logo-big {
 7:   margin: 6em 0 2em 0;
 8: }
-9: .facets {
+9: .description {
 10:   color: $gray-darker;
-11:   font-size: 1em;
-12:   padding: 0;
-13:   border: 0 !important;
-14:   box-shadow: none !important;
+11: }
+12: .item-links {
+13:   margin-top: .25em;
+14:   line-height: 1.4em;
 15: 
 
 Backtrace:
@@ -67,4 +67,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$gray-darker\".\A         on line 10 of ./public/stylesheets/sass/doi-metadata-search.scss\A \A 5: }\A 6: .logo-big {\A 7:   margin: 6em 0 2em 0;\A 8: }\A 9: .facets {\A 10:   color: $gray-darker;\A 11:   font-size: 1em;\A 12:   padding: 0;\A 13:   border: 0 !important;\A 14:   box-shadow: none !important;\A 15: "; }
+  content: "Error: Undefined variable: \"$gray-darker\".\A         on line 10 of ./public/stylesheets/sass/doi-metadata-search.scss\A \A 5: }\A 6: .logo-big {\A 7:   margin: 6em 0 2em 0;\A 8: }\A 9: .description {\A 10:   color: $gray-darker;\A 11: }\A 12: .item-links {\A 13:   margin-top: .25em;\A 14:   line-height: 1.4em;\A 15: "; }

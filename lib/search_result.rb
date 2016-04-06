@@ -18,11 +18,11 @@ class SearchResult
                 :hashed, :alternate, :version,
                 :rights_uri, :subject, :description, :creative_commons,
                 :contributor, :contributor_type, :contributors_with_type, :grant_info,
-                :claim_status, :related_identifiers
+                :claim_status, :signposts
   attr_reader :hashed, :doi, :title_escaped, :xml
 
   # Merge a mongo DOI record with solr highlight information.
-  def initialize(solr_doc, solr_result, claim_status, related_identifiers)
+  def initialize(solr_doc, solr_result, claim_status, signposts)
     @doi = solr_doc.fetch('doi')
     @type = solr_doc.fetch('resourceTypeGeneral', nil)
     @subtype = solr_doc.fetch('resourceType', nil)
@@ -46,7 +46,7 @@ class SearchResult
     # @first_page = find_value('hl_first_page')
     # @last_page = find_value('hl_last_page')
     @rights_uri = Array(solr_doc.fetch('rightsURI', nil))
-    @related_identifiers = related_identifiers
+    @signposts = signposts
     @alternate = solr_doc.fetch('alternateIdentifier', nil)
     @version = solr_doc.fetch('version', nil)
     @contributor = Array(solr_doc.fetch('contributor', []))
@@ -95,10 +95,6 @@ class SearchResult
 
   def grant_info
     contributors_by_type("Funder").map { |c| c["Funder"] }.compact.uniq
-  end
-
-  def grouped_related
-    related_identifiers.group_by { |item| item[:relation] }
   end
 
   def alternate

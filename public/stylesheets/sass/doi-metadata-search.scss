@@ -6,44 +6,10 @@
 .logo-big {
   margin: 6em 0 2em 0;
 }
-.facets {
-  color: $gray-darker;
-  font-size: 1em;
-  padding: 0;
-  border: 0 !important;
-  box-shadow: none !important;
-
-  .panel-body {
-    background-color: $gray-light;
-  }
-
-  ul {
-    list-style: none;
-    list-style-position: outside;
-    padding-left: 0;
-  }
-  h4 {
-    font-weight: normal;
-    font-size: 1.25em;
-    border-bottom: 1px solid $gray-darker;
-    padding-bottom: .15em;
-    margin: 0 0 .5em 0;
-  }
-  div {
-    border: 0;
-  }
-  li a, li.active a, li a:hover, li.active a:hover {
-    display: inline;
-    color: $gray-darker;
-    background-color: $gray-light;
-    padding: 0 .5em 0 0;
-    margin-left: 0;
-  }
-}
 .description {
   color: $gray-darker;
 }
-.panel-footer {
+.item-links {
   margin-top: .25em;
   line-height: 1.4em;
 

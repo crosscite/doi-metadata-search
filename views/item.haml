@@ -64,5 +64,8 @@
         Research funded by
         = item.grant_info.join('  |  ')
 
-  .panel-footer
+  - if item.signposts.present?
+    = haml :item_events, locals: { item: item }
+
+  .panel-footer.item-links
     = haml :item_links, locals: { item: item }

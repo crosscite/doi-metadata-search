@@ -130,7 +130,7 @@ module Sinatra
 
     def search_results(solr_result, _oauth = nil)
       found_dois = solr_result.fetch('response', {}).fetch('docs', []).map { |solr_doc| solr_doc['doi'] }
-      references = get_relations(found_dois)
+      events = get_events(found_dois)
 
       # check whether dois have been claimed by user
       # handle search without logged in user, and handle errors
@@ -142,9 +142,9 @@ module Sinatra
         claim_status = claims.find { |c| c["doi"] == doi } || { "status" => "none" }
         claim_status = claim_status["status"]
 
-        related_identifiers = references.fetch(doi, [])
+        signposts = events.fetch(doi, [{}]).first.fetch(:signposts, {})
 
-        SearchResult.new(solr_doc, solr_result, claim_status, related_identifiers)
+        SearchResult.new(solr_doc, solr_result, claim_status, signposts)
       end
     end
   end

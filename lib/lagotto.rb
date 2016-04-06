@@ -17,7 +17,7 @@ module Sinatra
     }
 
     # query Event Data server, fetch relations
-    def get_relations(dois)
+    def get_events(dois)
       return {} unless dois.present? && ENV["LAGOTTO_URL"].present?
 
       response = Maremma.get "#{ENV['LAGOTTO_URL']}/api/works?#{ids_as_string(dois)}&type=doi"
@@ -25,9 +25,9 @@ module Sinatra
 
       response.fetch("data", {}).fetch("works", []).map do |reference|
         signposts = reference.fetch("events", {}).map do |k, v|
-          { "title" => SOURCES.fetch(k, k),
-            "count" => v,
-            "name" => k }
+          { title: SOURCES.fetch(k, k),
+            total: v,
+            name: k }
         end
 
         { doi: reference.fetch("DOI", nil),
