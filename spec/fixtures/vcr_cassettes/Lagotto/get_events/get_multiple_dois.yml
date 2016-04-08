@@ -29,25 +29,25 @@ http_interactions:
       Vary:
       - Accept-Encoding
       X-Miniprofiler-Ids:
-      - '["3axr863zau2ne53eduly","t23saihhjlh9q7nq5ug9","uh3rbm15jzxpw6re6iyi","40hlpxpw6or0xn96sgbx","dpqp6iwjkk8v2ji93tit","dyhv6bjhm2kv6xs95883","vwmobwg93q6n7nz2wahr","vxtn1p7t5w2ty6rhh8cd","7k0fiuhio8q3qjv2d7wy","aj400zcfzdj1wdp7fc2"]'
+      - '["5y01nc8bmuiltkz6bf3n","n0ys9xp61k520oovtst6","ialyokk14ffmzrzo84lp","5yxg8ncsgt0988kc844j","ls3y4pywbmq5p67mi963","y5x4pflv5hn7thoudnh5"]'
       Access-Control-Max-Age:
       - '1728000'
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 9c4b3548-a614-444f-b2f8-088cf88d6fc2
+      - 8878bba6-a35f-41cf-a87b-a00ad542374b
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
-      - W/"58042122610ed0b3d65ce2fdfef0376e"
+      - W/"29963a5b9fd1d72cef3f8cf4869738a4"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '3.263184'
+      - '0.641204'
       X-Content-Type-Options:
       - nosniff
       Date:
-      - Wed, 06 Apr 2016 14:25:53 GMT
+      - Fri, 08 Apr 2016 06:19:52 GMT
       Set-Cookie:
       - __profilin=p%3Dt; path=/, __profilin=p%3Dt; path=/, __profilin=p%3Dt; path=/
       X-Powered-By:
@@ -57,8 +57,8 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"meta":{"status":"ok","message-type":"work-list","message-version":"v7","total":2,"total_pages":1,"page":1},"works":[{"id":"http://doi.org/10.15468/DIPJCR","author":[],"title":"NMNH
-        occurrence DwC-A","issued":"2016","updated":"2016-04-06T14:24:57Z","DOI":"10.15468/DIPJCR","work_type_id":"dataset","events":{"datacite_related":1002}},{"id":"http://doi.org/10.17600/14000300","author":[],"title":"MOMARSAT2014
-        cruise,Pourquoi pas ? R/V","issued":"2014","updated":"2016-04-06T14:19:42Z","DOI":"10.17600/14000300","events":{"datacite_related":1}}]}'
+        occurrence DwC-A","issued":"2016","updated":"2016-04-08T06:19:48Z","DOI":"10.15468/DIPJCR","work_type_id":"dataset","results":{"datacite_related":1233}},{"id":"http://doi.org/10.17600/14000300","author":[],"title":"MOMARSAT2014
+        cruise,Pourquoi pas ? R/V","issued":"2014","updated":"2016-04-07T21:44:22Z","DOI":"10.17600/14000300","results":{"datacite_related":1}}]}'
     http_version: 
-  recorded_at: Wed, 06 Apr 2016 14:25:53 GMT
+  recorded_at: Fri, 08 Apr 2016 06:19:52 GMT
 recorded_with: VCR 2.9.3

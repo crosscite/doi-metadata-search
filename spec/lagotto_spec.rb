@@ -39,7 +39,7 @@ describe "Lagotto", type: :model, vcr: true do
       expect(response.keys).to eq(["10.15468/DIPJCR", "10.17600/14000300"])
       relations = response.fetch(dois.first.upcase, [])
       expect(relations.first).to eq(:doi=>"10.15468/DIPJCR", :signposts=>[{title: "DataCite (RelatedIdentifier)",
-                                                                           total: 1002,
+                                                                           total: 1233,
                                                                            name: "datacite_related"}])
     end
 

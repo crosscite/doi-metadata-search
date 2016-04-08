@@ -5,12 +5,14 @@ require 'maremma'
 module Sinatra
   module Lagotto
     SOURCES = {
-      "bmc_fulltext" => "BioMed Central",
+      "bmc_fulltext" => "BioMed Central (Fulltext)",
       "citeulike" => "CiteULike",
+      "mendeley" => "Mendeley",
       "datacite_related" => "DataCite (RelatedIdentifier)",
       "datacite_github" => "DataCite (Github)",
       "europe_pmc_fulltext" => "Europe PMC (Fulltext)",
       "orcid" => "ORCID",
+      "github" => "Github",
       "nature_opensearch" => "Nature (OpenSearch)",
       "plos_fulltext" => "PLOS (Fulltext)",
       "wikipedia" => "Wikipedia"
@@ -24,7 +26,7 @@ module Sinatra
       response = {} if response["errors"].present?
 
       response.fetch("data", {}).fetch("works", []).map do |reference|
-        signposts = reference.fetch("events", {}).map do |k, v|
+        signposts = reference.fetch("results", {}).map do |k, v|
           { title: SOURCES.fetch(k, k),
             total: v,
             name: k }
