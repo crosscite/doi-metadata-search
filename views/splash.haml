@@ -1,7 +1,7 @@
 = haml :"#{ENV['RA']}/header", locals: { page: page.merge({:mini_header => true}) }
 
 .centered
-  %img{class: 'logo-big', src: "/images/#{ENV['RA']}/logo-big.png"}
+  %img{class: 'logo-big', src: "//#{ENV['CDN_HOST']}/assets/logo-big.png"}
 
   .search
     %form.inline{:method => 'GET', :action => '/'}
