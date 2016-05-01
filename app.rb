@@ -169,7 +169,7 @@ end
 
 get '/auth/signout' do
   session.clear
-  redirect to('/')
+  redirect to("#{ENV['JWT_HOST']}/sign_out?id=#{ENV['JWT_NAME']}")
 end
 
 get '/auth/failure' do
