@@ -8,6 +8,8 @@ module Sinatra
       params = { offset: params.fetch(:offset, 0),
                  rows: 25,
                  q: params.fetch(:q, nil),
+                 'resource-type-id' => params.fetch('resource-type-id', nil),
+                 year: params.fetch('year', nil),
                  'publisher-id' => params.fetch('publisher-id', nil) }.compact
       url = "#{ENV['API_URL']}/works?" + URI.encode_www_form(params)
 

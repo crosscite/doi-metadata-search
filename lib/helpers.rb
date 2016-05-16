@@ -30,9 +30,17 @@ helpers do
     end
   end
 
+  def resource_type_title(resource_types, id)
+    resource_type = resource_types.find { |p| p["id"] == id }
+    return "" unless resource_type.present?
+
+    resource_type.fetch("attributes", {}).fetch("title", "")
+  end
+
   def publisher_title(publishers, id)
     publisher = publishers.find { |p| p["id"] == id }
     return "" unless publisher.present?
+
     publisher.fetch("attributes", {}).fetch("title", "")
   end
 

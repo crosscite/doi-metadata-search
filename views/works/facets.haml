@@ -5,7 +5,7 @@
         Resource Types
       %ul
         - @meta["resource-types"].each do |f|
-          - if @params['resourceType_facet'] == f.first
+          - if @params['resource-type-id'] == f.first
             %li.active
               %a{:href => works_query(params.except('resource-type-id'))}
                 %i.fa.fa-check-square-o
@@ -13,9 +13,9 @@
               %span.number.pull-right= "#{number_with_delimiter(f.last)}"
           - else
             %li
-              %a{:href => "#"}
+              %a{:href => works_query(params.merge('resource-type-id' => f.first))}
                 %i.fa.fa-square-o
-              = key
+              = resource_type_title(@resource_types, f.first)
               %span.number.pull-right= "#{number_with_delimiter(f.last)}"
 
   - if @meta["publishers"].present?

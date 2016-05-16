@@ -129,7 +129,7 @@ get '/works' do
   page = params.fetch('page', 1).to_i
   offset = DEFAULT_ROWS * (page - 1)
 
-  result = get_works(q: params[:q], offset: offset, 'publisher-id' => params['publisher-id'])
+  result = get_works(q: params[:q], offset: offset, 'publisher-id' => params['publisher-id'], 'resource-type-id' => params['resource-type-id'])
   works = result[:data].select {|item| item["type"] == "works" }
   @meta = result[:meta]
 
@@ -140,6 +140,7 @@ get '/works' do
     pager.replace works
   end
 
+  @resource_types = result[:data].select {|item| item["type"] == "resource-types" }
   @publishers = result[:data].select {|item| item["type"] == "publishers" }
 
   haml :'works/index'
