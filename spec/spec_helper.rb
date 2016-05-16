@@ -50,7 +50,7 @@ RSpec.configure do |config|
       uid: '0000-0003-1419-2405',
       info: { 'role' => "admin",
               'name' => "Josiah Carberry",
-              'api_key' => "MZEsj3SaSZkfpeKSXmT1" },
+              'api_key' => ENV['VOLPINO_API_KEY'] },
       extra: {},
       credentials: { 'expires' => nil,
                      'expires_at' => Time.now + 1.year }
@@ -88,6 +88,7 @@ VCR.configure do |c|
   c.ignore_localhost = true
   c.ignore_hosts 'codeclimate.com'
   c.filter_sensitive_data('<API_KEY>') { ENV['API_KEY'] }
+  c.filter_sensitive_data('<VOLPINO_API_KEY>') { ENV['VOLPINO_API_KEY'] }
   c.allow_http_connections_when_no_cassette = false
   c.configure_rspec_metadata!
 end

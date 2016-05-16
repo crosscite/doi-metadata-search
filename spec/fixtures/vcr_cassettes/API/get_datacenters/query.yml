@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://10.2.2.14/publishers?q=zeno&registration_agency_id=datacite&rows=25
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Maremma - http://doi-metadata-search.local
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Access-Control-Max-Age:
+      - '1728000'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - bd07e840-05d3-46df-a6a5-98ed9062fb00
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Etag:
+      - W/"df14285c24eaedd16139a6d2ad793f1c"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '1.512799'
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Wed, 11 May 2016 18:05:49 GMT
+      X-Powered-By:
+      - Phusion Passenger 5.0.23
+      Server:
+      - nginx/1.8.0 + Phusion Passenger 5.0.23
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"CERN.ZENODO","type":"publishers","attributes":{"title":"ZENODO
+        - Research. Shared.","other-names":[],"prefixes":[],"member-id":"CERN","registration-agency-id":"datacite","updated-at":"2016-05-11T17:10:46Z"}}],"meta":{"total":1,"total-pages":1,"page":1,"registration-agencies":{"datacite":1}}}'
+    http_version: 
+  recorded_at: Wed, 11 May 2016 18:05:49 GMT
+recorded_with: VCR 2.9.3

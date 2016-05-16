@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://10.2.2.12/api/users/0000-0003-1419-2405/claims?dois=10.6084/M9.FIGSHARE.681735
+    uri: http://10.2.2.14/contributors?q=mabbett&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -11,8 +11,6 @@ http_interactions:
       - Maremma - http://doi-metadata-search.local
       Accept:
       - application/json
-      Authorization:
-      - Token token=MZEsj3SaSZkfpeKSXmT1
   response:
     status:
       code: 200
@@ -35,26 +33,26 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 02f97158-f7d1-422b-8bc0-b57b7b25a46d
+      - 1e207f8b-5bf9-44b2-bb25-48ea28f3d502
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
-      - W/"52eb123ecb64ea26e1742fc4113b9b4f"
+      - W/"3e15a5865005c4765e8df411adcf0a92"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.079796'
+      - '0.252759'
       X-Content-Type-Options:
       - nosniff
       Date:
-      - Mon, 07 Mar 2016 13:51:40 GMT
+      - Wed, 11 May 2016 17:09:05 GMT
       X-Powered-By:
-      - Phusion Passenger 5.0.24
+      - Phusion Passenger 5.0.23
       Server:
-      - nginx/1.8.1 + Phusion Passenger 5.0.24
+      - nginx/1.8.0 + Phusion Passenger 5.0.23
     body:
       encoding: UTF-8
-      string: '{"data":[{"id":"f992cb83-ddb5-42a4-afb0-2128b915f70b","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.6084/M9.FIGSHARE.681735","source_id":"orcid_search","state":"done","claimed_at":"2015-11-06T12:08:29Z"}}],"links":{},"meta":{"total":1,"total-pages":1,"page":1}}'
+      string: '{"data":[{"id":"http://orcid.org/0000-0001-5882-6823","type":"contributors","attributes":{"given":"Andy","family":"Mabbett","updated-at":"1970-01-01T00:00:00Z"}}],"meta":{"total":1}}'
     http_version: 
-  recorded_at: Mon, 07 Mar 2016 13:51:40 GMT
+  recorded_at: Wed, 11 May 2016 17:09:05 GMT
 recorded_with: VCR 2.9.3

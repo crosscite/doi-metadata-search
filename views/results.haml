@@ -1,34 +1,33 @@
 = haml :"#{ENV['RA']}/header", locals: { page: page }
 
 .container-fluid
-  = haml :search, locals: { page: page }
+  - if page[:items].length > 1
+    %h4.results
+      = "#{number_with_delimiter(page[:paginate].total_rows)} Works"
 
-  - unless flash[:error].nil?
-    %div.alert.alert-warning
-      = flash[:error]
-  - unless page[:page].nil? || page[:paginate].nil? || params['q'] == ""
-    = haml :search_box, locals: { page: page }
+  .row
+    .col-md-9
+      = haml :search, locals: { page: page }
 
-  - unless page[:items].length > 0
-    %div.alert.alert-info
-      Nothing found.
-      %b
-        %a{ href: page[:alt_url] } #{page[:alt_text]}
+      - unless flash[:error].nil?
+        %div.alert.alert-warning
+          = flash[:error]
+      - unless page[:page].nil? || page[:paginate].nil? || params['q'] == ""
+        = haml :search_box, locals: { page: page }
 
-  - if page[:items].length > 0
-    .row
-      .col-md-9
-        - if page[:items].length > 1
-          %h4.results
-            = "#{number_with_delimiter(page[:paginate].total_rows)} Results"
+      - unless page[:items].length > 0
+        %div.alert.alert-info
+          Nothing found.
+          %b
+            %a{ href: page[:alt_url] } #{page[:alt_text]}
 
-        = haml :item_list, locals: { page: page }
+      = haml :item_list, locals: { page: page }
 
-        .text-center
-          = will_paginate page[:paginate], renderer: BootstrapPagination::Sinatra, :inner_window => 2
+      .text-center
+        = will_paginate page[:paginate], renderer: BootstrapPagination::Sinatra, :inner_window => 2
 
-      .col-md-3
-        = haml :facets, locals: { page: page }
+    .col-md-3
+      = haml :facets, locals: { page: page }
 
 = haml :cite_box, locals: { page: page }
 

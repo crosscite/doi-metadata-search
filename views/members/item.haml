@@ -1,0 +1,12 @@
+.panel.panel-default
+  .panel-body
+    %h4.work
+      %a{:href => '/members/' + item["id"]}
+        = item.fetch("attributes", {}).fetch("title", nil)
+
+  .panel-footer
+    %i.fa.fa-info-circle
+    = item["id"]
+    %span.pull-right
+      = item.fetch("attributes", {}).fetch("member-type", nil) + " member"
+

@@ -7,13 +7,46 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-      - unless page[:mini_header]
+      - unless @meta[:page] == "splash"
         %a.navbar-brand{:href => "/"}
           %img.logo{src: "//#{ENV['CDN_HOST']}/assets/datacite.png" }
           %span.logo> Data
           %span Cite Search
       .navbar-collapse.collapse
         %ul.nav.navbar-nav.navbar-right
+          / %li
+          /   %a{:href => "/works"}
+          /     Works
+          / %li
+          /   %a{:href => "/relations"}
+          /     Relations
+          / %li
+          /   %a{:href => "/contributors"}
+          /     Contributors
+          / %li
+          /   %a{:href => "/datacenters"}
+          /     Data Centers
+          / %li
+          /   %a{:href => "/members"}
+          /     Members
+          %li.dropdown
+            %a.dropdown-toggle{href: '#', data: { toggle: "dropdown"}, aria: { haspopup: "true", expanded: "false" }}
+              %i.fa.fa-th
+              %span.caret
+            %ul.dropdown-menu{role: 'menu'}
+              %li.dropdown-header DataCite Labs
+              - settings.labs_links.each do |item|
+                %li
+                  %a{:href => item['url']}
+                    %i.fa{class: "fa-#{item['icon']}"}
+                    = item['name']
+              %li.divider
+              %li.dropdown-header DataCite
+              - settings.production_links.each do |item|
+                %li
+                  %a{:href => item['url']}
+                    %i.fa.fa-fw{class: "fa-#{item['icon']}"}
+                    = item['name']
           - if signed_in?
             %li.dropdown
               %a.dropdown-toggle{href: '#', id: "account_menu_link", data: { toggle: "dropdown"}, aria: { haspopup: "true", expanded: "false" }}
@@ -42,23 +75,3 @@
             %li
               %a.btn.btn-default{:href => "/auth/jwt", id: 'sign-in'}
                 Sign in
-
-        %ul.nav.navbar-nav.navbar-right
-          %li.dropdown
-            %a.dropdown-toggle{href: '#', data: { toggle: "dropdown"}, aria: { haspopup: "true", expanded: "false" }}
-              %i.fa.fa-th
-              %span.caret
-            %ul.dropdown-menu{role: 'menu'}
-              %li.dropdown-header DataCite Labs
-              - settings.labs_links.each do |item|
-                %li
-                  %a{:href => item['url']}
-                    %i.fa{class: "fa-#{item['icon']}"}
-                    = item['name']
-              %li.divider
-              %li.dropdown-header DataCite
-              - settings.production_links.each do |item|
-                %li
-                  %a{:href => item['url']}
-                    %i.fa.fa-fw{class: "fa-#{item['icon']}"}
-                    = item['name']

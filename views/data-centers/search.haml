@@ -1,0 +1,9 @@
+.search-wide
+  %form.form-horizontal{:method => 'GET', :action => '/data-centers'}
+    .input-group
+      - if @params['registration-agency-id'].present?
+        %input{type: "hidden", name: "registration_agency_id", value: @params['registration-agency-id']}
+      %input.form-control{type: "text", name: 'q', id: 'search-input', value: @params[:q], placeholder: "Search for data center"}
+      .input-group-btn
+        %button.btn.btn-primary{type: "submit"}
+          Search

@@ -1,0 +1,42 @@
+- attributes = item.fetch("attributes", {})
+.panel.panel-default
+  .panel-body
+    %h4.work
+      %a{:href => item["id"]}
+        = attributes["title"]
+    - if attributes["author"].present?
+      = author_format(attributes["author"])
+    .metadata
+      = metadata_format(attributes)
+    - if attributes["description"].present?
+      .description
+        = description_format(attributes["description"])
+  .panel-footer.item-links
+    %a{:href => item["id"]}
+      %i.fa.fa-external-link
+      = item["id"]
+    %a.cite-link.nowrap{:href => "javascript:showCiteBox('#{attributes["doi"]}', '#{attributes["title"]}');"}
+      %i.fa.fa-quote-left
+      Cite
+
+    - if signed_in?
+      - if attributes["claim-status"] == "none"
+        %span.well-transparent.claim-none{id: attributes["doi"], data: { doi: attributes["doi"], orcid: current_user.orcid, "api-key" => current_user.api_key }}
+          %img{src: "//#{ENV['CDN_HOST']}/assets/orcid_16x16.gif" }
+          %span Add to ORCID record
+      - elsif attributes["claim-status"] == "ignored"
+        %span.well-transparent.claim-none{id: attributes["doi"], data: { doi: attributes["doi"], orcid: current_user.orcid, "api-key" => current_user.api_key }}
+          %img{src: "//#{ENV['CDN_HOST']}/assets/orcid_16x16.gif" }
+          %span Contains your ORCID ID, add to ORCID record
+      - elsif attributes["claim-status"] == "failed"
+        %span.well-transparent.claim-warn{id: attributes["doi"], data: { doi: attributes["doi"], orcid: current_user.orcid, "api-key" => current_user.api_key }}
+          %img{src: "//#{ENV['CDN_HOST']}/assets/orcid_16x16.gif" }
+          %span An error occured while adding to ORCID record
+      - elsif attributes["claim-status"] == "waiting"
+        %span.well-transparent.claim-waiting{id: attributes["doi"], data: { doi: attributes["doi"] }}
+          %img{src: "//#{ENV['CDN_HOST']}/assets/orcid_16x16.gif" }
+          %span Queued for your ORCID record
+      - elsif attributes["claim-status"] == "done"
+        %span.well-transparent.claim-ok{id: attributes["doi"], data: { doi: attributes["doi"] }}
+          %img{src: "//#{ENV['CDN_HOST']}/assets/orcid_16x16.gif" }
+          %span In your ORCID record

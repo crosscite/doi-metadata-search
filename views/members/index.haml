@@ -1,0 +1,29 @@
+= haml :"#{ENV['RA']}/header", locals: { page: {} }
+
+.container-fluid
+  .row
+    .col-md-9
+      = haml :'members/search'
+
+  .row
+    .col-md-9#content
+      - if flash[:error].present?
+        %div.alert.alert-warning
+          = flash[:error]
+
+      - if @members.length > 0
+        - if @members.length > 1
+          %h4.results
+            = "#{number_with_delimiter(@meta["total"])} Members"
+
+        - @members.each do |item|
+          = haml :'members/item', locals: { item: item }
+
+      - else
+        %div.alert.alert-info
+          Nothing found.
+
+    .col-md-3
+      = haml :'members/facets'
+
+= haml :"#{ENV['RA']}/footer"

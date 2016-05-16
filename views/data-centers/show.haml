@@ -1,0 +1,8 @@
+= haml :"#{ENV['RA']}/header", locals: { page: {} }
+
+.container-fluid
+  .row
+    .col-md-9
+      = haml :'data-centers/item', locals: { item: @datacenter }
+
+= haml :"#{ENV['RA']}/footer"

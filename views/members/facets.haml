@@ -1,0 +1,53 @@
+- if @meta["member-types"].present?
+  .panel.facets
+    .panel-body
+      %h4
+        Member Types
+      %ul
+        - @meta["member-types"].each do |mt|
+          %li
+            - if @params[:member_type].present?
+              %a{:href => "/members?q=#{params[:q]}"}
+                %i.fa.fa-check-square-o
+            - else
+              %a{:href => "/members?member_type=#{mt.first}&q=#{params[:q]}"}
+                %i.fa.fa-square-o
+            = mt.first
+            %span.number.pull-right
+              = number_with_delimiter(mt.last)
+
+- if @meta["regions"].present?
+  .panel.facets
+    .panel-body
+      %h4
+        Regions
+      %ul
+        - @meta["regions"].each do |r|
+          %li
+            - if params[:region].present?
+              %a{:href => "/members?q=#{params[:q]}"}
+                %i.fa.fa-check-square-o
+            - else
+              %a{:href => "/members?region=#{r.first}&q=#{params[:q]}"}
+                %i.fa.fa-square-o
+            = region_format("region" => r.first)
+            %span.number.pull-right
+              = number_with_delimiter(r.last)
+
+- if @meta["years"].present?
+  .panel.facets
+    .panel-body
+      %h4
+        Year joined
+      %ul
+        - @meta["years"].each do |y|
+          %li
+            - if params[:year].present?
+              %a{:href => "/members?q=#{params[:q]}"}
+                %i.fa.fa-check-square-o
+            - else
+              %a{:href => "/members?year=#{y.first}&q=#{params[:q]}"}
+                %i.fa.fa-square-o
+            = y.first
+            %span.number.pull-right
+              = number_with_delimiter(y.last)

@@ -1,7 +1,6 @@
 require_relative 'doi'
 require_relative 'session_helper'
 require_relative 'search'
-require_relative 'paginate'
 require 'sanitize'
 
 helpers do
@@ -12,7 +11,7 @@ helpers do
   def author_format(author)
     authors = Array(author).map do |a|
       name = a.fetch("given", nil).to_s + " " + a.fetch("family", nil).to_s
-      a["id"].present? ? "<a href=\"/?q=#{a["id"]}\">#{name}</a>" : name
+      a["orcid"].present? ? "<a href=\"/works?q=#{orcid_from_url(a["orcid"])}\">#{name}</a>" : name
     end
 
     case authors.length
@@ -20,6 +19,59 @@ helpers do
     when 3, 4, 5, 6, 7 then authors[0..-2].join(", ") + " & " + authors.last
     else authors[0..5].join(", ") + " … & " + authors.last
     end
+  end
+
+  def prefix_format(attributes)
+    prefixes = attributes.fetch("prefixes", [])
+    case prefixes.length
+    when 0 then ""
+    when 1 then "Prefix: " + prefixes.first
+    else "Prefixes: " + prefixes.join(" ")
+    end
+  end
+
+  def publisher_title(publishers, id)
+    publisher = publishers.find { |p| p["id"] == id }
+    return "" unless publisher.present?
+    publisher.fetch("attributes", {}).fetch("title", "")
+  end
+
+  def registration_agency_format(attributes)
+    ra = attributes.fetch("registration-agency-id", nil)
+    registration_agencies = { "crossref" => "Crossref",
+                              "datacite" => "DataCite" }
+    registration_agencies.fetch(ra, "")
+  end
+
+  def region_format(attributes)
+    region = attributes.fetch("region", nil)
+    regions = { "amer" => "Americas",
+                "apac" => "Asia Pacific",
+                "emea" => "EMEA" }
+    regions.fetch(region, "")
+  end
+
+  def metadata_format(attributes)
+    type = attributes.fetch("resource-type", nil).presence ||
+           attributes.fetch("resource-type-general", nil).presence || "Work"
+    type = type.underscore.humanize
+    published = attributes.fetch("published", "0000")
+    container_title = attributes.fetch("container-title", nil)
+    container_title = " via " + "<a href=\"/works?publisher-id=#{attributes.fetch("publisher-id", "")}\">#{container_title}</a>" if container_title.present?
+
+    [type, "published", published, container_title].join(" ")
+  end
+
+  def description_format(description)
+    description.to_s.truncate_words(75).gsub(/\\n\\n/, "<br/>")
+  end
+
+  def credit_name(attributes)
+    [attributes["given"], attributes["family"]].join(" ")
+  end
+
+  def works_query(params)
+    "/works?" + URI.encode_www_form(params)
   end
 
   def number_with_delimiter(number)
@@ -33,6 +85,10 @@ helpers do
     parts = number.to_s.to_str.split('.')
     parts[0].gsub!(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1#{options[:delimiter]}")
     parts.join(options[:separator])
+  end
+
+  def orcid_from_url(url)
+    Array(/\Ahttp:\/\/orcid\.org\/(.+)/.match(url)).last
   end
 
   def related_link(id)

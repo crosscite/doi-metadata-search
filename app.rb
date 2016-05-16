@@ -30,6 +30,7 @@ require 'rsolr'
 require 'tilt/haml'
 require 'haml'
 require 'will_paginate'
+require 'will_paginate/collection'
 require 'will_paginate-bootstrap'
 require 'cgi'
 require 'maremma'
@@ -110,39 +111,115 @@ configure do
   end
 end
 
+before do
+  @params = params
+end
+
 after do
   response.headers['Access-Control-Allow-Origin'] = '*'
 end
 
 get '/' do
-  if params.empty?
-    haml :splash, locals: { page: { query: '' } }
-  else
-    solr_result = select(search_query)
+  @meta = { page: "splash" }
 
-    page = {
-      bare_sort: params['sort'],
-      bare_query: bare_query,
-      query_type: query_type,
-      bare_filter: params['filter'],
-      query: query_terms,
-      facet_query: abstract_facet_query,
-      page: query_page,
-      rows: {
-        options: TYPICAL_ROWS,
-        actual: query_rows
-      },
-      items: search_results(solr_result),
-      paginate: Paginate.new(query_page, query_rows, solr_result),
-      facets: facet_results(solr_result) }
+  haml :splash
+end
 
-    unless page[:items].length > 0
-      page = get_alt_result(page)
-      redirect to(page[:alt_url]) if page[:alt_text] =~ /^DOI found/
-    end
+get '/works' do
+  page = params.fetch('page', 1).to_i
+  offset = DEFAULT_ROWS * (page - 1)
 
-    haml :results, locals: { page: page }
+  result = get_works(q: params[:q], offset: offset, 'publisher-id' => params['publisher-id'])
+  works = result[:data].select {|item| item["type"] == "works" }
+  @meta = result[:meta]
+
+  # check for existing claims if user is logged in
+  works = get_claims(current_user, works) if current_user
+
+  @works = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
+    pager.replace works
   end
+
+  @publishers = result[:data].select {|item| item["type"] == "publishers" }
+
+  haml :'works/index'
+end
+
+get '/works/:id' do
+  work = get_works(id: params[:id])
+
+  # check for existing claims if user is logged in
+  #works[:data] = get_claims(current_user, works[:data]) if current_user
+
+  haml :'works/show'
+end
+
+get '/relations' do
+  # contributors = get_contributors(q: params[:q])
+  # haml :contributors, locals: { data: contributors[:data], meta: contributors[:meta], params: params }
+end
+
+get '/contributors' do
+  page = params.fetch('page', 1).to_i
+  offset = DEFAULT_ROWS * (page - 1)
+
+  result = get_contributors(q: params[:q], offset: offset)
+  contributors = result[:data]
+  @meta = result[:meta]
+
+  @contributors = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
+    pager.replace contributors
+  end
+
+  haml :'contributors/index'
+end
+
+get '/contributors/:id' do
+  id = "orcid.org/" + params[:id]
+  result = get_contributors(id: id)
+  @contributor = result[:data]
+  @meta = result[:meta]
+
+  haml :'contributors/show'
+end
+
+get '/data-centers' do
+  page = params.fetch('page', 1).to_i
+  offset = DEFAULT_ROWS * (page - 1)
+
+  result  = get_datacenters(q: params[:q], offset: offset)
+  datacenters = result[:data]
+  @meta = result[:meta]
+
+  @datacenters = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
+    pager.replace datacenters
+  end
+
+  haml :'data-centers/index'
+end
+
+get '/data-centers/:id' do
+  result = get_datacenters(id: params[:id])
+  @datacenter = result[:data]
+  @meta = result[:meta]
+
+  haml :'data-centers/show'
+end
+
+get '/members' do
+  result = get_members(q: params[:q], "member-type" => params["member-type"], region: params[:region], year: params[:year])
+  @members = result[:data].select {|item| item["type"] == "members" }
+  @meta = result[:meta]
+
+  haml :'members/index'
+end
+
+get '/members/:id' do
+  result = get_members(id: params[:id])
+  @member = result[:data]
+  @meta = result[:meta]
+
+  haml :'members/show'
 end
 
 get '/citation' do

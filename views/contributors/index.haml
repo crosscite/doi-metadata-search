@@ -1,0 +1,27 @@
+= haml :"#{ENV['RA']}/header", locals: { page: {} }
+
+.container-fluid
+  .row
+    .col-md-9#content
+      = haml :'contributors/search'
+
+      - unless flash[:error].nil?
+        %div.alert.alert-warning
+          = flash[:error]
+
+      - if @contributors.length > 0
+        - if @contributors.length > 1
+          %h4.results
+            = "#{number_with_delimiter(@meta['total'])} Contributors"
+
+        - @contributors.each do |item|
+          = haml :'contributors/item', locals: { item: item }
+
+        .text-center
+          = will_paginate @contributors, renderer: BootstrapPagination::Sinatra
+
+      - else
+        %div.alert.alert-info
+          Nothing found.
+
+= haml :"#{ENV['RA']}/footer"

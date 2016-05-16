@@ -1,20 +1,17 @@
-= haml :"#{ENV['RA']}/header", locals: { page: page.merge({:mini_header => true}) }
+= haml :"#{ENV['RA']}/header", locals: { params: {} }
 
-.centered
-  %img{class: 'logo-big', src: "//#{ENV['CDN_HOST']}/assets/logo-big.png"}
-
-  .search
-    %form.inline{:method => 'GET', :action => '/'}
-      .input-group
-        %input.form-control{type: "text", name: 'q', id: "search-input", value: page[:bare_query], placeholder: "Enter search term"}
-        .input-group-btn
-          %button.btn.btn-primary{type: "submit", id: "submit"}
-            %i.fa.fa-search
-
+.container-fluid
   - unless flash[:error].nil?
     .alert.alert-error
       = flash[:error]
 
-  .splash
+  .centered
+    %img{class: 'logo-big', src: "//#{ENV['CDN_HOST']}/assets/logo-big.png"}
 
-= haml :"#{ENV['RA']}/footer", locals: { page: page }
+  .row
+    .col-md-6.col-md-offset-3
+      = haml :'works/search'
+
+    .splash
+
+= haml :"#{ENV['RA']}/footer"

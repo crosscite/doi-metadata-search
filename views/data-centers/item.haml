@@ -1,0 +1,10 @@
+.panel.panel-default
+  .panel-body
+    %h4.work
+      %a{:href => '/data-centers/' + item["id"]}
+        = item.fetch("attributes", {}).fetch("title", nil)
+    %div
+      = prefix_format(item["attributes"])
+  .panel-footer
+    %i.fa.fa-info-circle
+    = item["id"]

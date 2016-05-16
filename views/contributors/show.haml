@@ -1,0 +1,8 @@
+= haml :"#{ENV['RA']}/header", locals: { page: {} }
+
+.container-fluid
+  .row
+    .col-md-9
+      = haml :'contributors/item', locals: { item: @contributor }
+
+= haml :"#{ENV['RA']}/footer"

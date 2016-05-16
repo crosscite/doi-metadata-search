@@ -1,7 +1,7 @@
 .search-wide
-  %form.form-horizontal{:method => 'GET', :action => '/'}
+  %form.form-horizontal{:method => 'GET', :action => '/works'}
     .input-group
       %input.form-control{type: "text", name: 'q', id: 'search-input', value: page[:bare_query], placeholder: "Enter search term"}
       .input-group-btn
         %button.btn.btn-primary{type: "submit"}
-          %i.fa.fa-search
+          Search

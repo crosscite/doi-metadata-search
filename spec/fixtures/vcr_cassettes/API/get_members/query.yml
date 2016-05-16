@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://10.2.2.14/members?q=tib
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Maremma - http://doi-metadata-search.local
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Access-Control-Max-Age:
+      - '1728000'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - f78f0c39-ad53-44d3-a31c-647027de38b6
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Etag:
+      - W/"f1e997c6cdd9662f20aa85d4ed5b0f5d"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.126797'
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Wed, 11 May 2016 18:20:51 GMT
+      X-Powered-By:
+      - Phusion Passenger 5.0.23
+      Server:
+      - nginx/1.8.0 + Phusion Passenger 5.0.23
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"TIB","type":"members","attributes":{"title":"German
+        National Library of Science and Technology (TIB)","description":"","member-type":"full","region":"EMEA","country":"Germany","year":2009}}],"meta":{"total":1,"member-types":{"full":1},"regions":{"emea":1},"years":{"2009":1}}}'
+    http_version: 
+  recorded_at: Wed, 11 May 2016 18:20:51 GMT
+recorded_with: VCR 2.9.3

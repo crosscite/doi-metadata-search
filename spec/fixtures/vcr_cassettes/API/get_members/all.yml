@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://10.2.2.14/members
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Maremma - http://doi-metadata-search.local
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Access-Control-Max-Age:
+      - '1728000'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - cc301d3f-3627-4cb2-a77f-4ae768d23ddb
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Etag:
+      - W/"d8565e19d1d01364ae79b40dcbfb6169"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.184167'
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Wed, 11 May 2016 18:20:51 GMT
+      X-Powered-By:
+      - Phusion Passenger 5.0.23
+      Server:
+      - nginx/1.8.0 + Phusion Passenger 5.0.23
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJkYXRhIjpbeyJpZCI6IkFORFMiLCJ0eXBlIjoibWVtYmVycyIsImF0dHJp
+        YnV0ZXMiOnsidGl0bGUiOiJBTkRTIiwiZGVzY3JpcHRpb24iOiJcdTAwM2Nw
+        XHUwMDNlQ1NJQyAgd2lsbCBydW4gaXRzIFx1MDAzY2EgaHJlZj1cImh0dHA6
+        Ly9hbmRzLm9yZy5hdS9zZXJ2aWNlcy9jaXRlLW15LWRhdGEuaHRtbFwiXHUw
+        MDNlQ2l0ZSBNeSBEYXRhXHUwMDNjL2FcdTAwM2Ugc2VydmljZSBzaW5jZSAy
+        MDE2LiBUaGlzIHNlcnZpY2UgYWxsb3dzIENTSUPigJlzIHJlc2VhcmNoZXIg
+        IHRvIGFzc2lnbiBET0lzIHRvIHRoZWlyIG93biByZXNlYXJjaCBkYXRhc2V0
+        cyBwcm92aWRpbmcgcmVzZWFyY2hlcnMgd2l0aCBhIG1lYW5zIG9mIGNpdGlu
+        ZyB0aGVpciBwdWJsaXNoZWQgZGF0YSBhbmQgYWNoaWV2aW5nIHJlY29nbml0
+        aW9uIGZvciB0aGVpciByZXNlYXJjaCBkYXRhIG91dHB1dC5cdTAwM2MvcFx1
+        MDAzZVxuIiwibWVtYmVyLXR5cGUiOiJmdWxsIiwicmVnaW9uIjoiQXNpYSBQ
+        YWNpZmljIiwiY291bnRyeSI6IkF1c3RyYWxpYSIsInllYXIiOjIwMTB9fSx7
+        ImlkIjoiVElCIiwidHlwZSI6Im1lbWJlcnMiLCJhdHRyaWJ1dGVzIjp7InRp
+        dGxlIjoiR2VybWFuIE5hdGlvbmFsIExpYnJhcnkgb2YgU2NpZW5jZSBhbmQg
+        VGVjaG5vbG9neSAoVElCKSIsImRlc2NyaXB0aW9uIjoiIiwibWVtYmVyLXR5
+        cGUiOiJmdWxsIiwicmVnaW9uIjoiRU1FQSIsImNvdW50cnkiOiJHZXJtYW55
+        IiwieWVhciI6MjAwOX19XSwibWV0YSI6eyJ0b3RhbCI6MiwibWVtYmVyLXR5
+        cGVzIjp7ImZ1bGwiOjJ9LCJyZWdpb25zIjp7ImFwYWMiOjEsImVtZWEiOjF9
+        LCJ5ZWFycyI6eyIyMDEwIjoxLCIyMDA5IjoxfX19
+    http_version: 
+  recorded_at: Wed, 11 May 2016 18:20:51 GMT
+recorded_with: VCR 2.9.3

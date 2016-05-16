@@ -1,0 +1,17 @@
+.col-md-3
+  .panel.facets
+    .panel-body
+      %h4
+        Members
+      %ul
+        - @meta["registration-agencies"].each do |ra|
+          %li
+            - if @params['registration-agency-id'].present?
+              %a{:href => "/publishers?q=#{params[:q]}"}
+                %i.fa.fa-check-square-o
+            - else
+              %a{:href => "/publishers?registration-agency-id=#{ra.first}&q=#{params[:q]}"}
+                %i.fa.fa-square-o
+            = registration_agency_format("registration-agency-id" => ra.first)
+            %span.number.pull-right
+              = number_with_delimiter(ra.last)

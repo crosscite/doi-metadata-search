@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://10.2.2.14/contributors?id=orcid.org/0000-0002-4000-4167&rows=25
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Maremma - http://doi-metadata-search.local
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Access-Control-Max-Age:
+      - '1728000'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 4b6d0138-5670-45c5-8939-d56b6bb17850
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Etag:
+      - W/"4b5a4e895ea55cf43bcbcda2a29097b2"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.246014'
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Wed, 11 May 2016 17:09:06 GMT
+      X-Powered-By:
+      - Phusion Passenger 5.0.23
+      Server:
+      - nginx/1.8.0 + Phusion Passenger 5.0.23
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"http://orcid.org/0000-0002-4000-4167","type":"contributors","attributes":{"given":"Peter","family":"Arend","updated-at":"1970-01-01T00:00:00Z"}}}'
+    http_version: 
+  recorded_at: Wed, 11 May 2016 17:09:06 GMT
+recorded_with: VCR 2.9.3
