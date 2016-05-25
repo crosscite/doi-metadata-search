@@ -1,8 +1,6 @@
 .search-wide
-  %form.form-horizontal{:method => 'GET', :action => '/works'}
+  %form.form-horizontal{:method => 'GET', :action => works_query(params) }
     .input-group
-      - if params['publisher-id'].present?
-        %input{type: "hidden", name: "publisher-id", value: params['publisher-id']}
       %input.form-control{type: "text", name: 'q', id: 'search-input', value: @params[:q], placeholder: "Search for work"}
       .input-group-btn
         %button.btn.btn-primary{type: "submit"}

@@ -11,7 +11,7 @@ helpers do
   def author_format(author)
     authors = Array(author).map do |a|
       name = a.fetch("given", nil).to_s + " " + a.fetch("family", nil).to_s
-      a["orcid"].present? ? "<a href=\"/works?q=#{orcid_from_url(a["orcid"])}\">#{name}</a>" : name
+      a["orcid"].present? ? "<a href=\"/contributors/#{orcid_from_url(a["orcid"])}\">#{name}</a>" : name
     end
 
     case authors.length
@@ -65,7 +65,7 @@ helpers do
     type = type.underscore.humanize
     published = attributes.fetch("published", "0000")
     container_title = attributes.fetch("container-title", nil)
-    container_title = " via " + "<a href=\"/works?publisher-id=#{attributes.fetch("publisher-id", "")}\">#{container_title}</a>" if container_title.present?
+    container_title = " via " + container_title if container_title.present?
 
     [type, "published", published, container_title].join(" ")
   end
@@ -75,11 +75,36 @@ helpers do
   end
 
   def credit_name(attributes)
-    [attributes["given"], attributes["family"]].join(" ")
+    [attributes["given"], attributes["family"]].join(" ").presence ||
+    attributes["literal"].presence ||
+    attributes["github"].presence ||
+    attributes["orcid"]
   end
 
-  def works_query(params)
-    "/works?" + URI.encode_www_form(params)
+  def contributor_id(attributes)
+    attributes.fetch("orcid", nil).presence || attributes.fetch("github", nil)
+  end
+
+  def works_query(options)
+    params = { "id" => options.fetch("id", nil),
+               "q" => options.fetch("q", nil),
+               "resource-type-id" => options.fetch("resource-type-id", nil) }.compact
+
+    if options[:model] == "data-centers"
+      "/data-centers/#{params['id']}?" + URI.encode_www_form(params.except('id'))
+    elsif options[:model] == "members"
+      "/members/#{params['id']}?" + URI.encode_www_form(params.except('id'))
+    else
+      "/works?" + URI.encode_www_form(params)
+    end
+  end
+
+  def works_action(item, params)
+    if params[:id].present?
+      item["id"]
+    else
+      "/works/#{item.fetch('attributes', {}).fetch("doi", '')}"
+    end
   end
 
   def number_with_delimiter(number)
@@ -97,6 +122,31 @@ helpers do
 
   def orcid_from_url(url)
     Array(/\Ahttp:\/\/orcid\.org\/(.+)/.match(url)).last
+  end
+
+  def validate_orcid(orcid)
+    Array(/\A(?:http:\/\/orcid\.org\/)?(\d{4}-\d{4}-\d{4}-\d{3}[0-9X]+)\z/.match(orcid)).last
+  end
+
+  def github_from_url(url)
+    return {} unless /\Ahttps:\/\/github\.com\/(.+)(?:\/)?(.+)?(?:\/tree\/)?(.*)\z/.match(url)
+    words = URI.parse(url).path[1..-1].split('/')
+
+    { owner: words[0],
+      repo: words[1],
+      release: words[3] }.compact
+  end
+
+  def github_repo_from_url(url)
+    github_from_url(url).fetch(:repo, nil)
+  end
+
+  def github_release_from_url(url)
+    github_from_url(url).fetch(:release, nil)
+  end
+
+  def github_owner_from_url(url)
+    github_from_url(url).fetch(:owner, nil)
   end
 
   def related_link(id)

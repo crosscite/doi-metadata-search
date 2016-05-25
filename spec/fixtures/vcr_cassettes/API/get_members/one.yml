@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://10.2.2.14/members?id=ANDS
+    uri: http://api.labs.datacite.org/members?id=ANDS
     body:
       encoding: US-ASCII
       string: ''
@@ -16,6 +16,10 @@ http_interactions:
       code: 200
       message: ''
     headers:
+      Server:
+      - nginx/1.10.0
+      Date:
+      - Wed, 25 May 2016 12:47:03 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -33,38 +37,24 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 5ec9e48c-8700-4b26-8600-17aefedb05da
+      - 5613d897-a443-4443-b3a3-8d170f191c59
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
-      - W/"5d4d310b42803bbfb4d5bff4aa07f4cf"
+      - W/"8eb1630cf1cf84adc329782606e6ad10"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.171034'
+      - '0.014497'
       X-Content-Type-Options:
       - nosniff
-      Date:
-      - Wed, 11 May 2016 18:23:38 GMT
       X-Powered-By:
-      - Phusion Passenger 5.0.23
-      Server:
-      - nginx/1.8.0 + Phusion Passenger 5.0.23
+      - Phusion Passenger 5.0.28
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        eyJkYXRhIjp7ImlkIjoiQU5EUyIsInR5cGUiOiJtZW1iZXJzIiwiYXR0cmli
-        dXRlcyI6eyJ0aXRsZSI6IkFORFMiLCJkZXNjcmlwdGlvbiI6Ilx1MDAzY3Bc
-        dTAwM2VDU0lDICB3aWxsIHJ1biBpdHMgXHUwMDNjYSBocmVmPVwiaHR0cDov
-        L2FuZHMub3JnLmF1L3NlcnZpY2VzL2NpdGUtbXktZGF0YS5odG1sXCJcdTAw
-        M2VDaXRlIE15IERhdGFcdTAwM2MvYVx1MDAzZSBzZXJ2aWNlIHNpbmNlIDIw
-        MTYuIFRoaXMgc2VydmljZSBhbGxvd3MgQ1NJQ+KAmXMgcmVzZWFyY2hlciAg
-        dG8gYXNzaWduIERPSXMgdG8gdGhlaXIgb3duIHJlc2VhcmNoIGRhdGFzZXRz
-        IHByb3ZpZGluZyByZXNlYXJjaGVycyB3aXRoIGEgbWVhbnMgb2YgY2l0aW5n
-        IHRoZWlyIHB1Ymxpc2hlZCBkYXRhIGFuZCBhY2hpZXZpbmcgcmVjb2duaXRp
-        b24gZm9yIHRoZWlyIHJlc2VhcmNoIGRhdGEgb3V0cHV0Llx1MDAzYy9wXHUw
-        MDNlXG4iLCJtZW1iZXItdHlwZSI6ImZ1bGwiLCJyZWdpb24iOiJBc2lhIFBh
-        Y2lmaWMiLCJjb3VudHJ5IjoiQXVzdHJhbGlhIiwieWVhciI6MjAxMH19fQ==
+      encoding: UTF-8
+      string: '{"data":{"id":"ands","type":"members","attributes":{"title":"Australian
+        National Data Service (ANDS)","description":"","member-type":"full","region":"Asia
+        Pacific","country":"Australia","year":2010,"updated":null}}}'
     http_version: 
-  recorded_at: Wed, 11 May 2016 18:23:39 GMT
+  recorded_at: Wed, 25 May 2016 12:47:03 GMT
 recorded_with: VCR 2.9.3

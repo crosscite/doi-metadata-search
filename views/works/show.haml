@@ -3,6 +3,6 @@
 .container-fluid
   .row
     .col-md-9
-      = haml :item, locals: { item: @contributor }
+      = haml :'works/item', locals: { item: @work }
 
 = haml :"#{ENV['RA']}/footer"

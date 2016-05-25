@@ -23,20 +23,20 @@ http_interactions:
       Location:
       - http://data.datacite.org/10.5281%2FZENODO.21430
       Expires:
-      - Wed, 02 Mar 2016 23:44:52 GMT
+      - Wed, 25 May 2016 13:28:24 GMT
       Content-Type:
       - text/html;charset=utf-8
       Content-Length:
       - '179'
       Date:
-      - Wed, 02 Mar 2016 23:34:31 GMT
+      - Wed, 25 May 2016 12:52:57 GMT
     body:
       encoding: UTF-8
       string: |-
         <html><head><title>Handle Redirect</title></head>
         <body><a href="http://data.datacite.org/10.5281%2FZENODO.21430">http://data.datacite.org/10.5281%2FZENODO.21430</a></body></html>
     http_version: 
-  recorded_at: Wed, 02 Mar 2016 23:34:32 GMT
+  recorded_at: Wed, 25 May 2016 12:52:59 GMT
 - request:
     method: get
     uri: http://data.datacite.org/10.5281%2FZENODO.21430
@@ -56,7 +56,7 @@ http_interactions:
       Server:
       - nginx/1.1.19
       Date:
-      - Wed, 02 Mar 2016 23:35:18 GMT
+      - Wed, 25 May 2016 12:55:39 GMT
       Content-Type:
       - application/x-bibtex
       Connection:
@@ -74,7 +74,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: |-
-        @data{e30d22f9-126b-450f-87b2-16c1a6eb9fc5,
+        @data{3fb3b466-c262-4a5d-9367-1ad6db8dabe1,
           doi = {10.5281/ZENODO.21430},
           url = {http://dx.doi.org/10.5281/ZENODO.21430},
           author = {Martin Fenner; Karl Jonathan Ward; Gudmundur A. Thorisson; Robert Peters; },
@@ -83,5 +83,5 @@ http_interactions:
           year = {2015}
         }
     http_version: 
-  recorded_at: Wed, 02 Mar 2016 23:34:32 GMT
+  recorded_at: Wed, 25 May 2016 12:53:00 GMT
 recorded_with: VCR 2.9.3

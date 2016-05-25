@@ -1,0 +1,18 @@
+- if flash[:error].present?
+  %div.alert.alert-warning
+    = flash[:error]
+
+- if @contributions.length > 0
+  - if @contributions.length > 1
+    %h4.results
+      = "#{number_with_delimiter(@meta['total'])} Contributions"
+
+  - @contributions.each do |item|
+    = haml :'contributions/item', locals: { item: item }
+
+  .text-center
+    = will_paginate @contributions, renderer: BootstrapPagination::Sinatra
+
+- else
+  %div.alert.alert-info
+    Nothing found.

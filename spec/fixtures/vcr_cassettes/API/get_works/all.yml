@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.labs.datacite.org/works?offset=0&rows=25
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Maremma - http://doi-metadata-search.local
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.10.0
+      Date:
+      - Wed, 25 May 2016 08:51:26 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Access-Control-Max-Age:
+      - '1728000'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - cd61f9d1-84b8-4f80-b7b2-1e1f03880a67
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Etag:
+      - W/"56abfa79d4adc9095cce716f46271073"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.135054'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.0.28
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"http://doi.org/10.3932/ETHZ-A-000365332","type":"works","attributes":{"author":[],"title":null,"container-title":null,"description":null,"published":null,"issued":"2016-05-24T17:33:01Z","updated":null,"doi":"10.3932/ETHZ-A-000365332","resource-type-general":null,"resource-type":null,"type":null,"license":null,"publisher-id":"ethz.unknown"}},{"id":"http://doi.org/10.3932/ETHZ-A-000365333","type":"works","attributes":{"author":[],"title":null,"container-title":null,"description":null,"published":null,"issued":"2016-05-24T17:33:01Z","updated":null,"doi":"10.3932/ETHZ-A-000365333","resource-type-general":null,"resource-type":null,"type":null,"license":null,"publisher-id":"ethz.unknown"}},{"id":"http://doi.org/10.3932/ETHZ-A-000365313","type":"works","attributes":{"author":[],"title":null,"container-title":null,"description":null,"published":null,"issued":"2016-05-24T17:33:00Z","updated":null,"doi":"10.3932/ETHZ-A-000365313","resource-type-general":null,"resource-type":null,"type":null,"license":null,"publisher-id":"ethz.unknown"}},{"id":"http://doi.org/10.3932/ETHZ-A-000365321","type":"works","attributes":{"author":[],"title":null,"container-title":null,"description":null,"published":null,"issued":"2016-05-24T17:32:59Z","updated":null,"doi":"10.3932/ETHZ-A-000365321","resource-type-general":null,"resource-type":null,"type":null,"license":null,"publisher-id":"ethz.unknown"}},{"id":"http://doi.org/10.3932/ETHZ-A-000365273","type":"works","attributes":{"author":[],"title":null,"container-title":null,"description":null,"published":null,"issued":"2016-05-24T17:32:58Z","updated":null,"doi":"10.3932/ETHZ-A-000365273","resource-type-general":null,"resource-type":null,"type":null,"license":null,"publisher-id":"ethz.unknown"}},{"id":"http://doi.org/10.3932/ETHZ-A-000365329","type":"works","attributes":{"author":[],"title":null,"container-title":null,"description":null,"published":null,"issued":"2016-05-24T17:32:56Z","updated":null,"doi":"10.3932/ETHZ-A-000365329","resource-type-general":null,"resource-type":null,"type":null,"license":null,"publisher-id":"ethz.unknown"}},{"id":"http://doi.org/10.3932/ETHZ-A-000365283","type":"works","attributes":{"author":[],"title":null,"container-title":null,"description":null,"published":null,"issued":"2016-05-24T17:32:56Z","updated":null,"doi":"10.3932/ETHZ-A-000365283","resource-type-general":null,"resource-type":null,"type":null,"license":null,"publisher-id":"ethz.unknown"}},{"id":"http://doi.org/10.3932/ETHZ-A-000446020","type":"works","attributes":{"author":[],"title":null,"container-title":null,"description":null,"published":null,"issued":"2016-05-24T17:32:56Z","updated":null,"doi":"10.3932/ETHZ-A-000446020","resource-type-general":null,"resource-type":null,"type":null,"license":null,"publisher-id":"ethz.unknown"}},{"id":"http://doi.org/10.3932/ETHZ-A-000365310","type":"works","attributes":{"author":[],"title":null,"container-title":null,"description":null,"published":null,"issued":"2016-05-24T17:32:56Z","updated":null,"doi":"10.3932/ETHZ-A-000365310","resource-type-general":null,"resource-type":null,"type":null,"license":null,"publisher-id":"ethz.unknown"}},{"id":"http://doi.org/10.3932/ETHZ-A-000365330","type":"works","attributes":{"author":[],"title":null,"container-title":null,"description":null,"published":null,"issued":"2016-05-24T17:32:56Z","updated":null,"doi":"10.3932/ETHZ-A-000365330","resource-type-general":null,"resource-type":null,"type":null,"license":null,"publisher-id":"ethz.unknown"}},{"id":"http://doi.org/10.3932/ETHZ-A-000091023","type":"works","attributes":{"author":[],"title":null,"container-title":null,"description":null,"published":null,"issued":"2016-05-24T17:32:56Z","updated":null,"doi":"10.3932/ETHZ-A-000091023","resource-type-general":null,"resource-type":null,"type":null,"license":null,"publisher-id":"ethz.unknown"}},{"id":"http://doi.org/10.3932/ETHZ-A-000365326","type":"works","attributes":{"author":[],"title":null,"container-title":null,"description":null,"published":null,"issued":"2016-05-24T17:32:56Z","updated":null,"doi":"10.3932/ETHZ-A-000365326","resource-type-general":null,"resource-type":null,"type":null,"license":null,"publisher-id":"ethz.unknown"}},{"id":"http://doi.org/10.3932/ETHZ-A-000365339","type":"works","attributes":{"author":[],"title":null,"container-title":null,"description":null,"published":null,"issued":"2016-05-24T17:32:56Z","updated":null,"doi":"10.3932/ETHZ-A-000365339","resource-type-general":null,"resource-type":null,"type":null,"license":null,"publisher-id":"ethz.unknown"}},{"id":"http://doi.org/10.3932/ETHZ-A-000365281","type":"works","attributes":{"author":[],"title":null,"container-title":null,"description":null,"published":null,"issued":"2016-05-24T17:32:56Z","updated":null,"doi":"10.3932/ETHZ-A-000365281","resource-type-general":null,"resource-type":null,"type":null,"license":null,"publisher-id":"ethz.unknown"}},{"id":"http://doi.org/10.3932/ETHZ-A-000051337","type":"works","attributes":{"author":[],"title":null,"container-title":null,"description":null,"published":null,"issued":"2016-05-24T17:32:56Z","updated":null,"doi":"10.3932/ETHZ-A-000051337","resource-type-general":null,"resource-type":null,"type":null,"license":null,"publisher-id":"ethz.unknown"}},{"id":"http://doi.org/10.3932/ETHZ-A-000447167","type":"works","attributes":{"author":[],"title":null,"container-title":null,"description":null,"published":null,"issued":"2016-05-24T17:32:56Z","updated":null,"doi":"10.3932/ETHZ-A-000447167","resource-type-general":null,"resource-type":null,"type":null,"license":null,"publisher-id":"ethz.unknown"}},{"id":"http://doi.org/10.3932/ETHZ-A-000347908","type":"works","attributes":{"author":[],"title":null,"container-title":null,"description":null,"published":null,"issued":"2016-05-24T17:32:55Z","updated":null,"doi":"10.3932/ETHZ-A-000347908","resource-type-general":null,"resource-type":null,"type":null,"license":null,"publisher-id":"ethz.unknown"}},{"id":"http://doi.org/10.3932/ETHZ-A-000881806","type":"works","attributes":{"author":[],"title":null,"container-title":null,"description":null,"published":null,"issued":"2016-05-24T17:32:55Z","updated":null,"doi":"10.3932/ETHZ-A-000881806","resource-type-general":null,"resource-type":null,"type":null,"license":null,"publisher-id":"ethz.unknown"}},{"id":"http://doi.org/10.3932/ETHZ-A-000365597","type":"works","attributes":{"author":[],"title":null,"container-title":null,"description":null,"published":null,"issued":"2016-05-24T17:32:55Z","updated":null,"doi":"10.3932/ETHZ-A-000365597","resource-type-general":null,"resource-type":null,"type":null,"license":null,"publisher-id":"ethz.unknown"}},{"id":"http://doi.org/10.3932/ETHZ-A-000365475","type":"works","attributes":{"author":[],"title":null,"container-title":null,"description":null,"published":null,"issued":"2016-05-24T17:32:55Z","updated":null,"doi":"10.3932/ETHZ-A-000365475","resource-type-general":null,"resource-type":null,"type":null,"license":null,"publisher-id":"ethz.unknown"}},{"id":"http://doi.org/10.3932/ETHZ-A-000365356","type":"works","attributes":{"author":[],"title":null,"container-title":null,"description":null,"published":null,"issued":"2016-05-24T17:32:55Z","updated":null,"doi":"10.3932/ETHZ-A-000365356","resource-type-general":null,"resource-type":null,"type":null,"license":null,"publisher-id":"ethz.unknown"}},{"id":"http://doi.org/10.3932/ETHZ-A-000365364","type":"works","attributes":{"author":[],"title":null,"container-title":null,"description":null,"published":null,"issued":"2016-05-24T17:32:55Z","updated":null,"doi":"10.3932/ETHZ-A-000365364","resource-type-general":null,"resource-type":null,"type":null,"license":null,"publisher-id":"ethz.unknown"}},{"id":"http://doi.org/10.3932/ETHZ-A-000365469","type":"works","attributes":{"author":[],"title":null,"container-title":null,"description":null,"published":null,"issued":"2016-05-24T17:32:55Z","updated":null,"doi":"10.3932/ETHZ-A-000365469","resource-type-general":null,"resource-type":null,"type":null,"license":null,"publisher-id":"ethz.unknown"}},{"id":"http://doi.org/10.3932/ETHZ-A-000365300","type":"works","attributes":{"author":[],"title":null,"container-title":null,"description":null,"published":null,"issued":"2016-05-24T17:32:55Z","updated":null,"doi":"10.3932/ETHZ-A-000365300","resource-type-general":null,"resource-type":null,"type":null,"license":null,"publisher-id":"ethz.unknown"}},{"id":"http://doi.org/10.3932/ETHZ-A-000899301","type":"works","attributes":{"author":[],"title":null,"container-title":null,"description":null,"published":null,"issued":"2016-05-24T17:32:55Z","updated":null,"doi":"10.3932/ETHZ-A-000899301","resource-type-general":null,"resource-type":null,"type":null,"license":null,"publisher-id":"ethz.unknown"}},{"id":"dataset","type":"resource-types","attributes":{"title":"Dataset","updated":"2014-10-16"}},{"id":"other","type":"resource-types","attributes":{"title":"Other","updated":"2014-10-16"}},{"id":"text","type":"resource-types","attributes":{"title":"Text","updated":"2014-10-16"}},{"id":"image","type":"resource-types","attributes":{"title":"Image","updated":"2014-10-16"}},{"id":"collection","type":"resource-types","attributes":{"title":"Collection","updated":"2014-10-16"}},{"id":"physical-object","type":"resource-types","attributes":{"title":"Physical
+        object","updated":"2014-10-16"}},{"id":"software","type":"resource-types","attributes":{"title":"Software","updated":"2014-10-16"}},{"id":"event","type":"resource-types","attributes":{"title":"Event","updated":"2014-10-16"}},{"id":"audiovisual","type":"resource-types","attributes":{"title":"Audiovisual","updated":"2014-10-16"}},{"id":"film","type":"resource-types","attributes":{"title":"Film","updated":"2014-10-16"}},{"id":"model","type":"resource-types","attributes":{"title":"Model","updated":"2014-10-16"}},{"id":"interactive-resource","type":"resource-types","attributes":{"title":"Interactive
+        resource","updated":"2014-10-16"}},{"id":"sound","type":"resource-types","attributes":{"title":"Sound","updated":"2014-10-16"}},{"id":"workflow","type":"resource-types","attributes":{"title":"Workflow","updated":"2014-10-16"}},{"id":"service","type":"resource-types","attributes":{"title":"Service","updated":"2014-10-16"}}],"meta":{"resource-types":{"dataset":2472320,"other":870532,"text":835718,"image":686490,"collection":310244,"physical-object":34335,"software":13428,"event":6455,"audiovisual":5216,"film":965,"model":533,"interactive-resource":294,"sound":235,"workflow":209,"service":19},"years":{},"publishers":{},"total":6549181}}'
+    http_version: 
+  recorded_at: Wed, 25 May 2016 08:51:26 GMT
+recorded_with: VCR 2.9.3

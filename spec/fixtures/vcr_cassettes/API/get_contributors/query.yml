@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://10.2.2.14/contributors?q=mabbett&rows=25
+    uri: http://api.labs.datacite.org/contributors?offset=0&q=mabbett&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -16,6 +16,10 @@ http_interactions:
       code: 200
       message: ''
     headers:
+      Server:
+      - nginx/1.10.0
+      Date:
+      - Wed, 25 May 2016 12:03:57 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -33,26 +37,22 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 1e207f8b-5bf9-44b2-bb25-48ea28f3d502
+      - 0d91b236-eced-497d-9ad3-6cfc7f7f55b5
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
-      - W/"3e15a5865005c4765e8df411adcf0a92"
+      - W/"1ce1bbb99b0eabfafa5626a56092c18f"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.252759'
+      - '0.044190'
       X-Content-Type-Options:
       - nosniff
-      Date:
-      - Wed, 11 May 2016 17:09:05 GMT
       X-Powered-By:
-      - Phusion Passenger 5.0.23
-      Server:
-      - nginx/1.8.0 + Phusion Passenger 5.0.23
+      - Phusion Passenger 5.0.28
     body:
       encoding: UTF-8
-      string: '{"data":[{"id":"http://orcid.org/0000-0001-5882-6823","type":"contributors","attributes":{"given":"Andy","family":"Mabbett","updated-at":"1970-01-01T00:00:00Z"}}],"meta":{"total":1}}'
+      string: '{"data":[{"id":"http://orcid.org/0000-0001-5882-6823","type":"contributors","attributes":{"given":"Andy","family":"Mabbett","updated":"1970-01-01T00:00:00Z"}}],"meta":{"total":1}}'
     http_version: 
-  recorded_at: Wed, 11 May 2016 17:09:05 GMT
+  recorded_at: Wed, 25 May 2016 12:03:57 GMT
 recorded_with: VCR 2.9.3

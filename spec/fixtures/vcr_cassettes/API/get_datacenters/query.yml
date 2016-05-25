@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://10.2.2.14/publishers?q=zeno&registration_agency_id=datacite&rows=25
+    uri: http://api.labs.datacite.org/publishers?offset=0&q=zeno&registration-agency-id=datacite&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -16,6 +16,10 @@ http_interactions:
       code: 200
       message: ''
     headers:
+      Server:
+      - nginx/1.10.0
+      Date:
+      - Wed, 25 May 2016 12:03:57 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -33,27 +37,23 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - bd07e840-05d3-46df-a6a5-98ed9062fb00
+      - 78507a3c-bacf-44d3-9a73-73f3d3be09da
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
-      - W/"df14285c24eaedd16139a6d2ad793f1c"
+      - W/"01eec71861c9f1f6aef747e0ae4f4c3f"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '1.512799'
+      - '0.052088'
       X-Content-Type-Options:
       - nosniff
-      Date:
-      - Wed, 11 May 2016 18:05:49 GMT
       X-Powered-By:
-      - Phusion Passenger 5.0.23
-      Server:
-      - nginx/1.8.0 + Phusion Passenger 5.0.23
+      - Phusion Passenger 5.0.28
     body:
       encoding: UTF-8
-      string: '{"data":[{"id":"CERN.ZENODO","type":"publishers","attributes":{"title":"ZENODO
-        - Research. Shared.","other-names":[],"prefixes":[],"member-id":"CERN","registration-agency-id":"datacite","updated-at":"2016-05-11T17:10:46Z"}}],"meta":{"total":1,"total-pages":1,"page":1,"registration-agencies":{"datacite":1}}}'
+      string: '{"data":[{"id":"cern.zenodo","type":"publishers","attributes":{"title":"ZENODO
+        - Research. Shared.","other-names":[],"prefixes":[],"member-id":"cern","registration-agency-id":"datacite","updated":"2016-05-25T11:45:25Z"}}],"meta":{"total":1,"total-pages":1,"page":1,"registration-agencies":{"datacite":1}}}'
     http_version: 
-  recorded_at: Wed, 11 May 2016 18:05:49 GMT
+  recorded_at: Wed, 25 May 2016 12:03:58 GMT
 recorded_with: VCR 2.9.3

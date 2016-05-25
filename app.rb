@@ -111,10 +111,6 @@ configure do
   end
 end
 
-before do
-  @params = params
-end
-
 after do
   response.headers['Access-Control-Allow-Origin'] = '*'
 end
@@ -143,14 +139,16 @@ get '/works' do
   @resource_types = result[:data].select {|item| item["type"] == "resource-types" }
   @publishers = result[:data].select {|item| item["type"] == "publishers" }
 
+  params[:model] = "works"
+
   haml :'works/index'
 end
 
-get '/works/:id' do
-  work = get_works(id: params[:id])
-
-  # check for existing claims if user is logged in
-  #works[:data] = get_claims(current_user, works[:data]) if current_user
+get %r{/works/(.+)} do
+  params[:id] = params[:captures]
+  result = get_works(id: params[:id])
+  @work = result[:data]
+  @meta = result[:meta]
 
   haml :'works/show'
 end
@@ -176,10 +174,24 @@ get '/contributors' do
 end
 
 get '/contributors/:id' do
-  id = "orcid.org/" + params[:id]
+  if validate_orcid(params[:id])
+    id = "orcid.org/#{params[:id]}"
+  else
+    id = "github.com/#{params[:id]}"
+  end
   result = get_contributors(id: id)
   @contributor = result[:data]
-  @meta = result[:meta]
+
+  page = params.fetch('page', 1).to_i
+  offset = DEFAULT_ROWS * (page - 1)
+
+  collection = get_contributions("contributor-id" => id, offset: offset)
+  contributions = collection[:data].select {|item| item["type"] == "contributions" }
+  @meta = collection[:meta]
+
+  @contributions = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
+    pager.replace contributions
+  end
 
   haml :'contributors/show'
 end
@@ -202,7 +214,22 @@ end
 get '/data-centers/:id' do
   result = get_datacenters(id: params[:id])
   @datacenter = result[:data]
-  @meta = result[:meta]
+
+  page = params.fetch('page', 1).to_i
+  offset = DEFAULT_ROWS * (page - 1)
+
+  collection = get_works(q: params[:q], "publisher-id" => params[:id], offset: offset, 'resource-type-id' => params['resource-type-id'])
+  works = collection[:data].select {|item| item["type"] == "works" }
+  @meta = collection[:meta]
+
+  @works = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
+    pager.replace works
+  end
+
+  @resource_types = collection[:data].select {|item| item["type"] == "resource-types" }
+  @publishers = []
+
+  params[:model] = "data-centers"
 
   haml :'data-centers/show'
 end
@@ -218,7 +245,22 @@ end
 get '/members/:id' do
   result = get_members(id: params[:id])
   @member = result[:data]
-  @meta = result[:meta]
+
+  page = params.fetch('page', 1).to_i
+  offset = DEFAULT_ROWS * (page - 1)
+
+  collection = get_works(q: params[:q], "member-id" => params[:id], offset: offset, 'resource-type-id' => params['resource-type-id'])
+  works = collection[:data].select {|item| item["type"] == "works" }
+  @meta = collection[:meta]
+
+  @works = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
+    pager.replace works
+  end
+
+  @resource_types = collection[:data].select {|item| item["type"] == "resource-types" }
+  @publishers = []
+
+  params[:model] = "members"
 
   haml :'members/show'
 end

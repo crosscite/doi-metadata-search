@@ -2,7 +2,10 @@
 
 .container-fluid
   .row
-    .col-md-9
+    .col-md-9#content-contributor
       = haml :'contributors/item', locals: { item: @contributor }
+
+    .col-md-9#content-contributions
+      = haml :'contributions/index'
 
 = haml :"#{ENV['RA']}/footer"

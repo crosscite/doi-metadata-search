@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://10.2.2.14/members?q=tib
+    uri: http://api.labs.datacite.org/members?q=tib
     body:
       encoding: US-ASCII
       string: ''
@@ -16,6 +16,10 @@ http_interactions:
       code: 200
       message: ''
     headers:
+      Server:
+      - nginx/1.10.0
+      Date:
+      - Wed, 25 May 2016 12:47:03 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -33,27 +37,23 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - f78f0c39-ad53-44d3-a31c-647027de38b6
+      - 7e271779-85f2-4b4c-8f10-02e39b293fe1
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
-      - W/"f1e997c6cdd9662f20aa85d4ed5b0f5d"
+      - W/"fcf7e1d5daf7097b79ee404deed7fc21"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.126797'
+      - '0.022609'
       X-Content-Type-Options:
       - nosniff
-      Date:
-      - Wed, 11 May 2016 18:20:51 GMT
       X-Powered-By:
-      - Phusion Passenger 5.0.23
-      Server:
-      - nginx/1.8.0 + Phusion Passenger 5.0.23
+      - Phusion Passenger 5.0.28
     body:
       encoding: UTF-8
-      string: '{"data":[{"id":"TIB","type":"members","attributes":{"title":"German
-        National Library of Science and Technology (TIB)","description":"","member-type":"full","region":"EMEA","country":"Germany","year":2009}}],"meta":{"total":1,"member-types":{"full":1},"regions":{"emea":1},"years":{"2009":1}}}'
+      string: '{"data":[{"id":"tib","type":"members","attributes":{"title":"German
+        National Library of Science and Technology (TIB)","description":"","member-type":"full","region":"EMEA","country":"Germany","year":2009,"updated":null}}],"meta":{"total":1,"member-types":{"allocating":1},"regions":{"emea":1},"years":{"2009":1}}}'
     http_version: 
-  recorded_at: Wed, 11 May 2016 18:20:51 GMT
+  recorded_at: Wed, 25 May 2016 12:47:03 GMT
 recorded_with: VCR 2.9.3

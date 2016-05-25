@@ -29,35 +29,35 @@ http_interactions:
       Vary:
       - Accept-Encoding
       X-Miniprofiler-Ids:
-      - '["y5x4pflv5hn7thoudnh5","n0ys9xp61k520oovtst6","ialyokk14ffmzrzo84lp","5yxg8ncsgt0988kc844j","ls3y4pywbmq5p67mi963"]'
+      - '["39xs4dff8rtlkyak8a5p","qmc3z6fcavwh11acm4gg","40g97cfsfinwrsinfoo4","p5ruzznbvvl27z06vmhm"]'
       Access-Control-Max-Age:
       - '1728000'
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 796ee1ed-74e4-4ed9-825a-6dc7ff39f103
+      - 953238da-2fe6-4c14-8110-f58306576164
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
-      - W/"798986aae30a4de43af074cbade27d09"
+      - W/"7c02f24dc567fa25b80b41d470de58aa"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.526095'
+      - '0.411684'
       X-Content-Type-Options:
       - nosniff
       Date:
-      - Fri, 08 Apr 2016 06:19:52 GMT
+      - Wed, 25 May 2016 12:52:58 GMT
       Set-Cookie:
       - __profilin=p%3Dt; path=/, __profilin=p%3Dt; path=/, __profilin=p%3Dt; path=/
       X-Powered-By:
-      - Phusion Passenger 5.0.26
+      - Phusion Passenger 5.0.27
       Server:
-      - nginx/1.8.1 + Phusion Passenger 5.0.26
+      - nginx/1.8.1 + Phusion Passenger 5.0.27
     body:
       encoding: UTF-8
       string: '{"meta":{"status":"ok","message-type":"work-list","message-version":"v7","total":1,"total_pages":1,"page":1},"works":[{"id":"http://doi.org/10.17600/14000300","author":[],"title":"MOMARSAT2014
-        cruise,Pourquoi pas ? R/V","issued":"2014","updated":"2016-04-07T21:44:22Z","DOI":"10.17600/14000300","results":{"datacite_related":1}}]}'
+        cruise,Pourquoi pas ? R/V","published":"2014","issued":"2014-01-01T00:00:00Z","updated":"2016-04-10T19:26:07Z","DOI":"10.17600/14000300","registration_agency_id":"datacite","results":{}}]}'
     http_version: 
-  recorded_at: Fri, 08 Apr 2016 06:19:52 GMT
+  recorded_at: Wed, 25 May 2016 12:52:58 GMT
 recorded_with: VCR 2.9.3

@@ -12,7 +12,7 @@ http_interactions:
       Accept:
       - application/json
       Authorization:
-      - Token token=MZEsj3SaSZkfpeKSXmT1
+      - Token token=<VOLPINO_API_KEY>
       Content-Type:
       - application/json
   response:
@@ -37,24 +37,24 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 0e15e0da-7a69-42ec-95b8-dcb5ab6d1074
+      - ea7aee70-c9fa-4b9e-96b4-755b1d52627b
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       X-Runtime:
-      - '0.247012'
+      - '0.232046'
       X-Frame-Options:
       - SAMEORIGIN
       X-Content-Type-Options:
       - nosniff
       Date:
-      - Mon, 07 Mar 2016 21:56:49 GMT
+      - Wed, 25 May 2016 12:53:25 GMT
       X-Powered-By:
       - Phusion Passenger 5.0.24
       Server:
       - nginx/1.8.1 + Phusion Passenger 5.0.24
     body:
       encoding: UTF-8
-      string: '{"data":{"id":"7b6b350c-114f-49ef-9fa8-d6f0b4d8acfd","type":"claims","attributes":{"orcid":"0000-0002-1825-0097","doi":"10.5061/DRYAD.781PV","source_id":"orcid_search","state":"waiting","claimed_at":null}}}'
+      string: '{"data":{"id":"fde4c3c7-e3d7-4d6e-a756-4d6f62ae3db2","type":"claims","attributes":{"orcid":"0000-0002-1825-0097","doi":"10.5061/DRYAD.781PV","source-id":"orcid_search","state":"waiting","claimed-at":null}}}'
     http_version: 
-  recorded_at: Mon, 07 Mar 2016 21:56:49 GMT
+  recorded_at: Wed, 25 May 2016 12:53:25 GMT
 recorded_with: VCR 2.9.3

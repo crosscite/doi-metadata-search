@@ -6,11 +6,11 @@
       %ul
         - @meta["member-types"].each do |mt|
           %li
-            - if @params[:member_type].present?
+            - if @params["member-type"].present?
               %a{:href => "/members?q=#{params[:q]}"}
                 %i.fa.fa-check-square-o
             - else
-              %a{:href => "/members?member_type=#{mt.first}&q=#{params[:q]}"}
+              %a{:href => "/members?member-type=#{mt.first}&q=#{params[:q]}"}
                 %i.fa.fa-square-o
             = mt.first
             %span.number.pull-right

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://10.2.2.12/api/users/0000-0002-1825-0097
+    uri: http://api.labs.datacite.org/works?id=10.6084/M9.FIGSHARE.C.1909847&offset=0&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -13,15 +13,19 @@ http_interactions:
       - application/json
   response:
     status:
-      code: 404
+      code: 422
       message: ''
     headers:
+      Server:
+      - nginx/1.10.0
+      Date:
+      - Wed, 25 May 2016 08:55:14 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
       - keep-alive
       Status:
-      - 404 Not Found
+      - 422 Unprocessable Entity
       Cache-Control:
       - no-cache
       Vary:
@@ -29,23 +33,18 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 7708a0f5-3c38-44b0-a9d0-2ffe116c0c2a
+      - dee4f8f5-c096-4b2c-8cbe-0cc710f2cdd6
       X-Runtime:
-      - '0.054536'
+      - '0.030005'
       X-Frame-Options:
       - SAMEORIGIN
       X-Content-Type-Options:
       - nosniff
-      Date:
-      - Sat, 05 Mar 2016 17:38:05 GMT
       X-Powered-By:
-      - Phusion Passenger 5.0.24
-      Server:
-      - nginx/1.8.1 + Phusion Passenger 5.0.24
+      - Phusion Passenger 5.0.28
     body:
       encoding: UTF-8
-      string: '{"errors":[{"status":"404","title":"The page you are looking for doesn''t
-        exist."}]}'
+      string: '{"errors":[{"status":"422","title":"undefined method `[]'' for nil:NilClass"}]}'
     http_version: 
-  recorded_at: Sat, 05 Mar 2016 17:38:05 GMT
+  recorded_at: Wed, 25 May 2016 08:55:14 GMT
 recorded_with: VCR 2.9.3

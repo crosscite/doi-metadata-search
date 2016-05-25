@@ -18,7 +18,7 @@
               = resource_type_title(@resource_types, f.first)
               %span.number.pull-right= "#{number_with_delimiter(f.last)}"
 
-  - if @meta["publishers"].present?
+  - if @meta["publishers"].present? && params[:model] == "works"
     .panel-body
       %h4
         Data Centers

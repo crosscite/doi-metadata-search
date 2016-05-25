@@ -2,7 +2,7 @@
 .panel.panel-default
   .panel-body
     %h3.work
-      %a{:href => works_action(item, params)}
+      %a{:href => item["id"]}
         = attributes["title"]
     - if attributes["author"].present?
       = author_format(attributes["author"])

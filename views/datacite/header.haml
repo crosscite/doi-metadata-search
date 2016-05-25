@@ -9,26 +9,26 @@
           %span.icon-bar
       - unless @meta[:page] == "splash"
         %a.navbar-brand{:href => "/"}
-          %img.logo{src: "//#{ENV['CDN_HOST']}/assets/datacite.png" }
+          %img.logo{src: "//#{ENV['CDN_HOST']}/images/datacite.png" }
           %span.logo> Data
           %span Cite Search
       .navbar-collapse.collapse
         %ul.nav.navbar-nav.navbar-right
-          / %li
-          /   %a{:href => "/works"}
-          /     Works
+          %li
+            %a{:href => "/works"}
+              Works
           / %li
           /   %a{:href => "/relations"}
           /     Relations
-          / %li
-          /   %a{:href => "/contributors"}
-          /     Contributors
-          / %li
-          /   %a{:href => "/datacenters"}
-          /     Data Centers
-          / %li
-          /   %a{:href => "/members"}
-          /     Members
+          %li
+            %a{:href => "/contributors"}
+              Contributors
+          %li
+            %a{:href => "/data-centers"}
+              Data Centers
+          %li
+            %a{:href => "/members"}
+              Members
           %li.dropdown
             %a.dropdown-toggle{href: '#', data: { toggle: "dropdown"}, aria: { haspopup: "true", expanded: "false" }}
               %i.fa.fa-th
@@ -58,9 +58,9 @@
                     %i.fa.fa-user
                     Settings
                 %li
-                  %a{:href => "#{ENV['JWT_HOST']}/claims"}
+                  %a{:href => "/contributors/#{current_user.orcid}"}
                     %i.fa.fa-files-o
-                    Claims
+                    My Works
                 %li.divider
                 %li
                   %a{:href => "http://orcid.org/#{current_user.orcid}"}

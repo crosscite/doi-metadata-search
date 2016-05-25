@@ -1,6 +1,6 @@
 .panel.panel-default
   .panel-body
-    %h4.work
+    %h3.work
       %a{:href => '/members/' + item["id"]}
         = item.fetch("attributes", {}).fetch("title", nil)
 
