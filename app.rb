@@ -147,7 +147,10 @@ end
 get %r{/works/(.+)} do
   params["id"] = params[:captures].first
   result = get_works(id: params["id"])
-  @work = result[:data]
+  work = result[:data]
+
+  # check for existing claims if user is logged in
+  @work = get_claims(current_user, [work]).first if current_user
 
   page = params.fetch('page', 1).to_i
   offset = DEFAULT_ROWS * (page - 1)
