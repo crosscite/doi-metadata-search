@@ -136,8 +136,8 @@ get '/works' do
     pager.replace works
   end
 
-  @resource_types = result[:data].select {|item| item["type"] == "resource-types" }
-  @publishers = result[:data].select {|item| item["type"] == "publishers" }
+  @resource_types = Array(result[:data]).select {|item| item["type"] == "resource-types" }
+  @publishers = Array(result[:data]).select {|item| item["type"] == "publishers" }
 
   params[:model] = "works"
 
@@ -153,14 +153,14 @@ get %r{/works/(.+)} do
   offset = DEFAULT_ROWS * (page - 1)
 
   collection = get_contributions("work-id" => params["id"], "source-id" => params["source-id"], offset: offset, rows: 100)
-  contributions = collection[:data].select {|item| item["type"] == "contributions" }
+  contributions = Array(collection[:data]).select {|item| item["type"] == "contributions" }
   @meta = collection[:meta]
 
   @contributions = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
     pager.replace contributions
   end
 
-  @sources = collection[:data].select {|item| item["type"] == "sources" }
+  @sources = Array(collection[:data]).select {|item| item["type"] == "sources" }
 
   params[:model] = "works"
 
@@ -200,14 +200,14 @@ get '/contributors/:id' do
   offset = DEFAULT_ROWS * (page - 1)
 
   collection = get_contributions("contributor-id" => id, "source-id" => params["source-id"], offset: offset)
-  contributions = collection[:data].select {|item| item["type"] == "contributions" }
+  contributions = Array(collection[:data]).select {|item| item["type"] == "contributions" }
   @meta = collection[:meta]
 
   @contributions = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
     pager.replace contributions
   end
 
-  @sources = collection[:data].select {|item| item["type"] == "sources" }
+  @sources = Array(collection[:data]).select {|item| item["type"] == "sources" }
 
   params[:model] = "contributors"
 
@@ -244,7 +244,7 @@ get '/data-centers/:id' do
     pager.replace works
   end
 
-  @resource_types = collection[:data].select {|item| item["type"] == "resource-types" }
+  @resource_types = Array(collection[:data]).select {|item| item["type"] == "resource-types" }
   @publishers = []
 
   params[:model] = "data-centers"
@@ -275,7 +275,7 @@ get '/members/:id' do
     pager.replace works
   end
 
-  @resource_types = collection[:data].select {|item| item["type"] == "resource-types" }
+  @resource_types = Array(collection[:data]).select {|item| item["type"] == "resource-types" }
   @publishers = []
 
   params[:model] = "members"
