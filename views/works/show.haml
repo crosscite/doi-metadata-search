@@ -2,7 +2,13 @@
 
 .container-fluid
   .row
-    .col-md-9
+    .col-md-9#content-work
       = haml :'works/item', locals: { item: @work }
+
+    .col-md-9#content-contributions
+      = haml :'contributions/index'
+
+    .col-md-3
+      = haml :'contributions/facets'
 
 = haml :"#{ENV['RA']}/footer"

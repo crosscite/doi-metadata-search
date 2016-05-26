@@ -145,10 +145,24 @@ get '/works' do
 end
 
 get %r{/works/(.+)} do
-  params[:id] = params[:captures]
-  result = get_works(id: params[:id])
+  params["id"] = params[:captures].first
+  result = get_works(id: params["id"])
   @work = result[:data]
-  @meta = result[:meta]
+
+  page = params.fetch('page', 1).to_i
+  offset = DEFAULT_ROWS * (page - 1)
+
+  collection = get_contributions("work-id" => params["id"], "source-id" => params["source-id"], offset: offset, rows: 100)
+  contributions = collection[:data].select {|item| item["type"] == "contributions" }
+  @meta = collection[:meta]
+
+  @contributions = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
+    pager.replace contributions
+  end
+
+  @sources = collection[:data].select {|item| item["type"] == "sources" }
+
+  params[:model] = "works"
 
   haml :'works/show'
 end
@@ -185,13 +199,17 @@ get '/contributors/:id' do
   page = params.fetch('page', 1).to_i
   offset = DEFAULT_ROWS * (page - 1)
 
-  collection = get_contributions("contributor-id" => id, offset: offset)
+  collection = get_contributions("contributor-id" => id, "source-id" => params["source-id"], offset: offset)
   contributions = collection[:data].select {|item| item["type"] == "contributions" }
   @meta = collection[:meta]
 
   @contributions = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
     pager.replace contributions
   end
+
+  @sources = collection[:data].select {|item| item["type"] == "sources" }
+
+  params[:model] = "contributors"
 
   haml :'contributors/show'
 end

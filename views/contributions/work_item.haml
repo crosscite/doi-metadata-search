@@ -2,7 +2,7 @@
 .panel.panel-default
   .panel-body
     %h3.work
-      %a{:href => item["id"]}
+      %a{:href => works_action(item, params)}
         = attributes["title"]
     - if attributes["author"].present?
       = author_format(attributes["author"])
@@ -11,10 +11,12 @@
     - if attributes["description"].present?
       .description
         = description_format(attributes["description"])
+    .contribution
+      Contribution
   .panel-footer.item-links
-    %a{:href => item["id"]}
+    %a{:href => "http://doi.org/#{attributes["doi"]}"}
       %i.fa.fa-external-link
-      = item["id"]
+      = "http://doi.org/#{attributes["doi"]}"
     %a.cite-link.nowrap{:href => "javascript:showCiteBox('#{attributes["doi"]}', '#{attributes["title"]}');"}
       %i.fa.fa-quote-left
       Cite
@@ -40,3 +42,6 @@
         %span.well-transparent.claim-ok{id: attributes["doi"], data: { doi: attributes["doi"] }}
           %img{src: "//#{ENV['CDN_HOST']}/assets/orcid_16x16.gif" }
           %span In your ORCID record
+
+    %span.pull-right
+      = source_title(@sources, item.fetch("attributes", {}).fetch("source-id", nil))

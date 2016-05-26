@@ -1,0 +1,14 @@
+- attributes = item.fetch("attributes", {})
+.panel.panel-default
+  .panel-body
+    %h3.work
+      %a{:href => "/contributors/#{attributes["orcid"]}"}
+        = attributes["credit-name"]
+    .contribution
+      Contribution
+  .panel-footer.item-links
+    %a{:href => "http://orcid.org/#{attributes["orcid"]}"}
+      %i.fa.fa-external-link
+      = "http://orcid.org/#{attributes["orcid"]}"
+    %span.pull-right
+      = source_title(@sources, item.fetch("attributes", {}).fetch("source-id", nil))

@@ -8,7 +8,10 @@
       = "#{number_with_delimiter(@meta['total'])} Contributions"
 
   - @contributions.each do |item|
-    = haml :'contributions/item', locals: { item: item }
+    - if params[:model] == "works"
+      = haml :'contributions/contributor_item', locals: { item: item }
+    - else
+      = haml :'contributions/work_item', locals: { item: item }
 
   .text-center
     = will_paginate @contributions, renderer: BootstrapPagination::Sinatra

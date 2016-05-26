@@ -44,6 +44,13 @@ helpers do
     publisher.fetch("attributes", {}).fetch("title", "")
   end
 
+  def source_title(sources, id)
+    source = sources.find { |s| s["id"] == id }
+    return "" unless source.present?
+
+    source.fetch("attributes", {}).fetch("title", "")
+  end
+
   def registration_agency_format(attributes)
     ra = attributes.fetch("registration-agency-id", nil)
     registration_agencies = { "crossref" => "Crossref",
@@ -88,19 +95,24 @@ helpers do
   def works_query(options)
     params = { "id" => options.fetch("id", nil),
                "q" => options.fetch("q", nil),
-               "resource-type-id" => options.fetch("resource-type-id", nil) }.compact
+               "resource-type-id" => options.fetch("resource-type-id", nil),
+               "source-id" => options.fetch("source-id", nil) }.compact
 
     if options[:model] == "data-centers"
       "/data-centers/#{params['id']}?" + URI.encode_www_form(params.except('id'))
     elsif options[:model] == "members"
       "/members/#{params['id']}?" + URI.encode_www_form(params.except('id'))
+    elsif options[:model] == "contributors"
+      "/contributors/#{params['id']}?" + URI.encode_www_form(params.except('id'))
+    elsif params["id"].present?
+      "/works/#{params['id']}?" + URI.encode_www_form(params.except('id'))
     else
       "/works?" + URI.encode_www_form(params)
     end
   end
 
   def works_action(item, params)
-    if params[:id].present?
+    if params[:model] == "works" && params[:id].present?
       item["id"]
     else
       "/works/#{item.fetch('attributes', {}).fetch("doi", '')}"

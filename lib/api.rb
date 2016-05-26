@@ -7,7 +7,7 @@ module Sinatra
     def get_works(params = {})
       params = { id: params.fetch(:id, nil),
                  offset: params.fetch(:offset, 0),
-                 rows: 25,
+                 rrows: params.fetch(:rows, 25),
                  q: params.fetch(:q, nil),
                  'resource-type-id' => params.fetch('resource-type-id', nil),
                  year: params.fetch('year', nil),
@@ -22,7 +22,7 @@ module Sinatra
     def get_contributors(params = {})
       params = { id: params.fetch(:id, nil),
                  offset: params.fetch(:offset, 0),
-                 rows: 25,
+                 rows: params.fetch(:rows, 25),
                  q: params.fetch(:q, nil) }.compact
       url = "#{ENV['API_URL']}/contributors?" + URI.encode_www_form(params)
 
@@ -32,8 +32,10 @@ module Sinatra
 
     def get_contributions(params = {})
       params = { "contributor-id" => params.fetch("contributor-id", nil),
+                 "work-id" => params.fetch("work-id", nil),
+                 "source-id" => params.fetch("source-id", nil),
                  offset: params.fetch(:offset, 0),
-                 rows: 25 }.compact
+                 rows: params.fetch(:rows, 25) }.compact
       url = "#{ENV['API_URL']}/contributions?" + URI.encode_www_form(params)
 
       result = Maremma.get url
@@ -43,7 +45,7 @@ module Sinatra
     def get_datacenters(params = {})
       params = { id: params.fetch(:id, nil),
                  offset: params.fetch(:offset, 0),
-                 rows: 25,
+                 rows: params.fetch(:rows, 25),
                  q: params.fetch(:q, nil),
                  'registration-agency-id': "datacite" }.compact
       url = "#{ENV['API_URL']}/publishers?" + URI.encode_www_form(params)
