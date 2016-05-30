@@ -1,25 +1,40 @@
 - attributes = item.fetch("attributes", {})
+- new_params = params[:model] == "works" && params["id"].present? ? params.merge(external_link: true) : params
+
 .panel.panel-default
   .panel-body
     %h3.work
-      %a{:href => works_action(item, params)}
+      %a{:href => works_action(item, new_params)}
         = attributes["title"]
     - if attributes["author"].present?
       = author_format(attributes["author"])
     .metadata
-      = metadata_format(attributes)
+      = metadata_format(attributes, work_types: @work_types)
     - if attributes["description"].present?
       .description
         = description_format(attributes["description"])
+    - if attributes["license"].present?
+      .license
+        %a{:href => attributes["license"]}
+          %img{:src => license_img(attributes["license"])}
+
+  - if attributes["results"].present?
+    - attributes["results"].each do |k, v|
+      .panel-footer
+        = source_title(@sources, k)
+        %span.badge
+          = number_with_delimiter(v)
+
   .panel-footer.item-links
     %a{:href => item["id"]}
       %i.fa.fa-external-link
       = item["id"]
-    %a.cite-link.nowrap{:href => "javascript:showCiteBox('#{attributes["doi"]}', '#{attributes["title"]}');"}
-      %i.fa.fa-quote-left
-      Cite
+    - if attributes["doi"].present?
+      %a.cite-link.nowrap{:href => "javascript:showCiteBox('#{attributes["doi"]}', '#{attributes["title"]}');"}
+        %i.fa.fa-quote-left
+        Cite
 
-    - if signed_in?
+    - if signed_in? && attributes["registration-agency-id"] == "datacite"
       - if attributes["claim-status"] == "none"
         %span.well-transparent.claim-none{id: attributes["doi"], data: { doi: attributes["doi"], orcid: current_user.orcid, "api-key" => current_user.api_key }}
           %img{src: "//#{ENV['CDN_HOST']}/assets/orcid_16x16.gif" }

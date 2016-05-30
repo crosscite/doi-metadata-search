@@ -11,32 +11,23 @@
     - if attributes["description"].present?
       .description
         = description_format(attributes["description"])
-    .contribution
-      - if params[:model] == "sources"
-        Contributed by
-        %a{href: contributors_action(item, params)}
-          = attributes["credit-name"]
-      - else
-        Contribution
 
-  - if attributes["results"].present?
-    - attributes["results"].each do |k, v|
-      .panel-footer
-        %span.badge
-          = number_with_delimiter(v)
-        = (v > 1 ? " Related Identifiers" : " Related Identifier")
-        .pull-right
-          = source_title(@contribution_sources, k)
+  .panel-footer
+    %span
+      = relation_type_title(@relation_types, item.fetch("attributes", {}).fetch("relation-type-id", nil))
+      = attributes["obj-id"]
+    %span.pull-right
+      = source_title(@relation_sources, item.fetch("attributes", {}).fetch("source-id", nil))
 
   .panel-footer.item-links
-    %a{:href => attributes["obj-id"]}
+    %a{:href => attributes["subj-id"]}
       %i.fa.fa-external-link
-      = attributes["obj-id"]
+      = attributes["subj-id"]
     %a.cite-link.nowrap{:href => "javascript:showCiteBox('#{attributes["doi"]}', '#{attributes["title"]}');"}
       %i.fa.fa-quote-left
       Cite
 
-    - if signed_in?
+    - if signed_in? && attributes["registration-agency-id"] == "datacite"
       - if attributes["claim-status"] == "none"
         %span.well-transparent.claim-none{id: attributes["doi"], data: { doi: attributes["doi"], orcid: current_user.orcid, "api-key" => current_user.api_key }}
           %img{src: "//#{ENV['CDN_HOST']}/assets/orcid_16x16.gif" }
@@ -57,6 +48,3 @@
         %span.well-transparent.claim-ok{id: attributes["doi"], data: { doi: attributes["doi"] }}
           %img{src: "//#{ENV['CDN_HOST']}/assets/orcid_16x16.gif" }
           %span In your ORCID record
-
-    %span.pull-right
-      = source_title(@contribution_sources, item.fetch("attributes", {}).fetch("source-id", nil))

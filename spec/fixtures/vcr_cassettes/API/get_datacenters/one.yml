@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.labs.datacite.org/publishers?id=CERN.ZENODO&offset=0&registration-agency-id=datacite&rows=25
+    uri: http://10.2.2.14/publishers?id=CERN.ZENODO&offset=0&registration-agency-id=datacite&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -16,10 +16,6 @@ http_interactions:
       code: 200
       message: ''
     headers:
-      Server:
-      - nginx/1.10.0
-      Date:
-      - Wed, 25 May 2016 12:03:58 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,23 +33,27 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 760afbe9-6bcb-4015-8a84-58668790e4a0
+      - 1c6fcf40-4b6f-4744-83b3-4a9851a729bd
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
-      - W/"cc573664a1040c47537fb4f5585ebf6c"
+      - W/"d94f97cf0db75c24330bf59ca5772977"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.033559'
+      - '0.236668'
       X-Content-Type-Options:
       - nosniff
+      Date:
+      - Sun, 29 May 2016 14:41:39 GMT
       X-Powered-By:
-      - Phusion Passenger 5.0.28
+      - Phusion Passenger 5.0.23
+      Server:
+      - nginx/1.8.0 + Phusion Passenger 5.0.23
     body:
       encoding: UTF-8
       string: '{"data":{"id":"cern.zenodo","type":"publishers","attributes":{"title":"ZENODO
-        - Research. Shared.","other-names":[],"prefixes":[],"member-id":"cern","registration-agency-id":"datacite","updated":"2016-05-25T11:45:25Z"}}}'
+        - Research. Shared.","other-names":[],"prefixes":[],"member-id":"cern","registration-agency-id":"datacite","updated":"2016-05-29T14:38:17Z"}}}'
     http_version: 
-  recorded_at: Wed, 25 May 2016 12:03:58 GMT
+  recorded_at: Sun, 29 May 2016 14:41:39 GMT
 recorded_with: VCR 2.9.3

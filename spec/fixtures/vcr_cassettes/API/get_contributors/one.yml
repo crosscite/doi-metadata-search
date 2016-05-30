@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.labs.datacite.org/contributors?id=orcid.org/0000-0002-4000-4167&offset=0&rows=25
+    uri: http://10.2.2.14/contributors?id=orcid.org/0000-0002-4000-4167&offset=0&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -16,10 +16,6 @@ http_interactions:
       code: 200
       message: ''
     headers:
-      Server:
-      - nginx/1.10.0
-      Date:
-      - Wed, 25 May 2016 12:03:57 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,22 +33,26 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 5d507c20-457e-4836-a6c6-811b8213188f
+      - 7bc0fb16-ca9e-434c-8163-0daa85fd5c53
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
-      - W/"0fb76be6706bd91b009d42894b376e7f"
+      - W/"a54d8e34532d97531ccfe04a8b0c5b83"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.059404'
+      - '0.320587'
       X-Content-Type-Options:
       - nosniff
+      Date:
+      - Sun, 29 May 2016 16:50:27 GMT
       X-Powered-By:
-      - Phusion Passenger 5.0.28
+      - Phusion Passenger 5.0.23
+      Server:
+      - nginx/1.8.0 + Phusion Passenger 5.0.23
     body:
       encoding: UTF-8
-      string: '{"data":{"id":"http://orcid.org/0000-0002-4000-4167","type":"contributors","attributes":{"given":"Peter","family":"Arend","updated":"1970-01-01T00:00:00Z"}}}'
+      string: '{"data":[{"id":"http://orcid.org/0000-0002-4000-4167","type":"contributors","attributes":{"given":"Peter","family":"Arend","literal":null,"orcid":"0000-0002-4000-4167","github":null,"updated":"1970-01-01T00:00:00Z"}}]}'
     http_version: 
-  recorded_at: Wed, 25 May 2016 12:03:57 GMT
+  recorded_at: Sun, 29 May 2016 16:50:27 GMT
 recorded_with: VCR 2.9.3

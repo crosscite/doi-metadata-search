@@ -2,13 +2,13 @@
 .panel.panel-default
   .panel-body
     %h3.work
-      %a{:href => "/contributors/#{attributes["orcid"]}"}
+      %a{:href => contributors_action(item, params)}
         = attributes["credit-name"]
     .contribution
       Contribution
   .panel-footer.item-links
-    %a{:href => "http://orcid.org/#{attributes["orcid"]}"}
+    %a{:href => attributes["subj-id"]}
       %i.fa.fa-external-link
-      = "http://orcid.org/#{attributes["orcid"]}"
+      = attributes["subj-id"]
     %span.pull-right
-      = source_title(@sources, item.fetch("attributes", {}).fetch("source-id", nil))
+      = source_title(@contribution_sources, item.fetch("attributes", {}).fetch("source-id", nil))

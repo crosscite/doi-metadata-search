@@ -5,13 +5,31 @@
     .col-md-9#content-data-center
       = haml :'data-centers/item', locals: { item: @datacenter }
 
-    .col-md-9
-      = haml :'works/search'
-
-    .col-md-9#content-works
-      = haml :'works/list'
-
     .col-md-3
-      = haml :'works/facets'
+      - registration_agency_id = @datacenter.fetch("attributes", {}).fetch("registration-agency-id", nil)
+      - member_id = @datacenter.fetch("attributes", {}).fetch("member-id", nil)
+      .panel.facets
+        .panel-body.metadata
+          - if registration_agency_id == "datacite"
+            %h5
+              Member
+            .registration_agency
+              %a{href: "/members/#{member_id}"}
+                = member_title(@members, member_id)
+          - elsif registration_agency_id.present?
+            %h5
+              Registration Agency
+            .registration_agency
+              = registration_agency_format(@datacenter.fetch("attributes", {}))
+
+    - if registration_agency_id == "datacite"
+      .col-md-9
+        = haml :'works/search'
+
+      .col-md-9#content-works
+        = haml :'works/list'
+
+      .col-md-3
+        = haml :'works/facets'
 
 = haml :"#{ENV['RA']}/footer"

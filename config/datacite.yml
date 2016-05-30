@@ -89,3 +89,16 @@ participate_links:
    url: https://www.datacite.org/participate/journal-editors
  - name: Data centres
    url: https://www.datacite.org/participate/data-centres
+social:
+ - icon: twitter
+   url:  https://twitter.com/datacite
+   desc: Follow DataCite on Twitter
+   share_url: http://twitter.com/share
+   share_title: ?text=
+   share_link: "&amp;url="
+ - icon:  facebook
+   url: https://facebook.com/???
+   desc: Connect with DataCite on Facebook
+   share_url: https://www.facebook.com/sharer.php
+   share_title: ?t=
+   share_link: "&amp;u="

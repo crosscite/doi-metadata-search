@@ -1,7 +1,9 @@
 .search-wide
   %form.form-horizontal{:method => 'GET', :action => works_query(params) }
     .input-group
-      %input.form-control{type: "text", name: 'q', id: 'search-input', value: @params[:q], placeholder: "Search for work"}
+      - if params["resource-type-id"].present?
+        %input{type: "hidden", name: "resource-type-id", value: params["resource-type-id"]}
+      %input.form-control{type: "text", name: 'q', id: 'search-input', value: params[:q], placeholder: "Search for work"}
       .input-group-btn
         %button.btn.btn-primary{type: "submit"}
           Search

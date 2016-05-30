@@ -1,9 +1,0 @@
-.panel.panel-default
-  .panel-body
-    %h4.work
-      %a{:href => '/relations/' + orcid_from_url(item["id"])}
-        = credit_name(item["attributes"])
-  .panel-footer
-    %a{ href: item["id"] }
-      %i.fa.fa-external-link
-      = item["id"]

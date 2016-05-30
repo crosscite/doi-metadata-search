@@ -18,7 +18,7 @@ MIN_MATCH_SCORE = 2
 MIN_MATCH_TERMS = 3
 MAX_MATCH_TEXTS = 1000
 TYPICAL_ROWS = [10, 20, 50, 100, 500]
-DEFAULT_ROWS = 20
+DEFAULT_ROWS = 25
 MONTH_SHORT_NAMES = %w(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec)
 ORCID_VERSION = '1.2'
 
@@ -138,6 +138,8 @@ get '/works' do
 
   @resource_types = Array(result[:data]).select {|item| item["type"] == "resource-types" }
   @publishers = Array(result[:data]).select {|item| item["type"] == "publishers" }
+  @sources = Array(result[:data]).select {|item| item["type"] == "sources" }
+  @work_types = Array(result[:data]).select {|item| item["type"] == "work-types" }
 
   params[:model] = "works"
 
@@ -146,33 +148,59 @@ end
 
 get %r{/works/(.+)} do
   params["id"] = params[:captures].first
-  result = get_works(id: params["id"])
-  work = result[:data]
 
-  # check for existing claims if user is logged in
-  @work = get_claims(current_user, [work]).first if current_user
+  # workaround, as nginx swallows double backslashes
+  params["id"] = params["id"].gsub(/(http|https):\/+(\w+)/, '\1://\2')
+
+  result = get_works(id: params["id"])
+  works = result[:data].select {|item| item["type"] == "works" }
+
+  unless works.present?
+    flash[:error] = "Work \"#{params['id']}\" not found."
+    redirect to('/works')
+  end
+
+  @publishers = Array(result[:data]).select {|item| item["type"] == "publishers" }
+  @members = Array(result[:data]).select {|item| item["type"] == "members" }
+  @sources = Array(result[:data]).select {|item| item["type"] == "sources" }
+  @work_types = Array(result[:data]).select {|item| item["type"] == "work-types" }
+  @meta = result[:meta]
+
+  # check for existing claims if user is logged in and work is registered with DataCite
+  if current_user && works.first.fetch("attributes", {}).fetch("registration-agency-id", nil) == "datacite"
+    works = get_claims(current_user, works)
+  end
+
+  @work = works.first
 
   page = params.fetch('page', 1).to_i
   offset = DEFAULT_ROWS * (page - 1)
 
   collection = get_contributions("work-id" => params["id"], "source-id" => params["source-id"], offset: offset, rows: 100)
-  contributions = Array(collection[:data]).select {|item| item["type"] == "contributions" }
-  @meta = collection[:meta]
+  @contributions= Array(collection[:data]).select {|item| item["type"] == "contributions" }
+  @contribution_sources = Array(collection[:data]).select {|item| item["type"] == "sources" }
+  @meta["contribution-total"] = collection.fetch(:meta, {}).fetch("total", 0)
+  @meta["contribution-sources"] = collection.fetch(:meta, {}).fetch("sources", {})
 
-  @contributions = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
-    pager.replace contributions
+  relations = get_relations("work-id" => params["id"], "source-id" => params["source-id"], "relation-type-id" => params["relation-type-id"], offset: offset, rows: 25)
+  @relation_sources = Array(relations[:data]).select {|item| item["type"] == "sources" }
+  @relation_types = Array(relations[:data]).select {|item| item["type"] == "relation-types" }
+  @meta["relation-total"] = relations.fetch(:meta, {}).fetch("total", 0)
+  @meta["relation-types"] = relations.fetch(:meta, {}).fetch("relation-types", {})
+  @meta["relation-sources"] = relations.fetch(:meta, {}).fetch("sources", {})
+
+  @relations= Array(relations[:data]).select {|item| item["type"] == "relations" }
+
+  # check for existing claims if user is logged in
+  @relations = get_claims(current_user, @relations) if current_user
+
+  @relations = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
+    pager.replace @relations
   end
-
-  @sources = Array(collection[:data]).select {|item| item["type"] == "sources" }
 
   params[:model] = "works"
 
   haml :'works/show'
-end
-
-get '/relations' do
-  # contributors = get_contributors(q: params[:q])
-  # haml :contributors, locals: { data: contributors[:data], meta: contributors[:meta], params: params }
 end
 
 get '/contributors' do
@@ -194,10 +222,10 @@ get '/contributors/:id' do
   if validate_orcid(params[:id])
     id = "orcid.org/#{params[:id]}"
   else
-    id = "github.com/#{params[:id]}"
+    id = "https://github.com/#{params[:id]}"
   end
   result = get_contributors(id: id)
-  @contributor = result[:data]
+  @contributor = result[:data].find { |item| item["type"] == "contributors" }
 
   page = params.fetch('page', 1).to_i
   offset = DEFAULT_ROWS * (page - 1)
@@ -205,12 +233,12 @@ get '/contributors/:id' do
   collection = get_contributions("contributor-id" => id, "source-id" => params["source-id"], offset: offset)
   contributions = Array(collection[:data]).select {|item| item["type"] == "contributions" }
   @meta = collection[:meta]
-
+  @contribution_sources = Array(collection[:data]).select {|item| item["type"] == "sources" }
+  @meta["contribution-total"] = collection.fetch(:meta, {}).fetch("total", 0)
+  @meta["contribution-sources"] = collection.fetch(:meta, {}).fetch("sources", {})
   @contributions = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
     pager.replace contributions
   end
-
-  @sources = Array(collection[:data]).select {|item| item["type"] == "sources" }
 
   params[:model] = "contributors"
 
@@ -284,6 +312,53 @@ get '/members/:id' do
   params[:model] = "members"
 
   haml :'members/show'
+end
+
+get '/sources' do
+  result = get_sources(q: params[:q], "group-id" => params["group-id"])
+  @sources = Array(result[:data]).select {|item| item["type"] == "sources" }
+  @groups = Array(result[:data]).select {|item| item["type"] == "groups" }
+  @meta = result[:meta]
+
+  haml :'sources/index'
+end
+
+get '/sources/:id' do
+  result = get_sources(id: params[:id])
+  @source = result[:data].find {|item| item["type"] == "sources" }
+  @groups = Array(result[:data]).select {|item| item["type"] == "groups" }
+  group = @groups.first
+
+  page = params.fetch('page', 1).to_i
+  offset = DEFAULT_ROWS * (page - 1)
+
+  if %w(relations results).include?(group["id"])
+    collection = get_works("source-id" => params[:id], offset: offset, sort: params[:sort], 'relation-type-id' => params['relation-type-id'])
+    works = Array(collection[:data]).select {|item| item["type"] == "works" }
+    @sources = Array(collection[:data]).select {|item| item["type"] == "sources" }
+    @relation_types = Array(collection[:data]).select {|item| item["type"] == "relation-types" }
+    @work_types = Array(collection[:data]).select {|item| item["type"] == "work-types" }
+    @meta = collection[:meta]
+
+    @works = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
+      pager.replace works
+    end
+  elsif group["id"] == "contributions"
+    collection = get_contributions("source-id" => params[:id], offset: offset, rows: 25)
+    contributions= Array(collection[:data]).select {|item| item["type"] == "contributions" }
+    @contribution_sources = Array(collection[:data]).select {|item| item["type"] == "sources" }
+    @meta = collection[:meta]
+    @meta["contribution-total"] = collection.fetch(:meta, {}).fetch("total", 0)
+    @meta["contribution-sources"] = collection.fetch(:meta, {}).fetch("sources", {})
+
+    @contributions = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
+      pager.replace contributions
+    end
+  end
+
+  params[:model] = "sources"
+
+  haml :'sources/show'
 end
 
 get '/citation' do

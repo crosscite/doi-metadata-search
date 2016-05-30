@@ -1,0 +1,19 @@
+= haml :"#{ENV['RA']}/header", locals: { page: {} }
+
+.container-fluid
+  .row
+    .col-md-9#content-work
+      = haml :'sources/item', locals: { item: @source }
+
+    - if @works.present?
+      .col-md-9#content-works
+        = haml :'works/list'
+
+      .col-md-3
+        = haml :'works/facets'
+
+    - elsif @contributions.present?
+      .col-md-9#content-works
+        = haml :'contributions/index'
+
+= haml :"#{ENV['RA']}/footer"

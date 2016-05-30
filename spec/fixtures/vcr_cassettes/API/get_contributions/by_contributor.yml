@@ -1,0 +1,166 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://10.2.2.14/contributions?contributor-id=orcid.org/0000-0002-8635-8390&offset=0&rows=25
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Maremma - http://doi-metadata-search.local
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Access-Control-Max-Age:
+      - '1728000'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - f6fdd225-dc65-4ccf-8272-a6db7cfec27f
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Etag:
+      - W/"eed3d12e9cedb7213bdaa25d23a6fba2"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '2.423957'
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Sun, 29 May 2016 17:04:38 GMT
+      X-Powered-By:
+      - Phusion Passenger 5.0.23
+      Server:
+      - nginx/1.8.0 + Phusion Passenger 5.0.23
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"8ea09e4d-e3f9-4b0e-814f-4941f7b0179e","type":"contributions","attributes":{"doi":"10.6084/M9.FIGSHARE.1126238","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","author":[{"given":"Henry S.","family":"Rzepa","orcid":"http://orcid.org/0000-0002-8635-8390"}],"title":"Gaussian
+        Job Archive for C50H66N6O2","container-title":"Figshare","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2014","issued":"2014-08-08T15:31:07Z","updated":"2016-05-28T07:41:10Z"}},{"id":"90a26cfe-dc7b-49fa-954b-0d0730dd7d67","type":"contributions","attributes":{"doi":"10.6084/M9.FIGSHARE.1132610","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","author":[{"given":"Henry S.","family":"Rzepa","orcid":"http://orcid.org/0000-0002-8635-8390"}],"title":"Gaussian
+        Job Archive for C50H66N6O2","container-title":"Figshare","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2014","issued":"2014-08-08T15:47:05Z","updated":"2016-05-28T07:41:10Z"}},{"id":"ac4080c0-2aa2-493d-8f93-1bf50c5c270d","type":"contributions","attributes":{"doi":"10.6084/M9.FIGSHARE.1126239","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","author":[{"given":"Henry S.","family":"Rzepa","orcid":"http://orcid.org/0000-0002-8635-8390"}],"title":"Gaussian
+        Job Archive for C50H66N6O2","container-title":"Figshare","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2014","issued":"2014-08-08T15:31:10Z","updated":"2016-05-28T07:41:10Z"}},{"id":"a33d8934-fb0c-4717-88a0-2dbe7241dd98","type":"contributions","attributes":{"doi":"10.6084/M9.FIGSHARE.1132609","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","author":[{"given":"Henry S.","family":"Rzepa","orcid":"http://orcid.org/0000-0002-8635-8390"}],"title":"Gaussian
+        Job Archive for C50H66N6O2","container-title":"Figshare","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2014","issued":"2014-08-08T15:47:06Z","updated":"2016-05-28T07:41:10Z"}},{"id":"47e3f2af-c707-4730-b5f9-00c60cdcfde4","type":"contributions","attributes":{"doi":"10.6084/M9.FIGSHARE.1132607","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","author":[{"given":"Henry S.","family":"Rzepa","orcid":"http://orcid.org/0000-0002-8635-8390"}],"title":"Gaussian
+        Job Archive for C50H66N6O2","container-title":"Figshare","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2014","issued":"2014-08-08T15:47:02Z","updated":"2016-05-28T07:41:10Z"}},{"id":"d4ed4a95-975a-41d7-84a0-af1f55e5a2f4","type":"contributions","attributes":{"doi":"10.6084/M9.FIGSHARE.1130853","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","author":[{"given":"Henry S.","family":"Rzepa","orcid":"http://orcid.org/0000-0002-8635-8390"}],"title":"Gaussian
+        Job Archive for C50H66N6O2","container-title":"Figshare","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2014","issued":"2014-08-08T15:30:59Z","updated":"2016-05-28T07:41:10Z"}},{"id":"fbab4d86-6c7b-48b2-9707-5c8b15d27312","type":"contributions","attributes":{"doi":"10.6084/M9.FIGSHARE.1132657","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","author":[{"given":"Henry S.","family":"Rzepa","orcid":"http://orcid.org/0000-0002-8635-8390"}],"title":"Gaussian
+        Job Archive for C50H66N6O2","container-title":"Figshare","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2014","issued":"2014-08-08T18:24:42Z","updated":"2016-05-28T07:41:10Z"}},{"id":"12debfd6-bb5b-47d5-902e-a99805727938","type":"contributions","attributes":{"doi":"10.14469/HPC/402","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","author":[{"given":"Henry","family":"Rzepa","orcid":"http://orcid.org/0000-0002-8635-8390"}],"title":"trimethyloxonium
+        + MeOH TS Def2-TZVPPD","container-title":"Imperial College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-04-19T14:27:22Z","updated":"2016-05-27T18:58:48Z"}},{"id":"924d7bc5-9724-4e9e-be02-112d75bb5889","type":"contributions","attributes":{"doi":"10.14469/CH/169977","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","author":[{"family":"Zhang","given":"Yong"},{"family":"Rzepa","given":"Henry
+        S.","orcid":"http://orcid.org/0000-0002-8635-8390"},{"family":"Stewart","given":"James
+        J. P.","orcid":"http://orcid.org/0000-0001-6280-8695"},{"family":"Murray-Rust","given":"Peter","orcid":"http://orcid.org/0000-0003-3386-3972"},{"family":"Harvey","given":"Matthew
+        J.","orcid":"http://orcid.org/0000-0003-1797-3186"},{"family":"Mason","given":"Nicholas","orcid":"http://orcid.org/0000-0001-9475-0328"},{"family":"McLean","given":"Andrew","orcid":"http://orcid.org/0000-0002-1653-7430"},{"family":"Service","given":"Imperial
+        College High Performance Computing"}],"title":"NSC72136","container-title":"Imperial
+        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2014","issued":"2014-12-24T18:33:10Z","updated":"2016-05-27T18:55:04Z"}},{"id":"b56fcca5-6b05-4c16-82b7-87cebc353263","type":"contributions","attributes":{"doi":"10.14469/CH/50603","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","author":[{"family":"Zhang","given":"Yong"},{"family":"Rzepa","given":"Henry
+        S.","orcid":"http://orcid.org/0000-0002-8635-8390"},{"family":"Stewart","given":"James
+        J. P.","orcid":"http://orcid.org/0000-0001-6280-8695"},{"family":"Murray-Rust","given":"Peter","orcid":"http://orcid.org/0000-0003-3386-3972"},{"family":"Harvey","given":"Matthew
+        J.","orcid":"http://orcid.org/0000-0003-1797-3186"},{"family":"Mason","given":"Nicholas","orcid":"http://orcid.org/0000-0001-9475-0328"},{"family":"McLean","given":"Andrew","orcid":"http://orcid.org/0000-0002-1653-7430"},{"family":"Service","given":"Imperial
+        College High Performance Computing"}],"title":"NSC202673","container-title":"Imperial
+        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2014","issued":"2014-11-03T02:16:04Z","updated":"2016-05-27T02:22:41Z"}},{"id":"3e8a470a-1ea7-4ddc-bb53-36da61bbf8dd","type":"contributions","attributes":{"doi":"10.6084/M9.FIGSHARE.1313665","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","author":[{"given":"Henry S.","family":"Rzepa","orcid":"http://orcid.org/0000-0002-8635-8390"}],"title":"Gaussian
+        Job Archive for C14H12O2","container-title":"Figshare","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2015","issued":"2015-02-20T16:12:52Z","updated":"2016-05-26T21:52:12Z"}},{"id":"29ef7c88-14d7-440d-87b0-77f23eb3b145","type":"contributions","attributes":{"doi":"10.6084/M9.FIGSHARE.1313587","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","author":[{"given":"Henry S.","family":"Rzepa","orcid":"http://orcid.org/0000-0002-8635-8390"}],"title":"Gaussian
+        Job Archive for C8H12","container-title":"Figshare","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2015","issued":"2015-02-20T16:12:44Z","updated":"2016-05-26T21:52:11Z"}},{"id":"75c1fce8-03ec-4b45-963f-ec7a7c04f106","type":"contributions","attributes":{"doi":"10.6084/M9.FIGSHARE.1313590","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","author":[{"given":"Henry S.","family":"Rzepa","orcid":"http://orcid.org/0000-0002-8635-8390"}],"title":"Gaussian
+        Job Archive for C6H8O2","container-title":"Figshare","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2015","issued":"2015-02-20T16:12:48Z","updated":"2016-05-26T21:52:11Z"}},{"id":"fd926440-1221-4e80-84d3-70848c7c96c0","type":"contributions","attributes":{"doi":"10.14469/CH/183032","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","author":[{"family":"McLean","given":"Andrew","orcid":"http://orcid.org/0000-0002-1653-7430"},{"family":"Rzepa","given":"Henry
+        S.","orcid":"http://orcid.org/0000-0002-8635-8390"},{"family":"Stewart","given":"James
+        J. P.","orcid":"http://orcid.org/0000-0001-6280-8695"},{"family":"Murray-Rust","given":"Peter","orcid":"http://orcid.org/0000-0003-3386-3972"},{"family":"Harvey","given":"Matthew
+        J.","orcid":"http://orcid.org/0000-0003-1797-3186"},{"family":"Mason","given":"Nicholas","orcid":"http://orcid.org/0000-0001-9475-0328"},{"family":"Service","given":"Imperial
+        College High Performance Computing"}],"title":"NSC146360","container-title":"Imperial
+        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2015","issued":"2015-01-16T07:10:01Z","updated":"2016-05-26T12:54:45Z"}},{"id":"1fe3039a-ef70-468f-aadc-5869f6101b1a","type":"contributions","attributes":{"doi":"10.14469/CH/182954","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","author":[{"family":"McLean","given":"Andrew","orcid":"http://orcid.org/0000-0002-1653-7430"},{"family":"Rzepa","given":"Henry
+        S.","orcid":"http://orcid.org/0000-0002-8635-8390"},{"family":"Stewart","given":"James
+        J. P.","orcid":"http://orcid.org/0000-0001-6280-8695"},{"family":"Murray-Rust","given":"Peter","orcid":"http://orcid.org/0000-0003-3386-3972"},{"family":"Harvey","given":"Matthew
+        J.","orcid":"http://orcid.org/0000-0003-1797-3186"},{"family":"Mason","given":"Nicholas","orcid":"http://orcid.org/0000-0001-9475-0328"},{"family":"Service","given":"Imperial
+        College High Performance Computing"}],"title":"NSC29552","container-title":"Imperial
+        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2015","issued":"2015-01-16T07:05:20Z","updated":"2016-05-26T12:54:08Z"}},{"id":"c2c4d06d-4dcf-4cb6-b289-86fa7c5bb7e1","type":"contributions","attributes":{"doi":"10.14469/CH/183016","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","author":[{"family":"McLean","given":"Andrew","orcid":"http://orcid.org/0000-0002-1653-7430"},{"family":"Rzepa","given":"Henry
+        S.","orcid":"http://orcid.org/0000-0002-8635-8390"},{"family":"Stewart","given":"James
+        J. P.","orcid":"http://orcid.org/0000-0001-6280-8695"},{"family":"Murray-Rust","given":"Peter","orcid":"http://orcid.org/0000-0003-3386-3972"},{"family":"Harvey","given":"Matthew
+        J.","orcid":"http://orcid.org/0000-0003-1797-3186"},{"family":"Mason","given":"Nicholas","orcid":"http://orcid.org/0000-0001-9475-0328"},{"family":"Service","given":"Imperial
+        College High Performance Computing"}],"title":"NSC210743","container-title":"Imperial
+        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2015","issued":"2015-01-16T07:09:09Z","updated":"2016-05-26T12:54:08Z"}},{"id":"bd9e3735-fa60-4167-a850-afa10df7974d","type":"contributions","attributes":{"doi":"10.14469/CH/182952","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","author":[{"family":"McLean","given":"Andrew","orcid":"http://orcid.org/0000-0002-1653-7430"},{"family":"Rzepa","given":"Henry
+        S.","orcid":"http://orcid.org/0000-0002-8635-8390"},{"family":"Stewart","given":"James
+        J. P.","orcid":"http://orcid.org/0000-0001-6280-8695"},{"family":"Murray-Rust","given":"Peter","orcid":"http://orcid.org/0000-0003-3386-3972"},{"family":"Harvey","given":"Matthew
+        J.","orcid":"http://orcid.org/0000-0003-1797-3186"},{"family":"Mason","given":"Nicholas","orcid":"http://orcid.org/0000-0001-9475-0328"},{"family":"Service","given":"Imperial
+        College High Performance Computing"}],"title":"NSC48846","container-title":"Imperial
+        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2015","issued":"2015-01-16T07:05:16Z","updated":"2016-05-26T12:54:05Z"}},{"id":"94c9190d-9394-462c-a5dc-f10e931d7890","type":"contributions","attributes":{"doi":"10.14469/CH/182922","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","author":[{"family":"McLean","given":"Andrew","orcid":"http://orcid.org/0000-0002-1653-7430"},{"family":"Rzepa","given":"Henry
+        S.","orcid":"http://orcid.org/0000-0002-8635-8390"},{"family":"Stewart","given":"James
+        J. P.","orcid":"http://orcid.org/0000-0001-6280-8695"},{"family":"Murray-Rust","given":"Peter","orcid":"http://orcid.org/0000-0003-3386-3972"},{"family":"Harvey","given":"Matthew
+        J.","orcid":"http://orcid.org/0000-0003-1797-3186"},{"family":"Mason","given":"Nicholas","orcid":"http://orcid.org/0000-0001-9475-0328"},{"family":"Service","given":"Imperial
+        College High Performance Computing"}],"title":"NSC203350","container-title":"Imperial
+        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2015","issued":"2015-01-16T07:03:25Z","updated":"2016-05-26T12:54:03Z"}},{"id":"c2461058-0548-434b-a51b-727773f7fef9","type":"contributions","attributes":{"doi":"10.14469/CH/182861","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","author":[{"family":"Zhang","given":"Yong"},{"family":"Rzepa","given":"Henry
+        S.","orcid":"http://orcid.org/0000-0002-8635-8390"},{"family":"Stewart","given":"James
+        J. P.","orcid":"http://orcid.org/0000-0001-6280-8695"},{"family":"Murray-Rust","given":"Peter","orcid":"http://orcid.org/0000-0003-3386-3972"},{"family":"Harvey","given":"Matthew
+        J.","orcid":"http://orcid.org/0000-0003-1797-3186"},{"family":"Mason","given":"Nicholas","orcid":"http://orcid.org/0000-0001-9475-0328"},{"family":"McLean","given":"Andrew","orcid":"http://orcid.org/0000-0002-1653-7430"},{"family":"Service","given":"Imperial
+        College High Performance Computing"}],"title":"NSC322086","container-title":"Imperial
+        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2015","issued":"2015-01-16T06:59:31Z","updated":"2016-05-26T12:54:02Z"}},{"id":"ec08bb1d-5fa9-4f2c-ba92-b2fd298bcda3","type":"contributions","attributes":{"doi":"10.14469/CH/182859","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","author":[{"family":"McLean","given":"Andrew","orcid":"http://orcid.org/0000-0002-1653-7430"},{"family":"Rzepa","given":"Henry
+        S.","orcid":"http://orcid.org/0000-0002-8635-8390"},{"family":"Stewart","given":"James
+        J. P.","orcid":"http://orcid.org/0000-0001-6280-8695"},{"family":"Murray-Rust","given":"Peter","orcid":"http://orcid.org/0000-0003-3386-3972"},{"family":"Harvey","given":"Matthew
+        J.","orcid":"http://orcid.org/0000-0003-1797-3186"},{"family":"Mason","given":"Nicholas","orcid":"http://orcid.org/0000-0001-9475-0328"},{"family":"Service","given":"Imperial
+        College High Performance Computing"}],"title":"NSC341967","container-title":"Imperial
+        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2015","issued":"2015-01-16T06:59:20Z","updated":"2016-05-26T12:54:00Z"}},{"id":"46e065d2-a95d-4500-8644-2f6ba72eab06","type":"contributions","attributes":{"doi":"10.14469/CH/182847","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","author":[{"given":"Andrew","family":"McLean","orcid":"http://orcid.org/0000-0002-1653-7430"},{"given":"Henry
+        S.","family":"Rzepa","orcid":"http://orcid.org/0000-0002-8635-8390"},{"given":"James
+        J. P.","family":"Stewart","orcid":"http://orcid.org/0000-0001-6280-8695"},{"given":"Peter","family":"Murray-Rust","orcid":"http://orcid.org/0000-0003-3386-3972"},{"given":"Matthew
+        J.","family":"Harvey","orcid":"http://orcid.org/0000-0003-1797-3186"},{"given":"Nicholas","family":"Mason","orcid":"http://orcid.org/0000-0001-9475-0328"},{"given":"Imperial
+        College High Performance Computing","family":"Service"}],"title":"NSC332569","container-title":"Imperial
+        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2015","issued":"2015-01-16T06:58:37Z","updated":"2016-05-26T12:53:58Z"}},{"id":"c5597e32-ead1-4b28-bbc7-6adb6ed5213b","type":"contributions","attributes":{"doi":"10.14469/CH/168535","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","author":[{"family":"Zhang","given":"Yong"},{"family":"Rzepa","given":"Henry
+        S.","orcid":"http://orcid.org/0000-0002-8635-8390"},{"family":"Stewart","given":"James
+        J. P.","orcid":"http://orcid.org/0000-0001-6280-8695"},{"family":"Murray-Rust","given":"Peter","orcid":"http://orcid.org/0000-0003-3386-3972"},{"family":"Harvey","given":"Matthew
+        J.","orcid":"http://orcid.org/0000-0003-1797-3186"},{"family":"Mason","given":"Nicholas","orcid":"http://orcid.org/0000-0001-9475-0328"},{"family":"McLean","given":"Andrew","orcid":"http://orcid.org/0000-0002-1653-7430"},{"family":"Service","given":"Imperial
+        College High Performance Computing"}],"title":"NSC71126","container-title":"Imperial
+        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2014","issued":"2014-12-24T15:00:12Z","updated":"2016-05-26T03:53:47Z"}},{"id":"f88be9ce-33fe-4f17-98d5-3fddcb4d6d21","type":"contributions","attributes":{"doi":"10.14469/CH/168299","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","author":[{"family":"Zhang","given":"Yong"},{"family":"Rzepa","given":"Henry
+        S.","orcid":"http://orcid.org/0000-0002-8635-8390"},{"family":"Stewart","given":"James
+        J. P.","orcid":"http://orcid.org/0000-0001-6280-8695"},{"family":"Murray-Rust","given":"Peter","orcid":"http://orcid.org/0000-0003-3386-3972"},{"family":"Harvey","given":"Matthew
+        J.","orcid":"http://orcid.org/0000-0003-1797-3186"},{"family":"Mason","given":"Nicholas","orcid":"http://orcid.org/0000-0001-9475-0328"},{"family":"McLean","given":"Andrew","orcid":"http://orcid.org/0000-0002-1653-7430"},{"family":"Service","given":"Imperial
+        College High Performance Computing"}],"title":"NSC71641","container-title":"Imperial
+        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2014","issued":"2014-12-24T13:45:14Z","updated":"2016-05-26T03:52:58Z"}},{"id":"ae259fd2-2ca9-47ce-afe7-9f60fd7735d2","type":"contributions","attributes":{"doi":"10.14469/CH/183027","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","author":[{"family":"Zhang","given":"Yong"},{"family":"Rzepa","given":"Henry
+        S.","orcid":"http://orcid.org/0000-0002-8635-8390"},{"family":"Stewart","given":"James
+        J. P.","orcid":"http://orcid.org/0000-0001-6280-8695"},{"family":"Murray-Rust","given":"Peter","orcid":"http://orcid.org/0000-0003-3386-3972"},{"family":"Harvey","given":"Matthew
+        J.","orcid":"http://orcid.org/0000-0003-1797-3186"},{"family":"Mason","given":"Nicholas","orcid":"http://orcid.org/0000-0001-9475-0328"},{"family":"McLean","given":"Andrew","orcid":"http://orcid.org/0000-0002-1653-7430"},{"family":"Service","given":"Imperial
+        College High Performance Computing"}],"title":"NSC69156","container-title":"Imperial
+        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2015","issued":"2015-01-16T07:09:41Z","updated":"2016-05-26T00:23:54Z"}},{"id":"dbf06153-7369-473a-a74d-4ba04deb5aab","type":"contributions","attributes":{"doi":"10.14469/CH/182947","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","author":[{"family":"McLean","given":"Andrew","orcid":"http://orcid.org/0000-0002-1653-7430"},{"family":"Rzepa","given":"Henry
+        S.","orcid":"http://orcid.org/0000-0002-8635-8390"},{"family":"Stewart","given":"James
+        J. P.","orcid":"http://orcid.org/0000-0001-6280-8695"},{"family":"Murray-Rust","given":"Peter","orcid":"http://orcid.org/0000-0003-3386-3972"},{"family":"Harvey","given":"Matthew
+        J.","orcid":"http://orcid.org/0000-0003-1797-3186"},{"family":"Mason","given":"Nicholas","orcid":"http://orcid.org/0000-0001-9475-0328"},{"family":"Service","given":"Imperial
+        College High Performance Computing"}],"title":"NSC26323","container-title":"Imperial
+        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2015","issued":"2015-01-16T07:04:52Z","updated":"2016-05-26T00:22:29Z"}},{"id":"datacite-orcid","type":"sources","attributes":{"title":"DataCite
+        (ORCID)","description":"Import works with ORCID nameIdentifier via the DataCite
+        Solr API.","state":"active","group-id":"contributions","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-05-29T11:30:49Z"}}],"meta":{"total":162010,"sources":{"datacite-related":3,"datacite-orcid":162004,"datacite-search-link":3}}}'
+    http_version: 
+  recorded_at: Sun, 29 May 2016 17:04:38 GMT
+recorded_with: VCR 2.9.3

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://10.2.2.14/contributors?offset=0&q=mabbett&rows=25
+    uri: http://10.2.2.14/sources?id=datacite-crossref
     body:
       encoding: US-ASCII
       string: ''
@@ -33,26 +33,28 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 75303d64-d03d-4642-81c1-9ac0b03b5cde
+      - 1c96c5ae-886a-4781-a636-860ad66d00db
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
-      - W/"ae24fba2a02b67c4be8b811e22469600"
+      - W/"ffe9ee792b8053ba83639adb515b90b9"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.582851'
+      - '0.416392'
       X-Content-Type-Options:
       - nosniff
       Date:
-      - Sun, 29 May 2016 15:00:03 GMT
+      - Sun, 29 May 2016 16:21:18 GMT
       X-Powered-By:
       - Phusion Passenger 5.0.23
       Server:
       - nginx/1.8.0 + Phusion Passenger 5.0.23
     body:
       encoding: UTF-8
-      string: '{"data":[{"id":"http://orcid.org/0000-0001-5882-6823","type":"contributors","attributes":{"given":"Andy","family":"Mabbett","literal":null,"orcid":"0000-0001-5882-6823","github":null,"updated":"1970-01-01T00:00:00Z"}}],"meta":{"total":1}}'
+      string: '{"data":[{"id":"datacite-crossref","type":"sources","attributes":{"title":"DataCite
+        (Crossref)","description":"Import works with Crossref DOIs as relatedIdentifier
+        via the DataCite Solr API.","state":"active","group-id":"relations","work-count":203772,"relation-count":221061,"result-count":475263,"by-day":{"with-results":1,"without-results":0,"not-updated":221005},"by-month":{"with-results":195804,"without-results":16710,"not-updated":8492},"updated":"2016-05-29T15:17:49Z"}},{"id":"relations","type":"groups","attributes":{"title":"Relations","sources":["crossref_datacite","datacite_crossref","datacite_github","datacite_related","europe_pmc_fulltext","plos_fulltext"],"updated":"2016-03-28T15:25:06Z"}}]}'
     http_version: 
-  recorded_at: Sun, 29 May 2016 15:00:03 GMT
+  recorded_at: Sun, 29 May 2016 16:21:18 GMT
 recorded_with: VCR 2.9.3

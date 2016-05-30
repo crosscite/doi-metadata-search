@@ -22,8 +22,15 @@ module Sinatra
       end
     end
 
+    # select works registered via this registration agency
     def found_dois(works)
-      works.map { |w| w.fetch("attributes", {}).fetch("doi", nil) }
+      works.reduce([]) do |sum, work|
+        if work.fetch("attributes", {}).fetch("registration-agency-id", nil) == ENV['RA']
+          sum << work.fetch("attributes", {}).fetch("doi", nil)
+        else
+          sum
+        end
+      end
     end
   end
 end

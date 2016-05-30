@@ -1,17 +1,13 @@
-- if flash[:error].present?
-  %div.alert.alert-warning
-    = flash[:error]
+- if @contributions.length > 1 && %w(contributors sources).include?(params[:model])
+  %h4.results
+    = "#{number_with_delimiter(@meta['total'])} Contributions"
 
-- if @contributions.length > 0
-  - if @contributions.length > 1
-    %h4.results
-      = "#{number_with_delimiter(@meta['total'])} Contributions"
+- @contributions.each do |item|
+  - if params[:model] == "works"
+    = haml :'contributions/contributor_item', locals: { item: item }
+  - else
+    = haml :'contributions/work_item', locals: { item: item }
 
-  - @contributions.each do |item|
-    - if params[:model] == "works"
-      = haml :'contributions/contributor_item', locals: { item: item }
-    - else
-      = haml :'contributions/work_item', locals: { item: item }
-
+- if %w(contributors sources).include?(params[:model])
   .text-center
     = will_paginate @contributions, renderer: BootstrapPagination::Sinatra

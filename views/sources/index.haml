@@ -3,7 +3,7 @@
 .container-fluid
   .row
     .col-md-9
-      = haml :relation_search, locals: { params: params }
+      = haml :'sources/search'
 
   .row
     .col-md-9#content
@@ -11,16 +11,19 @@
         %div.alert.alert-warning
           = flash[:error]
 
-      - if data.length > 0
-        - if data.length > 1
+      - if @sources.length > 0
+        - if @sources.length > 1
           %h4.results
-            = "#{number_with_delimiter(meta['total'])} Relations"
+            = "#{number_with_delimiter(@meta["total"])} Sources"
 
-        - data.each do |item|
-          = haml :relation_item, locals: { item: item }
+        - @sources.each do |item|
+          = haml :'sources/item', locals: { item: item }
 
       - else
         %div.alert.alert-info
           Nothing found.
+
+    .col-md-3
+      = haml :'sources/facets'
 
 = haml :"#{ENV['RA']}/footer"

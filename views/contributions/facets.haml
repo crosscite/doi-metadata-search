@@ -1,19 +1,19 @@
 .panel.facets
-  - if @meta["sources"].present?
+  - if @meta["contribution-sources"].present?
     .panel-body
       %h4
         Sources
       %ul
-        - @meta["sources"].each do |s|
+        - @meta["contribution-sources"].sort_by { |k,v| -v }.each do |s|
           - if params['source-id'] == s.first
             %li.active
               %a{:href => works_query(params.except('source-id'))}
                 %i.fa.fa-check-square-o
-              = source_title(@sources, s.first)
+              = source_title(@contribution_sources, s.first)
               %span.number.pull-right= "#{number_with_delimiter(s.last)}"
           - else
             %li
               %a{:href => works_query(params.merge('source-id' => s.first))}
                 %i.fa.fa-square-o
-              = source_title(@sources, s.first)
+              = source_title(@contribution_sources, s.first)
               %span.number.pull-right= "#{number_with_delimiter(s.last)}"

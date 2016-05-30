@@ -2,12 +2,12 @@
   %form.form-horizontal{:method => 'GET', :action => '/members'}
     .input-group
       - if params[:member_type].present?
-        %input{type: "hidden", name: "member_type", value: @params[:member_type]}
+        %input{type: "hidden", name: "member_type", value: params[:member_type]}
       - if params[:region].present?
-        %input{type: "hidden", name: "region", value: @params[:region]}
+        %input{type: "hidden", name: "region", value: params[:region]}
       - if params[:year].present?
-        %input{type: "hidden", name: "year", value: @params[:year]}
-      %input.form-control{type: "text", name: 'q', id: 'search-input', value: @params[:q], placeholder: "Search for member"}
+        %input{type: "hidden", name: "year", value: params[:year]}
+      %input.form-control{type: "text", name: 'q', id: 'search-input', value: params[:q], placeholder: "Search for member"}
       .input-group-btn
         %button.btn.btn-primary{type: "submit"}
           Search

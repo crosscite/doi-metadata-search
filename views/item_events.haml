@@ -1,6 +1,0 @@
-- item.signposts.each do |signpost|
-  .panel-footer
-    %a{href: "#{ENV['LAGOTTO_URL']}/works/doi.org/#{item.doi}"}
-      = number_with_delimiter(signpost[:total]) + (signpost[:total] > 1 ? " Related Identifiers" : " Related Identifier")
-    %a{href: "#{ENV['LAGOTTO_URL']}/sources/#{signpost[:name]}", class: "pull-right"}
-      = signpost[:title]

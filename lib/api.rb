@@ -7,13 +7,28 @@ module Sinatra
     def get_works(params = {})
       params = { id: params.fetch(:id, nil),
                  offset: params.fetch(:offset, 0),
-                 rrows: params.fetch(:rows, 25),
+                 rows: params.fetch(:rows, 25),
+                 sort: params.fetch(:sort, nil),
                  q: params.fetch(:q, nil),
-                 'resource-type-id' => params.fetch('resource-type-id', nil),
                  year: params.fetch('year', nil),
+                 'resource-type-id' => params.fetch('resource-type-id', nil),
+                 'relation-type-id' => params.fetch('relation-type-id', nil),
                  'publisher-id' => params.fetch('publisher-id', nil),
-                 'member-id' => params.fetch('member-id', nil) }.compact
+                 'member-id' => params.fetch('member-id', nil),
+                 'source-id' => params.fetch('source-id', nil) }.compact
       url = "#{ENV['API_URL']}/works?" + URI.encode_www_form(params)
+
+      result = Maremma.get url
+      { data: result.fetch("data", []), meta: result.fetch("meta", {}) }
+    end
+
+    def get_relations(params = {})
+      params = { "work-id" => params.fetch("work-id", nil),
+                 "relation-type-id" => params.fetch("relation-type-id", nil),
+                 "source-id" => params.fetch("source-id", nil),
+                 offset: params.fetch(:offset, 0),
+                 rows: params.fetch(:rows, 25) }.compact
+      url = "#{ENV['API_URL']}/relations?" + URI.encode_www_form(params)
 
       result = Maremma.get url
       { data: result.fetch("data", []), meta: result.fetch("meta", {}) }
@@ -61,6 +76,16 @@ module Sinatra
                  year: params.fetch(:year, nil),
                  q: params.fetch(:q, nil) }.compact
       url = "#{ENV['API_URL']}/members?" + URI.encode_www_form(params)
+
+      result = Maremma.get url
+      { data: result.fetch("data", []), meta: result.fetch("meta", {}) }
+    end
+
+    def get_sources(params = {})
+      params = { id: params.fetch(:id, nil),
+                 q: params.fetch(:q, nil),
+                 'group-id' => params.fetch('group-id', nil) }.compact
+      url = "#{ENV['API_URL']}/sources?" + URI.encode_www_form(params)
 
       result = Maremma.get url
       { data: result.fetch("data", []), meta: result.fetch("meta", {}) }

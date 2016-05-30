@@ -1,7 +1,9 @@
+- new_params = params[:model] == "contributors" && params["id"].present? ? params.merge(external_link: true) : params
+
 .panel.panel-default
   .panel-body
     %h3.work
-      %a{:href => '/contributors/' + contributor_id(item["attributes"])}
+      %a{:href => contributors_action(item, new_params)}
         = credit_name(item["attributes"])
   .panel-footer
     %a{ href: item["id"] }

@@ -5,7 +5,7 @@
         Resource Types
       %ul
         - @meta["resource-types"].each do |f|
-          - if @params['resource-type-id'] == f.first
+          - if params['resource-type-id'] == f.first
             %li.active
               %a{:href => works_query(params.except('resource-type-id'))}
                 %i.fa.fa-check-square-o
@@ -24,7 +24,7 @@
         Data Centers
       %ul
         - @meta["publishers"].each do |f|
-          - if @params['publisher-id'] == f.first
+          - if params['publisher-id'] == f.first
             %li.active
               %a{:href => works_query(params.except('publisher-id'))}
                 %i.fa.fa-check-square-o
@@ -35,4 +35,23 @@
               %a{:href => works_query(params.merge('publisher-id' => f.first))}
                 %i.fa.fa-square-o
               = publisher_title(@publishers, f.first)
+              %span.number.pull-right= "#{number_with_delimiter(f.last)}"
+
+  - if @meta["relation-types"].present?
+    .panel-body
+      %h4
+        Relation Types
+      %ul
+        - @meta["relation-types"].sort_by { |k,v| -v }.each do |f|
+          - if params['relation-type-id'] == f.first
+            %li.active
+              %a{:href => works_query(params.except('relation-type-id'))}
+                %i.fa.fa-check-square-o
+              = relation_type_title(@relation_types, f.first)
+              %span.number.pull-right= "#{number_with_delimiter(f.last)}"
+          - else
+            %li
+              %a{:href => works_query(params.merge('relation-type-id' => f.first))}
+                %i.fa.fa-square-o
+              = relation_type_title(@relation_types, f.first)
               %span.number.pull-right= "#{number_with_delimiter(f.last)}"

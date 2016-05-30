@@ -4,6 +4,20 @@
 
 - if @works.length > 0
   - if @works.length > 1
+    - if params[:model] == "sources"
+      .btn-toolbar.pull-right
+        .btn-group.btn-group-sm
+          %a{href: "#", class: "btn btn-default dropdown-toggle", data: { toggle: "dropdown" }}
+            %i.fa.fa-sort
+            = params[:sort] ? "Sort by " + @source.fetch("attributes", {}).fetch("title", nil) : "Sort by Date"
+            %span.caret
+          %ul.dropdown-menu.pull-right
+            %li
+              %a{href: works_query(params.except('sort'))}
+                Sort by Date
+            %li
+              %a{href: works_query(params.merge('sort' => params["id"]))}
+                = "Sort by " + @source.fetch("attributes", {}).fetch("title", nil)
     %h4.results
       = "#{number_with_delimiter(@meta['total'])} Works"
 
