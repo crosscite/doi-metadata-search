@@ -194,7 +194,7 @@ get %r{/works/(.+)} do
   # check for existing claims if user is logged in
   @relations = get_claims(current_user, @relations) if current_user
 
-  @relations = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
+  @relations = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["relation-total"]) do |pager|
     pager.replace @relations
   end
 
@@ -351,7 +351,7 @@ get '/sources/:id' do
     @meta["contribution-total"] = collection.fetch(:meta, {}).fetch("total", 0)
     @meta["contribution-sources"] = collection.fetch(:meta, {}).fetch("sources", {})
 
-    @contributions = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
+    @contributions = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["contribution-total"]) do |pager|
       pager.replace contributions
     end
   end
