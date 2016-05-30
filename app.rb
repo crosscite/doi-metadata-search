@@ -267,7 +267,7 @@ get '/data-centers/:id' do
   page = params.fetch('page', 1).to_i
   offset = DEFAULT_ROWS * (page - 1)
 
-  collection = get_works(q: params[:q], "publisher-id" => params[:id], offset: offset, 'resource-type-id' => params['resource-type-id'])
+  collection = get_works(q: params[:q], "publisher-id" => params[:id], offset: offset, 'resource-type-id' => params['resource-type-id'], 'source-id' => params['source-id'], 'relation-type-id' => params['relation-type-id'], sort: params[:sort])
   works = collection[:data].select {|item| item["type"] == "works" }
   @meta = collection[:meta]
 
@@ -276,6 +276,9 @@ get '/data-centers/:id' do
   end
 
   @resource_types = Array(collection[:data]).select {|item| item["type"] == "resource-types" }
+  @relation_types = Array(collection[:data]).select {|item| item["type"] == "relation-types" }
+  @work_types = Array(collection[:data]).select {|item| item["type"] == "work-types" }
+  @sources = Array(collection[:data]).select {|item| item["type"] == "sources" }
   @publishers = []
 
   params[:model] = "data-centers"

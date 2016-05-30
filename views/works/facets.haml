@@ -37,6 +37,25 @@
               = publisher_title(@publishers, f.first)
               %span.number.pull-right= "#{number_with_delimiter(f.last)}"
 
+  - if @meta["sources"].present? && params[:model] != "sources"
+    .panel-body
+      %h4
+        Sources
+      %ul
+        - @meta["sources"].sort_by { |k,v| -v }.each do |f|
+          - if params['source-id'] == f.first
+            %li.active
+              %a{:href => works_query(params.except('source-id'))}
+                %i.fa.fa-check-square-o
+              = source_title(@sources, f.first)
+              %span.number.pull-right= "#{number_with_delimiter(f.last)}"
+          - else
+            %li
+              %a{:href => works_query(params.merge('source-id' => f.first))}
+                %i.fa.fa-square-o
+              = source_title(@sources, f.first)
+              %span.number.pull-right= "#{number_with_delimiter(f.last)}"
+
   - if @meta["relation-types"].present?
     .panel-body
       %h4
