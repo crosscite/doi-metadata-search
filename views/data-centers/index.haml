@@ -19,11 +19,14 @@
         - @datacenters.each do |item|
           = haml :'data-centers/item', locals: { item: item }
 
+        .text-center
+          = will_paginate @datacenters, renderer: BootstrapPagination::Sinatra
+
       - else
         %div.alert.alert-info
           Nothing found.
 
     .col-md-3
-      = haml :'members/facets'
+      = haml :'data-centers/facets'
 
 = haml :"#{ENV['RA']}/footer"

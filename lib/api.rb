@@ -62,6 +62,7 @@ module Sinatra
                  offset: params.fetch(:offset, 0),
                  rows: params.fetch(:rows, 25),
                  q: params.fetch(:q, nil),
+                 "member-id" => params.fetch("member-id", nil),
                  'registration-agency-id': "datacite" }.compact
       url = "#{ENV['API_URL']}/publishers?" + URI.encode_www_form(params)
 

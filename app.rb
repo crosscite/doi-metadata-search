@@ -227,6 +227,11 @@ get '/contributors/:id' do
   result = get_contributors(id: id)
   @contributor = result[:data].find { |item| item["type"] == "contributors" }
 
+  unless @contributor.present?
+    flash[:error] = "Contributor \"#{params['id']}\" not found."
+    redirect to('/contributors')
+  end
+
   page = params.fetch('page', 1).to_i
   offset = DEFAULT_ROWS * (page - 1)
 
@@ -249,8 +254,10 @@ get '/data-centers' do
   page = params.fetch('page', 1).to_i
   offset = DEFAULT_ROWS * (page - 1)
 
-  result  = get_datacenters(q: params[:q], offset: offset)
-  datacenters = result[:data]
+  result  = get_datacenters(q: params[:q], offset: offset, "member-id" => params["member-id"])
+  datacenters = Array(result[:data]).select {|item| item["type"] == "publishers" }
+  @members = Array(result[:data]).select {|item| item["type"] == "members" }
+
   @meta = result[:meta]
 
   @datacenters = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
@@ -263,6 +270,11 @@ end
 get '/data-centers/:id' do
   result = get_datacenters(id: params[:id])
   @datacenter = result[:data]
+
+  unless @datacenter.present?
+    flash[:error] = "Data center \"#{params['id']}\" not found."
+    redirect to('/data-centers')
+  end
 
   page = params.fetch('page', 1).to_i
   offset = DEFAULT_ROWS * (page - 1)
@@ -298,6 +310,11 @@ get '/members/:id' do
   result = get_members(id: params[:id])
   @member = result[:data]
 
+  unless @member.present?
+    flash[:error] = "Member \"#{params['id']}\" not found."
+    redirect to('/members')
+  end
+
   page = params.fetch('page', 1).to_i
   offset = DEFAULT_ROWS * (page - 1)
 
@@ -329,6 +346,12 @@ end
 get '/sources/:id' do
   result = get_sources(id: params[:id])
   @source = result[:data].find {|item| item["type"] == "sources" }
+
+  unless @source.present?
+    flash[:error] = "Source \"#{params['id']}\" not found."
+    redirect to('/sources')
+  end
+
   @groups = Array(result[:data]).select {|item| item["type"] == "groups" }
   group = @groups.first
 

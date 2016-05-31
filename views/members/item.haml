@@ -3,6 +3,8 @@
     %h3.work
       %a{:href => '/members/' + item["id"]}
         = item.fetch("attributes", {}).fetch("title", nil)
+    .country
+      = item.fetch("attributes", {}).fetch("country", nil)
 
   .panel-footer
     %i.fa.fa-info-circle
