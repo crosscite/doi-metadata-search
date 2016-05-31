@@ -269,7 +269,8 @@ end
 
 get '/data-centers/:id' do
   result = get_datacenters(id: params[:id])
-  @datacenter = result[:data]
+  @datacenter = Array(result[:data]).find {|item| item["type"] == "publishers" }
+  @members = Array(result[:data]).select {|item| item["type"] == "members" }
 
   unless @datacenter.present?
     flash[:error] = "Data center \"#{params['id']}\" not found."
@@ -280,7 +281,7 @@ get '/data-centers/:id' do
   offset = DEFAULT_ROWS * (page - 1)
 
   collection = get_works(q: params[:q], "publisher-id" => params[:id], offset: offset, 'resource-type-id' => params['resource-type-id'], 'source-id' => params['source-id'], 'relation-type-id' => params['relation-type-id'], sort: params[:sort])
-  works = collection[:data].select {|item| item["type"] == "works" }
+  works = Array(collection[:data]).select {|item| item["type"] == "works" }
   @meta = collection[:meta]
 
   @works = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
@@ -291,7 +292,6 @@ get '/data-centers/:id' do
   @relation_types = Array(collection[:data]).select {|item| item["type"] == "relation-types" }
   @work_types = Array(collection[:data]).select {|item| item["type"] == "work-types" }
   @sources = Array(collection[:data]).select {|item| item["type"] == "sources" }
-  @publishers = []
 
   params[:model] = "data-centers"
 
