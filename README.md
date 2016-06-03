@@ -18,6 +18,8 @@ Using Docker.
 docker run -p 8000:80 datacite1/doi-metadata-search
 ```
 
+![Screenshot](https://github.com/crosscite/doi-metadata-search/blob/master/public/images/start.png)
+
 You can now point your browser to `http://localhost:8000` and use the application. For a more detailed configuration, including serving the application from the host for live editing and claiming works to ORCID, look at `docker-compose.yml` in the root folder.
 
 ## Development
