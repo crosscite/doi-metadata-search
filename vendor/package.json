@@ -1,7 +1,7 @@
 {
-  "name": "frontend",
+  "name": "search",
   "version": "0.0.0",
-  "description": "Frontend",
+  "description": "search",
   "private": true,
   "directories": {
     "doc": "doc",

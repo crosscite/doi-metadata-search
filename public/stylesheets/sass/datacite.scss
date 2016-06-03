@@ -1,5 +1,9 @@
 $brand-logo:                 #1a8cd2;
 $gray:                       lighten(#bfc5c9, 15%);
+$silver:                     #bfc5c9;
+$gray-darker:                darken($silver, 20%);
+$gray-light:                 lighten($silver, 20%);
+$gray-lighter:               lighten($silver, 21%);
 
 body {
   margin-bottom: 300px !important;
@@ -17,12 +21,43 @@ body {
     color: $brand-logo;
   }
 }
-#sign-in {
-  border: 1px solid $gray;
-  padding: 6px 8px;
-  margin-top: 10px;
-  margin-right: 16px;
-  background-color: white;
+
+@import 'application';
+
+.header {
+  margin-bottom: 20px;
+}
+
+.orcid-logo { padding-right: .5em; }
+.media-body, .media-left {
+  padding-left: 2em;
+}
+.media-badge {
+  padding-left: .5em;
+}
+.badge-engagement {
+  color: #2196F3;
+}
+.badge-openness {
+  color: #FB9D00;
+}
+.badge-buzz {
+  color: #4CAF50;
+}
+.badge-fun {
+  color: #9C27B0;
+}
+.media-body .impactstory {
+  margin-top: .5em;
+}
+.panel-body.impactstory {
+  border: 1px solid #ff2500;
+}
+.panel-body.github {
+  border: 1px solid black;
+}
+.btn-group.github {
+  margin-top: 1.5em;
 }
 
 @import 'application';

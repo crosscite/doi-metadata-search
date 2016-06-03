@@ -2,16 +2,12 @@ language: ruby
 cache: bundler
 sudo: false
 rvm:
-  - 2.3.0
-
-services:
-  - mongodb
-  - redis-server
+  - 2.2.0
 
 before_script:
   - cp .env.travis .env
   - mkdir -p tmp/pids
-  - cd frontend && npm install
+  - cd vendor && npm install
   - cd ../ && npm install -g istanbul codeclimate-test-reporter
 
 script:

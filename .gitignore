@@ -18,7 +18,7 @@ log/*
 *.box
 packer_cache/*
 output-*
-/frontend/node_modules/*
-/frontend/bower_components/*
-/frontend/npm-debug.log
-/public/assets/*
+/vendor/node_modules/*
+/vendor/bower_components/*
+/vendor/npm-debug.log
+/vendor/assets/*

@@ -9,7 +9,10 @@
           %span.icon-bar
       - unless @meta[:page] == "splash"
         %a.navbar-brand{:href => "/"}
-          %img.logo{src: "//#{ENV['CDN_HOST']}/images/datacite.png" }
+          - if ENV['CDN_HOST']
+            %img.logo{src: "//#{ENV['CDN_HOST']}/images/datacite.png" }
+          - else
+            %img.logo{src: "/images/#{ENV['RA']}/datacite.png" }
           %span.logo> Data
           %span Cite Search
       .navbar-collapse.collapse
@@ -47,31 +50,33 @@
                   %a{:href => item['url']}
                     %i.fa.fa-fw{class: "fa-#{item['icon']}"}
                     = item['name']
-          - if signed_in?
-            %li.dropdown
-              %a.dropdown-toggle{href: '#', id: "account_menu_link", data: { toggle: "dropdown"}, aria: { haspopup: "true", expanded: "false" }}
-                = current_user.name
-                %span.caret
-              %ul.dropdown-menu{role: 'menu'}
-                %li
-                  %a{:href => "#{ENV['JWT_HOST']}/users/me"}
-                    %i.fa.fa-user
-                    Settings
-                %li
-                  %a{:href => "/contributors/#{current_user.orcid}"}
-                    %i.fa.fa-files-o
-                    My Works
-                %li.divider
-                %li
-                  %a{:href => "http://orcid.org/#{current_user.orcid}"}
-                    %i.fa.fa-external-link
-                    ORCID Record
-                %li.divider
+
+          - if ENV['JWT_HOST'].present?
+            - if signed_in?
+              %li.dropdown
+                %a.dropdown-toggle{href: '#', id: "account_menu_link", data: { toggle: "dropdown"}, aria: { haspopup: "true", expanded: "false" }}
+                  = current_user.name
+                  %span.caret
+                %ul.dropdown-menu{role: 'menu'}
                   %li
-                    %a{:href => '/auth/signout'}
-                      %i.fa.fa-sign-out
-                      Sign out
-          - else
-            %li
-              %a.btn.btn-default{:href => "/auth/jwt", id: 'sign-in'}
-                Sign in
+                    %a{:href => "#{ENV['JWT_HOST']}/users/me"}
+                      %i.fa.fa-user
+                      Settings
+                  %li
+                    %a{:href => "/contributors/#{current_user.orcid}"}
+                      %i.fa.fa-files-o
+                      My Works
+                  %li.divider
+                  %li
+                    %a{:href => "http://orcid.org/#{current_user.orcid}"}
+                      %i.fa.fa-external-link
+                      ORCID Record
+                  %li.divider
+                    %li
+                      %a{:href => '/auth/signout'}
+                        %i.fa.fa-sign-out
+                        Sign out
+            - else
+              %li
+                %a.btn.btn-default{:href => "/auth/jwt", id: 'sign-in'}
+                  Sign in

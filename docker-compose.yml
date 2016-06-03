@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  search:
+    env_file:
+      - .env
+    image: datacite/search
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/home/app/webapp

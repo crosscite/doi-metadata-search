@@ -1,7 +1,0 @@
-{
-  "name": "frontend",
-  "dependencies": {
-    "bootstrap-sass": "~3.3.4",
-    "bootstrap-add-clear": "~1.0.4"
-  }
-}

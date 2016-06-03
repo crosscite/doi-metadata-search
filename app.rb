@@ -1,17 +1,21 @@
-begin
-  # load ENV variables from .env file, requires dotenv gem
+# # load ENV variables from .env file if it exists
+env_file =  File.expand_path("../.env", __FILE__)
+if File.exist?(env_file)
   require 'dotenv'
-  Dotenv.load! File.expand_path("../.env", __FILE__)
-rescue Errno::ENOENT
-  $stderr.puts "Please create .env file, e.g. from .env.example"
-  exit
+  Dotenv.load! env_file
 end
 
-# Check for required ENV variables, can be set in .env file
-# ENV_VARS is hash of required ENV variables
-env_vars = %w(HOSTNAME SOLR_URL)
-env_vars.each { |env| fail ArgumentError,  "ENV[#{env}] is not set" unless ENV[env] }
-ENV_VARS = Hash[env_vars.map { |env| [env, ENV[env]] }]
+require 'securerandom'
+
+# required ENV variables, can be set in .env file
+ENV['SITENAMELONG'] ||= "DataCite Search"
+ENV['LOG_LEVEL'] ||= "info"
+ENV['RA'] ||= "datacite"
+ENV['API_URL'] ||= "http://api.labs.datacite.org"
+ENV['SESSION_KEY'] ||= SecureRandom.hex(15)
+
+env_vars = %w(SITENAMELONG LOG_LEVEL RA API_URL SESSION_KEY)
+env_vars.each { |env| fail ArgumentError,  "ENV[#{env}] is not set" unless ENV[env].present? }
 
 # Constants
 MIN_MATCH_SCORE = 2
