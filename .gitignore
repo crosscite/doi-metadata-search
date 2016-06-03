@@ -22,3 +22,4 @@ output-*
 /vendor/bower_components/*
 /vendor/npm-debug.log
 /vendor/assets/*
+!/vendor/assets/.keep
