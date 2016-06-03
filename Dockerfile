@@ -32,11 +32,11 @@ RUN chown -R app:app /home/app/webapp && \
 
 # Install npm and bower packages
 WORKDIR /home/app/webapp/vendor
-RUN npm install
+RUN sudo -u app npm install
 
 # Install Ruby gems via bundler, run as app user
 WORKDIR /home/app/webapp
-RUN sudo -u app bundle install --path vendor/bundle --quiet --without development
+RUN sudo -u app bundle install --path vendor/bundle --without development
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
