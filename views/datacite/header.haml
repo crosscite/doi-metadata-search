@@ -37,19 +37,27 @@
               %i.fa.fa-th
               %span.caret
             %ul.dropdown-menu{role: 'menu'}
-              %li.dropdown-header DataCite Labs
-              - settings.labs_links.each do |item|
-                %li
-                  %a{:href => item['url']}
-                    %i.fa{class: "fa-#{item['icon']}"}
-                    = item['name']
-              %li.divider
-              %li.dropdown-header DataCite
-              - settings.production_links.each do |item|
-                %li
-                  %a{:href => item['url']}
-                    %i.fa.fa-fw{class: "fa-#{item['icon']}"}
-                    = item['name']
+              - if settings.development?
+                %li.dropdown-header DataCite Development
+                - settings.development_links.each do |item|
+                  %li
+                    %a{:href => item['url']}
+                      %i.fa{class: "fa-#{item['icon']}"}
+                      = item['name']
+              - else
+                %li.dropdown-header DataCite Labs
+                - settings.labs_links.each do |item|
+                  %li
+                    %a{:href => item['url']}
+                      %i.fa{class: "fa-#{item['icon']}"}
+                      = item['name']
+                %li.divider
+                %li.dropdown-header DataCite
+                - settings.production_links.each do |item|
+                  %li
+                    %a{:href => item['url']}
+                      %i.fa.fa-fw{class: "fa-#{item['icon']}"}
+                      = item['name']
 
           - if ENV['JWT_HOST'].present?
             - if signed_in?
