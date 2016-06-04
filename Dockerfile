@@ -4,10 +4,8 @@ MAINTAINER Martin Fenner "mfenner@datacite.org"
 # Set correct environment variables.
 ENV HOME /home/app
 
-# Set env defaults, can be overriden
-ENV LC_ALL en_US.UTF-8
-ENV LANG en_US.UTF-8
-ENV RACK_ENV development
+# Allow app user to read /etc/container_environment
+RUN usermod -a -G docker_env app
 
 # Use baseimage-docker's init process.
 CMD ["/sbin/my_init"]
