@@ -7,7 +7,7 @@ services:
   search:
     env_file:
       - .env
-    image: datacite1/doi-metadata-search
+    image: crosscite/doi-metadata-search
     ports:
       - "8000:80"
     volumes:
