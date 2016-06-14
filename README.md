@@ -15,7 +15,7 @@ with both CrossRef and DataCite DOIs.
 Using Docker.
 
 ```
-docker run -p 8000:80 datacite1/doi-metadata-search
+docker run -p 8000:80 crosscite/doi-metadata-search
 ```
 
 You can now point your browser to `http://localhost:8000` and use the application.
