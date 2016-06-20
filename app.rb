@@ -454,7 +454,5 @@ end
 get '/heartbeat' do
   content_type 'text/html'
 
-  halt 503, 'failed' unless services_up?
-
   'OK'
 end
