@@ -14,6 +14,7 @@ if File.exist?(env_json_file)
 end
 
 require 'securerandom'
+require 'active_support/all'
 
 # required ENV variables, can be set in .env file
 ENV['SITENAMELONG'] ||= "DataCite Search"
@@ -37,7 +38,6 @@ ORCID_VERSION = '1.2'
 require 'sinatra'
 require 'sinatra/json'
 require 'sinatra/config_file'
-require 'active_support/all'
 require 'rsolr'
 require 'tilt/haml'
 require 'haml'
