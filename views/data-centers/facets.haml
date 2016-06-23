@@ -12,6 +12,8 @@
             - else
               %a{:href => "/data-centers?member-id=#{x.first}&q=#{params[:q]}"}
                 %i.fa.fa-square-o
-            = member_title(@members, x.first)
+            .facet-title
+              = member_title(@members, x.first)
             %span.number.pull-right
               = number_with_delimiter(x.last)
+            .clearfix

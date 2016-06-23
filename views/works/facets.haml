@@ -9,14 +9,18 @@
             %li.active
               %a{:href => works_query(params.except('resource-type-id'))}
                 %i.fa.fa-check-square-o
-              = resource_type_title(@resource_types, f.first)
+              .facet-title
+                = resource_type_title(@resource_types, f.first)
               %span.number.pull-right= "#{number_with_delimiter(f.last)}"
+              .clearfix
           - else
             %li
               %a{:href => works_query(params.merge('resource-type-id' => f.first))}
                 %i.fa.fa-square-o
-              = resource_type_title(@resource_types, f.first)
+              .facet-title
+                = resource_type_title(@resource_types, f.first)
               %span.number.pull-right= "#{number_with_delimiter(f.last)}"
+              .clearfix
 
   - if @meta["publishers"].present? && params[:model] == "works"
     .panel-body
@@ -28,14 +32,18 @@
             %li.active
               %a{:href => works_query(params.except('publisher-id'))}
                 %i.fa.fa-check-square-o
-              = publisher_title(@publishers, f.first)
+              .facet-title
+                = publisher_title(@publishers, f.first)
               %span.number.pull-right= "#{number_with_delimiter(f.last)}"
+              .clearfix
           - else
             %li
               %a{:href => works_query(params.merge('publisher-id' => f.first))}
                 %i.fa.fa-square-o
-              = publisher_title(@publishers, f.first)
+              .facet-title
+                = publisher_title(@publishers, f.first)
               %span.number.pull-right= "#{number_with_delimiter(f.last)}"
+              .clearfix
 
   - if @meta["sources"].present? && params[:model] != "sources"
     .panel-body
@@ -47,14 +55,18 @@
             %li.active
               %a{:href => works_query(params.except('source-id'))}
                 %i.fa.fa-check-square-o
-              = source_title(@sources, f.first)
+              .facet-title
+                = source_title(@sources, f.first)
               %span.number.pull-right= "#{number_with_delimiter(f.last)}"
+              .clearfix
           - else
             %li
               %a{:href => works_query(params.merge('source-id' => f.first))}
                 %i.fa.fa-square-o
-              = source_title(@sources, f.first)
+              .facet-title
+                = source_title(@sources, f.first)
               %span.number.pull-right= "#{number_with_delimiter(f.last)}"
+              .clearfix
 
   - if @meta["relation-types"].present?
     .panel-body
@@ -66,11 +78,15 @@
             %li.active
               %a{:href => works_query(params.except('relation-type-id'))}
                 %i.fa.fa-check-square-o
-              = relation_type_title(@relation_types, f.first)
+              .facet-title
+                = relation_type_title(@relation_types, f.first)
               %span.number.pull-right= "#{number_with_delimiter(f.last)}"
+              .clearfix
           - else
             %li
               %a{:href => works_query(params.merge('relation-type-id' => f.first))}
                 %i.fa.fa-square-o
-              = relation_type_title(@relation_types, f.first)
+              .facet-title
+                = relation_type_title(@relation_types, f.first)
               %span.number.pull-right= "#{number_with_delimiter(f.last)}"
+              .clearfix

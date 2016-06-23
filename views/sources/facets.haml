@@ -12,6 +12,8 @@
             - else
               %a{:href => "/sources?group-id=#{g.first}&q=#{params[:q]}"}
                 %i.fa.fa-square-o
-            = group_title(@groups, g.first)
+            .facet-title
+              = group_title(@groups, g.first)
             %span.number.pull-right
               = number_with_delimiter(g.last)
+            .clearfix

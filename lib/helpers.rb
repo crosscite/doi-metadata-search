@@ -31,6 +31,15 @@ module Sinatra
       end
     end
 
+    def itemtype_format(attributes)
+      type = attributes.fetch("resource-type-general", nil) || attributes.fetch("type", nil)
+
+      case type
+      when "dataset" then "http://schema.org/Dataset"
+      else "http://schema.org/CreativeWork"
+      end
+    end
+
     def resource_type_title(resource_types, id)
       resource_type = Array(resource_types).find { |p| p["id"] == id }
       return id unless resource_type.present?

@@ -12,9 +12,11 @@
             - else
               %a{:href => "/members?member-type=#{mt.first}&q=#{params[:q]}"}
                 %i.fa.fa-square-o
-            = mt.first
+            .facet-title
+              = mt.first
             %span.number.pull-right
               = number_with_delimiter(mt.last)
+            .clearfix
 
 - if @meta["regions"].present?
   .panel.facets
@@ -30,9 +32,11 @@
             - else
               %a{:href => "/members?region=#{r.first}&q=#{params[:q]}"}
                 %i.fa.fa-square-o
-            = region_format("region" => r.first)
+            .facet-title
+              = region_format("region" => r.first)
             %span.number.pull-right
               = number_with_delimiter(r.last)
+            .clearfix
 
 - if @meta["years"].present?
   .panel.facets
@@ -48,6 +52,8 @@
             - else
               %a{:href => "/members?year=#{y.first}&q=#{params[:q]}"}
                 %i.fa.fa-square-o
-            = y.first
+            .facet-title
+              = y.first
             %span.number.pull-right
               = number_with_delimiter(y.last)
+            .clearfix
