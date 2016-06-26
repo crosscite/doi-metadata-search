@@ -9,7 +9,7 @@ module Sinatra
                  offset: params.fetch(:offset, 0),
                  rows: params.fetch(:rows, 25),
                  sort: params.fetch(:sort, nil),
-                 q: params.fetch(:q, nil),
+                 query: params.fetch(:query, nil),
                  year: params.fetch('year', nil),
                  'resource-type-id' => params.fetch('resource-type-id', nil),
                  'relation-type-id' => params.fetch('relation-type-id', nil),
@@ -38,7 +38,7 @@ module Sinatra
       params = { id: params.fetch(:id, nil),
                  offset: params.fetch(:offset, 0),
                  rows: params.fetch(:rows, 25),
-                 q: params.fetch(:q, nil) }.compact
+                 query: params.fetch(:query, nil) }.compact
       url = "#{ENV['API_URL']}/contributors?" + URI.encode_www_form(params)
 
       result = Maremma.get url
@@ -61,7 +61,7 @@ module Sinatra
       params = { id: params.fetch(:id, nil),
                  offset: params.fetch(:offset, 0),
                  rows: params.fetch(:rows, 25),
-                 q: params.fetch(:q, nil),
+                 query: params.fetch(:query, nil),
                  "member-id" => params.fetch("member-id", nil),
                  'registration-agency-id': "datacite" }.compact
       url = "#{ENV['API_URL']}/publishers?" + URI.encode_www_form(params)
@@ -75,7 +75,7 @@ module Sinatra
                  'member-type' => params.fetch('member-type', nil),
                  region: params.fetch(:region, nil),
                  year: params.fetch(:year, nil),
-                 q: params.fetch(:q, nil) }.compact
+                 query: params.fetch(:query, nil) }.compact
       url = "#{ENV['API_URL']}/members?" + URI.encode_www_form(params)
 
       result = Maremma.get url
@@ -84,7 +84,7 @@ module Sinatra
 
     def get_sources(params = {})
       params = { id: params.fetch(:id, nil),
-                 q: params.fetch(:q, nil),
+                 query: params.fetch(:query, nil),
                  'group-id' => params.fetch('group-id', nil) }.compact
       url = "#{ENV['API_URL']}/sources?" + URI.encode_www_form(params)
 
