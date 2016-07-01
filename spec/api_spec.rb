@@ -54,7 +54,7 @@ describe "API", type: :model, vcr: true do
       response = subject.get_datacenters
       expect(response[:meta]).to eq("total"=>746, "registration-agencies"=>{"datacite"=>746}, "members"=>{"delft"=>14, "dk"=>9, "mtakik"=>37, "purdue"=>25, "cdl"=>169, "osti"=>24, "ethz"=>43, "gesis"=>64, "cisti"=>19, "zbmed"=>31, "inist"=>30, "snd"=>6, "cern"=>7, "crui"=>33, "datacite"=>2, "csic"=>1, "zbw"=>9, "ands"=>41, "jalc"=>1, "nrct"=>1, "tib"=>108, "subgoe"=>3, "estdoi"=>6, "bibsys"=>2, "bl"=>61})
       datacenter = response[:data].first
-      expect(datacenter).to eq("id"=>"ethz.ubasojs", "type"=>"publishers", "attributes"=>{"title"=>"027.7 - Zeitschrift für Bibliothekskultur", "other-names"=>[], "prefixes"=>[], "member-id"=>"ETHZ", "registration-agency-id"=>"datacite", "updated"=>"2016-07-01T20:39:55Z"})
+      expect(datacenter["attributes"]["title"]).to eq("027.7 - Zeitschrift für Bibliothekskultur")
     end
 
     it "one" do
@@ -98,20 +98,20 @@ describe "API", type: :model, vcr: true do
       response = subject.get_sources
       expect(response[:meta]).to eq("total"=>15, "groups"=>{"relations"=>6, "contributions"=>4, "publishers"=>2, "results"=>3})
       source = response[:data].first
-      expect(source).to eq("id"=>"crossref-datacite", "type"=>"sources", "attributes"=>{"title"=>"Crossref (DataCite)", "description"=>"Import works linked to a DataCite DOI from Crossref.", "state"=>"active", "group-id"=>"relations", "work-count"=>0, "relation-count"=>0, "result-count"=>0, "by-day"=>{"with-results"=>0, "without-results"=>0, "not-updated"=>0}, "by-month"=>{"with-results"=>0, "without-results"=>0, "not-updated"=>0}, "updated"=>"2016-07-01T21:17:32Z"})
+      expect(source["attributes"]["title"]).to eq("Crossref (DataCite)")
     end
 
     it "one" do
       response = subject.get_sources(id: "datacite-crossref")
       source = response[:data].first
-      expect(source).to eq("id"=>"datacite-crossref", "type"=>"sources", "attributes"=>{"title"=>"DataCite (Crossref)", "description"=>"Import works with Crossref DOIs as relatedIdentifier via the DataCite Solr API.", "state"=>"active", "group-id"=>"relations", "work-count"=>0, "relation-count"=>0, "result-count"=>0, "by-day"=>{"with-results"=>0, "without-results"=>0, "not-updated"=>0}, "by-month"=>{"with-results"=>0, "without-results"=>0, "not-updated"=>0}, "updated"=>"2016-07-01T21:17:32Z"})
+      expect(source["attributes"]["title"]).to eq("DataCite (Crossref)")
     end
 
     it "query" do
       response = subject.get_sources(query: "cross")
       expect(response[:meta]).to eq("total"=>3, "groups"=>{"relations"=>2, "publishers"=>1})
       source = response[:data].first
-      expect(source).to eq("id"=>"crossref-datacite", "type"=>"sources", "attributes"=>{"title"=>"Crossref (DataCite)", "description"=>"Import works linked to a DataCite DOI from Crossref.", "state"=>"active", "group-id"=>"relations", "work-count"=>0, "relation-count"=>0, "result-count"=>0, "by-day"=>{"with-results"=>0, "without-results"=>0, "not-updated"=>0}, "by-month"=>{"with-results"=>0, "without-results"=>0, "not-updated"=>0}, "updated"=>"2016-07-01T21:17:32Z"})
+      expect(source["attributes"]["title"]).to eq("DataCite (Crossref)")
     end
   end
 
@@ -134,7 +134,7 @@ describe "API", type: :model, vcr: true do
   context "get_contributions" do
     it "all" do
       response = subject.get_contributions
-      expect(response[:meta]).to eq("total"=>1071844, "sources"=>{"datacite-related"=>6639, "datacite-orcid"=>1061078, "github-contributor"=>492, "datacite-search-link"=>3634})
+      expect(response[:meta]).to eq("total"=>1071844, "sources"=>{"datacite-related"=>6639, "datacite-orcid"=>1061079, "github-contributor"=>492, "datacite-search-link"=>3634})
       contribution = response[:data].first
       expect(contribution["attributes"]).to eq("subj-id"=>"http://orcid.org/0000-0002-1974-1445", "obj-id"=>"http://doi.org/10.4121/UUID:AE729A0E-C9AD-46FC-B859-8311821EE1D3", "credit-name"=>"Herman Russchenberg", "orcid"=>"0000-0002-1974-1445", "github"=>nil, "author"=>[{"family"=>"Russchenberg", "given"=>"H.W.J.(Herman)", "orcid"=>"http://orcid.org/0000-0002-1974-1445"}, {"family"=>"Reinoso Rondinel", "given"=>"R.R.(Ricardo)", "orcid"=>"http://orcid.org/0000-0001-7868-245X"}, {"family"=>"Unal", "given"=>"C.M.H.(Christine)"}, {"family"=>"Yin", "given"=>"J.(Jiapeng)"}], "doi"=>"10.4121/UUID:AE729A0E-C9AD-46FC-B859-8311821EE1D3", "url"=>nil, "title"=>"IDRA weather radar measurements - day 2015-10-14", "container-title"=>"TU Delft", "source-id"=>"datacite-orcid", "contributor-role-id"=>"contribution", "type"=>nil, "published"=>"2015", "issued"=>"2016-06-21T14:54:20Z", "updated"=>"2016-07-01T16:35:23Z")
     end
