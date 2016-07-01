@@ -134,7 +134,7 @@ describe "API", type: :model, vcr: true do
   context "get_contributions" do
     it "all" do
       response = subject.get_contributions
-      expect(response[:meta]).to eq("total"=>1071843, "sources"=>{"datacite-related"=>6639, "datacite-orcid"=>1061078, "github-contributor"=>492, "datacite-search-link"=>3634})
+      expect(response[:meta]).to eq("total"=>1071844, "sources"=>{"datacite-related"=>6639, "datacite-orcid"=>1061078, "github-contributor"=>492, "datacite-search-link"=>3634})
       contribution = response[:data].first
       expect(contribution["attributes"]).to eq("subj-id"=>"http://orcid.org/0000-0002-1974-1445", "obj-id"=>"http://doi.org/10.4121/UUID:AE729A0E-C9AD-46FC-B859-8311821EE1D3", "credit-name"=>"Herman Russchenberg", "orcid"=>"0000-0002-1974-1445", "github"=>nil, "author"=>[{"family"=>"Russchenberg", "given"=>"H.W.J.(Herman)", "orcid"=>"http://orcid.org/0000-0002-1974-1445"}, {"family"=>"Reinoso Rondinel", "given"=>"R.R.(Ricardo)", "orcid"=>"http://orcid.org/0000-0001-7868-245X"}, {"family"=>"Unal", "given"=>"C.M.H.(Christine)"}, {"family"=>"Yin", "given"=>"J.(Jiapeng)"}], "doi"=>"10.4121/UUID:AE729A0E-C9AD-46FC-B859-8311821EE1D3", "url"=>nil, "title"=>"IDRA weather radar measurements - day 2015-10-14", "container-title"=>"TU Delft", "source-id"=>"datacite-orcid", "contributor-role-id"=>"contribution", "type"=>nil, "published"=>"2015", "issued"=>"2016-06-21T14:54:20Z", "updated"=>"2016-07-01T16:35:23Z")
     end
