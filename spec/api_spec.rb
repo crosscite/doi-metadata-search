@@ -111,7 +111,7 @@ describe "API", type: :model, vcr: true do
       response = subject.get_sources(query: "cross")
       expect(response[:meta]).to eq("total"=>3, "groups"=>{"relations"=>2, "publishers"=>1})
       source = response[:data].first
-      expect(source["attributes"]["title"]).to eq("DataCite (Crossref)")
+      expect(source["attributes"]["title"]).to eq("Crossref (DataCite)")
     end
   end
 
