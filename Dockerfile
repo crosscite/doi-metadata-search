@@ -35,12 +35,12 @@ RUN chown -R app:app /home/app/tmp && \
 
 # Install npm and bower packages
 WORKDIR /home/app/tmp/vendor
-RUN sudo -u app npm install && \
-    npm install -g phantomjs-prebuilt istanbul codeclimate-test-reporter
+RUN sudo -u app npm install
 
 # Install Ruby gems
 COPY Gemfile /home/app/tmp/Gemfile
 COPY Gemfile.lock /home/app/tmp/Gemfile.lock
+WORKDIR /home/app/tmp
 RUN gem install bundler && \
     mkdir -p /home/app/tmp/vendor/bundle && \
     chown -R app:app /home/app/tmp/vendor/bundle && \
