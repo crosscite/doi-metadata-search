@@ -1,13 +1,11 @@
 require_relative 'doi'
 require_relative 'session_helper'
-require_relative 'search'
 require 'sanitize'
 
 module Sinatra
   module Helpers
     include Sinatra::Doi
     include Sinatra::SessionHelper
-    include Sinatra::Search
 
     def author_format(author)
       authors = Array(author).map do |a|

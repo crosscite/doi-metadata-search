@@ -38,7 +38,6 @@ ORCID_VERSION = '1.2'
 require 'sinatra'
 require 'sinatra/json'
 require 'sinatra/config_file'
-require 'rsolr'
 require 'tilt/haml'
 require 'haml'
 require 'will_paginate'
@@ -73,9 +72,6 @@ configure do
 
   # Work around rack protection referrer bug
   set :protection, except: :json_csrf
-
-  # Configure solr
-  set :solr, RSolr.connect(url: ENV['SOLR_URL'])
 
   # Configure omniauth client
   use OmniAuth::Builder do

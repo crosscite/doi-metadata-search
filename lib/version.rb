@@ -1,3 +1,3 @@
 module App
-  VERSION = '2.0-beta'
+  VERSION = '2.1'
 end
