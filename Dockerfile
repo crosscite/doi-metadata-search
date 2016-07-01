@@ -33,9 +33,10 @@ RUN chown -R app:app /home/app/webapp && \
 # Install npm and bower packages
 WORKDIR /home/app/webapp/vendor
 RUN sudo -u app npm install
+WORKDIR /home/app/tmp
+RUN npm install -g phantomjs-prebuilt istanbul codeclimate-test-reporter
 
 # Install Ruby gems via bundler, run as app user
-WORKDIR /home/app/webapp
 RUN sudo -u app bundle install --path vendor/bundle --without development
 
 # Clean up APT when done.

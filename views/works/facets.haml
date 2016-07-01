@@ -22,6 +22,29 @@
               %span.number.pull-right= "#{number_with_delimiter(f.last)}"
               .clearfix
 
+  - if @meta["years"].present?
+    .panel-body
+      %h4
+        Publication Year
+      %ul
+        - @meta["years"].each do |f|
+          - if params['year'] == f.first
+            %li.active
+              %a{:href => works_query(params.except('year'))}
+                %i.fa.fa-check-square-o
+              .facet-title
+                = f.first
+              %span.number.pull-right= "#{number_with_delimiter(f.last)}"
+              .clearfix
+          - else
+            %li
+              %a{:href => works_query(params.merge('year' => f.first))}
+                %i.fa.fa-square-o
+              .facet-title
+                = f.first
+              %span.number.pull-right= "#{number_with_delimiter(f.last)}"
+              .clearfix
+
   - if @meta["publishers"].present? && params[:model] == "works"
     .panel-body
       %h4

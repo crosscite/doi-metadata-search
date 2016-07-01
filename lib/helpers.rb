@@ -160,7 +160,9 @@ module Sinatra
                  "q" => options.fetch("q", nil),
                  "resource-type-id" => options.fetch("resource-type-id", nil),
                  "relation-type-id" => options.fetch("relation-type-id", nil),
+                 "publisher-id" => options.fetch("publisher-id", nil),
                  "source-id" => options.fetch("source-id", nil),
+                 "year" => options.fetch("year", nil),
                  "sort" => options.fetch("sort", nil) }.compact
 
       if options[:model] == "data-centers"
