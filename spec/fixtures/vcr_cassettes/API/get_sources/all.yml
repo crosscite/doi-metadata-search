@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datacite.org/sources
+    uri: http://api.datacite.org/sources
     body:
       encoding: US-ASCII
       string: ''
@@ -77,6 +77,6 @@ http_interactions:
         is the largest social network.","state":"active","group-id":"results","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-07-01T21:45:10Z"}},{"id":"github","type":"sources","attributes":{"title":"Github","description":"GitHub
         is a web-based Git repository hosting service.","state":"active","group-id":"results","work-count":193,"relation-count":195,"result-count":2603,"by-day":{"with-results":0,"without-results":0,"not-updated":195},"by-month":{"with-results":0,"without-results":0,"not-updated":195},"updated":"2016-07-01T23:04:59Z"}},{"id":"mendeley","type":"sources","attributes":{"title":"Mendeley","description":"Mendeley
         is a reference manager and social bookmarking tool.","state":"active","group-id":"results","work-count":1,"relation-count":1,"result-count":1,"by-day":{"with-results":0,"without-results":0,"not-updated":1},"by-month":{"with-results":0,"without-results":0,"not-updated":1},"updated":"2016-07-01T21:06:17Z"}},{"id":"contributions","type":"groups","attributes":{"title":"Contributions","sources":["datacite_search_link","datacite_orcid","github_contributor","orcid"],"updated":"2016-03-28T15:25:06Z"}},{"id":"publishers","type":"groups","attributes":{"title":"Publishers","sources":["crossref_publisher","datacite_datacentre"],"updated":"2016-03-28T15:25:06Z"}},{"id":"relations","type":"groups","attributes":{"title":"Relations","sources":["crossref_datacite","datacite_crossref","datacite_github","datacite_related","europe_pmc_fulltext","plos_fulltext"],"updated":"2016-03-28T15:25:06Z"}},{"id":"results","type":"groups","attributes":{"title":"Results","sources":["facebook","github","mendeley"],"updated":"2016-04-07T20:46:44Z"}}],"meta":{"total":15,"groups":{"relations":6,"contributions":4,"publishers":2,"results":3}}}'
-    http_version: 
+    http_version:
   recorded_at: Fri, 01 Jul 2016 23:43:44 GMT
 recorded_with: VCR 2.9.3

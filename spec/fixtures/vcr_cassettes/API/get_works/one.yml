@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datacite.org/works?id=10.6084/M9.FIGSHARE.C.1909847&offset=0&rows=25
+    uri: http://api.datacite.org/works?id=10.6084/M9.FIGSHARE.C.1909847&offset=0&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -67,6 +67,6 @@ http_interactions:
         non-profit, governmental and commercial clients.\u003c/p\u003e\n","member-type":"allocating","region":"Americas","country":"United
         States","year":2009,"logo-url":"https://assets.datacite.org/images/members/cdl.jpg","email":"ezid
         [at] ucop.edu","website":"http://ezid.cdlib.org","phone":"1-510-987-0469","updated":"2016-06-09T21:42:46.000Z"}}],"meta":{"total":1,"sources":{},"relation-types":{}}}'
-    http_version: 
+    http_version:
   recorded_at: Fri, 01 Jul 2016 23:43:39 GMT
 recorded_with: VCR 2.9.3

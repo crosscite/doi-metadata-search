@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datacite.org/publishers?id=CERN.ZENODO&offset=0&registration-agency-id=datacite&rows=25
+    uri: http://api.datacite.org/publishers?id=CERN.ZENODO&offset=0&registration-agency-id=datacite&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -100,6 +100,6 @@ http_interactions:
         aWNlIFthdF0gY2Vybi5jaCIsIndlYnNpdGUiOiJodHRwOi8vZG9pLndlYi5j
         ZXJuLmNoLyIsInBob25lIjpudWxsLCJ1cGRhdGVkIjoiMjAxNi0wNi0yM1Qx
         NToyNjoyNy4wMDBaIn19XX0=
-    http_version: 
+    http_version:
   recorded_at: Fri, 01 Jul 2016 23:43:45 GMT
 recorded_with: VCR 2.9.3

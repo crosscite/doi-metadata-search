@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datacite.org/members
+    uri: http://api.datacite.org/members
     body:
       encoding: US-ASCII
       string: ''
@@ -1229,6 +1229,6 @@ http_interactions:
         ciI6NywiYXBhYyI6NSwiZW1lYSI6MjJ9LCJ5ZWFycyI6eyIyMDE1Ijo1LCIy
         MDE0Ijo0LCIyMDEzIjo0LCIyMDEyIjoxLCIyMDExIjoxLCIyMDEwIjo5LCIy
         MDA5Ijo3fX19
-    http_version: 
+    http_version:
   recorded_at: Fri, 01 Jul 2016 23:43:46 GMT
 recorded_with: VCR 2.9.3

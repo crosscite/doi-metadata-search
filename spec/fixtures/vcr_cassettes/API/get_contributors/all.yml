@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datacite.org/contributors?offset=0&rows=25
+    uri: http://api.datacite.org/contributors?offset=0&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -165,6 +165,6 @@ http_interactions:
         bnVsbCwibGl0ZXJhbCI6IkFuZ3VzbWFuMTciLCJvcmNpZCI6bnVsbCwiZ2l0
         aHViIjoiQW5ndXNtYW4xNyIsInVwZGF0ZWQiOiIxOTcwLTAxLTAxVDAwOjAw
         OjAwWiJ9fV0sIm1ldGEiOnsidG90YWwiOjY0NDV9fQ==
-    http_version: 
+    http_version:
   recorded_at: Fri, 01 Jul 2016 23:43:43 GMT
 recorded_with: VCR 2.9.3

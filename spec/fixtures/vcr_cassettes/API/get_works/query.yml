@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datacite.org/works?offset=0&query=mabbett&rows=25
+    uri: http://api.datacite.org/works?offset=0&query=mabbett&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -302,6 +302,6 @@ http_interactions:
         c2V0IjoxNSwidGV4dCI6MX0sInllYXJzIjp7IjIwMTYiOjYsIjIwMTUiOjEw
         fSwicHVibGlzaGVycyI6eyJjZGwuZGlnc2NpIjoxNSwidGliLnItZ2F0ZSI6
         MX0sInRvdGFsIjoxNn19
-    http_version: 
+    http_version:
   recorded_at: Fri, 01 Jul 2016 23:43:40 GMT
 recorded_with: VCR 2.9.3

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datacite.org/publishers?offset=0&registration-agency-id=datacite&rows=25
+    uri: http://api.datacite.org/publishers?offset=0&registration-agency-id=datacite&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -1060,6 +1060,6 @@ http_interactions:
         biI6NywiY3J1aSI6MzMsImRhdGFjaXRlIjoyLCJjc2ljIjoxLCJ6YnciOjks
         ImFuZHMiOjQxLCJqYWxjIjoxLCJucmN0IjoxLCJ0aWIiOjEwOCwic3ViZ29l
         IjozLCJlc3Rkb2kiOjYsImJpYnN5cyI6MiwiYmwiOjYxfX19
-    http_version: 
+    http_version:
   recorded_at: Fri, 01 Jul 2016 23:43:45 GMT
 recorded_with: VCR 2.9.3

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datacite.org/sources?id=datacite-crossref
+    uri: http://api.datacite.org/sources?id=datacite-crossref
     body:
       encoding: US-ASCII
       string: ''
@@ -57,6 +57,6 @@ http_interactions:
       string: '{"data":[{"id":"datacite-crossref","type":"sources","attributes":{"title":"DataCite
         (Crossref)","description":"Import works with Crossref DOIs as relatedIdentifier
         via the DataCite Solr API.","state":"active","group-id":"relations","work-count":20303,"relation-count":225338,"result-count":75517,"by-day":{"with-results":18,"without-results":322,"not-updated":224943},"by-month":{"with-results":5138,"without-results":197227,"not-updated":22918},"updated":"2016-07-01T23:05:10Z"}},{"id":"relations","type":"groups","attributes":{"title":"Relations","sources":["crossref_datacite","datacite_crossref","datacite_github","datacite_related","europe_pmc_fulltext","plos_fulltext"],"updated":"2016-03-28T15:25:06Z"}}]}'
-    http_version: 
+    http_version:
   recorded_at: Fri, 01 Jul 2016 23:43:44 GMT
 recorded_with: VCR 2.9.3

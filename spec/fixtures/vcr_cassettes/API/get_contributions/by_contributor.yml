@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datacite.org/contributions?contributor-id=orcid.org/0000-0002-8635-8390&offset=0&rows=25
+    uri: http://api.datacite.org/contributions?contributor-id=orcid.org/0000-0002-8635-8390&offset=0&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -126,6 +126,6 @@ http_interactions:
         Profiles API.","state":"active","group-id":"contributions","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-07-01T20:46:45Z"}},{"id":"datacite-orcid","type":"sources","attributes":{"title":"DataCite
         (ORCID)","description":"Import works with ORCID nameIdentifier via the DataCite
         Solr API.","state":"active","group-id":"contributions","work-count":1,"relation-count":3,"result-count":1,"by-day":{"with-results":0,"without-results":0,"not-updated":1},"by-month":{"with-results":1,"without-results":0,"not-updated":0},"updated":"2016-07-01T23:40:13Z"}}],"meta":{"total":162093,"sources":{"datacite-related":359,"datacite-orcid":161721,"datacite-search-link":13}}}'
-    http_version: 
+    http_version:
   recorded_at: Fri, 01 Jul 2016 23:43:43 GMT
 recorded_with: VCR 2.9.3

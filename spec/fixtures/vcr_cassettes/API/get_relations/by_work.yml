@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datacite.org/relations?offset=0&rows=25&work-id=10.6084/M9.FIGSHARE.3394312
+    uri: http://api.datacite.org/relations?offset=0&rows=25&work-id=10.6084/M9.FIGSHARE.3394312
     body:
       encoding: US-ASCII
       string: ''
@@ -60,6 +60,6 @@ http_interactions:
         (RelatedIdentifier)","description":"Import works with relatedIdentifiers via
         the DataCite Solr API.","state":"active","group-id":"relations","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-07-01T23:40:08Z"}},{"id":"is-identical-to","type":"relation-types","attributes":{"title":"Is
         identical to","inverse-title":"Is identical to","updated":"2016-03-21T15:05:04Z"}}],"meta":{"total":1,"sources":{"datacite-related":1},"relation-types":{"is-identical-to":1}}}'
-    http_version: 
+    http_version:
   recorded_at: Fri, 01 Jul 2016 23:44:19 GMT
 recorded_with: VCR 2.9.3
