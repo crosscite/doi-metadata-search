@@ -7,10 +7,10 @@
         - @meta["groups"].each do |g|
           %li
             - if params["group-id"].present?
-              %a{:href => "/sources?q=#{params[:q]}"}
+              %a{:href => "/sources?query=#{params[:query]}"}
                 %i.fa.fa-check-square-o
             - else
-              %a{:href => "/sources?group-id=#{g.first}&q=#{params[:q]}"}
+              %a{:href => "/sources?group-id=#{g.first}&query=#{params[:query]}"}
                 %i.fa.fa-square-o
             .facet-title
               = group_title(@groups, g.first)

@@ -7,10 +7,10 @@
         - @meta["member-types"].each do |mt|
           %li
             - if @params["member-type"].present?
-              %a{:href => "/members?q=#{params[:q]}"}
+              %a{:href => "/members?query=#{params[:query]}"}
                 %i.fa.fa-check-square-o
             - else
-              %a{:href => "/members?member-type=#{mt.first}&q=#{params[:q]}"}
+              %a{:href => "/members?member-type=#{mt.first}&query=#{params[:query]}"}
                 %i.fa.fa-square-o
             .facet-title
               = mt.first
@@ -27,10 +27,10 @@
         - @meta["regions"].each do |r|
           %li
             - if params[:region].present?
-              %a{:href => "/members?q=#{params[:q]}"}
+              %a{:href => "/members?query=#{params[:query]}"}
                 %i.fa.fa-check-square-o
             - else
-              %a{:href => "/members?region=#{r.first}&q=#{params[:q]}"}
+              %a{:href => "/members?region=#{r.first}&query=#{params[:query]}"}
                 %i.fa.fa-square-o
             .facet-title
               = region_format("region" => r.first)
@@ -47,10 +47,10 @@
         - @meta["years"].each do |y|
           %li
             - if params[:year].present?
-              %a{:href => "/members?q=#{params[:q]}"}
+              %a{:href => "/members?query=#{params[:query]}"}
                 %i.fa.fa-check-square-o
             - else
-              %a{:href => "/members?year=#{y.first}&q=#{params[:q]}"}
+              %a{:href => "/members?year=#{y.first}&query=#{params[:query]}"}
                 %i.fa.fa-square-o
             .facet-title
               = y.first

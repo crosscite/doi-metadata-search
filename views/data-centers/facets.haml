@@ -7,10 +7,10 @@
         - @meta["members"].sort_by { |k,v| -v }.each do |x|
           %li
             - if @params['member-id'].present?
-              %a{:href => "/data-centers?q=#{params[:q]}"}
+              %a{:href => "/data-centers?query=#{params[:query]}"}
                 %i.fa.fa-check-square-o
             - else
-              %a{:href => "/data-centers?member-id=#{x.first}&q=#{params[:q]}"}
+              %a{:href => "/data-centers?member-id=#{x.first}&query=#{params[:query]}"}
                 %i.fa.fa-square-o
             .facet-title
               = member_title(@members, x.first)

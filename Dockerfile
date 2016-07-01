@@ -10,8 +10,11 @@ RUN usermod -a -G docker_env app
 # Use baseimage-docker's init process.
 CMD ["/sbin/my_init"]
 
-# Update installed APT packages
-RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
+# Update installed APT packages, clean up when done
+RUN apt-get update && \
+    apt-get upgrade -y -o Dpkg::Options::="--force-confold" && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install bundler
 RUN gem install bundler
@@ -24,23 +27,27 @@ COPY vendor/docker/webapp.conf /etc/nginx/sites-enabled/webapp.conf
 COPY vendor/docker/00_app_env.conf /etc/nginx/conf.d/00_app_env.conf
 COPY vendor/docker/cors.conf /etc/nginx/conf.d/cors.conf
 
-# Prepare app folder
-RUN mkdir /home/app/webapp
-ADD . /home/app/webapp
-RUN chown -R app:app /home/app/webapp && \
-    chmod -R 755 /home/app/webapp
-
 # Install npm and bower packages
-WORKDIR /home/app/webapp/vendor
+WORKDIR /home/app/tmp/vendor
 RUN sudo -u app npm install
 WORKDIR /home/app/tmp
 RUN npm install -g phantomjs-prebuilt istanbul codeclimate-test-reporter
 
-# Install Ruby gems via bundler, run as app user
-RUN sudo -u app bundle install --path vendor/bundle --without development
+# Install Ruby gems
+COPY Gemfile /home/app/tmp/Gemfile
+COPY Gemfile.lock /home/app/tmp/Gemfile.lock
+RUN gem install bundler && \
+    mkdir -p /home/app/tmp/vendor/bundle && \
+    chown -R app:app /home/app/tmp/vendor/bundle && \
+    chmod -R 755 /home/app/tmp/vendor/bundle && \
+    sudo -u app bundle install --path vendor/bundle
 
-# Clean up APT when done.
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+# Copy webapp folder
+ADD . /home/app/webapp
+WORKDIR /home/app/webapp
+RUN mkdir -p /home/app/webapp/tmp/pids && \
+    chown -R app:app /home/app/webapp && \
+    chmod -R 755 /home/app/webapp
 
 # Expose web
 EXPOSE 80
