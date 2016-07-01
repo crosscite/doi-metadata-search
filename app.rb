@@ -137,7 +137,7 @@ get '/works' do
   page = params.fetch('page', 1).to_i
   offset = DEFAULT_ROWS * (page - 1)
 
-  result = get_works(query: params[:query], offset: offset, 'publisher-id' => params['publisher-id'], 'resource-type-id' => params['resource-type-id'])
+  result = get_works(query: params[:query], offset: offset, 'publisher-id' => params['publisher-id'], 'resource-type-id' => params['resource-type-id'], 'year' => params['year'])
   works = result[:data].select {|item| item["type"] == "works" }
   @meta = result[:meta]
 

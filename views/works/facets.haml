@@ -45,7 +45,7 @@
               %span.number.pull-right= "#{number_with_delimiter(f.last)}"
               .clearfix
 
-  - if @meta["publishers"].present? && params[:model] == "works"
+  - if @meta["publishers"].present? && params[:model] != "data-centers"
     .panel-body
       %h4
         Data Centers
