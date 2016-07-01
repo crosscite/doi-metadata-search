@@ -8,7 +8,7 @@ describe "API", type: :model, vcr: true do
   context "get_works" do
     it "all" do
       response = subject.get_works
-      expect(response[:meta]).to eq("resource-types"=>{"dataset"=>2490849, "other"=>870671, "text"=>844331, "image"=>689356, "collection"=>310619, "physical-object"=>34335, "software"=>13560, "event"=>6466, "audiovisual"=>5607, "film"=>965, "model"=>533, "interactive-resource"=>295, "sound"=>235, "workflow"=>209, "service"=>19}, "years"=>{}, "publishers"=>{}, "total"=>6582973)
+      expect(response[:meta]).to eq("resource-types"=>{"dataset"=>2530173, "text"=>1309569, "other"=>872249, "image"=>694451, "collection"=>313746, "software"=>14683, "physical-object"=>6688, "event"=>6557, "audiovisual"=>6171, "film"=>967, "model"=>539, "interactive-resource"=>321, "sound"=>240, "workflow"=>218, "service"=>21}, "years"=>{"2016"=>395824, "2015"=>2044515, "2014"=>922708, "2013"=>333117, "2012"=>211537, "2011"=>337643, "2010"=>142954, "2007"=>158014, "2006"=>144119, "2005"=>162237}, "publishers"=>{"cdl.dplanet"=>861878, "bl.ccdc"=>611424, "ethz.seals"=>511650, "estdoi.bio"=>487448, "cdl.digsci"=>387189, "tib.r-gate"=>373556, "gesis.die"=>373193, "ethz.epics-ba"=>348365, "tib.pangaea"=>345569, "bl.imperial"=>189735}, "total"=>6857896)
       work = response[:data].first
       expect(work).to eq("id"=>"http://doi.org/10.7891/E-MANUSCRIPTA-45062", "type"=>"works", "attributes"=>{"doi"=>"10.7891/E-MANUSCRIPTA-45062", "author"=>[], "title"=>nil, "container-title"=>nil, "description"=>nil, "resource-type-general"=>nil, "resource-type"=>nil, "type"=>nil, "license"=>nil, "publisher-id"=>"ethz.unknown", "member-id"=>"ethz", "registration-agency-id"=>"datacite", "results"=>{}, "published"=>nil, "issued"=>"2016-05-28T16:30:08Z", "updated"=>nil})
     end
@@ -16,12 +16,12 @@ describe "API", type: :model, vcr: true do
     it "one" do
       response = subject.get_works(id: "10.6084/M9.FIGSHARE.C.1909847")
       work = response[:data].first
-      expect(work).to eq("id"=>"http://doi.org/10.6084/M9.FIGSHARE.C.1909847", "type"=>"works", "attributes"=>{"doi"=>"10.6084/M9.FIGSHARE.C.1909847", "author"=>[{"family"=>"Strasser", "given"=>"Carly", "orcid"=>"http://orcid.org/0000-0001-9592-2339"}, {"family"=>"Cruse", "given"=>"Patricia"}, {"family"=>"Kunze", "given"=>"John"}, {"family"=>"Abrams", "given"=>"Stephen"}], "title"=>"DataUp manuscript data", "container-title"=>"Figshare", "description"=>nil, "resource-type-general"=>"collection", "resource-type"=>"Collection", "type"=>nil, "license"=>"https://creativecommons.org/licenses/by/3.0/us/", "publisher-id"=>"cdl.digsci", "member-id"=>"cdl", "registration-agency-id"=>"datacite", "results"=>{}, "published"=>"2015", "issued"=>"2015-12-04T15:40:42Z", "updated"=>"2016-03-11T10:57:59Z"})
+      expect(work).to eq("id"=>"http://doi.org/10.6084/M9.FIGSHARE.C.1909847", "type"=>"works", "attributes"=>{"doi"=>"10.6084/M9.FIGSHARE.C.1909847", "url"=>nil, "author"=>[{"family"=>"Strasser", "given"=>"Carly", "orcid"=>"http://orcid.org/0000-0001-9592-2339"}, {"family"=>"Cruse", "given"=>"Patricia"}, {"family"=>"Kunze", "given"=>"John"}, {"family"=>"Abrams", "given"=>"Stephen"}], "title"=>"DataUp manuscript data", "container-title"=>"Figshare", "description"=>nil, "resource-type-general"=>"collection", "resource-type"=>"Collection", "type"=>nil, "license"=>"https://creativecommons.org/licenses/by/3.0/us/", "publisher-id"=>"cdl.digsci", "member-id"=>"cdl", "registration-agency-id"=>"datacite", "results"=>{}, "published"=>"2015", "deposited"=>"2015-12-04T15:40:42Z", "updated"=>"2016-03-11T10:57:59Z"})
     end
 
     it "query" do
       response = subject.get_works(query: "mabbett")
-      expect(response[:meta]).to eq("resource-types"=>{"dataset"=>15, "text"=>1}, "years"=>{}, "publishers"=>{}, "total"=>16)
+      expect(response[:meta]).to eq("resource-types"=>{"dataset"=>15, "text"=>1}, "years"=>{"2016"=>6, "2015"=>10}, "publishers"=>{"cdl.digsci"=>15, "tib.r-gate"=>1}, "total"=>16)
       work = response[:data].first
       expect(work).to eq("id"=>"http://doi.org/10.6084/M9.FIGSHARE.1419601", "type"=>"works", "attributes"=>{"doi"=>"10.6084/M9.FIGSHARE.1419601", "author"=>[{"family"=>"Mabbett", "given"=>"Andy", "orcid"=>"http://orcid.org/0000-0001-5882-6823"}], "title"=>"2015-05-13 - Authority control in Wikipedia - Qatar", "container-title"=>"Figshare", "description"=>nil, "resource-type-general"=>"dataset", "resource-type"=>"Presentation", "type"=>"dataset", "license"=>"https://creativecommons.org/licenses/by/3.0/us/", "publisher-id"=>"cdl.digsci", "member-id"=>"cdl", "registration-agency-id"=>"datacite", "results"=>{}, "published"=>"2015", "issued"=>"2015-05-19T15:57:08Z", "updated"=>"2015-05-19T15:57:08Z"})
     end
@@ -54,18 +54,18 @@ describe "API", type: :model, vcr: true do
       response = subject.get_datacenters
       expect(response[:meta]).to eq("total"=>746, "registration-agencies"=>{"datacite"=>746}, "members"=>{"delft"=>14, "dk"=>9, "mtakik"=>37, "purdue"=>25, "cdl"=>169, "osti"=>24, "ethz"=>43, "gesis"=>64, "cisti"=>19, "zbmed"=>31, "inist"=>30, "snd"=>6, "cern"=>7, "crui"=>33, "datacite"=>2, "csic"=>1, "zbw"=>9, "ands"=>41, "jalc"=>1, "nrct"=>1, "tib"=>108, "subgoe"=>3, "estdoi"=>6, "bibsys"=>2, "bl"=>61})
       datacenter = response[:data].first
-      expect(datacenter).to eq("id"=>"ethz.ubasojs", "type"=>"publishers", "attributes"=>{"title"=>"027.7 - Zeitschrift für Bibliothekskultur", "other-names"=>[], "prefixes"=>[], "member-id"=>"ethz", "registration-agency-id"=>"datacite", "updated"=>"2016-05-29T11:30:57Z"})
+      expect(datacenter).to eq("id"=>"ethz.ubasojs", "type"=>"publishers", "attributes"=>{"title"=>"027.7 - Zeitschrift für Bibliothekskultur", "other-names"=>[], "prefixes"=>[], "member-id"=>"ETHZ", "registration-agency-id"=>"datacite", "updated"=>"2016-07-01T20:39:55Z"})
     end
 
     it "one" do
       response = subject.get_datacenters(id: "CERN.ZENODO")
       datacenters = response[:data]
-      expect(datacenters.first).to eq([{"id"=>"cern.zenodo", "type"=>"publishers", "attributes"=>{"title"=>"ZENODO - Research. Shared.", "other-names"=>[], "prefixes"=>[], "member-id"=>"CERN", "registration-agency-id"=>"datacite", "updated"=>"2016-07-01T20:38:19Z"}}, {"id"=>"cern", "type"=>"members", "attributes"=>{"title"=>"European Organization for Nuclear Research", "description"=>"<p>CERN, the European Organization for Nuclear Research, is the world&#39;s largest particle physics laboratory. Founded in 1954 and based on the Franco-Swiss border near Geneva, it was one of Europe&#39;s first joint ventures and now has 21 member states and more than 50 cooperation agreements and scientific contacts with other countries.</p>\n\n<p>At CERN, physicists and engineers probe the fundamental structure of the universe. They use the world&#39;s largest and most complex scientific instrument, the Large Hadron Collider (LHC), to study the basic constituents of matter. The results of their experimental and theoretical work are publicly available following CERN&#39;s Open Access Policy.</p>\n\n<p>CERN services implementing DOIs are its institutional repository (CDS, CERN Document Server); INSPIRE-HEP, a digital library for the field of High-Energy Physics run in collaboration with other institutions; or the CERN Open Data Portal, which provides high level and analyzable data and software from the LHC experiments.</p>\n\n<p>Furthermore, CERN is also providing DOIs to ZENODO, a multidisciplinary data repository for the “long tail” of research results. It allows researchers to share and preserve their output independent of size, type of material or discipline.</p>\n", "member-type"=>"allocating", "region"=>"EMEA", "country"=>"Switzerland", "year"=>2014, "logo-url"=>"https://assets.datacite.org/images/members/cern.jpg", "email"=>"doi-service [at] cern.ch", "website"=>"http://doi.web.cern.ch/", "phone"=>nil, "updated"=>"2016-06-23T15:26:27.000Z"}}])
+      expect(datacenters.first).to eq("id"=>"cern.zenodo", "type"=>"publishers", "attributes"=>{"title"=>"ZENODO - Research. Shared.", "other-names"=>[], "prefixes"=>[], "member-id"=>"CERN", "registration-agency-id"=>"datacite", "updated"=>"2016-07-01T21:17:32Z"})
     end
 
     it "query" do
       response = subject.get_datacenters(query: "zeno")
-      expect(response[:meta]).to eq("total"=>1, "total-pages"=>1, "page"=>1, "registration-agencies"=>{"datacite"=>1})
+      expect(response[:meta]).to eq("total"=>1, "registration-agencies"=>{"datacite"=>1}, "members"=>{"cern"=>1})
       datacenter = response[:data].first
       expect(datacenter).to eq("id"=>"cern.zenodo", "type"=>"publishers", "attributes"=>{"title"=>"ZENODO - Research. Shared.", "other-names"=>[], "prefixes"=>[], "member-id"=>"cern", "registration-agency-id"=>"datacite", "updated"=>"2016-05-29T14:38:17Z"})
     end
@@ -98,27 +98,27 @@ describe "API", type: :model, vcr: true do
       response = subject.get_sources
       expect(response[:meta]).to eq("total"=>15, "groups"=>{"relations"=>6, "contributions"=>4, "publishers"=>2, "results"=>3})
       source = response[:data].first
-      expect(source).to eq("id"=>"crossref-datacite", "type"=>"sources", "attributes"=>{"title"=>"Crossref (DataCite)", "description"=>"Import works linked to a DataCite DOI from Crossref.", "state"=>"active", "group-id"=>"relations", "work-count"=>0, "relation-count"=>0, "result-count"=>0, "by-day"=>{"with-results"=>0, "without-results"=>0, "not-updated"=>0}, "by-month"=>{"with-results"=>0, "without-results"=>0, "not-updated"=>0}, "updated"=>"2016-05-29T13:05:07Z"})
+      expect(source).to eq("id"=>"crossref-datacite", "type"=>"sources", "attributes"=>{"title"=>"Crossref (DataCite)", "description"=>"Import works linked to a DataCite DOI from Crossref.", "state"=>"active", "group-id"=>"relations", "work-count"=>0, "relation-count"=>0, "result-count"=>0, "by-day"=>{"with-results"=>0, "without-results"=>0, "not-updated"=>0}, "by-month"=>{"with-results"=>0, "without-results"=>0, "not-updated"=>0}, "updated"=>"2016-07-01T21:17:32Z"})
     end
 
     it "one" do
       response = subject.get_sources(id: "datacite-crossref")
       source = response[:data].first
-      expect(source).to eq("id"=>"datacite-crossref", "type"=>"sources", "attributes"=>{"title"=>"DataCite (Crossref)", "description"=>"Import works with Crossref DOIs as relatedIdentifier via the DataCite Solr API.", "state"=>"active", "group-id"=>"relations", "work-count"=>203772, "relation-count"=>221061, "result-count"=>475263, "by-day"=>{"with-results"=>1, "without-results"=>0, "not-updated"=>221005}, "by-month"=>{"with-results"=>195804, "without-results"=>16710, "not-updated"=>8492}, "updated"=>"2016-05-29T15:17:49Z"})
+      expect(source).to eq("id"=>"datacite-crossref", "type"=>"sources", "attributes"=>{"title"=>"DataCite (Crossref)", "description"=>"Import works with Crossref DOIs as relatedIdentifier via the DataCite Solr API.", "state"=>"active", "group-id"=>"relations", "work-count"=>0, "relation-count"=>0, "result-count"=>0, "by-day"=>{"with-results"=>0, "without-results"=>0, "not-updated"=>0}, "by-month"=>{"with-results"=>0, "without-results"=>0, "not-updated"=>0}, "updated"=>"2016-07-01T21:17:32Z"})
     end
 
     it "query" do
       response = subject.get_sources(query: "cross")
       expect(response[:meta]).to eq("total"=>3, "groups"=>{"relations"=>2, "publishers"=>1})
       source = response[:data].first
-      expect(source).to eq("id"=>"crossref-datacite", "type"=>"sources", "attributes"=>{"title"=>"Crossref (DataCite)", "description"=>"Import works linked to a DataCite DOI from Crossref.", "state"=>"active", "group-id"=>"relations", "work-count"=>0, "relation-count"=>0, "result-count"=>0, "by-day"=>{"with-results"=>0, "without-results"=>0, "not-updated"=>0}, "by-month"=>{"with-results"=>0, "without-results"=>0, "not-updated"=>0}, "updated"=>"2016-05-29T13:05:07Z"})
+      expect(source).to eq("id"=>"crossref-datacite", "type"=>"sources", "attributes"=>{"title"=>"Crossref (DataCite)", "description"=>"Import works linked to a DataCite DOI from Crossref.", "state"=>"active", "group-id"=>"relations", "work-count"=>0, "relation-count"=>0, "result-count"=>0, "by-day"=>{"with-results"=>0, "without-results"=>0, "not-updated"=>0}, "by-month"=>{"with-results"=>0, "without-results"=>0, "not-updated"=>0}, "updated"=>"2016-07-01T21:17:32Z"})
     end
   end
 
   context "get_relations" do
     it "all" do
       response = subject.get_relations
-      expect(response[:meta]).to eq("total"=>5485191, "sources"=>{"datacite-related"=>4409016, "datacite-orcid"=>4, "datacite-github"=>2167, "mendeley"=>2, "github"=>386, "europe-pmc-fulltext"=>42, "datacite-crossref"=>1073574}, "relation-types"=>{"cites"=>1052, "is-cited-by"=>1002, "is-supplement-to"=>473548, "is-supplemented-by"=>473550, "continues"=>51, "is-continued-by"=>45, "is-metadata-for"=>31, "has-metadata"=>31, "is-part-of"=>110520, "has-part"=>110201, "references"=>2126384, "is-referenced-by"=>2126432, "documents"=>1767, "is-documented-by"=>1750, "compiles"=>27, "reviews"=>1000, "is-reviewed-by"=>1000, "is-derived-from"=>14073, "is-source-of"=>14552, "bookmarks"=>111, "is-new-version-of"=>10895, "is-previous-version-of"=>10905, "is-original-form-of"=>3130, "is-variant-form-of"=>2591, "is-identical-to"=>418, "is-compiled-by"=>27, "is-bookmarked-by"=>98})
+      expect(response[:meta]).to eq("total"=>7409030, "sources"=>{"datacite-related"=>6287307, "datacite-orcid"=>6, "datacite-github"=>4131, "mendeley"=>2, "github"=>386, "europe-pmc-fulltext"=>42, "datacite-crossref"=>1117156}, "relation-types"=>{"cites"=>1955, "is-cited-by"=>1364, "is-supplement-to"=>489039, "is-supplemented-by"=>489041, "continues"=>157600, "is-continued-by"=>157594, "is-metadata-for"=>194, "has-metadata"=>194, "is-part-of"=>278859, "has-part"=>280309, "references"=>2560253, "is-referenced-by"=>2560314, "documents"=>1799, "is-documented-by"=>1781, "compiles"=>43, "reviews"=>1174, "is-reviewed-by"=>1174, "is-derived-from"=>34725, "is-source-of"=>35211, "bookmarks"=>111, "is-new-version-of"=>100790, "is-previous-version-of"=>100767, "is-original-form-of"=>3537, "is-variant-form-of"=>2987, "is-identical-to"=>148074, "is-compiled-by"=>43, "is-bookmarked-by"=>98})
       relation = response[:data].first
       expect(relation).to eq("id"=>"8a9c5431-5557-4189-8b0c-98c0b7d4b72f", "type"=>"relations", "attributes"=>{"subj-id"=>"http://doi.org/10.5194/CP-12-171-2016", "obj-id"=>"http://doi.org/10.1594/PANGAEA.849156", "doi"=>"10.5194/CP-12-171-2016", "author"=>[], "title"=>"Spatial and temporal oxygen isotope variability in northern Greenland – implications for a new climate record over the past millennium", "container-title"=>nil, "source-id"=>"datacite-crossref", "publisher-id"=>"3145", "registration-agency-id"=>"crossref", "relation-type-id"=>"is-referenced-by", "type"=>nil, "total"=>1, "published"=>"2016-02-03", "issued"=>"2016-02-03T00:00:00Z", "updated"=>"2016-05-28T10:10:26Z"})
     end
@@ -127,21 +127,21 @@ describe "API", type: :model, vcr: true do
       response = subject.get_relations("work-id" => "10.6084/M9.FIGSHARE.3394312")
       expect(response[:meta]).to eq("total"=>1, "sources"=>{"datacite-related"=>1}, "relation-types"=>{"is-identical-to"=>1})
       relation = response[:data].first
-      expect(relation).to eq("id"=>"797faa1c-e0e8-46a9-a2ee-c09883564eb7", "type"=>"relations", "attributes"=>{"subj-id"=>"http://doi.org/10.6084/M9.FIGSHARE.3394312.V1", "obj-id"=>"http://doi.org/10.6084/M9.FIGSHARE.3394312", "doi"=>"10.6084/M9.FIGSHARE.3394312.V1", "author"=>[{"given"=>"Samuel", "family"=>"Asumadu-Sarkodie", "orcid"=>"http://orcid.org/0000-0001-5035-5983"}, {"given"=>"Phebe Asantewaa", "family"=>"Owusu", "orcid"=>"http://orcid.org/0000-0001-7364-1640"}], "title"=>"Global Annual Installations 2000-2013", "container-title"=>"Figshare", "source-id"=>"datacite-related", "publisher-id"=>"CDL.DIGSCI", "registration-agency-id"=>nil, "relation-type-id"=>"is-identical-to", "type"=>nil, "total"=>1, "published"=>"2016", "issued"=>"2016-05-20T20:40:22Z", "updated"=>"2016-06-01T20:01:21Z"})
+      expect(relation).to eq("id"=>"a139f108-622a-4c8a-9622-9401cc82c6df", "type"=>"relations", "attributes"=>{"subj-id"=>"http://doi.org/10.6084/M9.FIGSHARE.3394312.V1", "obj-id"=>"http://doi.org/10.6084/M9.FIGSHARE.3394312", "doi"=>"10.6084/M9.FIGSHARE.3394312.V1", "author"=>[{"given"=>"Samuel", "family"=>"Asumadu-Sarkodie", "orcid"=>"http://orcid.org/0000-0001-5035-5983"}, {"given"=>"Phebe Asantewaa", "family"=>"Owusu", "orcid"=>"http://orcid.org/0000-0001-7364-1640"}], "title"=>"Global Annual Installations 2000-2013", "container-title"=>"Figshare", "source-id"=>"datacite-related", "publisher-id"=>"CDL.DIGSCI", "registration-agency-id"=>nil, "relation-type-id"=>"is-identical-to", "type"=>nil, "total"=>1, "published"=>"2016", "issued"=>"2016-05-20T20:40:22Z", "updated"=>"2016-06-01T20:01:21Z"})
     end
   end
 
   context "get_contributions" do
     it "all" do
       response = subject.get_contributions
-      expect(response[:meta]).to eq("total"=>1067682, "sources"=>{"datacite-related"=>130, "datacite-orcid"=>1063931, "github-contributor"=>152, "datacite-search-link"=>3469})
+      expect(response[:meta]).to eq("total"=>1071843, "sources"=>{"datacite-related"=>6639, "datacite-orcid"=>1061078, "github-contributor"=>492, "datacite-search-link"=>3634})
       contribution = response[:data].first
       expect(contribution).to eq("id"=>"cd37482b-af89-428f-8d78-f66c9daa5e77", "type"=>"contributions", "attributes"=>{"doi"=>"10.13140/2.1.4110.8481", "credit-name"=>"José Amendoeira", "orcid"=>"0000-0002-4464-8517", "author"=>[{"family"=>"Seabra", "given"=>"Paulo"}, {"family"=>"Santos", "given"=>"Alexandra"}, {"family"=>"Garcia", "given"=>"Lurdes"}, {"family"=>"Amendoeira", "given"=>"José"}, {"family"=>"Sá", "given"=>"Luís"}], "title"=>"Drug addiction", "container-title"=>"Unpublished", "source-id"=>"datacite-search-link", "contributor-role-id"=>"contribution", "type"=>nil, "published"=>"2012", "issued"=>"2014-10-29T21:16:03Z", "updated"=>"2016-05-29T12:12:26Z"})
     end
 
     it "by contributor" do
       response = subject.get_contributions("contributor-id" => "orcid.org/0000-0002-8635-8390")
-      expect(response[:meta]).to eq("total"=>162010, "sources"=>{"datacite-related"=>3, "datacite-orcid"=>162004, "datacite-search-link"=>3})
+      expect(response[:meta]).to eq("total"=>162093, "sources"=>{"datacite-related"=>359, "datacite-orcid"=>161721, "datacite-search-link"=>13})
       contribution = response[:data].first
       expect(contribution).to eq("id"=>"8ea09e4d-e3f9-4b0e-814f-4941f7b0179e", "type"=>"contributions", "attributes"=>{"doi"=>"10.6084/M9.FIGSHARE.1126238", "credit-name"=>"Henry Rzepa", "orcid"=>"0000-0002-8635-8390", "author"=>[{"given"=>"Henry S.", "family"=>"Rzepa", "orcid"=>"http://orcid.org/0000-0002-8635-8390"}], "title"=>"Gaussian Job Archive for C50H66N6O2", "container-title"=>"Figshare", "source-id"=>"datacite-orcid", "contributor-role-id"=>"contribution", "type"=>nil, "published"=>"2014", "issued"=>"2014-08-08T15:31:07Z", "updated"=>"2016-05-28T07:41:10Z"})
     end
