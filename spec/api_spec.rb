@@ -89,7 +89,7 @@ describe "API", type: :model, vcr: true do
       response = subject.get_members(query: "tib")
       expect(response[:meta]).to eq("total"=>1, "member-types"=>{"allocating"=>1}, "regions"=>{"emea"=>1}, "years"=>{"2009"=>1})
       member = response[:data].first
-      expect(member).to eq("id"=>"tib", "type"=>"members", "attributes"=>{"title"=>"German National Library of Science and Tech...ebsite"=>" http://www.tib.eu", "phone"=>"+49 511 762 14226", "updated"=>"2016-06-10T09:56:22.000Z"})
+      expect(member).to eq("id"=>"tib", "type"=>"members", "attributes"=>{"title"=>"German National Library of Science and Tech...", "website"=>" http://www.tib.eu", "phone"=>"+49 511 762 14226", "updated"=>"2016-06-10T09:56:22.000Z"})
     end
   end
 
