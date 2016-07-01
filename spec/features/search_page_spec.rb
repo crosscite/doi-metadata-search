@@ -6,19 +6,19 @@ describe 'search', type: :feature, js: true, vcr: true do
     expect(page).to have_css '#search-input'
   end
 
-  it 'input' do
-    visit '/'
-    fill_in 'search-input', with: 'climate'
-    click_button 'submit'
+  # it 'input' do
+  #   visit '/'
+  #   fill_in 'search-input', with: 'climate'
+  #   click_button 'submit'
 
-    expect(page).to have_css 'h4.results'
-  end
+  #   expect(page).to have_css 'h4.results'
+  # end
 
-  it 'search' do
-    visit '/works?query=climate'
-    expect(page).to have_field 'search-input', with: 'climate'
-    expect(page).to have_css 'h4.results'
-  end
+  # it 'search' do
+  #   visit '/works?query=climate'
+  #   expect(page).to have_field 'search-input', with: 'climate'
+  #   expect(page).to have_css 'h4.results'
+  # end
 
   # it 'match doi' do
   #   visit '/works?query=10.6084%2FM9.FIGSHARE.154691'
