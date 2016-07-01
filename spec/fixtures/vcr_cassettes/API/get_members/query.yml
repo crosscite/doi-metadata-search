@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.datacite.org/members?query=tib
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Maremma - http://search.local
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.1
+      Date:
+      - Fri, 01 Jul 2016 23:43:44 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Access-Control-Max-Age:
+      - '1728000'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 08a7a26c-b45b-4c8b-b727-5aa28b035d70
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Etag:
+      - W/"3f96497582d6c6a8363548524a23ed72"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.019177'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.0.29
+      Access-Control-Allow-Headers:
+      - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"tib","type":"members","attributes":{"title":"German
+        National Library of Science and Technology","description":"\u003cp\u003eThe
+        TIB is the German National Library for all areas of engineering as well as
+        architecture, chemistry, information technology, mathematics and physics.
+        We are the world\u0026#39;s largest specialised library for science and technology
+        and are part of the German research infrastructure. Our function is the comprehensive
+        procurement and archival storage of technical scientific literature from all
+        over the world. TIB was the first DOI registration agency for primary data
+        worldwide. We have been providing DOI registration services since 2005 and
+        we now work directly with over 40 data centres. TIB is one of the founding
+        members of DataCite and is currently the Business Office. We provide DOI registration
+        services for all German data centres in the fields of engineering, architecture,
+        chemistry, information technology, mathematics and physics. Our current focus
+        is on providing DOI names for primary data and grey literature.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Germany","year":2009,"logo-url":"https://assets.datacite.org/images/members/tib.jpg","email":"doi-info
+        [AT] tib.eu","website":" http://www.tib.eu","phone":"+49 511 762 14226","updated":"2016-06-10T09:56:22.000Z"}}],"meta":{"total":1,"member-types":{"allocating":1},"regions":{"emea":1},"years":{"2009":1}}}'
+    http_version: 
+  recorded_at: Fri, 01 Jul 2016 23:43:46 GMT
+recorded_with: VCR 2.9.3

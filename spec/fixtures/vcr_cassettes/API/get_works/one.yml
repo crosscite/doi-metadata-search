@@ -1,0 +1,72 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.datacite.org/works?id=10.6084/M9.FIGSHARE.C.1909847&offset=0&rows=25
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Maremma - http://search.local
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.1
+      Date:
+      - Fri, 01 Jul 2016 23:43:37 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Access-Control-Max-Age:
+      - '1728000'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - f0cd73a4-5cfc-45aa-9be2-62c56648a214
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Etag:
+      - W/"aeee4ff302469d71a5584df9484c118a"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '3.702103'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.0.29
+      Access-Control-Allow-Headers:
+      - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"http://doi.org/10.6084/M9.FIGSHARE.C.1909847","type":"works","attributes":{"doi":"10.6084/M9.FIGSHARE.C.1909847","url":null,"author":[{"family":"Strasser","given":"Carly","orcid":"http://orcid.org/0000-0001-9592-2339"},{"family":"Cruse","given":"Patricia"},{"family":"Kunze","given":"John"},{"family":"Abrams","given":"Stephen"}],"title":"DataUp
+        manuscript data","container-title":"Figshare","description":null,"resource-type-general":"collection","resource-type":"Collection","type":null,"license":"https://creativecommons.org/licenses/by/3.0/us/","publisher-id":"cdl.digsci","member-id":"cdl","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2015-12-04T15:40:42Z","updated":"2016-03-11T10:57:59Z"}},{"id":"cdl.digsci","type":"publishers","attributes":{"title":"Digital
+        Science","other-names":[],"prefixes":[],"member-id":"CDL","registration-agency-id":"datacite","updated":"2016-07-01T23:14:08Z"}},{"id":"cdl","type":"members","attributes":{"title":"California
+        Digital Library","description":"\u003cp\u003eCalifornia Digital Library (CDL)
+        deals with information at every stage of its life. CDL provides technology
+        and expertise to help the University of California (UC) collect, publish,
+        access, and preserve its full range of information resources. CDL partners
+        with organizations outside the UCs on far-reaching problems.\u003c/p\u003e\n\n\u003cp\u003eCDL
+        offers DataCite DOIs and other identifiers via the EZID service, a service
+        CDL developed to support easy identifier creation and maintenance for educational,
+        non-profit, governmental and commercial clients.\u003c/p\u003e\n","member-type":"allocating","region":"Americas","country":"United
+        States","year":2009,"logo-url":"https://assets.datacite.org/images/members/cdl.jpg","email":"ezid
+        [at] ucop.edu","website":"http://ezid.cdlib.org","phone":"1-510-987-0469","updated":"2016-06-09T21:42:46.000Z"}}],"meta":{"total":1,"sources":{},"relation-types":{}}}'
+    http_version: 
+  recorded_at: Fri, 01 Jul 2016 23:43:39 GMT
+recorded_with: VCR 2.9.3

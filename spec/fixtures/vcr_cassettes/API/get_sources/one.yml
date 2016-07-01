@@ -1,0 +1,62 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.datacite.org/sources?id=datacite-crossref
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Maremma - http://search.local
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.1
+      Date:
+      - Fri, 01 Jul 2016 23:43:43 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Access-Control-Max-Age:
+      - '1728000'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - be1e7f2d-080f-4541-89fe-6b99c582bf16
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Etag:
+      - W/"76e9033c3f14faf99a9ce960383cc7ea"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.039930'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.0.29
+      Access-Control-Allow-Headers:
+      - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"datacite-crossref","type":"sources","attributes":{"title":"DataCite
+        (Crossref)","description":"Import works with Crossref DOIs as relatedIdentifier
+        via the DataCite Solr API.","state":"active","group-id":"relations","work-count":20303,"relation-count":225338,"result-count":75517,"by-day":{"with-results":18,"without-results":322,"not-updated":224943},"by-month":{"with-results":5138,"without-results":197227,"not-updated":22918},"updated":"2016-07-01T23:05:10Z"}},{"id":"relations","type":"groups","attributes":{"title":"Relations","sources":["crossref_datacite","datacite_crossref","datacite_github","datacite_related","europe_pmc_fulltext","plos_fulltext"],"updated":"2016-03-28T15:25:06Z"}}]}'
+    http_version: 
+  recorded_at: Fri, 01 Jul 2016 23:43:44 GMT
+recorded_with: VCR 2.9.3
