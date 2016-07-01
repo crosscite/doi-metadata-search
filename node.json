@@ -1,8 +1,0 @@
-{
-  "run_list": [
-    "recipe[doi_metadata_search]"
-  ],
-  "phantomjs": {
-    "version": "1.9.7",
-    "base_url": "https://bitbucket.org/ariya/phantomjs/downloads" }
-}
