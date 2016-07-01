@@ -20,7 +20,7 @@ describe "API", type: :model, vcr: true do
     end
 
     it "query" do
-      response = subject.get_works(q: "mabbett")
+      response = subject.get_works(query: "mabbett")
       expect(response[:meta]).to eq("resource-types"=>{"dataset"=>15, "text"=>1}, "years"=>{}, "publishers"=>{}, "total"=>16)
       work = response[:data].first
       expect(work).to eq("id"=>"http://doi.org/10.6084/M9.FIGSHARE.1419601", "type"=>"works", "attributes"=>{"doi"=>"10.6084/M9.FIGSHARE.1419601", "author"=>[{"family"=>"Mabbett", "given"=>"Andy", "orcid"=>"http://orcid.org/0000-0001-5882-6823"}], "title"=>"2015-05-13 - Authority control in Wikipedia - Qatar", "container-title"=>"Figshare", "description"=>nil, "resource-type-general"=>"dataset", "resource-type"=>"Presentation", "type"=>"dataset", "license"=>"https://creativecommons.org/licenses/by/3.0/us/", "publisher-id"=>"cdl.digsci", "member-id"=>"cdl", "registration-agency-id"=>"datacite", "results"=>{}, "published"=>"2015", "issued"=>"2015-05-19T15:57:08Z", "updated"=>"2015-05-19T15:57:08Z"})
@@ -30,7 +30,7 @@ describe "API", type: :model, vcr: true do
   context "get_contributors" do
     it "all" do
       response = subject.get_contributors
-      expect(response[:meta]).to eq("total"=>5637)
+      expect(response[:meta]).to eq("total"=>6445)
       contributor = response[:data].first
       expect(contributor).to eq("id"=>"https://github.com/mne-tools", "type"=>"contributors", "attributes"=>{"given"=>nil, "family"=>nil, "literal"=>"mne-tools", "orcid"=>nil, "github"=>"mne-tools", "updated"=>"1970-01-01T00:00:00Z"})
     end
@@ -42,7 +42,7 @@ describe "API", type: :model, vcr: true do
     end
 
     it "query" do
-      response = subject.get_contributors(q: "mabbett")
+      response = subject.get_contributors(query: "mabbett")
       expect(response[:meta]).to eq("total"=>1)
       contributor = response[:data].first
       expect(contributor).to eq("id"=>"http://orcid.org/0000-0001-5882-6823", "type"=>"contributors", "attributes"=>{"given"=>"Andy", "family"=>"Mabbett", "literal"=>nil, "orcid"=>"0000-0001-5882-6823", "github"=>nil, "updated"=>"1970-01-01T00:00:00Z"})
@@ -52,19 +52,19 @@ describe "API", type: :model, vcr: true do
   context "get_datacenters" do
     it "all" do
       response = subject.get_datacenters
-      expect(response[:meta]).to eq("total"=>725, "total-pages"=>29, "page"=>1, "registration-agencies"=>{"datacite"=>725})
+      expect(response[:meta]).to eq("total"=>746, "registration-agencies"=>{"datacite"=>746}, "members"=>{"delft"=>14, "dk"=>9, "mtakik"=>37, "purdue"=>25, "cdl"=>169, "osti"=>24, "ethz"=>43, "gesis"=>64, "cisti"=>19, "zbmed"=>31, "inist"=>30, "snd"=>6, "cern"=>7, "crui"=>33, "datacite"=>2, "csic"=>1, "zbw"=>9, "ands"=>41, "jalc"=>1, "nrct"=>1, "tib"=>108, "subgoe"=>3, "estdoi"=>6, "bibsys"=>2, "bl"=>61})
       datacenter = response[:data].first
       expect(datacenter).to eq("id"=>"ethz.ubasojs", "type"=>"publishers", "attributes"=>{"title"=>"027.7 - Zeitschrift für Bibliothekskultur", "other-names"=>[], "prefixes"=>[], "member-id"=>"ethz", "registration-agency-id"=>"datacite", "updated"=>"2016-05-29T11:30:57Z"})
     end
 
     it "one" do
       response = subject.get_datacenters(id: "CERN.ZENODO")
-      datacenter = response[:data]
-      expect(datacenter).to eq("id"=>"cern.zenodo", "type"=>"publishers", "attributes"=>{"title"=>"ZENODO - Research. Shared.", "other-names"=>[], "prefixes"=>[], "member-id"=>"cern", "registration-agency-id"=>"datacite", "updated"=>"2016-05-29T14:38:17Z"})
+      datacenters = response[:data]
+      expect(datacenters.first).to eq([{"id"=>"cern.zenodo", "type"=>"publishers", "attributes"=>{"title"=>"ZENODO - Research. Shared.", "other-names"=>[], "prefixes"=>[], "member-id"=>"CERN", "registration-agency-id"=>"datacite", "updated"=>"2016-07-01T20:38:19Z"}}, {"id"=>"cern", "type"=>"members", "attributes"=>{"title"=>"European Organization for Nuclear Research", "description"=>"<p>CERN, the European Organization for Nuclear Research, is the world&#39;s largest particle physics laboratory. Founded in 1954 and based on the Franco-Swiss border near Geneva, it was one of Europe&#39;s first joint ventures and now has 21 member states and more than 50 cooperation agreements and scientific contacts with other countries.</p>\n\n<p>At CERN, physicists and engineers probe the fundamental structure of the universe. They use the world&#39;s largest and most complex scientific instrument, the Large Hadron Collider (LHC), to study the basic constituents of matter. The results of their experimental and theoretical work are publicly available following CERN&#39;s Open Access Policy.</p>\n\n<p>CERN services implementing DOIs are its institutional repository (CDS, CERN Document Server); INSPIRE-HEP, a digital library for the field of High-Energy Physics run in collaboration with other institutions; or the CERN Open Data Portal, which provides high level and analyzable data and software from the LHC experiments.</p>\n\n<p>Furthermore, CERN is also providing DOIs to ZENODO, a multidisciplinary data repository for the “long tail” of research results. It allows researchers to share and preserve their output independent of size, type of material or discipline.</p>\n", "member-type"=>"allocating", "region"=>"EMEA", "country"=>"Switzerland", "year"=>2014, "logo-url"=>"https://assets.datacite.org/images/members/cern.jpg", "email"=>"doi-service [at] cern.ch", "website"=>"http://doi.web.cern.ch/", "phone"=>nil, "updated"=>"2016-06-23T15:26:27.000Z"}})
     end
 
     it "query" do
-      response = subject.get_datacenters(q: "zeno")
+      response = subject.get_datacenters(query: "zeno")
       expect(response[:meta]).to eq("total"=>1, "total-pages"=>1, "page"=>1, "registration-agencies"=>{"datacite"=>1})
       datacenter = response[:data].first
       expect(datacenter).to eq("id"=>"cern.zenodo", "type"=>"publishers", "attributes"=>{"title"=>"ZENODO - Research. Shared.", "other-names"=>[], "prefixes"=>[], "member-id"=>"cern", "registration-agency-id"=>"datacite", "updated"=>"2016-05-29T14:38:17Z"})
@@ -76,18 +76,18 @@ describe "API", type: :model, vcr: true do
       response = subject.get_members
       expect(response[:meta]).to eq("total"=>34, "member-types"=>{"allocating"=>27, "non-allocating"=>7}, "regions"=>{"amer"=>7, "apac"=>5, "emea"=>22}, "years"=>{"2015"=>5, "2014"=>4, "2013"=>4, "2012"=>1, "2011"=>1, "2010"=>9, "2009"=>7})
       member = response[:data].first
-      expect(member).to eq("id"=>"ands", "type"=>"members", "attributes"=>{"title"=>"Australian National Data Service (ANDS)", "description"=>"", "member-type"=>"full", "region"=>"Asia Pacific", "country"=>"Australia", "year"=>2010, "updated"=>nil})
+      expect(member).to eq("id"=>"ands", "type"=>"members", "attributes"=>{"title"=>"Australian National Data Service", "description"=>"<p>The task of the Australian National Data Service (ANDS) is to build the Australian Research Data Commons by creating the infrastructure to enable Australian researchers to easily publish, discover, access and reuse research data.</p>\n\n<p>Our approach is to engage in partnerships with research institutions to encourage better local data management, which enables structured collections to be created and information about these collections to be published via <a href=\"http://researchdata.ands.org.au/\">Research Data Australia</a>, a discovery service provided by ANDS to help researchers to find and access Australian research data. It contains descriptions of research data that is held by contributing organisations and institutions.</p>\n\n<p>ANDS involvement in the DataCite consortium ensures that we are active in global initiatives addressing the issues surrounding research data, including those of publication, citation and standards. ANDS has run its <a href=\"http://ands.org.au/services/cite-my-data.html\">Cite My Data</a> service since 2011. This service allows Australian research organisations to assign DOIs to their own research collections. This, in turn, provides researchers with a means of citing their published data and achieving recognition for their research data output.</p>\n\n<p>Subscribe to our discussion list: <a href=\"https://groups.google.com/forum/?hl=en#!forum/ands-general\">ANDS Google Group</a>.</p>\n\n<p>Subscribe to our e-newsletter: <a href=\"http://us7.campaign-archive2.com/home/?u=b542ef52e49302569068046d9&amp;id=22b849a4ee\">andsUP</a>.</p>\n\n<p>Telephone: +61 3 9902 0585<br>\nE-Mail: contact [at] ands.org.au</p>\n", "member-type"=>"allocating", "region"=>"Asia Pacific", "country"=>"Australia", "year"=>2010, "logo-url"=>"https://assets.datacite.org/images/members/ands.jpg", "email"=>nil, "website"=>"http://www.ands.org.au", "phone"=>nil, "updated"=>"2016-06-09T18:04:28.000Z"})
     end
 
     it "one" do
       response = subject.get_members(id: "ANDS")
       member = response[:data]
-      expect(member).to eq("id"=>"ands", "type"=>"members", "attributes"=>{"title"=>"Australian National Data Service (ANDS)", "description"=>"", "member-type"=>"full", "region"=>"Asia Pacific", "country"=>"Australia", "year"=>2010, "updated"=>nil})
+      expect(member).to eq("id"=>"ands", "type"=>"members", "attributes"=>{"title"=>"Australian National Data Service", "description"=>"<p>The task of the Australian National Data Service (ANDS) is to build the Australian Research Data Commons by creating the infrastructure to enable Australian researchers to easily publish, discover, access and reuse research data.</p>\n\n<p>Our approach is to engage in partnerships with research institutions to encourage better local data management, which enables structured collections to be created and information about these collections to be published via <a href=\"http://researchdata.ands.org.au/\">Research Data Australia</a>, a discovery service provided by ANDS to help researchers to find and access Australian research data. It contains descriptions of research data that is held by contributing organisations and institutions.</p>\n\n<p>ANDS involvement in the DataCite consortium ensures that we are active in global initiatives addressing the issues surrounding research data, including those of publication, citation and standards. ANDS has run its <a href=\"http://ands.org.au/services/cite-my-data.html\">Cite My Data</a> service since 2011. This service allows Australian research organisations to assign DOIs to their own research collections. This, in turn, provides researchers with a means of citing their published data and achieving recognition for their research data output.</p>\n\n<p>Subscribe to our discussion list: <a href=\"https://groups.google.com/forum/?hl=en#!forum/ands-general\">ANDS Google Group</a>.</p>\n\n<p>Subscribe to our e-newsletter: <a href=\"http://us7.campaign-archive2.com/home/?u=b542ef52e49302569068046d9&amp;id=22b849a4ee\">andsUP</a>.</p>\n\n<p>Telephone: +61 3 9902 0585<br>\nE-Mail: contact [at] ands.org.au</p>\n", "member-type"=>"allocating", "region"=>"Asia Pacific", "country"=>"Australia", "year"=>2010, "logo-url"=>"https://assets.datacite.org/images/members/ands.jpg", "email"=>nil, "website"=>"http://www.ands.org.au", "phone"=>nil, "updated"=>"2016-06-09T18:04:28.000Z"})
     end
 
     it "query" do
-      response = subject.get_members(q: "tib")
-      expect(response[:meta]).to eq("total"=>1, "member-types"=>{"allocating"=>1}, "regions"=>{"emea"=>1}, "years"=>{"2009"=>1})
+      response = subject.get_members(query: "tib")
+      expect(response[:meta]).to eq("total"=>34, "member-types"=>{"allocating"=>27, "non-allocating"=>7}, "regions"=>{"amer"=>7, "apac"=>5, "emea"=>22}, "years"=>{"2015"=>5, "2014"=>4, "2013"=>4, "2012"=>1, "2011"=>1, "2010"=>9, "2009"=>7})
       member = response[:data].first
       expect(member).to eq("id"=>"tib", "type"=>"members", "attributes"=>{"title"=>"German National Library of Science and Technology (TIB)", "description"=>"", "member-type"=>"full", "region"=>"EMEA", "country"=>"Germany", "year"=>2009, "updated"=>nil})
     end
@@ -108,7 +108,7 @@ describe "API", type: :model, vcr: true do
     end
 
     it "query" do
-      response = subject.get_sources(q: "cross")
+      response = subject.get_sources(query: "cross")
       expect(response[:meta]).to eq("total"=>3, "groups"=>{"relations"=>2, "publishers"=>1})
       source = response[:data].first
       expect(source).to eq("id"=>"crossref-datacite", "type"=>"sources", "attributes"=>{"title"=>"Crossref (DataCite)", "description"=>"Import works linked to a DataCite DOI from Crossref.", "state"=>"active", "group-id"=>"relations", "work-count"=>0, "relation-count"=>0, "result-count"=>0, "by-day"=>{"with-results"=>0, "without-results"=>0, "not-updated"=>0}, "by-month"=>{"with-results"=>0, "without-results"=>0, "not-updated"=>0}, "updated"=>"2016-05-29T13:05:07Z"})
@@ -127,7 +127,7 @@ describe "API", type: :model, vcr: true do
       response = subject.get_relations("work-id" => "10.6084/M9.FIGSHARE.3394312")
       expect(response[:meta]).to eq("total"=>1, "sources"=>{"datacite-related"=>1}, "relation-types"=>{"is-identical-to"=>1})
       relation = response[:data].first
-      expect(relation).to eq("id"=>"9fe887ae-0013-466a-ac86-380316a7b218", "type"=>"relations", "attributes"=>{"subj-id"=>"http://doi.org/10.6084/M9.FIGSHARE.3394312.V1", "obj-id"=>"http://doi.org/10.6084/M9.FIGSHARE.3394312", "doi"=>"10.6084/M9.FIGSHARE.3394312.V1", "author"=>[], "title"=>"Global Annual Installations 2000-2013", "container-title"=>nil, "source-id"=>"datacite-related", "publisher-id"=>"CDL.DIGSCI", "registration-agency-id"=>nil, "relation-type-id"=>"is-identical-to", "type"=>nil, "total"=>1, "published"=>"2016", "issued"=>"2016-05-20T20:40:22Z", "updated"=>"2016-05-22T20:52:10Z"})
+      expect(relation).to eq("id"=>"797faa1c-e0e8-46a9-a2ee-c09883564eb7", "type"=>"relations", "attributes"=>{"subj-id"=>"http://doi.org/10.6084/M9.FIGSHARE.3394312.V1", "obj-id"=>"http://doi.org/10.6084/M9.FIGSHARE.3394312", "doi"=>"10.6084/M9.FIGSHARE.3394312.V1", "author"=>[{"given"=>"Samuel", "family"=>"Asumadu-Sarkodie", "orcid"=>"http://orcid.org/0000-0001-5035-5983"}, {"given"=>"Phebe Asantewaa", "family"=>"Owusu", "orcid"=>"http://orcid.org/0000-0001-7364-1640"}], "title"=>"Global Annual Installations 2000-2013", "container-title"=>"Figshare", "source-id"=>"datacite-related", "publisher-id"=>"CDL.DIGSCI", "registration-agency-id"=>nil, "relation-type-id"=>"is-identical-to", "type"=>nil, "total"=>1, "published"=>"2016", "issued"=>"2016-05-20T20:40:22Z", "updated"=>"2016-06-01T20:01:21Z"})
     end
   end
 
