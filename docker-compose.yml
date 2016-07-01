@@ -10,5 +10,5 @@ services:
     image: crosscite/doi-metadata-search
     ports:
       - "8000:80"
-    volumes:
-      - .:/home/app/webapp
+    # volumes:
+    #   - ${APP_DIR}:/home/app/webapp

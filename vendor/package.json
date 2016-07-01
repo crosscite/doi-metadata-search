@@ -1,7 +1,7 @@
 {
-  "name": "search",
+  "name": "vendor",
   "version": "0.0.0",
-  "description": "search",
+  "description": "vendor",
   "private": true,
   "directories": {
     "doc": "doc",
@@ -17,6 +17,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "bower": "1.7.1"
+    "bower": "1.7.7"
   }
 }

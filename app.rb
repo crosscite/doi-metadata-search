@@ -292,7 +292,7 @@ get '/data-centers/:id' do
   page = params.fetch('page', 1).to_i
   offset = DEFAULT_ROWS * (page - 1)
 
-  collection = get_works(query: params[:query], "publisher-id" => params[:id], offset: offset, 'resource-type-id' => params['resource-type-id'], 'source-id' => params['source-id'], 'relation-type-id' => params['relation-type-id'], sort: params[:sort])
+  collection = get_works(query: params[:query], "publisher-id" => params[:id], offset: offset, 'resource-type-id' => params['resource-type-id'], 'source-id' => params['source-id'], 'relation-type-id' => params['relation-type-id'], 'year' => params['year'], sort: params[:sort])
   works = Array(collection[:data]).select {|item| item["type"] == "works" }
   @meta = collection[:meta]
 
@@ -330,7 +330,7 @@ get '/members/:id' do
   page = params.fetch('page', 1).to_i
   offset = DEFAULT_ROWS * (page - 1)
 
-  collection = get_works(query: params[:query], "member-id" => params[:id], offset: offset, 'resource-type-id' => params['resource-type-id'])
+  collection = get_works(query: params[:query], "member-id" => params[:id], offset: offset, 'resource-type-id' => params['resource-type-id'], 'publisher-id' => params['publisher-id'], 'year' => params['year'])
   works = collection[:data].select {|item| item["type"] == "works" }
   @meta = collection[:meta]
 
