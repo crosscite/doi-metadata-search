@@ -27,11 +27,16 @@ COPY vendor/docker/webapp.conf /etc/nginx/sites-enabled/webapp.conf
 COPY vendor/docker/00_app_env.conf /etc/nginx/conf.d/00_app_env.conf
 COPY vendor/docker/cors.conf /etc/nginx/conf.d/cors.conf
 
+# Prepare tmp folder for installation of Ruby gems and npm modules
+RUN mkdir -p /home/app/tmp
+COPY vendor /home/app/tmp/vendor
+RUN chown -R app:app /home/app/tmp && \
+    chmod -R 755 /home/app/tmp
+
 # Install npm and bower packages
 WORKDIR /home/app/tmp/vendor
-RUN sudo -u app npm install
-WORKDIR /home/app/tmp
-RUN npm install -g phantomjs-prebuilt istanbul codeclimate-test-reporter
+RUN sudo -u app npm install && \
+    npm install -g phantomjs-prebuilt istanbul codeclimate-test-reporter
 
 # Install Ruby gems
 COPY Gemfile /home/app/tmp/Gemfile
