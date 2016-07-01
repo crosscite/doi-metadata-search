@@ -314,8 +314,10 @@ module Sinatra
         date.strftime("%B %-d, %Y")
       elsif month
         date.strftime("%B %Y")
-      else
+      elsif year
         date.strftime("%Y")
+      else
+        ""
       end
     end
 
