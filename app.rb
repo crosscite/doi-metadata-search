@@ -62,15 +62,11 @@ configure do
   set :sessions, key: ENV['SESSION_KEY']
   use Rack::Flash
 
-  # Configure logging
-  Dir.mkdir('log') unless File.exists?('log')
-
-  file = File.new("#{settings.root}/log/#{settings.environment}.log", 'a+')
-  file.sync = true
-  use Rack::CommonLogger, file
-
   # Work around rack protection referrer bug
   set :protection, except: :json_csrf
+
+  # Set Logger
+  set :logger, Logger.new(STDOUT)
 
   # Configure omniauth client
   use OmniAuth::Builder do

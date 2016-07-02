@@ -20,7 +20,6 @@ gem 'rack-flash3'
 gem 'nokogiri'
 gem 'sanitize'
 gem 'rake'
-gem 'log4r'
 gem 'namae'
 gem 'sass'
 

@@ -72,7 +72,6 @@ GEM
     jwt (1.5.4)
     launchy (2.4.3)
       addressable (~> 2.3)
-    log4r (1.1.10)
     maremma (2.2.2)
       activesupport (~> 4.2, >= 4.2.5)
       builder (~> 3.2, >= 3.2.2)
@@ -201,7 +200,6 @@ DEPENDENCIES
   gabba
   haml
   iso8601 (~> 0.9.0)
-  log4r
   maremma (~> 2.2, >= 2.2.1)
   multi_json
   namae
