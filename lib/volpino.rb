@@ -33,4 +33,6 @@ module Sinatra
       end
     end
   end
+
+  helpers Volpino
 end
