@@ -202,7 +202,7 @@ DEPENDENCIES
   haml
   iso8601 (~> 0.9.0)
   log4r
-  maremma (~> 2.1, >= 2.1.1)
+  maremma (~> 2.2, >= 2.2.1)
   multi_json
   namae
   nokogiri
