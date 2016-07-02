@@ -52,7 +52,6 @@ require 'open-uri'
 require 'uri'
 
 Dir[File.join(File.dirname(__FILE__), 'lib', '*.rb')].each { |f| require f }
-Dir[File.join(File.dirname(__FILE__), 'lib', ENV['RA'], '*.rb')].each { |f| require f }
 
 config_file "config/#{ENV['RA']}.yml"
 
@@ -111,7 +110,7 @@ configure do
       config.project_root = settings.root
       config.app_version = App::VERSION
       config.release_stage = ENV['RACK_ENV']
-      config.notify_release_stages = %w(production, development)
+      config.notify_release_stages = %w(production development)
     end
 
     use Bugsnag::Rack
