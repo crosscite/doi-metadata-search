@@ -383,6 +383,8 @@ get '/sources/:id' do
     @contributions = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["contribution-total"]) do |pager|
       pager.replace contributions
     end
+  else
+    @meta = {}
   end
 
   params[:model] = "sources"
