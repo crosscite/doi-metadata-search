@@ -155,7 +155,7 @@ module Sinatra
 
     def works_query(options)
       params = { "id" => options.fetch("id", nil),
-                 "q" => options.fetch("q", nil),
+                 "query" => options.fetch("query", nil),
                  "resource-type-id" => options.fetch("resource-type-id", nil),
                  "relation-type-id" => options.fetch("relation-type-id", nil),
                  "publisher-id" => options.fetch("publisher-id", nil),
@@ -243,7 +243,7 @@ module Sinatra
 
     def related_link(id)
       if id.starts_with?("http://doi.org")
-        "?q=#{id[15..-1]}"
+        "?query=#{id[15..-1]}"
       else
         id
       end
