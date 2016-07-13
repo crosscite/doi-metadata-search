@@ -34,7 +34,7 @@
         %i.fa.fa-quote-left
         Cite
 
-    - if signed_in? && attributes["registration-agency-id"] == "datacite"
+    - if signed_in?
       - if attributes["claim-status"] == "none"
         %span.well-transparent.claim-none{id: attributes["doi"], data: { doi: attributes["doi"], orcid: current_user.orcid, "api-key" => current_user.api_key }}
           %img{src: "//#{ENV['CDN_HOST']}/images/orcid_16x16.gif" }
