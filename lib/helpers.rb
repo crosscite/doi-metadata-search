@@ -9,7 +9,7 @@ module Sinatra
 
     def author_format(author)
       authors = Array(author).map do |a|
-        name = a.fetch("given", nil).to_s + " " + a.fetch("family", nil).to_s
+        name = a.fetch("literal", nil).presence || a.fetch("given", nil).to_s + " " + a.fetch("family", nil).to_s
         a["orcid"].present? ? "<a href=\"/contributors/#{orcid_from_url(a["orcid"])}\">#{name}</a>" : name
       end
 
