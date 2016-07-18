@@ -59,7 +59,7 @@ configure do
   set :root, File.dirname(__FILE__)
 
   # Configure sessions and flash
-  set :sessions, key: ENV['SESSION_KEY']
+  set :sessions, key: ENV['SESSION_KEY'], domain: :all
   use Rack::Flash
 
   # Work around rack protection referrer bug
