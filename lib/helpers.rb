@@ -180,13 +180,14 @@ module Sinatra
 
     def works_action(item, params)
       if params[:external_link].present?
-        item["id"].gsub("http://doi.org/","")
+        item["id"]
       elsif item.fetch("type", nil) == "contributions"
         "/works/" + item.fetch('attributes', {}).fetch("obj-id", nil)
       elsif item.fetch("type", nil) == "relations"
         "/works/" + item.fetch('attributes', {}).fetch("subj-id", nil)
       else
         id = item.fetch('attributes', {}).fetch("doi", nil).presence || item["id"]
+        id = id.gsub("http://doi.org/","")
         "/works/#{id}"
       end
     end
