@@ -63,7 +63,7 @@ configure do
 
   # Configure sessions and flash
   use Rack::Session::Cookie, key: ENV['SESSION_KEY'],
-                             domain: ENV['SESSION_DOMAIN'],
+                             domain: ".#{ENV['SESSION_DOMAIN']}",
                              secret: ENV['SECRET_KEY_BASE']
   use Rack::Flash
 
