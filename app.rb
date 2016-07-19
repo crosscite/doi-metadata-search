@@ -20,12 +20,13 @@ require 'active_support/all'
 ENV['APPLICATION'] ||= "doi-metadata-search"
 ENV['SESSION_KEY'] ||= "_#{ENV['APPLICATION']}_session"
 ENV['SESSION_DOMAIN'] ||= ""
+ENV['SECRET_KEY_BASE'] ||= SecureRandom.hex(15)
 ENV['SITENAMELONG'] ||= "DataCite Search"
 ENV['LOG_LEVEL'] ||= "info"
 ENV['RA'] ||= "datacite"
 ENV['API_URL'] ||= "http://api.datacite.org"
 
-env_vars = %w(SITENAMELONG LOG_LEVEL RA API_URL SESSION_KEY)
+env_vars = %w(SITENAMELONG LOG_LEVEL RA API_URL SESSION_KEY SECRET_KEY_BASE)
 env_vars.each { |env| fail ArgumentError,  "ENV[#{env}] is not set" unless ENV[env].present? }
 
 # Constants
@@ -61,7 +62,9 @@ configure do
   set :root, File.dirname(__FILE__)
 
   # Configure sessions and flash
-  use Rack::Session::Cookie, key: ENV['SESSION_KEY'], domain: ENV['SESSION_DOMAIN']
+  use Rack::Session::Cookie, key: ENV['SESSION_KEY'],
+                             domain: ENV['SESSION_DOMAIN'],
+                             secret: ENV['SECRET_KEY_BASE']
   use Rack::Flash
 
   # Work around rack protection referrer bug
