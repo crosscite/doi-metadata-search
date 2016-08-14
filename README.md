@@ -42,4 +42,4 @@ Follow along via [Github Issues](https://github.com/crosscite/doi-metadata-searc
 * Commit, push and make a pull request. Bonus points for topical branches.
 
 ## License
-**doi-metadata-search** is released under the [MIT License](https://github.com/crosscite/doi-metadata-search/blob/master/LICENSE.md).
+**doi-metadata-search** is released under the [MIT License](LICENSE.md).
