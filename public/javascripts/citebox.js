@@ -22,6 +22,7 @@ function updateCiteBox() {
   $.ajax({
     url: path,
     success: function(body) {
+      $('#citation-text').css("color", "black");
       $('#citation-text').text(body);
       spinner.stop();
     },
