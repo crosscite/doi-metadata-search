@@ -38,7 +38,6 @@
               %span.caret
             %ul.dropdown-menu{role: 'menu'}
               - if ENV['RACK_ENV'] == "development"
-                %li.dropdown-header DataCite Development
                 - settings.development_links.each do |item|
                   %li
                     %a{:href => item['url']}
