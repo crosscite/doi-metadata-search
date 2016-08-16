@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - Maremma - http://search.local
       Accept:
-      - application/json
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
     status:
       code: 200
@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - nginx/1.11.2
       Date:
-      - Tue, 16 Aug 2016 07:19:33 GMT
+      - Tue, 16 Aug 2016 09:46:05 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,7 +37,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 884685d7-6be0-4339-8876-1d0d7a43baf3
+      - 47ebfed8-7f2a-465f-8b9c-d155e2da6c32
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
@@ -45,7 +45,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.016137'
+      - '0.014108'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -78,5 +78,5 @@ http_interactions:
         Pacific","country":"Australia","year":2009,"logo-url":"https://assets.datacite.org/images/members/ands.png","email":"contact@ands.org.au","website":"http://www.ands.org.au","phone":"+61
         3 9902 0585","updated":"2016-08-03T15:39:40.000Z"}}}'
     http_version: 
-  recorded_at: Tue, 16 Aug 2016 07:19:33 GMT
+  recorded_at: Tue, 16 Aug 2016 09:46:05 GMT
 recorded_with: VCR 2.9.3

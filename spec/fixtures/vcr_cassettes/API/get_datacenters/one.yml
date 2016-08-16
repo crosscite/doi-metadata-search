@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - Maremma - http://search.local
       Accept:
-      - application/json
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
     status:
       code: 200
@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - nginx/1.11.2
       Date:
-      - Tue, 16 Aug 2016 07:19:28 GMT
+      - Tue, 16 Aug 2016 09:46:11 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,15 +37,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 1f758f8d-917a-43d3-9aaf-f78f30ce1214
+      - 30a6451b-5898-47cf-af5d-6708b21f40ff
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
-      - W/"5913e1008adb7cb7c604cefcb4176b07"
+      - W/"d0c52f2cbb1c1794aba7d0644ffb94bd"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.029895'
+      - '0.034850'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -59,7 +59,7 @@ http_interactions:
         cnMiLCJhdHRyaWJ1dGVzIjp7InRpdGxlIjoiWkVOT0RPIC0gUmVzZWFyY2gu
         IFNoYXJlZC4iLCJvdGhlci1uYW1lcyI6W10sInByZWZpeGVzIjpbXSwibWVt
         YmVyLWlkIjoiQ0VSTiIsInJlZ2lzdHJhdGlvbi1hZ2VuY3ktaWQiOiJkYXRh
-        Y2l0ZSIsInVwZGF0ZWQiOiIyMDE2LTA4LTE2VDA0OjU2OjM5WiJ9fSx7Imlk
+        Y2l0ZSIsInVwZGF0ZWQiOiIyMDE2LTA4LTE2VDA5OjIzOjUyWiJ9fSx7Imlk
         IjoiY2VybiIsInR5cGUiOiJtZW1iZXJzIiwiYXR0cmlidXRlcyI6eyJ0aXRs
         ZSI6IkV1cm9wZWFuIE9yZ2FuaXphdGlvbiBmb3IgTnVjbGVhciBSZXNlYXJj
         aCIsImRlc2NyaXB0aW9uIjoiXHUwMDNjcFx1MDAzZUNFUk4sIHRoZSBFdXJv
@@ -101,5 +101,5 @@ http_interactions:
         aC8iLCJwaG9uZSI6bnVsbCwidXBkYXRlZCI6IjIwMTYtMDctMzFUMjE6MzA6
         MjUuMDAwWiJ9fV19
     http_version: 
-  recorded_at: Tue, 16 Aug 2016 07:19:28 GMT
+  recorded_at: Tue, 16 Aug 2016 09:46:11 GMT
 recorded_with: VCR 2.9.3

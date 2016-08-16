@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - Maremma - http://search.local
       Accept:
-      - application/json
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
     status:
       code: 200
@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - nginx/1.11.2
       Date:
-      - Tue, 16 Aug 2016 07:19:36 GMT
+      - Tue, 16 Aug 2016 09:46:08 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,15 +37,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 91822bc9-2d04-4086-86b2-7b107729b506
+      - b0fcda63-63ff-46f3-8fa6-71252f33e692
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
-      - W/"782cd3add0bef608ce3f1e332f38dd59"
+      - W/"ab69e0cfbc88a390b68e58fa7706aecc"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.187851'
+      - '0.213043'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -58,7 +58,7 @@ http_interactions:
         Strasser","orcid":"http://orcid.org/0000-0001-9592-2339"},{"literal":"Patricia
         Cruse"},{"literal":"John Kunze"},{"literal":"Stephen Abrams"}],"title":"DataUp
         manuscript data","container-title":"Figshare","description":null,"resource-type-general":"collection","resource-type":"Collection","type":null,"license":"https://creativecommons.org/licenses/by/3.0/us/","publisher-id":"cdl.digsci","member-id":"cdl","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2015-12-04T15:40:42Z","updated":"2016-03-11T10:57:59Z"}},{"id":"cdl.digsci","type":"publishers","attributes":{"title":"Digital
-        Science","other-names":[],"prefixes":[],"member-id":"CDL","registration-agency-id":"datacite","updated":"2016-08-16T07:03:30Z"}},{"id":"cdl","type":"members","attributes":{"title":"California
+        Science","other-names":[],"prefixes":[],"member-id":"CDL","registration-agency-id":"datacite","updated":"2016-08-16T09:11:58Z"}},{"id":"cdl","type":"members","attributes":{"title":"California
         Digital Library","description":"\u003cp\u003eCalifornia Digital Library (CDL)
         deals with information at every stage of its life. CDL provides technology
         and expertise to help the University of California (UC) collect, publish,
@@ -69,5 +69,5 @@ http_interactions:
         non-profit, governmental and commercial clients.\u003c/p\u003e\n","member-type":"allocating","region":"Americas","country":"United
         States","year":2009,"logo-url":"https://assets.datacite.org/images/members/CDL.png","email":"ezid@ucop.edu","website":"http://ezid.cdlib.org","phone":"1-510-987-0469","updated":"2016-07-31T22:54:26.000Z"}}],"meta":{"total":1,"sources":{},"relation-types":{}}}'
     http_version: 
-  recorded_at: Tue, 16 Aug 2016 07:19:36 GMT
+  recorded_at: Tue, 16 Aug 2016 09:46:08 GMT
 recorded_with: VCR 2.9.3

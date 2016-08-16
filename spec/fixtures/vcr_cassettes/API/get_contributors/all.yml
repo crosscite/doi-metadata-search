@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - Maremma - http://search.local
       Accept:
-      - application/json
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
     status:
       code: 200
@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - nginx/1.11.2
       Date:
-      - Tue, 16 Aug 2016 07:19:34 GMT
+      - Tue, 16 Aug 2016 09:46:10 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,7 +37,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - b9186fad-00ef-45ee-aca5-6cacc8cc28b0
+      - 4ba1915b-445e-40e4-abf8-75d94dc3bd81
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
@@ -45,7 +45,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.047057'
+      - '0.039690'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -167,5 +167,5 @@ http_interactions:
         cGRhdGVkIjoiMTk3MC0wMS0wMVQwMDowMDowMFoifX1dLCJtZXRhIjp7InRv
         dGFsIjo2ODk3fX0=
     http_version: 
-  recorded_at: Tue, 16 Aug 2016 07:19:34 GMT
+  recorded_at: Tue, 16 Aug 2016 09:46:10 GMT
 recorded_with: VCR 2.9.3

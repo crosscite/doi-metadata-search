@@ -23,20 +23,20 @@ http_interactions:
       Location:
       - http://data.datacite.org/10.5281%2FZENODO.21430
       Expires:
-      - Tue, 16 Aug 2016 07:54:38 GMT
+      - Tue, 16 Aug 2016 10:15:05 GMT
       Content-Type:
       - text/html;charset=utf-8
       Content-Length:
       - '179'
       Date:
-      - Tue, 16 Aug 2016 07:29:39 GMT
+      - Tue, 16 Aug 2016 09:46:16 GMT
     body:
       encoding: UTF-8
       string: |-
         <html><head><title>Handle Redirect</title></head>
         <body><a href="http://data.datacite.org/10.5281%2FZENODO.21430">http://data.datacite.org/10.5281%2FZENODO.21430</a></body></html>
     http_version: 
-  recorded_at: Tue, 16 Aug 2016 07:29:40 GMT
+  recorded_at: Tue, 16 Aug 2016 09:46:17 GMT
 - request:
     method: get
     uri: http://data.datacite.org/10.5281%2FZENODO.21430
@@ -50,25 +50,34 @@ http_interactions:
       - text/x-bibliography; style=chicago-fullnote-bibliography
   response:
     status:
-      code: 301
+      code: 200
       message: ''
     headers:
       Server:
       - nginx/1.11.2
       Date:
-      - Tue, 16 Aug 2016 07:29:40 GMT
+      - Tue, 16 Aug 2016 09:46:18 GMT
       Content-Type:
-      - text/html
-      Content-Length:
-      - '185'
+      - text/x-bibliography
       Connection:
       - keep-alive
-      Location:
-      - https://.datacite.org/10.5281%2FZENODO.21430
+      Cache-Control:
+      - no-transform, max-age=3600
+      Last-Modified:
+      - Sat, 25 Jul 2015 16:44:23 GMT
+      Vary:
+      - Accept
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
-      encoding: UTF-8
-      string: "<html>\r\n<head><title>301 Moved Permanently</title></head>\r\n<body
-        bgcolor=\"white\">\r\n<center><h1>301 Moved Permanently</h1></center>\r\n<hr><center>nginx/1.11.2</center>\r\n</body>\r\n</html>\r\n"
+      encoding: ASCII-8BIT
+      string: !binary |-
+        TWFydGluIEZlbm5lciwgS2FybCBKb25hdGhhbiBXYXJkLCBHdWRtdW5kdXIg
+        QS4gVGhvcmlzc29uLCBhbmQgUm9iZXJ0IFBldGVycy4g4oCcRGF0YUNpdGUt
+        T1JDSUQ6IDEuMC7igJ0gWmVub2RvLCAyMDE1LiBkb2k6MTAuNTI4MS9aRU5P
+        RE8uMjE0MzAuCg==
     http_version: 
-  recorded_at: Tue, 16 Aug 2016 07:29:40 GMT
+  recorded_at: Tue, 16 Aug 2016 09:46:18 GMT
 recorded_with: VCR 2.9.3

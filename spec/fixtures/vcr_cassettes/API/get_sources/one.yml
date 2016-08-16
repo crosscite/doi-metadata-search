@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - Maremma - http://search.local
       Accept:
-      - application/json
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
     status:
       code: 200
@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - nginx/1.11.2
       Date:
-      - Tue, 16 Aug 2016 07:19:35 GMT
+      - Tue, 16 Aug 2016 09:46:04 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,15 +37,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 78c70fff-2547-4fed-a912-bc5f37e80f09
+      - 58f2a45b-1d3b-4c8a-82f7-58327da726f8
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
-      - W/"781c6e08783360edaf81a2fac0f8df38"
+      - W/"b5521aadd10fb5feb2154df73369b078"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.037475'
+      - '0.035325'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -56,7 +56,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"data":[{"id":"datacite-crossref","type":"sources","attributes":{"title":"DataCite
         (Crossref)","description":"Import works with Crossref DOIs as relatedIdentifier
-        via the DataCite Solr API.","state":"active","group-id":"relations","work-count":19907,"relation-count":225444,"result-count":74563,"by-day":{"with-results":6,"without-results":29,"not-updated":225354},"by-month":{"with-results":79,"without-results":351,"not-updated":224959},"updated":"2016-08-16T02:41:46Z"}},{"id":"relations","type":"groups","attributes":{"title":"Relations","sources":["crossref_datacite","datacite_crossref","datacite_github","datacite_related","europe_pmc_fulltext","plos_fulltext"],"updated":"2016-03-28T15:25:06Z"}}]}'
+        via the DataCite Solr API.","state":"active","group-id":"relations","work-count":19907,"relation-count":225444,"result-count":74563,"by-day":{"with-results":6,"without-results":29,"not-updated":225354},"by-month":{"with-results":79,"without-results":351,"not-updated":224959},"updated":"2016-08-16T09:37:54Z"}},{"id":"relations","type":"groups","attributes":{"title":"Relations","sources":["crossref_datacite","datacite_crossref","datacite_github","datacite_related","europe_pmc_fulltext","plos_fulltext"],"updated":"2016-03-28T15:25:06Z"}}]}'
     http_version: 
-  recorded_at: Tue, 16 Aug 2016 07:19:35 GMT
+  recorded_at: Tue, 16 Aug 2016 09:46:04 GMT
 recorded_with: VCR 2.9.3

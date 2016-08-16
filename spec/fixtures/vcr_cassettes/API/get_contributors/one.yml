@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - Maremma - http://search.local
       Accept:
-      - application/json
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
     status:
       code: 200
@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - nginx/1.11.2
       Date:
-      - Tue, 16 Aug 2016 07:19:34 GMT
+      - Tue, 16 Aug 2016 09:46:10 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,7 +37,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - bc886e6a-3c74-401f-a6bf-4b5c88698f9b
+      - 4e099af6-b705-4238-afdf-0ddb88dfc5e5
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
@@ -45,7 +45,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.021250'
+      - '0.023054'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -56,5 +56,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"data":[{"id":"http://orcid.org/0000-0002-4000-4167","type":"contributors","attributes":{"given":"Peter","family":"Arend","literal":null,"orcid":"0000-0002-4000-4167","github":null,"updated":"1970-01-01T00:00:00Z"}}]}'
     http_version: 
-  recorded_at: Tue, 16 Aug 2016 07:19:34 GMT
+  recorded_at: Tue, 16 Aug 2016 09:46:10 GMT
 recorded_with: VCR 2.9.3

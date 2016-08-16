@@ -10,7 +10,7 @@ http_interactions:
       User-Agent:
       - Maremma - http://search.local
       Accept:
-      - application/json
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
     status:
       code: 200
@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - nginx/1.11.2
       Date:
-      - Tue, 16 Aug 2016 07:19:35 GMT
+      - Tue, 16 Aug 2016 09:46:04 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,15 +37,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 62bd2838-c1f7-4a2e-9bb0-db2cb48abac8
+      - 0930084a-715b-41cf-b258-649a6b231956
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
-      - W/"f309a00630c568f59f121094bdbc8ff9"
+      - W/"5e5e9f21889a2eefc7eddf41f5cde761"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.050673'
+      - '0.051309'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -55,10 +55,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"data":[{"id":"crossref-datacite","type":"sources","attributes":{"title":"Crossref
-        (DataCite)","description":"Import works linked to a DataCite DOI from Crossref.","state":"active","group-id":"relations","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-08-16T03:05:12Z"}},{"id":"datacite-crossref","type":"sources","attributes":{"title":"DataCite
+        (DataCite)","description":"Import works linked to a DataCite DOI from Crossref.","state":"active","group-id":"relations","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-08-16T09:37:54Z"}},{"id":"datacite-crossref","type":"sources","attributes":{"title":"DataCite
         (Crossref)","description":"Import works with Crossref DOIs as relatedIdentifier
-        via the DataCite Solr API.","state":"active","group-id":"relations","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-08-16T02:41:46Z"}},{"id":"crossref-publisher","type":"sources","attributes":{"title":"Crossref
-        (Publisher)","description":"Import publishers via the Crossref REST API.","state":"active","group-id":"publishers","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-08-16T06:57:46Z"}},{"id":"publishers","type":"groups","attributes":{"title":"Publishers","sources":["crossref_publisher","datacite_datacentre"],"updated":"2016-03-28T15:25:06Z"}},{"id":"relations","type":"groups","attributes":{"title":"Relations","sources":["crossref_datacite","datacite_crossref","datacite_github","datacite_related","europe_pmc_fulltext","plos_fulltext"],"updated":"2016-03-28T15:25:06Z"}}],"meta":{"total":3,"groups":{"relations":2,"publishers":1}}}'
+        via the DataCite Solr API.","state":"active","group-id":"relations","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-08-16T09:37:54Z"}},{"id":"crossref-publisher","type":"sources","attributes":{"title":"Crossref
+        (Publisher)","description":"Import publishers via the Crossref REST API.","state":"active","group-id":"publishers","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-08-16T09:43:05Z"}},{"id":"publishers","type":"groups","attributes":{"title":"Publishers","sources":["crossref_publisher","datacite_datacentre"],"updated":"2016-03-28T15:25:06Z"}},{"id":"relations","type":"groups","attributes":{"title":"Relations","sources":["crossref_datacite","datacite_crossref","datacite_github","datacite_related","europe_pmc_fulltext","plos_fulltext"],"updated":"2016-03-28T15:25:06Z"}}],"meta":{"total":3,"groups":{"relations":2,"publishers":1}}}'
     http_version: 
-  recorded_at: Tue, 16 Aug 2016 07:19:35 GMT
+  recorded_at: Tue, 16 Aug 2016 09:46:04 GMT
 recorded_with: VCR 2.9.3
