@@ -12,10 +12,8 @@ CMD ["/sbin/my_init"]
 
 # Update installed APT packages
 RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold" && \
+    apt-get install ntp -y && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-# Install bundler
-RUN gem install bundler
 
 # Enable Passenger and Nginx and remove the default site
 # Preserve env variables for nginx
@@ -25,37 +23,24 @@ COPY vendor/docker/webapp.conf /etc/nginx/sites-enabled/webapp.conf
 COPY vendor/docker/00_app_env.conf /etc/nginx/conf.d/00_app_env.conf
 COPY vendor/docker/cors.conf /etc/nginx/conf.d/cors.conf
 
-# Prepare tmp folder for installation of Ruby gems and npm modules
-RUN mkdir -p /home/app/tmp
-COPY vendor /home/app/tmp/vendor
-RUN chown -R app:app /home/app/tmp && \
-    chmod -R 755 /home/app/tmp
+# Use Amazon NTP servers
+COPY vendor/docker/ntp.conf /etc/ntp.conf
+
+# Copy webapp folder
+COPY . /home/app/webapp/
+RUN mkdir -p /home/app/webapp/vendor/bundle && \
+    chown -R app:app /home/app/webapp && \
+    chmod -R 755 /home/app/webapp
 
 # Install npm and bower packages
-WORKDIR /home/app/tmp/vendor
+WORKDIR /home/app/webapp/vendor
 RUN /sbin/setuser app npm install && \
     npm install -g phantomjs-prebuilt
 
 # Install Ruby gems
-COPY Gemfile /home/app/tmp/Gemfile
-COPY Gemfile.lock /home/app/tmp/Gemfile.lock
-WORKDIR /home/app/tmp
-RUN gem install bundler && \
-    mkdir -p /home/app/tmp/vendor/bundle && \
-    chown -R app:app /home/app/tmp/vendor/bundle && \
-    chmod -R 755 /home/app/tmp/vendor/bundle && \
-    /sbin/setuser app bundle install --path vendor/bundle
-
-# Copy webapp folder
-ADD . /home/app/webapp
 WORKDIR /home/app/webapp
-RUN mkdir -p /home/app/webapp/tmp/pids && \
-    chown -R app:app /home/app/webapp && \
-    chmod -R 755 /home/app/webapp
-
-# Run additional scripts during container startup (i.e. not at build time)
-RUN mkdir -p /etc/my_init.d
-COPY vendor/docker/70_install.sh /etc/my_init.d/70_install.sh
+RUN gem install bundler && \
+    /sbin/setuser app bundle install --path vendor/bundle
 
 # Expose web
 EXPOSE 80

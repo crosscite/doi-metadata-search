@@ -1,8 +1,5 @@
 version: '2'
 
-# when sharing the host folder, you need to reinstall Ruby gems
-# and npm modules into the vendor folder
-
 services:
   search:
     env_file:
@@ -10,5 +7,9 @@ services:
     image: crosscite/doi-metadata-search
     ports:
       - "8000:80"
-    # volumes:
-    #   - ${APP_DIR}:/home/app/webapp
+    volumes:
+      - ./config:/home/app/webapp/config
+      - ./lib:/home/app/webapp/lib
+      - ./public:/home/app/webapp/public
+      - ./spec:/home/app/webapp/spec
+      - ./views:/home/app/webapp/views
