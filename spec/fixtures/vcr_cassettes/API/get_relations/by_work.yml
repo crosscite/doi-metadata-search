@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.datacite.org/relations?offset=0&rows=25&work-id=10.6084/M9.FIGSHARE.3394312
+    uri: https://api.datacite.org/relations?offset=0&rows=25&work-id=10.6084/M9.FIGSHARE.3394312
     body:
       encoding: US-ASCII
       string: ''
@@ -17,9 +17,9 @@ http_interactions:
       message: ''
     headers:
       Server:
-      - nginx/1.11.1
+      - nginx/1.11.2
       Date:
-      - Fri, 01 Jul 2016 23:44:18 GMT
+      - Tue, 16 Aug 2016 07:18:32 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,29 +37,29 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 162efee3-6e95-4995-9887-744bd44659c4
+      - f00fbffb-a7f4-43a3-9ffb-45fe306f0e8b
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
-      - W/"10355c958d2caa59ebb48ea032e185c1"
+      - W/"192b99287c84f4d84b130642046c34e4"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.114886'
+      - '0.111031'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
-      - Phusion Passenger 5.0.29
+      - Phusion Passenger 5.0.30
       Access-Control-Allow-Headers:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
       encoding: UTF-8
-      string: '{"data":[{"id":"dfda5c24-5e88-4277-975e-e52151ab630f","type":"relations","attributes":{"subj-id":"http://doi.org/10.6084/M9.FIGSHARE.3394312.V1","obj-id":"http://doi.org/10.6084/M9.FIGSHARE.3394312","doi":"10.6084/M9.FIGSHARE.3394312.V1","author":[{"given":"Samuel","family":"Asumadu-Sarkodie","orcid":"http://orcid.org/0000-0001-5035-5983"},{"given":"Phebe
+      string: '{"data":[{"id":"7a8213dc-11ec-44b1-80b6-154bfb0852e0","type":"relations","attributes":{"subj-id":"http://doi.org/10.6084/M9.FIGSHARE.3394312.V1","obj-id":"http://doi.org/10.6084/M9.FIGSHARE.3394312","doi":"10.6084/M9.FIGSHARE.3394312.V1","author":[{"given":"Samuel","family":"Asumadu-Sarkodie","orcid":"http://orcid.org/0000-0001-5035-5983"},{"given":"Phebe
         Asantewaa","family":"Owusu","orcid":"http://orcid.org/0000-0001-7364-1640"}],"title":"Global
         Annual Installations 2000-2013","container-title":"Figshare","source-id":"datacite-related","publisher-id":"CDL.DIGSCI","registration-agency-id":null,"relation-type-id":"is-identical-to","type":null,"total":1,"published":"2016","issued":"2016-05-20T20:40:22Z","updated":"2016-06-01T20:01:21Z"}},{"id":"datacite-related","type":"sources","attributes":{"title":"DataCite
         (RelatedIdentifier)","description":"Import works with relatedIdentifiers via
-        the DataCite Solr API.","state":"active","group-id":"relations","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-07-01T23:40:08Z"}},{"id":"is-identical-to","type":"relation-types","attributes":{"title":"Is
+        the DataCite Solr API.","state":"active","group-id":"relations","work-count":283005,"relation-count":420287,"result-count":2963536,"by-day":{"with-results":152,"without-results":70,"not-updated":420006},"by-month":{"with-results":1435,"without-results":687,"not-updated":418106},"updated":"2016-08-16T02:41:47Z"}},{"id":"is-identical-to","type":"relation-types","attributes":{"title":"Is
         identical to","inverse-title":"Is identical to","updated":"2016-03-21T15:05:04Z"}}],"meta":{"total":1,"sources":{"datacite-related":1},"relation-types":{"is-identical-to":1}}}'
-    http_version:
-  recorded_at: Fri, 01 Jul 2016 23:44:19 GMT
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 07:18:32 GMT
 recorded_with: VCR 2.9.3

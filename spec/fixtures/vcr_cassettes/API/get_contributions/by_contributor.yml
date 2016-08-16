@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.datacite.org/contributions?contributor-id=orcid.org/0000-0002-8635-8390&offset=0&rows=25
+    uri: https://api.datacite.org/contributions?contributor-id=orcid.org/0000-0002-8635-8390&offset=0&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -17,9 +17,9 @@ http_interactions:
       message: ''
     headers:
       Server:
-      - nginx/1.11.1
+      - nginx/1.11.2
       Date:
-      - Fri, 01 Jul 2016 23:43:41 GMT
+      - Tue, 16 Aug 2016 07:19:33 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,95 +37,93 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - c3a04dc8-4e87-4556-b983-6dc411298c08
+      - ab8e19ef-df93-4f90-940c-66cc4b4dfafd
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
-      - W/"5dc348372b0de4ab4f2987dfafc0ada7"
+      - W/"86420db695adae333bb3a715b5e0968c"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.728589'
+      - '1.276607'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
-      - Phusion Passenger 5.0.29
+      - Phusion Passenger 5.0.30
       Access-Control-Allow-Headers:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
       encoding: UTF-8
-      string: '{"data":[{"id":"39ef77d5-e525-4ebe-87b4-65e2a44867c4","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/688","credit-name":"Henry
-        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/688","url":null,"title":"12:
-        x-ray conformation methanol TS Def2-TZVPPD BF4 ion pair, top face","container-title":"Imperial
-        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-06-26T13:29:58Z","updated":"2016-06-30T08:03:27Z"}},{"id":"a958c1da-eaba-49be-a9e3-4bcdde493302","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/687","credit-name":"Henry
-        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/687","url":null,"title":"6:
-        x-ray conformation methanol TS Def2-TZVPPD BF4 ion pair, top face","container-title":"Imperial
-        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-06-26T13:28:19Z","updated":"2016-06-30T08:03:27Z"}},{"id":"d0825afa-574f-4df5-8fc0-75188c57273c","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/686","credit-name":"Henry
-        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/686","url":null,"title":"TMS
-        BP86/SVP geom Chloroform pcS 2-3 NMR","container-title":"Imperial College
-        London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-06-25T18:35:16Z","updated":"2016-06-30T08:03:24Z"}},{"id":"81b071b4-586b-4245-927e-68ab2979b3d8","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/677","credit-name":"Henry
-        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/677","url":null,"title":"Scheschkewitz","container-title":"Imperial
-        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-06-25T13:53:30Z","updated":"2016-06-30T08:03:24Z"}},{"id":"cbeec924-14bf-482f-bdfe-96184fb2901e","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/679","credit-name":"Henry
-        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/679","url":null,"title":"12-epoxide
-        product freq","container-title":"Imperial College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-06-25T14:00:35Z","updated":"2016-06-30T08:03:24Z"}},{"id":"8220c3d0-faef-4e9c-ab19-d04e389c2712","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/682","credit-name":"Henry
-        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/682","url":null,"title":"Transition
-        state for 2,3-epoxidation of 1,3-di-tert-butyl bromoallene, TZVP basis set,
-        B3LYP, empiricaldispersion=gd3bj","container-title":"Imperial College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-06-25T14:03:11Z","updated":"2016-06-30T08:03:24Z"}},{"id":"6156dfbe-4a67-499f-b517-d37691fa4fe7","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/680","credit-name":"Henry
-        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/680","url":null,"title":"12
-        reactant ...HOMe x-ray conformation methanol Def2-TZVPPD freq","container-title":"Imperial
-        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-06-25T14:01:27Z","updated":"2016-06-30T08:03:24Z"}},{"id":"6ee3e5b3-36b5-4dfd-a5eb-7a8e2a83f301","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/678","credit-name":"Henry
-        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/678","url":null,"title":"12:
-        x-ray conformation methanol TS Def2-TZVPPD BF4 ion pair, top face","container-title":"Imperial
-        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-06-25T13:59:06Z","updated":"2016-06-30T08:03:24Z"}},{"id":"170abd52-db40-4a18-ae4a-0dad3de901d6","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/683","credit-name":"Henry
-        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/683","url":null,"title":"Transition
-        state for 1,2-epoxidation of 1,3-di-tert-butyl bromoallene, TZVP basis set,
-        B3LYP, empiricaldispersion=gd3bj","container-title":"Imperial College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-06-25T14:04:00Z","updated":"2016-06-30T08:03:14Z"}},{"id":"4e5ff803-46c9-4d6a-96cb-02149520827e","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/684","credit-name":"Henry
-        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/684","url":null,"title":"TMS
-        BP86/SVP geom Chloroform pcS 1-3 NMR","container-title":"Imperial College
-        London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-06-25T18:33:20Z","updated":"2016-06-30T08:03:14Z"}},{"id":"14de7b89-0bea-4315-9900-47cca4109a88","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/681","credit-name":"Henry
-        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/681","url":null,"title":"9-Cl...HOMe
-        x-ray conformation methanol TS Def2-TZVPPD lower conformation","container-title":"Imperial
-        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-06-25T14:02:10Z","updated":"2016-06-30T08:03:14Z"}},{"id":"01941dd3-af6c-49d4-87e5-7e4d43399233","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/685","credit-name":"Henry
-        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/685","url":null,"title":"TMS
-        BP86/SVP geom Chloroform pcS 1-4 NMR","container-title":"Imperial College
-        London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-06-25T18:34:03Z","updated":"2016-06-29T22:40:39Z"}},{"id":"6a9d60f9-bd63-4413-a4f1-699d274d03ab","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.6084/M9.FIGSHARE.156370","credit-name":"Henry
-        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"given":"Henry
-        S.","family":"Rzepa","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.6084/M9.FIGSHARE.156370","url":null,"title":"Gaussian
-        Job Archive for C8H19ClO3","container-title":"Figshare","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2013","issued":"2013-02-10T07:32:21Z","updated":"2016-06-29T07:04:10Z"}},{"id":"f56ec7ed-8374-4283-878b-2276f6bce381","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/436","credit-name":"Henry
-        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/436","url":null,"title":"Stereoselective
-        Synthesis of 2,3-Disubstituted Tetrahydrofurans","container-title":"Imperial
-        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-04-27T06:51:58Z","updated":"2016-06-28T15:46:57Z"}},{"id":"09fe92a0-8761-47c6-abea-005055831beb","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/665","credit-name":"Henry
-        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/665","url":null,"title":"Search
-        for HO interactions to indoles, pyrroles, furans, and thiophenes","container-title":"Imperial
-        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-06-21T06:57:15Z","updated":"2016-06-28T15:46:52Z"}},{"id":"947e1b17-f3dd-455a-bfbf-84400c5c6dd8","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/466","credit-name":"Henry
-        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[],"doi":"10.14469/HPC/466","url":null,"title":"HF
-        autoionization Cs symmetry HF DCM","container-title":null,"source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-05-05T12:22:21Z","updated":"2016-06-28T13:24:17Z"}},{"id":"a9ccedf1-e26d-4baa-9769-662ab72435e8","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/467","credit-name":"Henry
-        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[],"doi":"10.14469/HPC/467","url":null,"title":"TS1
-        for trans ring fusion Chinese variation Def2-TZVPP + GD3BJ","container-title":null,"source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-05-05T14:03:53Z","updated":"2016-06-28T13:24:17Z"}},{"id":"fec55c5c-ab49-4f86-947a-19c662bf86fc","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/468","credit-name":"Henry
-        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[],"doi":"10.14469/HPC/468","url":null,"title":"TS1
-        for cis ring fusion Chinese variation Def2-TZVPP GD3BJ","container-title":null,"source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-05-05T14:05:47Z","updated":"2016-06-28T13:24:15Z"}},{"id":"dff2219d-8f15-4fa0-b045-3bae297f16b0","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/463","credit-name":"Henry
-        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[],"doi":"10.14469/HPC/463","url":null,"title":"HF
-        autoionization Cs symmetry ion pair, TS DCM","container-title":null,"source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-05-04T13:39:13Z","updated":"2016-06-28T13:24:12Z"}},{"id":"9ac9d691-26e8-4fea-b45b-0afca7452d89","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/461","credit-name":"Henry
-        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/461","url":null,"title":"decarboxylative
-        claisen R1=R2=Me, CN, DCM iso OTMS","container-title":"Imperial College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-05-04T11:45:22Z","updated":"2016-06-26T04:18:49Z"}},{"id":"d679342a-d364-4bac-b4b3-f9d5f382da8f","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/462","credit-name":"Henry
-        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/462","url":null,"title":"decarboxylative
-        claisen R1=R2=Me, CN, DCM OTMS IRC","container-title":"Imperial College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-05-04T11:45:35Z","updated":"2016-06-26T04:18:49Z"}},{"id":"9bb661ea-a8cd-4760-9c26-a1cdbe2d30fc","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/460","credit-name":"Henry
-        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/460","url":null,"title":"decarboxylative
-        claisen R1=R2=Me, CN, DCM OTMS","container-title":"Imperial College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-05-04T11:45:11Z","updated":"2016-06-26T04:18:48Z"}},{"id":"3c17fc49-3a19-48d7-8bc2-e5bd9116be13","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/612","credit-name":"Henry
-        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[],"doi":"10.14469/HPC/612","url":null,"title":"Di-axial
-        elimination of F Def2-TZVPPD","container-title":null,"source-id":"datacite-related","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-05-31T08:28:55Z","updated":"2016-06-26T03:21:19Z"}},{"id":"73033a74-9960-4e24-a3de-e4952e0b52a3","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.6084/M9.FIGSHARE.104718.V1","credit-name":"Henry
-        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"given":"Henry
-        S.","family":"Rzepa","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.6084/M9.FIGSHARE.104718.V1","url":null,"title":"Gaussian
-        Job Archive for C12H11NO2S2","container-title":"Figshare","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2012","issued":"2016-01-12T13:51:55Z","updated":"2016-06-25T19:46:06Z"}},{"id":"acd95c23-3650-4143-8628-14e6b682e246","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.6084/M9.FIGSHARE.104693.V1","credit-name":"Henry
-        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"given":"Henry
-        S.","family":"Rzepa","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.6084/M9.FIGSHARE.104693.V1","url":null,"title":"Gaussian
-        Job Archive for C6H9BrO2","container-title":"Figshare","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2012","issued":"2016-01-12T13:51:49Z","updated":"2016-06-25T19:46:05Z"}},{"id":"datacite-related","type":"sources","attributes":{"title":"DataCite
+      string: '{"data":[{"id":"f3770bb1-cc3d-43aa-9d74-82587bae54ba","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/1146","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/1146","url":null,"title":"RUWFOE
+        model of two boron units Diels Alder cycloaddition, TS with Me replacing NHMe
+        twice, reactant with H-Bonding","container-title":"Imperial College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-07-31T17:54:54Z","updated":"2016-08-15T23:34:22Z"}},{"id":"7a54df2a-d9a9-4eff-9539-fa015da2c091","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/1144","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/1144","url":null,"title":"RUWFOE
+        model of two boron units Diels Alder cycloaddition, reactant, H-bonded","container-title":"Imperial
+        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-07-31T06:52:27Z","updated":"2016-08-15T23:34:21Z"}},{"id":"a1ee218c-1f2a-43ae-befa-f2d35f65030d","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/1145","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/1145","url":null,"title":"boronic
+        new, C...N formation Sheppards proposal C...N, product after PT to O to form
+        amide","container-title":"Imperial College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-07-31T06:56:16Z","updated":"2016-08-11T16:40:15Z"}},{"id":"33df7e69-b7ed-4cb0-9c74-3e63b57a205a","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/1141","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[],"doi":"10.14469/HPC/1141","url":null,"title":"Stable
+        Bromoallene Oxides","container-title":null,"source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-07-28T18:27:18Z","updated":"2016-08-08T11:34:55Z"}},{"id":"353b5e7b-e176-4a14-be4d-72c6b36c2a5c","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/612","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/612","url":null,"title":"Di-axial
+        elimination of F Def2-TZVPPD","container-title":"Imperial College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-05-31T08:28:55Z","updated":"2016-08-06T04:59:32Z"}},{"id":"cab156e8-86b0-419e-81f7-b1b822fb04d5","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/565","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/565","url":null,"title":"enol
+        + Me4N(+).F(-) Reactant","container-title":"Imperial College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-05-25T08:28:25Z","updated":"2016-08-06T04:59:23Z"}},{"id":"99e656d4-41d2-45d1-b6d7-a606d8c23aac","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/554","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/554","url":null,"title":"trimethyl
+        silyl enol + Me4N(+).F(-) 5-coordinate intermediate F axial TS","container-title":"Imperial
+        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-05-24T17:17:02Z","updated":"2016-08-06T04:59:21Z"}},{"id":"6a0fb30a-8691-4aa4-8c31-33b2d87292a2","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/551","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/551","url":null,"title":"trimethyl
+        silyl enol + Me4N(+).F(-) 5-coordinate intermediate Berry pseudorotation TS","container-title":"Imperial
+        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-05-24T07:47:53Z","updated":"2016-08-06T04:59:21Z"}},{"id":"675d8174-d989-4443-8842-311738b74030","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/553","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/553","url":null,"title":"trimethyl
+        silyl enol + Me4N(+).F(-) 5-coordinate intermediate Berry pseudorotation TS
+        IRC","container-title":"Imperial College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-05-24T13:18:10Z","updated":"2016-08-06T04:59:21Z"}},{"id":"1aa83a5c-2f1a-4470-8a24-889f0d47a148","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/550","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/550","url":null,"title":"trimethyl
+        silyl enol + Me4N(+).F(-) 5-coordinate intermediate F/O axial","container-title":"Imperial
+        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-05-24T07:47:05Z","updated":"2016-08-06T04:59:21Z"}},{"id":"8fffdee9-d243-4c1b-8501-d9ffbad5d896","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/578","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/578","url":null,"title":"Di-axial
+        elimination of F IRC","container-title":"Imperial College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-05-27T09:57:08Z","updated":"2016-08-06T04:59:18Z"}},{"id":"70cc0fc0-5e1e-4a58-a040-52adaff23679","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/579","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/579","url":null,"title":"Di-axial
+        , ion pair isomerisation TS IRC 25","container-title":"Imperial College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-05-27T12:28:04Z","updated":"2016-08-06T04:59:18Z"}},{"id":"2bfafb89-5884-42e8-b173-7756f44b9829","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/577","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/577","url":null,"title":"5-coordinate
+        intermediate Berry pseudorotation TS2 New conf?","container-title":"Imperial
+        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-05-27T09:35:03Z","updated":"2016-08-06T04:59:17Z"}},{"id":"0ff60ce1-bad4-4f3d-b018-da2e2972db60","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/459","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/459","url":null,"title":"TS1
+        for trans ring fusion Chinese variation + Cl(-); Def2-TZVPP + GD3BJ freq","container-title":"Imperial
+        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-05-04T10:39:17Z","updated":"2016-08-06T04:59:16Z"}},{"id":"59b6289c-7e4f-4d5d-bc34-885b053912e1","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/1114","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/1114","url":null,"title":"Epimeric
+        Face-Selective Oxidations and Diastereodivergent Transannular Oxonium Ion
+        Formation-Fragmentations:  Total Syntheses of 12-Epoxyobtusallene IV, 12-Epoxyobtusallene
+        II, Obtusallene X, Marilzabicycloallene C and Marilzabicycloallene D","container-title":"Imperial
+        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-07-26T13:50:05Z","updated":"2016-08-06T04:59:07Z"}},{"id":"cf67b15e-b030-4044-adce-e39f17583ee7","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/1115","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/1115","url":null,"title":"Null","container-title":"Imperial
+        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-07-26T13:54:56Z","updated":"2016-08-06T04:59:07Z"}},{"id":"9948d5b5-d06e-4da0-a3dc-a32dc42d00e9","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/1092","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/1092","url":null,"title":"boronic
+        new, C...N formation Sheppards proposal C...N, product after PT to O to form
+        amide","container-title":"Imperial College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-07-25T05:29:36Z","updated":"2016-08-06T04:58:37Z"}},{"id":"1e09e110-0c62-4ffb-aa0a-b01a3a207943","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/1087","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/1087","url":null,"title":"Diethyl
+        Zinc NMR Spectra","container-title":"Imperial College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-07-25T04:34:51Z","updated":"2016-08-06T04:58:36Z"}},{"id":"e2cd5d4b-132c-41b2-8b52-dcbb47e54366","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/1011","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/1011","url":null,"title":"11B-26
+        XADQIF gauche","container-title":"Imperial College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-07-16T18:38:32Z","updated":"2016-08-06T04:58:29Z"}},{"id":"165e957e-0200-4561-a050-7bf0238a17aa","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/1015","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/1015","url":null,"title":"RUWFOE
+        model of two boron units no PT","container-title":"Imperial College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-07-18T15:40:50Z","updated":"2016-08-06T04:58:23Z"}},{"id":"760d7033-53ab-4442-a80d-b9b6d91aa78b","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/437","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/437","url":null,"title":"TS2
+        for trans ring fusion TS RP =\u0026gt; TS1 + freq","container-title":"Imperial
+        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-04-27T06:52:02Z","updated":"2016-08-06T04:58:15Z"}},{"id":"6ed30ee1-d932-4086-9a56-74225daf4e6f","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/145","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[],"doi":"10.14469/HPC/145","url":"https://data.hpc.imperial.ac.uk/resolve?doi=145","title":"Taxol","container-title":null,"source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2015","issued":"2015-09-27T08:41:09Z","updated":"2016-08-06T04:57:40Z"}},{"id":"b9e4db75-5d6f-4adb-b4fa-3fc016b855cf","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/144","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/144","url":"https://data.hpc.imperial.ac.uk/resolve?doi=144","title":"Atropisomerism
+        in Taxol intermediates","container-title":"Imperial College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2015","issued":"2015-09-27T08:40:14Z","updated":"2016-08-06T04:57:39Z"}},{"id":"a2b3d90a-88b4-4f59-8396-3ef3a5c1a075","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/146","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/146","url":"https://data.hpc.imperial.ac.uk/resolve?doi=146","title":"Taxol","container-title":"Imperial
+        College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2015","issued":"2015-09-27T08:42:16Z","updated":"2016-08-06T04:57:39Z"}},{"id":"589da91d-a383-4ff8-9560-95da3a60aff0","type":"contributions","attributes":{"subj-id":"http://orcid.org/0000-0002-8635-8390","obj-id":"http://doi.org/10.14469/HPC/1088","credit-name":"Henry
+        Rzepa","orcid":"0000-0002-8635-8390","github":null,"author":[{"family":"Rzepa","given":"Henry","orcid":"http://orcid.org/0000-0002-8635-8390"}],"doi":"10.14469/HPC/1088","url":null,"title":"Data
+        Repository Project","container-title":"Imperial College London","source-id":"datacite-orcid","contributor-role-id":"contribution","type":null,"published":"2016","issued":"2016-07-25T04:52:29Z","updated":"2016-08-06T04:57:28Z"}},{"id":"datacite-related","type":"sources","attributes":{"title":"DataCite
         (RelatedIdentifier)","description":"Import works with relatedIdentifiers via
-        the DataCite Solr API.","state":"active","group-id":"relations","work-count":282462,"relation-count":419363,"result-count":2961648,"by-day":{"with-results":1310,"without-results":211,"not-updated":417783},"by-month":{"with-results":263951,"without-results":126876,"not-updated":28477},"updated":"2016-07-01T23:40:08Z"}},{"id":"datacite-search-link","type":"sources","attributes":{"title":"DataCite
+        the DataCite Solr API.","state":"active","group-id":"relations","work-count":283005,"relation-count":420287,"result-count":2963536,"by-day":{"with-results":152,"without-results":70,"not-updated":420006},"by-month":{"with-results":1435,"without-results":687,"not-updated":418106},"updated":"2016-08-16T02:41:47Z"}},{"id":"datacite-search-link","type":"sources","attributes":{"title":"DataCite
         (ORCID Search and Link)","description":"Import claimed to ORCID via the DataCite
-        Profiles API.","state":"active","group-id":"contributions","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-07-01T20:46:45Z"}},{"id":"datacite-orcid","type":"sources","attributes":{"title":"DataCite
+        Profiles API.","state":"active","group-id":"contributions","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-08-16T04:56:46Z"}},{"id":"datacite-orcid","type":"sources","attributes":{"title":"DataCite
         (ORCID)","description":"Import works with ORCID nameIdentifier via the DataCite
-        Solr API.","state":"active","group-id":"contributions","work-count":1,"relation-count":3,"result-count":1,"by-day":{"with-results":0,"without-results":0,"not-updated":1},"by-month":{"with-results":1,"without-results":0,"not-updated":0},"updated":"2016-07-01T23:40:13Z"}}],"meta":{"total":162093,"sources":{"datacite-related":359,"datacite-orcid":161721,"datacite-search-link":13}}}'
-    http_version:
-  recorded_at: Fri, 01 Jul 2016 23:43:43 GMT
+        Solr API.","state":"active","group-id":"contributions","work-count":1,"relation-count":3,"result-count":1,"by-day":{"with-results":0,"without-results":0,"not-updated":1},"by-month":{"with-results":0,"without-results":0,"not-updated":1},"updated":"2016-08-16T04:56:42Z"}}],"meta":{"total":162187,"sources":{"datacite-related":234,"datacite-orcid":161940,"datacite-search-link":13}}}'
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 07:19:33 GMT
 recorded_with: VCR 2.9.3
