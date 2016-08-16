@@ -24,6 +24,12 @@ function updateCiteBox() {
     success: function(body) {
       $('#citation-text').text(body);
       spinner.stop();
+    },
+    error: function (error) {
+      console.log(error.responseJSON);
+      $('#citation-text').css("color", "#e67e22");
+      $('#citation-text').text(error.responseJSON.message);
+      spinner.stop();
     }
   });
 };

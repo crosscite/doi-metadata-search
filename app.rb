@@ -406,7 +406,14 @@ get '/citation' do
   # use doi content negotiation to get formatted citation
   result = Maremma.get "http://doi.org/#{params[:doi]}", content_type: citation_format
 
-  halt result.fetch('errors', {}).fetch('status', 400).to_i, json(result) if result["errors"]
+  if result["errors"]
+    error = result.fetch('errors', [{}]).first
+    status = error.fetch('status', 400).to_i
+    message = error.fetch('title', "An error occured.")
+    halt status, json(status: 'error', message: message)
+  elsif result["data"].blank?
+    halt 404, json(status: 'error', message: 'Not found')
+  end
 
   settings.ga.event('Citations', '/citation', citation_format, nil, true) if ENV['GABBA_COOKIE'] && ENV['RACK_ENV'] != "test"
 
