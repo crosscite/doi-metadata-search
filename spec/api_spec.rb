@@ -87,7 +87,7 @@ describe "API", type: :model, vcr: true do
 
     it "query" do
       response = subject.get_members(query: "tib")
-      expect(response[:meta]).to eq("total"=>34, "member-types"=>{"allocating"=>27, "non-allocating"=>7}, "regions"=>{"amer"=>7, "apac"=>5, "emea"=>22}, "years"=>{"2015"=>5, "2014"=>5, "2013"=>4, "2012"=>1, "2011"=>2, "2010"=>9, "2009"=>8})
+      expect(response[:meta]).to eq("total"=>1, "member-types"=>{"allocating"=>1}, "regions"=>{"emea"=>1}, "years"=>{"2009"=>1})
       member = response[:data].first
       expect(member["id"]).to eq("tib")
     end
