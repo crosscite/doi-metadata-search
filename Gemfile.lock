@@ -9,7 +9,20 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
-    activesupport (4.2.6)
+    actionpack (4.2.7)
+      actionview (= 4.2.7)
+      activesupport (= 4.2.7)
+      rack (~> 1.6)
+      rack-test (~> 0.6.2)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
+      rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    actionview (4.2.7)
+      activesupport (= 4.2.7)
+      builder (~> 3.1)
+      erubis (~> 2.7.0)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
+      rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    activesupport (4.2.7)
       i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
@@ -53,6 +66,7 @@ GEM
     diff-lcs (1.2.5)
     docile (1.1.5)
     dotenv (2.1.1)
+    erubis (2.7.0)
     excon (0.45.4)
     factory_girl (4.7.0)
       activesupport (>= 3.0.0)
@@ -72,6 +86,8 @@ GEM
     jwt (1.5.4)
     launchy (2.4.3)
       addressable (~> 2.3)
+    loofah (2.0.3)
+      nokogiri (>= 1.5.9)
     maremma (2.2.2)
       activesupport (~> 4.2, >= 4.2.5)
       builder (~> 3.2, >= 3.2.2)
@@ -117,13 +133,21 @@ GEM
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
+    rails-deprecated_sanitizer (1.0.3)
+      activesupport (>= 4.2.0.alpha)
+    rails-dom-testing (1.0.7)
+      activesupport (>= 4.2.0.beta, < 5.0)
+      nokogiri (~> 1.6.0)
+      rails-deprecated_sanitizer (>= 1.0.1)
+    rails-html-sanitizer (1.0.3)
+      loofah (~> 2.0)
     rainbow (2.1.0)
     rake (11.2.2)
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)
       rspec-mocks (~> 3.5.0)
-    rspec-core (3.5.0)
+    rspec-core (3.5.1)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -140,14 +164,14 @@ GEM
       ruby-progressbar (~> 1.4)
     ruby-progressbar (1.8.1)
     safe_yaml (1.0.4)
-    sanitize (4.0.1)
+    sanitize (4.1.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.4.4)
       nokogumbo (~> 1.4.1)
     sass (3.4.22)
-    simplecov (0.11.2)
+    simplecov (0.12.0)
       docile (~> 1.1.0)
-      json (~> 1.8)
+      json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
     sinatra (1.4.7)
@@ -185,6 +209,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actionpack
   activesupport
   awesome_print
   bugsnag
@@ -221,4 +246,4 @@ DEPENDENCIES
   will_paginate-bootstrap
 
 BUNDLED WITH
-   1.11.2
+   1.12.5
