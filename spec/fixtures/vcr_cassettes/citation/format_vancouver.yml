@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://doi.org/10.5281/ZENODO.21430
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Maremma - http://search.local
+      Accept:
+      - text/x-bibliography; style=vancouver
+  response:
+    status:
+      code: 303
+      message: ''
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Vary:
+      - Accept
+      Location:
+      - http://data.datacite.org/10.5281%2FZENODO.21430
+      Expires:
+      - Tue, 16 Aug 2016 08:17:17 GMT
+      Content-Type:
+      - text/html;charset=utf-8
+      Content-Length:
+      - '179'
+      Date:
+      - Tue, 16 Aug 2016 07:29:40 GMT
+    body:
+      encoding: UTF-8
+      string: |-
+        <html><head><title>Handle Redirect</title></head>
+        <body><a href="http://data.datacite.org/10.5281%2FZENODO.21430">http://data.datacite.org/10.5281%2FZENODO.21430</a></body></html>
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 07:29:41 GMT
+- request:
+    method: get
+    uri: http://data.datacite.org/10.5281%2FZENODO.21430
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Maremma - http://search.local
+      Accept:
+      - text/x-bibliography; style=vancouver
+  response:
+    status:
+      code: 301
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.2
+      Date:
+      - Tue, 16 Aug 2016 07:29:41 GMT
+      Content-Type:
+      - text/html
+      Content-Length:
+      - '185'
+      Connection:
+      - keep-alive
+      Location:
+      - https://.datacite.org/10.5281%2FZENODO.21430
+    body:
+      encoding: UTF-8
+      string: "<html>\r\n<head><title>301 Moved Permanently</title></head>\r\n<body
+        bgcolor=\"white\">\r\n<center><h1>301 Moved Permanently</h1></center>\r\n<hr><center>nginx/1.11.2</center>\r\n</body>\r\n</html>\r\n"
+    http_version: 
+  recorded_at: Tue, 16 Aug 2016 07:29:41 GMT
+recorded_with: VCR 2.9.3
