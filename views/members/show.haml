@@ -3,9 +3,13 @@
 .container-fluid
   .row
     .col-md-9#content-work
-      = haml :'members/item', locals: { item: @member }
+      - if @member.present?
+        = haml :'members/item', locals: { item: @member }
+      - elsif @member_error.present?
+        %div.alert.alert-warning
+          = @member_error
 
-    - if @member.fetch("attributes", {}).fetch("member-type", nil) == "allocating"
+    - if @member.present? && @member.fetch("attributes", {}).fetch("member-type", nil) == "allocating"
       .col-md-9
         = haml :'works/search'
 

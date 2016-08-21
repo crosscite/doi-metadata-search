@@ -7,10 +7,6 @@
 
   .row
     .col-md-9#content
-      - if flash[:error].present?
-        %div.alert.alert-warning
-          = flash[:error]
-
       - if @datacenters.length > 0
         - if @datacenters.length > 1
           %h4.results
@@ -22,6 +18,9 @@
         .text-center
           = will_paginate @datacenters, renderer: BootstrapPagination::Sinatra
 
+      - elsif @datacenters_error.present?
+        %div.alert.alert-warning
+          = @datacenters_error
       - else
         %div.alert.alert-info
           Nothing found.

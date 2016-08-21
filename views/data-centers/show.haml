@@ -3,7 +3,11 @@
 .container-fluid
   .row
     .col-md-9#content-data-center
-      = haml :'data-centers/item', locals: { item: @datacenter }
+      - if @datacenter.present?
+        = haml :'data-centers/item', locals: { item: @datacenter }
+      - elsif @datacenter_error.present?
+        %div.alert.alert-warning
+          = @datacenter_error
 
     .col-md-3
       - registration_agency_id = @datacenter.fetch("attributes", {}).fetch("registration-agency-id", nil)

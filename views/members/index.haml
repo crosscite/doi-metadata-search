@@ -7,10 +7,6 @@
 
   .row
     .col-md-9#content
-      - if flash[:error].present?
-        %div.alert.alert-warning
-          = flash[:error]
-
       - if @members.length > 0
         - if @members.length > 1
           %h4.results
@@ -19,6 +15,9 @@
         - @members.each do |item|
           = haml :'members/item', locals: { item: item }
 
+      - elsif @members_error.present?
+        %div.alert.alert-warning
+          = @members_error
       - else
         %div.alert.alert-info
           Nothing found.

@@ -134,8 +134,14 @@ get '/works' do
   offset = DEFAULT_ROWS * (page - 1)
 
   result = get_works(query: params[:query], offset: offset, 'publisher-id' => params['publisher-id'], 'resource-type-id' => params['resource-type-id'], 'year' => params['year'])
-  works = result[:data].select {|item| item["type"] == "works" }
-  @meta = result[:meta]
+  works = result.fetch(:data, []).select {|item| item["type"] == "works" }
+  @meta = result.fetch(:meta, {})
+
+  # check for errors
+  if result.fetch(:errors, []).present?
+    error = result.fetch(:errors, []).first
+    @works_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
+  end
 
   # check for existing claims if user is logged in
   works = get_claims(current_user, works) if current_user
@@ -144,10 +150,10 @@ get '/works' do
     pager.replace works
   end
 
-  @resource_types = Array(result[:data]).select {|item| item["type"] == "resource-types" }
-  @publishers = Array(result[:data]).select {|item| item["type"] == "publishers" }
-  @sources = Array(result[:data]).select {|item| item["type"] == "sources" }
-  @work_types = Array(result[:data]).select {|item| item["type"] == "work-types" }
+  @resource_types = result.fetch(:data, []).select {|item| item["type"] == "resource-types" }
+  @publishers = result.fetch(:data, []).select {|item| item["type"] == "publishers" }
+  @sources = result.fetch(:data, []).select {|item| item["type"] == "sources" }
+  @work_types = result.fetch(:data, []).select {|item| item["type"] == "work-types" }
 
   params[:model] = "works"
 
@@ -161,17 +167,20 @@ get %r{/works/(.+)} do
   params["id"] = params["id"].gsub(/(http|https):\/+(\w+)/, '\1://\2')
 
   result = get_works(id: params["id"])
-  works = result[:data].select {|item| item["type"] == "works" }
+  works = result.fetch(:data, []).select {|item| item["type"] == "works" }
 
-  unless works.present?
-    flash[:error] = "Work \"#{params['id']}\" not found."
-    redirect to('/works')
+  # check for errors
+  if result.fetch(:errors, []).present?
+    error = result.fetch(:errors, []).first
+    @work_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
+  elsif works.blank?
+    @work_error = "Work \"#{params['id']}\" not found."
   end
 
-  @publishers = Array(result[:data]).select {|item| item["type"] == "publishers" }
-  @members = Array(result[:data]).select {|item| item["type"] == "members" }
-  @sources = Array(result[:data]).select {|item| item["type"] == "sources" }
-  @work_types = Array(result[:data]).select {|item| item["type"] == "work-types" }
+  @publishers = result.fetch(:data, []).select {|item| item["type"] == "publishers" }
+  @members = result.fetch(:data, []).select {|item| item["type"] == "members" }
+  @sources = result.fetch(:data, []).select {|item| item["type"] == "sources" }
+  @work_types = result.fetch(:data, []).select {|item| item["type"] == "work-types" }
   @meta = result[:meta]
 
   # check for existing claims if user is logged in and work is registered with DataCite
@@ -185,19 +194,19 @@ get %r{/works/(.+)} do
   offset = DEFAULT_ROWS * (page - 1)
 
   collection = get_contributions("work-id" => params["id"], "source-id" => params["source-id"], offset: offset, rows: 100)
-  @contributions= Array(collection[:data]).select {|item| item["type"] == "contributions" }
-  @contribution_sources = Array(collection[:data]).select {|item| item["type"] == "sources" }
+  @contributions= collection.fetch(:data, []).select {|item| item["type"] == "contributions" }
+  @contribution_sources = collection.fetch(:data, []).select {|item| item["type"] == "sources" }
   @meta["contribution-total"] = collection.fetch(:meta, {}).fetch("total", 0)
   @meta["contribution-sources"] = collection.fetch(:meta, {}).fetch("sources", {})
 
   relations = get_relations("work-id" => params["id"], "source-id" => params["source-id"], "relation-type-id" => params["relation-type-id"], offset: offset, rows: 25)
-  @relation_sources = Array(relations[:data]).select {|item| item["type"] == "sources" }
-  @relation_types = Array(relations[:data]).select {|item| item["type"] == "relation-types" }
+  @relation_sources = relations.fetch(:data, []).select {|item| item["type"] == "sources" }
+  @relation_types = relations.fetch(:data, []).select {|item| item["type"] == "relation-types" }
   @meta["relation-total"] = relations.fetch(:meta, {}).fetch("total", 0)
   @meta["relation-types"] = relations.fetch(:meta, {}).fetch("relation-types", {})
   @meta["relation-sources"] = relations.fetch(:meta, {}).fetch("sources", {})
 
-  @relations= Array(relations[:data]).select {|item| item["type"] == "relations" }
+  @relations= relations.fetch(:data, []).select {|item| item["type"] == "relations" }
 
   # check for existing claims if user is logged in
   @relations = get_claims(current_user, @relations) if current_user
@@ -219,6 +228,12 @@ get '/contributors' do
   contributors = result[:data]
   @meta = result[:meta]
 
+  # check for errors
+  if result.fetch(:errors, []).present?
+    error = result.fetch(:errors, []).first
+    @contributors_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
+  end
+
   @contributors = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
     pager.replace contributors
   end
@@ -235,18 +250,21 @@ get '/contributors/:id' do
   result = get_contributors(id: id)
   @contributor = result[:data].find { |item| item["type"] == "contributors" }
 
-  unless @contributor.present?
-    flash[:error] = "Contributor \"#{params['id']}\" not found."
-    redirect to('/contributors')
+  # check for errors
+  if result.fetch(:errors, []).present?
+    error = result.fetch(:errors, []).first
+    @contributor_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
+  elsif @contributor.blank?
+    @contributor_error = "Contributor \"#{params['id']}\" not found."
   end
 
   page = params.fetch('page', 1).to_i
   offset = DEFAULT_ROWS * (page - 1)
 
   collection = get_contributions("contributor-id" => id, "source-id" => params["source-id"], offset: offset)
-  contributions = Array(collection[:data]).select {|item| item["type"] == "contributions" }
+  contributions = collection.fetch(:data, []).select {|item| item["type"] == "contributions" }
   @meta = collection[:meta]
-  @contribution_sources = Array(collection[:data]).select {|item| item["type"] == "sources" }
+  @contribution_sources = collection.fetch(:data, []).select {|item| item["type"] == "sources" }
   @meta["contribution-total"] = collection.fetch(:meta, {}).fetch("total", 0)
   @meta["contribution-sources"] = collection.fetch(:meta, {}).fetch("sources", {})
   @contributions = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
@@ -263,8 +281,14 @@ get '/data-centers' do
   offset = DEFAULT_ROWS * (page - 1)
 
   result  = get_datacenters(query: params[:query], offset: offset, "member-id" => params["member-id"])
-  datacenters = Array(result[:data]).select {|item| item["type"] == "publishers" }
-  @members = Array(result[:data]).select {|item| item["type"] == "members" }
+  datacenters = result.fetch(:data, []).select {|item| item["type"] == "publishers" }
+  @members = result.fetch(:data, []).select {|item| item["type"] == "members" }
+
+  # check for errors
+  if result.fetch(:errors, []).present?
+    error = result.fetch(:errors, []).first
+    @datacenters_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
+  end
 
   @meta = result[:meta]
 
@@ -277,29 +301,38 @@ end
 
 get '/data-centers/:id' do
   result = get_datacenters(id: params[:id])
-  @datacenter = Array(result[:data]).find {|item| item["type"] == "publishers" }
-  @members = Array(result[:data]).select {|item| item["type"] == "members" }
+  @datacenter = result.fetch(:data, []).find {|item| item["type"] == "publishers" }
+  @members = result.fetch(:data, []).select {|item| item["type"] == "members" }
 
-  unless @datacenter.present?
-    flash[:error] = "Data center \"#{params['id']}\" not found."
-    redirect to('/data-centers')
+  # check for errors
+  if result.fetch(:errors, []).present?
+    error = result.fetch(:errors, []).first
+    @datacenter_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
+  elsif @datacenter.blank?
+    @datacenter_error = "Data center \"#{params['id']}\" not found."
   end
 
   page = params.fetch('page', 1).to_i
   offset = DEFAULT_ROWS * (page - 1)
 
   collection = get_works(query: params[:query], "publisher-id" => params[:id], offset: offset, 'resource-type-id' => params['resource-type-id'], 'source-id' => params['source-id'], 'relation-type-id' => params['relation-type-id'], 'year' => params['year'], sort: params[:sort])
-  works = Array(collection[:data]).select {|item| item["type"] == "works" }
+  works = collection.fetch(:data, []).select {|item| item["type"] == "works" }
   @meta = collection[:meta]
+
+  # check for errors
+  if collection.fetch(:errors, []).present?
+    error = collection.fetch(:errors, []).first
+    @works_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
+  end
 
   @works = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
     pager.replace works
   end
 
-  @resource_types = Array(collection[:data]).select {|item| item["type"] == "resource-types" }
-  @relation_types = Array(collection[:data]).select {|item| item["type"] == "relation-types" }
-  @work_types = Array(collection[:data]).select {|item| item["type"] == "work-types" }
-  @sources = Array(collection[:data]).select {|item| item["type"] == "sources" }
+  @resource_types = collection.fetch(:data, []).select {|item| item["type"] == "resource-types" }
+  @relation_types = collection.fetch(:data, []).select {|item| item["type"] == "relation-types" }
+  @work_types = collection.fetch(:data, []).select {|item| item["type"] == "work-types" }
+  @sources = collection.fetch(:data, []).select {|item| item["type"] == "sources" }
 
   params[:model] = "data-centers"
 
@@ -311,6 +344,12 @@ get '/members' do
   @members = result[:data].select {|item| item["type"] == "members" }
   @meta = result[:meta]
 
+  # check for errors
+  if result.fetch(:errors, []).present?
+    error = result.fetch(:errors, []).first
+    @members_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
+  end
+
   haml :'members/index'
 end
 
@@ -318,9 +357,12 @@ get '/members/:id' do
   result = get_members(id: params[:id])
   @member = result[:data]
 
-  unless @member.present?
-    flash[:error] = "Member \"#{params['id']}\" not found."
-    redirect to('/members')
+  # check for errors
+  if result.fetch(:errors, []).present?
+    error = result.fetch(:errors, []).first
+    @member_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
+  elsif @member.blank?
+    @member_error = "Member \"#{params['id']}\" not found."
   end
 
   page = params.fetch('page', 1).to_i
@@ -330,11 +372,17 @@ get '/members/:id' do
   works = collection[:data].select {|item| item["type"] == "works" }
   @meta = collection[:meta]
 
+  # check for errors
+  if collection.fetch(:errors, []).present?
+    error = collection.fetch(:errors, []).first
+    @works_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
+  end
+
   @works = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
     pager.replace works
   end
 
-  @resource_types = Array(collection[:data]).select {|item| item["type"] == "resource-types" }
+  @resource_types = collection.fetch(:data, []).select {|item| item["type"] == "resource-types" }
   @publishers = []
 
   params[:model] = "members"
@@ -344,9 +392,15 @@ end
 
 get '/sources' do
   result = get_sources(query: params[:query], "group-id" => params["group-id"])
-  @sources = Array(result[:data]).select {|item| item["type"] == "sources" }
-  @groups = Array(result[:data]).select {|item| item["type"] == "groups" }
+  @sources = result.fetch(:data, []).select {|item| item["type"] == "sources" }
+  @groups = result.fetch(:data, []).select {|item| item["type"] == "groups" }
   @meta = result[:meta]
+
+  # check for errors
+  if result.fetch(:errors, []).present?
+    error = result.fetch(:errors, []).first
+    @sources_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
+  end
 
   haml :'sources/index'
 end
@@ -355,12 +409,15 @@ get '/sources/:id' do
   result = get_sources(id: params[:id])
   @source = result[:data].find {|item| item["type"] == "sources" }
 
-  unless @source.present?
-    flash[:error] = "Source \"#{params['id']}\" not found."
-    redirect to('/sources')
+  # check for errors
+  if result.fetch(:errors, []).present?
+    error = result.fetch(:errors, []).first
+    @source_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
+  elsif @source.blank?
+    @source_error = "Source \"#{params['id']}\" not found."
   end
 
-  @groups = Array(result[:data]).select {|item| item["type"] == "groups" }
+  @groups = result.fetch(:data, []).select {|item| item["type"] == "groups" }
   group = @groups.first
 
   page = params.fetch('page', 1).to_i
@@ -368,10 +425,10 @@ get '/sources/:id' do
 
   if %w(relations results).include?(group["id"])
     collection = get_works("source-id" => params[:id], offset: offset, sort: params[:sort], 'relation-type-id' => params['relation-type-id'])
-    works = Array(collection[:data]).select {|item| item["type"] == "works" }
-    @sources = Array(collection[:data]).select {|item| item["type"] == "sources" }
-    @relation_types = Array(collection[:data]).select {|item| item["type"] == "relation-types" }
-    @work_types = Array(collection[:data]).select {|item| item["type"] == "work-types" }
+    works = collection.fetch(:data, []).select {|item| item["type"] == "works" }
+    @sources = collection.fetch(:data, []).select {|item| item["type"] == "sources" }
+    @relation_types = collection.fetch(:data, []).select {|item| item["type"] == "relation-types" }
+    @work_types = collection.fetch(:data, []).select {|item| item["type"] == "work-types" }
     @meta = collection[:meta]
 
     @works = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
@@ -379,8 +436,8 @@ get '/sources/:id' do
     end
   elsif group["id"] == "contributions"
     collection = get_contributions("source-id" => params[:id], offset: offset, rows: 25)
-    contributions= Array(collection[:data]).select {|item| item["type"] == "contributions" }
-    @contribution_sources = Array(collection[:data]).select {|item| item["type"] == "sources" }
+    contributions= collection.fetch(:data, []).select {|item| item["type"] == "contributions" }
+    @contribution_sources = collection.fetch(:data, []).select {|item| item["type"] == "sources" }
     @meta = collection[:meta]
     @meta["contribution-total"] = collection.fetch(:meta, {}).fetch("total", 0)
     @meta["contribution-sources"] = collection.fetch(:meta, {}).fetch("sources", {})
@@ -406,8 +463,9 @@ get '/citation' do
   # use doi content negotiation to get formatted citation
   result = Maremma.get "http://doi.org/#{params[:doi]}", content_type: citation_format
 
-  if result["errors"]
-    error = result.fetch('errors', [{}]).first
+  # check for errors
+  if result.fetch("errors", []).present?
+    error = result.fetch('errors', []).first
     status = error.fetch('status', 400).to_i
     message = error.fetch('title', "An error occured.")
     halt status, json(status: 'error', message: message)

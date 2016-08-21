@@ -1,7 +1,3 @@
-- if flash[:error].present?
-  %div.alert.alert-warning
-    = flash[:error]
-
 - if @works.length > 0
   - if @works.length > 1
     - if params[:model] == "sources" || @datacenter.present? && @datacenter.fetch("attributes", {}).fetch("registration-agency-id", nil) == "crossref"
@@ -30,5 +26,9 @@
     = will_paginate @works, renderer: BootstrapPagination::Sinatra
 
 - else
-  %div.alert.alert-info
-    Nothing found.
+  - if @works_error.present?
+    %div.alert.alert-warning
+      = @works_error
+  - else
+    %div.alert.alert-info
+      Nothing found.

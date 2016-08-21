@@ -3,51 +3,56 @@
 .container-fluid
   .row
     .col-md-9#content-work
-      = haml :'works/item', locals: { item: @work }
+      - if @work.present?
+        = haml :'works/item', locals: { item: @work }
+      - elsif @work_error.present?
+        %div.alert.alert-warning
+          = @work_error
 
-    .col-md-3
-      - registration_agency_id = @work.fetch("attributes", {}).fetch("registration-agency-id", nil)
-      - publisher_id = @work.fetch("attributes", {}).fetch("publisher-id", nil)
-      - member_id = @work.fetch("attributes", {}).fetch("member-id", nil)
-      .panel.facets
-        .panel-body.metadata
-          - if registration_agency_id == "datacite"
-            %h5
-              Data Center
-            .data-center
-              %a{href: "/data-centers/#{publisher_id}"}
-                = publisher_title(@publishers, publisher_id)
-          - elsif publisher_id.present?
-            %h5
-              Publisher
-            .data-center
-              %a{href: "/data-centers/#{publisher_id}"}
-                = publisher_title(@publishers, publisher_id)
-          - if registration_agency_id == "datacite"
-            %h5
-              Member
-            .registration_agency
-              %a{href: "/members/#{member_id}"}
-                = member_title(@members, member_id)
-          - elsif registration_agency_id.present?
-            %h5
-              Registration Agency
-            .registration_agency
-              = registration_agency_format(@work.fetch("attributes", {}))
+    - if @work.present?
+      .col-md-3
+        - registration_agency_id = @work.fetch("attributes", {}).fetch("registration-agency-id", nil)
+        - publisher_id = @work.fetch("attributes", {}).fetch("publisher-id", nil)
+        - member_id = @work.fetch("attributes", {}).fetch("member-id", nil)
+        .panel.facets
+          .panel-body.metadata
+            - if registration_agency_id == "datacite"
+              %h5
+                Data Center
+              .data-center
+                %a{href: "/data-centers/#{publisher_id}"}
+                  = publisher_title(@publishers, publisher_id)
+            - elsif publisher_id.present?
+              %h5
+                Publisher
+              .data-center
+                %a{href: "/data-centers/#{publisher_id}"}
+                  = publisher_title(@publishers, publisher_id)
+            - if registration_agency_id == "datacite"
+              %h5
+                Member
+              .registration_agency
+                %a{href: "/members/#{member_id}"}
+                  = member_title(@members, member_id)
+            - elsif registration_agency_id.present?
+              %h5
+                Registration Agency
+              .registration_agency
+                = registration_agency_format(@work.fetch("attributes", {}))
 
-      .panel.tags
-        .panel-body
-          .bottom-teaser.cf
-            .isLeft
-              %h5.index-headline.featured
-                %span
-                  Share on
-              - settings.social.each do |social|
-                - href = social['share_url'] + social['share_title'] + (@work.fetch("attributes", {}).fetch("title", nil)).to_s + social['share_link'] + @work.fetch("id")
-                %a{href: href, class: "icon-#{social['icon']}", onclick: "window.open(this.href, '#{social['icon']}-share', 'width=550,height=255');return false;"}
-                  %i.fa{class: "fa-#{social['icon']} fa-2x"}
-                  %span.hidden
-                    = social['icon']
+        .panel.tags
+          .panel-body
+            .bottom-teaser.cf
+              .isLeft
+                %h5.index-headline.featured
+                  %span
+                    Share on
+                - settings.social.each do |social|
+                  - href = social['share_url'] + social['share_title'] + (@work.fetch("attributes", {}).fetch("title", nil)).to_s + social['share_link'] + @work.fetch("id")
+                  %a{href: href, class: "icon-#{social['icon']}", onclick: "window.open(this.href, '#{social['icon']}-share', 'width=550,height=255');return false;"}
+                    %i.fa{class: "fa-#{social['icon']} fa-2x"}
+                    %span.hidden
+                      = social['icon']
 
   - if @relations.length > 0 || @contributions.length > 0
     %ul.nav.nav-pills
