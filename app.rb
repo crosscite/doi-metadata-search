@@ -225,7 +225,7 @@ get '/contributors' do
   offset = DEFAULT_ROWS * (page - 1)
 
   result = get_contributors(query: params[:query], offset: offset)
-  contributors = result[:data]
+  contributors = Array(result.fetch(:data, []))
   @meta = result[:meta]
 
   # check for errors
@@ -248,7 +248,7 @@ get '/contributors/:id' do
     id = "https://github.com/#{params[:id]}"
   end
   result = get_contributors(id: id)
-  @contributor = result[:data].find { |item| item["type"] == "contributors" }
+  @contributor = Array(result.fetch(:data, [])).find { |item| item["type"] == "contributors" }
 
   # check for errors
   if result.fetch(:errors, []).present?
@@ -341,7 +341,7 @@ end
 
 get '/members' do
   result = get_members(query: params[:query], "member-type" => params["member-type"], region: params[:region], year: params[:year])
-  @members = result[:data].select {|item| item["type"] == "members" }
+  @members = Array(result.fetch(:data, [])).select {|item| item["type"] == "members" }
   @meta = result[:meta]
 
   # check for errors
@@ -355,7 +355,7 @@ end
 
 get '/members/:id' do
   result = get_members(id: params[:id])
-  @member = result[:data]
+  @member = result.fetch(:data, {})
 
   # check for errors
   if result.fetch(:errors, []).present?
@@ -407,7 +407,7 @@ end
 
 get '/sources/:id' do
   result = get_sources(id: params[:id])
-  @source = result[:data].find {|item| item["type"] == "sources" }
+  @source = Array(result.fetch(:data, [])).find {|item| item["type"] == "sources" }
 
   # check for errors
   if result.fetch(:errors, []).present?
