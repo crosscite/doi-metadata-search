@@ -3,11 +3,11 @@
 .container-fluid
   .row
     .col-md-9#content-work
-      - if @member.present?
-        = haml :'members/item', locals: { item: @member }
-      - elsif @member_error.present?
+      - if @member_error.present?
         %div.alert.alert-warning
           = @member_error
+      - elsif @member.present?
+        = haml :'members/item', locals: { item: @member }
 
     - if @member.present? && @member.fetch("attributes", {}).fetch("member-type", nil) == "allocating"
       .col-md-9

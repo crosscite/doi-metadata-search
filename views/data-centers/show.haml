@@ -9,22 +9,23 @@
         %div.alert.alert-warning
           = @datacenter_error
 
-    .col-md-3
-      - registration_agency_id = @datacenter.fetch("attributes", {}).fetch("registration-agency-id", nil)
-      - member_id = @datacenter.fetch("attributes", {}).fetch("member-id", nil)
-      .panel.facets
-        .panel-body.metadata
-          - if registration_agency_id == "datacite"
-            %h5
-              Member
-            .registration_agency
-              %a{href: "/members/#{member_id}"}
-                = member_title(@members, member_id)
-          - elsif registration_agency_id.present?
-            %h5
-              Registration Agency
-            .registration_agency
-              = registration_agency_format(@datacenter.fetch("attributes", {}))
+    - if @datacenter.present?
+      .col-md-3
+        - registration_agency_id = @datacenter.fetch("attributes", {}).fetch("registration-agency-id", nil)
+        - member_id = @datacenter.fetch("attributes", {}).fetch("member-id", nil)
+        .panel.facets
+          .panel-body.metadata
+            - if registration_agency_id == "datacite"
+              %h5
+                Member
+              .registration_agency
+                %a{href: "/members/#{member_id}"}
+                  = member_title(@members, member_id)
+            - elsif registration_agency_id.present?
+              %h5
+                Registration Agency
+              .registration_agency
+                = registration_agency_format(@datacenter.fetch("attributes", {}))
 
     - if registration_agency_id == "datacite"
       .col-md-9
