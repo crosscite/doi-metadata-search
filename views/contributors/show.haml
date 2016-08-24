@@ -3,7 +3,11 @@
 .container-fluid
   .row
     .col-md-9#content-contributor
-      = haml :'contributors/item', locals: { item: @contributor }
+      - if @contributor_error.present?
+        %div.alert.alert-warning
+          = @contributor_error
+      - elsif @contributor.present?
+        = haml :'contributors/item', locals: { item: @contributor }
 
     .col-md-9#content-contributions
       = haml :'contributions/index'
