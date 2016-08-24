@@ -194,8 +194,8 @@ get %r{/works/(.+)} do
   offset = DEFAULT_ROWS * (page - 1)
 
   collection = get_contributions("work-id" => params["id"], "source-id" => params["source-id"], offset: offset, rows: 100)
-  @contributions= collection.fetch(:data, []).select {|item| item["type"] == "contributions" }
-  @contribution_sources = collection.fetch(:data, []).select {|item| item["type"] == "sources" }
+  @contributions= Array(collection.fetch(:data, [])).select {|item| item["type"] == "contributions" }
+  @contribution_sources = Array(collection.fetch(:data, [])).select {|item| item["type"] == "sources" }
   @meta["contribution-total"] = collection.fetch(:meta, {}).fetch("total", 0)
   @meta["contribution-sources"] = collection.fetch(:meta, {}).fetch("sources", {})
 
@@ -262,9 +262,9 @@ get '/contributors/:id' do
   offset = DEFAULT_ROWS * (page - 1)
 
   collection = get_contributions("contributor-id" => id, "source-id" => params["source-id"], offset: offset)
-  contributions = collection.fetch(:data, []).select {|item| item["type"] == "contributions" }
+  contributions = Array(collection.fetch(:data, [])).select {|item| item["type"] == "contributions" }
   @meta = collection[:meta]
-  @contribution_sources = collection.fetch(:data, []).select {|item| item["type"] == "sources" }
+  @contribution_sources = Array(collection.fetch(:data, [])).select {|item| item["type"] == "sources" }
   @meta["contribution-total"] = collection.fetch(:meta, {}).fetch("total", 0)
   @meta["contribution-sources"] = collection.fetch(:meta, {}).fetch("sources", {})
   @contributions = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
@@ -316,7 +316,7 @@ get '/data-centers/:id' do
   offset = DEFAULT_ROWS * (page - 1)
 
   collection = get_works(query: params[:query], "publisher-id" => params[:id], offset: offset, 'resource-type-id' => params['resource-type-id'], 'source-id' => params['source-id'], 'relation-type-id' => params['relation-type-id'], 'year' => params['year'], sort: params[:sort])
-  works = collection.fetch(:data, []).select {|item| item["type"] == "works" }
+  works = Array(collection.fetch(:data, [])).select {|item| item["type"] == "works" }
   @meta = collection[:meta]
 
   # check for errors
@@ -329,10 +329,10 @@ get '/data-centers/:id' do
     pager.replace works
   end
 
-  @resource_types = collection.fetch(:data, []).select {|item| item["type"] == "resource-types" }
-  @relation_types = collection.fetch(:data, []).select {|item| item["type"] == "relation-types" }
-  @work_types = collection.fetch(:data, []).select {|item| item["type"] == "work-types" }
-  @sources = collection.fetch(:data, []).select {|item| item["type"] == "sources" }
+  @resource_types = Array(collection.fetch(:data, [])).select {|item| item["type"] == "resource-types" }
+  @relation_types = Array(collection.fetch(:data, [])).select {|item| item["type"] == "relation-types" }
+  @work_types = Array(collection.fetch(:data, [])).select {|item| item["type"] == "work-types" }
+  @sources = Array(collection.fetch(:data, [])).select {|item| item["type"] == "sources" }
 
   params[:model] = "data-centers"
 
@@ -369,7 +369,7 @@ get '/members/:id' do
   offset = DEFAULT_ROWS * (page - 1)
 
   collection = get_works(query: params[:query], "member-id" => params[:id], offset: offset, 'resource-type-id' => params['resource-type-id'], 'publisher-id' => params['publisher-id'], 'year' => params['year'])
-  works = collection[:data].select {|item| item["type"] == "works" }
+  works = Array(collection.fetch(:data, [])).select {|item| item["type"] == "works" }
   @meta = collection[:meta]
 
   # check for errors
@@ -382,7 +382,7 @@ get '/members/:id' do
     pager.replace works
   end
 
-  @resource_types = collection.fetch(:data, []).select {|item| item["type"] == "resource-types" }
+  @resource_types = Array(collection.fetch(:data, [])).select {|item| item["type"] == "resource-types" }
   @publishers = []
 
   params[:model] = "members"
@@ -425,10 +425,10 @@ get '/sources/:id' do
 
   if %w(relations results).include?(group["id"])
     collection = get_works("source-id" => params[:id], offset: offset, sort: params[:sort], 'relation-type-id' => params['relation-type-id'])
-    works = collection.fetch(:data, []).select {|item| item["type"] == "works" }
-    @sources = collection.fetch(:data, []).select {|item| item["type"] == "sources" }
-    @relation_types = collection.fetch(:data, []).select {|item| item["type"] == "relation-types" }
-    @work_types = collection.fetch(:data, []).select {|item| item["type"] == "work-types" }
+    works = Array(collection.fetch(:data, [])).select {|item| item["type"] == "works" }
+    @sources = Array(collection.fetch(:data, [])).select {|item| item["type"] == "sources" }
+    @relation_types = Array(collection.fetch(:data, [])).select {|item| item["type"] == "relation-types" }
+    @work_types = Array(collection.fetch(:data, [])).select {|item| item["type"] == "work-types" }
     @meta = collection[:meta]
 
     @works = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
@@ -436,8 +436,8 @@ get '/sources/:id' do
     end
   elsif group["id"] == "contributions"
     collection = get_contributions("source-id" => params[:id], offset: offset, rows: 25)
-    contributions= collection.fetch(:data, []).select {|item| item["type"] == "contributions" }
-    @contribution_sources = collection.fetch(:data, []).select {|item| item["type"] == "sources" }
+    contributions= Array(collection.fetch(:data, [])).select {|item| item["type"] == "contributions" }
+    @contribution_sources = Array(collection.fetch(:data, [])).select {|item| item["type"] == "sources" }
     @meta = collection[:meta]
     @meta["contribution-total"] = collection.fetch(:meta, {}).fetch("total", 0)
     @meta["contribution-sources"] = collection.fetch(:meta, {}).fetch("sources", {})
