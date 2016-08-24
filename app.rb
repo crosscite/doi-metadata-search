@@ -134,7 +134,7 @@ get '/works' do
   offset = DEFAULT_ROWS * (page - 1)
 
   result = get_works(query: params[:query], offset: offset, 'publisher-id' => params['publisher-id'], 'resource-type-id' => params['resource-type-id'], 'year' => params['year'])
-  works = result.fetch(:data, []).select {|item| item["type"] == "works" }
+  works = Array(result.fetch(:data, [])).select {|item| item["type"] == "works" }
   @meta = result.fetch(:meta, {})
 
   # check for errors
@@ -150,10 +150,10 @@ get '/works' do
     pager.replace works
   end
 
-  @resource_types = result.fetch(:data, []).select {|item| item["type"] == "resource-types" }
-  @publishers = result.fetch(:data, []).select {|item| item["type"] == "publishers" }
-  @sources = result.fetch(:data, []).select {|item| item["type"] == "sources" }
-  @work_types = result.fetch(:data, []).select {|item| item["type"] == "work-types" }
+  @resource_types = Array(result.fetch(:data, [])).select {|item| item["type"] == "resource-types" }
+  @publishers = Array(result.fetch(:data, [])).select {|item| item["type"] == "publishers" }
+  @sources = Array(result.fetch(:data, [])).select {|item| item["type"] == "sources" }
+  @work_types = Array(result.fetch(:data, [])).select {|item| item["type"] == "work-types" }
 
   params[:model] = "works"
 
@@ -167,7 +167,7 @@ get %r{/works/(.+)} do
   params["id"] = params["id"].gsub(/(http|https):\/+(\w+)/, '\1://\2')
 
   result = get_works(id: params["id"])
-  works = result.fetch(:data, []).select {|item| item["type"] == "works" }
+  works = Array(result.fetch(:data, [])).select {|item| item["type"] == "works" }
 
   # check for errors
   if result.fetch(:errors, []).present?
@@ -177,10 +177,10 @@ get %r{/works/(.+)} do
     @work_error = "Work \"#{params['id']}\" not found."
   end
 
-  @publishers = result.fetch(:data, []).select {|item| item["type"] == "publishers" }
-  @members = result.fetch(:data, []).select {|item| item["type"] == "members" }
-  @sources = result.fetch(:data, []).select {|item| item["type"] == "sources" }
-  @work_types = result.fetch(:data, []).select {|item| item["type"] == "work-types" }
+  @publishers = Array(result.fetch(:data, [])).select {|item| item["type"] == "publishers" }
+  @members = Array(result.fetch(:data, [])).select {|item| item["type"] == "members" }
+  @sources = Array(result.fetch(:data, [])).select {|item| item["type"] == "sources" }
+  @work_types = Array(result.fetch(:data, [])).select {|item| item["type"] == "work-types" }
   @meta = result[:meta]
 
   # check for existing claims if user is logged in and work is registered with DataCite
@@ -200,13 +200,13 @@ get %r{/works/(.+)} do
   @meta["contribution-sources"] = collection.fetch(:meta, {}).fetch("sources", {})
 
   relations = get_relations("work-id" => params["id"], "source-id" => params["source-id"], "relation-type-id" => params["relation-type-id"], offset: offset, rows: 25)
-  @relation_sources = relations.fetch(:data, []).select {|item| item["type"] == "sources" }
-  @relation_types = relations.fetch(:data, []).select {|item| item["type"] == "relation-types" }
+  @relation_sources = Array(relations.fetch(:data, [])).select {|item| item["type"] == "sources" }
+  @relation_types = Array(relations.fetch(:data, [])).select {|item| item["type"] == "relation-types" }
   @meta["relation-total"] = relations.fetch(:meta, {}).fetch("total", 0)
   @meta["relation-types"] = relations.fetch(:meta, {}).fetch("relation-types", {})
   @meta["relation-sources"] = relations.fetch(:meta, {}).fetch("sources", {})
 
-  @relations= relations.fetch(:data, []).select {|item| item["type"] == "relations" }
+  @relations= Array(relations.fetch(:data, [])).select {|item| item["type"] == "relations" }
 
   # check for existing claims if user is logged in
   @relations = get_claims(current_user, @relations) if current_user
@@ -281,8 +281,8 @@ get '/data-centers' do
   offset = DEFAULT_ROWS * (page - 1)
 
   result  = get_datacenters(query: params[:query], offset: offset, "member-id" => params["member-id"])
-  datacenters = result.fetch(:data, []).select {|item| item["type"] == "publishers" }
-  @members = result.fetch(:data, []).select {|item| item["type"] == "members" }
+  datacenters = Array(result.fetch(:data, [])).select {|item| item["type"] == "publishers" }
+  @members = Array(result.fetch(:data, [])).select {|item| item["type"] == "members" }
 
   # check for errors
   if result.fetch(:errors, []).present?
@@ -301,8 +301,8 @@ end
 
 get '/data-centers/:id' do
   result = get_datacenters(id: params[:id])
-  @datacenter = result.fetch(:data, []).find {|item| item["type"] == "publishers" }
-  @members = result.fetch(:data, []).select {|item| item["type"] == "members" }
+  @datacenter = Array(result.fetch(:data, [])).find {|item| item["type"] == "publishers" }
+  @members = Array(result.fetch(:data, [])).select {|item| item["type"] == "members" }
 
   # check for errors
   if result.fetch(:errors, []).present?
@@ -392,8 +392,8 @@ end
 
 get '/sources' do
   result = get_sources(query: params[:query], "group-id" => params["group-id"])
-  @sources = result.fetch(:data, []).select {|item| item["type"] == "sources" }
-  @groups = result.fetch(:data, []).select {|item| item["type"] == "groups" }
+  @sources = Array(result.fetch(:data, [])).select {|item| item["type"] == "sources" }
+  @groups = Array(result.fetch(:data, [])).select {|item| item["type"] == "groups" }
   @meta = result[:meta]
 
   # check for errors
@@ -417,7 +417,7 @@ get '/sources/:id' do
     @source_error = "Source \"#{params['id']}\" not found."
   end
 
-  @groups = result.fetch(:data, []).select {|item| item["type"] == "groups" }
+  @groups = Array(result.fetch(:data, [])).select {|item| item["type"] == "groups" }
   group = @groups.first
 
   page = params.fetch('page', 1).to_i
