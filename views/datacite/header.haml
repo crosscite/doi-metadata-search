@@ -9,12 +9,7 @@
           %span.icon-bar
       - unless @meta[:page] == "splash"
         %a.navbar-brand{:href => "/"}
-          - if ENV['CDN_HOST']
-            %img.logo{src: "//#{ENV['CDN_HOST']}/images/datacite.png" }
-          - else
-            %img.logo{src: "/images/#{ENV['RA']}/datacite.png" }
-          %span.logo> Data
-          %span Cite Search
+          = ENV['SITE_TITLE']
       .navbar-collapse.collapse
         %ul.nav.navbar-nav.navbar-right
           %li
@@ -78,4 +73,5 @@
             - else
               %li
                 %a.btn.btn-default{:href => "/auth/jwt", id: 'sign-in'}
+                  %i.fa.fa-sign-in
                   Sign in

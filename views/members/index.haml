@@ -1,28 +1,29 @@
 = haml :"#{ENV['RA']}/header", locals: { page: {} }
 
 .container-fluid
-  .row
-    .col-md-9
-      = haml :'members/search'
+  .content
+    .row
+      .col-md-9
+        = haml :'members/search'
 
-  .row
-    .col-md-9#content
-      - if @members.length > 0
-        - if @members.length > 1
-          %h4.results
-            = "#{number_with_delimiter(@meta["total"])} Members"
+    .row
+      .col-md-9#content
+        - if @members.length > 0
+          - if @members.length > 1
+            %h4.results
+              = "#{number_with_delimiter(@meta["total"])} Members"
 
-        - @members.each do |item|
-          = haml :'members/item', locals: { item: item }
+          - @members.each do |item|
+            = haml :'members/item', locals: { item: item }
 
-      - elsif @members_error.present?
-        %div.alert.alert-warning
-          = @members_error
-      - else
-        %div.alert.alert-info
-          Nothing found.
+        - elsif @members_error.present?
+          .alert.alert-warning
+            = @members_error
+        - else
+          .alert.alert-simple-info
+            Nothing found.
 
-    .col-md-3
-      = haml :'members/facets'
+      .col-md-3
+        = haml :'members/facets'
 
 = haml :"#{ENV['RA']}/footer"

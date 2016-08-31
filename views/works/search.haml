@@ -3,7 +3,7 @@
     .input-group
       - if params["resource-type-id"].present?
         %input{type: "hidden", name: "resource-type-id", value: params["resource-type-id"]}
-      %input.form-control{type: "text", name: 'query', id: 'search-input', value: params[:query], placeholder: "Search for work"}
+      %input.form-control{type: "text", name: 'query', id: 'query', value: params[:query], placeholder: "Search for work"}
       .input-group-btn
-        %button.btn.btn-primary{type: "submit"}
+        %button.btn.btn-primary.hidden-xs{type: "submit"}
           Search

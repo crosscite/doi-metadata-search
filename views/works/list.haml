@@ -16,19 +16,19 @@
               %li
                 %a{href: works_query(params.merge('sort' => s["id"]))}
                   = "Sort by " + source_title(@sources, s["id"])
-    %h4.results
+    %h3.results
       = "#{number_with_delimiter(@meta['total'])} Works"
 
   - @works.each do |item|
     = haml :'works/item', locals: { item: item }
 
   .text-center
-    = will_paginate @works, renderer: BootstrapPagination::Sinatra
+    = will_paginate @works, renderer: BootstrapPagination::Sinatra, inner_window: 1
 
 - else
   - if @works_error.present?
-    %div.alert.alert-warning
+    .alert.alert-warning
       = @works_error
   - else
-    %div.alert.alert-info
+    .alert.alert-simple-info
       Nothing found.

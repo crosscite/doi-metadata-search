@@ -1,5 +1,5 @@
 - if @contributions.length > 1 && %w(contributors sources).include?(params[:model])
-  %h4.results
+  %h3.results
     = "#{number_with_delimiter(@meta['total'])} Contributions"
 
 - @contributions.each do |item|

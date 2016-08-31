@@ -1,29 +1,30 @@
 = haml :"#{ENV['RA']}/header", locals: { page: {} }
 
 .container-fluid
-  .row
-    .col-md-9
-      = haml :'sources/search'
+  .content
+    .row
+      .col-md-9
+        = haml :'sources/search'
 
-  .row
-    .col-md-9#content
-      - if flash[:error].present?
-        %div.alert.alert-warning
-          = flash[:error]
+    .row
+      .col-md-9#content
+        - if flash[:error].present?
+          .alert.alert-warning
+            = flash[:error]
 
-      - if @sources.length > 0
-        - if @sources.length > 1
-          %h4.results
-            = "#{number_with_delimiter(@meta["total"])} Sources"
+        - if @sources.length > 0
+          - if @sources.length > 1
+            %h4.results
+              = "#{number_with_delimiter(@meta["total"])} Sources"
 
-        - @sources.each do |item|
-          = haml :'sources/item', locals: { item: item }
+          - @sources.each do |item|
+            = haml :'sources/item', locals: { item: item }
 
-      - else
-        %div.alert.alert-info
-          Nothing found.
+        - else
+          .alert.alert-simple-info
+            Nothing found.
 
-    .col-md-3
-      = haml :'sources/facets'
+      .col-md-3
+        = haml :'sources/facets'
 
 = haml :"#{ENV['RA']}/footer"

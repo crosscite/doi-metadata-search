@@ -7,7 +7,7 @@
         %input{type: "hidden", name: "region", value: params[:region]}
       - if params[:year].present?
         %input{type: "hidden", name: "year", value: params[:year]}
-      %input.form-control{type: "text", name: 'query', id: 'search-input', value: params[:query], placeholder: "Search for member"}
+      %input.form-control{type: "text", name: 'query', id: 'query', value: params[:query], placeholder: "Search for member"}
       .input-group-btn
         %button.btn.btn-primary{type: "submit"}
           Search

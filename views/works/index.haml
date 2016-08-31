@@ -1,16 +1,17 @@
 = haml :"#{ENV['RA']}/header", locals: { page: {} }
 
 .container-fluid
-  .row
-    .col-md-9
-      = haml :'works/search'
+  .content
+    .row
+      .col-md-9
+        = haml :'works/search'
 
-  .row
-    .col-md-9#content
-      = haml :'works/list'
+    .row
+      .col-md-9#content
+        = haml :'works/list'
 
-    .col-md-3
-      = haml :'works/facets'
+      .col-md-3
+        = haml :'works/facets'
 
 = haml :cite_box
 

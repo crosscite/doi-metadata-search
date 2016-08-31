@@ -49,8 +49,8 @@
                     Share on
                 - settings.social.each do |social|
                   - href = social['share_url'] + social['share_title'] + (@work.fetch("attributes", {}).fetch("title", nil)).to_s + social['share_link'] + @work.fetch("id")
-                  %a{href: href, class: "icon-#{social['icon']}", onclick: "window.open(this.href, '#{social['icon']}-share', 'width=550,height=255');return false;"}
-                    %i.fa{class: "fa-#{social['icon']} fa-2x"}
+                  %a{href: href, class: "icon-#{social['icon']} share", onclick: "window.open(this.href, '#{social['icon']}-share', 'width=550,height=255');return false;"}
+                    %i.fa{class: "fa-#{social['icon']}"}
                     %span.hidden
                       = social['icon']
 

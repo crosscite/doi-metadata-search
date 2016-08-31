@@ -7,9 +7,9 @@
 
   .centered
     - if ENV['CDN_HOST']
-      %img{class: 'logo-big', src: "//#{ENV['CDN_HOST']}/images/logo-big.png"}
+      %img{class: 'img-big', src: "//#{ENV['CDN_HOST']}/images/logo-big.png"}
     - else
-      %img{class: 'logo-big', src: "/images/#{ENV['RA']}/logo-big.png"}
+      %img{class: 'img-big', src: "/images/#{ENV['RA']}/logo-big.png"}
 
   .row
     .col-md-6.col-md-offset-3
