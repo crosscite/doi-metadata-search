@@ -7,22 +7,23 @@
         %a.button.close#citation-modal-close &times;
         %h4#citation-modal-title
       .modal-body
-        %ul.nav.nav-tabs#cite-nav
-          %li.active.citation-link#bibtex
-            %a.cite-link{:href => '#'} BibTeX
-          %li.citation-link#ris
-            %a.cite-link{:href => '#'} RIS
-          %li.citation-link#apa
+        %ul.nav.nav-pills#cite-nav
+          %li.active.citation-link#apa
             %a.cite-link{:href => '#'} APA
           %li.citation-link#harvard
             %a.cite-link{:href => '#'} Harvard
-          %li.citation-link#ieee
-            %a.cite-link{:href => '#'} IEEE
           %li.citation-link#mla
             %a.cite-link{:href => '#'} MLA
           %li.citation-link#vancouver
             %a.cite-link{:href => '#'} Vancouver
           %li.citation-link#chicago
             %a.cite-link{:href => '#'} Chicago
+          %li.citation-link#ieee
+            %a.cite-link{:href => '#'} IEEE
+          %li.citation-link#bibtex
+            %a.cite-link{:href => '#'} BibTeX
+          %li.citation-link#ris
+            %a.cite-link{:href => '#'} RIS
 
-        %pre#citation-text
+        #citation-text
+        #spinner

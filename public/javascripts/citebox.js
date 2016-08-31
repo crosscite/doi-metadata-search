@@ -1,7 +1,7 @@
 function showCiteBox(doi, title) {
   citationInfo['doi'] = doi;
   citationInfo['title'] = title;
-  citationInfo['format'] = 'bibtex';
+  citationInfo['format'] = 'apa';
 
   $('#citation-text').html('');
   updateCiteBox();
@@ -23,7 +23,10 @@ function updateCiteBox() {
     url: path,
     success: function(body) {
       $('#citation-text').css("color", "black");
-      $('#citation-text').text(body);
+
+      if (citationInfo['format'] === "bibtex" || citationInfo['format'] === "ris") { body = "<pre>" + body + "</pre>" };
+
+      $('#citation-text').html(body);
       spinner.stop();
     },
     error: function (error) {
@@ -38,7 +41,7 @@ function updateCiteBox() {
 function setCiteBoxFormat(format) {
   citationInfo['format'] = format;
   $('#citation-text').html('');
-  spinner.spin(document.getElementById('citation-text'));
+  spinner.spin(document.getElementById('spinner'));
   updateCiteBox();
 };
 
