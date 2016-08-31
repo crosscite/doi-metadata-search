@@ -5,8 +5,18 @@ describe 'citation', vcr: true do
 
   it 'format bibtex' do
     get "/citation?doi=#{doi}&format=bibtex"
+    output = <<-EOS.strip_heredoc
+    @misc{https://doi.org/10.5281/ZENODO.21430,
+      doi = {10.5281/ZENODO.21430},
+      url = {https://doi.org/10.5281/ZENODO.21430},
+      author = {Martin Fenner and Karl Jonathan Ward and Gudmundur A. Thorisson and Robert Peters},
+      publisher = {Zenodo},
+      title = {DataCite-ORCID: 1.0},
+      year = {2015}
+    }
+    EOS
     expect(last_response).to be_ok
-    expect(last_response.body).to match('author = {Martin Fenner; Karl Jonathan Ward; Gudmundur A. Thorisson; Robert Peters; }')
+    expect(last_response.body).to eq(output.strip)
   end
 
   it 'format ris' do
@@ -14,10 +24,13 @@ describe 'citation', vcr: true do
     output = <<-EOS.strip_heredoc
       TY  - DATA
       T1  - DataCite-ORCID: 1.0
-      AU  - Martin Fenner; Karl Jonathan Ward; Gudmundur A. Thorisson; Robert Peters;
-      PY  - 2015
+      AU  - Martin Fenner
+      AU  - Karl Jonathan Ward
+      AU  - Gudmundur A. Thorisson
+      AU  - Robert Peters
+      PY  - 2015//
       PB  - Zenodo
-      UR  - http://dx.doi.org/10.5281/ZENODO.21430
+      UR  - https://doi.org/10.5281/ZENODO.21430
       ER  -
     EOS
     expect(last_response).to be_ok
@@ -33,7 +46,7 @@ describe 'citation', vcr: true do
   it 'format harvard' do
     get "/citation?doi=#{doi}&format=harvard"
     expect(last_response).to be_ok
-    expect(last_response.body).to eq('Martin Fenner et al., 2015. DataCite-ORCID: 1.0. Available at: http://dx.doi.org/10.5281/ZENODO.21430.')
+    expect(last_response.body).to eq('Martin Fenner et al., 2015. DataCite-ORCID: 1.0. Available at: https://doi.org/10.5281/ZENODO.21430.')
   end
 
   it 'format ieee' do
@@ -51,7 +64,7 @@ describe 'citation', vcr: true do
   it 'format vancouver' do
     get "/citation?doi=#{doi}&format=vancouver"
     expect(last_response).to be_ok
-    expect(last_response.body).to eq('1. Martin Fenner, Karl Jonathan Ward, Gudmundur A. Thorisson, Robert Peters. DataCite-ORCID: 1.0 [Internet]. Zenodo; 2015. Available from: http://dx.doi.org/10.5281/ZENODO.21430')
+    expect(last_response.body).to eq('1. Martin Fenner, Karl Jonathan Ward, Gudmundur A. Thorisson, Robert Peters. DataCite-ORCID: 1.0 [Internet]. Zenodo; 2015. Available from: https://doi.org/10.5281/ZENODO.21430')
   end
 
   it 'format chicago' do

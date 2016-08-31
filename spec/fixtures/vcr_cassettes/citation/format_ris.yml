@@ -23,20 +23,20 @@ http_interactions:
       Location:
       - http://data.datacite.org/10.5281%2FZENODO.21430
       Expires:
-      - Tue, 16 Aug 2016 10:17:23 GMT
+      - Wed, 31 Aug 2016 06:50:40 GMT
       Content-Type:
       - text/html;charset=utf-8
       Content-Length:
       - '179'
       Date:
-      - Tue, 16 Aug 2016 09:46:11 GMT
+      - Wed, 31 Aug 2016 06:22:14 GMT
     body:
       encoding: UTF-8
       string: |-
         <html><head><title>Handle Redirect</title></head>
         <body><a href="http://data.datacite.org/10.5281%2FZENODO.21430">http://data.datacite.org/10.5281%2FZENODO.21430</a></body></html>
     http_version: 
-  recorded_at: Tue, 16 Aug 2016 09:46:12 GMT
+  recorded_at: Wed, 31 Aug 2016 06:22:15 GMT
 - request:
     method: get
     uri: http://data.datacite.org/10.5281%2FZENODO.21430
@@ -54,11 +54,11 @@ http_interactions:
       message: ''
     headers:
       Server:
-      - nginx/1.11.2
+      - nginx/1.11.3
       Date:
-      - Tue, 16 Aug 2016 09:46:12 GMT
+      - Wed, 31 Aug 2016 06:22:15 GMT
       Content-Type:
-      - application/x-research-info-systems
+      - application/x-research-info-systems; charset=charset=windows-1252
       Connection:
       - keep-alive
       Cache-Control:
@@ -73,9 +73,17 @@ http_interactions:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
       encoding: UTF-8
-      string: "TY  - DATA\nT1  - DataCite-ORCID: 1.0\nAU  - Martin Fenner; Karl Jonathan
-        Ward; Gudmundur A. Thorisson; Robert Peters; \nPY  - 2015\nPB  - Zenodo\nUR
-        \ - http://dx.doi.org/10.5281/ZENODO.21430\nER  -"
+      string: |
+        TY  - DATA
+        T1  - DataCite-ORCID: 1.0
+        AU  - Martin Fenner
+        AU  - Karl Jonathan Ward
+        AU  - Gudmundur A. Thorisson
+        AU  - Robert Peters
+        PY  - 2015//
+        PB  - Zenodo
+        UR  - https://doi.org/10.5281/ZENODO.21430
+        ER  -
     http_version: 
-  recorded_at: Tue, 16 Aug 2016 09:46:12 GMT
+  recorded_at: Wed, 31 Aug 2016 06:22:16 GMT
 recorded_with: VCR 2.9.3

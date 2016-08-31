@@ -23,20 +23,20 @@ http_interactions:
       Location:
       - http://data.datacite.org/10.5281%2FZENODO.21430
       Expires:
-      - Tue, 16 Aug 2016 09:56:39 GMT
+      - Wed, 31 Aug 2016 06:36:35 GMT
       Content-Type:
       - text/html;charset=utf-8
       Content-Length:
       - '179'
       Date:
-      - Tue, 16 Aug 2016 09:46:14 GMT
+      - Wed, 31 Aug 2016 06:22:20 GMT
     body:
       encoding: UTF-8
       string: |-
         <html><head><title>Handle Redirect</title></head>
         <body><a href="http://data.datacite.org/10.5281%2FZENODO.21430">http://data.datacite.org/10.5281%2FZENODO.21430</a></body></html>
     http_version: 
-  recorded_at: Tue, 16 Aug 2016 09:46:14 GMT
+  recorded_at: Wed, 31 Aug 2016 06:22:21 GMT
 - request:
     method: get
     uri: http://data.datacite.org/10.5281%2FZENODO.21430
@@ -54,9 +54,9 @@ http_interactions:
       message: ''
     headers:
       Server:
-      - nginx/1.11.2
+      - nginx/1.11.3
       Date:
-      - Tue, 16 Aug 2016 09:46:14 GMT
+      - Wed, 31 Aug 2016 06:22:20 GMT
       Content-Type:
       - application/x-bibtex
       Connection:
@@ -73,15 +73,15 @@ http_interactions:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
       encoding: UTF-8
-      string: |-
-        @data{150455f5-ac4e-4145-84b4-dda3ef6272c1,
+      string: |
+        @misc{https://doi.org/10.5281/ZENODO.21430,
           doi = {10.5281/ZENODO.21430},
-          url = {http://dx.doi.org/10.5281/ZENODO.21430},
-          author = {Martin Fenner; Karl Jonathan Ward; Gudmundur A. Thorisson; Robert Peters; },
+          url = {https://doi.org/10.5281/ZENODO.21430},
+          author = {Martin Fenner and Karl Jonathan Ward and Gudmundur A. Thorisson and Robert Peters},
           publisher = {Zenodo},
           title = {DataCite-ORCID: 1.0},
           year = {2015}
         }
     http_version: 
-  recorded_at: Tue, 16 Aug 2016 09:46:14 GMT
+  recorded_at: Wed, 31 Aug 2016 06:22:21 GMT
 recorded_with: VCR 2.9.3
