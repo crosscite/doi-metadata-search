@@ -21,12 +21,12 @@ ENV['APPLICATION'] ||= "doi-metadata-search"
 ENV['SESSION_KEY'] ||= "_#{ENV['APPLICATION']}_session"
 ENV['SESSION_DOMAIN'] ||= ""
 ENV['SECRET_KEY_BASE'] ||= SecureRandom.hex(15)
-ENV['SITENAMELONG'] ||= "DataCite Search"
+ENV['SITE_TITLE'] ||= "DataCite Search"
 ENV['LOG_LEVEL'] ||= "info"
 ENV['RA'] ||= "datacite"
 ENV['API_URL'] ||= "http://api.datacite.org"
 
-env_vars = %w(SITENAMELONG LOG_LEVEL RA API_URL SESSION_KEY SECRET_KEY_BASE)
+env_vars = %w(SITE_TITLE LOG_LEVEL RA API_URL SESSION_KEY SECRET_KEY_BASE)
 env_vars.each { |env| fail ArgumentError,  "ENV[#{env}] is not set" unless ENV[env].present? }
 
 # Constants
