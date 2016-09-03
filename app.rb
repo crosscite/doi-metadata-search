@@ -18,15 +18,14 @@ require 'active_support/all'
 
 # required ENV variables, can be set in .env file
 ENV['APPLICATION'] ||= "doi-metadata-search"
-ENV['SESSION_KEY'] ||= "_#{ENV['APPLICATION']}_session"
-ENV['SESSION_DOMAIN'] ||= ""
 ENV['SECRET_KEY_BASE'] ||= SecureRandom.hex(15)
 ENV['SITE_TITLE'] ||= "DataCite Search"
 ENV['LOG_LEVEL'] ||= "info"
 ENV['RA'] ||= "datacite"
+ENV['TRUSTED_IP'] ||= "172.0.0.0/8"
 ENV['API_URL'] ||= "http://api.datacite.org"
 
-env_vars = %w(SITE_TITLE LOG_LEVEL RA API_URL SESSION_KEY SECRET_KEY_BASE)
+env_vars = %w(SITE_TITLE LOG_LEVEL RA API_URL SECRET_KEY_BASE)
 env_vars.each { |env| fail ArgumentError,  "ENV[#{env}] is not set" unless ENV[env].present? }
 
 # Constants
@@ -41,6 +40,7 @@ ORCID_VERSION = '1.2'
 require 'sinatra'
 require 'sinatra/json'
 require 'sinatra/config_file'
+require 'sinatra/cookies'
 require 'tilt/haml'
 require 'haml'
 require 'will_paginate'
@@ -48,11 +48,13 @@ require 'will_paginate/collection'
 require 'will_paginate-bootstrap'
 require 'cgi'
 require 'maremma'
+require 'httplog'
 require 'gabba'
 require 'rack-flash'
-require 'omniauth/jwt'
+require 'jwt'
 require 'open-uri'
 require 'uri'
+require 'better_errors'
 
 Dir[File.join(File.dirname(__FILE__), 'lib', '*.rb')].each { |f| require f }
 
@@ -62,9 +64,7 @@ configure do
   set :root, File.dirname(__FILE__)
 
   # Configure sessions and flash
-  use Rack::Session::Cookie, key: ENV['SESSION_KEY'],
-                             domain: ENV['SESSION_DOMAIN'],
-                             secret: ENV['SECRET_KEY_BASE']
+  use Rack::Session::Cookie, secret: ENV['SECRET_KEY_BASE']
   use Rack::Flash
 
   # Work around rack protection referrer bug
@@ -72,18 +72,6 @@ configure do
 
   # Set Logger
   set :logger, Logger.new(STDOUT)
-
-  # Configure omniauth client
-  use OmniAuth::Builder do
-    provider :jwt, ENV['JWT_SECRET_KEY'],
-      auth_url: "#{ENV['JWT_HOST']}/services/#{ENV['JWT_NAME']}",
-      uid_claim: 'uid',
-      required_claims: ['uid', 'name'],
-      info_map: { "name" => "name",
-                  "api_key" => "api_key",
-                  "role" => "role" }
-  end
-  # OmniAuth.config.logger = logger
 
   # Citation format types
   set :citation_formats,
@@ -119,6 +107,12 @@ configure do
   end
 end
 
+configure :development do
+  use BetterErrors::Middleware
+  BetterErrors::Middleware.allow_ip! ENV['TRUSTED_IP']
+  BetterErrors.application_root = File.expand_path('..', __FILE__)
+end
+
 after do
   response.headers['Access-Control-Allow-Origin'] = '*'
 end
@@ -144,7 +138,16 @@ get '/works' do
   end
 
   # check for existing claims if user is logged in
-  works = get_claims(current_user, works) if current_user
+  if current_user
+    claims = get_claims(current_user, works)
+    works = Array(claims.fetch(:data, []))
+
+    # check for errors
+    if claims.fetch(:errors, []).present?
+      error = claims.fetch(:errors, []).first
+      @claims_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
+    end
+  end
 
   @works = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
     pager.replace works
@@ -185,7 +188,8 @@ get %r{/works/(.+)} do
 
   # check for existing claims if user is logged in and work is registered with DataCite
   if current_user && works.first.fetch("attributes", {}).fetch("registration-agency-id", nil) == "datacite"
-    works = get_claims(current_user, works)
+    result = get_claims(current_user, works)
+    works = Array(result.fetch(:data, []))
   end
 
   @work = works.first
@@ -209,7 +213,10 @@ get %r{/works/(.+)} do
   @relations= Array(relations.fetch(:data, [])).select {|item| item["type"] == "relations" }
 
   # check for existing claims if user is logged in
-  @relations = get_claims(current_user, @relations) if current_user
+  if current_user
+    result = get_claims(current_user, @relations)
+    @relations = Array(result.fetch(:data, []))
+  end
 
   @relations = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["relation-total"]) do |pager|
     pager.replace @relations
@@ -477,21 +484,6 @@ get '/citation' do
 
   content_type citation_format + '; charset=utf-8'
   result.fetch("data", nil)
-end
-
-get '/auth/:service/callback' do
-  session[:auth] = request.env['omniauth.auth']
-  redirect to request.env['omniauth.origin'] || params[:origin] || '/'
-end
-
-get '/auth/signout' do
-  session.clear
-  redirect to("#{ENV['JWT_HOST']}/sign_out?id=#{ENV['JWT_NAME']}")
-end
-
-get '/auth/failure' do
-  flash[:error] = "Authentication failed with message \"#{params['message']}\"."
-  redirect to('/')
 end
 
 get '/orcid/claim' do

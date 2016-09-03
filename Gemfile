@@ -16,19 +16,22 @@ gem 'will_paginate-bootstrap'
 gem 'iso8601', '~> 0.9.0'
 gem 'maremma', '~> 2.3'
 gem 'gabba'
-gem 'omniauth-jwt', '~> 0.0.3', git: 'https://github.com/datacite/omniauth-jwt.git'
+gem 'jwt'
 gem 'rack-flash3'
 gem 'nokogiri'
 gem 'sanitize'
 gem 'rake'
 gem 'namae'
 gem 'sass'
+gem 'httplog'
 
 group :development do
   gem 'capistrano', '~> 3.4.0'
   gem 'capistrano-passenger', '~> 0.1.1'
   gem 'capistrano-bundler', '~> 1.1.2', require: false
   gem 'capistrano-npm', '~> 1.0.0'
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 group :test do
