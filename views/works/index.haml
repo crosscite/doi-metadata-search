@@ -7,14 +7,12 @@
         = haml :'works/search'
 
     .row
-      .col-md-9#content
+      .col-md-9.panel-list#content
         = haml :'works/list'
 
       .col-md-3
         = haml :'works/facets'
 
 = haml :cite_box
-
-%script{:type => 'text/javascript', :src => '/javascripts/itemlist.js'}
 
 = haml :"#{ENV['RA']}/footer"

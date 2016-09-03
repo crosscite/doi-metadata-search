@@ -7,7 +7,7 @@
     = haml :'relations/item', locals: { item: item }
 
   .text-center
-    = will_paginate @relations, renderer: BootstrapPagination::Sinatra
+    = will_paginate @relations, renderer: BootstrapPagination::Sinatra, inner_window: 1
 
 - else
   %div.alert.alert-info

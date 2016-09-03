@@ -5,7 +5,7 @@
     %h3.work
       %a{:href => contributors_action(item, new_params)}
         = credit_name(item["attributes"])
-  .panel-footer
+  .panel-footer.item-links
     %a{ href: item["id"] }
       %i.fa.fa-external-link
       = item["id"]

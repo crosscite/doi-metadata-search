@@ -7,7 +7,7 @@
         = haml :'data-centers/search'
 
     .row
-      .col-md-9#content
+      .col-md-9.panel-list#content
         - if @datacenters.length > 0
           - if @datacenters.length > 1
             %h3.results
@@ -17,7 +17,7 @@
             = haml :'data-centers/item', locals: { item: item }
 
           .text-center
-            = will_paginate @datacenters, renderer: BootstrapPagination::Sinatra
+            = will_paginate @datacenters, renderer: BootstrapPagination::Sinatra, inner_window: 1
 
         - elsif @datacenters_error.present?
           .alert.alert-warning
@@ -28,5 +28,7 @@
 
       .col-md-3
         = haml :'data-centers/facets'
+
+= haml :cite_box
 
 = haml :"#{ENV['RA']}/footer"

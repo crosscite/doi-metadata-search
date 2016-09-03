@@ -7,10 +7,10 @@
         = haml :'members/search'
 
     .row
-      .col-md-9#content
+      .col-md-9.panel-list#content
         - if @members.length > 0
           - if @members.length > 1
-            %h4.results
+            %h3.results
               = "#{number_with_delimiter(@meta["total"])} Members"
 
           - @members.each do |item|

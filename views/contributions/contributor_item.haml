@@ -4,11 +4,16 @@
     %h3.work
       %a{:href => contributors_action(item, params)}
         = attributes["credit-name"]
-    .contribution
+  .panel-footer
+    %span
       Contribution
+    %span.pull-right
+      = source_title(@contribution_sources, item.fetch("attributes", {}).fetch("source-id", nil))
+
   .panel-footer.item-links
     %a{:href => attributes["subj-id"]}
       %i.fa.fa-external-link
       = attributes["subj-id"]
-    %span.pull-right
-      = source_title(@contribution_sources, item.fetch("attributes", {}).fetch("source-id", nil))
+
+    - if user_signed_in?
+      = haml :'works/claim', locals: { item: item }

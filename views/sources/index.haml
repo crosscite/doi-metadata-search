@@ -7,14 +7,14 @@
         = haml :'sources/search'
 
     .row
-      .col-md-9#content
+      .col-md-9.panel-list#content
         - if flash[:error].present?
           .alert.alert-warning
             = flash[:error]
 
         - if @sources.length > 0
           - if @sources.length > 1
-            %h4.results
+            %h3.results
               = "#{number_with_delimiter(@meta["total"])} Sources"
 
           - @sources.each do |item|

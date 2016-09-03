@@ -179,17 +179,17 @@ module Sinatra
     end
 
     def works_action(item, params)
-      if params[:external_link].present?
-        item["id"]
-      elsif item.fetch("type", nil) == "contributions"
-        "/works/" + item.fetch('attributes', {}).fetch("obj-id", nil)
+      return item["id"] if params[:external_link].present?
+
+      if item.fetch("type", nil) == "contributions"
+        id = item.fetch('attributes', {}).fetch("obj-id", nil)
       elsif item.fetch("type", nil) == "relations"
-        "/works/" + item.fetch('attributes', {}).fetch("subj-id", nil)
+        id = item.fetch('attributes', {}).fetch("subj-id", nil)
       else
         id = item.fetch('attributes', {}).fetch("doi", nil).presence || item["id"]
-        id = id.gsub("http://doi.org/","")
-        "/works/#{id}"
       end
+      id = id.gsub("http://doi.org/","")
+      "/works/#{id}"
     end
 
     def contributors_action(item, params)
@@ -251,7 +251,7 @@ module Sinatra
     end
 
     def auto_update_text
-      if !signed_in?
+      if !user_signed_in?
         'panel-default'
       else
         'panel-success'
@@ -259,7 +259,7 @@ module Sinatra
     end
 
     def enabled_text
-      if !signed_in?
+      if !user_signed_in?
         ''
       else
         '<span class="small pull-right">enabled</span>'

@@ -46,7 +46,7 @@
                       = item['name']
 
           - if ENV['JWT_HOST'].present?
-            - if signed_in?
+            - if user_signed_in?
               %li.dropdown
                 %a.dropdown-toggle{href: '#', id: "account_menu_link", data: { toggle: "dropdown"}, aria: { haspopup: "true", expanded: "false" }}
                   = current_user.name
@@ -59,7 +59,7 @@
                   %li
                     %a{:href => "/contributors/#{current_user.orcid}"}
                       %i.fa.fa-files-o
-                      My Works
+                      Claimed Works
                   %li.divider
                   %li
                     %a{:href => "http://orcid.org/#{current_user.orcid}"}
@@ -67,11 +67,11 @@
                       ORCID Record
                   %li.divider
                     %li
-                      %a{:href => '/auth/signout'}
+                      %a{:href => "#{ENV['JWT_HOST']}/sign_out"}
                         %i.fa.fa-sign-out
                         Sign out
             - else
               %li
-                %a.btn.btn-default{:href => "/auth/jwt", id: 'sign-in'}
+                %a.btn.btn-sm{:href => "#{ENV['JWT_HOST']}/sign_in", id: 'sign-in'}
                   %i.fa.fa-sign-in
                   Sign in

@@ -1,22 +1,25 @@
 = haml :"#{ENV['RA']}/header", locals: { page: {} }
 
 .container-fluid
-  .row
-    .col-md-9#content-work
-      - if @member_error.present?
-        %div.alert.alert-warning
-          = @member_error
-      - elsif @member.present?
-        = haml :'members/item', locals: { item: @member }
+  .content
+    .row
+      .col-md-9#content-work
+        - if @member_error.present?
+          %div.alert.alert-warning
+            = @member_error
+        - elsif @member.present?
+          = haml :'members/item', locals: { item: @member }
 
-    - if @member.present? && @member.fetch("attributes", {}).fetch("member-type", nil) == "allocating"
-      .col-md-9
-        = haml :'works/search'
+      - if @member.present? && @member.fetch("attributes", {}).fetch("member-type", nil) == "allocating"
+        .col-md-9
+          = haml :'works/search'
 
-      .col-md-9#content-works
-        = haml :'works/list'
+        .col-md-9.panel-list#content-works
+          = haml :'works/list'
 
-      .col-md-3
-        = haml :'works/facets'
+        .col-md-3
+          = haml :'works/facets'
+
+= haml :cite_box
 
 = haml :"#{ENV['RA']}/footer"

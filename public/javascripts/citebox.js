@@ -6,7 +6,7 @@ function showCiteBox(doi, title) {
   $('#citation-text').html('');
   updateCiteBox();
   $('#citation-modal').modal();
-  spinner.spin(document.getElementById('citation-text'));
+  spinner.spin(document.getElementById('spinner'));
 };
 
 function updateCiteBox() {
@@ -31,8 +31,10 @@ function updateCiteBox() {
     },
     error: function (error) {
       console.log(error.responseJSON);
-      $('#citation-text').css("color", "#e67e22");
-      $('#citation-text').text(error.responseJSON.message);
+      if (error.responseJSON.message !== "Format missing or not supported." && error.responseJSON.message !== "DOI missing or wrong format.") {
+        $('#citation-text').css("color", "#e67e22");
+        $('#citation-text').text(error.responseJSON.message);
+      }
       spinner.stop();
     }
   });
@@ -46,7 +48,7 @@ function setCiteBoxFormat(format) {
 };
 
 $(document).ready(function(e) {
-  citationInfo = {format: 'bibtex'};
+  citationInfo = {format: 'apa'};
   spinnerOpts = {shadow: true, width: 2, speed: 2};
   spinner = new Spinner(spinnerOpts);
 

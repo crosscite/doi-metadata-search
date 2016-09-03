@@ -1,19 +1,22 @@
 = haml :"#{ENV['RA']}/header", locals: { page: {} }
 
 .container-fluid
-  .row
-    .col-md-9#content-work
-      = haml :'sources/item', locals: { item: @source }
+  .content
+    .row
+      .col-md-9#content-work
+        = haml :'sources/item', locals: { item: @source }
 
-    - if @works.present?
-      .col-md-9#content-works
-        = haml :'works/list'
+      - if @works.present?
+        .col-md-9.panel-list#content-works
+          = haml :'works/list'
 
-      .col-md-3
-        = haml :'works/facets'
+        .col-md-3
+          = haml :'works/facets'
 
-    - elsif @contributions.present?
-      .col-md-9#content-works
-        = haml :'contributions/index'
+      - elsif @contributions.present?
+        .col-md-9.panel-list#content-works
+          = haml :'contributions/index'
+
+= haml :cite_box
 
 = haml :"#{ENV['RA']}/footer"

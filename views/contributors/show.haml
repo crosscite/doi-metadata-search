@@ -1,19 +1,20 @@
 = haml :"#{ENV['RA']}/header", locals: { page: {} }
 
 .container-fluid
-  .row
-    .col-md-9#content-contributor
-      - if @contributor_error.present?
-        %div.alert.alert-warning
-          = @contributor_error
-      - elsif @contributor.present?
-        = haml :'contributors/item', locals: { item: @contributor }
+  .content
+    .row
+      .col-md-9#content-contributor
+        - if @contributor_error.present?
+          %div.alert.alert-warning
+            = @contributor_error
+        - elsif @contributor.present?
+          = haml :'contributors/item', locals: { item: @contributor }
 
-    .col-md-9#content-contributions
-      = haml :'contributions/index'
+      .col-md-9.panel-list#content-contributions
+        = haml :'contributions/index'
 
-    .col-md-3
-      = haml :'contributions/facets'
+      .col-md-3
+        = haml :'contributions/facets'
 
 = haml :cite_box
 

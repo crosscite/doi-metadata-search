@@ -2,7 +2,7 @@ MAX_EXPAND_CHARS = 240;
 
 $(document).ready(function() {
   var replacePopoverWithErrorMessage = function($popover, message) {
-    var $p = $('<p>').text('Claim failed with message "' + message.title + '".')
+    var $p = $('<p>').text('Claim failed with message "' + message.title + '".').addClass('error');
     var $btnClose = $('<button>').addClass('btn').addClass('btn-default').addClass('btn-sm').addClass('claim-close-btn').text('Close');
     var $btnsClose = $('<div>').addClass('btn-group').addClass('btn-group-sm').append($btnClose);
     var $btnToolbar = $('<div>').addClass('btn-toolbar').addClass('pull-right').append($btnsClose);
@@ -24,8 +24,8 @@ $(document).ready(function() {
     $('.claim-warn').popover('destroy');
     $('.claim-ok').popover('destroy');
 
-    var $p = $('<p>').text('Last time we checked, this work was in your ORCID record.');
-    var $btnClose = $('<button>').addClass('btn').addClass('btn-default').addClass('btn-sm').addClass('claim-close-btn').text('Close');
+    var $p = $('<p>').text('Are you sure you want to remove this work from your ORCID record?');
+    var $btnClose = $('<button>').addClass('btn').addClass('btn-primary').addClass('btn-fill').addClass('btn-sm').addClass('claim-close-btn').text('Close');
     var $btnsClose = $('<div>').addClass('btn-group').addClass('btn-group-sm').append($btnClose);
     var $btnToolbar = $('<div>').addClass('btn-toolbar').addClass('pull-right').append($btnsClose);
     var $content = $('<div>').append($p).append($btnToolbar);
@@ -34,7 +34,7 @@ $(document).ready(function() {
     $(this).popover({
       placement: 'bottom',
       html: true,
-      title: 'Work is in your ORCID record',
+      title: 'Remove work from ORCID',
       content: $('<div>').append($content).html(),
       trigger: 'manual'
     });
@@ -60,7 +60,7 @@ $(document).ready(function() {
     $('.claim-ok').popover('destroy');
 
     var $p = $('<p>').html('Please check <strong>DataCite Profiles</strong> for more information.');
-    var $btnClose = $('<button>').addClass('btn').addClass('btn-default').addClass('btn-sm').addClass('claim-close-btn').text('Close');
+    var $btnClose = $('<button>').addClass('btn').addClass('btn-primary').addClass('btn-fill').addClass('btn-sm').addClass('claim-close-btn').text('Close');
     var $btnsClose = $('<div>').addClass('btn-group').addClass('btn-group-sm').append($btnClose);
     var $btnToolbar = $('<div>').addClass('btn-toolbar').addClass('pull-right').append($btnsClose);
     var $content = $('<div>').append($p).append($btnToolbar);
@@ -117,8 +117,8 @@ $(document).ready(function() {
     $('.claim-ok').popover('destroy');
 
     var $p = $('<p>').text('Are you sure you want to add this work to your ORCID record?');
-    var $btnNo = $('<button>').addClass('btn').addClass('btn-sm').addClass('claim-no-btn').text('Cancel');
-    var $btnOk = $('<button>').addClass('btn').addClass('btn-default').addClass('btn-sm').addClass('claim-ok-btn').text('Ok');
+    var $btnNo = $('<button>').addClass('btn').addClass('btn-primary').addClass('btn-sm').addClass('claim-no-btn').text('Cancel');
+    var $btnOk = $('<button>').addClass('btn').addClass('btn-primary').addClass('btn-fill').addClass('btn-sm').addClass('claim-ok-btn').text('Ok');
     var $btnsNo = $('<div>').addClass('btn-group').addClass('btn-group-sm').append($btnNo);
     var $btnsOk = $('<div>').addClass('btn-group').addClass('btn-group-sm').append($btnOk);
     var $btnToolbar = $('<div>').addClass('btn-toolbar').addClass('pull-right').append($btnsNo).append($btnsOk);
@@ -169,7 +169,7 @@ $(document).ready(function() {
     $('.claim-ok').popover('destroy');
 
     var $text = $('<div>').html('<span>Work has been queued to be added to your ORCID record. Please check back later.');
-    var $btnClose = $('<button>').addClass('btn').addClass('btn-default').addClass('btn-sm').addClass('claim-close-btn').text('Close');
+    var $btnClose = $('<button>').addClass('btn').addClass('btn-primary').addClass('btn-fill').addClass('btn-sm').addClass('claim-close-btn').text('Close');
     var $btnsClose = $('<div>').addClass('btn-group').addClass('btn-group-sm').append($btnClose);
     var $btnToolbar = $('<div>').addClass('btn-toolbar').addClass('pull-right').append($btnsClose);
     var $content = $('<div>').append($text).append($btnToolbar);
