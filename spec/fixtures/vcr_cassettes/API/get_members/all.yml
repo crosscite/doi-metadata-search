@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - nginx/1.11.3
       Date:
-      - Sat, 03 Sep 2016 15:12:14 GMT
+      - Sat, 03 Sep 2016 15:41:33 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,7 +37,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 5f978bcc-44e7-4a73-b7af-2f7a302df613
+      - e3f4ed85-bd8d-4338-a1f0-6852a27d30df
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
@@ -45,7 +45,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.077848'
+      - '0.076509'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -613,5 +613,5 @@ http_interactions:
         use of digital object identifiers for datasets.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Netherlands","year":2009,"logo-url":"https://assets.datacite.org/images/members/DELFT.png","email":"library@tudelft.nl","website":"http://www.library.tudelft.nl/en","phone":"+31
         15 27 85678","updated":"2016-07-31T23:38:25.000Z"}}],"meta":{"total":36,"member-types":{"allocating":28,"non-allocating":8},"regions":{"amer":8,"apac":5,"emea":23},"years":{"2016":2,"2015":5,"2014":4,"2013":4,"2012":2,"2011":1,"2010":11,"2009":7}}}'
     http_version: 
-  recorded_at: Sat, 03 Sep 2016 15:12:14 GMT
+  recorded_at: Sat, 03 Sep 2016 15:41:33 GMT
 recorded_with: VCR 2.9.3

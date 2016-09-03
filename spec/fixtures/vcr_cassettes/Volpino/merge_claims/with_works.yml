@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - nginx/1.11.3
       Date:
-      - Sat, 03 Sep 2016 15:12:54 GMT
+      - Sat, 03 Sep 2016 15:39:27 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,7 +37,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - e91c0695-fdbc-42bc-a1f1-6ecd96439e7b
+      - bfadcfe0-3756-42b9-a64e-1260e5c2120e
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
@@ -45,7 +45,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.394729'
+      - '0.421976'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -435,10 +435,10 @@ http_interactions:
         Zürich, ZORA","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}},{"id":"zbmed.gms","type":"publishers","attributes":{"title":"German
         Medical Science","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}}],"meta":{"resource-types":{"dataset":64,"text":22,"software":6,"collection":2},"years":{"2016":6,"2015":39,"2014":15,"2013":26,"2012":6,"2010":1,"2007":1,"1981":1,"1973":1},"publishers":{"cdl.digsci":48,"estdoi.bio":21,"cern.zenodo":14,"tib.handbuch":7,"ethz.seals":2,"cern.jacow":1,"ethz.boris":1,"ethz.zora":1,"zbmed.gms":1},"total":96}}'
     http_version: 
-  recorded_at: Sat, 03 Sep 2016 15:12:54 GMT
+  recorded_at: Sat, 03 Sep 2016 15:39:28 GMT
 - request:
     method: get
-    uri: http://profiles/api/users/0000-0003-1419-2405/claims?dois=10.2314/COSCV1.53,10.2314/COSCV2.53,10.5281/ZENODO.13004,10.6084/M9.FIGSHARE.706340.V1,10.5169/SEALS-355044,10.5281/ZENODO.34673,10.6084/M9.FIGSHARE.706340,10.5169/SEALS-118645,10.3205/12AGMB03,10.15156/BIO/SH132186.07FU,10.15156/BIO/SH444252.07FU,10.15156/BIO/SH470440.07FU,10.15156/BIO/SH470441.07FU,10.15156/BIO/SH470442.07FU,10.15156/BIO/SH470443.07FU,10.15156/BIO/SH470444.07FU,10.15156/BIO/SH470445.07FU,10.15156/BIO/SH470446.07FU,10.15156/BIO/SH073225.07FU,10.15156/BIO/SH031366.07FU,10.15156/BIO/SH299733.07FU,10.15156/BIO/SH171384.07FU,10.15156/BIO/SH219844.07FU,10.6084/M9.FIGSHARE.90828.V1,10.6084/M9.FIGSHARE.90829.V1
+    uri: https://profiles.datacite.org/api/users/0000-0003-1419-2405/claims?dois=10.2314/COSCV1.53,10.2314/COSCV2.53,10.5281/ZENODO.13004,10.6084/M9.FIGSHARE.706340.V1,10.5169/SEALS-355044,10.5281/ZENODO.34673,10.6084/M9.FIGSHARE.706340,10.5169/SEALS-118645,10.3205/12AGMB03,10.15156/BIO/SH132186.07FU,10.15156/BIO/SH444252.07FU,10.15156/BIO/SH470440.07FU,10.15156/BIO/SH470441.07FU,10.15156/BIO/SH470442.07FU,10.15156/BIO/SH470443.07FU,10.15156/BIO/SH470444.07FU,10.15156/BIO/SH470445.07FU,10.15156/BIO/SH470446.07FU,10.15156/BIO/SH073225.07FU,10.15156/BIO/SH031366.07FU,10.15156/BIO/SH299733.07FU,10.15156/BIO/SH171384.07FU,10.15156/BIO/SH219844.07FU,10.6084/M9.FIGSHARE.90828.V1,10.6084/M9.FIGSHARE.90829.V1
     body:
       encoding: US-ASCII
       string: ''
@@ -448,12 +448,16 @@ http_interactions:
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
       Authorization:
-      - Token token=EwtpXH9nvtTyUd_26eqs
+      - Token token=<ORCID_UPDATE_KEY>
   response:
     status:
       code: 200
       message: ''
     headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Sat, 03 Sep 2016 15:39:28 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -471,28 +475,24 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 3766feae-4c6d-49cb-841d-bbcbe60885ca
+      - 600107f0-f669-4898-8e5e-caafdc5946eb
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
-      - W/"c9d97949b2df24e69b0069eb136a2c05"
+      - W/"383f24f65b82c4dd6ee63fdfb4ddfdd1"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.257509'
+      - '0.021069'
       X-Content-Type-Options:
       - nosniff
-      Date:
-      - Sat, 03 Sep 2016 15:12:54 GMT
       X-Powered-By:
       - Phusion Passenger 5.0.30
-      Server:
-      - nginx/1.10.1 + Phusion Passenger 5.0.30
       Access-Control-Allow-Headers:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
       encoding: UTF-8
-      string: '{"data":[{"id":"e372db4a-9d2d-4794-8dfc-b334b6121688","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.5281/ZENODO.34673","source-id":"orcid_search","state":"done","claimed-at":"1970-01-01T00:33:36Z"}},{"id":"4e171919-a420-494f-b04f-fcc01422d4b1","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.2314/COSCV2.53","source-id":"orcid_search","state":"done","claimed-at":"1970-01-01T00:33:36Z"}},{"id":"baca6f9a-634b-4386-883f-ecbdfc5eafa3","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.6084/M9.FIGSHARE.706340.V1","source-id":"orcid_search","state":"done","claimed-at":"1970-01-01T00:33:36Z"}},{"id":"283c7b24-4ac4-4ae3-b866-1e6afcc51dca","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.6084/M9.FIGSHARE.90829.V1","source-id":"orcid_search","state":"done","claimed-at":"1970-01-01T00:33:36Z"}},{"id":"065611d3-362a-43fd-a38c-e71f0237ac2e","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.6084/M9.FIGSHARE.90828.V1","source-id":"orcid_search","state":"done","claimed-at":"1970-01-01T00:33:36Z"}},{"id":"8a0b018f-725e-4eda-be77-680f4c618d2e","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.6084/M9.FIGSHARE.706340","source-id":"orcid_search","state":"done","claimed-at":"1970-01-01T00:33:33Z"}},{"id":"fb7c9e31-cfd5-41ce-b510-f971a181430d","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.3205/12AGMB03","source-id":"orcid_search","state":"done","claimed-at":"1970-01-01T00:33:33Z"}}],"links":{},"meta":{"total":7,"total-pages":1,"page":1}}'
+      string: '{"data":[{"id":"16925bfc-23fd-4bb8-9c7c-2a230b8f964c","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.6084/M9.FIGSHARE.90828.V1","source-id":"orcid_search","state":"done","claimed-at":"2016-08-02T08:54:57Z"}},{"id":"e886a9c9-0412-464c-aa22-30d937f9eab1","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.6084/M9.FIGSHARE.90829.V1","source-id":"orcid_search","state":"done","claimed-at":"2016-08-02T08:54:50Z"}},{"id":"84fc1b77-7ea3-4993-8f9b-71e8d712538f","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.6084/M9.FIGSHARE.706340.V1","source-id":"orcid_search","state":"done","claimed-at":"2016-03-09T12:14:49Z"}},{"id":"6ce1cfc6-b7d6-47e5-86e3-15bebe0b236d","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.5281/ZENODO.34673","source-id":"orcid_search","state":"done","claimed-at":"2016-03-09T12:13:03Z"}},{"id":"b9c7ea04-4c27-4687-8420-0c7f6efce062","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.3205/12AGMB03","source-id":"orcid_search","state":"done","claimed-at":"2013-07-27T06:56:47Z"}},{"id":"6392fcf3-cc68-4085-9701-7984a2b73dc8","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.6084/M9.FIGSHARE.706340","source-id":"orcid_search","state":"done","claimed-at":"2013-07-01T12:32:01Z"}}],"links":{},"meta":{"total":6,"total-pages":1,"page":1}}'
     http_version: 
-  recorded_at: Sat, 03 Sep 2016 15:12:54 GMT
+  recorded_at: Sat, 03 Sep 2016 15:39:28 GMT
 recorded_with: VCR 2.9.3

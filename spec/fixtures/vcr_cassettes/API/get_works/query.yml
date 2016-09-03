@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - nginx/1.11.3
       Date:
-      - Sat, 03 Sep 2016 15:12:37 GMT
+      - Sat, 03 Sep 2016 15:41:36 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,7 +37,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 70a85868-1cdf-44b4-a936-ac6aeec3c2a7
+      - 1d7dd1c5-21d4-4b4b-8e0a-3621664593e6
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
@@ -45,7 +45,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.615182'
+      - '0.185393'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -92,5 +92,5 @@ http_interactions:
         Paper","type":"report","license":null,"publisher-id":"tib.r-gate","member-id":"tib","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2015-12-18T02:42:30Z","updated":"2015-12-18T02:42:30Z"}},{"id":"dataset","type":"resource-types","attributes":{"title":"Dataset","updated":"2014-10-16"}},{"id":"text","type":"resource-types","attributes":{"title":"Text","updated":"2014-10-16"}},{"id":"cdl.digsci","type":"publishers","attributes":{"title":"Digital
         Science","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}},{"id":"tib.r-gate","type":"publishers","attributes":{"title":"ResearchGate","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}}],"meta":{"resource-types":{"dataset":15,"text":1},"years":{"2016":6,"2015":10},"publishers":{"cdl.digsci":15,"tib.r-gate":1},"total":16}}'
     http_version: 
-  recorded_at: Sat, 03 Sep 2016 15:12:37 GMT
+  recorded_at: Sat, 03 Sep 2016 15:41:36 GMT
 recorded_with: VCR 2.9.3

@@ -117,14 +117,12 @@ describe "API", type: :model, vcr: true do
 
   context "get_relations" do
     it "all" do
-      response = subject.get_relations
-      expect(response[:meta]["sources"]["datacite-related"]).to eq(6294928)
-      relation = response[:data].first
-      expect(relation["attributes"]["subj-id"]).to eq("http://doi.org/10.12764/15500_P16")
+      response = subject.get_relations(timeout: 30)
+      expect(response).to eq(:data=>[], :errors=>[{"status"=>408, "title"=>"Request timeout"}], :meta=>{})
     end
 
     it "by work" do
-      response = subject.get_relations("work-id" => "10.6084/M9.FIGSHARE.3394312")
+      response = subject.get_relations("work-id" => "10.6084/M9.FIGSHARE.3394312", timeout: 30)
       expect(response[:meta]).to eq("total"=>1, "sources"=>{"datacite-related"=>1}, "relation-types"=>{"is-identical-to"=>1})
       relation = response[:data].first
       expect(relation["attributes"]).to eq("subj-id"=>"http://doi.org/10.6084/M9.FIGSHARE.3394312.V1", "obj-id"=>"http://doi.org/10.6084/M9.FIGSHARE.3394312", "doi"=>"10.6084/M9.FIGSHARE.3394312.V1", "author"=>[{"given"=>"Samuel", "family"=>"Asumadu-Sarkodie", "orcid"=>"http://orcid.org/0000-0001-5035-5983"}, {"given"=>"Phebe Asantewaa", "family"=>"Owusu", "orcid"=>"http://orcid.org/0000-0001-7364-1640"}], "title"=>"Global Annual Installations 2000-2013", "container-title"=>"Figshare", "source-id"=>"datacite-related", "publisher-id"=>"CDL.DIGSCI", "registration-agency-id"=>nil, "relation-type-id"=>"is-identical-to", "type"=>nil, "total"=>1, "published"=>"2016", "issued"=>"2016-05-20T20:40:22Z", "updated"=>"2016-06-01T20:01:21Z")

@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - nginx/1.11.3
       Date:
-      - Sat, 03 Sep 2016 15:12:32 GMT
+      - Sat, 03 Sep 2016 15:41:38 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,7 +37,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - d07f271a-7817-4e1d-bea4-e50f1929312e
+      - 18c6392d-0def-4a08-9d16-b8ee0d129ef5
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
@@ -45,7 +45,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.095939'
+      - '0.146652'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -75,5 +75,5 @@ http_interactions:
         for the “long tail” of research results. It allows researchers to share and
         preserve their output independent of size, type of material or discipline.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Switzerland","year":2014,"logo-url":"https://assets.datacite.org/images/members/CERN.png","email":"doi-service@cern.ch","website":"http://doi.web.cern.ch/","phone":null,"updated":"2016-07-31T21:30:25.000Z"}}],"meta":{"total":1,"registration-agencies":{"datacite":1},"members":{"cern":1}}}'
     http_version: 
-  recorded_at: Sat, 03 Sep 2016 15:12:32 GMT
+  recorded_at: Sat, 03 Sep 2016 15:41:38 GMT
 recorded_with: VCR 2.9.3

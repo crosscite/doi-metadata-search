@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Volpino", type: :model, vcr: true do
   let(:fixture_path) { "#{Sinatra::Application.root}/spec/fixtures/" }
-  let(:jwt) { [{"uid"=>"0000-0003-1419-2405", "api_key"=>"EwtpXH9nvtTyUd_26eqs", "name"=>"Martin Fenner", "email"=>nil, "role"=>"user", "iat"=>1472762438}, {"typ"=>"JWT", "alg"=>"HS256"}] }
+  let(:jwt) { [{"uid"=>"0000-0003-1419-2405", "api_key"=>ENV['ORCID_UPDATE_KEY'], "name"=>"Martin Fenner", "email"=>nil, "role"=>"user", "iat"=>1472762438}, {"typ"=>"JWT", "alg"=>"HS256"}] }
   let(:user) { User.new(jwt.first) }
 
   subject { ApiSearch.new }
@@ -13,7 +13,7 @@ describe "Volpino", type: :model, vcr: true do
     end
 
     it "has api_key" do
-      expect(user.api_key).to eq("EwtpXH9nvtTyUd_26eqs")
+      expect(user.api_key).to eq("GFKyS1Bb2iLevKt8x2H4")
     end
   end
 
@@ -42,7 +42,7 @@ describe "Volpino", type: :model, vcr: true do
       statuses = merged_claims.map { |mc| mc["attributes"]["claim-status"] }
       expect(works.length).to eq(38)
       expect(statuses.length).to eq(38)
-      expect(statuses.inject(Hash.new(0)) { |total, e| total[e] += 1 ;total}).to eq("none"=>31, "done"=>7)
+      expect(statuses.inject(Hash.new(0)) { |total, e| total[e] += 1 ;total}).to eq("none"=>32, "done"=>6)
     end
 
     it "with relations" do
@@ -66,7 +66,7 @@ describe "Volpino", type: :model, vcr: true do
       statuses = merged_claims.map { |mc| mc["attributes"]["claim-status"] }
       expect(contributions.length).to eq(59)
       expect(statuses.length).to eq(59)
-      expect(statuses.inject(Hash.new(0)) { |total, e| total[e] += 1 ;total}).to eq("done"=>58, "none"=>1)
+      expect(statuses.inject(Hash.new(0)) { |total, e| total[e] += 1 ;total}).to eq("done"=>54, "none"=>5)
     end
   end
 
@@ -76,8 +76,8 @@ describe "Volpino", type: :model, vcr: true do
       works_with_claims = subject.get_claimed_items(user, works)
       expect(works.length).to eq(38)
       expect(works_with_claims.length).to eq(38)
-      work = works_with_claims[1]
-      expect(work["id"]).to eq("http://doi.org/10.2314/COSCV2.53")
+      work = works_with_claims[3]
+      expect(work["id"]).to eq("http://doi.org/10.6084/M9.FIGSHARE.706340.V1")
       expect(work["attributes"]["claim-status"]).to eq("done")
     end
 

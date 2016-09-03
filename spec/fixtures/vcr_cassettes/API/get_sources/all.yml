@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - nginx/1.11.3
       Date:
-      - Sat, 03 Sep 2016 15:12:14 GMT
+      - Sat, 03 Sep 2016 15:41:34 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,7 +37,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - d3fbd9e7-f951-4fd3-a85a-e235a0993d10
+      - c6d3f332-1be2-4629-8358-db121207e9f3
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
@@ -45,7 +45,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.062630'
+      - '0.065839'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -78,5 +78,5 @@ http_interactions:
         is a web-based Git repository hosting service.","state":"active","group-id":"results","work-count":193,"relation-count":195,"result-count":2603,"by-day":{"with-results":0,"without-results":0,"not-updated":195},"by-month":{"with-results":0,"without-results":0,"not-updated":195},"updated":"2016-09-03T14:49:29Z"}},{"id":"mendeley","type":"sources","attributes":{"title":"Mendeley","description":"Mendeley
         is a reference manager and social bookmarking tool.","state":"active","group-id":"results","work-count":1,"relation-count":1,"result-count":1,"by-day":{"with-results":0,"without-results":0,"not-updated":1},"by-month":{"with-results":0,"without-results":0,"not-updated":1},"updated":"2016-09-03T14:49:29Z"}},{"id":"contributions","type":"groups","attributes":{"title":"Contributions","sources":["datacite_search_link","datacite_orcid","github_contributor","orcid"],"updated":"2016-03-28T15:25:06Z"}},{"id":"publishers","type":"groups","attributes":{"title":"Publishers","sources":["crossref_publisher","datacite_datacentre"],"updated":"2016-03-28T15:25:06Z"}},{"id":"relations","type":"groups","attributes":{"title":"Relations","sources":["crossref_datacite","datacite_crossref","datacite_github","datacite_related","europe_pmc_fulltext","plos_fulltext"],"updated":"2016-03-28T15:25:06Z"}},{"id":"results","type":"groups","attributes":{"title":"Results","sources":["facebook","github","mendeley"],"updated":"2016-04-07T20:46:44Z"}}],"meta":{"total":15,"groups":{"relations":6,"contributions":4,"publishers":2,"results":3}}}'
     http_version: 
-  recorded_at: Sat, 03 Sep 2016 15:12:14 GMT
+  recorded_at: Sat, 03 Sep 2016 15:41:34 GMT
 recorded_with: VCR 2.9.3

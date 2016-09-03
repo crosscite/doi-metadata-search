@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - nginx/1.11.3
       Date:
-      - Sat, 03 Sep 2016 15:12:13 GMT
+      - Sat, 03 Sep 2016 15:41:33 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,7 +37,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 815f4132-ef27-4418-88ca-113aab21eb0c
+      - 57006f5f-d98d-49a3-a1d5-ce563bdb01c2
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
@@ -45,7 +45,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.018383'
+      - '0.015642'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -78,5 +78,5 @@ http_interactions:
         Pacific","country":"Australia","year":2010,"logo-url":"https://assets.datacite.org/images/members/ands.png","email":"contact@ands.org.au","website":"http://www.ands.org.au","phone":"+61
         3 9902 0585","updated":"2016-09-01T17:13:55.000Z"}}}'
     http_version: 
-  recorded_at: Sat, 03 Sep 2016 15:12:13 GMT
+  recorded_at: Sat, 03 Sep 2016 15:41:33 GMT
 recorded_with: VCR 2.9.3

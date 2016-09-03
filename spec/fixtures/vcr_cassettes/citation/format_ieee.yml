@@ -23,20 +23,20 @@ http_interactions:
       Location:
       - http://data.datacite.org/10.5281%2FZENODO.21430
       Expires:
-      - Sat, 03 Sep 2016 15:38:58 GMT
+      - Sat, 03 Sep 2016 16:03:39 GMT
       Content-Type:
       - text/html;charset=utf-8
       Content-Length:
       - '179'
       Date:
-      - Sat, 03 Sep 2016 15:12:42 GMT
+      - Sat, 03 Sep 2016 15:46:35 GMT
     body:
       encoding: UTF-8
       string: |-
         <html><head><title>Handle Redirect</title></head>
         <body><a href="http://data.datacite.org/10.5281%2FZENODO.21430">http://data.datacite.org/10.5281%2FZENODO.21430</a></body></html>
     http_version: 
-  recorded_at: Sat, 03 Sep 2016 15:12:43 GMT
+  recorded_at: Sat, 03 Sep 2016 15:46:36 GMT
 - request:
     method: get
     uri: http://data.datacite.org/10.5281%2FZENODO.21430
@@ -56,7 +56,7 @@ http_interactions:
       Server:
       - nginx/1.11.3
       Date:
-      - Sat, 03 Sep 2016 15:12:43 GMT
+      - Sat, 03 Sep 2016 15:46:36 GMT
       Content-Type:
       - text/x-bibliography;charset=iso-8859-1
       Connection:
@@ -76,5 +76,5 @@ http_interactions:
       string: "[1]Martin Fenner, Karl Jonathan Ward, Gudmundur A. Thorisson, and Robert
         Peters, “DataCite-ORCID: 1.0.” Zenodo, 2015.\n"
     http_version: 
-  recorded_at: Sat, 03 Sep 2016 15:12:43 GMT
+  recorded_at: Sat, 03 Sep 2016 15:46:36 GMT
 recorded_with: VCR 2.9.3

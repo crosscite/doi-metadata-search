@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - nginx/1.11.3
       Date:
-      - Sat, 03 Sep 2016 15:12:13 GMT
+      - Sat, 03 Sep 2016 15:41:32 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,7 +37,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 1393a48b-5bb8-4071-b103-b00a42b5e5a5
+      - 4bfc00ac-0116-4708-a5ba-d48fa6589e38
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
@@ -45,7 +45,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.026965'
+      - '0.028302'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -70,5 +70,5 @@ http_interactions:
         is on providing DOI names for primary data and grey literature.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Germany","year":2009,"logo-url":"https://assets.datacite.org/images/members/TIB.png","email":"doi-info@tib.eu","website":"
         http://www.tib.eu","phone":"+49 511 762 14226","updated":"2016-08-01T11:13:04.000Z"}}],"meta":{"total":1,"member-types":{"allocating":1},"regions":{"emea":1},"years":{"2009":1}}}'
     http_version: 
-  recorded_at: Sat, 03 Sep 2016 15:12:13 GMT
+  recorded_at: Sat, 03 Sep 2016 15:41:32 GMT
 recorded_with: VCR 2.9.3

@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - nginx/1.11.3
       Date:
-      - Sat, 03 Sep 2016 15:12:47 GMT
+      - Sat, 03 Sep 2016 15:39:22 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,7 +37,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 4863129b-3030-412a-b5be-d809a4e06ea2
+      - ef4e9dcb-5adf-4ce7-9d01-71389e07cfe2
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
@@ -45,7 +45,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.693293'
+      - '0.356009'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -435,5 +435,5 @@ http_interactions:
         Zürich, ZORA","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}},{"id":"zbmed.gms","type":"publishers","attributes":{"title":"German
         Medical Science","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}}],"meta":{"resource-types":{"dataset":64,"text":22,"software":6,"collection":2},"years":{"2016":6,"2015":39,"2014":15,"2013":26,"2012":6,"2010":1,"2007":1,"1981":1,"1973":1},"publishers":{"cdl.digsci":48,"estdoi.bio":21,"cern.zenodo":14,"tib.handbuch":7,"ethz.seals":2,"cern.jacow":1,"ethz.boris":1,"ethz.zora":1,"zbmed.gms":1},"total":96}}'
     http_version: 
-  recorded_at: Sat, 03 Sep 2016 15:12:47 GMT
+  recorded_at: Sat, 03 Sep 2016 15:39:22 GMT
 recorded_with: VCR 2.9.3

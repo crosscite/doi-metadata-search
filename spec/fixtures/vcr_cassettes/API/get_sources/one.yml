@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - nginx/1.11.3
       Date:
-      - Sat, 03 Sep 2016 15:12:15 GMT
+      - Sat, 03 Sep 2016 15:41:33 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,15 +37,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 373251cb-ffac-472f-82d2-d7e8df1cff6f
+      - de291e26-638e-43ae-9114-da190b9972ab
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
-      - W/"ee35bf6caaff2067ff6b9645e5e640ca"
+      - W/"bedbfdfa75330981defd38d2bd2b6eaa"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.040857'
+      - '0.053697'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -56,7 +56,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"data":[{"id":"datacite-crossref","type":"sources","attributes":{"title":"DataCite
         (Crossref)","description":"Import works with Crossref DOIs as relatedIdentifier
-        via the DataCite Solr API.","state":"active","group-id":"relations","work-count":19905,"relation-count":225460,"result-count":74419,"by-day":{"with-results":3,"without-results":0,"not-updated":225402},"by-month":{"with-results":79,"without-results":204,"not-updated":225122},"updated":"2016-09-03T14:37:20Z"}},{"id":"relations","type":"groups","attributes":{"title":"Relations","sources":["crossref_datacite","datacite_crossref","datacite_github","datacite_related","europe_pmc_fulltext","plos_fulltext"],"updated":"2016-03-28T15:25:06Z"}}]}'
+        via the DataCite Solr API.","state":"active","group-id":"relations","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-09-03T14:37:20Z"}},{"id":"relations","type":"groups","attributes":{"title":"Relations","sources":["crossref_datacite","datacite_crossref","datacite_github","datacite_related","europe_pmc_fulltext","plos_fulltext"],"updated":"2016-03-28T15:25:06Z"}}]}'
     http_version: 
-  recorded_at: Sat, 03 Sep 2016 15:12:15 GMT
+  recorded_at: Sat, 03 Sep 2016 15:41:33 GMT
 recorded_with: VCR 2.9.3
