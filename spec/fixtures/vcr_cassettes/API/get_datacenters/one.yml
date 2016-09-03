@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api/publishers?id=CERN.ZENODO&offset=0&registration-agency-id=datacite&rows=25
+    uri: https://api.datacite.org/publishers?id=CERN.ZENODO&offset=0&registration-agency-id=datacite&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -16,6 +16,10 @@ http_interactions:
       code: 200
       message: ''
     headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Sat, 03 Sep 2016 15:12:32 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -33,29 +37,43 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - ea9d8deb-d602-44af-8c56-3061fb67f2ff
+      - 6469550a-1770-4943-9bb5-c036ca83e736
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
-      - W/"7648d0c85362141f7b54c384ad6de379"
+      - W/"9e0e0816034e583bc67bb497a999bf6c"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.704227'
+      - '0.038546'
       X-Content-Type-Options:
       - nosniff
-      Date:
-      - Sat, 03 Sep 2016 12:22:14 GMT
       X-Powered-By:
       - Phusion Passenger 5.0.30
-      Server:
-      - nginx/1.10.1 + Phusion Passenger 5.0.30
       Access-Control-Allow-Headers:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
       encoding: UTF-8
       string: '{"data":[{"id":"cern.zenodo","type":"publishers","attributes":{"title":"ZENODO
-        - Research. Shared.","other-names":[],"prefixes":[],"member-id":"CERN","registration-agency-id":"datacite","updated":"2016-09-03T11:58:31Z"}}]}'
+        - Research. Shared.","other-names":[],"prefixes":[],"member-id":"CERN","registration-agency-id":"datacite","updated":"2016-09-03T14:32:55Z"}},{"id":"cern","type":"members","attributes":{"title":"European
+        Organization for Nuclear Research","description":"\u003cp\u003eCERN, the European
+        Organization for Nuclear Research, is the world\u0026#39;s largest particle
+        physics laboratory. Founded in 1954 and based on the Franco-Swiss border near
+        Geneva, it was one of Europe\u0026#39;s first joint ventures and now has 21
+        member states and more than 50 cooperation agreements and scientific contacts
+        with other countries.\u003c/p\u003e\n\n\u003cp\u003eAt CERN, physicists and
+        engineers probe the fundamental structure of the universe. They use the world\u0026#39;s
+        largest and most complex scientific instrument, the Large Hadron Collider
+        (LHC), to study the basic constituents of matter. The results of their experimental
+        and theoretical work are publicly available following CERN\u0026#39;s Open
+        Access Policy.\u003c/p\u003e\n\n\u003cp\u003eCERN services implementing DOIs
+        are its institutional repository (CDS, CERN Document Server); INSPIRE-HEP,
+        a digital library for the field of High-Energy Physics run in collaboration
+        with other institutions; or the CERN Open Data Portal, which provides high
+        level and analyzable data and software from the LHC experiments.\u003c/p\u003e\n\n\u003cp\u003eFurthermore,
+        CERN is also providing DOIs to ZENODO, a multidisciplinary data repository
+        for the “long tail” of research results. It allows researchers to share and
+        preserve their output independent of size, type of material or discipline.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Switzerland","year":2014,"logo-url":"https://assets.datacite.org/images/members/CERN.png","email":"doi-service@cern.ch","website":"http://doi.web.cern.ch/","phone":null,"updated":"2016-07-31T21:30:25.000Z"}}]}'
     http_version: 
-  recorded_at: Sat, 03 Sep 2016 12:22:14 GMT
+  recorded_at: Sat, 03 Sep 2016 15:12:32 GMT
 recorded_with: VCR 2.9.3

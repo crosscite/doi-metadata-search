@@ -30,7 +30,7 @@ describe "API", type: :model, vcr: true do
   context "get_contributors" do
     it "all" do
       response = subject.get_contributors
-      expect(response[:meta]).to eq("total"=>7036)
+      expect(response[:meta]).to eq("total"=>7068)
       contributor = response[:data].first
       expect(contributor["id"]).to eq("https://github.com/mne-tools")
     end
@@ -52,7 +52,7 @@ describe "API", type: :model, vcr: true do
   context "get_datacenters" do
     it "all" do
       response = subject.get_datacenters
-      expect(response[:meta]["registration-agencies"]["datacite"]).to eq(765)
+      expect(response[:meta]["registration-agencies"]["datacite"]).to eq(773)
       datacenter = response[:data].first
       expect(datacenter["attributes"]["title"]).to eq("027.7 - Zeitschrift für Bibliothekskultur")
     end
@@ -74,9 +74,9 @@ describe "API", type: :model, vcr: true do
   context "get_members" do
     it "all" do
       response = subject.get_members
-      expect(response[:meta]["member-types"]).to eq({})
-      #member = response[:data].first
-      #expect(member["id"]).to eq("ands")
+      expect(response[:meta]["member-types"]).to eq("allocating"=>28, "non-allocating"=>8)
+      member = response[:data].first
+      expect(member["id"]).to eq("ands")
     end
 
     it "one" do
@@ -118,7 +118,7 @@ describe "API", type: :model, vcr: true do
   context "get_relations" do
     it "all" do
       response = subject.get_relations
-      expect(response[:meta]["sources"]).to eq("datacite-related"=>6294928, "datacite-orcid"=>6, "datacite-github"=>4207, "mendeley"=>2, "github"=>386, "europe-pmc-fulltext"=>42, "datacite-crossref"=>1117648)
+      expect(response[:meta]["sources"]["datacite-related"]).to eq(6294928)
       relation = response[:data].first
       expect(relation["attributes"]["subj-id"]).to eq("http://doi.org/10.12764/15500_P16")
     end
@@ -136,7 +136,7 @@ describe "API", type: :model, vcr: true do
       response = subject.get_contributions
       expect(response[:meta]["sources"]["datacite-related"]).to eq(4544)
       contribution = response[:data].first
-      expect(contribution["attributes"]["subj-id"]).to eq("http://orcid.org/0000-0002-0906-8592")
+      expect(contribution["attributes"]["subj-id"]).to eq("http://orcid.org/0000-0002-2843-8624")
     end
 
     it "by contributor" do

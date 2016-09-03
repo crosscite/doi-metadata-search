@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api/members
+    uri: https://api.datacite.org/members
     body:
       encoding: US-ASCII
       string: ''
@@ -16,6 +16,10 @@ http_interactions:
       code: 200
       message: ''
     headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Sat, 03 Sep 2016 15:12:14 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -33,28 +37,581 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 035755bc-4855-4c3e-a629-0f67a0f6b355
+      - 5f978bcc-44e7-4a73-b7af-2f7a302df613
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
-      - W/"83cbddb8865d0484f4febad445c49c4c"
+      - W/"4f3482e9491c51b43b5251067cec0308"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.665620'
+      - '0.077848'
       X-Content-Type-Options:
       - nosniff
-      Date:
-      - Sat, 03 Sep 2016 13:15:36 GMT
       X-Powered-By:
       - Phusion Passenger 5.0.30
-      Server:
-      - nginx/1.10.1 + Phusion Passenger 5.0.30
       Access-Control-Allow-Headers:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
       encoding: UTF-8
-      string: '{"data":[],"meta":{"total":0,"member-types":{},"regions":{},"years":{}}}'
+      string: '{"data":[{"id":"ands","type":"members","attributes":{"title":"Australian
+        National Data Service","description":"\u003cp\u003eThe task of the Australian
+        National Data Service (ANDS) is to build the Australian Research Data Commons
+        by creating the infrastructure to enable Australian researchers to easily
+        publish, discover, access and reuse research data.\u003c/p\u003e\n\n\u003cp\u003eOur
+        approach is to engage in partnerships with research institutions to encourage
+        better local data management, which enables structured collections to be created
+        and information about these collections to be published via \u003ca href=\"http://researchdata.ands.org.au/\"\u003eResearch
+        Data Australia\u003c/a\u003e, a discovery service provided by ANDS to help
+        researchers to find and access Australian research data. It contains descriptions
+        of research data that is held by contributing organisations and institutions.\u003c/p\u003e\n\n\u003cp\u003eANDS
+        involvement in the DataCite consortium ensures that we are active in global
+        initiatives addressing the issues surrounding research data, including those
+        of publication, citation and standards. ANDS has run its \u003ca href=\"http://ands.org.au/services/cite-my-data.html\"\u003eCite
+        My Data\u003c/a\u003e service since 2011. This service allows Australian research
+        organisations to assign DOIs to their own research collections. This, in turn,
+        provides researchers with a means of citing their published data and achieving
+        recognition for their research data output.\u003c/p\u003e\n\n\u003cp\u003eSubscribe
+        to our discussion list: \u003ca href=\"https://groups.google.com/forum/?hl=en#!forum/ands-general\"\u003eANDS
+        Google Group\u003c/a\u003e.\u003c/p\u003e\n\n\u003cp\u003eSubscribe to our
+        e-newsletter: \u003ca href=\"http://us7.campaign-archive2.com/home/?u=b542ef52e49302569068046d9\u0026amp;id=22b849a4ee\"\u003eandsUP\u003c/a\u003e.\u003c/p\u003e\n","member-type":"allocating","region":"Asia
+        Pacific","country":"Australia","year":2010,"logo-url":"https://assets.datacite.org/images/members/ands.png","email":"contact@ands.org.au","website":"http://www.ands.org.au","phone":"+61
+        3 9902 0585","updated":"2016-09-01T17:13:55.000Z"}},{"id":"bgi","type":"members","attributes":{"title":"Beijing
+        Genomics Institute","description":"\u003cp\u003eBGI was founded in 1999 with
+        the vision of using genomics to benefit mankind and has since become the largest
+        genomic organization in the world. With a focus on research and applications
+        in the healthcare, agriculture, conservation, and environmental fields, BGI
+        has a proven track record of innovative, high profile research, which has
+        generated over 1,708 publications, many in top-tier journals such as Nature
+        and Science.\u003cbr\u003e\nThe company also contributes to scientific communication
+        by publishing the international research journal GigaScience.\u003c/p\u003e\n\n\u003cp\u003eBGI’s
+        distinguished achievements have made a significant contribution to the development
+        of genomics throughout the world.  BGI’s goal is to make state-of-the-art
+        genomics highly accessible to the global research community and clinical markets
+        by integrating the industry’s broadest array of leading technologies, including
+        BGI\u0026#39;s own BGISEQ sequencing platform, economies of scale, and expert
+        bioinformatics resources.\u003c/p\u003e\n\n\u003cp\u003eBGI also offers a
+        wide portfolio of transformative genetic testing products across major diseases,
+        enabling medical providers and patients worldwide to realize the promise of
+        genomics-based diagnostics and personalized healthcare. BGI’s services and
+        solutions are available in more than 50 countries around the world.\u003c/p\u003e\n","member-type":"non-allocating","region":"Asia
+        Pacific","country":"China","year":2012,"logo-url":"https://assets.datacite.org/images/members/bgi.png","email":null,"website":"http://www.genomics.cn","phone":null,"updated":"2016-09-01T17:17:41.000Z"}},{"id":"bibsys","type":"members","attributes":{"title":"BIBSYS","description":"\u003cp\u003eBIBSYS
+        is an administrative agency set up and organised by the Ministry of Education
+        and Research in Norway. We are a service provider, focusing on the exchange,
+        storage and retrieval of data pertaining to research, teaching and learning.
+        We are collaborating with all Norwegian universities and university colleges
+        as well as research institutions.\u003c/p\u003e\n\n\u003cp\u003eWe offer researchers,
+        students and others an easy access to library resources by providing a unified
+        search service and other library services. We also deliver integrated products
+        for the internal operation for research and special libraries as well as open
+        educational resources and to some degree research related data.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Norway","year":2015,"logo-url":"https://assets.datacite.org/images/members/BIBSYS.png","email":"firmapost@bibsys.no","website":"http://www.bibsys.no/en","phone":"+47
+        958 24 000","updated":"2016-08-30T12:06:14.000Z"}},{"id":"bl","type":"members","attributes":{"title":"British
+        Library","description":"\u003cp\u003eThe British Library is the national library
+        of the United Kingdom and a founding member of DataCite. As DataCite’s only
+        member in the United Kingdom, we are working with UK organisations to ensure
+        that data generated by researchers is findable and citable so that its impact
+        on the global research landscape is recognised. We work with a range of organisations
+        who manage and archive data, from government bodies to charities, universities
+        and publishers. If you manage data in the UK and would like to find out more
+        about DataCite, please contact us directly.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"United
+        Kingdom","year":2009,"logo-url":"https://assets.datacite.org/images/members/BL.png","email":"datasets@bl.uk","website":"http://www.bl.uk/datasets","phone":"+44
+        (0) 207 412 7167","updated":"2016-07-31T22:53:09.000Z"}},{"id":"cdl","type":"members","attributes":{"title":"California
+        Digital Library","description":"\u003cp\u003eCalifornia Digital Library (CDL)
+        deals with information at every stage of its life. CDL provides technology
+        and expertise to help the University of California (UC) collect, publish,
+        access, and preserve its full range of information resources. CDL partners
+        with organizations outside the UCs on far-reaching problems.\u003c/p\u003e\n\n\u003cp\u003eCDL
+        offers DataCite DOIs and other identifiers via the EZID service, a service
+        CDL developed to support easy identifier creation and maintenance for educational,
+        non-profit, governmental and commercial clients.\u003c/p\u003e\n","member-type":"allocating","region":"Americas","country":"United
+        States","year":2009,"logo-url":"https://assets.datacite.org/images/members/CDL.png","email":"ezid@ucop.edu","website":"http://ezid.cdlib.org","phone":"1-510-987-0469","updated":"2016-07-31T22:54:26.000Z"}},{"id":"crui","type":"members","attributes":{"title":"Conferenza
+        dei Rettori delle Università Italiane","description":"\u003cp\u003eThe CRUI
+        is the association of the Italian state and private universities.\u003c/p\u003e\n\n\u003cp\u003eEstablished
+        in 1963 as a private association of Rectors, the Conference of Italian University
+        Rectors (CRUI) has over time acquired an acknowledged institutional and representative
+        role, as well as a practical capacity to influence the development of the
+        university system through its intense activity of study and experimentation.\u003c/p\u003e\n\n\u003cp\u003eSince
+        2001, the Conference of Italian University Rectors has been flanked in its
+        managerial and executive functions by the CRUI Foundation, which is entrusted
+        with developing projects and services in conformity with the strategies of
+        the Conference of Italian University Rectors.\u003c/p\u003e\n\n\u003cp\u003eCRUI
+        is member of DataCite and is its DOI allocation agent for Italy.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Italy","year":2011,"logo-url":"https://assets.datacite.org/images/members/CRUI.png","email":"rossi@fondazionecrui.it","website":"http://www.crui.it/HomePage.aspx?ref=2120","phone":"+39
+        06 684411","updated":"2016-07-31T22:55:30.000Z"}},{"id":"zbw","type":"members","attributes":{"title":"Deutsche
+        Zentralbibliothek für Wirtschaftswissenschaften am Leibniz-Informationszentrum
+        Wirtschaft","description":"\u003cp\u003eThe German National Library of Economics
+        (ZBW) – Leibniz Information Centre for Economics is the world’s largest specialist
+        library for economics, with locations in Kiel and Hamburg. The mission of
+        the ZBW is to procure and supply economic information and literature nationally.
+        The ZBW aims to offer its users comprehensive services that will facilitate
+        efficient and effective utilisation of economics-specific information. The
+        German National Library of Economics procures economic literature and subject
+        specific information from all over the world. The ZBW makes them available
+        to users by interlibrary lending and document delivery as well as by local
+        lending and uses them as the basis of its information services.\u003c/p\u003e\n\n\u003cp\u003eThe
+        ZBW also engages in national and international projects to advance the development
+        of new information services. We stand for comprehensive information supply
+        in economics through user-oriented services. Our services are based on competence,
+        innovation and cooperation. The ZBW became a member of DataCite in January
+        2011. Since 2011 the ZBW and GESIS – Leibniz-Institute for the Social Sciences
+        have been operating the Registration agency for social and economic data da|ra
+        in cooperation. Prior to the cooperation with the ZBW da|ra was developed
+        by GESIS with the intention to offer a DOI registration service for data centres
+        and research centres from the social sciences. da|ra provides DOI registration
+        services for German research data centres in the fields of social sciences
+        and economics. Besides DOI name registration we operate a comprehensive metadata
+        schema (compatible to DataCite MDS) to ensure proper citation, and in future
+        peer review, of registered social and economic data.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Germany","year":2010,"logo-url":"https://assets.datacite.org/images/members/ZBW.png","email":"r.toepfer@zbw.eu","website":"http://www.zbw.eu","phone":"+49
+        40 428 34 449","updated":"2016-07-31T21:26:56.000Z"}},{"id":"dcc","type":"members","attributes":{"title":"Digital
+        Curation Center","description":"\u003cp\u003eFunded by JISC, the Digital Curation
+        Centre (DCC) is the UK\u0026#39;s leading hub of expertise in curating digital
+        research data. We work with researchers, data scientists, data librarians,
+        senior academics and funding bodies to improve the capacity and capability
+        for research data management both within the UK and further afield. As well
+        as providing individual support to institutions, we serve the wider community
+        through a programme of training courses, workshops and roadshows. We also
+        help to build a community around digital curation through events such as the
+        Research Data Management Forum and the International Digital Curation Conference.
+        A growing number of guidance publications are available on our website covering
+        curation issues at a variety of levels: from high-level briefing papers, through
+        practical \u0026#39;how-to\u0026#39; guides, to our in-depth Curation Reference
+        Manual.\u003c/p\u003e\n","member-type":"non-allocating","region":"EMEA","country":"United
+        Kingdom","year":2010,"logo-url":"https://assets.datacite.org/images/members/DCC.png","email":"info@dcc.ac.uk","website":"http://www.dcc.ac.uk/","phone":"+44
+        131 651 1239","updated":"2016-07-31T21:27:36.000Z"}},{"id":"ethz","type":"members","attributes":{"title":"ETH
+        Zurich","description":"\u003cp\u003eThe Swiss Federal Institute of Technology
+        (ETH) Zurich is one of the leading international universities for technology
+        and the natural sciences. It has been a member of the association DataCite
+        since 2009.\u003c/p\u003e\n\n\u003cp\u003eThe ETH Zurich DOI desk enables
+        DOI names to be registered in Switzerland. It is the central point for handling
+        the registration of DOIs, and represents the registration agency at local
+        level. Technical infra-structure is provided by ETH Zurich IT Services. Structurally
+        the DOI desk forms part of the ETH-Bibliothek.\u003c/p\u003e\n\n\u003cp\u003eThe
+        ETH-Bibliothek is the largest scientific library in Switzerland and one of
+        the leading scientific and technical libraries in Europe. It is the central
+        university library for ETH Zurich and the Swiss centre for technical and scientific
+        information.\u003c/p\u003e\n\n\u003cp\u003eOrganisational units (not individuals)
+        from the field of higher education and research in Switzerland are authorised
+        to register DOIs. Digital objects can be primary data (research data) or secondary
+        data (e.g. documents in an Institutional Repository). Before registration,
+        an agreement is made with the ETH Zurich DOI desk.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Switzerland","year":2010,"logo-url":"https://assets.datacite.org/images/members/ETHZ.png","email":"doi@library.ethz.ch","website":"http://www.doi.ethz.ch","phone":"+41
+        44 632 21 35","updated":"2016-08-03T15:46:34.000Z"}},{"id":"cern","type":"members","attributes":{"title":"European
+        Organization for Nuclear Research","description":"\u003cp\u003eCERN, the European
+        Organization for Nuclear Research, is the world\u0026#39;s largest particle
+        physics laboratory. Founded in 1954 and based on the Franco-Swiss border near
+        Geneva, it was one of Europe\u0026#39;s first joint ventures and now has 21
+        member states and more than 50 cooperation agreements and scientific contacts
+        with other countries.\u003c/p\u003e\n\n\u003cp\u003eAt CERN, physicists and
+        engineers probe the fundamental structure of the universe. They use the world\u0026#39;s
+        largest and most complex scientific instrument, the Large Hadron Collider
+        (LHC), to study the basic constituents of matter. The results of their experimental
+        and theoretical work are publicly available following CERN\u0026#39;s Open
+        Access Policy.\u003c/p\u003e\n\n\u003cp\u003eCERN services implementing DOIs
+        are its institutional repository (CDS, CERN Document Server); INSPIRE-HEP,
+        a digital library for the field of High-Energy Physics run in collaboration
+        with other institutions; or the CERN Open Data Portal, which provides high
+        level and analyzable data and software from the LHC experiments.\u003c/p\u003e\n\n\u003cp\u003eFurthermore,
+        CERN is also providing DOIs to ZENODO, a multidisciplinary data repository
+        for the “long tail” of research results. It allows researchers to share and
+        preserve their output independent of size, type of material or discipline.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Switzerland","year":2014,"logo-url":"https://assets.datacite.org/images/members/CERN.png","email":"doi-service@cern.ch","website":"http://doi.web.cern.ch/","phone":null,"updated":"2016-07-31T21:30:25.000Z"}},{"id":"zbmed","type":"members","attributes":{"title":"German
+        National Library of Medicine","description":"\u003cp\u003e\u0026quot;ZB MED
+        (German National Library of Medicine) – Leibniz Information Centre for Life
+        Sciences\u0026quot; is Germany\u0026#39;s main service centre for specialist
+        information and expert research support in the field of life sciences.\u003c/p\u003e\n\n\u003cp\u003eIt
+        specialises in the fields of medicine and health, as well as nutritional,
+        environmental and agricultural science. ZB MED\u0026#39;s primary goal is
+        to support researchers and students working in the life sciences arena. To
+        achieve that goal, ZB MED offers literature and specialist information in
+        both digital and print formats –on-site and through its various portals –
+        while constantly striving to enhance and expand the services it offers.\u003c/p\u003e\n\n\u003cp\u003eZB
+        MED is a member of the DataCite consortium since its formation in 2009. ZB
+        MED provides several publishing services and promotes open access to textual
+        publications as well as data. It has launched \u003ca href=\"http://www.publisso.de/en/\"\u003ePUBLISSO\u003c/a\u003e
+        to bring all its activities around open access and open data publishing together.
+        ZB MED offers a DOI registration service for all kinds of digital material
+        from the life sciences, especially the fields of medicine, nutrition and agriculture.
+        In the life sciences, the DOI system is widespread and very well established,
+        and it provides accepted visible proof that a publication is citable. By offering
+        this service, ZB MED facilitates and promotes online publication of scientific
+        texts and data from its fields. Researchers and institutions in these fields
+        interested in DOI registration are invited to contact us.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Germany","year":2010,"logo-url":"https://assets.datacite.org/images/members/ZBMED.png","email":"doi-service@zbmed.de","website":"http://www.zbmed.de/en","phone":"+49
+        221 478 7085","updated":"2016-07-31T21:31:22.000Z"}},{"id":"tib","type":"members","attributes":{"title":"German
+        National Library of Science and Technology","description":"\u003cp\u003eThe
+        TIB is the German National Library for all areas of engineering as well as
+        architecture, chemistry, information technology, mathematics and physics.
+        We are the world\u0026#39;s largest specialised library for science and technology
+        and are part of the German research infrastructure. Our function is the comprehensive
+        procurement and archival storage of technical scientific literature from all
+        over the world. TIB was the first DOI registration agency for primary data
+        worldwide. We have been providing DOI registration services since 2005 and
+        we now work directly with over 40 data centres. TIB is one of the founding
+        members of DataCite and is currently the Business Office. We provide DOI registration
+        services for all German data centres in the fields of engineering, architecture,
+        chemistry, information technology, mathematics and physics. Our current focus
+        is on providing DOI names for primary data and grey literature.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Germany","year":2009,"logo-url":"https://assets.datacite.org/images/members/TIB.png","email":"doi-info@tib.eu","website":"
+        http://www.tib.eu","phone":"+49 511 762 14226","updated":"2016-08-01T11:13:04.000Z"}},{"id":"gwdg","type":"members","attributes":{"title":"Gesellschaft
+        für wissenschaftliche Datenverarbeitung mbH Göttingen","description":"\u003cp\u003eAs
+        the university computing centre for the Georg-August-Universität Göttingen,
+        and as a computing and IT competence centre for the Max Planck Society, we
+        offer a wide range of information and communication services for science.
+        \u003c/p\u003e\n","member-type":"non-allocating","region":"EMEA","country":"Germany","year":2013,"logo-url":"https://assets.datacite.org/images/members/GWDG.png","email":null,"website":"http://www.gwdg.de/","phone":null,"updated":"2016-07-31T21:33:22.000Z"}},{"id":"harvard","type":"members","attributes":{"title":"Harvard
+        University Library","description":"\u003cp\u003eThe Harvard Library’s holdings
+        range from traditional print collections to rapidly expanding digital resources.
+        It is the mission of the Harvard Library to provide the University\u0026#39;s
+        faculty, students, and researchers—now and in the future—with comprehensive
+        access to all of its collections and the overall record of scholarship.\u003c/p\u003e\n\n\u003cp\u003eIn
+        collaboration with the Harvard Library, the Harvard Dataverse offers DataCite
+        DOIs via the EZID service. Digital Object Identifiers (DOIs) are assigned
+        to research datasets, and then registered with DataCite to establish persistence.
+        The \u003ca href=\"https://dataverse.harvard.edu\"\u003eHarvard Dataverse
+        data repository\u003c/a\u003e, powered by the open source Dataverse Project
+        software developed at the Institute for Quantitative Social Science (IQSS),
+        is open to all scientific data, from all disciplines and researchers worldwide.
+        \u003c/p\u003e\n","member-type":"non-allocating","region":"Americas","country":"United
+        States","year":2013,"logo-url":"https://assets.datacite.org/images/members/HARVARD.png","email":"support@dataverse.org","website":"
+        http://dataverse.org","phone":null,"updated":"2016-07-31T21:34:16.000Z"}},{"id":"inist","type":"members","attributes":{"title":"Institute
+        for Scientific and Technical Information","description":"\u003cp\u003eThe
+        Institute for Scientific and Technical Information (INIST-CNRS), a unit of
+        the National Center for Scientific Research (CNRS), has been for over 25 years
+        offering services to scientists, engineers and scholarly information professionals,
+        by facilitating access to all fields of worldwide scientific research.\u003c/p\u003e\n\n\u003cp\u003eINIST
+        is running various, mostly domain-specific portals providing access to the
+        discipline’s key literature and major databases. It also offers RefDoc, a
+        platform designed for scientific and technical document supply, containing
+        more than 50 million records.\u003c/p\u003e\n\n\u003cp\u003eINIST produces
+        bibliographic databases, in science, medicine and technology, as well as in
+        social sciences and humanities. Access to information content will be increasingly
+        completed by data collections and by developments aiming at the integration
+        of research data into existing services.\u003c/p\u003e\n\n\u003cp\u003eINIST
+        has created a Research Data Coordination Team, gathering information professionals
+        from different disciplines, which aims at providing services for research
+        labs by supporting them in the management, enhancement and dissemination of
+        their data.\u003c/p\u003e\n\n\u003cp\u003eWorking currently with several French
+        data producers for the assignment of DOIs, INIST sees itself as having a key
+        role in the promotion of DataCite and persistent identifiers for digital objects
+        at a national level.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"France","year":2010,"logo-url":"https://assets.datacite.org/images/members/INIST.png","email":"datasets@inist.fr","website":"http://www.inist.fr","phone":"+33
+        383 504759","updated":"2016-07-31T21:35:45.000Z"}},{"id":"ieee","type":"members","attributes":{"title":"Institute
+        of Electrical and Electronics Engineers","description":"\u003cp\u003eIEEE
+        is the world\u0026#39;s largest professional organization for the advancement
+        of technology. IEEE\u0026#39;s core purpose is to foster technological innovation
+        and excellence for the benefit of humanity.\u003c/p\u003e\n","member-type":"non-allocating","region":"Americas","country":"United
+        States","year":2013,"logo-url":"https://assets.datacite.org/images/members/IEEE.png","email":null,"website":"https://www.ieee.org/index.html","phone":null,"updated":"2016-07-31T21:36:22.000Z"}},{"id":"icpsr","type":"members","attributes":{"title":"Inter-University
+        Consortium for Political and Social Research","description":"\u003cp\u003eAn
+        international consortium of more than 750 academic institutions and research
+        organizations established in 1962, the Inter-university Consortium for Political
+        and Social Research (ICPSR) advances and expands social and behavioral research,
+        acting as a global leader in data stewardship and providing rich data resources
+        and responsive educational opportunities for present and future generations.
+        ICPSR\u0026#39;s domain repository includes more than 65,000 datasets covering
+        a broad array of social and behavioral science topics. ICPSR also hosts several
+        specialized collections of data on education, aging, criminal justice, substance
+        abuse, terrorism, and other fields. ICPSR is a unit within the Institute for
+        Social Research at the University of Michigan and maintains its office in
+        Ann Arbor, Michigan. ICPSR\u0026#39;s educational activities include the Summer
+        Program in Quantitative Methods of Social Research, a comprehensive curriculum
+        of intensive courses in research design, statistics, data analysis, and social
+        methodology. ICPSR also leads several initiatives that encourage use of data
+        in teaching, particularly in undergraduate instruction.\u003c/p\u003e\n","member-type":"non-allocating","region":"Americas","country":"United
+        States","year":2010,"logo-url":"https://assets.datacite.org/images/members/ICPSR.png","email":"netmail@icpsr.umich.edu","website":"http://www.icpsr.umich.edu","phone":"+1
+        734 647-2200","updated":"2016-07-31T21:37:51.000Z"}},{"id":"jalc","type":"members","attributes":{"title":"Japan
+        Link Center","description":null,"member-type":"allocating","region":"Asia
+        Pacific","country":"Japan","year":2014,"logo-url":"https://assets.datacite.org/images/members/JALC.png","email":null,"website":"https://japanlinkcenter.org/top/english.html","phone":null,"updated":"2016-07-31T21:38:39.000Z"}},{"id":"kisti","type":"members","attributes":{"title":"Korea
+        Institute of Science and Technology Information","description":"\u003cp\u003eSince
+        its foundation in 1962 as the national institute for science and technology
+        information, KISTI has been contributing to the promotion of national competiveness
+        in science and technology by establishing advanced R\u0026amp;D supporting
+        infrastructure in Korea. Our infrastructure includes domestic and foreign
+        bibliographic information resources, which are served by knowledge information
+        center, supercomputing and high performance research network, which are developed
+        and managed by supercomputing center, and strategic information analysis service,
+        which is provided by information analysis center. The knowledge information
+        center provides:\u003c/p\u003e\n\n\u003cul\u003e\n\u003cli\u003eNDSL, national
+        science and technology information service portal of Korea\u003c/li\u003e\n\u003cli\u003eKESLI
+        consortium, the largest library network in Korea\u003c/li\u003e\n\u003cli\u003eNTIS,
+        one-stop service for integrated national R\u0026amp;D projects\u003c/li\u003e\n\u003cli\u003eSemantic
+        web-based technology\u003c/li\u003e\n\u003cli\u003eScientific data project,
+        aiming to deposit, access and share the scientific data in Korea\u003c/li\u003e\n\u003c/ul\u003e\n","member-type":"non-allocating","region":"Asia
+        Pacific","country":"Korea, Republic of","year":2010,"logo-url":"https://assets.datacite.org/images/members/KISTI.png","email":"stkim@kisti.re.kr","website":"http://www.kisti.re.kr/eng/","phone":"+82
+        42 869 1892","updated":"2016-09-01T17:17:04.000Z"}},{"id":"gesis","type":"members","attributes":{"title":"Leibniz
+        Institute for the Social Sciences","description":"\u003cp\u003eGESIS is the
+        largest infrastructure institution in Germany serving to promote scientific
+        research in this field. Our services can be categorized from the users’ perspective
+        according to the research data cycle. This cycle comprises data and information
+        research, study planning, including empirical research data collection and
+        storage, preparation, archiving and retrieval of research data, on up through
+        the analysis and publication phases.\u003c/p\u003e\n\n\u003cp\u003eGESIS is
+        a member of the Leibniz Association and participates in European projects
+        like European Social Survey (ESS), European Values Study (EVS), the Council
+        of European Social Science Data Archives CESSDA or OECD’s project PIAAC.\u003c/p\u003e\n\n\u003cp\u003eIn
+        February 2010 we became member of DataCite and initiated a pilot project to
+        establish a DOI registration service for social science data. Since 2011 GESIS
+        and the German National Library of Economics (ZBW) have been operating the
+        Registration agency for social and economic data da|ra. This infrastructure
+        will lay the foundations for a permanent identification, storage, localizing
+        and ultimately a reliable citability of research data in both disciplines.
+        da|ra provides DOI registration services for German research data centers
+        in the fields of social sciences and economics. Besides DOI name registration
+        we operate a comprehensive metadata schema (compatible to DataCite MDS) to
+        ensure proper citation, and in future peer review, of registered social and
+        economic data. Our current focus is on providing DOI names for primary data
+        occurring in the research data cycle. Via our open access repository SSOAR
+        we offer an additional service for open access publications.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Germany","year":2010,"logo-url":"https://assets.datacite.org/images/members/GESIS.png","email":"brigitte.hausstein@gesis(dot)org","website":"http://www.gesis.org/dara","phone":"+49
+        30 233611314","updated":"2016-07-31T21:40:37.000Z"}},{"id":"mtakik","type":"members","attributes":{"title":"Library
+        and Information Centre of the Hungarian Academy of Sciences","description":"\u003cp\u003eThe
+        Library and Information Centre of the Hungarian Academy of Sciences (the Hungarian
+        abbreviation is MTA KIK) was founded in 1826. As a library, it oversees the
+        branch libraries of the research institutes of the Academy, and functions
+        as a research library with collections in the humanities. The Library is the
+        host of the Archives of the Academy, and two special collections: Manuscripts
+        \u0026amp; Rare Books, and the Oriental Collection. As an information centre
+        it serves the Academy and its research institute network, and in certain functions
+        the whole Hungarian scientific community. It manages the national consortium
+        for the subscription of scholarly literature in electronic form (EISZ), together
+        with various scientific and bibliometric databases. The Hungarian National
+        Scientific Bibliography (MTMT) database is operated here, and the MTA KIK
+        houses the publication repository of the Academy (the REAL). The MTMT database
+        lists all PhD theses produced in Hungary, and the MTA KIK offers universities
+        DOI registration for PhD theses.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Hungary","year":2013,"logo-url":"https://assets.datacite.org/images/members/MTAKIK.png","email":"doi-info@konyvtar.mta.hu","website":"http://konyvtar.mta.hu/index_en.php","phone":"+36
+        14116100","updated":"2016-08-01T05:00:56.000Z"}},{"id":"cisti","type":"members","attributes":{"title":"National
+        Research Council Canada","description":"\u003cp\u003eThe \u003ca href=\"http://www.nrc-cnrc.gc.ca/eng/\"\u003eNational
+        Research Council (NRC)\u003c/a\u003e is the Government of Canada’s premier
+        research and technology organization (RTO) and home to the National Science
+        Library.\u003c/p\u003e\n\n\u003cp\u003eThe \u003ca href=\"http://nsl-bsn.nrc-cnrc.gc.ca/eng/home/\"\u003eNational
+        Science Library\u003c/a\u003e is an integral component in the growth of Canada’s
+        innovation capacity. The library provides \u003ca href=\"http://www.nrc-cnrc.gc.ca/eng/\"\u003eNRC\u003c/a\u003e
+        and Canada’s research community with high-value authoritative information
+        and information services in science, technology and health to accelerate innovation
+        and commercialization.\u003c/p\u003e\n\n\u003cp\u003eIn keeping with this
+        role, the library is working to ensure that the valuable data generated by
+        Canadian researchers are collected and remain findable, citable and accessible
+        for replication and further use.\u003c/p\u003e\n\n\u003cp\u003eNRC is a founding
+        member of DataCite and is its DOI allocation agent for Canada. NRC established
+        \u003ca href=\"http://www.nrc-cnrc.gc.ca/eng/publications/library_services/datacite/\"\u003eDataCite
+        Canada\u003c/a\u003e to serve as a central research dataset registration service
+        that will enable Canadian data centres to register research datasets and assign
+        digital object identifiers (DOIs) to them.\u003c/p\u003e\n","member-type":"allocating","region":"Americas","country":"Canada","year":2009,"logo-url":"https://assets.datacite.org/images/members/CISTI.png","email":"NRC.DataCiteCanada.CNRC@nrc-cnrc.gc.ca","website":"http://www.nrc-cnrc.gc.ca/eng/publications/library_services/datacite/","phone":"+1
+        800 668-1222","updated":"2016-07-31T21:43:21.000Z"}},{"id":"nrct","type":"members","attributes":{"title":"National
+        Research Council of Thailand","description":"\u003cp\u003eThe National Research
+        Council of Thailand (NRCT) was inaugurated by the National Research Council
+        Act B.E.2502 (1959) and was designated by the Cabinet as the national body
+        responsible for the implementation of research related matters. The NRCT is
+        also assigned to give comments to the Prime Minister when requested.\u003c/p\u003e\n\n\u003cp\u003eThe
+        administrative body of the NRCT is consisted of three parts; the first one
+        is the National Research Council chaired by Prime Minister, with Deputy Prime
+        Ministers as Vice Chairmen, and Ministers are Deputy Ministers as Advisors;
+        the second one is the National Research Council Executive Board; and the last
+        body is the Office of the National Research Council of Thailand headed by
+        Secretary-General.\u003c/p\u003e\n\n\u003cp\u003eVision (Years 2010 – 2016)\u003c/p\u003e\n\n\u003cp\u003eNRCT
+        is the principal organization for using research to guide the development
+        of Thailand, and is the leader in the development of Thailand’s national research
+        system.\u003c/p\u003e\n\n\u003cp\u003eStrategies\u003c/p\u003e\n\n\u003col\u003e\n\u003cli\u003e\u003cp\u003eFormulate
+        the national research policy and expenditure framework with the participation
+        of stakeholders; all involved parties follow this strategy and framework for
+        their implementation.\u003c/p\u003e\u003c/li\u003e\n\u003cli\u003e\u003cp\u003eBeing
+        the central organization for research cooperation among domestic and international
+        organization.\u003c/p\u003e\u003c/li\u003e\n\u003cli\u003e\u003cp\u003eIncrease
+        competency and strength of the National Research Council of Thailand in order
+        to establish an academic balance for sustainable development in economics,
+        society, and public well-being.\u003c/p\u003e\u003c/li\u003e\n\u003cli\u003e\u003cp\u003eOversee
+        an integrated management scheme to promote and support qualitative domestic
+        and international research results and innovations for future use by our country.\u003c/p\u003e\u003c/li\u003e\n\u003cli\u003e\u003cp\u003ePromote
+        and encourage research or research development and invention which can be
+        utilized for the country’s development.\u003c/p\u003e\u003c/li\u003e\n\u003c/ol\u003e\n","member-type":"allocating","region":"Asia
+        Pacific","country":"Thailand","year":2012,"logo-url":"https://assets.datacite.org/images/members/NRCT.png","email":"doi@nrct.go.th","website":"http://www.doi.nrct.go.th","phone":"+66
+        2 561 2445 ext 353, 570","updated":"2016-07-31T21:44:44.000Z"}},{"id":"subgoe","type":"members","attributes":{"title":"Niedersächsische
+        Staats- und Universitätsbibliothek Göttingen","description":"\u003cp\u003eThe
+        Göttingen State and University Library (Niedersächsische Staats- und Universitätsbibliothek
+        Göttingen or SUB Göttingen) is the library for Göttingen University as well
+        as the central library for the German State of Lower Saxony (with its central
+        catalogue), and the library for the Göttingen Academy of Sciences. It also
+        houses the Göttinger Digitalisierungszentrum (Center for Retrospective Digitization),
+        the GBV regional library consortium offices, and numerous projects in librarianship
+        and related fields as well as providing such online services as its virtual
+        library and vascoda. As one of the largest libraries in Germany, the Goettingen
+        SUB houses some 4½ million volumes as well as 13,000 holographs and other
+        manuscripts and 350 Nachlässe (literary remains).\u003c/p\u003e\n\n\u003cp\u003eSUB
+        Göttingen acts as a DataCite member in Germany with the focus on digital humanities
+        based on the libraries experiences gathered in historic and current roles
+        for managing Humanities knowledge resources, among them:\u003c/p\u003e\n\n\u003cul\u003e\n\u003cli\u003eSubject
+        responsibilities in the distributed collection system in Germany (SSG)\u003cbr\u003e\u003c/li\u003e\n\u003cli\u003eNational
+        function for 18th century collections in the cooperative historic national
+        library system in Germany\u003cbr\u003e\u003c/li\u003e\n\u003cli\u003eGöttingen
+        Digitization Centre (GDZ)\u003cbr\u003e\u003c/li\u003e\n\u003cli\u003eDirectory
+        of Digitized Prints in Germany (ZVDD)\u003cbr\u003e\u003c/li\u003e\n\u003cli\u003eDARIAH
+        — Humanities Infrastructure Germany (also Europe)\u003cbr\u003e\u003c/li\u003e\n\u003cli\u003eHumanities
+        Data Center\u003c/li\u003e\n\u003cli\u003eGöttingen Centre for Digital Humanities\u003c/li\u003e\n\u003c/ul\u003e\n","member-type":"allocating","region":"EMEA","country":"Germany","year":2015,"logo-url":"https://assets.datacite.org/images/members/SUBGOE.png","email":"brase@sub.uni-goettingen.de","website":"http://www.sub.uni-goettingen.de","phone":"+49
+        551 39-33878","updated":"2016-07-31T21:46:01.000Z"}},{"id":"osti","type":"members","attributes":{"title":"Office
+        of Scientific and Technical Information, US Department of Energy","description":"\u003cp\u003eOSTI
+        provides access to U.S. Department of Energy (DOE) R\u0026amp;D results published
+        in various forms using web-based searchable databases. Scientific and technical
+        information from the Manhattan Project of the 1940s to the present is available.
+        Search simplicity as well as advanced search capabilities are provided. In
+        partnership with federal agency and global sources of R\u0026amp;D information,
+        OSTI offers retrieval of U.S. and worldwide science information. OSTI ensures
+        DOE research results are accessible worldwide while bringing the world\u0026#39;s
+        research to DOE. Search across DOE science information collections. Find U.S.
+        government R\u0026amp;D results from 14 federal agencies. Access global science
+        information from over 70 countries.\u003c/p\u003e\n","member-type":"allocating","region":"Americas","country":"United
+        States","year":2010,"logo-url":"https://assets.datacite.org/images/members/OSTI.png","email":"martinm@osti.gov","website":"http://www.osti.gov","phone":"+1
+        865-576-2097","updated":"2016-07-31T21:46:57.000Z"}},{"id":"orcid","type":"members","attributes":{"title":"ORCID","description":null,"member-type":"non-allocating","region":"Americas","country":"United
+        States","year":2016,"logo-url":null,"email":null,"website":null,"phone":null,"updated":"2016-09-01T17:20:42.000Z"}},{"id":"polytech","type":"members","attributes":{"title":"Peter
+        the Great St. Petersburg Polytechnic University","description":"\u003cp\u003ePeter
+        the Great St.Petersburg Polytechnic University (SPbPU) is a national research
+        university, a multidisciplinary university ranked first in Russia in polytechnic
+        education field. February 19, 1899 is the date of the University foundation.
+        Now the university consists of 12 institutes with about 30,000 students and
+        about 6,000 stuff members. SPbPU is a member of DataCite since 2015. The membership
+        is embodied as the National Center for Research Data Identification. It is
+        the first DOI allocator in Russia for\u003cbr\u003e\nresearch data objects.
+        Academic and research organisations in Russia are encouraged to establish
+        relations with SPbPU to register DOIs.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Russian
+        Federation","year":2015,"logo-url":"https://assets.datacite.org/images/members/POLYTECH.png","email":"doi@unilib.spbstu.ru","website":"http://english.spbstu.ru","phone":"+7
+        812 552 76 54","updated":"2016-07-31T21:47:38.000Z"}},{"id":"purdue","type":"members","attributes":{"title":"Purdue
+        University Library","description":"\u003cp\u003eThe Purdue University Libraries
+        system includes the divisions of Archives and Special Collections (ASC); Health
+        and Life Sciences (HLS); Humanities, Social Sciences, Education, and Business
+        (HSSEB); and Physical Sciences, Engineering and Technology (PSET). In addition,
+        other areas within the Libraries include Collections Management, Circulation
+        and Repositories, Resource Sharing, Resource Services, Instruction and Digital
+        Program Services, and the Distributed Data Curation Center (D2C2). The Purdue
+        University Press and the University Copyright Office report to the dean of
+        libraries and the work of these units is integrated with and into the operations
+        of the Libraries. The strength of the Purdue Libraries reflects the core strengths
+        of the University – agriculture, engineering and science and the professional
+        schools of business, pharmacy, and veterinary medicine. Purdue Libraries faculty
+        are collaborating with disciplinary faculty to develop methodologies and repositories
+        for discovering, accessing, and sharing of data. The Purdue Libraries Data
+        Curation Profile is a means by which a dialogue can be structured between
+        a researcher and a librarian about data management needs of the researcher.
+        Purdue Libraries is taking an international leadership role through DataCite
+        and is assigning Digital Object Identifiers (DOIs) to datasets to allow attribution
+        and discovery.\u003c/p\u003e\n","member-type":"allocating","region":"Americas","country":"United
+        States","year":2009,"logo-url":"https://assets.datacite.org/images/members/PURDUE.png","email":"pbracke@purdue.edu","website":"http://www.lib.purdue.edu/identifiers","phone":"+1
+        765 496-3606","updated":"2016-07-31T23:38:50.000Z"}},{"id":"saeon","type":"members","attributes":{"title":"South
+        African Environmental Observation Network","description":"\u003cp\u003eEarth
+        and environmental observation science is urgently required to bring more understanding
+        and certainty about environmental change, and to enable formulation of adaptive
+        and mitigating management policies and practices, for ecosystem services ranging
+        from food security to population health. The South African Environmental Observation
+        Network (SAEON) was established in 2002 after a process of deliberation within
+        the research community. Following extensive consultation with its sister departments,
+        the Department of Science and Technology (DST) took the lead by mandating
+        and funding the National Research Foundation to manage SAEON as an institutionalised
+        network of departments, universities, science institutions and industrial
+        partners. Our responsibilities rest on three mandates: observation, information
+        and education.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"South
+        Africa","year":2014,"logo-url":"https://assets.datacite.org/images/members/SAEON.png","email":"wim@saeon.ac.za","website":"http://www.saeon.ac.za/","phone":"+27
+        12 349 7700","updated":"2016-07-31T21:49:32.000Z"}},{"id":"csic","type":"members","attributes":{"title":"Spanish
+        National Research Council","description":"\u003cp\u003eThe Spanish National
+        Research Council (CSIC) is the largest public institution dedicated to research
+        in Spain and the third largest in Europe. Belonging to the Spanish Ministry
+        of Economy and Competitiveness through the Secretary of State for Research,
+        Development and Innovation, its main objective is to develop and promote research
+        that will help bring about scientific and technological progress, and it is
+        prepared to collaborate with Spanish and foreign entities in order to achieve
+        this aim. Its mission is to foster, coordinate, develop and promote scientific
+        and technological research, of a multidisciplinary nature, in order to contribute
+        to advancing knowledge and economic, social and cultural development, as well
+        as to train staff and advise public and private entities on this matter. CSIC
+        plays an important role in scientific and technological policy, since it encompasses
+        an area that takes in everything from basic research to the transfer of knowledge
+        to the productive sector. Its research is driven by its institutes, which
+        are spread across all the autonomous regions, and its more than 15,000 staff,
+        of whom more than 3,000 are staff researchers and the same number again are
+        doctors and scientists who are still training. CSIC has 6% of all the staff
+        dedicated to Research and Development in Spain, and  generates approximately
+        20% of all scientific production in the country. It also manages a range of
+        important facilities; the most complete and extensive network of specialized
+        libraries, and also has joint research units with other research performing
+        institutions. Its multidisciplinary and multi sectorial nature means CSIC
+        covers all fields of knowledge.\u003c/p\u003e\n\n\u003cp\u003eOne important
+        component for CSIC data management is played by DIGITAL.CSIC, the largest
+        institutional repository of a research performing organization in Spain.  In
+        fact, with over 120,000 works DIGITAL.CSIC offers a wide digital collection
+        comprising publications, grey literature, datasets, software code, conference
+        objects, working papers and reports, policy documents, theses, blog postings,
+        preprint articles and many more. Further, such variety of research outputs
+        spans across 8 broad scientific areas ranging from hard sciences to social
+        sciences and humanities. CSIC involvement in the DataCite consortium ensures
+        that it will be active in global initiatives addressing the issues surrounding
+        research data, including those of publication, citation and standards. CSIC  will
+        run its Cite My Data service since 2016. This service allows CSIC’s researcher  to
+        assign DOIs to their own research datasets providing researchers with a means
+        of citing their published data and achieving recognition for their research
+        data output.\u003c/p\u003e\n\n\u003cp\u003eCurrently, CSIC only supports DOI
+        registration internally and does not provide this service to other institutions.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Spain","year":2015,"logo-url":"https://assets.datacite.org/images/members/CSIC.png","email":null,"website":"http://bibliotecas.csic.es","phone":null,"updated":"2016-08-01T11:32:44.000Z"}},{"id":"snd","type":"members","attributes":{"title":"Swedish
+        National Data Service","description":"\u003cp\u003eThe Swedish National Data
+        Service (SND) is a national infrastructure for Swedish research within the
+        humanities, social sciences and health sciences. SND offers support to Swedish
+        research by facilitating researchers’ access to data within and outside of
+        Sweden. SND also provides support and guidance to researchers throughout the
+        whole research process.\u003cbr\u003e\nAn important part of SND’s mission
+        is to gain a very good overview of existing research databases and to endeavour
+        to gain full knowledge of future databases. Our main task is to take stock
+        of databases relevant to research as well as support archiving, usage and
+        re-usage of databases and related research materials on a national level within
+        SND’s fields of responsibility.\u003c/p\u003e\n\n\u003cp\u003eSND is the Swedish
+        node in an international network of data archives (CESSDA). This network is
+        an important part of the global research infrastructure and helps SND to present
+        Swedish research outside of Sweden.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Sweden","year":2010,"logo-url":"https://assets.datacite.org/images/members/snd.png","email":"pid@snd.gu.se","website":"http://snd.gu.se/en","phone":"+46
+        31 786 12 06","updated":"2016-09-01T17:15:12.000Z"}},{"id":"estdoi","type":"members","attributes":{"title":"Tartu
+        University","description":"\u003cp\u003eThe University of Tartu (UT) is the
+        oldest research university in Estonia, established in 1632. Magazine Times
+        Higher Education (THE), the most respected compiler of the rankings of the
+        universities in the world, recently published the ranking of the best universities
+        in the world. In the rankings of 2013/2014, the University of Tartu is continuously
+        the only university from the Baltic States, which is among 3% of the best
+        universities in the world. In recent years, the scientists in UT (lead by
+        the Natural History Museum) have showed interest in publishing research data.
+        Since UT has joint projects with the Estonian University of Life Sciences,
+        the Tallinn Technological University, the Tallinn University and other Estonian
+        research institutions, DataCite Estonia is available for all scientists and
+        research institutions in Estonia. DataCite Estonia is funded by the Estonian
+        Research Council. DataCite Estonia platform is coordinated by the University
+        of Tartu Library, a leading research library in Estonia and the first library
+        openly promoting Open Access from 2009. The University of Tartu Library is
+        now also taking the lead into promoting Open Data movement as well.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Estonia","year":2014,"logo-url":"https://assets.datacite.org/images/members/estdoi.png","email":"liisi.lembinen@ut.ee","website":"http://www.ut.ee/en","phone":"+372
+        737 5700","updated":"2016-07-31T23:55:14.000Z"}},{"id":"dk","type":"members","attributes":{"title":"Technical
+        Information Center of Denmark","description":"\u003cp\u003eThe Technical Information
+        Center of Denmark is the library of the Technical University of Denmark (DTU).
+        The University offers education within all areas of technology and the natural
+        sciences and the library offers search in the metadata of 170 million articles,
+        books, e-books and journals. DTU Library is the Danish allocator for DataCite
+        and offers DOI registration for universities and other research institutions.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Denmark","year":2009,"logo-url":"https://assets.datacite.org/images/members/DK.png","email":"datacite@dtu.dk","website":"http://www.datacite.dtu.dk","phone":"+45
+        45 25 72 50","updated":"2016-07-31T21:54:06.000Z"}},{"id":"itpgrfa","type":"members","attributes":{"title":"The
+        International Treaty on Plant Genetic Resources for Food and Agriculture","description":"\u003cp\u003eThe
+        International Treaty on Plant Genetic Resource for Food and Agriculture (ITPGRFA)
+        makes easier the exchange of seeds and other building blocks of the genetic
+        diversity of the world’s food crops, stimulating research that is essential
+        in the development of climate-smart agriculture, and, therefore, also to food
+        security.  In a world where most countries depend strongly upon crops originating
+        elsewhere, the Treaty facilitates the exchange and conservation of crop genetic
+        resources amongst member nations, as well as the fair sharing of benefits
+        arising from their use.\u003c/p\u003e\n\n\u003cp\u003eThe Treaty, hosted at
+        the Food and Agriculture Organization of the United Nations in Rome, has created
+        a global genepool for food security under the direct control of all Contracting
+        Parties with several million samples of plant genetic material that facilitate
+        research for major important crops including maize, rice, wheat and cassava,
+        among others. \u003c/p\u003e\n\n\u003cp\u003eThe Treaty has also set up a
+        Global Information System to facilitate the exchange of information, based
+        on existing information systems, on scientific, technical and environmental
+        matters related to plant genetic resources for food and agriculture. The participation
+        of the Treaty in the DataCite consortium enables this System to allocate DOIs
+        to plant genetic material for the benefit of farmers, researchers, genebanks
+        and the entire plant genetic resources community.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Italy","year":2015,"logo-url":"https://assets.datacite.org/images/members/ITPGRFA.png","email":"pgrfa-treaty@fao.org","website":"http://www.planttreaty.org","phone":"+39
+        06570 53233","updated":"2016-08-01T05:00:28.000Z"}},{"id":"tind","type":"members","attributes":{"title":"TIND","description":null,"member-type":"allocating","region":"EMEA","country":"Switzerland","year":2016,"logo-url":null,"email":null,"website":null,"phone":null,"updated":"2016-09-01T17:20:12.000Z"}},{"id":"delft","type":"members","attributes":{"title":"TU
+        Delft Library","description":"\u003cp\u003eThe TU Delft Library is the hub
+        of knowledge for technical and scientific information and the largest technical-scientific
+        library in the Netherlands. We support research and education at the national
+        level and are part of the Delft University of Technology. TU Delft Library
+        is a founding member of DataCite and a regional office for the Netherlands.\u003c/p\u003e\n\n\u003cp\u003eTU
+        Delft Library has established DataCite Netherlands to serve as a central research
+        dataset registration service that will enable Dutch research organizations
+        to register research datasets and assign digital object identifiers (DOIs)
+        to them. Our aim is to support researchers by improving access to research
+        data and to increase acceptance of the research data as legitimate, citable
+        contributions to scientific record through trustworthy registration and identification
+        of datasets. The current focus of DataCite Netherlands is on promoting the
+        use of digital object identifiers for datasets.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Netherlands","year":2009,"logo-url":"https://assets.datacite.org/images/members/DELFT.png","email":"library@tudelft.nl","website":"http://www.library.tudelft.nl/en","phone":"+31
+        15 27 85678","updated":"2016-07-31T23:38:25.000Z"}}],"meta":{"total":36,"member-types":{"allocating":28,"non-allocating":8},"regions":{"amer":8,"apac":5,"emea":23},"years":{"2016":2,"2015":5,"2014":4,"2013":4,"2012":2,"2011":1,"2010":11,"2009":7}}}'
     http_version: 
-  recorded_at: Sat, 03 Sep 2016 13:15:36 GMT
+  recorded_at: Sat, 03 Sep 2016 15:12:14 GMT
 recorded_with: VCR 2.9.3

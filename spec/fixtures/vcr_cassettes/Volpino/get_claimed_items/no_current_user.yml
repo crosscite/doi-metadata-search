@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api/works?offset=0&query=martin%20fenner&rows=25
+    uri: https://api.datacite.org/works?offset=0&query=martin%20fenner&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -16,6 +16,10 @@ http_interactions:
       code: 200
       message: ''
     headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Sat, 03 Sep 2016 15:12:50 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -33,7 +37,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - b4d765d4-35fa-4b98-9caa-45a1fd02b26f
+      - 00020d3e-11f9-4f87-a98b-0471fbcbd9cd
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
@@ -41,15 +45,11 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '1.685760'
+      - '1.235612'
       X-Content-Type-Options:
       - nosniff
-      Date:
-      - Sat, 03 Sep 2016 14:10:57 GMT
       X-Powered-By:
       - Phusion Passenger 5.0.30
-      Server:
-      - nginx/1.10.1 + Phusion Passenger 5.0.30
       Access-Control-Allow-Headers:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
@@ -435,5 +435,5 @@ http_interactions:
         Zürich, ZORA","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}},{"id":"zbmed.gms","type":"publishers","attributes":{"title":"German
         Medical Science","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}}],"meta":{"resource-types":{"dataset":64,"text":22,"software":6,"collection":2},"years":{"2016":6,"2015":39,"2014":15,"2013":26,"2012":6,"2010":1,"2007":1,"1981":1,"1973":1},"publishers":{"cdl.digsci":48,"estdoi.bio":21,"cern.zenodo":14,"tib.handbuch":7,"ethz.seals":2,"cern.jacow":1,"ethz.boris":1,"ethz.zora":1,"zbmed.gms":1},"total":96}}'
     http_version: 
-  recorded_at: Sat, 03 Sep 2016 14:10:57 GMT
+  recorded_at: Sat, 03 Sep 2016 15:12:50 GMT
 recorded_with: VCR 2.9.3

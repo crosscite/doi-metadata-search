@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api/relations?offset=0&rows=25
+    uri: https://api.datacite.org/relations?offset=0&rows=25
     body:
       encoding: US-ASCII
       string: ''

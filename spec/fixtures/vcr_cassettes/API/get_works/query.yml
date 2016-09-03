@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api/works?offset=0&query=mabbett&rows=25
+    uri: https://api.datacite.org/works?offset=0&query=mabbett&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -16,6 +16,10 @@ http_interactions:
       code: 200
       message: ''
     headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Sat, 03 Sep 2016 15:12:37 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -33,7 +37,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - fc52fbd4-8221-4dcc-b297-3d4c52839414
+      - 70a85868-1cdf-44b4-a936-ac6aeec3c2a7
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
@@ -41,15 +45,11 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '1.480822'
+      - '0.615182'
       X-Content-Type-Options:
       - nosniff
-      Date:
-      - Sat, 03 Sep 2016 12:22:27 GMT
       X-Powered-By:
       - Phusion Passenger 5.0.30
-      Server:
-      - nginx/1.10.1 + Phusion Passenger 5.0.30
       Access-Control-Allow-Headers:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
@@ -92,5 +92,5 @@ http_interactions:
         Paper","type":"report","license":null,"publisher-id":"tib.r-gate","member-id":"tib","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2015-12-18T02:42:30Z","updated":"2015-12-18T02:42:30Z"}},{"id":"dataset","type":"resource-types","attributes":{"title":"Dataset","updated":"2014-10-16"}},{"id":"text","type":"resource-types","attributes":{"title":"Text","updated":"2014-10-16"}},{"id":"cdl.digsci","type":"publishers","attributes":{"title":"Digital
         Science","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}},{"id":"tib.r-gate","type":"publishers","attributes":{"title":"ResearchGate","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}}],"meta":{"resource-types":{"dataset":15,"text":1},"years":{"2016":6,"2015":10},"publishers":{"cdl.digsci":15,"tib.r-gate":1},"total":16}}'
     http_version: 
-  recorded_at: Sat, 03 Sep 2016 12:22:27 GMT
+  recorded_at: Sat, 03 Sep 2016 15:12:37 GMT
 recorded_with: VCR 2.9.3

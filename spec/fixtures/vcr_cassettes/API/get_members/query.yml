@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api/members?query=tib
+    uri: https://api.datacite.org/members?query=tib
     body:
       encoding: US-ASCII
       string: ''
@@ -17,9 +17,9 @@ http_interactions:
       message: ''
     headers:
       Server:
-      - nginx/1.11.2
+      - nginx/1.11.3
       Date:
-      - Tue, 16 Aug 2016 18:14:59 GMT
+      - Sat, 03 Sep 2016 15:12:13 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,7 +37,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 870ccb6a-62d7-41e5-877d-9c64239343b8
+      - 1393a48b-5bb8-4071-b103-b00a42b5e5a5
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
@@ -45,7 +45,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.022875'
+      - '0.026965'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -69,6 +69,6 @@ http_interactions:
         chemistry, information technology, mathematics and physics. Our current focus
         is on providing DOI names for primary data and grey literature.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Germany","year":2009,"logo-url":"https://assets.datacite.org/images/members/TIB.png","email":"doi-info@tib.eu","website":"
         http://www.tib.eu","phone":"+49 511 762 14226","updated":"2016-08-01T11:13:04.000Z"}}],"meta":{"total":1,"member-types":{"allocating":1},"regions":{"emea":1},"years":{"2009":1}}}'
-    http_version:
-  recorded_at: Tue, 16 Aug 2016 18:14:59 GMT
+    http_version: 
+  recorded_at: Sat, 03 Sep 2016 15:12:13 GMT
 recorded_with: VCR 2.9.3

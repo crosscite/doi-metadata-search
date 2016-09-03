@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api/sources?id=datacite-crossref
+    uri: https://api.datacite.org/sources?id=datacite-crossref
     body:
       encoding: US-ASCII
       string: ''
@@ -16,6 +16,10 @@ http_interactions:
       code: 200
       message: ''
     headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Sat, 03 Sep 2016 15:12:15 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -33,30 +37,26 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 3bd1716f-460b-4c43-9bc2-895a851a461b
+      - 373251cb-ffac-472f-82d2-d7e8df1cff6f
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
-      - W/"9dc4b0a16e4c82aa15b8021c960567c2"
+      - W/"ee35bf6caaff2067ff6b9645e5e640ca"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.723846'
+      - '0.040857'
       X-Content-Type-Options:
       - nosniff
-      Date:
-      - Sat, 03 Sep 2016 12:22:09 GMT
       X-Powered-By:
       - Phusion Passenger 5.0.30
-      Server:
-      - nginx/1.10.1 + Phusion Passenger 5.0.30
       Access-Control-Allow-Headers:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
       encoding: UTF-8
       string: '{"data":[{"id":"datacite-crossref","type":"sources","attributes":{"title":"DataCite
         (Crossref)","description":"Import works with Crossref DOIs as relatedIdentifier
-        via the DataCite Solr API.","state":"active","group-id":"relations","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-09-03T12:05:10Z"}},{"id":"relations","type":"groups","attributes":{"title":"Relations","sources":["crossref_datacite","datacite_crossref","datacite_github","datacite_related","europe_pmc_fulltext","plos_fulltext"],"updated":"2016-03-28T15:25:06Z"}}]}'
+        via the DataCite Solr API.","state":"active","group-id":"relations","work-count":19905,"relation-count":225460,"result-count":74419,"by-day":{"with-results":3,"without-results":0,"not-updated":225402},"by-month":{"with-results":79,"without-results":204,"not-updated":225122},"updated":"2016-09-03T14:37:20Z"}},{"id":"relations","type":"groups","attributes":{"title":"Relations","sources":["crossref_datacite","datacite_crossref","datacite_github","datacite_related","europe_pmc_fulltext","plos_fulltext"],"updated":"2016-03-28T15:25:06Z"}}]}'
     http_version: 
-  recorded_at: Sat, 03 Sep 2016 12:22:09 GMT
+  recorded_at: Sat, 03 Sep 2016 15:12:15 GMT
 recorded_with: VCR 2.9.3
