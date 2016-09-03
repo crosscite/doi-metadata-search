@@ -23,7 +23,7 @@ ENV['SITE_TITLE'] ||= "DataCite Search"
 ENV['LOG_LEVEL'] ||= "info"
 ENV['RA'] ||= "datacite"
 ENV['TRUSTED_IP'] ||= "172.0.0.0/8"
-ENV['API_URL'] ||= "http://api.datacite.org"
+ENV['API_URL'] ||= "https://api.datacite.org"
 
 env_vars = %w(SITE_TITLE LOG_LEVEL RA API_URL SECRET_KEY_BASE)
 env_vars.each { |env| fail ArgumentError,  "ENV[#{env}] is not set" unless ENV[env].present? }
@@ -70,8 +70,8 @@ configure do
   # Work around rack protection referrer bug
   set :protection, except: :json_csrf
 
-  # Set Logger
-  set :logger, Logger.new(STDOUT)
+  # Enable logging
+  enable :logging
 
   # Citation format types
   set :citation_formats,
@@ -91,7 +91,7 @@ configure do
   # Google analytics event tracking
   set :ga, Gabba::Gabba.new(ENV['GABBA_COOKIE'], ENV['GABBA_URL']) if ENV['GABBA_COOKIE']
 
-  # optionally use Bugsnag for error logging
+  # optionally use Bugsnag for error tracking
   if ENV['BUGSNAG_KEY']
     require 'bugsnag'
     Bugsnag.configure do |config|
@@ -111,6 +111,9 @@ configure :development do
   use BetterErrors::Middleware
   BetterErrors::Middleware.allow_ip! ENV['TRUSTED_IP']
   BetterErrors.application_root = File.expand_path('..', __FILE__)
+
+  enable :raise_errors, :dump_errors
+  # disable :show_exceptions
 end
 
 after do
@@ -138,16 +141,7 @@ get '/works' do
   end
 
   # check for existing claims if user is logged in
-  if current_user
-    claims = get_claims(current_user, works)
-    works = Array(claims.fetch(:data, []))
-
-    # check for errors
-    if claims.fetch(:errors, []).present?
-      error = claims.fetch(:errors, []).first
-      @claims_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
-    end
-  end
+  works = get_claimed_items(current_user, works) if current_user
 
   @works = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
     pager.replace works
@@ -188,8 +182,7 @@ get %r{/works/(.+)} do
 
   # check for existing claims if user is logged in and work is registered with DataCite
   if current_user && works.first.fetch("attributes", {}).fetch("registration-agency-id", nil) == "datacite"
-    result = get_claims(current_user, works)
-    works = Array(result.fetch(:data, []))
+    works = get_claimed_items(current_user, works)
   end
 
   @work = works.first
@@ -210,16 +203,13 @@ get %r{/works/(.+)} do
   @meta["relation-types"] = relations.fetch(:meta, {}).fetch("relation-types", {})
   @meta["relation-sources"] = relations.fetch(:meta, {}).fetch("sources", {})
 
-  @relations= Array(relations.fetch(:data, [])).select {|item| item["type"] == "relations" }
+  relations= Array(relations.fetch(:data, [])).select {|item| item["type"] == "relations" }
 
   # check for existing claims if user is logged in
-  if current_user
-    result = get_claims(current_user, @relations)
-    @relations = Array(result.fetch(:data, []))
-  end
+  works = get_claimed_items(current_user, relations) if current_user
 
   @relations = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["relation-total"]) do |pager|
-    pager.replace @relations
+    pager.replace relations
   end
 
   params[:model] = "works"
@@ -270,6 +260,10 @@ get '/contributors/:id' do
 
   collection = get_contributions("contributor-id" => id, "source-id" => params["source-id"], offset: offset)
   contributions = Array(collection.fetch(:data, [])).select {|item| item["type"] == "contributions" }
+
+  # check for existing claims if user is logged in
+  contributions = get_claimed_items(current_user, contributions) if current_user
+
   @meta = collection[:meta]
   @contribution_sources = Array(collection.fetch(:data, [])).select {|item| item["type"] == "sources" }
   @meta["contribution-total"] = collection.fetch(:meta, {}).fetch("total", 0)
@@ -332,6 +326,9 @@ get '/data-centers/:id' do
     @works_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
   end
 
+  # check for existing claims if user is logged in
+  works = get_claimed_items(current_user, works) if current_user
+
   @works = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
     pager.replace works
   end
@@ -384,6 +381,9 @@ get '/members/:id' do
     error = collection.fetch(:errors, []).first
     @works_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
   end
+
+  # check for existing claims if user is logged in
+  works = get_claimed_items(current_user, works) if current_user
 
   @works = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
     pager.replace works
@@ -438,6 +438,9 @@ get '/sources/:id' do
     @work_types = Array(collection.fetch(:data, [])).select {|item| item["type"] == "work-types" }
     @meta = collection[:meta]
 
+    # check for existing claims if user is logged in
+    works = get_claimed_items(current_user, works) if current_user
+
     @works = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
       pager.replace works
     end
@@ -448,6 +451,9 @@ get '/sources/:id' do
     @meta = collection[:meta]
     @meta["contribution-total"] = collection.fetch(:meta, {}).fetch("total", 0)
     @meta["contribution-sources"] = collection.fetch(:meta, {}).fetch("sources", {})
+
+    # check for existing claims if user is logged in
+    contributions = get_claimed_items(current_user, contributions) if current_user
 
     @contributions = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["contribution-total"]) do |pager|
       pager.replace contributions

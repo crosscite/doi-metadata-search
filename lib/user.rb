@@ -1,16 +1,14 @@
 require 'sinatra/base'
 
 class User
-  attr_accessor :name, :uid, :role, :api_key, :expires_at, :orcid
+  attr_accessor :name, :uid, :email, :role, :api_key, :orcid
 
-  def initialize(auth_hash={})
-    @uid = auth_hash.fetch("uid", nil)
-
-    info = auth_hash.fetch("info", {})
-    @name = info.fetch("name", nil)
-    @role = info.fetch("role", nil)
-    @expires_at = info.fetch("expires_at", nil)
-    @api_key = info.fetch("api_key", nil)
+  def initialize(jwt={})
+    @uid = jwt.fetch("uid", nil)
+    @name = jwt.fetch("name", nil)
+    @email = jwt.fetch("email", nil)
+    @role = jwt.fetch("role", nil)
+    @api_key = jwt.fetch("api_key", nil)
   end
 
   alias_method :orcid, :uid

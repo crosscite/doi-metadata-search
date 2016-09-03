@@ -3,10 +3,10 @@ require 'sinatra/base'
 module Sinatra
   module SessionHelper
     def current_user
-      @current_user ||= session[:auth].present? ? User.new(session[:auth]) : nil
+      @current_user ||= cookies[:jwt].present? ? User.new((JWT.decode cookies[:jwt], ENV['JWT_SECRET_KEY']).first) : nil
     end
 
-    def signed_in?
+    def user_signed_in?
       !!current_user
     end
 
