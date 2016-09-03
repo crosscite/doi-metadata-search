@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datacite.org/works?offset=0&query=mabbett&rows=25
+    uri: http://api/works?offset=0&query=mabbett&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -16,10 +16,6 @@ http_interactions:
       code: 200
       message: ''
     headers:
-      Server:
-      - nginx/1.11.2
-      Date:
-      - Tue, 16 Aug 2016 09:46:09 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,7 +33,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 6a06c0b5-2ffa-4683-8f4e-e5ffd56f90ab
+      - fc52fbd4-8221-4dcc-b297-3d4c52839414
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
@@ -45,259 +41,56 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.230733'
+      - '1.480822'
       X-Content-Type-Options:
       - nosniff
+      Date:
+      - Sat, 03 Sep 2016 12:22:27 GMT
       X-Powered-By:
       - Phusion Passenger 5.0.30
+      Server:
+      - nginx/1.10.1 + Phusion Passenger 5.0.30
       Access-Control-Allow-Headers:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        eyJkYXRhIjpbeyJpZCI6Imh0dHA6Ly9kb2kub3JnLzEwLjYwODQvTTkuRklH
-        U0hBUkUuMjkwMzMxNCIsInR5cGUiOiJ3b3JrcyIsImF0dHJpYnV0ZXMiOnsi
-        ZG9pIjoiMTAuNjA4NC9NOS5GSUdTSEFSRS4yOTAzMzE0IiwidXJsIjpudWxs
-        LCJhdXRob3IiOlt7ImxpdGVyYWwiOiJBbmR5IE1hYmJldHQiLCJvcmNpZCI6
-        Imh0dHA6Ly9vcmNpZC5vcmcvMDAwMC0wMDAxLTU4ODItNjgyMyJ9XSwidGl0
-        bGUiOiJXaGF0IGlzIFdpa2lkYXRhPyIsImNvbnRhaW5lci10aXRsZSI6IkZp
-        Z3NoYXJlIiwiZGVzY3JpcHRpb24iOm51bGwsInJlc291cmNlLXR5cGUtZ2Vu
-        ZXJhbCI6ImRhdGFzZXQiLCJyZXNvdXJjZS10eXBlIjoiRGF0YXNldCIsInR5
-        cGUiOiJkYXRhc2V0IiwibGljZW5zZSI6Imh0dHBzOi8vY3JlYXRpdmVjb21t
-        b25zLm9yZy9saWNlbnNlcy9ieS8zLjAvdXMvIiwicHVibGlzaGVyLWlkIjoi
-        Y2RsLmRpZ3NjaSIsIm1lbWJlci1pZCI6ImNkbCIsInJlZ2lzdHJhdGlvbi1h
-        Z2VuY3ktaWQiOiJkYXRhY2l0ZSIsInJlc3VsdHMiOnt9LCJwdWJsaXNoZWQi
-        OiIyMDE2IiwiZGVwb3NpdGVkIjoiMjAxNi0wMi0yN1QwMjo0OTo0M1oiLCJ1
-        cGRhdGVkIjoiMjAxNi0wMi0yN1QwMjo0OTo0M1oifX0seyJpZCI6Imh0dHA6
-        Ly9kb2kub3JnLzEwLjYwODQvTTkuRklHU0hBUkUuMjkwMzMxNC5WMSIsInR5
-        cGUiOiJ3b3JrcyIsImF0dHJpYnV0ZXMiOnsiZG9pIjoiMTAuNjA4NC9NOS5G
-        SUdTSEFSRS4yOTAzMzE0LlYxIiwidXJsIjpudWxsLCJhdXRob3IiOlt7Imxp
-        dGVyYWwiOiJBbmR5IE1hYmJldHQiLCJvcmNpZCI6Imh0dHA6Ly9vcmNpZC5v
-        cmcvMDAwMC0wMDAxLTU4ODItNjgyMyJ9XSwidGl0bGUiOiJXaGF0IGlzIFdp
-        a2lkYXRhPyIsImNvbnRhaW5lci10aXRsZSI6IkZpZ3NoYXJlIiwiZGVzY3Jp
-        cHRpb24iOm51bGwsInJlc291cmNlLXR5cGUtZ2VuZXJhbCI6ImRhdGFzZXQi
-        LCJyZXNvdXJjZS10eXBlIjoiRGF0YXNldCIsInR5cGUiOiJkYXRhc2V0Iiwi
-        bGljZW5zZSI6Imh0dHBzOi8vY3JlYXRpdmVjb21tb25zLm9yZy9saWNlbnNl
-        cy9ieS8zLjAvdXMvIiwicHVibGlzaGVyLWlkIjoiY2RsLmRpZ3NjaSIsIm1l
-        bWJlci1pZCI6ImNkbCIsInJlZ2lzdHJhdGlvbi1hZ2VuY3ktaWQiOiJkYXRh
-        Y2l0ZSIsInJlc3VsdHMiOnt9LCJwdWJsaXNoZWQiOiIyMDE2IiwiZGVwb3Np
-        dGVkIjoiMjAxNi0wMi0yN1QwMjo0OTo0NVoiLCJ1cGRhdGVkIjoiMjAxNi0w
-        Mi0yN1QwMjo0OTo0NVoifX0seyJpZCI6Imh0dHA6Ly9kb2kub3JnLzEwLjYw
-        ODQvTTkuRklHU0hBUkUuMjkwNDA4MiIsInR5cGUiOiJ3b3JrcyIsImF0dHJp
-        YnV0ZXMiOnsiZG9pIjoiMTAuNjA4NC9NOS5GSUdTSEFSRS4yOTA0MDgyIiwi
-        dXJsIjpudWxsLCJhdXRob3IiOlt7ImxpdGVyYWwiOiJBbmR5IE1hYmJldHQi
-        LCJvcmNpZCI6Imh0dHA6Ly9vcmNpZC5vcmcvMDAwMC0wMDAxLTU4ODItNjgy
-        MyJ9XSwidGl0bGUiOiJXaGF0IGlzIFdpa2lkYXRhPyAoT1NNIHZlcnNpb24p
-        IiwiY29udGFpbmVyLXRpdGxlIjoiRmlnc2hhcmUiLCJkZXNjcmlwdGlvbiI6
-        bnVsbCwicmVzb3VyY2UtdHlwZS1nZW5lcmFsIjoiZGF0YXNldCIsInJlc291
-        cmNlLXR5cGUiOiJEYXRhc2V0IiwidHlwZSI6ImRhdGFzZXQiLCJsaWNlbnNl
-        IjoiaHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LzMu
-        MC91cy8iLCJwdWJsaXNoZXItaWQiOiJjZGwuZGlnc2NpIiwibWVtYmVyLWlk
-        IjoiY2RsIiwicmVnaXN0cmF0aW9uLWFnZW5jeS1pZCI6ImRhdGFjaXRlIiwi
-        cmVzdWx0cyI6e30sInB1Ymxpc2hlZCI6IjIwMTYiLCJkZXBvc2l0ZWQiOiIy
-        MDE2LTAyLTI3VDAyOjU4OjI1WiIsInVwZGF0ZWQiOiIyMDE2LTAyLTI3VDAy
-        OjU4OjI1WiJ9fSx7ImlkIjoiaHR0cDovL2RvaS5vcmcvMTAuNjA4NC9NOS5G
-        SUdTSEFSRS4yOTA0MDgyLlYxIiwidHlwZSI6IndvcmtzIiwiYXR0cmlidXRl
-        cyI6eyJkb2kiOiIxMC42MDg0L005LkZJR1NIQVJFLjI5MDQwODIuVjEiLCJ1
-        cmwiOm51bGwsImF1dGhvciI6W3sibGl0ZXJhbCI6IkFuZHkgTWFiYmV0dCIs
-        Im9yY2lkIjoiaHR0cDovL29yY2lkLm9yZy8wMDAwLTAwMDEtNTg4Mi02ODIz
-        In1dLCJ0aXRsZSI6IldoYXQgaXMgV2lraWRhdGE/IChPU00gdmVyc2lvbiki
-        LCJjb250YWluZXItdGl0bGUiOiJGaWdzaGFyZSIsImRlc2NyaXB0aW9uIjpu
-        dWxsLCJyZXNvdXJjZS10eXBlLWdlbmVyYWwiOiJkYXRhc2V0IiwicmVzb3Vy
-        Y2UtdHlwZSI6IkRhdGFzZXQiLCJ0eXBlIjoiZGF0YXNldCIsImxpY2Vuc2Ui
-        OiJodHRwczovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5zZXMvYnkvMy4w
-        L3VzLyIsInB1Ymxpc2hlci1pZCI6ImNkbC5kaWdzY2kiLCJtZW1iZXItaWQi
-        OiJjZGwiLCJyZWdpc3RyYXRpb24tYWdlbmN5LWlkIjoiZGF0YWNpdGUiLCJy
-        ZXN1bHRzIjp7fSwicHVibGlzaGVkIjoiMjAxNiIsImRlcG9zaXRlZCI6IjIw
-        MTYtMDItMjdUMDI6NTg6MjZaIiwidXBkYXRlZCI6IjIwMTYtMDItMjdUMDI6
-        NTg6MjZaIn19LHsiaWQiOiJodHRwOi8vZG9pLm9yZy8xMC42MDg0L005LkZJ
-        R1NIQVJFLjEzMzc5NTMuVjEiLCJ0eXBlIjoid29ya3MiLCJhdHRyaWJ1dGVz
-        Ijp7ImRvaSI6IjEwLjYwODQvTTkuRklHU0hBUkUuMTMzNzk1My5WMSIsInVy
-        bCI6bnVsbCwiYXV0aG9yIjpbeyJsaXRlcmFsIjoiQW5keSBNYWJiZXR0Iiwi
-        b3JjaWQiOiJodHRwOi8vb3JjaWQub3JnLzAwMDAtMDAwMS01ODgyLTY4MjMi
-        fV0sInRpdGxlIjoiT1JDSUQgaW4gV2lraXBlZGlhIiwiY29udGFpbmVyLXRp
-        dGxlIjoiRmlnc2hhcmUiLCJkZXNjcmlwdGlvbiI6bnVsbCwicmVzb3VyY2Ut
-        dHlwZS1nZW5lcmFsIjoiZGF0YXNldCIsInJlc291cmNlLXR5cGUiOiJEYXRh
-        c2V0IiwidHlwZSI6ImRhdGFzZXQiLCJsaWNlbnNlIjoiaHR0cHM6Ly9jcmVh
-        dGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LzMuMC91cy8iLCJwdWJsaXNo
-        ZXItaWQiOiJjZGwuZGlnc2NpIiwibWVtYmVyLWlkIjoiY2RsIiwicmVnaXN0
-        cmF0aW9uLWFnZW5jeS1pZCI6ImRhdGFjaXRlIiwicmVzdWx0cyI6e30sInB1
-        Ymxpc2hlZCI6IjIwMTUiLCJkZXBvc2l0ZWQiOiIyMDE2LTAxLTE5VDE2OjM2
-        OjAwWiIsInVwZGF0ZWQiOiIyMDE2LTAxLTE5VDE2OjM2OjAwWiJ9fSx7Imlk
-        IjoiaHR0cDovL2RvaS5vcmcvMTAuNjA4NC9NOS5GSUdTSEFSRS4xMzM3OTUz
-        LlYyIiwidHlwZSI6IndvcmtzIiwiYXR0cmlidXRlcyI6eyJkb2kiOiIxMC42
-        MDg0L005LkZJR1NIQVJFLjEzMzc5NTMuVjIiLCJ1cmwiOm51bGwsImF1dGhv
-        ciI6W3sibGl0ZXJhbCI6IkFuZHkgTWFiYmV0dCIsIm9yY2lkIjoiaHR0cDov
-        L29yY2lkLm9yZy8wMDAwLTAwMDEtNTg4Mi02ODIzIn1dLCJ0aXRsZSI6Ik9S
-        Q0lEIGluIFdpa2lwZWRpYSwgV2lraWRhdGEgYW5kIFdpa2ltZWRpYSBDb21t
-        b25zIiwiY29udGFpbmVyLXRpdGxlIjoiRmlnc2hhcmUiLCJkZXNjcmlwdGlv
-        biI6bnVsbCwicmVzb3VyY2UtdHlwZS1nZW5lcmFsIjoiZGF0YXNldCIsInJl
-        c291cmNlLXR5cGUiOiJEYXRhc2V0IiwidHlwZSI6ImRhdGFzZXQiLCJsaWNl
-        bnNlIjoiaHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5
-        LzMuMC91cy8iLCJwdWJsaXNoZXItaWQiOiJjZGwuZGlnc2NpIiwibWVtYmVy
-        LWlkIjoiY2RsIiwicmVnaXN0cmF0aW9uLWFnZW5jeS1pZCI6ImRhdGFjaXRl
-        IiwicmVzdWx0cyI6e30sInB1Ymxpc2hlZCI6IjIwMTUiLCJkZXBvc2l0ZWQi
-        OiIyMDE2LTAxLTE5VDE2OjM2OjA2WiIsInVwZGF0ZWQiOiIyMDE2LTAxLTE5
-        VDE2OjM2OjA2WiJ9fSx7ImlkIjoiaHR0cDovL2RvaS5vcmcvMTAuNjA4NC9N
-        OS5GSUdTSEFSRS4xMzcxMTE0LlYxIiwidHlwZSI6IndvcmtzIiwiYXR0cmli
-        dXRlcyI6eyJkb2kiOiIxMC42MDg0L005LkZJR1NIQVJFLjEzNzExMTQuVjEi
-        LCJ1cmwiOm51bGwsImF1dGhvciI6W3sibGl0ZXJhbCI6IkFuZHkgTWFiYmV0
-        dCIsIm9yY2lkIjoiaHR0cDovL29yY2lkLm9yZy8wMDAwLTAwMDEtNTg4Mi02
-        ODIzIn1dLCJ0aXRsZSI6IjIwMTUtMDQtMDMgV2lraUFyYWJpYSBHTEFNLXdp
-        a2kiLCJjb250YWluZXItdGl0bGUiOiJGaWdzaGFyZSIsImRlc2NyaXB0aW9u
-        IjpudWxsLCJyZXNvdXJjZS10eXBlLWdlbmVyYWwiOiJkYXRhc2V0IiwicmVz
-        b3VyY2UtdHlwZSI6IkRhdGFzZXQiLCJ0eXBlIjoiZGF0YXNldCIsImxpY2Vu
-        c2UiOiJodHRwczovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5zZXMvYnkv
-        My4wL3VzLyIsInB1Ymxpc2hlci1pZCI6ImNkbC5kaWdzY2kiLCJtZW1iZXIt
-        aWQiOiJjZGwiLCJyZWdpc3RyYXRpb24tYWdlbmN5LWlkIjoiZGF0YWNpdGUi
-        LCJyZXN1bHRzIjp7fSwicHVibGlzaGVkIjoiMjAxNSIsImRlcG9zaXRlZCI6
-        IjIwMTYtMDEtMTlUMTg6MzU6NDdaIiwidXBkYXRlZCI6IjIwMTYtMDEtMTlU
-        MTg6MzU6NDdaIn19LHsiaWQiOiJodHRwOi8vZG9pLm9yZy8xMC42MDg0L005
-        LkZJR1NIQVJFLjE0MTk2MDEuVjEiLCJ0eXBlIjoid29ya3MiLCJhdHRyaWJ1
-        dGVzIjp7ImRvaSI6IjEwLjYwODQvTTkuRklHU0hBUkUuMTQxOTYwMS5WMSIs
-        InVybCI6bnVsbCwiYXV0aG9yIjpbeyJsaXRlcmFsIjoiQW5keSBNYWJiZXR0
-        Iiwib3JjaWQiOiJodHRwOi8vb3JjaWQub3JnLzAwMDAtMDAwMS01ODgyLTY4
-        MjMifV0sInRpdGxlIjoiMjAxNS0wNS0xMyAtIEF1dGhvcml0eSBjb250cm9s
-        IGluIFdpa2lwZWRpYSAtIFFhdGFyIiwiY29udGFpbmVyLXRpdGxlIjoiRmln
-        c2hhcmUiLCJkZXNjcmlwdGlvbiI6bnVsbCwicmVzb3VyY2UtdHlwZS1nZW5l
-        cmFsIjoiZGF0YXNldCIsInJlc291cmNlLXR5cGUiOiJEYXRhc2V0IiwidHlw
-        ZSI6ImRhdGFzZXQiLCJsaWNlbnNlIjoiaHR0cHM6Ly9jcmVhdGl2ZWNvbW1v
-        bnMub3JnL2xpY2Vuc2VzL2J5LzMuMC91cy8iLCJwdWJsaXNoZXItaWQiOiJj
-        ZGwuZGlnc2NpIiwibWVtYmVyLWlkIjoiY2RsIiwicmVnaXN0cmF0aW9uLWFn
-        ZW5jeS1pZCI6ImRhdGFjaXRlIiwicmVzdWx0cyI6e30sInB1Ymxpc2hlZCI6
-        IjIwMTUiLCJkZXBvc2l0ZWQiOiIyMDE2LTAxLTE5VDIxOjM0OjUyWiIsInVw
-        ZGF0ZWQiOiIyMDE2LTAxLTE5VDIxOjM0OjUyWiJ9fSx7ImlkIjoiaHR0cDov
-        L2RvaS5vcmcvMTAuNjA4NC9NOS5GSUdTSEFSRS4xNDE5NjE0LlYxIiwidHlw
-        ZSI6IndvcmtzIiwiYXR0cmlidXRlcyI6eyJkb2kiOiIxMC42MDg0L005LkZJ
-        R1NIQVJFLjE0MTk2MTQuVjEiLCJ1cmwiOm51bGwsImF1dGhvciI6W3sibGl0
-        ZXJhbCI6IkFuZHkgTWFiYmV0dCIsIm9yY2lkIjoiaHR0cDovL29yY2lkLm9y
-        Zy8wMDAwLTAwMDEtNTg4Mi02ODIzIn1dLCJ0aXRsZSI6IjIwMTUtMDUtMTkg
-        LSBPUkNJRCBpbiBXaWtpcGVkaWEgYW5kIHNpc3RlciBwcm9qZWN0cyAtIEJh
-        cmNlbG9uYSIsImNvbnRhaW5lci10aXRsZSI6IkZpZ3NoYXJlIiwiZGVzY3Jp
-        cHRpb24iOm51bGwsInJlc291cmNlLXR5cGUtZ2VuZXJhbCI6ImRhdGFzZXQi
-        LCJyZXNvdXJjZS10eXBlIjoiRGF0YXNldCIsInR5cGUiOiJkYXRhc2V0Iiwi
-        bGljZW5zZSI6Imh0dHBzOi8vY3JlYXRpdmVjb21tb25zLm9yZy9saWNlbnNl
-        cy9ieS8zLjAvdXMvIiwicHVibGlzaGVyLWlkIjoiY2RsLmRpZ3NjaSIsIm1l
-        bWJlci1pZCI6ImNkbCIsInJlZ2lzdHJhdGlvbi1hZ2VuY3ktaWQiOiJkYXRh
-        Y2l0ZSIsInJlc3VsdHMiOnt9LCJwdWJsaXNoZWQiOiIyMDE1IiwiZGVwb3Np
-        dGVkIjoiMjAxNi0wMS0xOVQyMTozNToxOFoiLCJ1cGRhdGVkIjoiMjAxNi0w
-        MS0xOVQyMTozNToxOFoifX0seyJpZCI6Imh0dHA6Ly9kb2kub3JnLzEwLjYw
-        ODQvTTkuRklHU0hBUkUuMjIyMDUyOS5WMSIsInR5cGUiOiJ3b3JrcyIsImF0
-        dHJpYnV0ZXMiOnsiZG9pIjoiMTAuNjA4NC9NOS5GSUdTSEFSRS4yMjIwNTI5
-        LlYxIiwidXJsIjpudWxsLCJhdXRob3IiOlt7ImxpdGVyYWwiOiJBbmR5IE1h
-        YmJldHQiLCJvcmNpZCI6Imh0dHA6Ly9vcmNpZC5vcmcvMDAwMC0wMDAxLTU4
-        ODItNjgyMyJ9XSwidGl0bGUiOiJPUkNJRCBpbiBXaWtpcGVkaWEgLSBDYW5i
-        ZXJyYS5wcHR4IiwiY29udGFpbmVyLXRpdGxlIjoiRmlnc2hhcmUiLCJkZXNj
-        cmlwdGlvbiI6bnVsbCwicmVzb3VyY2UtdHlwZS1nZW5lcmFsIjoiZGF0YXNl
-        dCIsInJlc291cmNlLXR5cGUiOiJEYXRhc2V0IiwidHlwZSI6ImRhdGFzZXQi
-        LCJsaWNlbnNlIjoiaHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vu
-        c2VzL2J5LzMuMC91cy8iLCJwdWJsaXNoZXItaWQiOiJjZGwuZGlnc2NpIiwi
-        bWVtYmVyLWlkIjoiY2RsIiwicmVnaXN0cmF0aW9uLWFnZW5jeS1pZCI6ImRh
-        dGFjaXRlIiwicmVzdWx0cyI6e30sInB1Ymxpc2hlZCI6IjIwMTYiLCJkZXBv
-        c2l0ZWQiOiIyMDE2LTAyLTE2VDAzOjMzOjM1WiIsInVwZGF0ZWQiOiIyMDE2
-        LTAyLTE2VDAzOjMzOjM1WiJ9fSx7ImlkIjoiaHR0cDovL2RvaS5vcmcvMTAu
-        NjA4NC9NOS5GSUdTSEFSRS4yMjIwNTI5IiwidHlwZSI6IndvcmtzIiwiYXR0
-        cmlidXRlcyI6eyJkb2kiOiIxMC42MDg0L005LkZJR1NIQVJFLjIyMjA1Mjki
-        LCJ1cmwiOm51bGwsImF1dGhvciI6W3sibGl0ZXJhbCI6IkFuZHkgTWFiYmV0
-        dCIsIm9yY2lkIjoiaHR0cDovL29yY2lkLm9yZy8wMDAwLTAwMDEtNTg4Mi02
-        ODIzIn1dLCJ0aXRsZSI6Ik9SQ0lEIGluIFdpa2lwZWRpYSAtIENhbmJlcnJh
-        LnBwdHgiLCJjb250YWluZXItdGl0bGUiOiJGaWdzaGFyZSIsImRlc2NyaXB0
-        aW9uIjpudWxsLCJyZXNvdXJjZS10eXBlLWdlbmVyYWwiOiJkYXRhc2V0Iiwi
-        cmVzb3VyY2UtdHlwZSI6IkRhdGFzZXQiLCJ0eXBlIjoiZGF0YXNldCIsImxp
-        Y2Vuc2UiOiJodHRwczovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5zZXMv
-        YnkvMy4wL3VzLyIsInB1Ymxpc2hlci1pZCI6ImNkbC5kaWdzY2kiLCJtZW1i
-        ZXItaWQiOiJjZGwiLCJyZWdpc3RyYXRpb24tYWdlbmN5LWlkIjoiZGF0YWNp
-        dGUiLCJyZXN1bHRzIjp7fSwicHVibGlzaGVkIjoiMjAxNiIsImRlcG9zaXRl
-        ZCI6IjIwMTYtMDItMTZUMDM6MzM6MzZaIiwidXBkYXRlZCI6IjIwMTYtMDIt
-        MTZUMDM6MzM6MzZaIn19LHsiaWQiOiJodHRwOi8vZG9pLm9yZy8xMC42MDg0
-        L005LkZJR1NIQVJFLjE0MTk2MDEiLCJ0eXBlIjoid29ya3MiLCJhdHRyaWJ1
-        dGVzIjp7ImRvaSI6IjEwLjYwODQvTTkuRklHU0hBUkUuMTQxOTYwMSIsInVy
-        bCI6bnVsbCwiYXV0aG9yIjpbeyJsaXRlcmFsIjoiQW5keSBNYWJiZXR0Iiwi
-        b3JjaWQiOiJodHRwOi8vb3JjaWQub3JnLzAwMDAtMDAwMS01ODgyLTY4MjMi
-        fV0sInRpdGxlIjoiMjAxNS0wNS0xMyAtIEF1dGhvcml0eSBjb250cm9sIGlu
-        IFdpa2lwZWRpYSAtIFFhdGFyIiwiY29udGFpbmVyLXRpdGxlIjoiRmlnc2hh
-        cmUiLCJkZXNjcmlwdGlvbiI6bnVsbCwicmVzb3VyY2UtdHlwZS1nZW5lcmFs
-        IjoiZGF0YXNldCIsInJlc291cmNlLXR5cGUiOiJQcmVzZW50YXRpb24iLCJ0
-        eXBlIjoiZGF0YXNldCIsImxpY2Vuc2UiOiJodHRwczovL2NyZWF0aXZlY29t
-        bW9ucy5vcmcvbGljZW5zZXMvYnkvMy4wL3VzLyIsInB1Ymxpc2hlci1pZCI6
-        ImNkbC5kaWdzY2kiLCJtZW1iZXItaWQiOiJjZGwiLCJyZWdpc3RyYXRpb24t
-        YWdlbmN5LWlkIjoiZGF0YWNpdGUiLCJyZXN1bHRzIjp7fSwicHVibGlzaGVk
-        IjoiMjAxNSIsImRlcG9zaXRlZCI6IjIwMTUtMDUtMTlUMTU6NTc6MDhaIiwi
-        dXBkYXRlZCI6IjIwMTUtMDUtMTlUMTU6NTc6MDhaIn19LHsiaWQiOiJodHRw
-        Oi8vZG9pLm9yZy8xMC42MDg0L005LkZJR1NIQVJFLjE0MTk2MTQiLCJ0eXBl
-        Ijoid29ya3MiLCJhdHRyaWJ1dGVzIjp7ImRvaSI6IjEwLjYwODQvTTkuRklH
-        U0hBUkUuMTQxOTYxNCIsInVybCI6bnVsbCwiYXV0aG9yIjpbeyJsaXRlcmFs
-        IjoiQW5keSBNYWJiZXR0Iiwib3JjaWQiOiJodHRwOi8vb3JjaWQub3JnLzAw
-        MDAtMDAwMS01ODgyLTY4MjMifV0sInRpdGxlIjoiMjAxNS0wNS0xOSAtIE9S
-        Q0lEIGluIFdpa2lwZWRpYSBhbmQgc2lzdGVyIHByb2plY3RzIC0gQmFyY2Vs
-        b25hIiwiY29udGFpbmVyLXRpdGxlIjoiRmlnc2hhcmUiLCJkZXNjcmlwdGlv
-        biI6bnVsbCwicmVzb3VyY2UtdHlwZS1nZW5lcmFsIjoiZGF0YXNldCIsInJl
-        c291cmNlLXR5cGUiOiJQcmVzZW50YXRpb24iLCJ0eXBlIjoiZGF0YXNldCIs
-        ImxpY2Vuc2UiOiJodHRwczovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5z
-        ZXMvYnkvMy4wL3VzLyIsInB1Ymxpc2hlci1pZCI6ImNkbC5kaWdzY2kiLCJt
-        ZW1iZXItaWQiOiJjZGwiLCJyZWdpc3RyYXRpb24tYWdlbmN5LWlkIjoiZGF0
-        YWNpdGUiLCJyZXN1bHRzIjp7fSwicHVibGlzaGVkIjoiMjAxNSIsImRlcG9z
-        aXRlZCI6IjIwMTUtMDUtMTlUMTY6MDY6MzZaIiwidXBkYXRlZCI6IjIwMTUt
-        MDUtMTlUMTY6MDY6MzZaIn19LHsiaWQiOiJodHRwOi8vZG9pLm9yZy8xMC42
-        MDg0L005LkZJR1NIQVJFLjEzNzExMTQiLCJ0eXBlIjoid29ya3MiLCJhdHRy
-        aWJ1dGVzIjp7ImRvaSI6IjEwLjYwODQvTTkuRklHU0hBUkUuMTM3MTExNCIs
-        InVybCI6bnVsbCwiYXV0aG9yIjpbeyJsaXRlcmFsIjoiQW5keSBNYWJiZXR0
-        Iiwib3JjaWQiOiJodHRwOi8vb3JjaWQub3JnLzAwMDAtMDAwMS01ODgyLTY4
-        MjMifV0sInRpdGxlIjoiMjAxNS0wNC0wMyBXaWtpQXJhYmlhIEdMQU0td2lr
-        aSIsImNvbnRhaW5lci10aXRsZSI6IkZpZ3NoYXJlIiwiZGVzY3JpcHRpb24i
-        Om51bGwsInJlc291cmNlLXR5cGUtZ2VuZXJhbCI6ImRhdGFzZXQiLCJyZXNv
-        dXJjZS10eXBlIjoiUHJlc2VudGF0aW9uIiwidHlwZSI6ImRhdGFzZXQiLCJs
-        aWNlbnNlIjoiaHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2Vz
-        L2J5LzMuMC91cy8iLCJwdWJsaXNoZXItaWQiOiJjZGwuZGlnc2NpIiwibWVt
-        YmVyLWlkIjoiY2RsIiwicmVnaXN0cmF0aW9uLWFnZW5jeS1pZCI6ImRhdGFj
-        aXRlIiwicmVzdWx0cyI6e30sInB1Ymxpc2hlZCI6IjIwMTUiLCJkZXBvc2l0
-        ZWQiOiIyMDE1LTA0LTA4VDIwOjMwOjE4WiIsInVwZGF0ZWQiOiIyMDE1LTA0
-        LTA4VDIwOjMwOjE4WiJ9fSx7ImlkIjoiaHR0cDovL2RvaS5vcmcvMTAuNjA4
-        NC9NOS5GSUdTSEFSRS4xMzM3OTUzIiwidHlwZSI6IndvcmtzIiwiYXR0cmli
-        dXRlcyI6eyJkb2kiOiIxMC42MDg0L005LkZJR1NIQVJFLjEzMzc5NTMiLCJ1
-        cmwiOm51bGwsImF1dGhvciI6W3sibGl0ZXJhbCI6IkFuZHkgTWFiYmV0dCIs
-        Im9yY2lkIjoiaHR0cDovL29yY2lkLm9yZy8wMDAwLTAwMDEtNTg4Mi02ODIz
-        In1dLCJ0aXRsZSI6Ik9SQ0lEIGluIFdpa2lwZWRpYSIsImNvbnRhaW5lci10
-        aXRsZSI6IkZpZ3NoYXJlIiwiZGVzY3JpcHRpb24iOm51bGwsInJlc291cmNl
-        LXR5cGUtZ2VuZXJhbCI6ImRhdGFzZXQiLCJyZXNvdXJjZS10eXBlIjoiUG9z
-        dGVyIiwidHlwZSI6ImRhdGFzZXQiLCJsaWNlbnNlIjoiaHR0cHM6Ly9jcmVh
-        dGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LzMuMC91cy8iLCJwdWJsaXNo
-        ZXItaWQiOiJjZGwuZGlnc2NpIiwibWVtYmVyLWlkIjoiY2RsIiwicmVnaXN0
-        cmF0aW9uLWFnZW5jeS1pZCI6ImRhdGFjaXRlIiwicmVzdWx0cyI6e30sInB1
-        Ymxpc2hlZCI6IjIwMTUiLCJkZXBvc2l0ZWQiOiIyMDE1LTA0LTA4VDIwOjMy
-        OjI1WiIsInVwZGF0ZWQiOiIyMDE1LTA0LTA4VDIwOjMyOjI1WiJ9fSx7Imlk
-        IjoiaHR0cDovL2RvaS5vcmcvMTAuMTMxNDAvUkcuMi4xLjE5MDUuNDE2MSIs
-        InR5cGUiOiJ3b3JrcyIsImF0dHJpYnV0ZXMiOnsiZG9pIjoiMTAuMTMxNDAv
-        UkcuMi4xLjE5MDUuNDE2MSIsInVybCI6bnVsbCwiYXV0aG9yIjpbeyJsaXRl
-        cmFsIjoiRCBBIEJyZW5uYW7CuSJ9LHsibGl0ZXJhbCI6IkkgTWFiYmV0dMK5
-        In0seyJsaXRlcmFsIjoiSiBFbHZpbnPCsiJ9LHsibGl0ZXJhbCI6Ik4gUCBM
-        YXZlcnnCsyJ9LHsibGl0ZXJhbCI6IkQgQSBXb3JzbGV5wrkifV0sInRpdGxl
-        IjoiTUFUSEVNQVRJQ0FMIEZSQU1FV09SSyBGT1IgUFJFRElDVElORyBUSEUg
-        VEhFUk1BTCBCRUhBVklPVVIgT0YgU1BFQ1RSQUxMWSBTRUxFQ1RJVkUgQ09B
-        VElOR1MgV0lUSElOIElORFVTVFJJQUwgTkVBUiBJTkZSQVJFRCBGVVJOQUNF
-        UyIsImNvbnRhaW5lci10aXRsZSI6IlVucHVibGlzaGVkIiwiZGVzY3JpcHRp
-        b24iOm51bGwsInJlc291cmNlLXR5cGUtZ2VuZXJhbCI6InRleHQiLCJyZXNv
-        dXJjZS10eXBlIjoiQ29uZmVyZW5jZSBQYXBlciIsInR5cGUiOiJyZXBvcnQi
-        LCJsaWNlbnNlIjpudWxsLCJwdWJsaXNoZXItaWQiOiJ0aWIuci1nYXRlIiwi
-        bWVtYmVyLWlkIjoidGliIiwicmVnaXN0cmF0aW9uLWFnZW5jeS1pZCI6ImRh
-        dGFjaXRlIiwicmVzdWx0cyI6e30sInB1Ymxpc2hlZCI6IjIwMTUiLCJkZXBv
-        c2l0ZWQiOiIyMDE1LTEyLTE4VDAyOjQyOjMwWiIsInVwZGF0ZWQiOiIyMDE1
-        LTEyLTE4VDAyOjQyOjMwWiJ9fSx7ImlkIjoiZGF0YXNldCIsInR5cGUiOiJy
-        ZXNvdXJjZS10eXBlcyIsImF0dHJpYnV0ZXMiOnsidGl0bGUiOiJEYXRhc2V0
-        IiwidXBkYXRlZCI6IjIwMTQtMTAtMTYifX0seyJpZCI6InRleHQiLCJ0eXBl
-        IjoicmVzb3VyY2UtdHlwZXMiLCJhdHRyaWJ1dGVzIjp7InRpdGxlIjoiVGV4
-        dCIsInVwZGF0ZWQiOiIyMDE0LTEwLTE2In19LHsiaWQiOiJjZGwuZGlnc2Np
-        IiwidHlwZSI6InB1Ymxpc2hlcnMiLCJhdHRyaWJ1dGVzIjp7InRpdGxlIjoi
-        RGlnaXRhbCBTY2llbmNlIiwib3RoZXItbmFtZXMiOltdLCJwcmVmaXhlcyI6
-        W10sIm1lbWJlci1pZCI6bnVsbCwicmVnaXN0cmF0aW9uLWFnZW5jeS1pZCI6
-        bnVsbCwidXBkYXRlZCI6bnVsbH19LHsiaWQiOiJ0aWIuci1nYXRlIiwidHlw
-        ZSI6InB1Ymxpc2hlcnMiLCJhdHRyaWJ1dGVzIjp7InRpdGxlIjoiUmVzZWFy
-        Y2hHYXRlIiwib3RoZXItbmFtZXMiOltdLCJwcmVmaXhlcyI6W10sIm1lbWJl
-        ci1pZCI6bnVsbCwicmVnaXN0cmF0aW9uLWFnZW5jeS1pZCI6bnVsbCwidXBk
-        YXRlZCI6bnVsbH19XSwibWV0YSI6eyJyZXNvdXJjZS10eXBlcyI6eyJkYXRh
-        c2V0IjoxNSwidGV4dCI6MX0sInllYXJzIjp7IjIwMTYiOjYsIjIwMTUiOjEw
-        fSwicHVibGlzaGVycyI6eyJjZGwuZGlnc2NpIjoxNSwidGliLnItZ2F0ZSI6
-        MX0sInRvdGFsIjoxNn19
+      encoding: UTF-8
+      string: '{"data":[{"id":"http://doi.org/10.6084/M9.FIGSHARE.2903314","type":"works","attributes":{"doi":"10.6084/M9.FIGSHARE.2903314","url":null,"author":[{"literal":"Andy
+        Mabbett","orcid":"http://orcid.org/0000-0001-5882-6823"}],"title":"What is
+        Wikidata?","container-title":"Figshare","description":null,"resource-type-general":"dataset","resource-type":"Dataset","type":"dataset","license":"https://creativecommons.org/licenses/by/3.0/us/","publisher-id":"cdl.digsci","member-id":"cdl","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-02-27T02:49:43Z","updated":"2016-02-27T02:49:43Z"}},{"id":"http://doi.org/10.6084/M9.FIGSHARE.2903314.V1","type":"works","attributes":{"doi":"10.6084/M9.FIGSHARE.2903314.V1","url":null,"author":[{"literal":"Andy
+        Mabbett","orcid":"http://orcid.org/0000-0001-5882-6823"}],"title":"What is
+        Wikidata?","container-title":"Figshare","description":null,"resource-type-general":"dataset","resource-type":"Dataset","type":"dataset","license":"https://creativecommons.org/licenses/by/3.0/us/","publisher-id":"cdl.digsci","member-id":"cdl","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-02-27T02:49:45Z","updated":"2016-02-27T02:49:45Z"}},{"id":"http://doi.org/10.6084/M9.FIGSHARE.2904082","type":"works","attributes":{"doi":"10.6084/M9.FIGSHARE.2904082","url":null,"author":[{"literal":"Andy
+        Mabbett","orcid":"http://orcid.org/0000-0001-5882-6823"}],"title":"What is
+        Wikidata? (OSM version)","container-title":"Figshare","description":null,"resource-type-general":"dataset","resource-type":"Dataset","type":"dataset","license":"https://creativecommons.org/licenses/by/3.0/us/","publisher-id":"cdl.digsci","member-id":"cdl","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-02-27T02:58:25Z","updated":"2016-02-27T02:58:25Z"}},{"id":"http://doi.org/10.6084/M9.FIGSHARE.2904082.V1","type":"works","attributes":{"doi":"10.6084/M9.FIGSHARE.2904082.V1","url":null,"author":[{"literal":"Andy
+        Mabbett","orcid":"http://orcid.org/0000-0001-5882-6823"}],"title":"What is
+        Wikidata? (OSM version)","container-title":"Figshare","description":null,"resource-type-general":"dataset","resource-type":"Dataset","type":"dataset","license":"https://creativecommons.org/licenses/by/3.0/us/","publisher-id":"cdl.digsci","member-id":"cdl","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-02-27T02:58:26Z","updated":"2016-02-27T02:58:26Z"}},{"id":"http://doi.org/10.6084/M9.FIGSHARE.1337953.V1","type":"works","attributes":{"doi":"10.6084/M9.FIGSHARE.1337953.V1","url":null,"author":[{"literal":"Andy
+        Mabbett","orcid":"http://orcid.org/0000-0001-5882-6823"}],"title":"ORCID in
+        Wikipedia","container-title":"Figshare","description":null,"resource-type-general":"dataset","resource-type":"Dataset","type":"dataset","license":"https://creativecommons.org/licenses/by/3.0/us/","publisher-id":"cdl.digsci","member-id":"cdl","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2016-01-19T16:36:00Z","updated":"2016-01-19T16:36:00Z"}},{"id":"http://doi.org/10.6084/M9.FIGSHARE.1337953.V2","type":"works","attributes":{"doi":"10.6084/M9.FIGSHARE.1337953.V2","url":null,"author":[{"literal":"Andy
+        Mabbett","orcid":"http://orcid.org/0000-0001-5882-6823"}],"title":"ORCID in
+        Wikipedia, Wikidata and Wikimedia Commons","container-title":"Figshare","description":null,"resource-type-general":"dataset","resource-type":"Dataset","type":"dataset","license":"https://creativecommons.org/licenses/by/3.0/us/","publisher-id":"cdl.digsci","member-id":"cdl","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2016-01-19T16:36:06Z","updated":"2016-01-19T16:36:06Z"}},{"id":"http://doi.org/10.6084/M9.FIGSHARE.1371114.V1","type":"works","attributes":{"doi":"10.6084/M9.FIGSHARE.1371114.V1","url":null,"author":[{"literal":"Andy
+        Mabbett","orcid":"http://orcid.org/0000-0001-5882-6823"}],"title":"2015-04-03
+        WikiArabia GLAM-wiki","container-title":"Figshare","description":null,"resource-type-general":"dataset","resource-type":"Dataset","type":"dataset","license":"https://creativecommons.org/licenses/by/3.0/us/","publisher-id":"cdl.digsci","member-id":"cdl","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2016-01-19T18:35:47Z","updated":"2016-01-19T18:35:47Z"}},{"id":"http://doi.org/10.6084/M9.FIGSHARE.1419601.V1","type":"works","attributes":{"doi":"10.6084/M9.FIGSHARE.1419601.V1","url":null,"author":[{"literal":"Andy
+        Mabbett","orcid":"http://orcid.org/0000-0001-5882-6823"}],"title":"2015-05-13
+        - Authority control in Wikipedia - Qatar","container-title":"Figshare","description":null,"resource-type-general":"dataset","resource-type":"Dataset","type":"dataset","license":"https://creativecommons.org/licenses/by/3.0/us/","publisher-id":"cdl.digsci","member-id":"cdl","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2016-01-19T21:34:52Z","updated":"2016-01-19T21:34:52Z"}},{"id":"http://doi.org/10.6084/M9.FIGSHARE.1419614.V1","type":"works","attributes":{"doi":"10.6084/M9.FIGSHARE.1419614.V1","url":null,"author":[{"literal":"Andy
+        Mabbett","orcid":"http://orcid.org/0000-0001-5882-6823"}],"title":"2015-05-19
+        - ORCID in Wikipedia and sister projects - Barcelona","container-title":"Figshare","description":null,"resource-type-general":"dataset","resource-type":"Dataset","type":"dataset","license":"https://creativecommons.org/licenses/by/3.0/us/","publisher-id":"cdl.digsci","member-id":"cdl","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2016-01-19T21:35:18Z","updated":"2016-01-19T21:35:18Z"}},{"id":"http://doi.org/10.6084/M9.FIGSHARE.2220529.V1","type":"works","attributes":{"doi":"10.6084/M9.FIGSHARE.2220529.V1","url":null,"author":[{"literal":"Andy
+        Mabbett","orcid":"http://orcid.org/0000-0001-5882-6823"}],"title":"ORCID in
+        Wikipedia - Canberra.pptx","container-title":"Figshare","description":null,"resource-type-general":"dataset","resource-type":"Dataset","type":"dataset","license":"https://creativecommons.org/licenses/by/3.0/us/","publisher-id":"cdl.digsci","member-id":"cdl","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-02-16T03:33:35Z","updated":"2016-02-16T03:33:35Z"}},{"id":"http://doi.org/10.6084/M9.FIGSHARE.2220529","type":"works","attributes":{"doi":"10.6084/M9.FIGSHARE.2220529","url":null,"author":[{"literal":"Andy
+        Mabbett","orcid":"http://orcid.org/0000-0001-5882-6823"}],"title":"ORCID in
+        Wikipedia - Canberra.pptx","container-title":"Figshare","description":null,"resource-type-general":"dataset","resource-type":"Dataset","type":"dataset","license":"https://creativecommons.org/licenses/by/3.0/us/","publisher-id":"cdl.digsci","member-id":"cdl","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-02-16T03:33:36Z","updated":"2016-02-16T03:33:36Z"}},{"id":"http://doi.org/10.6084/M9.FIGSHARE.1419601","type":"works","attributes":{"doi":"10.6084/M9.FIGSHARE.1419601","url":null,"author":[{"literal":"Andy
+        Mabbett","orcid":"http://orcid.org/0000-0001-5882-6823"}],"title":"2015-05-13
+        - Authority control in Wikipedia - Qatar","container-title":"Figshare","description":null,"resource-type-general":"dataset","resource-type":"Presentation","type":"dataset","license":"https://creativecommons.org/licenses/by/3.0/us/","publisher-id":"cdl.digsci","member-id":"cdl","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2015-05-19T15:57:08Z","updated":"2015-05-19T15:57:08Z"}},{"id":"http://doi.org/10.6084/M9.FIGSHARE.1419614","type":"works","attributes":{"doi":"10.6084/M9.FIGSHARE.1419614","url":null,"author":[{"literal":"Andy
+        Mabbett","orcid":"http://orcid.org/0000-0001-5882-6823"}],"title":"2015-05-19
+        - ORCID in Wikipedia and sister projects - Barcelona","container-title":"Figshare","description":null,"resource-type-general":"dataset","resource-type":"Presentation","type":"dataset","license":"https://creativecommons.org/licenses/by/3.0/us/","publisher-id":"cdl.digsci","member-id":"cdl","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2015-05-19T16:06:36Z","updated":"2015-05-19T16:06:36Z"}},{"id":"http://doi.org/10.6084/M9.FIGSHARE.1371114","type":"works","attributes":{"doi":"10.6084/M9.FIGSHARE.1371114","url":null,"author":[{"literal":"Andy
+        Mabbett","orcid":"http://orcid.org/0000-0001-5882-6823"}],"title":"2015-04-03
+        WikiArabia GLAM-wiki","container-title":"Figshare","description":null,"resource-type-general":"dataset","resource-type":"Presentation","type":"dataset","license":"https://creativecommons.org/licenses/by/3.0/us/","publisher-id":"cdl.digsci","member-id":"cdl","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2015-04-08T20:30:18Z","updated":"2015-04-08T20:30:18Z"}},{"id":"http://doi.org/10.6084/M9.FIGSHARE.1337953","type":"works","attributes":{"doi":"10.6084/M9.FIGSHARE.1337953","url":null,"author":[{"literal":"Andy
+        Mabbett","orcid":"http://orcid.org/0000-0001-5882-6823"}],"title":"ORCID in
+        Wikipedia","container-title":"Figshare","description":null,"resource-type-general":"dataset","resource-type":"Poster","type":"dataset","license":"https://creativecommons.org/licenses/by/3.0/us/","publisher-id":"cdl.digsci","member-id":"cdl","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2015-04-08T20:32:25Z","updated":"2015-04-08T20:32:25Z"}},{"id":"http://doi.org/10.13140/RG.2.1.1905.4161","type":"works","attributes":{"doi":"10.13140/RG.2.1.1905.4161","url":null,"author":[{"literal":"D
+        A Brennan¹"},{"literal":"I Mabbett¹"},{"literal":"J Elvins²"},{"literal":"N
+        P Lavery³"},{"literal":"D A Worsley¹"}],"title":"MATHEMATICAL FRAMEWORK FOR
+        PREDICTING THE THERMAL BEHAVIOUR OF SPECTRALLY SELECTIVE COATINGS WITHIN INDUSTRIAL
+        NEAR INFRARED FURNACES","container-title":"Unpublished","description":null,"resource-type-general":"text","resource-type":"Conference
+        Paper","type":"report","license":null,"publisher-id":"tib.r-gate","member-id":"tib","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2015-12-18T02:42:30Z","updated":"2015-12-18T02:42:30Z"}},{"id":"dataset","type":"resource-types","attributes":{"title":"Dataset","updated":"2014-10-16"}},{"id":"text","type":"resource-types","attributes":{"title":"Text","updated":"2014-10-16"}},{"id":"cdl.digsci","type":"publishers","attributes":{"title":"Digital
+        Science","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}},{"id":"tib.r-gate","type":"publishers","attributes":{"title":"ResearchGate","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}}],"meta":{"resource-types":{"dataset":15,"text":1},"years":{"2016":6,"2015":10},"publishers":{"cdl.digsci":15,"tib.r-gate":1},"total":16}}'
     http_version: 
-  recorded_at: Tue, 16 Aug 2016 09:46:10 GMT
+  recorded_at: Sat, 03 Sep 2016 12:22:27 GMT
 recorded_with: VCR 2.9.3

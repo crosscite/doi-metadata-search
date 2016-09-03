@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datacite.org/sources
+    uri: http://api/sources
     body:
       encoding: US-ASCII
       string: ''
@@ -16,10 +16,6 @@ http_interactions:
       code: 200
       message: ''
     headers:
-      Server:
-      - nginx/1.11.2
-      Date:
-      - Tue, 16 Aug 2016 09:46:04 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,46 +33,50 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 1ee77bfc-809f-46b5-9093-f46a9f249342
+      - 41e19c12-c359-4606-bacd-7ef27eb47ed4
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
-      - W/"02f3297637256312dfa5e60b9c4c20b2"
+      - W/"b2112768152e41323dc80dfb16c3de72"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.058501'
+      - '1.910745'
       X-Content-Type-Options:
       - nosniff
+      Date:
+      - Sat, 03 Sep 2016 12:22:08 GMT
       X-Powered-By:
       - Phusion Passenger 5.0.30
+      Server:
+      - nginx/1.10.1 + Phusion Passenger 5.0.30
       Access-Control-Allow-Headers:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
       encoding: UTF-8
       string: '{"data":[{"id":"crossref-datacite","type":"sources","attributes":{"title":"Crossref
-        (DataCite)","description":"Import works linked to a DataCite DOI from Crossref.","state":"active","group-id":"relations","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-08-16T09:37:54Z"}},{"id":"datacite-crossref","type":"sources","attributes":{"title":"DataCite
+        (DataCite)","description":"Import works linked to a DataCite DOI from Crossref.","state":"active","group-id":"relations","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-09-03T12:05:10Z"}},{"id":"datacite-crossref","type":"sources","attributes":{"title":"DataCite
         (Crossref)","description":"Import works with Crossref DOIs as relatedIdentifier
-        via the DataCite Solr API.","state":"active","group-id":"relations","work-count":19907,"relation-count":225444,"result-count":74563,"by-day":{"with-results":6,"without-results":29,"not-updated":225354},"by-month":{"with-results":79,"without-results":351,"not-updated":224959},"updated":"2016-08-16T09:37:54Z"}},{"id":"datacite-github","type":"sources","attributes":{"title":"DataCite
+        via the DataCite Solr API.","state":"active","group-id":"relations","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-09-03T12:05:10Z"}},{"id":"datacite-github","type":"sources","attributes":{"title":"DataCite
         (Github)","description":"Import works with Github relatedIdentifiers via the
-        DataCite Solr API.","state":"active","group-id":"relations","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-08-16T09:43:01Z"}},{"id":"datacite-related","type":"sources","attributes":{"title":"DataCite
+        DataCite Solr API.","state":"active","group-id":"relations","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-09-03T12:00:03Z"}},{"id":"datacite-related","type":"sources","attributes":{"title":"DataCite
         (RelatedIdentifier)","description":"Import works with relatedIdentifiers via
-        the DataCite Solr API.","state":"active","group-id":"relations","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-08-16T09:43:01Z"}},{"id":"europe-pmc-fulltext","type":"sources","attributes":{"title":"Europe
+        the DataCite Solr API.","state":"active","group-id":"relations","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-09-03T11:54:29Z"}},{"id":"europe-pmc-fulltext","type":"sources","attributes":{"title":"Europe
         PMC (Fulltext)","description":"Europe PubMed Central (Europe PMC) Database
-        is an archive of life sciences journal data.","state":"active","group-id":"relations","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-08-16T09:24:04Z"}},{"id":"plos-fulltext","type":"sources","attributes":{"title":"PLOS
-        (Fulltext)","description":"Search the PLOS corpus for citations.","state":"active","group-id":"relations","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-08-16T09:43:04Z"}},{"id":"datacite-search-link","type":"sources","attributes":{"title":"DataCite
+        is an archive of life sciences journal data.","state":"active","group-id":"relations","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-09-03T12:00:04Z"}},{"id":"plos-fulltext","type":"sources","attributes":{"title":"PLOS
+        (Fulltext)","description":"Search the PLOS corpus for citations.","state":"active","group-id":"relations","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-09-03T12:00:05Z"}},{"id":"datacite-search-link","type":"sources","attributes":{"title":"DataCite
         (ORCID Search and Link)","description":"Import claimed to ORCID via the DataCite
-        Profiles API.","state":"active","group-id":"contributions","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-08-16T09:43:05Z"}},{"id":"datacite-orcid","type":"sources","attributes":{"title":"DataCite
+        Profiles API.","state":"active","group-id":"contributions","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-09-03T12:00:05Z"}},{"id":"datacite-orcid","type":"sources","attributes":{"title":"DataCite
         (ORCID)","description":"Import works with ORCID nameIdentifier via the DataCite
-        Solr API.","state":"active","group-id":"contributions","work-count":1,"relation-count":3,"result-count":1,"by-day":{"with-results":0,"without-results":0,"not-updated":1},"by-month":{"with-results":0,"without-results":0,"not-updated":1},"updated":"2016-08-16T09:42:38Z"}},{"id":"github-contributor","type":"sources","attributes":{"title":"Github
+        Solr API.","state":"active","group-id":"contributions","work-count":1,"relation-count":3,"result-count":1,"by-day":{"with-results":0,"without-results":0,"not-updated":1},"by-month":{"with-results":0,"without-results":0,"not-updated":1},"updated":"2016-09-03T12:00:06Z"}},{"id":"github-contributor","type":"sources","attributes":{"title":"Github
         (Contributor)","description":"Import contributors with works via the Github
-        API.","state":"active","group-id":"contributions","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-08-16T09:43:27Z"}},{"id":"orcid","type":"sources","attributes":{"title":"ORCID","description":"Import
-        works via the ORCID API.","state":"active","group-id":"contributions","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-08-16T09:42:38Z"}},{"id":"crossref-publisher","type":"sources","attributes":{"title":"Crossref
-        (Publisher)","description":"Import publishers via the Crossref REST API.","state":"active","group-id":"publishers","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-08-16T09:43:05Z"}},{"id":"datacite-datacentre","type":"sources","attributes":{"title":"DataCite
-        (Datacentre)","description":"Import data centres via the DataCite Solr API.","state":"active","group-id":"publishers","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-08-16T09:43:06Z"}},{"id":"facebook","type":"sources","attributes":{"title":"Facebook","description":"Facebook
-        is the largest social network.","state":"active","group-id":"results","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-08-16T09:29:06Z"}},{"id":"github","type":"sources","attributes":{"title":"Github","description":"GitHub
-        is a web-based Git repository hosting service.","state":"active","group-id":"results","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-08-16T09:29:06Z"}},{"id":"mendeley","type":"sources","attributes":{"title":"Mendeley","description":"Mendeley
-        is a reference manager and social bookmarking tool.","state":"active","group-id":"results","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-08-16T09:29:06Z"}},{"id":"contributions","type":"groups","attributes":{"title":"Contributions","sources":["datacite_search_link","datacite_orcid","github_contributor","orcid"],"updated":"2016-03-28T15:25:06Z"}},{"id":"publishers","type":"groups","attributes":{"title":"Publishers","sources":["crossref_publisher","datacite_datacentre"],"updated":"2016-03-28T15:25:06Z"}},{"id":"relations","type":"groups","attributes":{"title":"Relations","sources":["crossref_datacite","datacite_crossref","datacite_github","datacite_related","europe_pmc_fulltext","plos_fulltext"],"updated":"2016-03-28T15:25:06Z"}},{"id":"results","type":"groups","attributes":{"title":"Results","sources":["facebook","github","mendeley"],"updated":"2016-04-07T20:46:44Z"}}],"meta":{"total":15,"groups":{"relations":6,"contributions":4,"publishers":2,"results":3}}}'
+        API.","state":"active","group-id":"contributions","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-09-03T12:00:07Z"}},{"id":"orcid","type":"sources","attributes":{"title":"ORCID","description":"Import
+        works via the ORCID API.","state":"active","group-id":"contributions","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-09-03T12:00:07Z"}},{"id":"crossref-publisher","type":"sources","attributes":{"title":"Crossref
+        (Publisher)","description":"Import publishers via the Crossref REST API.","state":"active","group-id":"publishers","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-09-03T11:55:03Z"}},{"id":"datacite-datacentre","type":"sources","attributes":{"title":"DataCite
+        (Datacentre)","description":"Import data centres via the DataCite Solr API.","state":"active","group-id":"publishers","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-09-03T11:54:31Z"}},{"id":"facebook","type":"sources","attributes":{"title":"Facebook","description":"Facebook
+        is the largest social network.","state":"active","group-id":"results","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-09-03T12:00:03Z"}},{"id":"github","type":"sources","attributes":{"title":"Github","description":"GitHub
+        is a web-based Git repository hosting service.","state":"active","group-id":"results","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-09-03T12:00:03Z"}},{"id":"mendeley","type":"sources","attributes":{"title":"Mendeley","description":"Mendeley
+        is a reference manager and social bookmarking tool.","state":"active","group-id":"results","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-09-03T12:00:08Z"}},{"id":"contributions","type":"groups","attributes":{"title":"Contributions","sources":["datacite_search_link","datacite_orcid","github_contributor","orcid"],"updated":"2016-03-28T15:25:06Z"}},{"id":"publishers","type":"groups","attributes":{"title":"Publishers","sources":["crossref_publisher","datacite_datacentre"],"updated":"2016-03-28T15:25:06Z"}},{"id":"relations","type":"groups","attributes":{"title":"Relations","sources":["crossref_datacite","datacite_crossref","datacite_github","datacite_related","europe_pmc_fulltext","plos_fulltext"],"updated":"2016-03-28T15:25:06Z"}},{"id":"results","type":"groups","attributes":{"title":"Results","sources":["facebook","github","mendeley"],"updated":"2016-04-07T20:46:44Z"}}],"meta":{"total":15,"groups":{"relations":6,"contributions":4,"publishers":2,"results":3}}}'
     http_version: 
-  recorded_at: Tue, 16 Aug 2016 09:46:05 GMT
+  recorded_at: Sat, 03 Sep 2016 12:22:08 GMT
 recorded_with: VCR 2.9.3

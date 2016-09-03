@@ -2,42 +2,116 @@ require 'spec_helper'
 
 describe "Volpino", type: :model, vcr: true do
   let(:fixture_path) { "#{Sinatra::Application.root}/spec/fixtures/" }
-  let(:auth_hash) { OmniAuth.config.mock_auth[:jwt] }
-  let(:user) { User.new(auth_hash) }
+  let(:jwt) { [{"uid"=>"0000-0003-1419-2405", "api_key"=>"EwtpXH9nvtTyUd_26eqs", "name"=>"Martin Fenner", "email"=>nil, "role"=>"user", "iat"=>1472762438}, {"typ"=>"JWT", "alg"=>"HS256"}] }
+  let(:user) { User.new(jwt.first) }
 
   subject { ApiSearch.new }
 
+  context "user" do
+    it "has orcid" do
+      expect(user.orcid).to eq("0000-0003-1419-2405")
+    end
+
+    it "has api_key" do
+      expect(user.api_key).to eq("EwtpXH9nvtTyUd_26eqs")
+    end
+  end
+
+  context "found_dois" do
+    it "with works" do
+      works = subject.get_works(query: "martin fenner")[:data]
+      expect(subject.found_dois(works).length).to eq(25)
+    end
+  end
+
   context "get_claims" do
-    # it "with works" do
-    #   works = subject.get_works(q: "martin fenner")
-    #   works_with_claims = subject.get_claims(user, works[:data])
-    #   work = works_with_claims[7]
-    #   expect(work).to eq("id"=>"http://doi.org/10.5281/ZENODO.34673",
-    #                      "type"=>"works",
-    #                      "attributes"=>{"author"=>[{"family"=>"Fenner", "given"=>"Martin"}],
-    #                                     "title"=>"DataCite/ORCID Integration",
-    #                                     "container-title"=>"Zenodo",
-    #                                     "description"=>"<p>DataCite Profiles and ORCID Auto-Update webinar.</p>",
-    #                                     "published"=>"2015",
-    #                                     "issued"=>"2015-12-03T17:06:41Z",
-    #                                     "doi"=>"10.5281/ZENODO.34673",
-    #                                     "resource-type-general"=>"Text",
-    #                                     "resource-type"=>"Presentation",
-    #                                     "type"=>"report",
-    #                                     "license"=>"info:eu-repo/semantics/openAccess",
-    #                                     "publisher-id"=>"CERN.ZENODO",
-    #                                     "claim-status"=>"done"})
-    # end
+    it "with works" do
+      dois = ["10.6084/M9.FIGSHARE.706340.V1", "10.5281/ZENODO.34673"]
+      claims = subject.get_claims(user, dois)
+      expect(claims[:data].length).to eq(2)
+      expect(claims[:data].first["attributes"]["orcid"]).to eq("0000-0003-1419-2405")
+    end
+  end
+
+  context "merge_claims" do
+    it "with works" do
+      works = subject.get_works(query: "martin fenner")[:data]
+      dois = subject.found_dois(works)
+      claims = subject.get_claims(user, dois)[:data]
+      merged_claims = subject.merge_claims(works, claims)
+      statuses = merged_claims.map { |mc| mc["attributes"]["claim-status"] }
+      expect(works.length).to eq(38)
+      expect(statuses.length).to eq(38)
+      expect(statuses.inject(Hash.new(0)) { |total, e| total[e] += 1 ;total}).to eq("none"=>31, "done"=>7)
+    end
+
+    it "with relations" do
+      relations = subject.get_relations("work-id" => "10.5281/ZENODO.48705")
+      relations= Array(relations.fetch(:data, [])).select {|item| item["type"] == "relations" }
+      dois = subject.found_dois(relations)
+      claims = subject.get_claims(user, dois)[:data]
+      merged_claims = subject.merge_claims(relations, claims)
+      statuses = merged_claims.map { |mc| mc["attributes"]["claim-status"] }
+      expect(relations.length).to eq(3)
+      expect(statuses.length).to eq(3)
+      expect(statuses.inject(Hash.new(0)) { |total, e| total[e] += 1 ;total}).to eq("none"=>2, "done"=>1)
+    end
+
+    it "with contributions" do
+      contributions = subject.get_contributions("contributor-id" => "orcid.org/#{user.orcid}", rows: 100)
+      contributions= Array(contributions.fetch(:data, [])).select {|item| item["type"] == "contributions" }
+      dois = subject.found_dois(contributions)
+      claims = subject.get_claims(user, dois)[:data]
+      merged_claims = subject.merge_claims(contributions, claims)
+      statuses = merged_claims.map { |mc| mc["attributes"]["claim-status"] }
+      expect(contributions.length).to eq(59)
+      expect(statuses.length).to eq(59)
+      expect(statuses.inject(Hash.new(0)) { |total, e| total[e] += 1 ;total}).to eq("done"=>58, "none"=>1)
+    end
+  end
+
+  context "get_claimed_items" do
+    it "with works" do
+      works = subject.get_works(query: "martin fenner")[:data]
+      works_with_claims = subject.get_claimed_items(user, works)
+      expect(works.length).to eq(38)
+      expect(works_with_claims.length).to eq(38)
+      work = works_with_claims[1]
+      expect(work["id"]).to eq("http://doi.org/10.2314/COSCV2.53")
+      expect(work["attributes"]["claim-status"]).to eq("done")
+    end
+
+    it "with relations" do
+      relations = subject.get_relations("work-id" => "10.5281/ZENODO.48705")
+      relations= Array(relations.fetch(:data, [])).select {|item| item["type"] == "relations" }
+      relations_with_claims = subject.get_claimed_items(user, relations)
+      expect(relations.length).to eq(3)
+      expect(relations_with_claims.length).to eq(3)
+      relation = relations_with_claims[2]
+      expect(relation["attributes"]["doi"]).to eq("10.5281/ZENODO.30799")
+      expect(relation["attributes"]["claim-status"]).to eq("done")
+    end
+
+    it "with contributions" do
+      contributions = subject.get_contributions("contributor-id" => "orcid.org/#{user.orcid}", rows: 100)
+      contributions= Array(contributions.fetch(:data, [])).select {|item| item["type"] == "contributions" }
+      contributions_with_claims = subject.get_claimed_items(user, contributions)
+      expect(contributions.length).to eq(59)
+      expect(contributions_with_claims.length).to eq(59)
+      contribution = contributions_with_claims[0]
+      expect(contribution["attributes"]["doi"]).to eq("10.6084/M9.FIGSHARE.3479141")
+      expect(contribution["attributes"]["claim-status"]).to eq("done")
+    end
 
     it "no works" do
       works = []
-      works_with_claims = subject.get_claims(user, [])
+      works_with_claims = subject.get_claimed_items(user, [])
       expect(works_with_claims).to eq(works)
     end
 
     it "no current_user" do
-      works = []
-      works_with_claims = subject.get_claims(nil, [])
+      works = subject.get_works(query: "martin fenner")[:data]
+      works_with_claims = subject.get_claimed_items(nil, works)
       expect(works_with_claims).to eq(works)
     end
   end

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api/publishers?offset=0&query=zeno&registration-agency-id=datacite&rows=25
+    uri: http://profiles/api/users/0000-0003-1419-2405/claims?dois=10.6084/M9.FIGSHARE.706340.V1,10.5281/ZENODO.34673
     body:
       encoding: US-ASCII
       string: ''
@@ -11,6 +11,8 @@ http_interactions:
       - Maremma - http://search.local
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Authorization:
+      - Token token=EwtpXH9nvtTyUd_26eqs
   response:
     status:
       code: 200
@@ -33,19 +35,19 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 56d97619-10a0-4d52-9a27-798c072ed883
+      - 98130be1-c484-443a-abf6-31b8e436148f
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
-      - W/"72c1fc5d13912550f5d4c6c202b480e5"
+      - W/"7e692095560861af005e827bd2da6783"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '1.106423'
+      - '0.572158'
       X-Content-Type-Options:
       - nosniff
       Date:
-      - Sat, 03 Sep 2016 13:18:28 GMT
+      - Sat, 03 Sep 2016 13:59:14 GMT
       X-Powered-By:
       - Phusion Passenger 5.0.30
       Server:
@@ -54,8 +56,7 @@ http_interactions:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
       encoding: UTF-8
-      string: '{"data":[{"id":"cern.zenodo","type":"publishers","attributes":{"title":"ZENODO
-        - Research. Shared.","other-names":[],"prefixes":[],"member-id":"CERN","registration-agency-id":"datacite","updated":"2016-09-03T13:16:39Z"}}],"meta":{"total":1,"registration-agencies":{"datacite":1},"members":{"cern":1}}}'
+      string: '{"data":[{"id":"e372db4a-9d2d-4794-8dfc-b334b6121688","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.5281/ZENODO.34673","source-id":"orcid_search","state":"done","claimed-at":"1970-01-01T00:33:36Z"}},{"id":"baca6f9a-634b-4386-883f-ecbdfc5eafa3","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.6084/M9.FIGSHARE.706340.V1","source-id":"orcid_search","state":"done","claimed-at":"1970-01-01T00:33:36Z"}}],"links":{},"meta":{"total":2,"total-pages":1,"page":1}}'
     http_version: 
-  recorded_at: Sat, 03 Sep 2016 13:18:28 GMT
+  recorded_at: Sat, 03 Sep 2016 13:59:14 GMT
 recorded_with: VCR 2.9.3

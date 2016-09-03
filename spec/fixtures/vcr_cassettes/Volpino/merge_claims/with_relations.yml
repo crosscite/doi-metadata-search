@@ -1,0 +1,125 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api/relations?offset=0&rows=25&work-id=10.5281/ZENODO.48705
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Maremma - http://search.local
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Access-Control-Max-Age:
+      - '1728000'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 93f40acc-f2f3-4747-bbcb-f918fc55b1a4
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Etag:
+      - W/"e1ddeae6f4e73a86f2c7aa7ec4cc8b22"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '1.163550'
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Sat, 03 Sep 2016 14:47:07 GMT
+      X-Powered-By:
+      - Phusion Passenger 5.0.30
+      Server:
+      - nginx/1.10.1 + Phusion Passenger 5.0.30
+      Access-Control-Allow-Headers:
+      - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"ad471736-c089-45ed-9512-497eb82eb2ca","type":"relations","attributes":{"subj-id":"http://doi.org/10.5281/ZENODO.46761","obj-id":"http://doi.org/10.5281/ZENODO.48705","doi":"10.5281/ZENODO.46761","author":[],"title":"THOR:
+        Metrics and Tools","container-title":null,"source-id":"datacite-related","publisher-id":"CERN.ZENODO","registration-agency-id":"datacite","relation-type-id":"is-supplemented-by","type":null,"total":1,"published":"2016","issued":"2016-01-01T00:00:00Z","updated":"2016-06-16T00:49:59Z"}},{"id":"cf569f54-12ef-4379-8b35-876d31135634","type":"relations","attributes":{"subj-id":"http://doi.org/10.5281/ZENODO.48228","obj-id":"http://doi.org/10.5281/ZENODO.48705","doi":"10.5281/ZENODO.48228","author":[],"title":"THOR
+        Communications Plan","container-title":null,"source-id":"datacite-related","publisher-id":"CERN.ZENODO","registration-agency-id":"datacite","relation-type-id":"is-supplemented-by","type":null,"total":1,"published":"2016","issued":"2016-01-01T00:00:00Z","updated":"2016-06-16T00:49:58Z"}},{"id":"8527afb0-19a2-4281-9431-76c313a710d9","type":"relations","attributes":{"subj-id":"http://doi.org/10.5281/ZENODO.30799","obj-id":"http://doi.org/10.5281/ZENODO.48705","doi":"10.5281/ZENODO.30799","author":[],"title":"D2.1:
+        Artefact, Contributor, and Organisation Relationship Data Schema","container-title":null,"source-id":"datacite-related","publisher-id":"CERN.ZENODO","registration-agency-id":"datacite","relation-type-id":"is-supplemented-by","type":null,"total":1,"published":"2015","issued":"2015-01-01T00:00:00Z","updated":"2016-06-16T00:49:57Z"}},{"id":"datacite-related","type":"sources","attributes":{"title":"DataCite
+        (RelatedIdentifier)","description":"Import works with relatedIdentifiers via
+        the DataCite Solr API.","state":"active","group-id":"relations","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-09-03T14:31:19Z"}},{"id":"is-supplemented-by","type":"relation-types","attributes":{"title":"Is
+        supplemented by","inverse-title":"Is supplement to","updated":"2016-03-21T15:05:03Z"}}],"meta":{"total":3,"sources":{"datacite-related":3},"relation-types":{"is-supplemented-by":3}}}'
+    http_version: 
+  recorded_at: Sat, 03 Sep 2016 14:47:07 GMT
+- request:
+    method: get
+    uri: http://profiles/api/users/0000-0003-1419-2405/claims?dois=10.5281/ZENODO.46761,10.5281/ZENODO.48228,10.5281/ZENODO.30799
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Maremma - http://search.local
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Authorization:
+      - Token token=EwtpXH9nvtTyUd_26eqs
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Access-Control-Max-Age:
+      - '1728000'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 0dced6be-c4c7-4a4c-9a1b-86827ef1aa42
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Etag:
+      - W/"634c8cebd1b72ac5f5626ac54d00ac88"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.198791'
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Sat, 03 Sep 2016 14:47:07 GMT
+      X-Powered-By:
+      - Phusion Passenger 5.0.30
+      Server:
+      - nginx/1.10.1 + Phusion Passenger 5.0.30
+      Access-Control-Allow-Headers:
+      - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"fe68eaf1-dcd4-4acb-8407-3e27f11f9380","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.5281/ZENODO.30799","source-id":"orcid_search","state":"done","claimed-at":"1970-01-01T00:33:36Z"}}],"links":{},"meta":{"total":1,"total-pages":1,"page":1}}'
+    http_version: 
+  recorded_at: Sat, 03 Sep 2016 14:47:07 GMT
+recorded_with: VCR 2.9.3

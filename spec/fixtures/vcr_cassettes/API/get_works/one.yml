@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datacite.org/works?id=10.6084/M9.FIGSHARE.C.1909847&offset=0&rows=25
+    uri: http://api/works?id=10.6084/M9.FIGSHARE.C.1909847&offset=0&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -16,10 +16,6 @@ http_interactions:
       code: 200
       message: ''
     headers:
-      Server:
-      - nginx/1.11.2
-      Date:
-      - Tue, 16 Aug 2016 09:46:08 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,19 +33,23 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - b0fcda63-63ff-46f3-8fa6-71252f33e692
+      - 60b1e018-040f-4ddd-b09f-880bf0427576
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
-      - W/"ab69e0cfbc88a390b68e58fa7706aecc"
+      - W/"32867d0465fc2805385f2b9abe43c844"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.213043'
+      - '2.759317'
       X-Content-Type-Options:
       - nosniff
+      Date:
+      - Sat, 03 Sep 2016 12:22:25 GMT
       X-Powered-By:
       - Phusion Passenger 5.0.30
+      Server:
+      - nginx/1.10.1 + Phusion Passenger 5.0.30
       Access-Control-Allow-Headers:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
@@ -58,16 +58,7 @@ http_interactions:
         Strasser","orcid":"http://orcid.org/0000-0001-9592-2339"},{"literal":"Patricia
         Cruse"},{"literal":"John Kunze"},{"literal":"Stephen Abrams"}],"title":"DataUp
         manuscript data","container-title":"Figshare","description":null,"resource-type-general":"collection","resource-type":"Collection","type":null,"license":"https://creativecommons.org/licenses/by/3.0/us/","publisher-id":"cdl.digsci","member-id":"cdl","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2015-12-04T15:40:42Z","updated":"2016-03-11T10:57:59Z"}},{"id":"cdl.digsci","type":"publishers","attributes":{"title":"Digital
-        Science","other-names":[],"prefixes":[],"member-id":"CDL","registration-agency-id":"datacite","updated":"2016-08-16T09:11:58Z"}},{"id":"cdl","type":"members","attributes":{"title":"California
-        Digital Library","description":"\u003cp\u003eCalifornia Digital Library (CDL)
-        deals with information at every stage of its life. CDL provides technology
-        and expertise to help the University of California (UC) collect, publish,
-        access, and preserve its full range of information resources. CDL partners
-        with organizations outside the UCs on far-reaching problems.\u003c/p\u003e\n\n\u003cp\u003eCDL
-        offers DataCite DOIs and other identifiers via the EZID service, a service
-        CDL developed to support easy identifier creation and maintenance for educational,
-        non-profit, governmental and commercial clients.\u003c/p\u003e\n","member-type":"allocating","region":"Americas","country":"United
-        States","year":2009,"logo-url":"https://assets.datacite.org/images/members/CDL.png","email":"ezid@ucop.edu","website":"http://ezid.cdlib.org","phone":"1-510-987-0469","updated":"2016-07-31T22:54:26.000Z"}}],"meta":{"total":1,"sources":{},"relation-types":{}}}'
+        Science","other-names":[],"prefixes":[],"member-id":"CDL","registration-agency-id":"datacite","updated":"2016-09-03T11:56:35Z"}}],"meta":{"total":1,"sources":{},"relation-types":{}}}'
     http_version: 
-  recorded_at: Tue, 16 Aug 2016 09:46:08 GMT
+  recorded_at: Sat, 03 Sep 2016 12:22:25 GMT
 recorded_with: VCR 2.9.3

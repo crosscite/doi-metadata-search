@@ -5,32 +5,42 @@ require 'rack-flash'
 module Sinatra
   module Volpino
     # query Profiles server, check whether list of dois has been claimed by particular user
-    def get_claims(current_user, works)
-      return [] unless current_user.present? && works.present? && ENV["ORCID_UPDATE_URL"].present?
+    def get_claims(current_user, dois)
+      return {} unless current_user.present? && dois.present? && current_user.orcid.present?
 
-      dois = found_dois(works)
-      response = Maremma.get "#{ENV['ORCID_UPDATE_URL']}/api/users/#{current_user.orcid}/claims?dois=#{dois.join(",")}", token: current_user.api_key
+      url = "#{ENV['ORCID_UPDATE_URL']}/api/users/#{current_user.orcid}/claims?dois=#{dois.join(",")}"
+      result = Maremma.get url, token: current_user.api_key, timeout: 20
 
-      # flash[:error] = "Claim lookup failed with message \"#{response['errors'].map { |e| e['title']}.join(',')}\"."
-      return response['errors'] if response['errors'].present?
+      { data: Array(result.fetch("data", [])),
+        errors: Array(result.fetch("errors", [])),
+        meta: result.fetch("meta", {}) }
+    end
 
-      claimed_works = response.fetch('data', [])
-      works.map do |work|
-        claimed_work = claimed_works.find { |w| work['id'] == 'http://doi.org/' + w.fetch('attributes', {}).fetch('doi', '') } || {}
-        work["attributes"]["claim-status"] = claimed_work.fetch('attributes', {}).fetch('state', 'none')
-        work
+    def merge_claims(items, claims)
+      items.map do |item|
+        claim = Array(claims).find { |c| c.fetch('attributes', {}).fetch('doi', "claim") == item.fetch('attributes', {}).fetch('doi', "item") } || {}
+        item["attributes"]["claim-status"] = claim.fetch('attributes', {}).fetch('state', 'none')
+        item
       end
     end
 
-    # select works registered via this registration agency
-    def found_dois(works)
-      works.reduce([]) do |sum, work|
-        if work.fetch("attributes", {}).fetch("registration-agency-id", nil) == ENV['RA']
-          sum << work.fetch("attributes", {}).fetch("doi", nil)
+    def get_claimed_items(current_user, items)
+      return items unless current_user.present? && items.present? && ENV["ORCID_UPDATE_URL"].present?
+
+      dois = found_dois(items)
+      claims = get_claims(current_user, dois)[:data]
+      merge_claims(items, claims)
+    end
+
+    # select works registered via this registration agency, or any relation or contribution
+    def found_dois(items)
+      items.reduce([]) do |sum, item|
+        if item.fetch("type", nil) != "works" || item.fetch("attributes", {}).fetch("registration-agency-id", nil) == ENV['RA']
+          sum << item.fetch("attributes", {}).fetch("doi", nil)
         else
           sum
         end
-      end
+      end.compact
     end
   end
 

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datacite.org/members?query=tib
+    uri: http://api/members?query=tib
     body:
       encoding: US-ASCII
       string: ''
@@ -69,6 +69,6 @@ http_interactions:
         chemistry, information technology, mathematics and physics. Our current focus
         is on providing DOI names for primary data and grey literature.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Germany","year":2009,"logo-url":"https://assets.datacite.org/images/members/TIB.png","email":"doi-info@tib.eu","website":"
         http://www.tib.eu","phone":"+49 511 762 14226","updated":"2016-08-01T11:13:04.000Z"}}],"meta":{"total":1,"member-types":{"allocating":1},"regions":{"emea":1},"years":{"2009":1}}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 16 Aug 2016 18:14:59 GMT
 recorded_with: VCR 2.9.3

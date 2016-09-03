@@ -1,0 +1,498 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api/works?offset=0&query=martin%20fenner&rows=25
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Maremma - http://search.local
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Access-Control-Max-Age:
+      - '1728000'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 43a45721-5324-42ad-a0b2-8f254f5ac277
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Etag:
+      - W/"52f4f617507d1a67387f0dec01657b2f"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '1.906640'
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Sat, 03 Sep 2016 13:59:18 GMT
+      X-Powered-By:
+      - Phusion Passenger 5.0.30
+      Server:
+      - nginx/1.10.1 + Phusion Passenger 5.0.30
+      Access-Control-Allow-Headers:
+      - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"http://doi.org/10.2314/COSCV1.53","type":"works","attributes":{"doi":"10.2314/COSCV1.53","url":null,"author":[{"family":"Pampel","given":"Heinz","orcid":"http://orcid.org/0000-0003-3334-2771"},{"family":"Neumann","given":"Janna","orcid":"http://orcid.org/0000-0002-0161-1888"}],"title":"Publikation
+        von Forschungsdaten","container-title":"Technische Informationsbibliothek
+        (TIB), Hannover","description":null,"resource-type-general":"text","resource-type":null,"type":"report","license":"https://creativecommons.org/licenses/by/4.0/","publisher-id":"tib.handbuch","member-id":"tib","registration-agency-id":"datacite","results":{},"published":"2014","deposited":"2014-05-26T12:01:14Z","updated":"2014-05-26T12:06:24Z"}},{"id":"http://doi.org/10.2314/COSCV2.53","type":"works","attributes":{"doi":"10.2314/COSCV2.53","url":null,"author":[{"family":"Pampel","given":"Heinz","orcid":"http://orcid.org/0000-0003-3334-2771"},{"family":"Neumann","given":"Janna","orcid":"http://orcid.org/0000-0002-0161-1888"}],"title":"Publikation
+        von Forschungsdaten","container-title":"Technische Informationsbibliothek
+        (TIB), Hannover","description":null,"resource-type-general":"text","resource-type":null,"type":"report","license":null,"publisher-id":"tib.handbuch","member-id":"tib","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2015-05-20T06:35:12Z","updated":"2015-05-20T06:35:12Z"}},{"id":"http://doi.org/10.5281/ZENODO.13004","type":"works","attributes":{"doi":"10.5281/ZENODO.13004","url":null,"author":[{"family":"Scheliga","given":"Kaja"}],"title":"Open
+        Science Interview mit Martin Fenner","container-title":"ZENODO","description":"\u003cp\u003eThis
+        interview is part of a series of interviews on open science and digital scholarship
+        conducted in 2013 with researchers from various backgrounds. For an analysis
+        of the interviews see: Scheliga, Kaja and Sascha Friesike. 2014. \u0026ldquo;Putting
+        open science into practice: A social dilemma?\u0026rdquo;\u0026nbsp;\u003cem\u003eFirst
+        Monday\u003c/em\u003e. Volume 19, Number 9. DOI:\u0026nbsp;http://dx.doi.org/10.5210/fm.v19i9.5381\u003c/p\u003e","resource-type-general":"text","resource-type":"other","type":"report","license":"https://creativecommons.org/licenses/by/4.0/","publisher-id":"cern.zenodo","member-id":"cern","registration-agency-id":"datacite","results":{},"published":"2014","deposited":"2014-12-01T15:04:04Z","updated":"2014-12-01T15:04:04Z"}},{"id":"http://doi.org/10.6084/M9.FIGSHARE.706340.V1","type":"works","attributes":{"doi":"10.6084/M9.FIGSHARE.706340.V1","url":null,"author":[{"literal":"Martin
+        Fenner","orcid":"http://orcid.org/0000-0002-2184-6094"}],"title":"Metrics
+        and Attribution","container-title":"Figshare","description":null,"resource-type-general":"dataset","resource-type":"Dataset","type":"dataset","license":"https://creativecommons.org/licenses/by/3.0/us/","publisher-id":"cdl.digsci","member-id":"cdl","registration-agency-id":"datacite","results":{},"published":"2013","deposited":"2016-01-11T20:38:48Z","updated":"2016-01-11T20:38:48Z"}},{"id":"http://doi.org/10.5169/SEALS-355044","type":"works","attributes":{"doi":"10.5169/SEALS-355044","url":null,"author":[{"family":"Fenner","given":"Martin"}],"title":"Der
+        Landesstreik von 1918 im späteren Urteil","container-title":"Schweizerischer
+        Gewerkschaftsbund","description":null,"resource-type-general":null,"resource-type":null,"type":null,"license":null,"publisher-id":"ethz.seals","member-id":"ethz","registration-agency-id":"datacite","results":{},"published":"1981","deposited":"2014-01-08T08:45:38Z","updated":"2014-07-17T15:52:15Z"}},{"id":"http://doi.org/10.5281/ZENODO.34673","type":"works","attributes":{"doi":"10.5281/ZENODO.34673","url":null,"author":[{"family":"Fenner","given":"Martin"}],"title":"DataCite/ORCID
+        Integration","container-title":"Zenodo","description":"\u003cp\u003eDataCite
+        Profiles and ORCID Auto-Update webinar.\u003c/p\u003e","resource-type-general":"text","resource-type":"Presentation","type":"report","license":"https://creativecommons.org/licenses/by/4.0/","publisher-id":"cern.zenodo","member-id":"cern","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2015-12-03T17:06:41Z","updated":"2015-12-03T17:06:41Z"}},{"id":"http://doi.org/10.6084/M9.FIGSHARE.706340","type":"works","attributes":{"doi":"10.6084/M9.FIGSHARE.706340","url":null,"author":[{"literal":"Martin
+        Fenner","orcid":"http://orcid.org/0000-0002-2184-6094"}],"title":"Metrics
+        and Attribution","container-title":"Figshare","description":null,"resource-type-general":"dataset","resource-type":"Paper","type":"dataset","license":"https://creativecommons.org/licenses/by/3.0/us/","publisher-id":"cdl.digsci","member-id":"cdl","registration-agency-id":"datacite","results":{},"published":"2013","deposited":"2013-05-23T07:00:33Z","updated":"2014-07-04T04:08:03Z"}},{"id":"http://doi.org/10.5169/SEALS-118645","type":"works","attributes":{"doi":"10.5169/SEALS-118645","url":null,"author":[{"family":"Fenner","given":"Martin"}],"title":"Die
+        Bedeutung der Tellfigur im 17. und frühen 18. Jahrhundert","container-title":"Historischer
+        Verein der Fünf Orte Luzern, Uri, Schwyz, Unterwalden und Zug","description":null,"resource-type-general":"text","resource-type":"Journal
+        Article","type":"report","license":null,"publisher-id":"ethz.seals","member-id":"ethz","registration-agency-id":"datacite","results":{},"published":"1973","deposited":"2010-11-10T16:46:35Z","updated":"2016-07-14T21:00:39Z"}},{"id":"http://doi.org/10.3205/12AGMB03","type":"works","attributes":{"doi":"10.3205/12AGMB03","url":null,"author":[{"family":"Fenner","given":"Martin"}],"title":"Wie
+        kann die Bibliothek die Sichtbarkeit ihrer Wissenschaftler erhöhen?","container-title":"German
+        Medical Science GMS Publishing House","description":"Mit der Einführung elektronischer
+        bibliographischer Datenbanken und der Umstellung auf elektronisches Publizieren
+        hat sich der Stellenwert der Bibliothek für den einzelnen Wissenschaftler
+        deutlich geändert. Während vor 20 Jahren die Recherche und der Erhalt von
+        Volltexten praktisch[for full text, please go to the a.m. URL]","resource-type-general":"text","resource-type":"ConferencePaper","type":"report","license":null,"publisher-id":"zbmed.gms","member-id":"zbmed","registration-agency-id":"datacite","results":{},"published":"2012","deposited":"2012-08-29T12:40:21Z","updated":"2012-08-29T12:40:21Z"}},{"id":"http://doi.org/10.15156/BIO/SH132186.07FU","type":"works","attributes":{"doi":"10.15156/BIO/SH132186.07FU","url":null,"author":[{"family":"Kõljalg","given":"Urmas"},{"family":"Abarenkov","given":"Kessy"},{"family":"Nilsson","given":"R.
+        Henrik"},{"family":"Larsson","given":"Karl-Henrik"},{"family":"Aas","given":"Anders
+        Bjørnsgard"},{"family":"Adams","given":"Rachel"},{"family":"Alves","given":"Artur"},{"family":"Ammirati","given":"Joseph
+        F."},{"family":"Arnold","given":"A. Elizabeth"},{"family":"Bahram","given":"Mohammad"},{"family":"Bengtsson-Palme","given":"Johan"},{"family":"Berlin","given":"Anna"},{"family":"Botnen","given":"Synnøve"},{"family":"Bourlat","given":"Sarah"},{"family":"Cheeke","given":"Tanya"},{"family":"Dima","given":"Bálint"},{"family":"Drenkhan","given":"Rein"},{"family":"Duarte","given":"Camila"},{"family":"Dueñas","given":"Margarita"},{"family":"Eberhardt","given":"Ursula"},{"family":"Friberg","given":"Hanna"},{"family":"Frøslev","given":"Tobias
+        G."},{"family":"Garnica","given":"Sigisfredo"},{"family":"Geml","given":"József"},{"family":"Ghobad-Nejhad","given":"Masoomeh"},{"family":"Grebenc","given":"Tine"},{"family":"Griffith","given":"Gareth
+        W."},{"family":"Hampe","given":"Felix"},{"family":"Kennedy","given":"Peter"},{"family":"Khomich","given":"Maryia"},{"family":"Kohout","given":"Petr"},{"family":"Kollom","given":"Anu"},{"family":"Larsson","given":"Ellen"},{"family":"Laszlo","given":"Irinyi"},{"family":"Leavitt","given":"Steven"},{"family":"Liimatainen","given":"Kare"},{"family":"Lindahl","given":"Björn"},{"family":"Lodge","given":"Deborah
+        J."},{"family":"Lumbsch","given":"Helge Thorsten"},{"family":"Martín Esteban","given":"María
+        Paz"},{"family":"Meyer","given":"Wieland"},{"family":"Miettinen","given":"Otto"},{"family":"Nguyen","given":"Nhu"},{"family":"Niskanen","given":"Tuula"},{"family":"Oono","given":"Ryoko"},{"family":"Öpik","given":"Maarja"},{"family":"Ordynets","given":"Alexander"},{"family":"Pawłowska","given":"Julia"},{"family":"Peintner","given":"Ursula"},{"family":"Pereira","given":"Olinto
+        Liparini"},{"family":"Pinho","given":"Danilo Batista"},{"family":"Põldmaa","given":"Kadri"},{"family":"Runnel","given":"Kadri"},{"family":"Ryberg","given":"Martin"},{"family":"Saar","given":"Irja"},{"family":"Sanli","given":"Kemal"},{"family":"Scott","given":"James"},{"family":"Spirin","given":"Viacheslav"},{"family":"Suija","given":"Ave"},{"family":"Svantesson","given":"Sten"},{"family":"Tadych","given":"Mariusz"},{"family":"Takamatsu","given":"Susumu"},{"family":"Tamm","given":"Heidi"},{"family":"Taylor","given":"AFS."},{"family":"Tedersoo","given":"Leho"},{"family":"Telleria","given":"M.T."},{"family":"Udayanga","given":"Dhanushka"},{"family":"Unterseher","given":"Martin"},{"family":"Volobuev","given":"Sergey"},{"family":"Weiss","given":"Michael"},{"family":"Wurzbacher","given":"Christian"}],"title":"SH132186.07FU","container-title":"UNITE
+        Community","description":"UNITE provides a unified way for delimiting, identifying,
+        communicating, and working with DNA-based Species Hypotheses (SH). All fungal
+        ITS sequences in the international nucleotide sequence databases are clustered
+        to approximately the species level by applying a set of dynamic distance values
+        (\u003c0.5 - 3.0%). All species hypotheses are given a unique, stable name
+        in the form of a DOI, and their taxonomic and ecological annotations are verified
+        through distributed, web-based third-party annotation efforts. SHs are connected
+        to a taxon name and its classification as far as possible (phylum, class,
+        order, etc.) by taking into account identifications for all sequences in the
+        SH. An automatically or manually designated sequence is chosen to represent
+        each such SH. These sequences are released (https://unite.ut.ee/repository.php)
+        for use by the scientific community in, for example, local sequence similarity
+        searches and next-generation sequencing analysis pipelines. The system and
+        the data are updated automatically as the number of public fungal ITS sequences
+        grows.","resource-type-general":"dataset","resource-type":"Dataset/UNITE Species
+        Hypothesis","type":"dataset","license":"https://creativecommons.org/licenses/by-nc/4.0/","publisher-id":"estdoi.bio","member-id":"estdoi","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2015-06-01T19:09:36Z","updated":"2016-04-22T17:15:44Z"}},{"id":"http://doi.org/10.15156/BIO/SH444252.07FU","type":"works","attributes":{"doi":"10.15156/BIO/SH444252.07FU","url":null,"author":[{"family":"Kõljalg","given":"Urmas"},{"family":"Abarenkov","given":"Kessy"},{"family":"Nilsson","given":"R.
+        Henrik"},{"family":"Larsson","given":"Karl-Henrik"},{"family":"Aas","given":"Anders
+        Bjørnsgard"},{"family":"Adams","given":"Rachel"},{"family":"Alves","given":"Artur"},{"family":"Ammirati","given":"Joseph
+        F."},{"family":"Arnold","given":"A. Elizabeth"},{"family":"Bahram","given":"Mohammad"},{"family":"Bengtsson-Palme","given":"Johan"},{"family":"Berlin","given":"Anna"},{"family":"Botnen","given":"Synnøve"},{"family":"Bourlat","given":"Sarah"},{"family":"Cheeke","given":"Tanya"},{"family":"Dima","given":"Bálint"},{"family":"Drenkhan","given":"Rein"},{"family":"Duarte","given":"Camila"},{"family":"Dueñas","given":"Margarita"},{"family":"Eberhardt","given":"Ursula"},{"family":"Friberg","given":"Hanna"},{"family":"Frøslev","given":"Tobias
+        G."},{"family":"Garnica","given":"Sigisfredo"},{"family":"Geml","given":"József"},{"family":"Ghobad-Nejhad","given":"Masoomeh"},{"family":"Grebenc","given":"Tine"},{"family":"Griffith","given":"Gareth
+        W."},{"family":"Hampe","given":"Felix"},{"family":"Kennedy","given":"Peter"},{"family":"Khomich","given":"Maryia"},{"family":"Kohout","given":"Petr"},{"family":"Kollom","given":"Anu"},{"family":"Larsson","given":"Ellen"},{"family":"Laszlo","given":"Irinyi"},{"family":"Leavitt","given":"Steven"},{"family":"Liimatainen","given":"Kare"},{"family":"Lindahl","given":"Björn"},{"family":"Lodge","given":"Deborah
+        J."},{"family":"Lumbsch","given":"Helge Thorsten"},{"family":"Martín Esteban","given":"María
+        Paz"},{"family":"Meyer","given":"Wieland"},{"family":"Miettinen","given":"Otto"},{"family":"Nguyen","given":"Nhu"},{"family":"Niskanen","given":"Tuula"},{"family":"Oono","given":"Ryoko"},{"family":"Öpik","given":"Maarja"},{"family":"Ordynets","given":"Alexander"},{"family":"Pawłowska","given":"Julia"},{"family":"Peintner","given":"Ursula"},{"family":"Pereira","given":"Olinto
+        Liparini"},{"family":"Pinho","given":"Danilo Batista"},{"family":"Põldmaa","given":"Kadri"},{"family":"Runnel","given":"Kadri"},{"family":"Ryberg","given":"Martin"},{"family":"Saar","given":"Irja"},{"family":"Sanli","given":"Kemal"},{"family":"Scott","given":"James"},{"family":"Spirin","given":"Viacheslav"},{"family":"Suija","given":"Ave"},{"family":"Svantesson","given":"Sten"},{"family":"Tadych","given":"Mariusz"},{"family":"Takamatsu","given":"Susumu"},{"family":"Tamm","given":"Heidi"},{"family":"Taylor","given":"AFS."},{"family":"Tedersoo","given":"Leho"},{"family":"Telleria","given":"M.T."},{"family":"Udayanga","given":"Dhanushka"},{"family":"Unterseher","given":"Martin"},{"family":"Volobuev","given":"Sergey"},{"family":"Weiss","given":"Michael"},{"family":"Wurzbacher","given":"Christian"}],"title":"SH444252.07FU","container-title":"UNITE
+        Community","description":"UNITE provides a unified way for delimiting, identifying,
+        communicating, and working with DNA-based Species Hypotheses (SH). All fungal
+        ITS sequences in the international nucleotide sequence databases are clustered
+        to approximately the species level by applying a set of dynamic distance values
+        (\u003c0.5 - 3.0%). All species hypotheses are given a unique, stable name
+        in the form of a DOI, and their taxonomic and ecological annotations are verified
+        through distributed, web-based third-party annotation efforts. SHs are connected
+        to a taxon name and its classification as far as possible (phylum, class,
+        order, etc.) by taking into account identifications for all sequences in the
+        SH. An automatically or manually designated sequence is chosen to represent
+        each such SH. These sequences are released (https://unite.ut.ee/repository.php)
+        for use by the scientific community in, for example, local sequence similarity
+        searches and next-generation sequencing analysis pipelines. The system and
+        the data are updated automatically as the number of public fungal ITS sequences
+        grows.","resource-type-general":"dataset","resource-type":"Dataset/UNITE Species
+        Hypothesis","type":"dataset","license":"https://creativecommons.org/licenses/by-nc/4.0/","publisher-id":"estdoi.bio","member-id":"estdoi","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2015-06-05T19:43:34Z","updated":"2016-05-05T11:17:44Z"}},{"id":"http://doi.org/10.15156/BIO/SH470440.07FU","type":"works","attributes":{"doi":"10.15156/BIO/SH470440.07FU","url":null,"author":[{"family":"Kõljalg","given":"Urmas"},{"family":"Abarenkov","given":"Kessy"},{"family":"Nilsson","given":"R.
+        Henrik"},{"family":"Larsson","given":"Karl-Henrik"},{"family":"Aas","given":"Anders
+        Bjørnsgard"},{"family":"Adams","given":"Rachel"},{"family":"Alves","given":"Artur"},{"family":"Ammirati","given":"Joseph
+        F."},{"family":"Arnold","given":"A. Elizabeth"},{"family":"Bahram","given":"Mohammad"},{"family":"Bengtsson-Palme","given":"Johan"},{"family":"Berlin","given":"Anna"},{"family":"Botnen","given":"Synnøve"},{"family":"Bourlat","given":"Sarah"},{"family":"Cheeke","given":"Tanya"},{"family":"Dima","given":"Bálint"},{"family":"Drenkhan","given":"Rein"},{"family":"Duarte","given":"Camila"},{"family":"Dueñas","given":"Margarita"},{"family":"Eberhardt","given":"Ursula"},{"family":"Friberg","given":"Hanna"},{"family":"Frøslev","given":"Tobias
+        G."},{"family":"Garnica","given":"Sigisfredo"},{"family":"Geml","given":"József"},{"family":"Ghobad-Nejhad","given":"Masoomeh"},{"family":"Grebenc","given":"Tine"},{"family":"Griffith","given":"Gareth
+        W."},{"family":"Hampe","given":"Felix"},{"family":"Kennedy","given":"Peter"},{"family":"Khomich","given":"Maryia"},{"family":"Kohout","given":"Petr"},{"family":"Kollom","given":"Anu"},{"family":"Larsson","given":"Ellen"},{"family":"Laszlo","given":"Irinyi"},{"family":"Leavitt","given":"Steven"},{"family":"Liimatainen","given":"Kare"},{"family":"Lindahl","given":"Björn"},{"family":"Lodge","given":"Deborah
+        J."},{"family":"Lumbsch","given":"Helge Thorsten"},{"family":"Martín Esteban","given":"María
+        Paz"},{"family":"Meyer","given":"Wieland"},{"family":"Miettinen","given":"Otto"},{"family":"Nguyen","given":"Nhu"},{"family":"Niskanen","given":"Tuula"},{"family":"Oono","given":"Ryoko"},{"family":"Öpik","given":"Maarja"},{"family":"Ordynets","given":"Alexander"},{"family":"Pawłowska","given":"Julia"},{"family":"Peintner","given":"Ursula"},{"family":"Pereira","given":"Olinto
+        Liparini"},{"family":"Pinho","given":"Danilo Batista"},{"family":"Põldmaa","given":"Kadri"},{"family":"Runnel","given":"Kadri"},{"family":"Ryberg","given":"Martin"},{"family":"Saar","given":"Irja"},{"family":"Sanli","given":"Kemal"},{"family":"Scott","given":"James"},{"family":"Spirin","given":"Viacheslav"},{"family":"Suija","given":"Ave"},{"family":"Svantesson","given":"Sten"},{"family":"Tadych","given":"Mariusz"},{"family":"Takamatsu","given":"Susumu"},{"family":"Tamm","given":"Heidi"},{"family":"Taylor","given":"AFS."},{"family":"Tedersoo","given":"Leho"},{"family":"Telleria","given":"M.T."},{"family":"Udayanga","given":"Dhanushka"},{"family":"Unterseher","given":"Martin"},{"family":"Volobuev","given":"Sergey"},{"family":"Weiss","given":"Michael"},{"family":"Wurzbacher","given":"Christian"}],"title":"SH470440.07FU","container-title":"UNITE
+        Community","description":"UNITE provides a unified way for delimiting, identifying,
+        communicating, and working with DNA-based Species Hypotheses (SH). All fungal
+        ITS sequences in the international nucleotide sequence databases are clustered
+        to approximately the species level by applying a set of dynamic distance values
+        (\u003c0.5 - 3.0%). All species hypotheses are given a unique, stable name
+        in the form of a DOI, and their taxonomic and ecological annotations are verified
+        through distributed, web-based third-party annotation efforts. SHs are connected
+        to a taxon name and its classification as far as possible (phylum, class,
+        order, etc.) by taking into account identifications for all sequences in the
+        SH. An automatically or manually designated sequence is chosen to represent
+        each such SH. These sequences are released (https://unite.ut.ee/repository.php)
+        for use by the scientific community in, for example, local sequence similarity
+        searches and next-generation sequencing analysis pipelines. The system and
+        the data are updated automatically as the number of public fungal ITS sequences
+        grows.","resource-type-general":"dataset","resource-type":"Dataset/UNITE Species
+        Hypothesis","type":"dataset","license":"https://creativecommons.org/licenses/by-nc/4.0/","publisher-id":"estdoi.bio","member-id":"estdoi","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2015-06-06T12:53:23Z","updated":"2016-05-06T07:37:17Z"}},{"id":"http://doi.org/10.15156/BIO/SH470441.07FU","type":"works","attributes":{"doi":"10.15156/BIO/SH470441.07FU","url":null,"author":[{"family":"Kõljalg","given":"Urmas"},{"family":"Abarenkov","given":"Kessy"},{"family":"Nilsson","given":"R.
+        Henrik"},{"family":"Larsson","given":"Karl-Henrik"},{"family":"Aas","given":"Anders
+        Bjørnsgard"},{"family":"Adams","given":"Rachel"},{"family":"Alves","given":"Artur"},{"family":"Ammirati","given":"Joseph
+        F."},{"family":"Arnold","given":"A. Elizabeth"},{"family":"Bahram","given":"Mohammad"},{"family":"Bengtsson-Palme","given":"Johan"},{"family":"Berlin","given":"Anna"},{"family":"Botnen","given":"Synnøve"},{"family":"Bourlat","given":"Sarah"},{"family":"Cheeke","given":"Tanya"},{"family":"Dima","given":"Bálint"},{"family":"Drenkhan","given":"Rein"},{"family":"Duarte","given":"Camila"},{"family":"Dueñas","given":"Margarita"},{"family":"Eberhardt","given":"Ursula"},{"family":"Friberg","given":"Hanna"},{"family":"Frøslev","given":"Tobias
+        G."},{"family":"Garnica","given":"Sigisfredo"},{"family":"Geml","given":"József"},{"family":"Ghobad-Nejhad","given":"Masoomeh"},{"family":"Grebenc","given":"Tine"},{"family":"Griffith","given":"Gareth
+        W."},{"family":"Hampe","given":"Felix"},{"family":"Kennedy","given":"Peter"},{"family":"Khomich","given":"Maryia"},{"family":"Kohout","given":"Petr"},{"family":"Kollom","given":"Anu"},{"family":"Larsson","given":"Ellen"},{"family":"Laszlo","given":"Irinyi"},{"family":"Leavitt","given":"Steven"},{"family":"Liimatainen","given":"Kare"},{"family":"Lindahl","given":"Björn"},{"family":"Lodge","given":"Deborah
+        J."},{"family":"Lumbsch","given":"Helge Thorsten"},{"family":"Martín Esteban","given":"María
+        Paz"},{"family":"Meyer","given":"Wieland"},{"family":"Miettinen","given":"Otto"},{"family":"Nguyen","given":"Nhu"},{"family":"Niskanen","given":"Tuula"},{"family":"Oono","given":"Ryoko"},{"family":"Öpik","given":"Maarja"},{"family":"Ordynets","given":"Alexander"},{"family":"Pawłowska","given":"Julia"},{"family":"Peintner","given":"Ursula"},{"family":"Pereira","given":"Olinto
+        Liparini"},{"family":"Pinho","given":"Danilo Batista"},{"family":"Põldmaa","given":"Kadri"},{"family":"Runnel","given":"Kadri"},{"family":"Ryberg","given":"Martin"},{"family":"Saar","given":"Irja"},{"family":"Sanli","given":"Kemal"},{"family":"Scott","given":"James"},{"family":"Spirin","given":"Viacheslav"},{"family":"Suija","given":"Ave"},{"family":"Svantesson","given":"Sten"},{"family":"Tadych","given":"Mariusz"},{"family":"Takamatsu","given":"Susumu"},{"family":"Tamm","given":"Heidi"},{"family":"Taylor","given":"AFS."},{"family":"Tedersoo","given":"Leho"},{"family":"Telleria","given":"M.T."},{"family":"Udayanga","given":"Dhanushka"},{"family":"Unterseher","given":"Martin"},{"family":"Volobuev","given":"Sergey"},{"family":"Weiss","given":"Michael"},{"family":"Wurzbacher","given":"Christian"}],"title":"SH470441.07FU","container-title":"UNITE
+        Community","description":"UNITE provides a unified way for delimiting, identifying,
+        communicating, and working with DNA-based Species Hypotheses (SH). All fungal
+        ITS sequences in the international nucleotide sequence databases are clustered
+        to approximately the species level by applying a set of dynamic distance values
+        (\u003c0.5 - 3.0%). All species hypotheses are given a unique, stable name
+        in the form of a DOI, and their taxonomic and ecological annotations are verified
+        through distributed, web-based third-party annotation efforts. SHs are connected
+        to a taxon name and its classification as far as possible (phylum, class,
+        order, etc.) by taking into account identifications for all sequences in the
+        SH. An automatically or manually designated sequence is chosen to represent
+        each such SH. These sequences are released (https://unite.ut.ee/repository.php)
+        for use by the scientific community in, for example, local sequence similarity
+        searches and next-generation sequencing analysis pipelines. The system and
+        the data are updated automatically as the number of public fungal ITS sequences
+        grows.","resource-type-general":"dataset","resource-type":"Dataset/UNITE Species
+        Hypothesis","type":"dataset","license":"https://creativecommons.org/licenses/by-nc/4.0/","publisher-id":"estdoi.bio","member-id":"estdoi","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2015-06-06T12:53:26Z","updated":"2016-05-06T07:37:20Z"}},{"id":"http://doi.org/10.15156/BIO/SH470442.07FU","type":"works","attributes":{"doi":"10.15156/BIO/SH470442.07FU","url":null,"author":[{"family":"Kõljalg","given":"Urmas"},{"family":"Abarenkov","given":"Kessy"},{"family":"Nilsson","given":"R.
+        Henrik"},{"family":"Larsson","given":"Karl-Henrik"},{"family":"Aas","given":"Anders
+        Bjørnsgard"},{"family":"Adams","given":"Rachel"},{"family":"Alves","given":"Artur"},{"family":"Ammirati","given":"Joseph
+        F."},{"family":"Arnold","given":"A. Elizabeth"},{"family":"Bahram","given":"Mohammad"},{"family":"Bengtsson-Palme","given":"Johan"},{"family":"Berlin","given":"Anna"},{"family":"Botnen","given":"Synnøve"},{"family":"Bourlat","given":"Sarah"},{"family":"Cheeke","given":"Tanya"},{"family":"Dima","given":"Bálint"},{"family":"Drenkhan","given":"Rein"},{"family":"Duarte","given":"Camila"},{"family":"Dueñas","given":"Margarita"},{"family":"Eberhardt","given":"Ursula"},{"family":"Friberg","given":"Hanna"},{"family":"Frøslev","given":"Tobias
+        G."},{"family":"Garnica","given":"Sigisfredo"},{"family":"Geml","given":"József"},{"family":"Ghobad-Nejhad","given":"Masoomeh"},{"family":"Grebenc","given":"Tine"},{"family":"Griffith","given":"Gareth
+        W."},{"family":"Hampe","given":"Felix"},{"family":"Kennedy","given":"Peter"},{"family":"Khomich","given":"Maryia"},{"family":"Kohout","given":"Petr"},{"family":"Kollom","given":"Anu"},{"family":"Larsson","given":"Ellen"},{"family":"Laszlo","given":"Irinyi"},{"family":"Leavitt","given":"Steven"},{"family":"Liimatainen","given":"Kare"},{"family":"Lindahl","given":"Björn"},{"family":"Lodge","given":"Deborah
+        J."},{"family":"Lumbsch","given":"Helge Thorsten"},{"family":"Martín Esteban","given":"María
+        Paz"},{"family":"Meyer","given":"Wieland"},{"family":"Miettinen","given":"Otto"},{"family":"Nguyen","given":"Nhu"},{"family":"Niskanen","given":"Tuula"},{"family":"Oono","given":"Ryoko"},{"family":"Öpik","given":"Maarja"},{"family":"Ordynets","given":"Alexander"},{"family":"Pawłowska","given":"Julia"},{"family":"Peintner","given":"Ursula"},{"family":"Pereira","given":"Olinto
+        Liparini"},{"family":"Pinho","given":"Danilo Batista"},{"family":"Põldmaa","given":"Kadri"},{"family":"Runnel","given":"Kadri"},{"family":"Ryberg","given":"Martin"},{"family":"Saar","given":"Irja"},{"family":"Sanli","given":"Kemal"},{"family":"Scott","given":"James"},{"family":"Spirin","given":"Viacheslav"},{"family":"Suija","given":"Ave"},{"family":"Svantesson","given":"Sten"},{"family":"Tadych","given":"Mariusz"},{"family":"Takamatsu","given":"Susumu"},{"family":"Tamm","given":"Heidi"},{"family":"Taylor","given":"AFS."},{"family":"Tedersoo","given":"Leho"},{"family":"Telleria","given":"M.T."},{"family":"Udayanga","given":"Dhanushka"},{"family":"Unterseher","given":"Martin"},{"family":"Volobuev","given":"Sergey"},{"family":"Weiss","given":"Michael"},{"family":"Wurzbacher","given":"Christian"}],"title":"SH470442.07FU","container-title":"UNITE
+        Community","description":"UNITE provides a unified way for delimiting, identifying,
+        communicating, and working with DNA-based Species Hypotheses (SH). All fungal
+        ITS sequences in the international nucleotide sequence databases are clustered
+        to approximately the species level by applying a set of dynamic distance values
+        (\u003c0.5 - 3.0%). All species hypotheses are given a unique, stable name
+        in the form of a DOI, and their taxonomic and ecological annotations are verified
+        through distributed, web-based third-party annotation efforts. SHs are connected
+        to a taxon name and its classification as far as possible (phylum, class,
+        order, etc.) by taking into account identifications for all sequences in the
+        SH. An automatically or manually designated sequence is chosen to represent
+        each such SH. These sequences are released (https://unite.ut.ee/repository.php)
+        for use by the scientific community in, for example, local sequence similarity
+        searches and next-generation sequencing analysis pipelines. The system and
+        the data are updated automatically as the number of public fungal ITS sequences
+        grows.","resource-type-general":"dataset","resource-type":"Dataset/UNITE Species
+        Hypothesis","type":"dataset","license":"https://creativecommons.org/licenses/by-nc/4.0/","publisher-id":"estdoi.bio","member-id":"estdoi","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2015-06-06T12:53:28Z","updated":"2016-05-06T07:37:23Z"}},{"id":"http://doi.org/10.15156/BIO/SH470443.07FU","type":"works","attributes":{"doi":"10.15156/BIO/SH470443.07FU","url":null,"author":[{"family":"Kõljalg","given":"Urmas"},{"family":"Abarenkov","given":"Kessy"},{"family":"Nilsson","given":"R.
+        Henrik"},{"family":"Larsson","given":"Karl-Henrik"},{"family":"Aas","given":"Anders
+        Bjørnsgard"},{"family":"Adams","given":"Rachel"},{"family":"Alves","given":"Artur"},{"family":"Ammirati","given":"Joseph
+        F."},{"family":"Arnold","given":"A. Elizabeth"},{"family":"Bahram","given":"Mohammad"},{"family":"Bengtsson-Palme","given":"Johan"},{"family":"Berlin","given":"Anna"},{"family":"Botnen","given":"Synnøve"},{"family":"Bourlat","given":"Sarah"},{"family":"Cheeke","given":"Tanya"},{"family":"Dima","given":"Bálint"},{"family":"Drenkhan","given":"Rein"},{"family":"Duarte","given":"Camila"},{"family":"Dueñas","given":"Margarita"},{"family":"Eberhardt","given":"Ursula"},{"family":"Friberg","given":"Hanna"},{"family":"Frøslev","given":"Tobias
+        G."},{"family":"Garnica","given":"Sigisfredo"},{"family":"Geml","given":"József"},{"family":"Ghobad-Nejhad","given":"Masoomeh"},{"family":"Grebenc","given":"Tine"},{"family":"Griffith","given":"Gareth
+        W."},{"family":"Hampe","given":"Felix"},{"family":"Kennedy","given":"Peter"},{"family":"Khomich","given":"Maryia"},{"family":"Kohout","given":"Petr"},{"family":"Kollom","given":"Anu"},{"family":"Larsson","given":"Ellen"},{"family":"Laszlo","given":"Irinyi"},{"family":"Leavitt","given":"Steven"},{"family":"Liimatainen","given":"Kare"},{"family":"Lindahl","given":"Björn"},{"family":"Lodge","given":"Deborah
+        J."},{"family":"Lumbsch","given":"Helge Thorsten"},{"family":"Martín Esteban","given":"María
+        Paz"},{"family":"Meyer","given":"Wieland"},{"family":"Miettinen","given":"Otto"},{"family":"Nguyen","given":"Nhu"},{"family":"Niskanen","given":"Tuula"},{"family":"Oono","given":"Ryoko"},{"family":"Öpik","given":"Maarja"},{"family":"Ordynets","given":"Alexander"},{"family":"Pawłowska","given":"Julia"},{"family":"Peintner","given":"Ursula"},{"family":"Pereira","given":"Olinto
+        Liparini"},{"family":"Pinho","given":"Danilo Batista"},{"family":"Põldmaa","given":"Kadri"},{"family":"Runnel","given":"Kadri"},{"family":"Ryberg","given":"Martin"},{"family":"Saar","given":"Irja"},{"family":"Sanli","given":"Kemal"},{"family":"Scott","given":"James"},{"family":"Spirin","given":"Viacheslav"},{"family":"Suija","given":"Ave"},{"family":"Svantesson","given":"Sten"},{"family":"Tadych","given":"Mariusz"},{"family":"Takamatsu","given":"Susumu"},{"family":"Tamm","given":"Heidi"},{"family":"Taylor","given":"AFS."},{"family":"Tedersoo","given":"Leho"},{"family":"Telleria","given":"M.T."},{"family":"Udayanga","given":"Dhanushka"},{"family":"Unterseher","given":"Martin"},{"family":"Volobuev","given":"Sergey"},{"family":"Weiss","given":"Michael"},{"family":"Wurzbacher","given":"Christian"}],"title":"SH470443.07FU","container-title":"UNITE
+        Community","description":"UNITE provides a unified way for delimiting, identifying,
+        communicating, and working with DNA-based Species Hypotheses (SH). All fungal
+        ITS sequences in the international nucleotide sequence databases are clustered
+        to approximately the species level by applying a set of dynamic distance values
+        (\u003c0.5 - 3.0%). All species hypotheses are given a unique, stable name
+        in the form of a DOI, and their taxonomic and ecological annotations are verified
+        through distributed, web-based third-party annotation efforts. SHs are connected
+        to a taxon name and its classification as far as possible (phylum, class,
+        order, etc.) by taking into account identifications for all sequences in the
+        SH. An automatically or manually designated sequence is chosen to represent
+        each such SH. These sequences are released (https://unite.ut.ee/repository.php)
+        for use by the scientific community in, for example, local sequence similarity
+        searches and next-generation sequencing analysis pipelines. The system and
+        the data are updated automatically as the number of public fungal ITS sequences
+        grows.","resource-type-general":"dataset","resource-type":"Dataset/UNITE Species
+        Hypothesis","type":"dataset","license":"https://creativecommons.org/licenses/by-nc/4.0/","publisher-id":"estdoi.bio","member-id":"estdoi","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2015-06-06T12:53:30Z","updated":"2016-05-06T07:37:26Z"}},{"id":"http://doi.org/10.15156/BIO/SH470444.07FU","type":"works","attributes":{"doi":"10.15156/BIO/SH470444.07FU","url":null,"author":[{"family":"Kõljalg","given":"Urmas"},{"family":"Abarenkov","given":"Kessy"},{"family":"Nilsson","given":"R.
+        Henrik"},{"family":"Larsson","given":"Karl-Henrik"},{"family":"Aas","given":"Anders
+        Bjørnsgard"},{"family":"Adams","given":"Rachel"},{"family":"Alves","given":"Artur"},{"family":"Ammirati","given":"Joseph
+        F."},{"family":"Arnold","given":"A. Elizabeth"},{"family":"Bahram","given":"Mohammad"},{"family":"Bengtsson-Palme","given":"Johan"},{"family":"Berlin","given":"Anna"},{"family":"Botnen","given":"Synnøve"},{"family":"Bourlat","given":"Sarah"},{"family":"Cheeke","given":"Tanya"},{"family":"Dima","given":"Bálint"},{"family":"Drenkhan","given":"Rein"},{"family":"Duarte","given":"Camila"},{"family":"Dueñas","given":"Margarita"},{"family":"Eberhardt","given":"Ursula"},{"family":"Friberg","given":"Hanna"},{"family":"Frøslev","given":"Tobias
+        G."},{"family":"Garnica","given":"Sigisfredo"},{"family":"Geml","given":"József"},{"family":"Ghobad-Nejhad","given":"Masoomeh"},{"family":"Grebenc","given":"Tine"},{"family":"Griffith","given":"Gareth
+        W."},{"family":"Hampe","given":"Felix"},{"family":"Kennedy","given":"Peter"},{"family":"Khomich","given":"Maryia"},{"family":"Kohout","given":"Petr"},{"family":"Kollom","given":"Anu"},{"family":"Larsson","given":"Ellen"},{"family":"Laszlo","given":"Irinyi"},{"family":"Leavitt","given":"Steven"},{"family":"Liimatainen","given":"Kare"},{"family":"Lindahl","given":"Björn"},{"family":"Lodge","given":"Deborah
+        J."},{"family":"Lumbsch","given":"Helge Thorsten"},{"family":"Martín Esteban","given":"María
+        Paz"},{"family":"Meyer","given":"Wieland"},{"family":"Miettinen","given":"Otto"},{"family":"Nguyen","given":"Nhu"},{"family":"Niskanen","given":"Tuula"},{"family":"Oono","given":"Ryoko"},{"family":"Öpik","given":"Maarja"},{"family":"Ordynets","given":"Alexander"},{"family":"Pawłowska","given":"Julia"},{"family":"Peintner","given":"Ursula"},{"family":"Pereira","given":"Olinto
+        Liparini"},{"family":"Pinho","given":"Danilo Batista"},{"family":"Põldmaa","given":"Kadri"},{"family":"Runnel","given":"Kadri"},{"family":"Ryberg","given":"Martin"},{"family":"Saar","given":"Irja"},{"family":"Sanli","given":"Kemal"},{"family":"Scott","given":"James"},{"family":"Spirin","given":"Viacheslav"},{"family":"Suija","given":"Ave"},{"family":"Svantesson","given":"Sten"},{"family":"Tadych","given":"Mariusz"},{"family":"Takamatsu","given":"Susumu"},{"family":"Tamm","given":"Heidi"},{"family":"Taylor","given":"AFS."},{"family":"Tedersoo","given":"Leho"},{"family":"Telleria","given":"M.T."},{"family":"Udayanga","given":"Dhanushka"},{"family":"Unterseher","given":"Martin"},{"family":"Volobuev","given":"Sergey"},{"family":"Weiss","given":"Michael"},{"family":"Wurzbacher","given":"Christian"}],"title":"SH470444.07FU","container-title":"UNITE
+        Community","description":"UNITE provides a unified way for delimiting, identifying,
+        communicating, and working with DNA-based Species Hypotheses (SH). All fungal
+        ITS sequences in the international nucleotide sequence databases are clustered
+        to approximately the species level by applying a set of dynamic distance values
+        (\u003c0.5 - 3.0%). All species hypotheses are given a unique, stable name
+        in the form of a DOI, and their taxonomic and ecological annotations are verified
+        through distributed, web-based third-party annotation efforts. SHs are connected
+        to a taxon name and its classification as far as possible (phylum, class,
+        order, etc.) by taking into account identifications for all sequences in the
+        SH. An automatically or manually designated sequence is chosen to represent
+        each such SH. These sequences are released (https://unite.ut.ee/repository.php)
+        for use by the scientific community in, for example, local sequence similarity
+        searches and next-generation sequencing analysis pipelines. The system and
+        the data are updated automatically as the number of public fungal ITS sequences
+        grows.","resource-type-general":"dataset","resource-type":"Dataset/UNITE Species
+        Hypothesis","type":"dataset","license":"https://creativecommons.org/licenses/by-nc/4.0/","publisher-id":"estdoi.bio","member-id":"estdoi","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2015-06-06T12:53:33Z","updated":"2016-05-06T07:37:29Z"}},{"id":"http://doi.org/10.15156/BIO/SH470445.07FU","type":"works","attributes":{"doi":"10.15156/BIO/SH470445.07FU","url":null,"author":[{"family":"Kõljalg","given":"Urmas"},{"family":"Abarenkov","given":"Kessy"},{"family":"Nilsson","given":"R.
+        Henrik"},{"family":"Larsson","given":"Karl-Henrik"},{"family":"Aas","given":"Anders
+        Bjørnsgard"},{"family":"Adams","given":"Rachel"},{"family":"Alves","given":"Artur"},{"family":"Ammirati","given":"Joseph
+        F."},{"family":"Arnold","given":"A. Elizabeth"},{"family":"Bahram","given":"Mohammad"},{"family":"Bengtsson-Palme","given":"Johan"},{"family":"Berlin","given":"Anna"},{"family":"Botnen","given":"Synnøve"},{"family":"Bourlat","given":"Sarah"},{"family":"Cheeke","given":"Tanya"},{"family":"Dima","given":"Bálint"},{"family":"Drenkhan","given":"Rein"},{"family":"Duarte","given":"Camila"},{"family":"Dueñas","given":"Margarita"},{"family":"Eberhardt","given":"Ursula"},{"family":"Friberg","given":"Hanna"},{"family":"Frøslev","given":"Tobias
+        G."},{"family":"Garnica","given":"Sigisfredo"},{"family":"Geml","given":"József"},{"family":"Ghobad-Nejhad","given":"Masoomeh"},{"family":"Grebenc","given":"Tine"},{"family":"Griffith","given":"Gareth
+        W."},{"family":"Hampe","given":"Felix"},{"family":"Kennedy","given":"Peter"},{"family":"Khomich","given":"Maryia"},{"family":"Kohout","given":"Petr"},{"family":"Kollom","given":"Anu"},{"family":"Larsson","given":"Ellen"},{"family":"Laszlo","given":"Irinyi"},{"family":"Leavitt","given":"Steven"},{"family":"Liimatainen","given":"Kare"},{"family":"Lindahl","given":"Björn"},{"family":"Lodge","given":"Deborah
+        J."},{"family":"Lumbsch","given":"Helge Thorsten"},{"family":"Martín Esteban","given":"María
+        Paz"},{"family":"Meyer","given":"Wieland"},{"family":"Miettinen","given":"Otto"},{"family":"Nguyen","given":"Nhu"},{"family":"Niskanen","given":"Tuula"},{"family":"Oono","given":"Ryoko"},{"family":"Öpik","given":"Maarja"},{"family":"Ordynets","given":"Alexander"},{"family":"Pawłowska","given":"Julia"},{"family":"Peintner","given":"Ursula"},{"family":"Pereira","given":"Olinto
+        Liparini"},{"family":"Pinho","given":"Danilo Batista"},{"family":"Põldmaa","given":"Kadri"},{"family":"Runnel","given":"Kadri"},{"family":"Ryberg","given":"Martin"},{"family":"Saar","given":"Irja"},{"family":"Sanli","given":"Kemal"},{"family":"Scott","given":"James"},{"family":"Spirin","given":"Viacheslav"},{"family":"Suija","given":"Ave"},{"family":"Svantesson","given":"Sten"},{"family":"Tadych","given":"Mariusz"},{"family":"Takamatsu","given":"Susumu"},{"family":"Tamm","given":"Heidi"},{"family":"Taylor","given":"AFS."},{"family":"Tedersoo","given":"Leho"},{"family":"Telleria","given":"M.T."},{"family":"Udayanga","given":"Dhanushka"},{"family":"Unterseher","given":"Martin"},{"family":"Volobuev","given":"Sergey"},{"family":"Weiss","given":"Michael"},{"family":"Wurzbacher","given":"Christian"}],"title":"SH470445.07FU","container-title":"UNITE
+        Community","description":"UNITE provides a unified way for delimiting, identifying,
+        communicating, and working with DNA-based Species Hypotheses (SH). All fungal
+        ITS sequences in the international nucleotide sequence databases are clustered
+        to approximately the species level by applying a set of dynamic distance values
+        (\u003c0.5 - 3.0%). All species hypotheses are given a unique, stable name
+        in the form of a DOI, and their taxonomic and ecological annotations are verified
+        through distributed, web-based third-party annotation efforts. SHs are connected
+        to a taxon name and its classification as far as possible (phylum, class,
+        order, etc.) by taking into account identifications for all sequences in the
+        SH. An automatically or manually designated sequence is chosen to represent
+        each such SH. These sequences are released (https://unite.ut.ee/repository.php)
+        for use by the scientific community in, for example, local sequence similarity
+        searches and next-generation sequencing analysis pipelines. The system and
+        the data are updated automatically as the number of public fungal ITS sequences
+        grows.","resource-type-general":"dataset","resource-type":"Dataset/UNITE Species
+        Hypothesis","type":"dataset","license":"https://creativecommons.org/licenses/by-nc/4.0/","publisher-id":"estdoi.bio","member-id":"estdoi","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2015-06-06T12:53:35Z","updated":"2016-05-06T07:37:32Z"}},{"id":"http://doi.org/10.15156/BIO/SH470446.07FU","type":"works","attributes":{"doi":"10.15156/BIO/SH470446.07FU","url":null,"author":[{"family":"Kõljalg","given":"Urmas"},{"family":"Abarenkov","given":"Kessy"},{"family":"Nilsson","given":"R.
+        Henrik"},{"family":"Larsson","given":"Karl-Henrik"},{"family":"Aas","given":"Anders
+        Bjørnsgard"},{"family":"Adams","given":"Rachel"},{"family":"Alves","given":"Artur"},{"family":"Ammirati","given":"Joseph
+        F."},{"family":"Arnold","given":"A. Elizabeth"},{"family":"Bahram","given":"Mohammad"},{"family":"Bengtsson-Palme","given":"Johan"},{"family":"Berlin","given":"Anna"},{"family":"Botnen","given":"Synnøve"},{"family":"Bourlat","given":"Sarah"},{"family":"Cheeke","given":"Tanya"},{"family":"Dima","given":"Bálint"},{"family":"Drenkhan","given":"Rein"},{"family":"Duarte","given":"Camila"},{"family":"Dueñas","given":"Margarita"},{"family":"Eberhardt","given":"Ursula"},{"family":"Friberg","given":"Hanna"},{"family":"Frøslev","given":"Tobias
+        G."},{"family":"Garnica","given":"Sigisfredo"},{"family":"Geml","given":"József"},{"family":"Ghobad-Nejhad","given":"Masoomeh"},{"family":"Grebenc","given":"Tine"},{"family":"Griffith","given":"Gareth
+        W."},{"family":"Hampe","given":"Felix"},{"family":"Kennedy","given":"Peter"},{"family":"Khomich","given":"Maryia"},{"family":"Kohout","given":"Petr"},{"family":"Kollom","given":"Anu"},{"family":"Larsson","given":"Ellen"},{"family":"Laszlo","given":"Irinyi"},{"family":"Leavitt","given":"Steven"},{"family":"Liimatainen","given":"Kare"},{"family":"Lindahl","given":"Björn"},{"family":"Lodge","given":"Deborah
+        J."},{"family":"Lumbsch","given":"Helge Thorsten"},{"family":"Martín Esteban","given":"María
+        Paz"},{"family":"Meyer","given":"Wieland"},{"family":"Miettinen","given":"Otto"},{"family":"Nguyen","given":"Nhu"},{"family":"Niskanen","given":"Tuula"},{"family":"Oono","given":"Ryoko"},{"family":"Öpik","given":"Maarja"},{"family":"Ordynets","given":"Alexander"},{"family":"Pawłowska","given":"Julia"},{"family":"Peintner","given":"Ursula"},{"family":"Pereira","given":"Olinto
+        Liparini"},{"family":"Pinho","given":"Danilo Batista"},{"family":"Põldmaa","given":"Kadri"},{"family":"Runnel","given":"Kadri"},{"family":"Ryberg","given":"Martin"},{"family":"Saar","given":"Irja"},{"family":"Sanli","given":"Kemal"},{"family":"Scott","given":"James"},{"family":"Spirin","given":"Viacheslav"},{"family":"Suija","given":"Ave"},{"family":"Svantesson","given":"Sten"},{"family":"Tadych","given":"Mariusz"},{"family":"Takamatsu","given":"Susumu"},{"family":"Tamm","given":"Heidi"},{"family":"Taylor","given":"AFS."},{"family":"Tedersoo","given":"Leho"},{"family":"Telleria","given":"M.T."},{"family":"Udayanga","given":"Dhanushka"},{"family":"Unterseher","given":"Martin"},{"family":"Volobuev","given":"Sergey"},{"family":"Weiss","given":"Michael"},{"family":"Wurzbacher","given":"Christian"}],"title":"SH470446.07FU","container-title":"UNITE
+        Community","description":"UNITE provides a unified way for delimiting, identifying,
+        communicating, and working with DNA-based Species Hypotheses (SH). All fungal
+        ITS sequences in the international nucleotide sequence databases are clustered
+        to approximately the species level by applying a set of dynamic distance values
+        (\u003c0.5 - 3.0%). All species hypotheses are given a unique, stable name
+        in the form of a DOI, and their taxonomic and ecological annotations are verified
+        through distributed, web-based third-party annotation efforts. SHs are connected
+        to a taxon name and its classification as far as possible (phylum, class,
+        order, etc.) by taking into account identifications for all sequences in the
+        SH. An automatically or manually designated sequence is chosen to represent
+        each such SH. These sequences are released (https://unite.ut.ee/repository.php)
+        for use by the scientific community in, for example, local sequence similarity
+        searches and next-generation sequencing analysis pipelines. The system and
+        the data are updated automatically as the number of public fungal ITS sequences
+        grows.","resource-type-general":"dataset","resource-type":"Dataset/UNITE Species
+        Hypothesis","type":"dataset","license":"https://creativecommons.org/licenses/by-nc/4.0/","publisher-id":"estdoi.bio","member-id":"estdoi","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2015-06-06T12:53:37Z","updated":"2016-05-06T07:37:35Z"}},{"id":"http://doi.org/10.15156/BIO/SH073225.07FU","type":"works","attributes":{"doi":"10.15156/BIO/SH073225.07FU","url":null,"author":[{"family":"Kõljalg","given":"Urmas"},{"family":"Abarenkov","given":"Kessy"},{"family":"Nilsson","given":"R.
+        Henrik"},{"family":"Larsson","given":"Karl-Henrik"},{"family":"Aas","given":"Anders
+        Bjørnsgard"},{"family":"Adams","given":"Rachel"},{"family":"Alves","given":"Artur"},{"family":"Ammirati","given":"Joseph
+        F."},{"family":"Arnold","given":"A. Elizabeth"},{"family":"Bahram","given":"Mohammad"},{"family":"Bengtsson-Palme","given":"Johan"},{"family":"Berlin","given":"Anna"},{"family":"Botnen","given":"Synnøve"},{"family":"Bourlat","given":"Sarah"},{"family":"Cheeke","given":"Tanya"},{"family":"Dima","given":"Bálint"},{"family":"Drenkhan","given":"Rein"},{"family":"Duarte","given":"Camila"},{"family":"Dueñas","given":"Margarita"},{"family":"Eberhardt","given":"Ursula"},{"family":"Friberg","given":"Hanna"},{"family":"Frøslev","given":"Tobias
+        G."},{"family":"Garnica","given":"Sigisfredo"},{"family":"Geml","given":"József"},{"family":"Ghobad-Nejhad","given":"Masoomeh"},{"family":"Grebenc","given":"Tine"},{"family":"Griffith","given":"Gareth
+        W."},{"family":"Hampe","given":"Felix"},{"family":"Kennedy","given":"Peter"},{"family":"Khomich","given":"Maryia"},{"family":"Kohout","given":"Petr"},{"family":"Kollom","given":"Anu"},{"family":"Larsson","given":"Ellen"},{"family":"Laszlo","given":"Irinyi"},{"family":"Leavitt","given":"Steven"},{"family":"Liimatainen","given":"Kare"},{"family":"Lindahl","given":"Björn"},{"family":"Lodge","given":"Deborah
+        J."},{"family":"Lumbsch","given":"Helge Thorsten"},{"family":"Martín Esteban","given":"María
+        Paz"},{"family":"Meyer","given":"Wieland"},{"family":"Miettinen","given":"Otto"},{"family":"Nguyen","given":"Nhu"},{"family":"Niskanen","given":"Tuula"},{"family":"Oono","given":"Ryoko"},{"family":"Öpik","given":"Maarja"},{"family":"Ordynets","given":"Alexander"},{"family":"Pawłowska","given":"Julia"},{"family":"Peintner","given":"Ursula"},{"family":"Pereira","given":"Olinto
+        Liparini"},{"family":"Pinho","given":"Danilo Batista"},{"family":"Põldmaa","given":"Kadri"},{"family":"Runnel","given":"Kadri"},{"family":"Ryberg","given":"Martin"},{"family":"Saar","given":"Irja"},{"family":"Sanli","given":"Kemal"},{"family":"Scott","given":"James"},{"family":"Spirin","given":"Viacheslav"},{"family":"Suija","given":"Ave"},{"family":"Svantesson","given":"Sten"},{"family":"Tadych","given":"Mariusz"},{"family":"Takamatsu","given":"Susumu"},{"family":"Tamm","given":"Heidi"},{"family":"Taylor","given":"AFS."},{"family":"Tedersoo","given":"Leho"},{"family":"Telleria","given":"M.T."},{"family":"Udayanga","given":"Dhanushka"},{"family":"Unterseher","given":"Martin"},{"family":"Volobuev","given":"Sergey"},{"family":"Weiss","given":"Michael"},{"family":"Wurzbacher","given":"Christian"}],"title":"SH073225.07FU","container-title":"UNITE
+        Community","description":"UNITE provides a unified way for delimiting, identifying,
+        communicating, and working with DNA-based Species Hypotheses (SH). All fungal
+        ITS sequences in the international nucleotide sequence databases are clustered
+        to approximately the species level by applying a set of dynamic distance values
+        (\u003c0.5 - 3.0%). All species hypotheses are given a unique, stable name
+        in the form of a DOI, and their taxonomic and ecological annotations are verified
+        through distributed, web-based third-party annotation efforts. SHs are connected
+        to a taxon name and its classification as far as possible (phylum, class,
+        order, etc.) by taking into account identifications for all sequences in the
+        SH. An automatically or manually designated sequence is chosen to represent
+        each such SH. These sequences are released (https://unite.ut.ee/repository.php)
+        for use by the scientific community in, for example, local sequence similarity
+        searches and next-generation sequencing analysis pipelines. The system and
+        the data are updated automatically as the number of public fungal ITS sequences
+        grows.","resource-type-general":"dataset","resource-type":"Dataset/UNITE Species
+        Hypothesis","type":"dataset","license":"https://creativecommons.org/licenses/by-nc/4.0/","publisher-id":"estdoi.bio","member-id":"estdoi","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2015-06-01T20:24:45Z","updated":"2016-04-20T15:32:22Z"}},{"id":"http://doi.org/10.15156/BIO/SH031366.07FU","type":"works","attributes":{"doi":"10.15156/BIO/SH031366.07FU","url":null,"author":[{"family":"Kõljalg","given":"Urmas"},{"family":"Abarenkov","given":"Kessy"},{"family":"Nilsson","given":"R.
+        Henrik"},{"family":"Larsson","given":"Karl-Henrik"},{"family":"Aas","given":"Anders
+        Bjørnsgard"},{"family":"Adams","given":"Rachel"},{"family":"Alves","given":"Artur"},{"family":"Ammirati","given":"Joseph
+        F."},{"family":"Arnold","given":"A. Elizabeth"},{"family":"Bahram","given":"Mohammad"},{"family":"Bengtsson-Palme","given":"Johan"},{"family":"Berlin","given":"Anna"},{"family":"Botnen","given":"Synnøve"},{"family":"Bourlat","given":"Sarah"},{"family":"Cheeke","given":"Tanya"},{"family":"Dima","given":"Bálint"},{"family":"Drenkhan","given":"Rein"},{"family":"Duarte","given":"Camila"},{"family":"Dueñas","given":"Margarita"},{"family":"Eberhardt","given":"Ursula"},{"family":"Friberg","given":"Hanna"},{"family":"Frøslev","given":"Tobias
+        G."},{"family":"Garnica","given":"Sigisfredo"},{"family":"Geml","given":"József"},{"family":"Ghobad-Nejhad","given":"Masoomeh"},{"family":"Grebenc","given":"Tine"},{"family":"Griffith","given":"Gareth
+        W."},{"family":"Hampe","given":"Felix"},{"family":"Kennedy","given":"Peter"},{"family":"Khomich","given":"Maryia"},{"family":"Kohout","given":"Petr"},{"family":"Kollom","given":"Anu"},{"family":"Larsson","given":"Ellen"},{"family":"Laszlo","given":"Irinyi"},{"family":"Leavitt","given":"Steven"},{"family":"Liimatainen","given":"Kare"},{"family":"Lindahl","given":"Björn"},{"family":"Lodge","given":"Deborah
+        J."},{"family":"Lumbsch","given":"Helge Thorsten"},{"family":"Martín Esteban","given":"María
+        Paz"},{"family":"Meyer","given":"Wieland"},{"family":"Miettinen","given":"Otto"},{"family":"Nguyen","given":"Nhu"},{"family":"Niskanen","given":"Tuula"},{"family":"Oono","given":"Ryoko"},{"family":"Öpik","given":"Maarja"},{"family":"Ordynets","given":"Alexander"},{"family":"Pawłowska","given":"Julia"},{"family":"Peintner","given":"Ursula"},{"family":"Pereira","given":"Olinto
+        Liparini"},{"family":"Pinho","given":"Danilo Batista"},{"family":"Põldmaa","given":"Kadri"},{"family":"Runnel","given":"Kadri"},{"family":"Ryberg","given":"Martin"},{"family":"Saar","given":"Irja"},{"family":"Sanli","given":"Kemal"},{"family":"Scott","given":"James"},{"family":"Spirin","given":"Viacheslav"},{"family":"Suija","given":"Ave"},{"family":"Svantesson","given":"Sten"},{"family":"Tadych","given":"Mariusz"},{"family":"Takamatsu","given":"Susumu"},{"family":"Tamm","given":"Heidi"},{"family":"Taylor","given":"AFS."},{"family":"Tedersoo","given":"Leho"},{"family":"Telleria","given":"M.T."},{"family":"Udayanga","given":"Dhanushka"},{"family":"Unterseher","given":"Martin"},{"family":"Volobuev","given":"Sergey"},{"family":"Weiss","given":"Michael"},{"family":"Wurzbacher","given":"Christian"}],"title":"SH031366.07FU","container-title":"UNITE
+        Community","description":"UNITE provides a unified way for delimiting, identifying,
+        communicating, and working with DNA-based Species Hypotheses (SH). All fungal
+        ITS sequences in the international nucleotide sequence databases are clustered
+        to approximately the species level by applying a set of dynamic distance values
+        (\u003c0.5 - 3.0%). All species hypotheses are given a unique, stable name
+        in the form of a DOI, and their taxonomic and ecological annotations are verified
+        through distributed, web-based third-party annotation efforts. SHs are connected
+        to a taxon name and its classification as far as possible (phylum, class,
+        order, etc.) by taking into account identifications for all sequences in the
+        SH. An automatically or manually designated sequence is chosen to represent
+        each such SH. These sequences are released (https://unite.ut.ee/repository.php)
+        for use by the scientific community in, for example, local sequence similarity
+        searches and next-generation sequencing analysis pipelines. The system and
+        the data are updated automatically as the number of public fungal ITS sequences
+        grows.","resource-type-general":"dataset","resource-type":"Dataset/UNITE Species
+        Hypothesis","type":"dataset","license":"https://creativecommons.org/licenses/by-nc/4.0/","publisher-id":"estdoi.bio","member-id":"estdoi","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2015-06-01T07:51:25Z","updated":"2016-04-18T11:41:16Z"}},{"id":"http://doi.org/10.15156/BIO/SH299733.07FU","type":"works","attributes":{"doi":"10.15156/BIO/SH299733.07FU","url":null,"author":[{"family":"Kõljalg","given":"Urmas"},{"family":"Abarenkov","given":"Kessy"},{"family":"Nilsson","given":"R.
+        Henrik"},{"family":"Larsson","given":"Karl-Henrik"},{"family":"Aas","given":"Anders
+        Bjørnsgard"},{"family":"Adams","given":"Rachel"},{"family":"Alves","given":"Artur"},{"family":"Ammirati","given":"Joseph
+        F."},{"family":"Arnold","given":"A. Elizabeth"},{"family":"Bahram","given":"Mohammad"},{"family":"Bengtsson-Palme","given":"Johan"},{"family":"Berlin","given":"Anna"},{"family":"Botnen","given":"Synnøve"},{"family":"Bourlat","given":"Sarah"},{"family":"Cheeke","given":"Tanya"},{"family":"Dima","given":"Bálint"},{"family":"Drenkhan","given":"Rein"},{"family":"Duarte","given":"Camila"},{"family":"Dueñas","given":"Margarita"},{"family":"Eberhardt","given":"Ursula"},{"family":"Friberg","given":"Hanna"},{"family":"Frøslev","given":"Tobias
+        G."},{"family":"Garnica","given":"Sigisfredo"},{"family":"Geml","given":"József"},{"family":"Ghobad-Nejhad","given":"Masoomeh"},{"family":"Grebenc","given":"Tine"},{"family":"Griffith","given":"Gareth
+        W."},{"family":"Hampe","given":"Felix"},{"family":"Kennedy","given":"Peter"},{"family":"Khomich","given":"Maryia"},{"family":"Kohout","given":"Petr"},{"family":"Kollom","given":"Anu"},{"family":"Larsson","given":"Ellen"},{"family":"Laszlo","given":"Irinyi"},{"family":"Leavitt","given":"Steven"},{"family":"Liimatainen","given":"Kare"},{"family":"Lindahl","given":"Björn"},{"family":"Lodge","given":"Deborah
+        J."},{"family":"Lumbsch","given":"Helge Thorsten"},{"family":"Martín Esteban","given":"María
+        Paz"},{"family":"Meyer","given":"Wieland"},{"family":"Miettinen","given":"Otto"},{"family":"Nguyen","given":"Nhu"},{"family":"Niskanen","given":"Tuula"},{"family":"Oono","given":"Ryoko"},{"family":"Öpik","given":"Maarja"},{"family":"Ordynets","given":"Alexander"},{"family":"Pawłowska","given":"Julia"},{"family":"Peintner","given":"Ursula"},{"family":"Pereira","given":"Olinto
+        Liparini"},{"family":"Pinho","given":"Danilo Batista"},{"family":"Põldmaa","given":"Kadri"},{"family":"Runnel","given":"Kadri"},{"family":"Ryberg","given":"Martin"},{"family":"Saar","given":"Irja"},{"family":"Sanli","given":"Kemal"},{"family":"Scott","given":"James"},{"family":"Spirin","given":"Viacheslav"},{"family":"Suija","given":"Ave"},{"family":"Svantesson","given":"Sten"},{"family":"Tadych","given":"Mariusz"},{"family":"Takamatsu","given":"Susumu"},{"family":"Tamm","given":"Heidi"},{"family":"Taylor","given":"AFS."},{"family":"Tedersoo","given":"Leho"},{"family":"Telleria","given":"M.T."},{"family":"Udayanga","given":"Dhanushka"},{"family":"Unterseher","given":"Martin"},{"family":"Volobuev","given":"Sergey"},{"family":"Weiss","given":"Michael"},{"family":"Wurzbacher","given":"Christian"}],"title":"SH299733.07FU","container-title":"UNITE
+        Community","description":"UNITE provides a unified way for delimiting, identifying,
+        communicating, and working with DNA-based Species Hypotheses (SH). All fungal
+        ITS sequences in the international nucleotide sequence databases are clustered
+        to approximately the species level by applying a set of dynamic distance values
+        (\u003c0.5 - 3.0%). All species hypotheses are given a unique, stable name
+        in the form of a DOI, and their taxonomic and ecological annotations are verified
+        through distributed, web-based third-party annotation efforts. SHs are connected
+        to a taxon name and its classification as far as possible (phylum, class,
+        order, etc.) by taking into account identifications for all sequences in the
+        SH. An automatically or manually designated sequence is chosen to represent
+        each such SH. These sequences are released (https://unite.ut.ee/repository.php)
+        for use by the scientific community in, for example, local sequence similarity
+        searches and next-generation sequencing analysis pipelines. The system and
+        the data are updated automatically as the number of public fungal ITS sequences
+        grows.","resource-type-general":"dataset","resource-type":"Dataset/UNITE Species
+        Hypothesis","type":"dataset","license":"https://creativecommons.org/licenses/by-nc/4.0/","publisher-id":"estdoi.bio","member-id":"estdoi","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2015-06-04T09:15:49Z","updated":"2016-04-30T00:24:31Z"}},{"id":"http://doi.org/10.15156/BIO/SH171384.07FU","type":"works","attributes":{"doi":"10.15156/BIO/SH171384.07FU","url":null,"author":[{"family":"Kõljalg","given":"Urmas"},{"family":"Abarenkov","given":"Kessy"},{"family":"Nilsson","given":"R.
+        Henrik"},{"family":"Larsson","given":"Karl-Henrik"},{"family":"Aas","given":"Anders
+        Bjørnsgard"},{"family":"Adams","given":"Rachel"},{"family":"Alves","given":"Artur"},{"family":"Ammirati","given":"Joseph
+        F."},{"family":"Arnold","given":"A. Elizabeth"},{"family":"Bahram","given":"Mohammad"},{"family":"Bengtsson-Palme","given":"Johan"},{"family":"Berlin","given":"Anna"},{"family":"Botnen","given":"Synnøve"},{"family":"Bourlat","given":"Sarah"},{"family":"Cheeke","given":"Tanya"},{"family":"Dima","given":"Bálint"},{"family":"Drenkhan","given":"Rein"},{"family":"Duarte","given":"Camila"},{"family":"Dueñas","given":"Margarita"},{"family":"Eberhardt","given":"Ursula"},{"family":"Friberg","given":"Hanna"},{"family":"Frøslev","given":"Tobias
+        G."},{"family":"Garnica","given":"Sigisfredo"},{"family":"Geml","given":"József"},{"family":"Ghobad-Nejhad","given":"Masoomeh"},{"family":"Grebenc","given":"Tine"},{"family":"Griffith","given":"Gareth
+        W."},{"family":"Hampe","given":"Felix"},{"family":"Kennedy","given":"Peter"},{"family":"Khomich","given":"Maryia"},{"family":"Kohout","given":"Petr"},{"family":"Kollom","given":"Anu"},{"family":"Larsson","given":"Ellen"},{"family":"Laszlo","given":"Irinyi"},{"family":"Leavitt","given":"Steven"},{"family":"Liimatainen","given":"Kare"},{"family":"Lindahl","given":"Björn"},{"family":"Lodge","given":"Deborah
+        J."},{"family":"Lumbsch","given":"Helge Thorsten"},{"family":"Martín Esteban","given":"María
+        Paz"},{"family":"Meyer","given":"Wieland"},{"family":"Miettinen","given":"Otto"},{"family":"Nguyen","given":"Nhu"},{"family":"Niskanen","given":"Tuula"},{"family":"Oono","given":"Ryoko"},{"family":"Öpik","given":"Maarja"},{"family":"Ordynets","given":"Alexander"},{"family":"Pawłowska","given":"Julia"},{"family":"Peintner","given":"Ursula"},{"family":"Pereira","given":"Olinto
+        Liparini"},{"family":"Pinho","given":"Danilo Batista"},{"family":"Põldmaa","given":"Kadri"},{"family":"Runnel","given":"Kadri"},{"family":"Ryberg","given":"Martin"},{"family":"Saar","given":"Irja"},{"family":"Sanli","given":"Kemal"},{"family":"Scott","given":"James"},{"family":"Spirin","given":"Viacheslav"},{"family":"Suija","given":"Ave"},{"family":"Svantesson","given":"Sten"},{"family":"Tadych","given":"Mariusz"},{"family":"Takamatsu","given":"Susumu"},{"family":"Tamm","given":"Heidi"},{"family":"Taylor","given":"AFS."},{"family":"Tedersoo","given":"Leho"},{"family":"Telleria","given":"M.T."},{"family":"Udayanga","given":"Dhanushka"},{"family":"Unterseher","given":"Martin"},{"family":"Volobuev","given":"Sergey"},{"family":"Weiss","given":"Michael"},{"family":"Wurzbacher","given":"Christian"}],"title":"SH171384.07FU","container-title":"UNITE
+        Community","description":"UNITE provides a unified way for delimiting, identifying,
+        communicating, and working with DNA-based Species Hypotheses (SH). All fungal
+        ITS sequences in the international nucleotide sequence databases are clustered
+        to approximately the species level by applying a set of dynamic distance values
+        (\u003c0.5 - 3.0%). All species hypotheses are given a unique, stable name
+        in the form of a DOI, and their taxonomic and ecological annotations are verified
+        through distributed, web-based third-party annotation efforts. SHs are connected
+        to a taxon name and its classification as far as possible (phylum, class,
+        order, etc.) by taking into account identifications for all sequences in the
+        SH. An automatically or manually designated sequence is chosen to represent
+        each such SH. These sequences are released (https://unite.ut.ee/repository.php)
+        for use by the scientific community in, for example, local sequence similarity
+        searches and next-generation sequencing analysis pipelines. The system and
+        the data are updated automatically as the number of public fungal ITS sequences
+        grows.","resource-type-general":"dataset","resource-type":"Dataset/UNITE Species
+        Hypothesis","type":"dataset","license":"https://creativecommons.org/licenses/by-nc/4.0/","publisher-id":"estdoi.bio","member-id":"estdoi","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2015-06-01T12:44:20Z","updated":"2016-04-24T06:18:26Z"}},{"id":"http://doi.org/10.15156/BIO/SH219844.07FU","type":"works","attributes":{"doi":"10.15156/BIO/SH219844.07FU","url":null,"author":[{"family":"Kõljalg","given":"Urmas"},{"family":"Abarenkov","given":"Kessy"},{"family":"Nilsson","given":"R.
+        Henrik"},{"family":"Larsson","given":"Karl-Henrik"},{"family":"Aas","given":"Anders
+        Bjørnsgard"},{"family":"Adams","given":"Rachel"},{"family":"Alves","given":"Artur"},{"family":"Ammirati","given":"Joseph
+        F."},{"family":"Arnold","given":"A. Elizabeth"},{"family":"Bahram","given":"Mohammad"},{"family":"Bengtsson-Palme","given":"Johan"},{"family":"Berlin","given":"Anna"},{"family":"Botnen","given":"Synnøve"},{"family":"Bourlat","given":"Sarah"},{"family":"Cheeke","given":"Tanya"},{"family":"Dima","given":"Bálint"},{"family":"Drenkhan","given":"Rein"},{"family":"Duarte","given":"Camila"},{"family":"Dueñas","given":"Margarita"},{"family":"Eberhardt","given":"Ursula"},{"family":"Friberg","given":"Hanna"},{"family":"Frøslev","given":"Tobias
+        G."},{"family":"Garnica","given":"Sigisfredo"},{"family":"Geml","given":"József"},{"family":"Ghobad-Nejhad","given":"Masoomeh"},{"family":"Grebenc","given":"Tine"},{"family":"Griffith","given":"Gareth
+        W."},{"family":"Hampe","given":"Felix"},{"family":"Kennedy","given":"Peter"},{"family":"Khomich","given":"Maryia"},{"family":"Kohout","given":"Petr"},{"family":"Kollom","given":"Anu"},{"family":"Larsson","given":"Ellen"},{"family":"Laszlo","given":"Irinyi"},{"family":"Leavitt","given":"Steven"},{"family":"Liimatainen","given":"Kare"},{"family":"Lindahl","given":"Björn"},{"family":"Lodge","given":"Deborah
+        J."},{"family":"Lumbsch","given":"Helge Thorsten"},{"family":"Martín Esteban","given":"María
+        Paz"},{"family":"Meyer","given":"Wieland"},{"family":"Miettinen","given":"Otto"},{"family":"Nguyen","given":"Nhu"},{"family":"Niskanen","given":"Tuula"},{"family":"Oono","given":"Ryoko"},{"family":"Öpik","given":"Maarja"},{"family":"Ordynets","given":"Alexander"},{"family":"Pawłowska","given":"Julia"},{"family":"Peintner","given":"Ursula"},{"family":"Pereira","given":"Olinto
+        Liparini"},{"family":"Pinho","given":"Danilo Batista"},{"family":"Põldmaa","given":"Kadri"},{"family":"Runnel","given":"Kadri"},{"family":"Ryberg","given":"Martin"},{"family":"Saar","given":"Irja"},{"family":"Sanli","given":"Kemal"},{"family":"Scott","given":"James"},{"family":"Spirin","given":"Viacheslav"},{"family":"Suija","given":"Ave"},{"family":"Svantesson","given":"Sten"},{"family":"Tadych","given":"Mariusz"},{"family":"Takamatsu","given":"Susumu"},{"family":"Tamm","given":"Heidi"},{"family":"Taylor","given":"AFS."},{"family":"Tedersoo","given":"Leho"},{"family":"Telleria","given":"M.T."},{"family":"Udayanga","given":"Dhanushka"},{"family":"Unterseher","given":"Martin"},{"family":"Volobuev","given":"Sergey"},{"family":"Weiss","given":"Michael"},{"family":"Wurzbacher","given":"Christian"}],"title":"SH219844.07FU","container-title":"UNITE
+        Community","description":"UNITE provides a unified way for delimiting, identifying,
+        communicating, and working with DNA-based Species Hypotheses (SH). All fungal
+        ITS sequences in the international nucleotide sequence databases are clustered
+        to approximately the species level by applying a set of dynamic distance values
+        (\u003c0.5 - 3.0%). All species hypotheses are given a unique, stable name
+        in the form of a DOI, and their taxonomic and ecological annotations are verified
+        through distributed, web-based third-party annotation efforts. SHs are connected
+        to a taxon name and its classification as far as possible (phylum, class,
+        order, etc.) by taking into account identifications for all sequences in the
+        SH. An automatically or manually designated sequence is chosen to represent
+        each such SH. These sequences are released (https://unite.ut.ee/repository.php)
+        for use by the scientific community in, for example, local sequence similarity
+        searches and next-generation sequencing analysis pipelines. The system and
+        the data are updated automatically as the number of public fungal ITS sequences
+        grows.","resource-type-general":"dataset","resource-type":"Dataset/UNITE Species
+        Hypothesis","type":"dataset","license":"https://creativecommons.org/licenses/by-nc/4.0/","publisher-id":"estdoi.bio","member-id":"estdoi","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2015-06-04T02:47:49Z","updated":"2016-04-27T04:00:04Z"}},{"id":"http://doi.org/10.6084/M9.FIGSHARE.90828.V1","type":"works","attributes":{"doi":"10.6084/M9.FIGSHARE.90828.V1","url":null,"author":[{"literal":"Martin
+        Fenner","orcid":"http://orcid.org/0000-0003-1419-2405"},{"literal":"Euan Adie"}],"title":"CrowdoMeter
+        Tweets","container-title":"Figshare","description":"\u003cp\u003e467 tweets
+        that contain links to scholarly content, collected in October 2011. Analyzed
+        in the \u003ca href=\"http://crowdometer.org\"\u003eCrowdoMeter\u003c/a\u003e
+        project.\u003c/p\u003e","resource-type-general":"dataset","resource-type":"Dataset","type":"dataset","license":"https://creativecommons.org/licenses/by/3.0/us/","publisher-id":"cdl.digsci","member-id":"cdl","registration-agency-id":"datacite","results":{},"published":"2012","deposited":"2016-01-11T11:03:21Z","updated":"2016-05-23T03:40:22Z"}},{"id":"http://doi.org/10.6084/M9.FIGSHARE.90829.V1","type":"works","attributes":{"doi":"10.6084/M9.FIGSHARE.90829.V1","url":null,"author":[{"literal":"Martin
+        Fenner","orcid":"http://orcid.org/0000-0003-1419-2405"},{"literal":"Euan Adie"}],"title":"CrowdoMeter
+        Tweet Classifications","container-title":"Figshare","description":"\u003cdiv\u003e\n\u003cp\u003e953
+        classifications of 467 tweets from \u003ca href=\"http://crowdometer.org\"\u003eCrowdometer.org\u003c/a\u003e
+        that contain links to scholarly content, collected in October 2011. \u003c/p\u003e\n\u003c/div\u003e","resource-type-general":"dataset","resource-type":"Dataset","type":"dataset","license":"https://creativecommons.org/licenses/by/3.0/us/","publisher-id":"cdl.digsci","member-id":"cdl","registration-agency-id":"datacite","results":{},"published":"2012","deposited":"2016-01-11T11:03:28Z","updated":"2016-05-23T03:40:24Z"}},{"id":"dataset","type":"resource-types","attributes":{"title":"Dataset","updated":"2014-10-16"}},{"id":"text","type":"resource-types","attributes":{"title":"Text","updated":"2014-10-16"}},{"id":"software","type":"resource-types","attributes":{"title":"Software","updated":"2014-10-16"}},{"id":"collection","type":"resource-types","attributes":{"title":"Collection","updated":"2014-10-16"}},{"id":"cdl.digsci","type":"publishers","attributes":{"title":"Digital
+        Science","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}},{"id":"estdoi.bio","type":"publishers","attributes":{"title":"TÜ
+        Loodusmuuseum","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}},{"id":"cern.zenodo","type":"publishers","attributes":{"title":"ZENODO
+        - Research. Shared.","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}},{"id":"tib.handbuch","type":"publishers","attributes":{"title":"Technische
+        Informationsbibliothek  Open Science Lab","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}},{"id":"ethz.seals","type":"publishers","attributes":{"title":"E-Periodica","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}},{"id":"cern.jacow","type":"publishers","attributes":{"title":"JACOW","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}},{"id":"ethz.boris","type":"publishers","attributes":{"title":"Bern
+        Open Repository and Information System (BORIS)","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}},{"id":"ethz.zora","type":"publishers","attributes":{"title":"Universität
+        Zürich, ZORA","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}},{"id":"zbmed.gms","type":"publishers","attributes":{"title":"German
+        Medical Science","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}}],"meta":{"resource-types":{"dataset":64,"text":22,"software":6,"collection":2},"years":{"2016":6,"2015":39,"2014":15,"2013":26,"2012":6,"2010":1,"2007":1,"1981":1,"1973":1},"publishers":{"cdl.digsci":48,"estdoi.bio":21,"cern.zenodo":14,"tib.handbuch":7,"ethz.seals":2,"cern.jacow":1,"ethz.boris":1,"ethz.zora":1,"zbmed.gms":1},"total":96}}'
+    http_version: 
+  recorded_at: Sat, 03 Sep 2016 13:59:18 GMT
+- request:
+    method: get
+    uri: http://profiles/api/users/0000-0003-1419-2405/claims?dois=10.2314/COSCV1.53,10.2314/COSCV2.53,10.5281/ZENODO.13004,10.6084/M9.FIGSHARE.706340.V1,10.5169/SEALS-355044,10.5281/ZENODO.34673,10.6084/M9.FIGSHARE.706340,10.5169/SEALS-118645,10.3205/12AGMB03,10.15156/BIO/SH132186.07FU,10.15156/BIO/SH444252.07FU,10.15156/BIO/SH470440.07FU,10.15156/BIO/SH470441.07FU,10.15156/BIO/SH470442.07FU,10.15156/BIO/SH470443.07FU,10.15156/BIO/SH470444.07FU,10.15156/BIO/SH470445.07FU,10.15156/BIO/SH470446.07FU,10.15156/BIO/SH073225.07FU,10.15156/BIO/SH031366.07FU,10.15156/BIO/SH299733.07FU,10.15156/BIO/SH171384.07FU,10.15156/BIO/SH219844.07FU,10.6084/M9.FIGSHARE.90828.V1,10.6084/M9.FIGSHARE.90829.V1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Maremma - http://search.local
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Authorization:
+      - Token token=EwtpXH9nvtTyUd_26eqs
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Access-Control-Max-Age:
+      - '1728000'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - f928a914-ee78-4101-b550-d2b7094fbd42
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Etag:
+      - W/"c9d97949b2df24e69b0069eb136a2c05"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.382370'
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Sat, 03 Sep 2016 13:59:19 GMT
+      X-Powered-By:
+      - Phusion Passenger 5.0.30
+      Server:
+      - nginx/1.10.1 + Phusion Passenger 5.0.30
+      Access-Control-Allow-Headers:
+      - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"e372db4a-9d2d-4794-8dfc-b334b6121688","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.5281/ZENODO.34673","source-id":"orcid_search","state":"done","claimed-at":"1970-01-01T00:33:36Z"}},{"id":"4e171919-a420-494f-b04f-fcc01422d4b1","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.2314/COSCV2.53","source-id":"orcid_search","state":"done","claimed-at":"1970-01-01T00:33:36Z"}},{"id":"baca6f9a-634b-4386-883f-ecbdfc5eafa3","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.6084/M9.FIGSHARE.706340.V1","source-id":"orcid_search","state":"done","claimed-at":"1970-01-01T00:33:36Z"}},{"id":"283c7b24-4ac4-4ae3-b866-1e6afcc51dca","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.6084/M9.FIGSHARE.90829.V1","source-id":"orcid_search","state":"done","claimed-at":"1970-01-01T00:33:36Z"}},{"id":"065611d3-362a-43fd-a38c-e71f0237ac2e","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.6084/M9.FIGSHARE.90828.V1","source-id":"orcid_search","state":"done","claimed-at":"1970-01-01T00:33:36Z"}},{"id":"8a0b018f-725e-4eda-be77-680f4c618d2e","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.6084/M9.FIGSHARE.706340","source-id":"orcid_search","state":"done","claimed-at":"1970-01-01T00:33:33Z"}},{"id":"fb7c9e31-cfd5-41ce-b510-f971a181430d","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.3205/12AGMB03","source-id":"orcid_search","state":"done","claimed-at":"1970-01-01T00:33:33Z"}}],"links":{},"meta":{"total":7,"total-pages":1,"page":1}}'
+    http_version: 
+  recorded_at: Sat, 03 Sep 2016 13:59:19 GMT
+recorded_with: VCR 2.9.3

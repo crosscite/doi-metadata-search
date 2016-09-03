@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datacite.org/works?offset=0&rows=25
+    uri: http://api/works?offset=0&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -16,10 +16,6 @@ http_interactions:
       code: 200
       message: ''
     headers:
-      Server:
-      - nginx/1.11.2
-      Date:
-      - Tue, 16 Aug 2016 09:46:09 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,568 +33,362 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 5bea62e9-377f-491f-89b3-e7bc26a00cff
+      - 02da0ecb-a8cc-49a1-b2cf-fcb9feb275f3
       Access-Control-Allow-Methods:
       - POST, GET, OPTIONS
       Etag:
-      - W/"97ae3c2ed75bd035aa12fb0c2e0152a1"
+      - W/"db018b08d738655fb8676181d11f965b"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.778625'
+      - '2.695325'
       X-Content-Type-Options:
       - nosniff
+      Date:
+      - Sat, 03 Sep 2016 12:22:29 GMT
       X-Powered-By:
       - Phusion Passenger 5.0.30
+      Server:
+      - nginx/1.10.1 + Phusion Passenger 5.0.30
       Access-Control-Allow-Headers:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        eyJkYXRhIjpbeyJpZCI6Imh0dHA6Ly9kb2kub3JnLzEwLjEzMTQwL1JHLjIu
-        MS4yMDY4Ljc2MDgiLCJ0eXBlIjoid29ya3MiLCJhdHRyaWJ1dGVzIjp7ImRv
-        aSI6IjEwLjEzMTQwL1JHLjIuMS4yMDY4Ljc2MDgiLCJ1cmwiOm51bGwsImF1
-        dGhvciI6W3sibGl0ZXJhbCI6IlN1c2FuIFBpZGRvY2sifV0sInRpdGxlIjoi
-        QSBTcGFjZSBvZiBUaGVpciBPd246IE5pbmV0ZWVudGggQ2VudHVyeSBMdW5h
-        dGljIEFzeWx1bXMgaW4gRW5nbGFuZCwgU291dGggQXVzdHJhbGlhIGFuZCBU
-        YXNtYW5pYS4gRmlndXJlIDcuOCIsImNvbnRhaW5lci10aXRsZSI6IlVucHVi
-        bGlzaGVkIiwiZGVzY3JpcHRpb24iOm51bGwsInJlc291cmNlLXR5cGUtZ2Vu
-        ZXJhbCI6bnVsbCwicmVzb3VyY2UtdHlwZSI6bnVsbCwidHlwZSI6bnVsbCwi
-        bGljZW5zZSI6bnVsbCwicHVibGlzaGVyLWlkIjoidGliLnItZ2F0ZSIsIm1l
-        bWJlci1pZCI6InRpYiIsInJlZ2lzdHJhdGlvbi1hZ2VuY3ktaWQiOiJkYXRh
-        Y2l0ZSIsInJlc3VsdHMiOnt9LCJwdWJsaXNoZWQiOiIyMDAyIiwiZGVwb3Np
-        dGVkIjoiMjAxNi0wOC0xNlQwMTo1NDo1N1oiLCJ1cGRhdGVkIjoiMjAxNi0w
-        OC0xNlQwMTo1NDo1N1oifX0seyJpZCI6Imh0dHA6Ly9kb2kub3JnLzEwLjEz
-        MTQwL1JHLjIuMS4zMTE3LjMzNjMiLCJ0eXBlIjoid29ya3MiLCJhdHRyaWJ1
-        dGVzIjp7ImRvaSI6IjEwLjEzMTQwL1JHLjIuMS4zMTE3LjMzNjMiLCJ1cmwi
-        Om51bGwsImF1dGhvciI6W3sibGl0ZXJhbCI6IlN1c2FuIFBpZGRvY2sifV0s
-        InRpdGxlIjoiQSBTcGFjZSBvZiBUaGVpciBPd246IE5pbmV0ZWVudGggQ2Vu
-        dHVyeSBMdW5hdGljIEFzeWx1bXMgaW4gRW5nbGFuZCwgU291dGggQXVzdHJh
-        bGlhIGFuZCBUYXNtYW5pYS4gRmlndXJlcyA3LjUtNy43IiwiY29udGFpbmVy
-        LXRpdGxlIjoiVW5wdWJsaXNoZWQiLCJkZXNjcmlwdGlvbiI6bnVsbCwicmVz
-        b3VyY2UtdHlwZS1nZW5lcmFsIjpudWxsLCJyZXNvdXJjZS10eXBlIjpudWxs
-        LCJ0eXBlIjpudWxsLCJsaWNlbnNlIjpudWxsLCJwdWJsaXNoZXItaWQiOiJ0
-        aWIuci1nYXRlIiwibWVtYmVyLWlkIjoidGliIiwicmVnaXN0cmF0aW9uLWFn
-        ZW5jeS1pZCI6ImRhdGFjaXRlIiwicmVzdWx0cyI6e30sInB1Ymxpc2hlZCI6
-        IjIwMDIiLCJkZXBvc2l0ZWQiOiIyMDE2LTA4LTE2VDAxOjUzOjA2WiIsInVw
-        ZGF0ZWQiOiIyMDE2LTA4LTE2VDAxOjUzOjA2WiJ9fSx7ImlkIjoiaHR0cDov
-        L2RvaS5vcmcvMTAuMTU0NjgvREwuVVNOSDNDIiwidHlwZSI6IndvcmtzIiwi
-        YXR0cmlidXRlcyI6eyJkb2kiOiIxMC4xNTQ2OC9ETC5VU05IM0MiLCJ1cmwi
-        Om51bGwsImF1dGhvciI6W3sibGl0ZXJhbCI6Im9jY2Rvd25sb2FkIGdiaWYu
-        b3JnIn1dLCJ0aXRsZSI6IkdCSUYgT2NjdXJyZW5jZSBEb3dubG9hZCIsImNv
-        bnRhaW5lci10aXRsZSI6IlRoZSBHbG9iYWwgQmlvZGl2ZXJzaXR5IEluZm9y
-        bWF0aW9uIEZhY2lsaXR5IiwiZGVzY3JpcHRpb24iOiJBIGRhdGFzZXQgY29u
-        dGFpbmluZyAwIHNwZWNpZXMgb2NjdXJyZW5jZXMgYXZhaWxhYmxlIGluIEdC
-        SUYgbWF0Y2hpbmcgdGhlIHF1ZXJ5OiBTY2llbnRpZmljTmFtZTogQ3JpbnVt
-        IMOXIGxvdWlzYWUgSGVyYi4gb3IgQ3JpbnVtIMOXIGxvdWlzYWUgb3IgQ3Jp
-        bnVtIHggbG91aXNhZSBvciBDcmludW0geCBsb3Vpc2FlIEhlcmIuIG9yIENy
-        aW51bSB4bG91aXNhZSBIZXJiLiBvciBDcmludW0gbG91aXNhZSBIZXJiLi4g
-        VGhlIGRhdGFzZXQgaW5jbHVkZXMgMCByZWNvcmRzIGZyb20gMCBjb25zdGl0
-        dWVudCBkYXRhc2V0czoiLCJyZXNvdXJjZS10eXBlLWdlbmVyYWwiOiJkYXRh
-        c2V0IiwicmVzb3VyY2UtdHlwZSI6bnVsbCwidHlwZSI6ImRhdGFzZXQiLCJs
-        aWNlbnNlIjoiaHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2Vz
-        L2J5LW5jLzQuMC8iLCJwdWJsaXNoZXItaWQiOiJkay5nYmlmIiwibWVtYmVy
-        LWlkIjoiZGsiLCJyZWdpc3RyYXRpb24tYWdlbmN5LWlkIjoiZGF0YWNpdGUi
-        LCJyZXN1bHRzIjp7fSwicHVibGlzaGVkIjoiMjAxNiIsImRlcG9zaXRlZCI6
-        IjIwMTYtMDgtMTZUMDE6NTM6MDBaIiwidXBkYXRlZCI6IjIwMTYtMDgtMTZU
-        MDE6NTM6MDBaIn19LHsiaWQiOiJodHRwOi8vZG9pLm9yZy8xMC4xNTQ2OC9E
-        TC5CNFlSQlgiLCJ0eXBlIjoid29ya3MiLCJhdHRyaWJ1dGVzIjp7ImRvaSI6
-        IjEwLjE1NDY4L0RMLkI0WVJCWCIsInVybCI6bnVsbCwiYXV0aG9yIjpbeyJs
-        aXRlcmFsIjoib2NjZG93bmxvYWQgZ2JpZi5vcmcifV0sInRpdGxlIjoiR0JJ
-        RiBPY2N1cnJlbmNlIERvd25sb2FkIiwiY29udGFpbmVyLXRpdGxlIjoiVGhl
-        IEdsb2JhbCBCaW9kaXZlcnNpdHkgSW5mb3JtYXRpb24gRmFjaWxpdHkiLCJk
-        ZXNjcmlwdGlvbiI6IkEgZGF0YXNldCBjb250YWluaW5nIDAgc3BlY2llcyBv
-        Y2N1cnJlbmNlcyBhdmFpbGFibGUgaW4gR0JJRiBtYXRjaGluZyB0aGUgcXVl
-        cnk6IFNjaWVudGlmaWNOYW1lOiBDcmludW0gw5cga2lyY2FwZSBbRS5PLk9y
-        cGV0XSBvciBDcmludW0gw5cga2lyY2FwZSBvciBDcmludW0geCBraXJjYXBl
-        IG9yIENyaW51bSB4IGtpcmNhcGUgW0UuTy5PcnBldF0gb3IgQ3JpbnVtIHhr
-        aXJjYXBlIFtFLk8uT3JwZXRdIG9yIENyaW51bSBraXJjYXBlIFtFLk8uT3Jw
-        ZXRdLiBUaGUgZGF0YXNldCBpbmNsdWRlcyAwIHJlY29yZHMgZnJvbSAwIGNv
-        bnN0aXR1ZW50IGRhdGFzZXRzOiIsInJlc291cmNlLXR5cGUtZ2VuZXJhbCI6
-        ImRhdGFzZXQiLCJyZXNvdXJjZS10eXBlIjpudWxsLCJ0eXBlIjoiZGF0YXNl
-        dCIsImxpY2Vuc2UiOiJodHRwczovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGlj
-        ZW5zZXMvYnktbmMvNC4wLyIsInB1Ymxpc2hlci1pZCI6ImRrLmdiaWYiLCJt
-        ZW1iZXItaWQiOiJkayIsInJlZ2lzdHJhdGlvbi1hZ2VuY3ktaWQiOiJkYXRh
-        Y2l0ZSIsInJlc3VsdHMiOnt9LCJwdWJsaXNoZWQiOiIyMDE2IiwiZGVwb3Np
-        dGVkIjoiMjAxNi0wOC0xNlQwMTo1Mjo1OVoiLCJ1cGRhdGVkIjoiMjAxNi0w
-        OC0xNlQwMTo1Mjo1OVoifX0seyJpZCI6Imh0dHA6Ly9kb2kub3JnLzEwLjE1
-        NDY4L0RMLjhPVTlVUyIsInR5cGUiOiJ3b3JrcyIsImF0dHJpYnV0ZXMiOnsi
-        ZG9pIjoiMTAuMTU0NjgvREwuOE9VOVVTIiwidXJsIjpudWxsLCJhdXRob3Ii
-        Olt7ImxpdGVyYWwiOiJvY2Nkb3dubG9hZCBnYmlmLm9yZyJ9XSwidGl0bGUi
-        OiJHQklGIE9jY3VycmVuY2UgRG93bmxvYWQiLCJjb250YWluZXItdGl0bGUi
-        OiJUaGUgR2xvYmFsIEJpb2RpdmVyc2l0eSBJbmZvcm1hdGlvbiBGYWNpbGl0
-        eSIsImRlc2NyaXB0aW9uIjoiQSBkYXRhc2V0IGNvbnRhaW5pbmcgMCBzcGVj
-        aWVzIG9jY3VycmVuY2VzIGF2YWlsYWJsZSBpbiBHQklGIG1hdGNoaW5nIHRo
-        ZSBxdWVyeTogU2NpZW50aWZpY05hbWU6IENyaW51bSDDlyBsZXRpdGlhZSBI
-        ZXJiLiBvciBDcmludW0gw5cgbGV0aXRpYWUgb3IgQ3JpbnVtIHggbGV0aXRp
-        YWUgb3IgQ3JpbnVtIHggbGV0aXRpYWUgSGVyYi4gb3IgQ3JpbnVtIHhsZXRp
-        dGlhZSBIZXJiLiBvciBDcmludW0gbGV0aXRpYWUgSGVyYi4uIFRoZSBkYXRh
-        c2V0IGluY2x1ZGVzIDAgcmVjb3JkcyBmcm9tIDAgY29uc3RpdHVlbnQgZGF0
-        YXNldHM6IiwicmVzb3VyY2UtdHlwZS1nZW5lcmFsIjoiZGF0YXNldCIsInJl
-        c291cmNlLXR5cGUiOm51bGwsInR5cGUiOiJkYXRhc2V0IiwibGljZW5zZSI6
-        Imh0dHBzOi8vY3JlYXRpdmVjb21tb25zLm9yZy9saWNlbnNlcy9ieS1uYy80
-        LjAvIiwicHVibGlzaGVyLWlkIjoiZGsuZ2JpZiIsIm1lbWJlci1pZCI6ImRr
-        IiwicmVnaXN0cmF0aW9uLWFnZW5jeS1pZCI6ImRhdGFjaXRlIiwicmVzdWx0
-        cyI6e30sInB1Ymxpc2hlZCI6IjIwMTYiLCJkZXBvc2l0ZWQiOiIyMDE2LTA4
-        LTE2VDAxOjUyOjU4WiIsInVwZGF0ZWQiOiIyMDE2LTA4LTE2VDAxOjUyOjU4
-        WiJ9fSx7ImlkIjoiaHR0cDovL2RvaS5vcmcvMTAuNDIyNS83NS81N0IyNzEy
-        MTQwQ0JEIiwidHlwZSI6IndvcmtzIiwiYXR0cmlidXRlcyI6eyJkb2kiOiIx
-        MC40MjI1Lzc1LzU3QjI3MTIxNDBDQkQiLCJ1cmwiOm51bGwsImF1dGhvciI6
-        W3siZmFtaWx5IjoiTWNDb21iaWUiLCJnaXZlbiI6IlN0ZXBoZW4ifV0sInRp
-        dGxlIjoiVHJvdWJsZSBpbiBGbG9yaWRhOiBUaGUgR2VuZXNpcyBvZiBQaGlz
-        aGluZyBhdHRhY2tzIG9uIEF1c3RyYWxpYW4gQmFua3MiLCJjb250YWluZXIt
-        dGl0bGUiOiJTZWN1cml0eSBSZXNlYXJjaCBJbnN0aXR1dGUgKFNSSSksIEVk
-        aXRoIENvd2FuIFVuaXZlcnNpdHkiLCJkZXNjcmlwdGlvbiI6IjZ0aCBBdXN0
-        cmFsaWFuIERpZ2l0YWwgRm9yZW5zaWNzIENvbmZlcmVuY2UsIEVkaXRoIENv
-        d2FuIFVuaXZlcnNpdHksIFBlcnRoIFdlc3Rlcm4gQXVzdHJhbGlhLCBEZWNl
-        bWJlciAzcmQgMjAwOC4iLCJyZXNvdXJjZS10eXBlLWdlbmVyYWwiOiJ0ZXh0
-        IiwicmVzb3VyY2UtdHlwZSI6IkNvbmZlcmVuY2UgcGFwZXIiLCJ0eXBlIjoi
-        cmVwb3J0IiwibGljZW5zZSI6bnVsbCwicHVibGlzaGVyLWlkIjoiYW5kcy5j
-        ZW50cmU3NSIsIm1lbWJlci1pZCI6ImFuZHMiLCJyZWdpc3RyYXRpb24tYWdl
-        bmN5LWlkIjoiZGF0YWNpdGUiLCJyZXN1bHRzIjp7fSwicHVibGlzaGVkIjoi
-        MjAwOCIsImRlcG9zaXRlZCI6IjIwMTYtMDgtMTZUMDE6NTE6MDhaIiwidXBk
-        YXRlZCI6IjIwMTYtMDgtMTZUMDE6NTE6MDhaIn19LHsiaWQiOiJodHRwOi8v
-        ZG9pLm9yZy8xMC4xNTQ2OC9ETC4xRVVKUkkiLCJ0eXBlIjoid29ya3MiLCJh
-        dHRyaWJ1dGVzIjp7ImRvaSI6IjEwLjE1NDY4L0RMLjFFVUpSSSIsInVybCI6
-        bnVsbCwiYXV0aG9yIjpbeyJsaXRlcmFsIjoib2NjZG93bmxvYWQgZ2JpZi5v
-        cmcifV0sInRpdGxlIjoiR0JJRiBPY2N1cnJlbmNlIERvd25sb2FkIiwiY29u
-        dGFpbmVyLXRpdGxlIjoiVGhlIEdsb2JhbCBCaW9kaXZlcnNpdHkgSW5mb3Jt
-        YXRpb24gRmFjaWxpdHkiLCJkZXNjcmlwdGlvbiI6IkEgZGF0YXNldCBjb250
-        YWluaW5nIDAgc3BlY2llcyBvY2N1cnJlbmNlcyBhdmFpbGFibGUgaW4gR0JJ
-        RiBtYXRjaGluZyB0aGUgcXVlcnk6IFNjaWVudGlmaWNOYW1lOiBBbWFyYW50
-        aHVzIMOXIHdpbGN6ZWtpaSBTZW5uZW4gb3IgQW1hcmFudGh1cyDDlyB3aWxj
-        emVraWkgb3IgQW1hcmFudGh1cyB4IHdpbGN6ZWtpaSBvciBBbWFyYW50aHVz
-        IHggd2lsY3pla2lpIFNlbm5lbiBvciBBbWFyYW50aHVzIHh3aWxjemVraWkg
-        U2VubmVuIG9yIEFtYXJhbnRodXMgd2lsY3pla2lpIFNlbm5lbi4gVGhlIGRh
-        dGFzZXQgaW5jbHVkZXMgMCByZWNvcmRzIGZyb20gMCBjb25zdGl0dWVudCBk
-        YXRhc2V0czoiLCJyZXNvdXJjZS10eXBlLWdlbmVyYWwiOiJkYXRhc2V0Iiwi
-        cmVzb3VyY2UtdHlwZSI6bnVsbCwidHlwZSI6ImRhdGFzZXQiLCJsaWNlbnNl
-        IjoiaHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5j
-        LzQuMC8iLCJwdWJsaXNoZXItaWQiOiJkay5nYmlmIiwibWVtYmVyLWlkIjoi
-        ZGsiLCJyZWdpc3RyYXRpb24tYWdlbmN5LWlkIjoiZGF0YWNpdGUiLCJyZXN1
-        bHRzIjp7fSwicHVibGlzaGVkIjoiMjAxNiIsImRlcG9zaXRlZCI6IjIwMTYt
-        MDgtMTZUMDE6NDk6MzNaIiwidXBkYXRlZCI6IjIwMTYtMDgtMTZUMDE6NDk6
-        MzNaIn19LHsiaWQiOiJodHRwOi8vZG9pLm9yZy8xMC4xNTQ2OC9ETC4wRFpG
-        SlYiLCJ0eXBlIjoid29ya3MiLCJhdHRyaWJ1dGVzIjp7ImRvaSI6IjEwLjE1
-        NDY4L0RMLjBEWkZKViIsInVybCI6bnVsbCwiYXV0aG9yIjpbeyJsaXRlcmFs
-        Ijoib2NjZG93bmxvYWQgZ2JpZi5vcmcifV0sInRpdGxlIjoiR0JJRiBPY2N1
-        cnJlbmNlIERvd25sb2FkIiwiY29udGFpbmVyLXRpdGxlIjoiVGhlIEdsb2Jh
-        bCBCaW9kaXZlcnNpdHkgSW5mb3JtYXRpb24gRmFjaWxpdHkiLCJkZXNjcmlw
-        dGlvbiI6IkEgZGF0YXNldCBjb250YWluaW5nIDAgc3BlY2llcyBvY2N1cnJl
-        bmNlcyBhdmFpbGFibGUgaW4gR0JJRiBtYXRjaGluZyB0aGUgcXVlcnk6IFNj
-        aWVudGlmaWNOYW1lOiBBbWFyYW50aHVzIMOXIHR1cmljZW5zaXMgRG9taW4g
-        b3IgQW1hcmFudGh1cyDDlyB0dXJpY2Vuc2lzIG9yIEFtYXJhbnRodXMgeCB0
-        dXJpY2Vuc2lzIG9yIEFtYXJhbnRodXMgeCB0dXJpY2Vuc2lzIERvbWluIG9y
-        IEFtYXJhbnRodXMgeHR1cmljZW5zaXMgRG9taW4gb3IgQW1hcmFudGh1cyB0
-        dXJpY2Vuc2lzIERvbWluLiBUaGUgZGF0YXNldCBpbmNsdWRlcyAwIHJlY29y
-        ZHMgZnJvbSAwIGNvbnN0aXR1ZW50IGRhdGFzZXRzOiIsInJlc291cmNlLXR5
-        cGUtZ2VuZXJhbCI6ImRhdGFzZXQiLCJyZXNvdXJjZS10eXBlIjpudWxsLCJ0
-        eXBlIjoiZGF0YXNldCIsImxpY2Vuc2UiOiJodHRwczovL2NyZWF0aXZlY29t
-        bW9ucy5vcmcvbGljZW5zZXMvYnktbmMvNC4wLyIsInB1Ymxpc2hlci1pZCI6
-        ImRrLmdiaWYiLCJtZW1iZXItaWQiOiJkayIsInJlZ2lzdHJhdGlvbi1hZ2Vu
-        Y3ktaWQiOiJkYXRhY2l0ZSIsInJlc3VsdHMiOnt9LCJwdWJsaXNoZWQiOiIy
-        MDE2IiwiZGVwb3NpdGVkIjoiMjAxNi0wOC0xNlQwMTo0OTozMloiLCJ1cGRh
-        dGVkIjoiMjAxNi0wOC0xNlQwMTo0OTozMloifX0seyJpZCI6Imh0dHA6Ly9k
-        b2kub3JnLzEwLjE1NDY4L0RMLkdPWFVaQiIsInR5cGUiOiJ3b3JrcyIsImF0
-        dHJpYnV0ZXMiOnsiZG9pIjoiMTAuMTU0NjgvREwuR09YVVpCIiwidXJsIjpu
-        dWxsLCJhdXRob3IiOlt7ImxpdGVyYWwiOiJvY2Nkb3dubG9hZCBnYmlmLm9y
-        ZyJ9XSwidGl0bGUiOiJHQklGIE9jY3VycmVuY2UgRG93bmxvYWQiLCJjb250
-        YWluZXItdGl0bGUiOiJUaGUgR2xvYmFsIEJpb2RpdmVyc2l0eSBJbmZvcm1h
-        dGlvbiBGYWNpbGl0eSIsImRlc2NyaXB0aW9uIjoiQSBkYXRhc2V0IGNvbnRh
-        aW5pbmcgMCBzcGVjaWVzIG9jY3VycmVuY2VzIGF2YWlsYWJsZSBpbiBHQklG
-        IG1hdGNoaW5nIHRoZSBxdWVyeTogU2NpZW50aWZpY05hbWU6IEFtYXJhbnRo
-        dXMgw5cgdHVyaWNlbnNpcyBQcmlzenRlciBvciBBbWFyYW50aHVzIMOXIHR1
-        cmljZW5zaXMgb3IgQW1hcmFudGh1cyB4IHR1cmljZW5zaXMgb3IgQW1hcmFu
-        dGh1cyB4IHR1cmljZW5zaXMgUHJpc3p0ZXIgb3IgQW1hcmFudGh1cyB4dHVy
-        aWNlbnNpcyBQcmlzenRlciBvciBBbWFyYW50aHVzIHR1cmljZW5zaXMgUHJp
-        c3p0ZXIuIFRoZSBkYXRhc2V0IGluY2x1ZGVzIDAgcmVjb3JkcyBmcm9tIDAg
-        Y29uc3RpdHVlbnQgZGF0YXNldHM6IiwicmVzb3VyY2UtdHlwZS1nZW5lcmFs
-        IjoiZGF0YXNldCIsInJlc291cmNlLXR5cGUiOm51bGwsInR5cGUiOiJkYXRh
-        c2V0IiwibGljZW5zZSI6Imh0dHBzOi8vY3JlYXRpdmVjb21tb25zLm9yZy9s
-        aWNlbnNlcy9ieS1uYy80LjAvIiwicHVibGlzaGVyLWlkIjoiZGsuZ2JpZiIs
-        Im1lbWJlci1pZCI6ImRrIiwicmVnaXN0cmF0aW9uLWFnZW5jeS1pZCI6ImRh
-        dGFjaXRlIiwicmVzdWx0cyI6e30sInB1Ymxpc2hlZCI6IjIwMTYiLCJkZXBv
-        c2l0ZWQiOiIyMDE2LTA4LTE2VDAxOjQ5OjMyWiIsInVwZGF0ZWQiOiIyMDE2
-        LTA4LTE2VDAxOjQ5OjMzWiJ9fSx7ImlkIjoiaHR0cDovL2RvaS5vcmcvMTAu
-        NTA2My9GMVJKNEdDMSIsInR5cGUiOiJ3b3JrcyIsImF0dHJpYnV0ZXMiOnsi
-        ZG9pIjoiMTAuNTA2My9GMVJKNEdDMSIsInVybCI6bnVsbCwiYXV0aG9yIjpb
-        eyJmYW1pbHkiOiJ1aWQ9emllZ2xlcmphYyIsImdpdmVuIjoibz11bmFmZmls
-        aWF0ZWQifV0sInRpdGxlIjoiTGFrZXNob3JlIGRldmVsb3BtZW50IGRhdGEg
-        VmlsYXMgQ291bnR5IFdJIFVTQSAyMDEzLTIwMTUiLCJjb250YWluZXItdGl0
-        bGUiOiJLTkIgRGF0YSBSZXBvc2l0b3J5IiwiZGVzY3JpcHRpb24iOm51bGws
-        InJlc291cmNlLXR5cGUtZ2VuZXJhbCI6ImRhdGFzZXQiLCJyZXNvdXJjZS10
-        eXBlIjoibWV0YWRhdGEiLCJ0eXBlIjoiZGF0YXNldCIsImxpY2Vuc2UiOm51
-        bGwsInB1Ymxpc2hlci1pZCI6ImNkbC5uY2VhcyIsIm1lbWJlci1pZCI6ImNk
-        bCIsInJlZ2lzdHJhdGlvbi1hZ2VuY3ktaWQiOiJkYXRhY2l0ZSIsInJlc3Vs
-        dHMiOnt9LCJwdWJsaXNoZWQiOiIyMDE2IiwiZGVwb3NpdGVkIjoiMjAxNi0w
-        OC0xNlQwMTo0ODo0NVoiLCJ1cGRhdGVkIjoiMjAxNi0wOC0xNlQwMTo0ODo0
-        NVoifX0seyJpZCI6Imh0dHA6Ly9kb2kub3JnLzEwLjQyMjUvNzUvNTdCMjcw
-        M0I0MENCQyIsInR5cGUiOiJ3b3JrcyIsImF0dHJpYnV0ZXMiOnsiZG9pIjoi
-        MTAuNDIyNS83NS81N0IyNzAzQjQwQ0JDIiwidXJsIjpudWxsLCJhdXRob3Ii
-        Olt7ImZhbWlseSI6IkthaHZlZMW+acSHIiwiZ2l2ZW4iOiJEYW1pciJ9LHsi
-        ZmFtaWx5IjoiS2VjaGFkaSIsImdpdmVuIjoiVGFoYXIifV0sInRpdGxlIjoi
-        RXh0cmFjdGlvbiBvZiBVc2VyIEFjdGl2aXR5IHRocm91Z2ggQ29tcGFyaXNv
-        biBvZiBXaW5kb3dzIFJlc3RvcmUgUG9pbnRzIiwiY29udGFpbmVyLXRpdGxl
-        IjoiU2VjdXJpdHkgUmVzZWFyY2ggSW5zdGl0dXRlIChTUkkpLCBFZGl0aCBD
-        b3dhbiBVbml2ZXJzaXR5IiwiZGVzY3JpcHRpb24iOiI2dGggQXVzdHJhbGlh
-        biBEaWdpdGFsIEZvcmVuc2ljcyBDb25mZXJlbmNlLCBFZGl0aCBDb3dhbiBV
-        bml2ZXJzaXR5LCBQZXJ0aCBXZXN0ZXJuIEF1c3RyYWxpYSwgRGVjZW1iZXIg
-        M3JkIDIwMDguIiwicmVzb3VyY2UtdHlwZS1nZW5lcmFsIjoidGV4dCIsInJl
-        c291cmNlLXR5cGUiOiJDb25mZXJlbmNlIHBhcGVyIiwidHlwZSI6InJlcG9y
-        dCIsImxpY2Vuc2UiOm51bGwsInB1Ymxpc2hlci1pZCI6ImFuZHMuY2VudHJl
-        NzUiLCJtZW1iZXItaWQiOiJhbmRzIiwicmVnaXN0cmF0aW9uLWFnZW5jeS1p
-        ZCI6ImRhdGFjaXRlIiwicmVzdWx0cyI6e30sInB1Ymxpc2hlZCI6IjIwMDgi
-        LCJkZXBvc2l0ZWQiOiIyMDE2LTA4LTE2VDAxOjQ4OjE3WiIsInVwZGF0ZWQi
-        OiIyMDE2LTA4LTE2VDAxOjQ4OjE3WiJ9fSx7ImlkIjoiaHR0cDovL2RvaS5v
-        cmcvMTAuMTQ0NTcvS01VVFQuVEhFLjIwMDUuNDExIiwidHlwZSI6Indvcmtz
-        IiwiYXR0cmlidXRlcyI6eyJkb2kiOiIxMC4xNDQ1Ny9LTVVUVC5USEUuMjAw
-        NS40MTEiLCJ1cmwiOm51bGwsImF1dGhvciI6W3sibGl0ZXJhbCI6IuC4iOC4
-        tOC4leC4geC4o+C4k+C5jCDguYDguJ7guIrguKPguKDguLHguIHguJTguLUi
-        fV0sInRpdGxlIjoi4LiB4Liy4Lij4Lie4Lix4LiS4LiZ4Liy4Lir4Li44LmI
-        4LiZ4Lii4LiZ4LiV4LmM4Lij4Lix4LiB4Lip4Liy4LiB4Liy4Lij4LiT4LmM
-        4LiC4LiZ4Liy4LiU4LmA4Lil4LmH4LiB4Lig4Liy4Lii4LmD4LiZ4Lit4Liy
-        4LiE4Liy4LijIC8iLCJjb250YWluZXItdGl0bGUiOiLguKHguKvguLLguKfg
-        uLTguJfguKLguLLguKXguLHguKLguYDguJfguITguYLguJnguYLguKXguKLg
-        uLXguJ7guKPguLDguIjguK3guKHguYDguIHguKXguYnguLLguJjguJnguJrg
-        uLjguKPguLUsIiwiZGVzY3JpcHRpb24iOm51bGwsInJlc291cmNlLXR5cGUt
-        Z2VuZXJhbCI6ImRhdGFzZXQiLCJyZXNvdXJjZS10eXBlIjoiRGF0YXNldCIs
-        InR5cGUiOiJkYXRhc2V0IiwibGljZW5zZSI6bnVsbCwicHVibGlzaGVyLWlk
-        IjoibnJjdC5kYjEiLCJtZW1iZXItaWQiOiJucmN0IiwicmVnaXN0cmF0aW9u
-        LWFnZW5jeS1pZCI6ImRhdGFjaXRlIiwicmVzdWx0cyI6e30sInB1Ymxpc2hl
-        ZCI6IjI1NDgiLCJkZXBvc2l0ZWQiOiIyMDE2LTA4LTE2VDAxOjQ1OjMwWiIs
-        InVwZGF0ZWQiOiIyMDE2LTA4LTE2VDAxOjQ1OjMwWiJ9fSx7ImlkIjoiaHR0
-        cDovL2RvaS5vcmcvMTAuMTQ0NTcvS01VVFQuVEhFLjIwMDMuMzUzIiwidHlw
-        ZSI6IndvcmtzIiwiYXR0cmlidXRlcyI6eyJkb2kiOiIxMC4xNDQ1Ny9LTVVU
-        VC5USEUuMjAwMy4zNTMiLCJ1cmwiOm51bGwsImF1dGhvciI6W3sibGl0ZXJh
-        bCI6IuC4mOC4teC4o+C4sCDguITguIfguIHguLDguJ7guLHguJnguJjguYwi
-        fV0sInRpdGxlIjoi4LiB4Liy4Lij4Lie4Lix4LiS4LiZ4Liy4Lir4Lix4Lin
-        4LmA4Lic4Liy4LmA4LiK4Li34LmJ4Lit4LmA4Lie4Lil4Li04LiH4LmA4Lir
-        4Lil4Lin4LiK4LiZ4Li04LiU4Lin4Lix4Liq4LiU4Li44Lie4Lij4Li44LiZ
-        IOC5geC4muC4muC4quC4peC4seC4muC4l+C4tOC4qOC4l+C4suC4h+C4geC4
-        suC4o+C5hOC4q+C4peC4reC4ouC5iOC4suC4h+C5gOC4m+C5h+C4meC4iOC4
-        seC4h+C4q+C4p+C4sCAvIiwiY29udGFpbmVyLXRpdGxlIjoi4Lih4Lir4Liy
-        4Lin4Li04LiX4Lii4Liy4Lil4Lix4Lii4LmA4LiX4LiE4LmC4LiZ4LmC4Lil
-        4Lii4Li14Lie4Lij4Liw4LiI4Lit4Lih4LmA4LiB4Lil4LmJ4Liy4LiY4LiZ
-        4Lia4Li44Lij4Li1LCIsImRlc2NyaXB0aW9uIjpudWxsLCJyZXNvdXJjZS10
-        eXBlLWdlbmVyYWwiOiJkYXRhc2V0IiwicmVzb3VyY2UtdHlwZSI6IkRhdGFz
-        ZXQiLCJ0eXBlIjoiZGF0YXNldCIsImxpY2Vuc2UiOm51bGwsInB1Ymxpc2hl
-        ci1pZCI6Im5yY3QuZGIxIiwibWVtYmVyLWlkIjoibnJjdCIsInJlZ2lzdHJh
-        dGlvbi1hZ2VuY3ktaWQiOiJkYXRhY2l0ZSIsInJlc3VsdHMiOnt9LCJwdWJs
-        aXNoZWQiOiIyNTQ2IiwiZGVwb3NpdGVkIjoiMjAxNi0wOC0xNlQwMTo0NToy
-        N1oiLCJ1cGRhdGVkIjoiMjAxNi0wOC0xNlQwMTo0NToyN1oifX0seyJpZCI6
-        Imh0dHA6Ly9kb2kub3JnLzEwLjE0NDU3L0tNVVRULlRIRS4yMDA1LjQxMCIs
-        InR5cGUiOiJ3b3JrcyIsImF0dHJpYnV0ZXMiOnsiZG9pIjoiMTAuMTQ0NTcv
-        S01VVFQuVEhFLjIwMDUuNDEwIiwidXJsIjpudWxsLCJhdXRob3IiOlt7Imxp
-        dGVyYWwiOiLguKHguIHguKMg4Lil4Lix4LiB4LiC4LiT4LiyIn1dLCJ0aXRs
-        ZSI6IuC4geC4suC4o+C4nuC4seC4kuC4meC4suC4q+C4seC4p+C5gOC4nOC4
-        suC4p+C4seC4quC4lOC4uOC4nuC4o+C4uOC4meC4quC4oeC4o+C4o+C4luC4
-        meC4sOC4quC4ueC4hyDguYDguJ7guLfguYjguK3guIHguLLguKPguYDguJzg
-        uLLguYTguKvguKHguYnguYDguIrguLfguYnguK3guYDguJ7guKXguLTguIfg
-        uYDguKvguKXguKfguIrguJnguLTguJTguYTguKHguYjguKHguLXguIHguLLg
-        uKPguKrguYDguJvguKPguKLguYwgLyIsImNvbnRhaW5lci10aXRsZSI6IuC4
-        oeC4q+C4suC4p+C4tOC4l+C4ouC4suC4peC4seC4ouC5gOC4l+C4hOC5guC4
-        meC5guC4peC4ouC4teC4nuC4o+C4sOC4iOC4reC4oeC5gOC4geC4peC5ieC4
-        suC4mOC4meC4muC4uOC4o+C4tSwiLCJkZXNjcmlwdGlvbiI6bnVsbCwicmVz
-        b3VyY2UtdHlwZS1nZW5lcmFsIjoiZGF0YXNldCIsInJlc291cmNlLXR5cGUi
-        OiJEYXRhc2V0IiwidHlwZSI6ImRhdGFzZXQiLCJsaWNlbnNlIjpudWxsLCJw
-        dWJsaXNoZXItaWQiOiJucmN0LmRiMSIsIm1lbWJlci1pZCI6Im5yY3QiLCJy
-        ZWdpc3RyYXRpb24tYWdlbmN5LWlkIjoiZGF0YWNpdGUiLCJyZXN1bHRzIjp7
-        fSwicHVibGlzaGVkIjoiMjU0OCIsImRlcG9zaXRlZCI6IjIwMTYtMDgtMTZU
-        MDE6NDU6MjVaIiwidXBkYXRlZCI6IjIwMTYtMDgtMTZUMDE6NDU6MjVaIn19
-        LHsiaWQiOiJodHRwOi8vZG9pLm9yZy8xMC4xNDQ1Ny9LTVVUVC5USEUuMjAw
-        Mi4zMDUiLCJ0eXBlIjoid29ya3MiLCJhdHRyaWJ1dGVzIjp7ImRvaSI6IjEw
-        LjE0NDU3L0tNVVRULlRIRS4yMDAyLjMwNSIsInVybCI6bnVsbCwiYXV0aG9y
-        IjpbeyJsaXRlcmFsIjoi4Liq4Li44Lig4LiK4Lix4LiiIOC4qOC4o+C4teC4
-        meC4p+C4pSJ9XSwidGl0bGUiOiLguIHguLLguKPguJ7guLHguJLguJnguLLg
-        uKvguKXguLHguIHguKrguLnguJXguKPguJ7guLTguYDguKjguKkg4LmC4Lib
-        4Lij4LmB4LiB4Lij4Lih4LiB4Liy4Lij4Lio4Li24LiB4Lip4Liy4LmA4LiJ
-        4Lie4Liy4Liw4Lia4Li44LiE4LiE4LilIOC4quC4s+C4q+C4o+C4seC4muC4
-        hOC4meC4nuC4tOC4geC4suC4oyDguYDguKPguLfguYjguK3guIcg4LiB4Liy
-        4Lij4Lie4Lix4LiZ4Lih4Lit4LmA4LiV4Lit4Lij4LmM4LmE4Lif4Lif4LmJ
-        4Liy4LiB4Lij4Liw4LmB4Liq4Liq4Lil4Lix4LiaIDEg4LmA4Lif4LiqIOC5
-        geC4muC4muC4quC4m+C4peC4tOC4leC5gOC4n+C4qiAvIiwiY29udGFpbmVy
-        LXRpdGxlIjoi4Lih4Lir4Liy4Lin4Li04LiX4Lii4Liy4Lil4Lix4Lii4LmA
-        4LiX4LiE4LmC4LiZ4LmC4Lil4Lii4Li14Lie4Lij4Liw4LiI4Lit4Lih4LmA
-        4LiB4Lil4LmJ4Liy4LiY4LiZ4Lia4Li44Lij4Li1LCIsImRlc2NyaXB0aW9u
-        IjpudWxsLCJyZXNvdXJjZS10eXBlLWdlbmVyYWwiOiJkYXRhc2V0IiwicmVz
-        b3VyY2UtdHlwZSI6IkRhdGFzZXQiLCJ0eXBlIjoiZGF0YXNldCIsImxpY2Vu
-        c2UiOm51bGwsInB1Ymxpc2hlci1pZCI6Im5yY3QuZGIxIiwibWVtYmVyLWlk
-        IjoibnJjdCIsInJlZ2lzdHJhdGlvbi1hZ2VuY3ktaWQiOiJkYXRhY2l0ZSIs
-        InJlc3VsdHMiOnt9LCJwdWJsaXNoZWQiOiIyNTQ1IiwiZGVwb3NpdGVkIjoi
-        MjAxNi0wOC0xNlQwMTo0NToyM1oiLCJ1cGRhdGVkIjoiMjAxNi0wOC0xNlQw
-        MTo0NToyM1oifX0seyJpZCI6Imh0dHA6Ly9kb2kub3JnLzEwLjE0NDU3L0tN
-        VVRULlRIRS4yMDAzLjM1MiIsInR5cGUiOiJ3b3JrcyIsImF0dHJpYnV0ZXMi
-        OnsiZG9pIjoiMTAuMTQ0NTcvS01VVFQuVEhFLjIwMDMuMzUyIiwidXJsIjpu
-        dWxsLCJhdXRob3IiOlt7ImxpdGVyYWwiOiLguIHguLHguKXguKLguLLguJPg
-        uLUg4LiI4Li04LiV4LiV4LmM4LiB4Liy4Lij4Li44LiT4Lii4LmMIn1dLCJ0
-        aXRsZSI6IuC4geC4suC4o+C4nuC4seC4kuC4meC4suC4q+C4peC4seC4geC4
-        quC4ueC4leC4o+C4neC4tuC4geC4reC4muC4o+C4oeC4quC4s+C4q+C4o+C4
-        seC4muC4nOC4ueC5ieC4muC4o+C4tOC4q+C4suC4o+C4guC4reC4h+C4geC4
-        o+C4sOC4l+C4o+C4p+C4h+C4qOC4tuC4geC4qeC4suC4mOC4tOC4geC4suC4
-        oyAvIiwiY29udGFpbmVyLXRpdGxlIjoi4Lig4Liy4LiE4Lin4Li04LiK4Liy
-        4LiE4Lij4Li44Lio4Liy4Liq4LiV4Lij4LmM4LmE4Lif4Lif4LmJ4LiyIOC4
-        oeC4q+C4suC4p+C4tOC4l+C4ouC4suC4peC4seC4ouC5gOC4l+C4hOC5guC4
-        meC5guC4peC4ouC4teC4nuC4o+C4sOC4iOC4reC4oeC5gOC4geC4peC5ieC4
-        suC4mOC4meC4muC4uOC4o+C4tSwiLCJkZXNjcmlwdGlvbiI6bnVsbCwicmVz
-        b3VyY2UtdHlwZS1nZW5lcmFsIjoiZGF0YXNldCIsInJlc291cmNlLXR5cGUi
-        OiJEYXRhc2V0IiwidHlwZSI6ImRhdGFzZXQiLCJsaWNlbnNlIjpudWxsLCJw
-        dWJsaXNoZXItaWQiOiJucmN0LmRiMSIsIm1lbWJlci1pZCI6Im5yY3QiLCJy
-        ZWdpc3RyYXRpb24tYWdlbmN5LWlkIjoiZGF0YWNpdGUiLCJyZXN1bHRzIjp7
-        fSwicHVibGlzaGVkIjoiMjU0NiIsImRlcG9zaXRlZCI6IjIwMTYtMDgtMTZU
-        MDE6NDU6MjFaIiwidXBkYXRlZCI6IjIwMTYtMDgtMTZUMDE6NDU6MjFaIn19
-        LHsiaWQiOiJodHRwOi8vZG9pLm9yZy8xMC4xNDQ1Ny9LTVVUVC5USEUuMjAw
-        MS4xNjEiLCJ0eXBlIjoid29ya3MiLCJhdHRyaWJ1dGVzIjp7ImRvaSI6IjEw
-        LjE0NDU3L0tNVVRULlRIRS4yMDAxLjE2MSIsInVybCI6bnVsbCwiYXV0aG9y
-        IjpbeyJsaXRlcmFsIjoi4LiT4Lij4LiH4LiE4LmMIOC4p+C4uOC4kuC4tOC4
-        geC4p+C4tOC4meC4l+C4tOC4nuC4ouC5jCJ9XSwidGl0bGUiOiLguIHguLLg
-        uKPguJ7guLHguJLguJnguLLguKvguKXguLHguIHguKrguLnguJXguKPguJ3g
-        uLbguIHguK3guJrguKPguKHguKPguLDguKLguLDguKrguLHguYnguJnguIHg
-        uLLguKPguJvguKPguLDguKLguLjguIHguJXguYzguYPguIrguYnguITguK3g
-        uKHguJ7guLTguKfguYDguJXguK3guKPguYzguYPguJnguIfguLLguJnguJrg
-        uLHguI3guIrguLXguKrguLPguKvguKPguLHguJrguJnguLHguIHguYDguKPg
-        uLXguKLguJnguKPguLDguJTguLHguJrguKHguLHguJjguKLguKHguKjguLbg
-        uIHguKnguLLguJXguK3guJnguJvguKXguLLguKIg4Liq4Lix4LiH4LiB4Lix
-        4LiU4LiB4Lij4Lih4Liq4Liy4Lih4Lix4LiN4Lio4Li24LiB4Lip4LiyIOC4
-        quC5iOC4p+C4meC4geC4peC4suC4hyAvIiwiY29udGFpbmVyLXRpdGxlIjoi
-        4Lih4Lir4Liy4Lin4Li04LiX4Lii4Liy4Lil4Lix4Lii4LmA4LiX4LiE4LmC
-        4LiZ4LmC4Lil4Lii4Li14Lie4Lij4Liw4LiI4Lit4Lih4LmA4LiB4Lil4LmJ
-        4Liy4LiY4LiZ4Lia4Li44Lij4Li1LCIsImRlc2NyaXB0aW9uIjpudWxsLCJy
-        ZXNvdXJjZS10eXBlLWdlbmVyYWwiOiJkYXRhc2V0IiwicmVzb3VyY2UtdHlw
-        ZSI6IkRhdGFzZXQiLCJ0eXBlIjoiZGF0YXNldCIsImxpY2Vuc2UiOm51bGws
-        InB1Ymxpc2hlci1pZCI6Im5yY3QuZGIxIiwibWVtYmVyLWlkIjoibnJjdCIs
-        InJlZ2lzdHJhdGlvbi1hZ2VuY3ktaWQiOiJkYXRhY2l0ZSIsInJlc3VsdHMi
-        Ont9LCJwdWJsaXNoZWQiOiIyNTQ0IiwiZGVwb3NpdGVkIjoiMjAxNi0wOC0x
-        NlQwMTo0NToxOFoiLCJ1cGRhdGVkIjoiMjAxNi0wOC0xNlQwMTo0NToxOVoi
-        fX0seyJpZCI6Imh0dHA6Ly9kb2kub3JnLzEwLjE0NDU3L0tNVVRULlRIRS4x
-        OTk5LjE0MCIsInR5cGUiOiJ3b3JrcyIsImF0dHJpYnV0ZXMiOnsiZG9pIjoi
-        MTAuMTQ0NTcvS01VVFQuVEhFLjE5OTkuMTQwIiwidXJsIjpudWxsLCJhdXRo
-        b3IiOlt7ImxpdGVyYWwiOiLguKrguKHguKDguJ4g4Lib4Lix4LiN4LiN4Liy
-        4Liq4Lih4Lie4Lij4Lij4LiE4LmMIn1dLCJ0aXRsZSI6IuC4geC4suC4o+C4
-        nuC4seC4kuC4meC4suC4q+C4oeC5ieC4reC4q+C4uOC4h+C4guC5ieC4suC4
-        p+C4nuC4peC4seC4h+C4h+C4suC4meC5geC4quC4h+C4reC4suC4l+C4tOC4
-        leC4ouC5jCAvIiwiY29udGFpbmVyLXRpdGxlIjoi4Lih4Lir4Liy4Lin4Li0
-        4LiX4Lii4Liy4Lil4Lix4Lii4LmA4LiX4LiE4LmC4LiZ4LmC4Lil4Lii4Li1
-        4Lie4Lij4Liw4LiI4Lit4Lih4LmA4LiB4Lil4LmJ4Liy4LiY4LiZ4Lia4Li4
-        4Lij4Li1LCIsImRlc2NyaXB0aW9uIjpudWxsLCJyZXNvdXJjZS10eXBlLWdl
-        bmVyYWwiOiJkYXRhc2V0IiwicmVzb3VyY2UtdHlwZSI6IkRhdGFzZXQiLCJ0
-        eXBlIjoiZGF0YXNldCIsImxpY2Vuc2UiOm51bGwsInB1Ymxpc2hlci1pZCI6
-        Im5yY3QuZGIxIiwibWVtYmVyLWlkIjoibnJjdCIsInJlZ2lzdHJhdGlvbi1h
-        Z2VuY3ktaWQiOiJkYXRhY2l0ZSIsInJlc3VsdHMiOnt9LCJwdWJsaXNoZWQi
-        OiIyNTQyIiwiZGVwb3NpdGVkIjoiMjAxNi0wOC0xNlQwMTo0NToxNloiLCJ1
-        cGRhdGVkIjoiMjAxNi0wOC0xNlQwMTo0NToxNloifX0seyJpZCI6Imh0dHA6
-        Ly9kb2kub3JnLzEwLjE0NDU3L0tNVVRULlRIRS4yMDA0LjI4OSIsInR5cGUi
-        OiJ3b3JrcyIsImF0dHJpYnV0ZXMiOnsiZG9pIjoiMTAuMTQ0NTcvS01VVFQu
-        VEhFLjIwMDQuMjg5IiwidXJsIjpudWxsLCJhdXRob3IiOlt7ImxpdGVyYWwi
-        OiLguIjguLXguKPguLLguKfguKPguKPguJMg4Lio4Lij4Li14Lii4Liy4Lig
-        4Lix4LiiIn1dLCJ0aXRsZSI6IuC4geC4suC4o+C4nuC4seC4kuC4meC4suC4
-        quC4ueC4leC4o+C4quC4suC4o+C4peC4sOC4peC4suC4ouC4quC4s+C4q+C4
-        o+C4seC4muC4m+C4peC4ueC4geC4nOC4seC4geC4geC4suC4lOC4q+C4reC4
-        oeC5g+C4meC4o+C4sOC4muC4muC5hOC4ruC5guC4lOC4o+C5guC4m+C4meC4
-        tOC4hCAvIiwiY29udGFpbmVyLXRpdGxlIjoi4Lih4Lir4Liy4Lin4Li04LiX
-        4Lii4Liy4Lil4Lix4Lii4LmA4LiX4LiE4LmC4LiZ4LmC4Lil4Lii4Li14Lie
-        4Lij4Liw4LiI4Lit4Lih4LmA4LiB4Lil4LmJ4Liy4LiY4LiZ4Lia4Li44Lij
-        4Li1LCIsImRlc2NyaXB0aW9uIjpudWxsLCJyZXNvdXJjZS10eXBlLWdlbmVy
-        YWwiOiJkYXRhc2V0IiwicmVzb3VyY2UtdHlwZSI6IkRhdGFzZXQiLCJ0eXBl
-        IjoiZGF0YXNldCIsImxpY2Vuc2UiOm51bGwsInB1Ymxpc2hlci1pZCI6Im5y
-        Y3QuZGIxIiwibWVtYmVyLWlkIjoibnJjdCIsInJlZ2lzdHJhdGlvbi1hZ2Vu
-        Y3ktaWQiOiJkYXRhY2l0ZSIsInJlc3VsdHMiOnt9LCJwdWJsaXNoZWQiOiIy
-        NTQ3IiwiZGVwb3NpdGVkIjoiMjAxNi0wOC0xNlQwMTo0NToxNFoiLCJ1cGRh
-        dGVkIjoiMjAxNi0wOC0xNlQwMTo0NToxNFoifX0seyJpZCI6Imh0dHA6Ly9k
-        b2kub3JnLzEwLjE0NDU3L0tNVVRULlRIRS4yMDA3LjQxMCIsInR5cGUiOiJ3
-        b3JrcyIsImF0dHJpYnV0ZXMiOnsiZG9pIjoiMTAuMTQ0NTcvS01VVFQuVEhF
-        LjIwMDcuNDEwIiwidXJsIjpudWxsLCJhdXRob3IiOlt7ImxpdGVyYWwiOiLg
-        uKrguKHguJ7guKMg4LiC4Lin4Lix4LiN4LmD4LiIIn1dLCJ0aXRsZSI6IuC4
-        geC4suC4o+C4nuC4seC4kuC4meC4suC4quC4t+C5iOC4reC5geC4peC4sOC4
-        geC4o+C4sOC4muC4p+C4meC4geC4suC4o+C4quC4s+C4q+C4o+C4seC4muC4
-        geC4suC4o+C5gOC4o+C4teC4ouC4meC4o+C4ueC5ieC5geC4muC4muC4m+C4
-        seC4jeC4q+C4suC5gOC4m+C5h+C4meC4q+C4peC4seC4gSDguIHguKPguJPg
-        uLXguKjguLbguIHguKnguLIgOiDguKfguLHguKrguJTguLjguJvguLnguJng
-        uIvguLXguYDguKHguJnguJXguYwg4Lin4Li04LiK4Liy4LiE4Lit4LiZ4LiB
-        4Lij4Li14LiV4LmA4LiX4LiE4LmC4LiZ4LmC4Lil4Lii4Li1IOC4quC4s+C4
-        q+C4o+C4seC4muC5geC4nOC4meC4geC4p+C4tOC4iuC4suC4geC5iOC4reC4
-        quC4o+C5ieC4suC4hyDguYPguJnguKfguLTguJfguKLguLLguKXguLHguKLg
-        uIHguLLguKPguK3guLLguIrguLXguJ4gLyIsImNvbnRhaW5lci10aXRsZSI6
-        IuC4oeC4q+C4suC4p+C4tOC4l+C4ouC4suC4peC4seC4ouC5gOC4l+C4hOC5
-        guC4meC5guC4peC4ouC4teC4nuC4o+C4sOC4iOC4reC4oeC5gOC4geC4peC5
-        ieC4suC4mOC4meC4muC4uOC4o+C4tSwiLCJkZXNjcmlwdGlvbiI6bnVsbCwi
-        cmVzb3VyY2UtdHlwZS1nZW5lcmFsIjoiZGF0YXNldCIsInJlc291cmNlLXR5
-        cGUiOiJEYXRhc2V0IiwidHlwZSI6ImRhdGFzZXQiLCJsaWNlbnNlIjpudWxs
-        LCJwdWJsaXNoZXItaWQiOiJucmN0LmRiMSIsIm1lbWJlci1pZCI6Im5yY3Qi
-        LCJyZWdpc3RyYXRpb24tYWdlbmN5LWlkIjoiZGF0YWNpdGUiLCJyZXN1bHRz
-        Ijp7fSwicHVibGlzaGVkIjoiMjU1MCIsImRlcG9zaXRlZCI6IjIwMTYtMDgt
-        MTZUMDE6NDU6MTJaIiwidXBkYXRlZCI6IjIwMTYtMDgtMTZUMDE6NDU6MTJa
-        In19LHsiaWQiOiJodHRwOi8vZG9pLm9yZy8xMC4xNDQ1Ny9LTVVUVC5USEUu
-        MjAwNS40MDkiLCJ0eXBlIjoid29ya3MiLCJhdHRyaWJ1dGVzIjp7ImRvaSI6
-        IjEwLjE0NDU3L0tNVVRULlRIRS4yMDA1LjQwOSIsInVybCI6bnVsbCwiYXV0
-        aG9yIjpbeyJsaXRlcmFsIjoi4LiB4Lij4Lij4LiT4Li04LiB4LiyIOC4quC4
-        teC4iOC4uOC5ieC4oiJ9XSwidGl0bGUiOiLguIHguLLguKPguJ7guLHguJLg
-        uJnguLLguKrguLfguYjguK3guIHguLLguKPguYDguKPguLXguKLguJnguK3g
-        uLTguYDguKXguYfguIHguJfguKPguK3guJnguLTguIHguKrguYzguYDguKPg
-        uLfguYjguK3guIfguYTguJ/guJ/guYnguLLguYDguJrguLfguYnguK3guIfg
-        uJXguYnguJkg4LmD4LiZ4Lij4Li54Lib4LmB4Lia4Lia4Lir4LmJ4Lit4LiH
-        4LmA4Lij4Li14Lii4LiZ4LmA4Liq4Lih4Li34Lit4LiZ4LiI4Lij4Li04LiH
-        IC8iLCJjb250YWluZXItdGl0bGUiOiLguKHguKvguLLguKfguLTguJfguKLg
-        uLLguKXguLHguKLguYDguJfguITguYLguJnguYLguKXguKLguLXguJ7guKPg
-        uLDguIjguK3guKHguYDguIHguKXguYnguLLguJjguJnguJrguLjguKPguLUs
-        IiwiZGVzY3JpcHRpb24iOm51bGwsInJlc291cmNlLXR5cGUtZ2VuZXJhbCI6
-        ImRhdGFzZXQiLCJyZXNvdXJjZS10eXBlIjoiRGF0YXNldCIsInR5cGUiOiJk
-        YXRhc2V0IiwibGljZW5zZSI6bnVsbCwicHVibGlzaGVyLWlkIjoibnJjdC5k
-        YjEiLCJtZW1iZXItaWQiOiJucmN0IiwicmVnaXN0cmF0aW9uLWFnZW5jeS1p
-        ZCI6ImRhdGFjaXRlIiwicmVzdWx0cyI6e30sInB1Ymxpc2hlZCI6IjI1NDgi
-        LCJkZXBvc2l0ZWQiOiIyMDE2LTA4LTE2VDAxOjQ1OjEwWiIsInVwZGF0ZWQi
-        OiIyMDE2LTA4LTE2VDAxOjQ1OjEwWiJ9fSx7ImlkIjoiaHR0cDovL2RvaS5v
-        cmcvMTAuMTMxNDAvUkcuMi4xLjEwMjAuMTg0MSIsInR5cGUiOiJ3b3JrcyIs
-        ImF0dHJpYnV0ZXMiOnsiZG9pIjoiMTAuMTMxNDAvUkcuMi4xLjEwMjAuMTg0
-        MSIsInVybCI6bnVsbCwiYXV0aG9yIjpbeyJsaXRlcmFsIjoiU3VzYW4gUGlk
-        ZG9jayJ9XSwidGl0bGUiOiJBIFNwYWNlIG9mIFRoZWlyIE93bjogTmluZXRl
-        ZW50aCBDZW50dXJ5IEx1bmF0aWMgQXN5bHVtcyBpbiBFbmdsYW5kLCBTb3V0
-        aCBBdXN0cmFsaWEgYW5kIFRhc21hbmlhLiBGaWd1cmUgNy40IiwiY29udGFp
-        bmVyLXRpdGxlIjoiVW5wdWJsaXNoZWQiLCJkZXNjcmlwdGlvbiI6bnVsbCwi
-        cmVzb3VyY2UtdHlwZS1nZW5lcmFsIjpudWxsLCJyZXNvdXJjZS10eXBlIjpu
-        dWxsLCJ0eXBlIjpudWxsLCJsaWNlbnNlIjpudWxsLCJwdWJsaXNoZXItaWQi
-        OiJ0aWIuci1nYXRlIiwibWVtYmVyLWlkIjoidGliIiwicmVnaXN0cmF0aW9u
-        LWFnZW5jeS1pZCI6ImRhdGFjaXRlIiwicmVzdWx0cyI6e30sInB1Ymxpc2hl
-        ZCI6IjIwMDIiLCJkZXBvc2l0ZWQiOiIyMDE2LTA4LTE2VDAxOjQ0OjQ1WiIs
-        InVwZGF0ZWQiOiIyMDE2LTA4LTE2VDAxOjQ0OjQ1WiJ9fSx7ImlkIjoiaHR0
-        cDovL2RvaS5vcmcvMTAuNDIyNS83NS81N0IyNkY3RjQwQ0JCIiwidHlwZSI6
-        IndvcmtzIiwiYXR0cmlidXRlcyI6eyJkb2kiOiIxMC40MjI1Lzc1LzU3QjI2
-        RjdGNDBDQkIiLCJ1cmwiOm51bGwsImF1dGhvciI6W3siZmFtaWx5IjoiSmFt
-        ZXMiLCJnaXZlbiI6IlBldGVyIn1dLCJ0aXRsZSI6IlByZXZlbnRpbmcgdGhl
-        IEFjcXVpc2l0aW9uIG9mIERhdGEgZnJvbSBWaXJ0dWFsIE1hY2hpbmUgYmFz
-        ZWQgU2VjdXJlIFBvcnRhYmxlRXhlY3V0aW9uIEVudmlyb25tZW50cyIsImNv
-        bnRhaW5lci10aXRsZSI6IlNlY3VyaXR5IFJlc2VhcmNoIEluc3RpdHV0ZSAo
-        U1JJKSwgRWRpdGggQ293YW4gVW5pdmVyc2l0eSIsImRlc2NyaXB0aW9uIjoi
-        NnRoIEF1c3RyYWxpYW4gRGlnaXRhbCBGb3JlbnNpY3MgQ29uZmVyZW5jZSwg
-        RWRpdGggQ293YW4gVW5pdmVyc2l0eSwgUGVydGggV2VzdGVybiBBdXN0cmFs
-        aWEsIERlY2VtYmVyIDNyZCAyMDA4LiIsInJlc291cmNlLXR5cGUtZ2VuZXJh
-        bCI6InRleHQiLCJyZXNvdXJjZS10eXBlIjoiQ29uZmVyZW5jZSBwYXBlciIs
-        InR5cGUiOiJyZXBvcnQiLCJsaWNlbnNlIjpudWxsLCJwdWJsaXNoZXItaWQi
-        OiJhbmRzLmNlbnRyZTc1IiwibWVtYmVyLWlkIjoiYW5kcyIsInJlZ2lzdHJh
-        dGlvbi1hZ2VuY3ktaWQiOiJkYXRhY2l0ZSIsInJlc3VsdHMiOnt9LCJwdWJs
-        aXNoZWQiOiIyMDA4IiwiZGVwb3NpdGVkIjoiMjAxNi0wOC0xNlQwMTo0NDoy
-        MFoiLCJ1cGRhdGVkIjoiMjAxNi0wOC0xNlQwMTo0NDoyMFoifX0seyJpZCI6
-        Imh0dHA6Ly9kb2kub3JnLzEwLjEzMTQwL1JHLjIuMS41MTY1LjMzNjgiLCJ0
-        eXBlIjoid29ya3MiLCJhdHRyaWJ1dGVzIjp7ImRvaSI6IjEwLjEzMTQwL1JH
-        LjIuMS41MTY1LjMzNjgiLCJ1cmwiOm51bGwsImF1dGhvciI6W3sibGl0ZXJh
-        bCI6IlN1c2FuIFBpZGRvY2sifV0sInRpdGxlIjoiQSBTcGFjZSBvZiBUaGVp
-        ciBPd246IE5pbmV0ZWVudGggQ2VudHVyeSBMdW5hdGljIEFzeWx1bXMgaW4g
-        RW5nbGFuZCwgU291dGggQXVzdHJhbGlhIGFuZCBUYXNtYW5pYS4gRmlndXJl
-        IDcuMS03LjMiLCJjb250YWluZXItdGl0bGUiOiJVbnB1Ymxpc2hlZCIsImRl
-        c2NyaXB0aW9uIjpudWxsLCJyZXNvdXJjZS10eXBlLWdlbmVyYWwiOm51bGws
-        InJlc291cmNlLXR5cGUiOm51bGwsInR5cGUiOm51bGwsImxpY2Vuc2UiOm51
-        bGwsInB1Ymxpc2hlci1pZCI6InRpYi5yLWdhdGUiLCJtZW1iZXItaWQiOiJ0
-        aWIiLCJyZWdpc3RyYXRpb24tYWdlbmN5LWlkIjoiZGF0YWNpdGUiLCJyZXN1
-        bHRzIjp7fSwicHVibGlzaGVkIjoiMjAwMiIsImRlcG9zaXRlZCI6IjIwMTYt
-        MDgtMTZUMDE6NDI6NThaIiwidXBkYXRlZCI6IjIwMTYtMDgtMTZUMDE6NDI6
-        NThaIn19LHsiaWQiOiJodHRwOi8vZG9pLm9yZy8xMC4xNTQ2OC9ETC5GTU1M
-        WUEiLCJ0eXBlIjoid29ya3MiLCJhdHRyaWJ1dGVzIjp7ImRvaSI6IjEwLjE1
-        NDY4L0RMLkZNTUxZQSIsInVybCI6bnVsbCwiYXV0aG9yIjpbeyJsaXRlcmFs
-        Ijoib2NjZG93bmxvYWQgZ2JpZi5vcmcifV0sInRpdGxlIjoiR0JJRiBPY2N1
-        cnJlbmNlIERvd25sb2FkIiwiY29udGFpbmVyLXRpdGxlIjoiVGhlIEdsb2Jh
-        bCBCaW9kaXZlcnNpdHkgSW5mb3JtYXRpb24gRmFjaWxpdHkiLCJkZXNjcmlw
-        dGlvbiI6IkEgZGF0YXNldCBjb250YWluaW5nIDAgc3BlY2llcyBvY2N1cnJl
-        bmNlcyBhdmFpbGFibGUgaW4gR0JJRiBtYXRjaGluZyB0aGUgcXVlcnk6IFNj
-        aWVudGlmaWNOYW1lOiBDcmludW0gw5cgaGF5bG9ja2lpIEhlcmIuIG9yIENy
-        aW51bSDDlyBoYXlsb2NraWkgb3IgQ3JpbnVtIHggaGF5bG9ja2lpIG9yIENy
-        aW51bSB4IGhheWxvY2tpaSBIZXJiLiBvciBDcmludW0geGhheWxvY2tpaSBI
-        ZXJiLiBvciBDcmludW0gaGF5bG9ja2lpIEhlcmIuLiBUaGUgZGF0YXNldCBp
-        bmNsdWRlcyAwIHJlY29yZHMgZnJvbSAwIGNvbnN0aXR1ZW50IGRhdGFzZXRz
-        OiIsInJlc291cmNlLXR5cGUtZ2VuZXJhbCI6ImRhdGFzZXQiLCJyZXNvdXJj
-        ZS10eXBlIjpudWxsLCJ0eXBlIjoiZGF0YXNldCIsImxpY2Vuc2UiOiJodHRw
-        czovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5zZXMvYnktbmMvNC4wLyIs
-        InB1Ymxpc2hlci1pZCI6ImRrLmdiaWYiLCJtZW1iZXItaWQiOiJkayIsInJl
-        Z2lzdHJhdGlvbi1hZ2VuY3ktaWQiOiJkYXRhY2l0ZSIsInJlc3VsdHMiOnt9
-        LCJwdWJsaXNoZWQiOiIyMDE2IiwiZGVwb3NpdGVkIjoiMjAxNi0wOC0xNlQw
-        MTo0Mjo1N1oiLCJ1cGRhdGVkIjoiMjAxNi0wOC0xNlQwMTo0Mjo1N1oifX0s
-        eyJpZCI6ImRhdGFzZXQiLCJ0eXBlIjoicmVzb3VyY2UtdHlwZXMiLCJhdHRy
-        aWJ1dGVzIjp7InRpdGxlIjoiRGF0YXNldCIsInVwZGF0ZWQiOiIyMDE0LTEw
-        LTE2In19LHsiaWQiOiJ0ZXh0IiwidHlwZSI6InJlc291cmNlLXR5cGVzIiwi
-        YXR0cmlidXRlcyI6eyJ0aXRsZSI6IlRleHQiLCJ1cGRhdGVkIjoiMjAxNC0x
-        MC0xNiJ9fSx7ImlkIjoib3RoZXIiLCJ0eXBlIjoicmVzb3VyY2UtdHlwZXMi
-        LCJhdHRyaWJ1dGVzIjp7InRpdGxlIjoiT3RoZXIiLCJ1cGRhdGVkIjoiMjAx
-        NC0xMC0xNiJ9fSx7ImlkIjoiaW1hZ2UiLCJ0eXBlIjoicmVzb3VyY2UtdHlw
-        ZXMiLCJhdHRyaWJ1dGVzIjp7InRpdGxlIjoiSW1hZ2UiLCJ1cGRhdGVkIjoi
-        MjAxNC0xMC0xNiJ9fSx7ImlkIjoiY29sbGVjdGlvbiIsInR5cGUiOiJyZXNv
-        dXJjZS10eXBlcyIsImF0dHJpYnV0ZXMiOnsidGl0bGUiOiJDb2xsZWN0aW9u
-        IiwidXBkYXRlZCI6IjIwMTQtMTAtMTYifX0seyJpZCI6InNvZnR3YXJlIiwi
-        dHlwZSI6InJlc291cmNlLXR5cGVzIiwiYXR0cmlidXRlcyI6eyJ0aXRsZSI6
-        IlNvZnR3YXJlIiwidXBkYXRlZCI6IjIwMTQtMTAtMTYifX0seyJpZCI6ImF1
-        ZGlvdmlzdWFsIiwidHlwZSI6InJlc291cmNlLXR5cGVzIiwiYXR0cmlidXRl
-        cyI6eyJ0aXRsZSI6IkF1ZGlvdmlzdWFsIiwidXBkYXRlZCI6IjIwMTQtMTAt
-        MTYifX0seyJpZCI6ImV2ZW50IiwidHlwZSI6InJlc291cmNlLXR5cGVzIiwi
-        YXR0cmlidXRlcyI6eyJ0aXRsZSI6IkV2ZW50IiwidXBkYXRlZCI6IjIwMTQt
-        MTAtMTYifX0seyJpZCI6InBoeXNpY2FsLW9iamVjdCIsInR5cGUiOiJyZXNv
-        dXJjZS10eXBlcyIsImF0dHJpYnV0ZXMiOnsidGl0bGUiOiJQaHlzaWNhbCBv
-        YmplY3QiLCJ1cGRhdGVkIjoiMjAxNC0xMC0xNiJ9fSx7ImlkIjoiZmlsbSIs
-        InR5cGUiOiJyZXNvdXJjZS10eXBlcyIsImF0dHJpYnV0ZXMiOnsidGl0bGUi
-        OiJGaWxtIiwidXBkYXRlZCI6IjIwMTQtMTAtMTYifX0seyJpZCI6Im1vZGVs
-        IiwidHlwZSI6InJlc291cmNlLXR5cGVzIiwiYXR0cmlidXRlcyI6eyJ0aXRs
-        ZSI6Ik1vZGVsIiwidXBkYXRlZCI6IjIwMTQtMTAtMTYifX0seyJpZCI6Imlu
-        dGVyYWN0aXZlLXJlc291cmNlIiwidHlwZSI6InJlc291cmNlLXR5cGVzIiwi
-        YXR0cmlidXRlcyI6eyJ0aXRsZSI6IkludGVyYWN0aXZlIHJlc291cmNlIiwi
-        dXBkYXRlZCI6IjIwMTQtMTAtMTYifX0seyJpZCI6InNvdW5kIiwidHlwZSI6
-        InJlc291cmNlLXR5cGVzIiwiYXR0cmlidXRlcyI6eyJ0aXRsZSI6IlNvdW5k
-        IiwidXBkYXRlZCI6IjIwMTQtMTAtMTYifX0seyJpZCI6IndvcmtmbG93Iiwi
-        dHlwZSI6InJlc291cmNlLXR5cGVzIiwiYXR0cmlidXRlcyI6eyJ0aXRsZSI6
-        IldvcmtmbG93IiwidXBkYXRlZCI6IjIwMTQtMTAtMTYifX0seyJpZCI6InNl
-        cnZpY2UiLCJ0eXBlIjoicmVzb3VyY2UtdHlwZXMiLCJhdHRyaWJ1dGVzIjp7
-        InRpdGxlIjoiU2VydmljZSIsInVwZGF0ZWQiOiIyMDE0LTEwLTE2In19LHsi
-        aWQiOiJjZGwuZHBsYW5ldCIsInR5cGUiOiJwdWJsaXNoZXJzIiwiYXR0cmli
-        dXRlcyI6eyJ0aXRsZSI6IkRhdGEtUGxhbmV0Iiwib3RoZXItbmFtZXMiOltd
-        LCJwcmVmaXhlcyI6W10sIm1lbWJlci1pZCI6bnVsbCwicmVnaXN0cmF0aW9u
-        LWFnZW5jeS1pZCI6bnVsbCwidXBkYXRlZCI6bnVsbH19LHsiaWQiOiJibC5j
-        Y2RjIiwidHlwZSI6InB1Ymxpc2hlcnMiLCJhdHRyaWJ1dGVzIjp7InRpdGxl
-        IjoiVGhlIENhbWJyaWRnZSBDcnlzdGFsbG9ncmFwaGljIERhdGEgQ2VudHJl
-        Iiwib3RoZXItbmFtZXMiOltdLCJwcmVmaXhlcyI6W10sIm1lbWJlci1pZCI6
-        bnVsbCwicmVnaXN0cmF0aW9uLWFnZW5jeS1pZCI6bnVsbCwidXBkYXRlZCI6
-        bnVsbH19LHsiaWQiOiJldGh6LnNlYWxzIiwidHlwZSI6InB1Ymxpc2hlcnMi
-        LCJhdHRyaWJ1dGVzIjp7InRpdGxlIjoiRS1QZXJpb2RpY2EiLCJvdGhlci1u
-        YW1lcyI6W10sInByZWZpeGVzIjpbXSwibWVtYmVyLWlkIjpudWxsLCJyZWdp
-        c3RyYXRpb24tYWdlbmN5LWlkIjpudWxsLCJ1cGRhdGVkIjpudWxsfX0seyJp
-        ZCI6ImVzdGRvaS5iaW8iLCJ0eXBlIjoicHVibGlzaGVycyIsImF0dHJpYnV0
-        ZXMiOnsidGl0bGUiOiJUw5wgTG9vZHVzbXV1c2V1bSIsIm90aGVyLW5hbWVz
-        IjpbXSwicHJlZml4ZXMiOltdLCJtZW1iZXItaWQiOm51bGwsInJlZ2lzdHJh
-        dGlvbi1hZ2VuY3ktaWQiOm51bGwsInVwZGF0ZWQiOm51bGx9fSx7ImlkIjoi
-        Y2RsLmRpZ3NjaSIsInR5cGUiOiJwdWJsaXNoZXJzIiwiYXR0cmlidXRlcyI6
-        eyJ0aXRsZSI6IkRpZ2l0YWwgU2NpZW5jZSIsIm90aGVyLW5hbWVzIjpbXSwi
-        cHJlZml4ZXMiOltdLCJtZW1iZXItaWQiOm51bGwsInJlZ2lzdHJhdGlvbi1h
-        Z2VuY3ktaWQiOm51bGwsInVwZGF0ZWQiOm51bGx9fSx7ImlkIjoidGliLnIt
-        Z2F0ZSIsInR5cGUiOiJwdWJsaXNoZXJzIiwiYXR0cmlidXRlcyI6eyJ0aXRs
-        ZSI6IlJlc2VhcmNoR2F0ZSIsIm90aGVyLW5hbWVzIjpbXSwicHJlZml4ZXMi
-        OltdLCJtZW1iZXItaWQiOm51bGwsInJlZ2lzdHJhdGlvbi1hZ2VuY3ktaWQi
-        Om51bGwsInVwZGF0ZWQiOm51bGx9fSx7ImlkIjoiZ2VzaXMuZGllIiwidHlw
-        ZSI6InB1Ymxpc2hlcnMiLCJhdHRyaWJ1dGVzIjp7InRpdGxlIjoiRGV1dHNj
-        aGVzIEluc3RpdHV0IGbDvHIgRXJ3YWNoc2VuZW5iaWxkdW5nIiwib3RoZXIt
-        bmFtZXMiOltdLCJwcmVmaXhlcyI6W10sIm1lbWJlci1pZCI6bnVsbCwicmVn
-        aXN0cmF0aW9uLWFnZW5jeS1pZCI6bnVsbCwidXBkYXRlZCI6bnVsbH19LHsi
-        aWQiOiJldGh6LmVwaWNzLWJhIiwidHlwZSI6InB1Ymxpc2hlcnMiLCJhdHRy
-        aWJ1dGVzIjp7InRpdGxlIjoiRS1QaWNzIEJpbGRhcmNoaXYiLCJvdGhlci1u
-        YW1lcyI6W10sInByZWZpeGVzIjpbXSwibWVtYmVyLWlkIjpudWxsLCJyZWdp
-        c3RyYXRpb24tYWdlbmN5LWlkIjpudWxsLCJ1cGRhdGVkIjpudWxsfX0seyJp
-        ZCI6InRpYi5wYW5nYWVhIiwidHlwZSI6InB1Ymxpc2hlcnMiLCJhdHRyaWJ1
-        dGVzIjp7InRpdGxlIjoiUEFOR0FFQSAtIFB1Ymxpc2hpbmcgTmV0d29yayBm
-        b3IgR2Vvc2NpZW50aWZpYyBhbmQgRW52aXJvbm1lbnRhbCBEYXRhIiwib3Ro
-        ZXItbmFtZXMiOltdLCJwcmVmaXhlcyI6W10sIm1lbWJlci1pZCI6bnVsbCwi
-        cmVnaXN0cmF0aW9uLWFnZW5jeS1pZCI6bnVsbCwidXBkYXRlZCI6bnVsbH19
-        LHsiaWQiOiJibC5pbXBlcmlhbCIsInR5cGUiOiJwdWJsaXNoZXJzIiwiYXR0
-        cmlidXRlcyI6eyJ0aXRsZSI6IkltcGVyaWFsIENvbGxlZ2UgTG9uZG9uIiwi
-        b3RoZXItbmFtZXMiOltdLCJwcmVmaXhlcyI6W10sIm1lbWJlci1pZCI6bnVs
-        bCwicmVnaXN0cmF0aW9uLWFnZW5jeS1pZCI6bnVsbCwidXBkYXRlZCI6bnVs
-        bH19XSwibWV0YSI6eyJyZXNvdXJjZS10eXBlcyI6eyJkYXRhc2V0IjoyNTk4
-        NzE1LCJ0ZXh0IjoxMzkwOTE5LCJvdGhlciI6ODczODczLCJpbWFnZSI6NzA0
-        MTUxLCJjb2xsZWN0aW9uIjozNTE1OTMsInNvZnR3YXJlIjoxNTg5NSwiYXVk
-        aW92aXN1YWwiOjcwOTgsImV2ZW50Ijo2NzExLCJwaHlzaWNhbC1vYmplY3Qi
-        OjY2ODAsImZpbG0iOjkyMCwibW9kZWwiOjU1NiwiaW50ZXJhY3RpdmUtcmVz
-        b3VyY2UiOjM3Miwic291bmQiOjI0Mywid29ya2Zsb3ciOjIyMSwic2Vydmlj
-        ZSI6MjF9LCJ5ZWFycyI6eyIyMDE2Ijo1MjIyMzQsIjIwMTUiOjIwNDA4NTAs
-        IjIwMTQiOjkzNjQ4NiwiMjAxMyI6MzM1MzU4LCIyMDEyIjoyMTQxOTEsIjIw
-        MTEiOjMzOTM3MCwiMjAxMCI6MTQ0NTEyLCIyMDA3IjoxNTkxNDYsIjIwMDYi
-        OjE0NjE0NywiMjAwNSI6MTYzMzQ3fSwicHVibGlzaGVycyI6eyJjZGwuZHBs
-        YW5ldCI6ODYyNjczLCJibC5jY2RjIjo2MTcyODEsImV0aHouc2VhbHMiOjUx
-        MTc0NywiZXN0ZG9pLmJpbyI6NDg3NDQ4LCJjZGwuZGlnc2NpIjo0MzEwMTUs
-        InRpYi5yLWdhdGUiOjM5MTMxMywiZ2VzaXMuZGllIjozNzMxOTMsImV0aHou
-        ZXBpY3MtYmEiOjM1NTA3NiwidGliLnBhbmdhZWEiOjM0Njg0OSwiYmwuaW1w
-        ZXJpYWwiOjE5MDQ4Mn0sInRvdGFsIjo3MDM5NjUyfX0=
+      encoding: UTF-8
+      string: '{"data":[{"id":"http://doi.org/10.13140/RG.2.2.22500.99207","type":"works","attributes":{"doi":"10.13140/RG.2.2.22500.99207","url":null,"author":[{"literal":"Marc
+        LeBane"}],"title":"Newspaper Article","container-title":"Unpublished","description":null,"resource-type-general":null,"resource-type":null,"type":null,"license":null,"publisher-id":"tib.r-gate","member-id":"tib","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-09-03T02:00:30Z","updated":"2016-09-03T02:00:30Z"}},{"id":"http://doi.org/10.17877/DE290R-17244","type":"works","attributes":{"doi":"10.17877/DE290R-17244","url":null,"author":[{"family":"Belomestny","given":"Denis"},{"family":"Panov","given":"Vladimir"},{"family":"Woerner","given":"Jeannette
+        H. C."}],"title":"Low-frequency estimation of continuous-time moving average
+        Lévy processes","container-title":"Technische Universität Dortmund","description":"In
+        this paper we study the problem of statistical inference for a continuoustime
+        moving average Lévy process of the form Zt=∫ℝκ(t-s)dLs, t∈ℝ with a deterministic
+        kernel κ and a Lévy process L. Especially the estimation of the Lévy measure
+        v of L from low-frequency observations of the process Z is considered. We
+        construct a consistent estimator, derive its convergence rates and illustrate
+        its performance by a numerical example. On the technical level, the main challenge
+        is to establish a kind of exponential mixing for continuous-time moving average
+        Lévy processes.","resource-type-general":"text","resource-type":"working paper","type":"report","license":null,"publisher-id":"tib.tudo","member-id":"tib","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-09-03T02:00:13Z","updated":"2016-09-03T02:00:13Z"}},{"id":"http://doi.org/10.17877/DE290R-17243","type":"works","attributes":{"doi":"10.17877/DE290R-17243","url":null,"author":[{"family":"Langguth","given":"Florian"}],"title":"Die
+        Beteiligung von Unternehmen in der integrierten ländlichen Entwicklung","container-title":"Technische
+        Universität Dortmund","description":"Eine stärkere Beteiligung von Unternehmen
+        in Prozessen der integrierten ländlichen Regionalentwicklung ist eine oftmals
+        geäußerte Forderung. Ohne die Beteiligung von Unternehmen können zentrale
+        Ziele wie die Schaffung von Arbeitsplätzen, die Steigerung regionaler Investitionen
+        oder die Stärkung der regionalen Wertschöpfung nicht oder nicht in vollem
+        Umfang erreicht werden. Zudem bedarf es verstärkt der Aktivierung privaten
+        Kapitals z.B. aus der Wirtschaft, um die durch die Förderprogramme angestoßenen
+        Prozesse in der Region nachhaltig zu sichern und fortzuführen. Trotz der Forderung
+        nach einer stärkeren Beteiligung und Einbindung von Unternehmen ist in der
+        Praxis ein gegenläufiges Bild zu beobachten. Es besteht der Eindruck, dass
+        sich Unternehmen – sowohl aus dem landwirtschaftlichen als auch nicht-landwirtschaftlichen
+        Bereich – eher selten beteiligen und geeignete Strategie und Instrumente zur
+        Beteiligung fehlen. Die Dissertation greift diese Problemstellung auf und
+        untersucht die Beteiligung von Unternehmen in den Programmen der Regelförderung
+        in Deutschland. Denn bisher fehlt es nicht nur an konkreten Erkenntnissen
+        darüber, warum sich Unternehmen kaum in Prozessen der integrierten ländlichen
+        Entwicklung beteiligen, sondern auch an Antworten auf die Frage, warum sich
+        in einigen Regionen manche Unternehmen hingegen dennoch beteiligen. Für die
+        Dissertation wurden Regionen untersucht, die 2010 durch Leader oder den ILE-Fördergrundsatz
+        der Gemeinschaftsaufgabe zur Verbesserung der Agrarstruktur gefördert wurden.
+        Anhand eines Mehr-Methodenansatzes (Programmanalyse, Online-Befragung, Telefonbefragung
+        und Untersuchung guter Beispiele) konnten umfassende Ergebnisse erhoben werden,
+        um Fragen zu den Motiven einer Unternehmensbeteiligung, zu den Nutzen durch
+        eine Beteiligung oder zu der Struktur der beteiligten Unternehmen beantworten
+        zu können. Im Ergebnis wurden Handlungsempfehlungen sowohl für die Politik
+        zur Entwicklung ländlicher Räume als auch für die verantwortlichen regionalen
+        Akteure entwickelt, um Unternehmen stärker als bisher an Prozessen der integrierten
+        ländlichen Entwicklung beteiligen zu können.","resource-type-general":"text","resource-type":"doctoral
+        thesis","type":"report","license":null,"publisher-id":"tib.tudo","member-id":"tib","registration-agency-id":"datacite","results":{},"published":"2015","deposited":"2016-09-03T02:00:08Z","updated":"2016-09-03T02:00:08Z"}},{"id":"http://doi.org/10.15468/DL.VEBWQJ","type":"works","attributes":{"doi":"10.15468/DL.VEBWQJ","url":null,"author":[{"literal":"occdownload
+        gbif.org"}],"title":"GBIF Occurrence Download","container-title":"The Global
+        Biodiversity Information Facility","description":"A dataset containing 0 species
+        occurrences available in GBIF matching the query: DatasetKey: Terrestrial
+        Heteroptera Recording Scheme (Shieldbugs \u0026 allied species) - RISC Heteroptera
+        Non-Native Species Records. The dataset includes 0 records from 0 constituent
+        datasets:","resource-type-general":"dataset","resource-type":null,"type":"dataset","license":"https://creativecommons.org/licenses/by/4.0/","publisher-id":"dk.gbif","member-id":"dk","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-09-03T01:56:56Z","updated":"2016-09-03T01:56:56Z"}},{"id":"http://doi.org/10.15468/DL.JUITAW","type":"works","attributes":{"doi":"10.15468/DL.JUITAW","url":null,"author":[{"literal":"occdownload
+        gbif.org"}],"title":"GBIF Occurrence Download","container-title":"The Global
+        Biodiversity Information Facility","description":"A dataset containing 0 species
+        occurrences available in GBIF matching the query: DatasetKey: Terrestrial
+        Heteroptera Recording Scheme (Shieldbugs \u0026 allied species) - iSpot (2008-2010):
+        Shieldbugs \u0026 allied species. The dataset includes 0 records from 0 constituent
+        datasets:","resource-type-general":"dataset","resource-type":null,"type":"dataset","license":"https://creativecommons.org/licenses/by/4.0/","publisher-id":"dk.gbif","member-id":"dk","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-09-03T01:55:45Z","updated":"2016-09-03T01:55:45Z"}},{"id":"http://doi.org/10.15468/DL.B9QK3F","type":"works","attributes":{"doi":"10.15468/DL.B9QK3F","url":null,"author":[{"literal":"occdownload
+        gbif.org"}],"title":"GBIF Occurrence Download","container-title":"The Global
+        Biodiversity Information Facility","description":"A dataset containing 164357
+        species occurrences available in GBIF matching the query: DatasetKey: The
+        Himalayan Uplands Plant database (HUP Version 1). The dataset includes 164357
+        records from 1 constituent datasets: \n 164357 records from The Himalayan
+        Uplands Plant database (HUP Version 1). Data from some individual datasets
+        included in this download may be licensed under less restrictive terms.","resource-type-general":"dataset","resource-type":null,"type":"dataset","license":"https://creativecommons.org/licenses/by-nc/4.0/","publisher-id":"dk.gbif","member-id":"dk","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-09-03T01:55:12Z","updated":"2016-09-03T01:55:12Z"}},{"id":"http://doi.org/10.15463/IE1418.10957","type":"works","attributes":{"doi":"10.15463/IE1418.10957","url":null,"author":[{"family":"Beattie","given":"Hugh"}],"title":"Afghanistan","container-title":"BSB
+        - Bavarian State Library","description":null,"resource-type-general":null,"resource-type":null,"type":null,"license":null,"publisher-id":"gesis.bsb","member-id":"gesis","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-09-03T01:49:54Z","updated":"2016-09-03T01:49:54Z"}},{"id":"http://doi.org/10.13140/RG.2.2.29211.87844","type":"works","attributes":{"doi":"10.13140/RG.2.2.29211.87844","url":null,"author":[{"literal":"Sharon
+        Stone"}],"title":"Intergroup Cognition and Emotions Theories","container-title":"Unpublished","description":null,"resource-type-general":null,"resource-type":null,"type":null,"license":null,"publisher-id":"tib.r-gate","member-id":"tib","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-09-03T01:48:24Z","updated":"2016-09-03T01:48:24Z"}},{"id":"http://doi.org/10.15468/DL.1KECBA","type":"works","attributes":{"doi":"10.15468/DL.1KECBA","url":null,"author":[{"literal":"occdownload
+        gbif.org"}],"title":"GBIF Occurrence Download","container-title":"The Global
+        Biodiversity Information Facility","description":"A dataset containing 15
+        species occurrences available in GBIF matching the query: DatasetKey: Tiere.
+        The dataset includes 15 records from 1 constituent datasets: \n 15 records
+        from Tiere. Data from some individual datasets included in this download may
+        be licensed under less restrictive terms.","resource-type-general":"dataset","resource-type":null,"type":"dataset","license":"https://creativecommons.org/licenses/by/4.0/","publisher-id":"dk.gbif","member-id":"dk","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-09-03T01:48:13Z","updated":"2016-09-03T01:48:13Z"}},{"id":"http://doi.org/10.15468/DL.FNMXMQ","type":"works","attributes":{"doi":"10.15468/DL.FNMXMQ","url":null,"author":[{"literal":"occdownload
+        gbif.org"}],"title":"GBIF Occurrence Download","container-title":"The Global
+        Biodiversity Information Facility","description":"A dataset containing 73
+        species occurrences available in GBIF matching the query: DatasetKey: Tiergarten
+        (Zeitz). The dataset includes 73 records from 1 constituent datasets: \n 73
+        records from Tiergarten (Zeitz). Data from some individual datasets included
+        in this download may be licensed under less restrictive terms.","resource-type-general":"dataset","resource-type":null,"type":"dataset","license":"https://creativecommons.org/licenses/by/4.0/","publisher-id":"dk.gbif","member-id":"dk","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-09-03T01:47:32Z","updated":"2016-09-03T01:47:32Z"}},{"id":"http://doi.org/10.15468/DL.X4XLFK","type":"works","attributes":{"doi":"10.15468/DL.X4XLFK","url":null,"author":[{"literal":"occdownload
+        gbif.org"}],"title":"GBIF Occurrence Download","container-title":"The Global
+        Biodiversity Information Facility","description":"A dataset containing 17
+        species occurrences available in GBIF matching the query: DatasetKey: Tierpark
+        Zittau. The dataset includes 17 records from 1 constituent datasets: \n 17
+        records from Tierpark Zittau. Data from some individual datasets included
+        in this download may be licensed under less restrictive terms.","resource-type-general":"dataset","resource-type":null,"type":"dataset","license":"https://creativecommons.org/licenses/by/4.0/","publisher-id":"dk.gbif","member-id":"dk","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-09-03T01:46:52Z","updated":"2016-09-03T01:46:52Z"}},{"id":"http://doi.org/10.15468/DL.VHQQ6Q","type":"works","attributes":{"doi":"10.15468/DL.VHQQ6Q","url":null,"author":[{"literal":"occdownload
+        gbif.org"}],"title":"GBIF Occurrence Download","container-title":"The Global
+        Biodiversity Information Facility","description":"A dataset containing 113
+        species occurrences available in GBIF matching the query: DatasetKey: Tornoer
+        Teich. The dataset includes 113 records from 1 constituent datasets: \n 113
+        records from Tornoer Teich. Data from some individual datasets included in
+        this download may be licensed under less restrictive terms.","resource-type-general":"dataset","resource-type":null,"type":"dataset","license":"https://creativecommons.org/licenses/by/4.0/","publisher-id":"dk.gbif","member-id":"dk","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-09-03T01:46:12Z","updated":"2016-09-03T01:46:12Z"}},{"id":"http://doi.org/10.15468/DL.JANW6K","type":"works","attributes":{"doi":"10.15468/DL.JANW6K","url":null,"author":[{"literal":"occdownload
+        gbif.org"}],"title":"GBIF Occurrence Download","container-title":"The Global
+        Biodiversity Information Facility","description":"A dataset containing 83
+        species occurrences available in GBIF matching the query: DatasetKey: Total
+        foraminifera counts from M35/1_MSN1043. The dataset includes 83 records from
+        1 constituent datasets: \n 83 records from Total foraminifera counts from
+        M35/1_MSN1043. Data from some individual datasets included in this download
+        may be licensed under less restrictive terms.","resource-type-general":"dataset","resource-type":null,"type":"dataset","license":"https://creativecommons.org/licenses/by/4.0/","publisher-id":"dk.gbif","member-id":"dk","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-09-03T01:45:32Z","updated":"2016-09-03T01:45:32Z"}},{"id":"http://doi.org/10.15468/DL.WZKX3E","type":"works","attributes":{"doi":"10.15468/DL.WZKX3E","url":null,"author":[{"literal":"occdownload
+        gbif.org"}],"title":"GBIF Occurrence Download","container-title":"The Global
+        Biodiversity Information Facility","description":"A dataset containing 6559
+        species occurrences available in GBIF matching the query: TaxonKey: Urocyon
+        cinereoargenteus (Schreber, 1775). The dataset includes 6559 records from
+        116 constituent datasets: \n 9 records from SUI Vertebrate Collection. \n
+        62 records from ISM Mammalogy Collection. \n 29 records from CSUC Vertebrate
+        Collection. \n 10 records from uconn-mammals. \n 504 records from MVZ Mammal
+        Collection (Arctos). \n 254 records from KUBI Mammalogy Collection. \n 10
+        records from MLZ Mammal Collection (Arctos). \n 40 records from MSU Mammalogy,
+        Ornithology and Vertebrate Paleontology Collections. \n 132 records from CUMV
+        Mammal Collection (Arctos). \n 13 records from Inventario de fauna presente
+        en la jurisdicción de Corantioquia. \n 1 records from UAM Mammal Collection
+        (Arctos). \n 17 records from CCBER Mammalogy Collection. \n 3 records from
+        The mammals collection (ZM) of the Muséum national d''Histoire naturelle (MNHN
+        - Paris). \n 2 records from Museum Victoria provider for OZCAM. \n 8 records
+        from CRCM Vertebrate Collection. \n 4 records from Cowan Tetrapod Collection
+        - Mammals. \n 28 records from HSU Wildlife Mammals. \n 120 records from Field
+        Museum of Natural History (Zoology) Mammal Collection. \n 3 records from MVZ
+        Hildebrand Collection (Arctos). \n 1 records from Lund Museum of Zoology (MZLU).
+        \n 11 records from CHAS Mammalogy Collection (Arctos). \n 1 records from Naturalis
+        Biodiversity Center (NL) - Mammalia. \n 102 records from Museum of Comparative
+        Zoology, Harvard University. \n 8 records from NMMNH Mammal. \n 569 records
+        from iNaturalist Research-grade Observations. \n 1 records from Colección
+        Nacional de Mastozoología - Museo Argentino de Ciencias Naturales ''Bernardino
+        Rivadavia''. \n 35 records from University of California Museum of Paleontology.
+        \n 3 records from Mammals housed at MHNG, Geneva. \n 1071 records from NMNH
+        occurrence DwC-A. \n 21 records from DMNS Mammal Collection (Arctos). \n 2
+        records from LSUMZ Mammal Tissues. \n 4 records from Cruzando el Caribe -
+        Construyendo la capacidad para el ecoturismo en el Darién y Urabá. \n 13 records
+        from CM Vertebrate Paleontology Collection. \n 1 records from naturgucker.
+        \n 100 records from CAS Mammalogy (MAM). \n 97 records from UMMZ Mammal Collection.
+        \n 7 records from Tissues Specimens. \n 83 records from SBMNH Vertebrate Zoology.
+        \n 21 records from Ohio State University Tetrapod Division - Mammal Collection
+        (OSUM). \n 1 records from Northern Territory Museum and Art Gallery provider
+        for OZCAM. \n 143 records from LACM Vertebrate Collection. \n 4 records from
+        Colección de Aves y Mamíferos del Valle de Cuatrociénegas, Coah., México (UANL).
+        \n 8 records from Mamíferos de Nuevo León, México (UANL). \n 4 records from
+        Colección de Mamíferos de la Sierra Volcánica Transversal de México (UAM-I).
+        \n 1 records from Western Australian Museum provider for OZCAM. \n 6 records
+        from Natural History Museum (London) Collection Specimens. \n 1 records from
+        Macaulay Library Audio and Video Collection. \n 51 records from Computarización
+        de la Colección Nacional de mamíferos del Instituto de Biología, UNAM. \n
+        1 records from Distribución geográfica de las aves y los mamíferos de las
+        zonas montanas de los estados de San Luis Potosí e Hidalgo circundantes de
+        la Sierra Gorda. \n 4 records from Computarización de las colecciones de vertebrados
+        terrestres de la Escuela Nacional de Ciencias Biológicas, IPN Fase 1: Estado
+        de México, Hidalgo, San Luis Potosí y Tlaxcala. \n 65 records from NatureServe
+        Network Species Occurrence Data. \n 5 records from Diversidad de los mamíferos
+        de la Reserva de la biósfera Tehuacán-Cuicatlán, Puebla-Oaxaca, México. \n
+        1 records from Patrones de diversidad florística y faunística del área focal
+        Ixcan, selva Lacandona, Chiapas. Mamíferos. \n 4 records from Análisis de
+        la heterogeneidad ambiental y conectividad de las áreas naturales del sur
+        del Valle de México_2. \n 12 records from Computarización de la Colección
+        Regional Durango (Mammalia). \n 9 records from Computarización de las colecciones
+        de vertebrados terrestres de la Escuela Nacional de Ciencias Biológicas, IPN
+        - Fases 3. \n 15 records from Inventario de la mastofauna en las reservas
+        de la biosfera Desierto del Vizcaíno y Valle de los Cirios. \n 26 records
+        from Anfibios, reptiles y mamíferos del corredor biológico del norte de Yucatán
+        depositados en las colecciones de la Escuela Nacional de Ciencias Biológicas.
+        \n 86 records from Deforestación y fragmentación del hábitat: consecuencias
+        ecológicas sobre la fauna de mamíferos de la selva tropical estacional. \n
+        9 records from Sistematización de las colecciones científicas del Instituto
+        de Historia Natural y Ecología, (IHNE) Chiapas. \n 1 records from Historia
+        natural del parque ecológico estatal de Omiltemi, Chilpancingo, Guerrero,
+        México. \n 6 records from Computarización de las colecciones de vertebrados
+        terrestres de la Escuela Nacional de Ciencias Biológicas, IPN - Fases 2. \n
+        1 records from Inventario florístico y faunístico del Parque Nacional Barranca
+        del Cupatitzio, Michoacán. \n 67 records from Vertebrados terrestres del Corredor
+        Biológico Sierra Madre del Sur, Chiapas, México. \n 7 records from Actualización
+        de la base de datos de la colección mastozoológica de El Colegio de la Frontera
+        Sur, San Cristóbal de las Casas. \n 37 records from Vertebrados terrestres
+        del parque nacional Cañón del Sumidero, Chiapas, México. \n 104 records from
+        Actualización y enriquecimiento de las bases de datos del proyecto de evaluación
+        y análisis geográfico de la diversidad faunística de Chiapas. \n 7 records
+        from Inventario de los mamíferos de las reservas de la biósfera Mapimí, La
+        Michilía, El Cielo y Calakmul. \n 1 records from Mamíferos de los Parques
+        Nacionales Lagunas de Montebello y Palenque, Chiapas. \n 2 records from Incorporación
+        de nuevos registros de mamíferos de la región Sierra Norte de Oaxaca. \n 7
+        records from Colección científica del Museo de Historia Natural Alfredo Dugés.
+        \n 2 records from ISU Mammals. \n 11 records from Collection Anatomie Histologie
+        - SMF. \n 18 records from UWBM Mammalogy Collection. \n 77 records from NYSM
+        Mammals. \n 61 records from Mammal specimens. \n 79 records from LSUMZ Mammals
+        Collection. \n 22 records from Paleobiology Database. \n 132 records from
+        Mammals Specimens. \n 33 records from FHSM Mammals Collection. \n 82 records
+        from CNMA/Colección Nacional de mamíferos. \n 9 records from (UTC) University
+        of Tennessee Mammals Collection. \n 78 records from Vertebrate Zoology Division
+        - Mammalogy, Yale Peabody Museum. \n 79 records from TTU Mammals Collection.
+        \n 4 records from Colección de Mamíferos de la Sierra Volcánica Transversal
+        de México (UAM-I). \n 88 records from UCLA Donald R. Dickey Bird and Mammal
+        Collection. \n 9 records from WNMU Mammal Collection (Arctos). \n 3 records
+        from University of Alberta Museum of Zoology Mammalogy Collection (UAMZ).
+        \n 25 records from UCM Mammal Collection (Arctos). \n 12 records from Colección
+        de Mamíferos del Museo de Zoología ''Alfonso L . Herrera'', México (MZFC,
+        UNAM). \n 1 records from Schmidt Museum of Natural History_Mammals. \n 24
+        records from PSM Vertebrates Collection. \n 56 records from UAZ Mammals. \n
+        15 records from Collection Mammalia SMF. \n 3 records from CNMA/Colección
+        de Mamíferos de la Estación de Biología Chamela. \n 552 records from AMNH
+        Mammal Collections. \n 18 records from Mammal Specimens. \n 45 records from
+        UAFMC Mammals. \n 243 records from MSB Mammal Collection (Arctos). \n 2 records
+        from MSB Host Collection (Arctos). \n 112 records from Biodiversity Research
+        and Teaching Collections - TCWC Vertebrates. \n 5 records from Animal Sound
+        Archive. \n 49 records from Mammals Specimens. \n 79 records from UTEP Vertebrates.
+        \n 1 records from Condon Fossil Collection. \n 72 records from Mammalogy Collection
+        - Royal Ontario Museum. \n 19 records from Colección nacional de zoología.
+        \n 3 records from Palaeobiology - Vertebrate Fossils Collection - Mammalia
+        - Royal Ontario Museum. \n 5 records from Palaeobiology - Vertebrate Comparative
+        Osteology Collection - Royal Ontario Museum. \n 107 records from NCSM Mammals
+        Collection. \n 3 records from TTRS Mammals. \n 5 records from Borror Lab of
+        Bioacoustics (BLB), Ohio State University. \n 3 records from UWYMV Mammal
+        Collection (Arctos). \n 213 records from Angelo State Natural History Collections
+        (ASNHC) - Mammalogy Collection. \n 2 records from South Australian Museum
+        Australia provider for OZCAM. \n 2 records from USAC Mammals Collection. Data
+        from some individual datasets included in this download may be licensed under
+        less restrictive terms.","resource-type-general":"dataset","resource-type":null,"type":"dataset","license":"https://creativecommons.org/licenses/by/4.0/","publisher-id":"dk.gbif","member-id":"dk","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-09-03T01:45:12Z","updated":"2016-09-03T01:45:12Z"}},{"id":"http://doi.org/10.15468/DL.RCNVXC","type":"works","attributes":{"doi":"10.15468/DL.RCNVXC","url":null,"author":[{"literal":"occdownload
+        gbif.org"}],"title":"GBIF Occurrence Download","container-title":"The Global
+        Biodiversity Information Facility","description":"A dataset containing 233
+        species occurrences available in GBIF matching the query: DatasetKey: Total
+        foraminifera counts from M35/1_MSN1044. The dataset includes 233 records from
+        1 constituent datasets: \n 233 records from Total foraminifera counts from
+        M35/1_MSN1044. Data from some individual datasets included in this download
+        may be licensed under less restrictive terms.","resource-type-general":"dataset","resource-type":null,"type":"dataset","license":"https://creativecommons.org/licenses/by/4.0/","publisher-id":"dk.gbif","member-id":"dk","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-09-03T01:44:53Z","updated":"2016-09-03T01:44:53Z"}},{"id":"http://doi.org/10.15468/DL.KDLRE4","type":"works","attributes":{"doi":"10.15468/DL.KDLRE4","url":null,"author":[{"literal":"occdownload
+        gbif.org"}],"title":"GBIF Occurrence Download","container-title":"The Global
+        Biodiversity Information Facility","description":"A dataset containing 97
+        species occurrences available in GBIF matching the query: DatasetKey: Total
+        foraminifera counts from M35/1_MSN1048. The dataset includes 97 records from
+        1 constituent datasets: \n 97 records from Total foraminifera counts from
+        M35/1_MSN1048. Data from some individual datasets included in this download
+        may be licensed under less restrictive terms.","resource-type-general":"dataset","resource-type":null,"type":"dataset","license":"https://creativecommons.org/licenses/by/4.0/","publisher-id":"dk.gbif","member-id":"dk","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-09-03T01:44:11Z","updated":"2016-09-03T01:44:11Z"}},{"id":"http://doi.org/10.15468/DL.JO3F4S","type":"works","attributes":{"doi":"10.15468/DL.JO3F4S","url":null,"author":[{"literal":"occdownload
+        gbif.org"}],"title":"GBIF Occurrence Download","container-title":"The Global
+        Biodiversity Information Facility","description":"A dataset containing 79
+        species occurrences available in GBIF matching the query: DatasetKey: Total
+        foraminifera counts from M35/1_MSN1049. The dataset includes 79 records from
+        1 constituent datasets: \n 79 records from Total foraminifera counts from
+        M35/1_MSN1049. Data from some individual datasets included in this download
+        may be licensed under less restrictive terms.","resource-type-general":"dataset","resource-type":null,"type":"dataset","license":"https://creativecommons.org/licenses/by/4.0/","publisher-id":"dk.gbif","member-id":"dk","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-09-03T01:43:11Z","updated":"2016-09-03T01:43:11Z"}},{"id":"http://doi.org/10.15468/DL.MJMJOU","type":"works","attributes":{"doi":"10.15468/DL.MJMJOU","url":null,"author":[{"literal":"occdownload
+        gbif.org"}],"title":"GBIF Occurrence Download","container-title":"The Global
+        Biodiversity Information Facility","description":"A dataset containing 126
+        species occurrences available in GBIF matching the query: DatasetKey: Total
+        foraminifera counts from M35/1_MSN1050. The dataset includes 126 records from
+        1 constituent datasets: \n 126 records from Total foraminifera counts from
+        M35/1_MSN1050. Data from some individual datasets included in this download
+        may be licensed under less restrictive terms.","resource-type-general":"dataset","resource-type":null,"type":"dataset","license":"https://creativecommons.org/licenses/by/4.0/","publisher-id":"dk.gbif","member-id":"dk","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-09-03T01:42:31Z","updated":"2016-09-03T01:42:31Z"}},{"id":"http://doi.org/10.6084/M9.FIGSHARE.3804222","type":"works","attributes":{"doi":"10.6084/M9.FIGSHARE.3804222","url":null,"author":[{"literal":"Li
+        Lang"},{"literal":"Ningning Dong"},{"literal":"Deyan Wu"},{"literal":"Xue
+        Yao"},{"literal":"Weiqiang Lu"},{"literal":"Chen Zhang"},{"literal":"Ping
+        Ouyang"},{"literal":"Jin Zhu"},{"literal":"Yun Tang"},{"literal":"Wei Wang"},{"literal":"Jian
+        Li"},{"literal":"Jin Huang"}],"title":"2-Arylbenzo[\u003ci\u003eb\u003c/i\u003e]furan
+        derivatives as potent human lipoxygenase inhibitors","container-title":"Figshare","description":"\u003cp\u003eHuman
+        lipoxygenases (LOXs) have been emerging as effective therapeutic targets for
+        inflammatory diseases. In this study, we found that four natural 2-arylbenzo[\u003ci\u003eb\u003c/i\u003e]furan
+        derivatives isolated from \u003ci\u003eArtocarpus heterophyllus\u003c/i\u003e
+        exhibited potent inhibitory activities against human LOXs, including moracin
+        C (\u003cb\u003e1\u003c/b\u003e), artoindonesianin B-1 (\u003cb\u003e2\u003c/b\u003e),
+        moracin D (\u003cb\u003e3\u003c/b\u003e), moracin M (\u003cb\u003e4\u003c/b\u003e).
+        In our \u003ci\u003ein vitro\u003c/i\u003e experiments, compound \u003cb\u003e1\u003c/b\u003e
+        was identified as the most potent LOX inhibitor and the moderate subtype selective
+        inhibitor of 12-LOX. Compounds \u003cb\u003e1\u003c/b\u003e and \u003cb\u003e2\u003c/b\u003e
+        act as competitive inhibitors of LOXs. Moreover, \u003cb\u003e1\u003c/b\u003e
+        significantly inhibits LTB4 production and chemotactic capacity of neutrophils,
+        and is capable of protecting vascular barrier from plasma leakage \u003ci\u003ein
+        vivo\u003c/i\u003e. In addition, the preliminary structure–activity relationship
+        analysis was performed based on the above four naturally occurring (\u003cb\u003e1\u003c/b\u003e–\u003cb\u003e4\u003c/b\u003e)
+        and six additional synthetic 2-arylbenzo[\u003ci\u003eb\u003c/i\u003e]furan
+        derivatives. Taken together, these 2-arylbenzo[\u003ci\u003eb\u003c/i\u003e]furan
+        derivatives, as LOXs inhibitors, could represent valuable leads for the future
+        development of therapeutic agents for inflammatory diseases.\u003c/p\u003e","resource-type-general":"text","resource-type":"Paper","type":"report","license":"https://creativecommons.org/licenses/by/4.0/","publisher-id":"cdl.digsci","member-id":"cdl","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-09-03T01:42:25Z","updated":"2016-09-03T01:42:25Z"}},{"id":"http://doi.org/10.6084/M9.FIGSHARE.3804222.V1","type":"works","attributes":{"doi":"10.6084/M9.FIGSHARE.3804222.V1","url":null,"author":[{"literal":"Li
+        Lang"},{"literal":"Ningning Dong"},{"literal":"Deyan Wu"},{"literal":"Xue
+        Yao"},{"literal":"Weiqiang Lu"},{"literal":"Chen Zhang"},{"literal":"Ping
+        Ouyang"},{"literal":"Jin Zhu"},{"literal":"Yun Tang"},{"literal":"Wei Wang"},{"literal":"Jian
+        Li"},{"literal":"Jin Huang"}],"title":"2-Arylbenzo[\u003ci\u003eb\u003c/i\u003e]furan
+        derivatives as potent human lipoxygenase inhibitors","container-title":"Figshare","description":"\u003cp\u003eHuman
+        lipoxygenases (LOXs) have been emerging as effective therapeutic targets for
+        inflammatory diseases. In this study, we found that four natural 2-arylbenzo[\u003ci\u003eb\u003c/i\u003e]furan
+        derivatives isolated from \u003ci\u003eArtocarpus heterophyllus\u003c/i\u003e
+        exhibited potent inhibitory activities against human LOXs, including moracin
+        C (\u003cb\u003e1\u003c/b\u003e), artoindonesianin B-1 (\u003cb\u003e2\u003c/b\u003e),
+        moracin D (\u003cb\u003e3\u003c/b\u003e), moracin M (\u003cb\u003e4\u003c/b\u003e).
+        In our \u003ci\u003ein vitro\u003c/i\u003e experiments, compound \u003cb\u003e1\u003c/b\u003e
+        was identified as the most potent LOX inhibitor and the moderate subtype selective
+        inhibitor of 12-LOX. Compounds \u003cb\u003e1\u003c/b\u003e and \u003cb\u003e2\u003c/b\u003e
+        act as competitive inhibitors of LOXs. Moreover, \u003cb\u003e1\u003c/b\u003e
+        significantly inhibits LTB4 production and chemotactic capacity of neutrophils,
+        and is capable of protecting vascular barrier from plasma leakage \u003ci\u003ein
+        vivo\u003c/i\u003e. In addition, the preliminary structure–activity relationship
+        analysis was performed based on the above four naturally occurring (\u003cb\u003e1\u003c/b\u003e–\u003cb\u003e4\u003c/b\u003e)
+        and six additional synthetic 2-arylbenzo[\u003ci\u003eb\u003c/i\u003e]furan
+        derivatives. Taken together, these 2-arylbenzo[\u003ci\u003eb\u003c/i\u003e]furan
+        derivatives, as LOXs inhibitors, could represent valuable leads for the future
+        development of therapeutic agents for inflammatory diseases.\u003c/p\u003e","resource-type-general":"text","resource-type":"Paper","type":"report","license":"https://creativecommons.org/licenses/by/4.0/","publisher-id":"cdl.digsci","member-id":"cdl","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-09-03T01:42:25Z","updated":"2016-09-03T01:42:25Z"}},{"id":"http://doi.org/10.15468/DL.PC1KXX","type":"works","attributes":{"doi":"10.15468/DL.PC1KXX","url":null,"author":[{"literal":"occdownload
+        gbif.org"}],"title":"GBIF Occurrence Download","container-title":"The Global
+        Biodiversity Information Facility","description":"A dataset containing 84
+        species occurrences available in GBIF matching the query: DatasetKey: Total
+        foraminifera counts from M35/1_MSN1051. The dataset includes 84 records from
+        1 constituent datasets: \n 84 records from Total foraminifera counts from
+        M35/1_MSN1051. Data from some individual datasets included in this download
+        may be licensed under less restrictive terms.","resource-type-general":"dataset","resource-type":null,"type":"dataset","license":"https://creativecommons.org/licenses/by/4.0/","publisher-id":"dk.gbif","member-id":"dk","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-09-03T01:41:51Z","updated":"2016-09-03T01:41:51Z"}},{"id":"http://doi.org/10.15468/DL.R4RXNW","type":"works","attributes":{"doi":"10.15468/DL.R4RXNW","url":null,"author":[{"literal":"occdownload
+        gbif.org"}],"title":"GBIF Occurrence Download","container-title":"The Global
+        Biodiversity Information Facility","description":"A dataset containing 49
+        species occurrences available in GBIF matching the query: DatasetKey: Total
+        foraminifera counts from M35/1_MSN1052. The dataset includes 49 records from
+        1 constituent datasets: \n 49 records from Total foraminifera counts from
+        M35/1_MSN1052. Data from some individual datasets included in this download
+        may be licensed under less restrictive terms.","resource-type-general":"dataset","resource-type":null,"type":"dataset","license":"https://creativecommons.org/licenses/by/4.0/","publisher-id":"dk.gbif","member-id":"dk","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-09-03T01:41:11Z","updated":"2016-09-03T01:41:11Z"}},{"id":"http://doi.org/10.15468/DL.JJEQH8","type":"works","attributes":{"doi":"10.15468/DL.JJEQH8","url":null,"author":[{"literal":"occdownload
+        gbif.org"}],"title":"GBIF Occurrence Download","container-title":"The Global
+        Biodiversity Information Facility","description":"A dataset containing 33
+        species occurrences available in GBIF matching the query: DatasetKey: Total
+        foraminifera counts from M35/1_MSN1053. The dataset includes 33 records from
+        1 constituent datasets: \n 33 records from Total foraminifera counts from
+        M35/1_MSN1053. Data from some individual datasets included in this download
+        may be licensed under less restrictive terms.","resource-type-general":"dataset","resource-type":null,"type":"dataset","license":"https://creativecommons.org/licenses/by/4.0/","publisher-id":"dk.gbif","member-id":"dk","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-09-03T01:40:30Z","updated":"2016-09-03T01:40:30Z"}},{"id":"http://doi.org/10.5281/ZENODO.61430","type":"works","attributes":{"doi":"10.5281/ZENODO.61430","url":null,"author":[{"literal":"Wolfgang
+        Bangerth"},{"literal":"Guido Kanschat"},{"literal":"Matthias Maier"},{"literal":"Timo
+        Heister"},{"literal":"Martin Kronbichler"},{"literal":"Luca Heltai"},{"literal":"David
+        Wells"},{"literal":"Bruno Turcksin"},{"literal":"Denis Davydov"},{"literal":"jfrohne"},{"literal":"Daniel
+        Arndt"},{"literal":"Lei Qiao"},{"literal":"Mauro Bardelloni"},{"literal":"mac-a"},{"literal":"Jean-Paul
+        Pelteret"},{"literal":"Daniel Shapero"},{"literal":"Jonathan Robey"},{"literal":"Alberto
+        Sartori "},{"literal":"NobleTree"},{"literal":"andreabonito"},{"literal":"Rene
+        Gassmöller"},{"literal":"Martin Steigemann"},{"literal":"Alexander Grayver"},{"literal":"Sebastian
+        Pauletti"},{"literal":"Maien Hamed"},{"literal":"l-korous"},{"literal":"Spencer
+        Patty"},{"literal":"angelrca"},{"literal":"Felix Gruber"},{"literal":"Marco
+        Tezzele"}],"title":"dealii: deal.II version 8.4.2","container-title":"Zenodo","description":"\u003cp\u003eThis
+        is a minor update to 8.4.1 with compatibility fixes for gcc 6.x support, PETSc
+        3.7.x, and development versions of P4est. For more information please have
+        a look at:\u003c/p\u003e\n\n\u003cul\u003e\n\u003cli\u003e\u003ca href=\"https://www.dealii.org/developer/doxygen/deal.II/changes_between_8_4_1_and_8_4_2.html\"\u003ehttps://www.dealii.org/developer/doxygen/deal.II/changes_between_8_4_1_and_8_4_2.html\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca
+        href=\"https://www.dealii.org/developer/doxygen/deal.II/changes_between_8_4_1_and_8_4_2.html\"\u003ehttps://www.dealii.org/developer/doxygen/deal.II/changes_between_8_4_1_and_8_4_2.html\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca
+        href=\"https://www.dealii.org/developer/doxygen/deal.II/changes_between_8_3_and_8_4.html\"\u003ehttps://www.dealii.org/developer/doxygen/deal.II/changes_between_8_3_and_8_4.html\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003epreprint
+        at \u003ca href=\"https://www.dealii.org/deal84-preprint.pdf\"\u003ehttps://www.dealii.org/deal84-preprint.pdf\u003c/a\u003e\n\u003c/li\u003e\n\u003c/ul\u003e","resource-type-general":"software","resource-type":null,"type":"computer_program","license":null,"publisher-id":"cern.zenodo","member-id":"cern","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-09-03T01:39:56Z","updated":"2016-09-03T01:39:56Z"}},{"id":"http://doi.org/10.15468/DL.YYWOPC","type":"works","attributes":{"doi":"10.15468/DL.YYWOPC","url":null,"author":[{"literal":"occdownload
+        gbif.org"}],"title":"GBIF Occurrence Download","container-title":"The Global
+        Biodiversity Information Facility","description":"A dataset containing 79
+        species occurrences available in GBIF matching the query: DatasetKey: Total
+        foraminifera counts from M35/1_MSN1055. The dataset includes 79 records from
+        1 constituent datasets: \n 79 records from Total foraminifera counts from
+        M35/1_MSN1055. Data from some individual datasets included in this download
+        may be licensed under less restrictive terms.","resource-type-general":"dataset","resource-type":null,"type":"dataset","license":"https://creativecommons.org/licenses/by/4.0/","publisher-id":"dk.gbif","member-id":"dk","registration-agency-id":"datacite","results":{},"published":"2016","deposited":"2016-09-03T01:39:51Z","updated":"2016-09-03T01:39:51Z"}},{"id":"dataset","type":"resource-types","attributes":{"title":"Dataset","updated":"2014-10-16"}},{"id":"text","type":"resource-types","attributes":{"title":"Text","updated":"2014-10-16"}},{"id":"other","type":"resource-types","attributes":{"title":"Other","updated":"2014-10-16"}},{"id":"image","type":"resource-types","attributes":{"title":"Image","updated":"2014-10-16"}},{"id":"collection","type":"resource-types","attributes":{"title":"Collection","updated":"2014-10-16"}},{"id":"software","type":"resource-types","attributes":{"title":"Software","updated":"2014-10-16"}},{"id":"audiovisual","type":"resource-types","attributes":{"title":"Audiovisual","updated":"2014-10-16"}},{"id":"event","type":"resource-types","attributes":{"title":"Event","updated":"2014-10-16"}},{"id":"physical-object","type":"resource-types","attributes":{"title":"Physical
+        object","updated":"2014-10-16"}},{"id":"film","type":"resource-types","attributes":{"title":"Film","updated":"2014-10-16"}},{"id":"model","type":"resource-types","attributes":{"title":"Model","updated":"2014-10-16"}},{"id":"interactive-resource","type":"resource-types","attributes":{"title":"Interactive
+        resource","updated":"2014-10-16"}},{"id":"sound","type":"resource-types","attributes":{"title":"Sound","updated":"2014-10-16"}},{"id":"workflow","type":"resource-types","attributes":{"title":"Workflow","updated":"2014-10-16"}},{"id":"service","type":"resource-types","attributes":{"title":"Service","updated":"2014-10-16"}},{"id":"cdl.dplanet","type":"publishers","attributes":{"title":"Data-Planet","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}},{"id":"bl.ccdc","type":"publishers","attributes":{"title":"The
+        Cambridge Crystallographic Data Centre","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}},{"id":"ethz.seals","type":"publishers","attributes":{"title":"E-Periodica","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}},{"id":"estdoi.bio","type":"publishers","attributes":{"title":"TÜ
+        Loodusmuuseum","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}},{"id":"cdl.digsci","type":"publishers","attributes":{"title":"Digital
+        Science","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}},{"id":"tib.r-gate","type":"publishers","attributes":{"title":"ResearchGate","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}},{"id":"gesis.die","type":"publishers","attributes":{"title":"Deutsches
+        Institut für Erwachsenenbildung","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}},{"id":"ethz.epics-ba","type":"publishers","attributes":{"title":"E-Pics
+        Bildarchiv","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}},{"id":"tib.pangaea","type":"publishers","attributes":{"title":"PANGAEA
+        - Publishing Network for Geoscientific and Environmental Data","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}},{"id":"dk.gbif","type":"publishers","attributes":{"title":"Global
+        Biodiversity Information Facility","other-names":[],"prefixes":[],"member-id":null,"registration-agency-id":null,"updated":null}}],"meta":{"resource-types":{"dataset":2642545,"text":1397713,"other":875021,"image":705754,"collection":352724,"software":16398,"audiovisual":7418,"event":6725,"physical-object":6680,"film":923,"model":560,"interactive-resource":378,"sound":246,"workflow":229,"service":23},"years":{"2016":563850,"2015":2035977,"2014":947999,"2013":335259,"2012":214176,"2011":339479,"2010":144615,"2007":159284,"2006":146282,"2005":163389},"publishers":{"cdl.dplanet":863578,"bl.ccdc":620717,"ethz.seals":511958,"estdoi.bio":487448,"cdl.digsci":434065,"tib.r-gate":383383,"gesis.die":373193,"ethz.epics-ba":355273,"tib.pangaea":347244,"dk.gbif":193451},"total":7095542}}'
     http_version: 
-  recorded_at: Tue, 16 Aug 2016 09:46:09 GMT
+  recorded_at: Sat, 03 Sep 2016 12:22:29 GMT
 recorded_with: VCR 2.9.3

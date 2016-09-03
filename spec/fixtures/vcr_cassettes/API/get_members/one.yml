@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datacite.org/members?id=ANDS
+    uri: http://api/members?id=ANDS
     body:
       encoding: US-ASCII
       string: ''
@@ -77,6 +77,6 @@ http_interactions:
         e-newsletter: \u003ca href=\"http://us7.campaign-archive2.com/home/?u=b542ef52e49302569068046d9\u0026amp;id=22b849a4ee\"\u003eandsUP\u003c/a\u003e.\u003c/p\u003e\n","member-type":"allocating","region":"Asia
         Pacific","country":"Australia","year":2009,"logo-url":"https://assets.datacite.org/images/members/ands.png","email":"contact@ands.org.au","website":"http://www.ands.org.au","phone":"+61
         3 9902 0585","updated":"2016-08-03T15:39:40.000Z"}}}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 16 Aug 2016 09:46:05 GMT
 recorded_with: VCR 2.9.3
