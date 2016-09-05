@@ -23,7 +23,6 @@ gem 'sanitize'
 gem 'rake'
 gem 'namae'
 gem 'sass'
-gem 'httplog'
 
 group :development do
   gem "better_errors"
