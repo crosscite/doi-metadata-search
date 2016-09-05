@@ -24,10 +24,47 @@ $(document).ready(function() {
     $('.claim-warn').popover('destroy');
     $('.claim-ok').popover('destroy');
 
-    var $p = $('<p>').text('Are you sure you want to remove this work from your ORCID record?');
-    var $btnClose = $('<button>').addClass('btn').addClass('btn-primary').addClass('btn-fill').addClass('btn-sm').addClass('claim-close-btn').text('Close');
+    var $p = $('<p>').text('Last time we checked, this work was in your ORCID record.');
+    var $btnClose = $('<button>').addClass('btn').addClass('btn-default').addClass('btn-sm').addClass('claim-close-btn').text('Close');
     var $btnsClose = $('<div>').addClass('btn-group').addClass('btn-group-sm').append($btnClose);
     var $btnToolbar = $('<div>').addClass('btn-toolbar').addClass('pull-right').append($btnsClose);
+    var $content = $('<div>').append($p).append($btnToolbar);
+    var $popover = $(this);
+
+    $(this).popover({
+      placement: 'bottom',
+      html: true,
+      title: 'Work is in your ORCID record',
+      content: $('<div>').append($content).html(),
+      trigger: 'manual'
+    });
+
+    $(this).popover('show');
+
+    $('.claim-close-btn').click(function(e) {
+      if (!$(this).hasClass('disabled')) {
+        $popover.popover('destroy');
+      }
+      e.preventDefault();
+      return false;
+    });
+
+    e.preventDefault();
+    return false;
+  };
+
+  var claimDeleteClickFn = function(e) {
+    $('.claim-none').popover('destroy');
+    $('.claim-waiting').popover('destroy');
+    $('.claim-warn').popover('destroy');
+    $('.claim-ok').popover('destroy');
+
+    var $p = $('<p>').text('Are you sure you want to remove this work from your ORCID record?').addClass('icon-warning');
+    var $btnNo = $('<button>').addClass('btn').addClass('btn-warning').addClass('btn-sm').addClass('claim-no-btn').text('Cancel');
+    var $btnOk = $('<button>').addClass('btn').addClass('btn-warning').addClass('btn-fill').addClass('btn-sm').addClass('claim-ok-btn').text('Ok');
+    var $btnsNo = $('<div>').addClass('btn-group').addClass('btn-group-sm').append($btnNo);
+    var $btnsOk = $('<div>').addClass('btn-group').addClass('btn-group-sm').append($btnOk);
+    var $btnToolbar = $('<div>').addClass('btn-toolbar').addClass('pull-right').append($btnsNo).append($btnsOk);
     var $content = $('<div>').append($p).append($btnToolbar);
     var $popover = $(this);
 
@@ -41,10 +78,25 @@ $(document).ready(function() {
 
     $(this).popover('show');
 
-    $('.claim-close-btn').click(function(e) {
+    $('.claim-no-btn').click(function(e) {
       if (!$(this).hasClass('disabled')) {
         $popover.popover('destroy');
       }
+      e.preventDefault();
+      return false;
+    });
+
+    $('.claim-ok-btn').click(function(e) {
+      if ($(this).hasClass('disabled')) {
+        return;
+      }
+
+      $(this).prepend($('<i>').addClass('fa').addClass('fa-refresh').addClass('fa-spin'));
+      $(this).addClass('disabled');
+      $(this).parent().find('.btn').addClass('disabled');
+
+      performClaim($popover);
+
       e.preventDefault();
       return false;
     });
@@ -90,22 +142,26 @@ $(document).ready(function() {
 
   var performClaim = function($popover) {
     $.ajax({
-        url: '/orcid/claim',
-        data: { "doi": $popover.attr('data-doi'),
-                "orcid": $popover.attr('data-orcid'),
-                "api_key": $popover.attr('data-api-key') },
-        success: function(data) {
-          if (data.status === 'waiting') {
+        url: $popover.attr('data-url'),
+        method: "POST",
+        data: JSON.stringify({ "doi": $popover.attr('data-doi'),
+                               "orcid": $popover.attr('data-orcid'),
+                               "claim_action": "create",
+                               "source_id": "orcid_search" }),
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader("Content-Type","application/json");
+            xhr.setRequestHeader("Authorization", "Token token=" + $popover.attr('data-api-key'));
+        },
+        success: function(response) {
+          if (typeof response.data !== "undefined" && response.data.attributes.state === 'waiting') {
             $popover.popover('destroy');
             $popover.removeClass('claim-none');
             $popover.addClass('claim-waiting');
-            $popover.find('span').text('Work is queued for your ORCID record');
-          } else if (typeof data.title !== "undefined") {
-            replacePopoverWithErrorMessage($popover, data);
+            $popover.find('span').text('Work queued for ORCID record');
           }
         },
         error: function() {
-          $popover.popover('destroy');
+          replacePopoverWithErrorMessage($popover, "An error occured.");
         }
     });
   };
@@ -178,7 +234,7 @@ $(document).ready(function() {
     $(this).popover({
       placement: 'bottom',
       html: true,
-      title: 'Work is queued for your ORCID record',
+      title: 'Work queued for ORCID record',
       content: $('<div>').append($content).html(),
       trigger: 'manual'
     });

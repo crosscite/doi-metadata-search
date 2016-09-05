@@ -1,15 +1,15 @@
 - attributes = item.fetch("attributes", {})
 
 - if attributes["claim-status"] == "none"
-  %span.well-transparent.claim-none{id: attributes["doi"], data: { doi: attributes["doi"], orcid: current_user.orcid, "api-key" => current_user.api_key }}
+  %span.well-transparent.claim-none{id: attributes["doi"], data: { url: "#{ENV['ORCID_UPDATE_URL']}/api/claims", doi: attributes["doi"], orcid: current_user.orcid, "api-key" => current_user.api_key }}
     %img{src: "//#{ENV['CDN_HOST']}/images/orcid_16x16.gif" }
     %span Add to ORCID record
 - elsif attributes["claim-status"] == "ignored"
-  %span.well-transparent.claim-none{id: attributes["doi"], data: { doi: attributes["doi"], orcid: current_user.orcid, "api-key" => current_user.api_key }}
+  %span.well-transparent.claim-none{id: attributes["doi"], data: { url: "#{ENV['ORCID_UPDATE_URL']}/api/claims", doi: attributes["doi"], orcid: current_user.orcid, "api-key" => current_user.api_key }}
     %img{src: "//#{ENV['CDN_HOST']}/images/orcid_16x16.gif" }
     %span Contains your ORCID ID, add to ORCID record
 - elsif attributes["claim-status"] == "failed"
-  %span.well-transparent.claim-warn{id: attributes["doi"], data: { doi: attributes["doi"], orcid: current_user.orcid, "api-key" => current_user.api_key }}
+  %span.well-transparent.claim-warn{id: attributes["doi"], data: { url: "#{ENV['ORCID_UPDATE_URL']}/api/claims", doi: attributes["doi"], orcid: current_user.orcid, "api-key" => current_user.api_key }}
     %img{src: "//#{ENV['CDN_HOST']}/images/orcid_16x16.gif" }
     %span An error occured while adding to ORCID record
 - elsif attributes["claim-status"] == "waiting"

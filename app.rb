@@ -492,26 +492,6 @@ get '/citation' do
   result.fetch("data", nil)
 end
 
-get '/orcid/claim' do
-  content_type 'application/json'
-
-  halt 401, json("errors" => [{ "title" => "Unauthorized.", "status" => 401 }]) unless params['api_key'].present?
-  halt 422, json("errors" => [{ "title" => "Unprocessable entity.", "status" => 422 }]) unless params['orcid'].present? && params['doi'].present?
-
-  claim = { "claim" => { "orcid" => params['orcid'],
-                         "doi" =>  params['doi'],
-                         "source_id" => "orcid_search" }}
-
-  result = Maremma.post "#{ENV['ORCID_UPDATE_URL']}/api/claims", data: claim, token: params['api_key']
-
-  if result.fetch('errors', []).present?
-    json(result.fetch('errors', []).first)
-  else
-    status = result.fetch('data', {}).fetch('attributes', {}).fetch('state', 'none')
-    json({ 'status' => status })
-  end
-end
-
 get '/heartbeat' do
   content_type 'text/html'
 
