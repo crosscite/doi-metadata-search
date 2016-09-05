@@ -161,7 +161,6 @@ $(document).ready(function() {
           }
         },
         error: function(response) {
-          console.log(response)
           var message = "An error occured."
           if (typeof response.responseText !== "undefined") {
             var responseText = JSON.parse(response.responseText);
