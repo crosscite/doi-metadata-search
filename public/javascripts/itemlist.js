@@ -2,7 +2,7 @@ MAX_EXPAND_CHARS = 240;
 
 $(document).ready(function() {
   var replacePopoverWithErrorMessage = function($popover, message) {
-    var $p = $('<p>').text('Claim failed with message "' + message.title + '".').addClass('error');
+    var $p = $('<p>').text('Claim failed with message "' + message + '".').addClass('error');
     var $btnClose = $('<button>').addClass('btn').addClass('btn-default').addClass('btn-sm').addClass('claim-close-btn').text('Close');
     var $btnsClose = $('<div>').addClass('btn-group').addClass('btn-group-sm').append($btnClose);
     var $btnToolbar = $('<div>').addClass('btn-toolbar').addClass('pull-right').append($btnsClose);
@@ -160,8 +160,16 @@ $(document).ready(function() {
             $popover.find('span').text('Work queued for ORCID record');
           }
         },
-        error: function() {
-          replacePopoverWithErrorMessage($popover, "An error occured.");
+        error: function(response) {
+          console.log(response)
+          var message = "An error occured."
+          if (typeof response.responseText !== "undefined") {
+            var responseText = JSON.parse(response.responseText);
+            message = (typeof responseText.errors !== "undefined") ? responseText.errors[0].title : message;
+          } else if (typeof response.statusText !== "undefined") {
+            message = response.statusText;
+          }
+          replacePopoverWithErrorMessage($popover, message);
         }
     });
   };
