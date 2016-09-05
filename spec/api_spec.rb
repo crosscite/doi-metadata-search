@@ -118,7 +118,7 @@ describe "API", type: :model, vcr: true do
   context "get_relations" do
     it "all" do
       response = subject.get_relations(timeout: 30)
-      expect(response).to eq(:data=>[], :errors=>[{"status"=>408, "title"=>"Request timeout"}], :meta=>{})
+      expect(response).to eq(:data=>[], :errors=>[{"status"=>"403", "title"=>"end of file reached (EOFError)"}], :meta=>{})
     end
 
     it "by work" do
