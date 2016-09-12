@@ -12,6 +12,7 @@ function showCiteBox(doi, title) {
 function updateCiteBox() {
   $('#citation-description').text(citationInfo['doi']);
   $('#citation-modal-title').html(citationInfo['title']);
+  $('#clipboard-btn').css("display", "none");
 
   $('#cite-nav li').removeClass('active');
   $('#' + citationInfo['format']).addClass('active');
@@ -28,6 +29,8 @@ function updateCiteBox() {
 
       $('#citation-text').html(body);
       spinner.stop();
+      $('#clipboard-btn').css("display", "inline");
+      new Clipboard('#clipboard-btn');
     },
     error: function (error) {
       console.log(error.responseJSON);
@@ -51,7 +54,6 @@ $(document).ready(function(e) {
   citationInfo = {format: 'apa'};
   spinnerOpts = {shadow: true, width: 2, speed: 2};
   spinner = new Spinner(spinnerOpts);
-  new Clipboard('.btn');
   $('#citation-modal-close').click(function(e) {
     $('#citation-modal').modal('hide');
   });

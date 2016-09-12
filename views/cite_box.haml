@@ -30,5 +30,9 @@
 
         #citation-text
         #spinner
-        %br
-        %button.btn{"data-clipboard-target" => "#citation-text", "onClick" => "_gaq.push(['_trackEvent', 'copytoclipb', 'click', 'Copied Ref', 10, false]);"} Copy to Clipboard
+
+        .pull-right
+          %button.btn.btn-fill.btn-neutral{id: "clipboard-btn", title: "Copy to Clipboard", style: "display: none;", data: { "clipboard-target" => "#citation-text", toggle: "tooltip", placement: "top" }, "onClick" => "_gaq.push(['_trackEvent', 'copytoclipb', 'click', 'Copied Ref', 10, false]);"}
+            %i.fa.fa-clipboard
+        .clearfix
+

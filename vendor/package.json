@@ -17,7 +17,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "bower": "1.7.7",
-    "clipboard": "*"
+    "bower": "1.7.7"
   }
 }
