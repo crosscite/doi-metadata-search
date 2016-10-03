@@ -55,6 +55,7 @@ module Sinatra
       params = { "contributor-id" => params.fetch("contributor-id", nil),
                  "work-id" => params.fetch("work-id", nil),
                  "source-id" => params.fetch("source-id", nil),
+                 "publisher-id" => params.fetch("publisher-id", nil),
                  offset: params.fetch(:offset, 0),
                  rows: params.fetch(:rows, 25) }.compact
       url = "#{ENV['API_URL']}/contributions?" + URI.encode_www_form(params)

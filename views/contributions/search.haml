@@ -1,0 +1,11 @@
+.search-wide
+  %form.form-horizontal{:method => 'GET', :action => '/contributions'}
+    .input-group
+      - if params['registration-agency-id'].present?
+        %input{type: "hidden", name: "registration-agency-id", value: params['registration-agency-id']}
+      - if params['member-id'].present?
+        %input{type: "hidden", name: "member-id", value: params['member-id']}
+      %input.form-control{type: "text", name: 'query', id: 'query', value: params[:query], placeholder: "Search for data center"}
+      .input-group-btn
+        %button.btn.btn-primary{type: "submit"}
+          Search

@@ -337,6 +337,16 @@ get '/data-centers/:id' do
   @work_types = Array(collection.fetch(:data, [])).select {|item| item["type"] == "work-types" }
   @sources = Array(collection.fetch(:data, [])).select {|item| item["type"] == "sources" }
 
+
+  contributions = get_contributions("publisher-id" => params[:id], offset: offset, rows: 100)
+  # @contributions2 = get_contributions("publisher-id" => "dk.gbif", offset: offset, rows: 100)
+  # contributions = get_contributions("work-id" => params["id"], "source-id" => params["source-id"], "publisher-id" => params[:id], offset: offset, rows: 100)
+  @contributions = Array(contributions.fetch(:data, [])).select {|item| item["type"] == "contributions" }
+  @contribution_sources = Array(contributions.fetch(:data, [])).select {|item| item["type"] == "sources" }
+  @meta["contribution-total"] = contributions.fetch(:meta, {}).fetch("total", 0)
+  @meta["contribution-sources"] = contributions.fetch(:meta, {}).fetch("sources", {})
+
+
   params[:model] = "data-centers"
 
   haml :'data-centers/show'
@@ -495,4 +505,30 @@ get '/heartbeat' do
   content_type 'text/html'
 
   'OK'
+end
+
+get '/contributions' do
+  page = params.fetch('page', 1).to_i
+  offset = DEFAULT_ROWS * (page - 1)
+
+  result = get_contributions(query: params[:query], "publisher-id" => params["publisher-id"], "source-id" => params["source-id"], offset: offset)
+  contributions = Array(result.fetch(:data, [])).select {|item| item["type"] == "contributions" }
+  @meta = result[:meta]
+
+  # check for errors
+  if result.fetch(:errors, []).present?
+    error = result.fetch(:errors, []).first
+    @contributions_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
+  end
+
+  @contributions = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
+    pager.replace contributions
+  end
+
+
+  @contribution_sources = Array(result.fetch(:data, [])).select {|item| item["type"] == "sources" }
+  @meta["contribution-total"] = result.fetch(:meta, {}).fetch("total", 0)
+  @meta["contribution-sources"] = result.fetch(:meta, {}).fetch("sources", {})
+
+  haml :'contributions/index'
 end

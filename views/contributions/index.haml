@@ -1,13 +1,50 @@
-- if @contributions.length > 1 && %w(contributors sources).include?(params[:model])
-  %h3.results
-    = "#{number_with_delimiter(@meta['total'])} Contributions"
+-# - if @contributions.length > 1 && %w(contributors sources).include?(params[:model])
+-#   %h3.results
+-#     = "#{number_with_delimiter(@meta['total'])} Contributions"
+-#
+-# - @contributions.each do |item|
+-#   - if params[:model] == "works"
+-#     = haml :'contributions/contributor_item', locals: { item: item }
+-#   - else
+-#     = haml :'contributions/work_item', locals: { item: item }
+-#
+-# - if %w(contributors sources).include?(params[:model])
+-#   .text-center
+-#     = will_paginate @contributions, renderer: BootstrapPagination::Sinatra
+-#
 
-- @contributions.each do |item|
-  - if params[:model] == "works"
-    = haml :'contributions/contributor_item', locals: { item: item }
-  - else
-    = haml :'contributions/work_item', locals: { item: item }
 
-- if %w(contributors sources).include?(params[:model])
-  .text-center
-    = will_paginate @contributions, renderer: BootstrapPagination::Sinatra
+= haml :"#{ENV['RA']}/header", locals: { page: {} }
+
+.container-fluid
+  .content
+    .row
+      .col-md-9
+        = haml :'contributions/search'
+
+    .row
+      .col-md-9.panel-list#content
+        - if @contributions.length > 0
+          - if @contributions.length > 1
+            %h3.results
+              = "#{number_with_delimiter(@meta["total"])} Claimed Works"
+
+          - @contributions.each do |item|
+            = haml :'contributions/work_item', locals: { item: item }
+
+          .text-center
+            = will_paginate @contributions, renderer: BootstrapPagination::Sinatra, inner_window: 1
+
+        - elsif @contributions_error.present?
+          .alert.alert-warning
+            = @contributions_error
+        - else
+          .alert.alert-simple-info
+            Nothing found.
+
+      .col-md-3
+        = haml :'contributions/facets'
+
+= haml :cite_box
+
+= haml :"#{ENV['RA']}/footer"

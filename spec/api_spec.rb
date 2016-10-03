@@ -143,5 +143,19 @@ describe "API", type: :model, vcr: true do
       contribution = response[:data].first
       expect(contribution["attributes"]["subj-id"]).to eq("http://orcid.org/0000-0002-8635-8390")
     end
+
+
+    it "by publisher/datacenter" do
+
+      response = subject.get_contributions("publisher-id" => "DK.GBIF")
+      expect(response[:meta]["sources"].length).to eq(1)
+      expect(response[:meta]["publishers"].has_key?("dk.gbif")).to eq(true)
+      fullresponse = subject.get_contributions
+      expect(response[:data].length).to be <= fullresponse[:data].length
+      result = response[:data].select { |obj| obj["type"] == "publishers"  }
+      expect(result[0]["type"]).to eq("publishers")
+    end
+
+
   end
 end

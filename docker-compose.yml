@@ -5,6 +5,7 @@ services:
     env_file:
       - .env
     image: crosscite/doi-metadata-search
+    build: .
     ports:
       - "8000:80"
     volumes:
@@ -13,3 +14,4 @@ services:
       - ./public:/home/app/webapp/public
       - ./spec:/home/app/webapp/spec
       - ./views:/home/app/webapp/views
+      - ./app.rb:/home/app/webapp/app.rb

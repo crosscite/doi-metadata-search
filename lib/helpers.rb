@@ -178,6 +178,31 @@ module Sinatra
       end
     end
 
+    def contributions_query(options)
+      params = { "id" => options.fetch("id", nil),
+                 "query" => options.fetch("query", nil),
+                 "resource-type-id" => options.fetch("resource-type-id", nil),
+                 "relation-type-id" => options.fetch("relation-type-id", nil),
+                 "publisher-id" => options.fetch("publisher-id", nil),
+                 "source-id" => options.fetch("source-id", nil),
+                 "year" => options.fetch("year", nil),
+                 "sort" => options.fetch("sort", nil) }.compact
+
+      if options[:model] == "data-centers"
+        "/contributions?publisher-id=#{params['id']}&" + URI.encode_www_form(params.except('id'))
+      # elsif options[:model] == "members"
+      #   "/members/#{params['id']}?" + URI.encode_www_form(params.except('id'))
+      # elsif options[:model] == "sources"
+      #   "/sources/#{params['id']}?" + URI.encode_www_form(params.except('id'))
+      # elsif options[:model] == "contributors"
+      #   "/contributors/#{params['id']}?" + URI.encode_www_form(params.except('id'))
+      # elsif params["id"].present?
+      #   "/works/#{params['id']}?" + URI.encode_www_form(params.except('id'))
+      else
+        "/works?" + URI.encode_www_form(params)
+      end
+    end
+
     def works_action(item, params)
       return item["id"] if params[:external_link].present?
 
