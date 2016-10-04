@@ -1,0 +1,23 @@
+= haml :"#{ENV['RA']}/header", locals: { page: {} }
+
+.container-fluid
+  .content
+    .row
+      .col-md-9#content-contribution
+        - if @contribution_error.present?
+          %div.alert.alert-warning
+            = @contribution_error
+        - elsif @contribution.present?
+          = haml :'contributions/item', locals: { item: @contribution }
+
+      .col-md-9.panel-list#content-contributions
+        = haml :'contributions/index'
+
+      .col-md-3
+        = haml :'contributions/facets'
+
+= haml :cite_box
+
+%script{:type => 'text/javascript', :src => '/javascripts/itemlist.js'}
+
+= haml :"#{ENV['RA']}/footer"

@@ -530,5 +530,5 @@ get '/contributions' do
   @meta["contribution-total"] = result.fetch(:meta, {}).fetch("total", 0)
   @meta["contribution-sources"] = result.fetch(:meta, {}).fetch("sources", {})
 
-  haml :'contributions/index'
+  haml :'contributions/show'
 end
