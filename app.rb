@@ -458,8 +458,10 @@ get '/sources/:id' do
     contributions= Array(collection.fetch(:data, [])).select {|item| item["type"] == "contributions" }
     @contribution_sources = Array(collection.fetch(:data, [])).select {|item| item["type"] == "sources" }
     @meta = collection[:meta]
+    @publishers = Array(collection.fetch(:data, [])).select {|item| item["type"] == "publishers" }
     @meta["contribution-total"] = collection.fetch(:meta, {}).fetch("total", 0)
     @meta["contribution-sources"] = collection.fetch(:meta, {}).fetch("sources", {})
+    @meta["publishers"] = collection.fetch(:meta, {}).fetch("publishers", {}).sort_by(&:last).reverse.first 30
 
     # check for existing claims if user is logged in
     contributions = get_claimed_items(current_user, contributions) if current_user

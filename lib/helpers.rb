@@ -189,16 +189,10 @@ module Sinatra
                  "sort" => options.fetch("sort", nil) }.compact
 
       if options[:model] == "data-centers"
-        "/contributions?publisher-id=#{params['id']}&" + URI.encode_www_form(params.except('id'))
-      # elsif options[:model] == "members"
-      #   "/members/#{params['id']}?" + URI.encode_www_form(params.except('id'))
-      # elsif options[:model] == "sources"
-      #   "/sources/#{params['id']}?" + URI.encode_www_form(params.except('id'))
-      # elsif options[:model] == "contributors"
-      #   "/contributors/#{params['id']}?" + URI.encode_www_form(params.except('id'))
-      # elsif params["id"].present?
-      #   "/works/#{params['id']}?" + URI.encode_www_form(params.except('id'))
-      else
+         "/contributions?publisher-id=#{params['id']}&" + URI.encode_www_form(params.except('id'))
+        elsif options[:model] == "sources"
+         "/contributions?source-id=#{params['id']}&" + URI.encode_www_form(params.except('id'))
+        else
         "/works?" + URI.encode_www_form(params)
       end
     end
