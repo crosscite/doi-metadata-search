@@ -338,13 +338,12 @@ get '/data-centers/:id' do
   @sources = Array(collection.fetch(:data, [])).select {|item| item["type"] == "sources" }
 
 
-  contributions = get_contributions("publisher-id" => params[:id], offset: offset, rows: 100)
-  # @contributions2 = get_contributions("publisher-id" => "dk.gbif", offset: offset, rows: 100)
-  # contributions = get_contributions("work-id" => params["id"], "source-id" => params["source-id"], "publisher-id" => params[:id], offset: offset, rows: 100)
-  @contributions = Array(contributions.fetch(:data, [])).select {|item| item["type"] == "contributions" }
-  @contribution_sources = Array(contributions.fetch(:data, [])).select {|item| item["type"] == "sources" }
-  @meta["contribution-total"] = contributions.fetch(:meta, {}).fetch("total", 0)
-  @meta["contribution-sources"] = contributions.fetch(:meta, {}).fetch("sources", {})
+  # Add Claim facet by Type of Source, commit: 45ece1be7f1f2a905c3e4780b7bc6e22e2e7f048
+  # contributions = get_contributions("publisher-id" => params[:id], offset: offset, rows: 100)
+  # @contributions = Array(contributions.fetch(:data, [])).select {|item| item["type"] == "contributions" }
+  # @contribution_sources = Array(contributions.fetch(:data, [])).select {|item| item["type"] == "sources" }
+  # @meta["contribution-total"] = contributions.fetch(:meta, {}).fetch("total", 0)
+  # @meta["contribution-sources"] = contributions.fetch(:meta, {}).fetch("sources", {})
 
 
   params[:model] = "data-centers"

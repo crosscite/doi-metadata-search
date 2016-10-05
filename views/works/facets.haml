@@ -113,29 +113,29 @@
                 = relation_type_title(@relation_types, f.first)
               %span.number.pull-right= "#{number_with_delimiter(f.last)}"
               .clearfix
-
-  - if @meta["contribution-sources"].present? && params[:model] != "sources"
-    .panel-body
-      %h4
-        Claimed Works by Source
-      %ul
-        - @meta["contribution-sources"].sort_by { |k,v| -v }.each do |f|
-          - if params['source-id'] == f.first
-            %li.active
-              %a{:href => contributions_query(params.except('source-id'))}
-                %i.fa.fa-check-square-o
-              .facet-title
-                = source_title(@contribution_sources, f.first)
-              %span.number.pull-right= "#{number_with_delimiter(f.last)}"
-              .clearfix
-          - else
-            %li
-              %a{:href => contributions_query(params.merge('source-id' => f.first))}
-                %i.fa.fa-square-o
-              .facet-title
-                = source_title(@contribution_sources, f.first)
-              %span.number.pull-right= "#{number_with_delimiter(f.last)}"
-              .clearfix
+  -#  # Claimed Works Facet, commit: 45ece1be7f1f2a905c3e4780b7bc6e22e2e7f048
+  -# - if @meta["contribution-sources"].present? && params[:model] != "sources"
+  -#   .panel-body
+  -#     %h4
+  -#       Claimed Works by Source
+  -#     %ul
+  -#       - @meta["contribution-sources"].sort_by { |k,v| -v }.each do |f|
+  -#         - if params['source-id'] == f.first
+  -#           %li.active
+  -#             %a{:href => contributions_query(params.except('source-id'))}
+  -#               %i.fa.fa-check-square-o
+  -#             .facet-title
+  -#               = source_title(@contribution_sources, f.first)
+  -#             %span.number.pull-right= "#{number_with_delimiter(f.last)}"
+  -#             .clearfix
+  -#         - else
+  -#           %li
+  -#             %a{:href => contributions_query(params.merge('source-id' => f.first))}
+  -#               %i.fa.fa-square-o
+  -#             .facet-title
+  -#               = source_title(@contribution_sources, f.first)
+  -#             %span.number.pull-right= "#{number_with_delimiter(f.last)}"
+  -#             .clearfix
 
   - if @meta["publishers"].present? && params[:model] == "sources"
     .panel-body
