@@ -1,5 +1,5 @@
 .panel.facets
-  - if @meta["contribution-sources"].present?
+  - if @meta["contribution-sources"].present? && params[:model] != "sources"
     .panel-body
       %h4
         Sources
@@ -29,7 +29,7 @@
         - @meta["contribution-publishers"].sort_by { |k,v| -v }.each do |p|
           - if params['publisher-id'] == p.first
             %li.active
-              %a{:href => contributions_query(params.except('publisher-id'))}
+              %a{:href => works_query(params.except('publisher-id'))}
                 %i.fa.fa-check-square-o
               .facet-title
                 = publisher_title(@contribution_publishers, p.first)
@@ -37,7 +37,7 @@
               .clearfix
           - else
             %li
-              %a{:href => contributions_query(params.merge('publisher-id' => p.first))}
+              %a{:href => works_query(params.merge('publisher-id' => p.first))}
                 %i.fa.fa-square-o
               .facet-title
                 = publisher_title(@contribution_publishers, p.first)
