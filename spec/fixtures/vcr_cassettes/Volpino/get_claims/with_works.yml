@@ -1,0 +1,89 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://profiles.datacite.org/api/users/0000-0003-1419-2405/claims?dois=10.6084/M9.FIGSHARE.706340.V1,10.5281/ZENODO.34673
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Maremma - http://search.local
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Authorization:
+      - Token token=<ORCID_UPDATE_KEY>
+  response:
+    status:
+      code: 301
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 12 Oct 2016 18:08:27 GMT
+      Content-Type:
+      - text/html
+      Content-Length:
+      - '185'
+      Connection:
+      - keep-alive
+      Location:
+      - https://profiles.datacite.org/api/users/0000-0003-1419-2405/claims?dois=10.6084%2FM9.FIGSHARE.706340.V1%2C10.5281%2FZENODO.34673
+    body:
+      encoding: UTF-8
+      string: "<html>\r\n<head><title>301 Moved Permanently</title></head>\r\n<body
+        bgcolor=\"white\">\r\n<center><h1>301 Moved Permanently</h1></center>\r\n<hr><center>nginx/1.11.3</center>\r\n</body>\r\n</html>\r\n"
+    http_version: 
+  recorded_at: Wed, 12 Oct 2016 17:46:54 GMT
+- request:
+    method: get
+    uri: https://profiles.datacite.org/api/users/0000-0003-1419-2405/claims?dois=10.6084/M9.FIGSHARE.706340.V1,10.5281/ZENODO.34673
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Maremma - http://search.local
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Authorization:
+      - Token token=<ORCID_UPDATE_KEY>
+  response:
+    status:
+      code: 401
+      message: ''
+    headers:
+      Server:
+      - nginx/1.11.3
+      Date:
+      - Wed, 12 Oct 2016 18:08:27 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 401 Unauthorized
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Accept-Encoding
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 7ea9a344-f694-4716-82b8-68d67dac2e3b
+      X-Runtime:
+      - '0.039471'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.0.30
+    body:
+      encoding: UTF-8
+      string: '{"errors":[{"status":"401","title":"You are not authorized to access
+        this page."}]}'
+    http_version: 
+  recorded_at: Wed, 12 Oct 2016 17:46:54 GMT
+recorded_with: VCR 2.9.3
