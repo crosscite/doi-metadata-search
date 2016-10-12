@@ -23,20 +23,20 @@ http_interactions:
       Location:
       - http://data.datacite.org/10.5281%2FZENODO.21430
       Expires:
-      - Sat, 03 Sep 2016 16:18:07 GMT
+      - Wed, 12 Oct 2016 14:05:00 GMT
       Content-Type:
       - text/html;charset=utf-8
       Content-Length:
       - '179'
       Date:
-      - Sat, 03 Sep 2016 15:46:28 GMT
+      - Wed, 12 Oct 2016 13:31:02 GMT
     body:
       encoding: UTF-8
       string: |-
         <html><head><title>Handle Redirect</title></head>
         <body><a href="http://data.datacite.org/10.5281%2FZENODO.21430">http://data.datacite.org/10.5281%2FZENODO.21430</a></body></html>
     http_version: 
-  recorded_at: Sat, 03 Sep 2016 15:46:30 GMT
+  recorded_at: Wed, 12 Oct 2016 13:31:02 GMT
 - request:
     method: get
     uri: http://data.datacite.org/10.5281%2FZENODO.21430
@@ -56,7 +56,7 @@ http_interactions:
       Server:
       - nginx/1.11.3
       Date:
-      - Sat, 03 Sep 2016 15:46:30 GMT
+      - Wed, 12 Oct 2016 13:31:03 GMT
       Content-Type:
       - application/x-research-info-systems; charset=charset=windows-1252
       Connection:
@@ -69,8 +69,8 @@ http_interactions:
       - Accept
       Access-Control-Allow-Origin:
       - "*"
-      Access-Control-Allow-Headers:
-      - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS
     body:
       encoding: UTF-8
       string: |
@@ -85,5 +85,5 @@ http_interactions:
         UR  - https://doi.org/10.5281/ZENODO.21430
         ER  -
     http_version: 
-  recorded_at: Sat, 03 Sep 2016 15:46:30 GMT
+  recorded_at: Wed, 12 Oct 2016 13:31:03 GMT
 recorded_with: VCR 2.9.3

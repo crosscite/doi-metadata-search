@@ -40,7 +40,7 @@ describe 'citation', vcr: true do
   it 'format apa' do
     get "/citation?doi=#{doi}&format=apa"
     expect(last_response).to be_ok
-    expect(last_response.body).to eq('Martin Fenner, Karl Jonathan Ward, Gudmundur A. Thorisson, & Robert Peters. (2015). DataCite-ORCID: 1.0. Zenodo. http://doi.org/10.5281/ZENODO.21430')
+    expect(last_response.body).to eq('Martin Fenner, Karl Jonathan Ward, Gudmundur A. Thorisson, & Robert Peters. (2015). DataCite-ORCID: 1.0. Zenodo. https://doi.org/10.5281/ZENODO.21430')
   end
 
   it 'format harvard' do

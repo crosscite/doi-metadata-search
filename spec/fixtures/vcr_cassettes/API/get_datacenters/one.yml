@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datacite.org/publishers?id=CERN.ZENODO&offset=0&registration-agency-id=datacite&rows=25
+    uri: http://api.labs.datacite.org/publishers?id=CERN.ZENODO&include=member,registration-agency&offset=0&registration-agency-id=datacite&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -19,9 +19,9 @@ http_interactions:
       Server:
       - nginx/1.11.3
       Date:
-      - Sat, 03 Sep 2016 15:41:38 GMT
+      - Wed, 12 Oct 2016 13:30:15 GMT
       Content-Type:
-      - application/json; charset=utf-8
+      - application/vnd.api+json; charset=utf-8
       Connection:
       - keep-alive
       Status:
@@ -37,15 +37,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 8a13c1f8-276a-4bba-9ed8-527c84323742
+      - 7f51a968-58df-4a6c-8ff0-d3316c3dc032
       Access-Control-Allow-Methods:
-      - POST, GET, OPTIONS
+      - GET, POST, OPTIONS
       Etag:
-      - W/"9e0e0816034e583bc67bb497a999bf6c"
+      - W/"46f341fa154bf0241c6d1b2040b87020"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.028927'
+      - '0.021261'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -53,27 +53,58 @@ http_interactions:
       Access-Control-Allow-Headers:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
-      encoding: UTF-8
-      string: '{"data":[{"id":"cern.zenodo","type":"publishers","attributes":{"title":"ZENODO
-        - Research. Shared.","other-names":[],"prefixes":[],"member-id":"CERN","registration-agency-id":"datacite","updated":"2016-09-03T14:32:55Z"}},{"id":"cern","type":"members","attributes":{"title":"European
-        Organization for Nuclear Research","description":"\u003cp\u003eCERN, the European
-        Organization for Nuclear Research, is the world\u0026#39;s largest particle
-        physics laboratory. Founded in 1954 and based on the Franco-Swiss border near
-        Geneva, it was one of Europe\u0026#39;s first joint ventures and now has 21
-        member states and more than 50 cooperation agreements and scientific contacts
-        with other countries.\u003c/p\u003e\n\n\u003cp\u003eAt CERN, physicists and
-        engineers probe the fundamental structure of the universe. They use the world\u0026#39;s
-        largest and most complex scientific instrument, the Large Hadron Collider
-        (LHC), to study the basic constituents of matter. The results of their experimental
-        and theoretical work are publicly available following CERN\u0026#39;s Open
-        Access Policy.\u003c/p\u003e\n\n\u003cp\u003eCERN services implementing DOIs
-        are its institutional repository (CDS, CERN Document Server); INSPIRE-HEP,
-        a digital library for the field of High-Energy Physics run in collaboration
-        with other institutions; or the CERN Open Data Portal, which provides high
-        level and analyzable data and software from the LHC experiments.\u003c/p\u003e\n\n\u003cp\u003eFurthermore,
-        CERN is also providing DOIs to ZENODO, a multidisciplinary data repository
-        for the “long tail” of research results. It allows researchers to share and
-        preserve their output independent of size, type of material or discipline.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Switzerland","year":2014,"logo-url":"https://assets.datacite.org/images/members/CERN.png","email":"doi-service@cern.ch","website":"http://doi.web.cern.ch/","phone":null,"updated":"2016-07-31T21:30:25.000Z"}}]}'
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJkYXRhIjp7ImlkIjoiY2Vybi56ZW5vZG8iLCJ0eXBlIjoicHVibGlzaGVy
+        cyIsImF0dHJpYnV0ZXMiOnsidGl0bGUiOiJaRU5PRE8gLSBSZXNlYXJjaC4g
+        U2hhcmVkLiIsIm90aGVyLW5hbWVzIjpbXSwicHJlZml4ZXMiOltdLCJ1cGRh
+        dGVkIjoiMjAxNi0xMC0xMlQxMzoyNjoxMFoifSwicmVsYXRpb25zaGlwcyI6
+        eyJtZW1iZXIiOnsiZGF0YSI6eyJpZCI6ImNlcm4iLCJ0eXBlIjoibWVtYmVy
+        cyJ9fSwicmVnaXN0cmF0aW9uLWFnZW5jeSI6eyJkYXRhIjp7ImlkIjoiZGF0
+        YWNpdGUiLCJ0eXBlIjoicmVnaXN0cmF0aW9uLWFnZW5jaWVzIn19fX0sImlu
+        Y2x1ZGVkIjpbeyJpZCI6ImNlcm4iLCJ0eXBlIjoibWVtYmVycyIsImF0dHJp
+        YnV0ZXMiOnsidGl0bGUiOiJFdXJvcGVhbiBPcmdhbml6YXRpb24gZm9yIE51
+        Y2xlYXIgUmVzZWFyY2giLCJkZXNjcmlwdGlvbiI6Ilx1MDAzY3BcdTAwM2VD
+        RVJOLCB0aGUgRXVyb3BlYW4gT3JnYW5pemF0aW9uIGZvciBOdWNsZWFyIFJl
+        c2VhcmNoLCBpcyB0aGUgd29ybGRcdTAwMjYjMzk7cyBsYXJnZXN0IHBhcnRp
+        Y2xlIHBoeXNpY3MgbGFib3JhdG9yeS4gRm91bmRlZCBpbiAxOTU0IGFuZCBi
+        YXNlZCBvbiB0aGUgRnJhbmNvLVN3aXNzIGJvcmRlciBuZWFyIEdlbmV2YSwg
+        aXQgd2FzIG9uZSBvZiBFdXJvcGVcdTAwMjYjMzk7cyBmaXJzdCBqb2ludCB2
+        ZW50dXJlcyBhbmQgbm93IGhhcyAyMSBtZW1iZXIgc3RhdGVzIGFuZCBtb3Jl
+        IHRoYW4gNTAgY29vcGVyYXRpb24gYWdyZWVtZW50cyBhbmQgc2NpZW50aWZp
+        YyBjb250YWN0cyB3aXRoIG90aGVyIGNvdW50cmllcy5cdTAwM2MvcFx1MDAz
+        ZVxuXG5cdTAwM2NwXHUwMDNlQXQgQ0VSTiwgcGh5c2ljaXN0cyBhbmQgZW5n
+        aW5lZXJzIHByb2JlIHRoZSBmdW5kYW1lbnRhbCBzdHJ1Y3R1cmUgb2YgdGhl
+        IHVuaXZlcnNlLiBUaGV5IHVzZSB0aGUgd29ybGRcdTAwMjYjMzk7cyBsYXJn
+        ZXN0IGFuZCBtb3N0IGNvbXBsZXggc2NpZW50aWZpYyBpbnN0cnVtZW50LCB0
+        aGUgTGFyZ2UgSGFkcm9uIENvbGxpZGVyIChMSEMpLCB0byBzdHVkeSB0aGUg
+        YmFzaWMgY29uc3RpdHVlbnRzIG9mIG1hdHRlci4gVGhlIHJlc3VsdHMgb2Yg
+        dGhlaXIgZXhwZXJpbWVudGFsIGFuZCB0aGVvcmV0aWNhbCB3b3JrIGFyZSBw
+        dWJsaWNseSBhdmFpbGFibGUgZm9sbG93aW5nIENFUk5cdTAwMjYjMzk7cyBP
+        cGVuIEFjY2VzcyBQb2xpY3kuXHUwMDNjL3BcdTAwM2VcblxuXHUwMDNjcFx1
+        MDAzZUNFUk4gc2VydmljZXMgaW1wbGVtZW50aW5nIERPSXMgYXJlIGl0cyBp
+        bnN0aXR1dGlvbmFsIHJlcG9zaXRvcnkgKENEUywgQ0VSTiBEb2N1bWVudCBT
+        ZXJ2ZXIpOyBJTlNQSVJFLUhFUCwgYSBkaWdpdGFsIGxpYnJhcnkgZm9yIHRo
+        ZSBmaWVsZCBvZiBIaWdoLUVuZXJneSBQaHlzaWNzIHJ1biBpbiBjb2xsYWJv
+        cmF0aW9uIHdpdGggb3RoZXIgaW5zdGl0dXRpb25zOyBvciB0aGUgQ0VSTiBP
+        cGVuIERhdGEgUG9ydGFsLCB3aGljaCBwcm92aWRlcyBoaWdoIGxldmVsIGFu
+        ZCBhbmFseXphYmxlIGRhdGEgYW5kIHNvZnR3YXJlIGZyb20gdGhlIExIQyBl
+        eHBlcmltZW50cy5cdTAwM2MvcFx1MDAzZVxuXG5cdTAwM2NwXHUwMDNlRnVy
+        dGhlcm1vcmUsIENFUk4gaXMgYWxzbyBwcm92aWRpbmcgRE9JcyB0byBaRU5P
+        RE8sIGEgbXVsdGlkaXNjaXBsaW5hcnkgZGF0YSByZXBvc2l0b3J5IGZvciB0
+        aGUg4oCcbG9uZyB0YWls4oCdIG9mIHJlc2VhcmNoIHJlc3VsdHMuIEl0IGFs
+        bG93cyByZXNlYXJjaGVycyB0byBzaGFyZSBhbmQgcHJlc2VydmUgdGhlaXIg
+        b3V0cHV0IGluZGVwZW5kZW50IG9mIHNpemUsIHR5cGUgb2YgbWF0ZXJpYWwg
+        b3IgZGlzY2lwbGluZS5cdTAwM2MvcFx1MDAzZVxuIiwibWVtYmVyLXR5cGUi
+        OiJhbGxvY2F0aW5nIiwicmVnaW9uIjoiRU1FQSIsImNvdW50cnkiOiJTd2l0
+        emVybGFuZCIsInllYXIiOjIwMTQsImxvZ28tdXJsIjoiaHR0cHM6Ly9hc3Nl
+        dHMuZGF0YWNpdGUub3JnL2ltYWdlcy9tZW1iZXJzL0NFUk4ucG5nIiwiZW1h
+        aWwiOiJkb2ktc2VydmljZUBjZXJuLmNoIiwid2Vic2l0ZSI6Imh0dHA6Ly9k
+        b2kud2ViLmNlcm4uY2gvIiwicGhvbmUiOm51bGwsInVwZGF0ZWQiOiIyMDE2
+        LTA3LTMxVDIxOjMwOjI1LjAwMFoifX0seyJpZCI6ImRhdGFjaXRlIiwidHlw
+        ZSI6InJlZ2lzdHJhdGlvbi1hZ2VuY2llcyIsImF0dHJpYnV0ZXMiOnsidGl0
+        bGUiOiJEYXRhQ2l0ZSIsInVwZGF0ZWQiOiIyMDE2LTA0LTI3VDAyOjIzOjAx
+        WiJ9fV19
     http_version: 
-  recorded_at: Sat, 03 Sep 2016 15:41:38 GMT
+  recorded_at: Wed, 12 Oct 2016 13:30:15 GMT
 recorded_with: VCR 2.9.3

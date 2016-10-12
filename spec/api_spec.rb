@@ -8,14 +8,14 @@ describe "API", type: :model, vcr: true do
   context "get_works" do
     it "all" do
       response = subject.get_works
-      expect(response[:meta]["resource-types"]["dataset"]).to eq(2642545)
+      expect(response[:meta]["resource-types"]["dataset"]).to eq(2708765)
       work = response[:data].first
-      expect(work["id"]).to eq("http://doi.org/10.13140/RG.2.2.22500.99207")
+      expect(work["id"]).to eq("https://doi.org/10.15468/DL.IEBRZQ")
     end
 
     it "one" do
       response = subject.get_works(id: "10.6084/M9.FIGSHARE.C.1909847")
-      work = response[:data].first
+      work = response[:data]
       expect(work["attributes"]["author"].first).to eq("literal"=>"Carly Strasser", "orcid"=>"http://orcid.org/0000-0001-9592-2339")
     end
 
@@ -23,21 +23,21 @@ describe "API", type: :model, vcr: true do
       response = subject.get_works(query: "mabbett")
       expect(response[:meta]["resource-types"]["dataset"]).to eq(15)
       work = response[:data].first
-      expect(work["id"]).to eq("http://doi.org/10.6084/M9.FIGSHARE.2903314")
+      expect(work["id"]).to eq("https://doi.org/10.6084/M9.FIGSHARE.1419601")
     end
   end
 
   context "get_contributors" do
     it "all" do
       response = subject.get_contributors
-      expect(response[:meta]).to eq("total"=>7068)
+      expect(response[:meta]).to eq("total"=>7141)
       contributor = response[:data].first
       expect(contributor["id"]).to eq("https://github.com/mne-tools")
     end
 
     it "one" do
       response = subject.get_contributors(id: "orcid.org/0000-0002-4000-4167")
-      contributor = response[:data].first
+      contributor = response[:data]
       expect(contributor).to eq("id"=>"http://orcid.org/0000-0002-4000-4167", "type"=>"contributors", "attributes"=>{"given"=>"Peter", "family"=>"Arend", "literal"=>nil, "orcid"=>"0000-0002-4000-4167", "github"=>nil, "updated"=>"1970-01-01T00:00:00Z"})
     end
 
@@ -52,15 +52,15 @@ describe "API", type: :model, vcr: true do
   context "get_datacenters" do
     it "all" do
       response = subject.get_datacenters
-      expect(response[:meta]["registration-agencies"]["datacite"]).to eq(773)
+      expect(response[:meta]["registration-agencies"]["datacite"]).to eq(798)
       datacenter = response[:data].first
       expect(datacenter["attributes"]["title"]).to eq("027.7 - Zeitschrift für Bibliothekskultur")
     end
 
     it "one" do
       response = subject.get_datacenters(id: "CERN.ZENODO")
-      datacenters = response[:data]
-      expect(datacenters.first["id"]).to eq("cern.zenodo")
+      datacenter = response[:data]
+      expect(datacenter["id"]).to eq("cern.zenodo")
     end
 
     it "query" do
@@ -74,7 +74,7 @@ describe "API", type: :model, vcr: true do
   context "get_members" do
     it "all" do
       response = subject.get_members
-      expect(response[:meta]["member-types"]).to eq("allocating"=>28, "non-allocating"=>8)
+      expect(response[:meta]["member-types"]).to eq("allocating"=>30, "non-allocating"=>8)
       member = response[:data].first
       expect(member["id"]).to eq("ands")
     end
@@ -103,7 +103,7 @@ describe "API", type: :model, vcr: true do
 
     it "one" do
       response = subject.get_sources(id: "datacite-crossref")
-      source = response[:data].first
+      source = response[:data]
       expect(source["attributes"]["title"]).to eq("DataCite (Crossref)")
     end
 
@@ -118,7 +118,7 @@ describe "API", type: :model, vcr: true do
   context "get_relations" do
     it "all" do
       response = subject.get_relations(timeout: 10)
-      expect(response).to eq(:data=>[], :errors=>[{"status"=>408, "title"=>"Request timeout"}], :meta=>{})
+      expect(response).to eq(:data=>[], :included=>[], :errors=>[{"status"=>408, "title"=>"Request timeout"}], :meta=>{})
     end
 
     it "by work" do
@@ -132,9 +132,9 @@ describe "API", type: :model, vcr: true do
   context "get_contributions" do
     it "all" do
       response = subject.get_contributions
-      expect(response[:meta]["sources"]["datacite-related"]).to eq(4544)
+      expect(response[:meta]["sources"]["datacite-related"]).to eq(4516)
       contribution = response[:data].first
-      expect(contribution["attributes"]["subj-id"]).to eq("http://orcid.org/0000-0002-2843-8624")
+      expect(contribution["attributes"]["subj-id"]).to eq("http://orcid.org/0000-0001-7629-2140")
     end
 
     it "by contributor" do
@@ -152,7 +152,7 @@ describe "API", type: :model, vcr: true do
       expect(response[:meta]["publishers"].has_key?("dk.gbif")).to eq(true)
       fullresponse = subject.get_contributions
       expect(response[:data].length).to be <= fullresponse[:data].length
-      result = response[:data].select { |obj| obj["type"] == "publishers"  }
+      result = response[:data].select { |obj| obj["type"] == "publishers" }
       expect(result[0]["type"]).to eq("publishers")
     end
 

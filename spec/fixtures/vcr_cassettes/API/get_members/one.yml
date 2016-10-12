@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datacite.org/members?id=ANDS
+    uri: http://api.labs.datacite.org/members?id=ANDS
     body:
       encoding: US-ASCII
       string: ''
@@ -19,9 +19,9 @@ http_interactions:
       Server:
       - nginx/1.11.3
       Date:
-      - Sat, 03 Sep 2016 15:41:33 GMT
+      - Wed, 12 Oct 2016 13:30:15 GMT
       Content-Type:
-      - application/json; charset=utf-8
+      - application/vnd.api+json; charset=utf-8
       Connection:
       - keep-alive
       Status:
@@ -37,15 +37,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 57006f5f-d98d-49a3-a1d5-ce563bdb01c2
+      - e3902c97-33ac-4c71-a09e-e53476300f85
       Access-Control-Allow-Methods:
-      - POST, GET, OPTIONS
+      - GET, POST, OPTIONS
       Etag:
-      - W/"59a91a5338d61ab2a59de1ed666c47b7"
+      - W/"0c0d8135e307079b58ceba16459e7efc"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.015642'
+      - '0.014505'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -55,19 +55,21 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"data":{"id":"ands","type":"members","attributes":{"title":"Australian
-        National Data Service","description":"\u003cp\u003eThe task of the Australian
-        National Data Service (ANDS) is to build the Australian Research Data Commons
-        by creating the infrastructure to enable Australian researchers to easily
-        publish, discover, access and reuse research data.\u003c/p\u003e\n\n\u003cp\u003eOur
-        approach is to engage in partnerships with research institutions to encourage
-        better local data management, which enables structured collections to be created
-        and information about these collections to be published via \u003ca href=\"http://researchdata.ands.org.au/\"\u003eResearch
-        Data Australia\u003c/a\u003e, a discovery service provided by ANDS to help
-        researchers to find and access Australian research data. It contains descriptions
-        of research data that is held by contributing organisations and institutions.\u003c/p\u003e\n\n\u003cp\u003eANDS
-        involvement in the DataCite consortium ensures that we are active in global
-        initiatives addressing the issues surrounding research data, including those
-        of publication, citation and standards. ANDS has run its \u003ca href=\"http://ands.org.au/services/cite-my-data.html\"\u003eCite
+        National Data Service","description":"\u003cp\u003eThe Australian National
+        Data Service (ANDS) makes Australia\u0026#39;s research data assets more valuable
+        for researchers, research institutions and the nation.\u003c/p\u003e\n\n\u003cp\u003eWe
+        do this through working in trusted partnerships on research data projects,
+        delivering reliable national services and enhancing the capability of Australia\u0026#39;s
+        research data system.\u003c/p\u003e\n\n\u003cp\u003eA key ANDS service is
+        the \u003ca href=\"http://researchdata.ands.org.au/\"\u003eResearch Data Australia\u003c/a\u003e
+        discovery portal where you can find, access and reuse Australian research
+        data.\u003c/p\u003e\n\n\u003cp\u003eANDS is a partnership led by Monash University,
+        in collaboration with the Australian National University and CSIRO. It is
+        funded by the Australian Government through the National Collaborative Research
+        Infrastructure Strategy (NCRIS).\u003c/p\u003e\n\n\u003cp\u003eANDS involvement
+        in the DataCite consortium ensures that we are active in global initiatives
+        addressing the issues surrounding research data, including those of publication,
+        citation and standards. ANDS has run its \u003ca href=\"http://ands.org.au/services/cite-my-data.html\"\u003eCite
         My Data\u003c/a\u003e service since 2011. This service allows Australian research
         organisations to assign DOIs to their own research collections. This, in turn,
         provides researchers with a means of citing their published data and achieving
@@ -76,7 +78,7 @@ http_interactions:
         Google Group\u003c/a\u003e.\u003c/p\u003e\n\n\u003cp\u003eSubscribe to our
         e-newsletter: \u003ca href=\"http://us7.campaign-archive2.com/home/?u=b542ef52e49302569068046d9\u0026amp;id=22b849a4ee\"\u003eandsUP\u003c/a\u003e.\u003c/p\u003e\n","member-type":"allocating","region":"Asia
         Pacific","country":"Australia","year":2010,"logo-url":"https://assets.datacite.org/images/members/ands.png","email":"contact@ands.org.au","website":"http://www.ands.org.au","phone":"+61
-        3 9902 0585","updated":"2016-09-01T17:13:55.000Z"}}}'
+        3 9902 0585","updated":"2016-09-09T06:45:50.000Z"}}}'
     http_version: 
-  recorded_at: Sat, 03 Sep 2016 15:41:33 GMT
+  recorded_at: Wed, 12 Oct 2016 13:30:15 GMT
 recorded_with: VCR 2.9.3
