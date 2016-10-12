@@ -453,14 +453,14 @@ get '/sources/:id' do
       pager.replace works
     end
   elsif group["id"] == "contributions"
-    collection = get_contributions("source-id" => params[:id], offset: offset, rows: 25)
+    collection = get_contributions("source-id" => params[:id], "publisher-id" => params["publisher-id"], offset: offset, rows: 25)
     contributions= Array(collection.fetch(:data, [])).select {|item| item["type"] == "contributions" }
     @contribution_sources = Array(collection.fetch(:data, [])).select {|item| item["type"] == "sources" }
+    @contribution_publishers = Array(collection.fetch(:data, [])).select {|item| item["type"] == "publishers" }
     @meta = collection[:meta]
-    @publishers = Array(collection.fetch(:data, [])).select {|item| item["type"] == "publishers" }
     @meta["contribution-total"] = collection.fetch(:meta, {}).fetch("total", 0)
     @meta["contribution-sources"] = collection.fetch(:meta, {}).fetch("sources", {})
-    @meta["publishers"] = collection.fetch(:meta, {}).fetch("publishers", {}).sort_by(&:last).reverse.first 30
+    @meta["contribution-publishers"] = collection.fetch(:meta, {}).fetch("publishers", {}).sort_by(&:last).reverse.first 20
 
     # check for existing claims if user is logged in
     contributions = get_claimed_items(current_user, contributions) if current_user

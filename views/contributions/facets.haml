@@ -1,5 +1,5 @@
 .panel.facets
-  - if @meta["contribution-sources"].present?
+  - if @meta["contribution-sources"].present? && params[:model] != "sources"
     .panel-body
       %h4
         Sources
@@ -7,7 +7,7 @@
         - @meta["contribution-sources"].sort_by { |k,v| -v }.each do |s|
           - if params['source-id'] == s.first
             %li.active
-              %a{:href => contributions_query(params.except('source-id'))}
+              %a{:href => works_query(params.except('source-id'))}
                 %i.fa.fa-check-square-o
               .facet-title
                 = source_title(@contribution_sources, s.first)
@@ -15,9 +15,31 @@
               .clearfix
           - else
             %li
-              %a{:href => contributions_query(params.merge('source-id' => s.first))}
+              %a{:href => works_query(params.merge('source-id' => s.first))}
                 %i.fa.fa-square-o
               .facet-title
                 = source_title(@contribution_sources, s.first)
               %span.number.pull-right= "#{number_with_delimiter(s.last)}"
+              .clearfix
+  - if @meta["contribution-publishers"].present?
+    .panel-body
+      %h4
+        Data Centers
+      %ul
+        - @meta["contribution-publishers"].sort_by { |k,v| -v }.each do |p|
+          - if params['publisher-id'] == p.first
+            %li.active
+              %a{:href => works_query(params.except('publisher-id'))}
+                %i.fa.fa-check-square-o
+              .facet-title
+                = publisher_title(@contribution_publishers, p.first)
+              %span.number.pull-right= "#{number_with_delimiter(p.last)}"
+              .clearfix
+          - else
+            %li
+              %a{:href => works_query(params.merge('publisher-id' => p.first))}
+                %i.fa.fa-square-o
+              .facet-title
+                = publisher_title(@contribution_publishers, p.first)
+              %span.number.pull-right= "#{number_with_delimiter(p.last)}"
               .clearfix

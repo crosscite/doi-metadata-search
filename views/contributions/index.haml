@@ -1,11 +1,7 @@
--# - if @contributions.length > 1 && %w(contributors sources).include?(params[:model])
--#   %h3.results
--#     = "#{number_with_delimiter(@meta['total'])} Contributions"
-
 - if @contributions.length > 0
   - if @contributions.length > 1
     %h3.results
-      = "#{number_with_delimiter(@meta["total"])} Claimed Works"
+      = "#{number_with_delimiter(@meta["total"])} Contributions"
 
 - @contributions.each do |item|
   - if params[:model] == "works"
@@ -15,4 +11,4 @@
 
 - if %w(contributors sources).include?(params[:model])
   .text-center
-    = will_paginate @contributions, renderer: BootstrapPagination::Sinatra
+    = will_paginate @contributions, renderer: BootstrapPagination::Sinatra, inner_window: 1
