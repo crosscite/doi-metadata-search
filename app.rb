@@ -98,7 +98,7 @@ configure do
       config.project_root = settings.root
       config.app_version = App::VERSION
       config.release_stage = ENV['RACK_ENV']
-      config.notify_release_stages = %w(production development)
+      config.notify_release_stages = %w(production stage development)
     end
 
     use Bugsnag::Rack

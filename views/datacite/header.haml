@@ -38,6 +38,12 @@
                     %a{:href => item['url']}
                       %i.fa{class: "fa-#{item['icon']}"}
                       = item['name']
+              - elsif ENV['RACK_ENV'] == "stage"
+                - settings.stage_links.each do |item|
+                  %li
+                    %a{:href => item['url']}
+                      %i.fa.fa-fw{class: "fa-#{item['icon']}"}
+                      = item['name']
               - else
                 - settings.production_links.each do |item|
                   %li
