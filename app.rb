@@ -198,6 +198,7 @@ get %r{/works/(.+)} do
   @meta["relation-total"] = relations.fetch(:meta, {}).fetch("total", 0)
   @meta["relation-types"] = relations.fetch(:meta, {}).fetch("relation-types", {})
   @meta["relation-sources"] = relations.fetch(:meta, {}).fetch("sources", {})
+  @meta["relation-publishers"] = collection.fetch(:meta, {}).fetch("publishers", {})
 
   relations= Array(relations.fetch(:data, [])).select {|item| item["type"] == "relations" }
 
