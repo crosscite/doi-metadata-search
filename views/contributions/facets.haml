@@ -33,11 +33,11 @@
                 %i.fa.fa-check-square-o
               .facet-title
                 = f.fetch("title", nil)
-              %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0)}"
+              %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
               .clearfix
           - else
             %li
-              %a{:href => works_query(params.merge('publisher-id' => f.fetch("id", nil))}
+              %a{:href => works_query(params.merge('publisher-id' => f.fetch("id", nil)))}
                 %i.fa.fa-square-o
               .facet-title
                 = f.fetch("title", nil)
