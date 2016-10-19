@@ -4,21 +4,21 @@
       %h4
         Sources
       %ul
-        - @meta["relation-sources"].sort_by { |k,v| -v }.each do |s|
-          - if params['source-id'] == s.first
+        - @meta["relation-sources"].each do |f|
+          - if params['source-id'] == f.fetch("id", nil)
             %li.active
               %a{:href => works_query(params.except('source-id'))}
                 %i.fa.fa-check-square-o
               .facet-title
-                = source_title(@relation_sources, s.first)
+                = f.fetch("title", nil)
               %span.number.pull-right= "#{number_with_delimiter(s.last)}"
               .clearfix
           - else
             %li
-              %a{:href => works_query(params.merge('source-id' => s.first))}
+              %a{:href => works_query(params.merge('source-id' => f.fetch("id", nil)))}
                 %i.fa.fa-square-o
               .facet-title
-                = source_title(@relation_sources, s.first)
+                = f.fetch("title", nil)
               %span.number.pull-right= "#{number_with_delimiter(s.last)}"
               .clearfix
 
@@ -27,20 +27,20 @@
       %h4
         Relation Types
       %ul
-        - @meta["relation-types"].sort_by { |k,v| -v }.each do |s|
-          - if params['relation-type-id'] == s.first
+        - @meta["relation-types"].each do |f|
+          - if params['relation-type-id'] == f.fetch("id", nil)
             %li.active
               %a{:href => works_query(params.except('relation-type-id'))}
                 %i.fa.fa-check-square-o
               .facet-title
-                = relation_type_title(@relation_types, s.first)
+                = f.fetch("title", nil)
               %span.number.pull-right= "#{number_with_delimiter(s.last)}"
               .clearfix
           - else
             %li
-              %a{:href => works_query(params.merge('relation-type-id' => s.first))}
+              %a{:href => works_query(params.merge('relation-type-id' => f.fetch("id", nil)))}
                 %i.fa.fa-square-o
               .facet-title
-                = relation_type_title(@relation_types, s.first)
+                = f.fetch("title", nil)
               %span.number.pull-right= "#{number_with_delimiter(s.last)}"
               .clearfix

@@ -4,18 +4,18 @@
       %h4
         Member Types
       %ul
-        - @meta["member-types"].each do |mt|
+        - @meta["member-types"].each do |f|
           %li
             - if @params["member-type"].present?
-              %a{:href => "/members?query=#{params[:query]}"}
+              %a{:href => "/members?region=#{params[:region]}&year=#{params[:year]}&query=#{params[:query]}"}
                 %i.fa.fa-check-square-o
             - else
-              %a{:href => "/members?member-type=#{mt.first}&query=#{params[:query]}"}
+              %a{:href => "/members?member-type=#{f.fetch("id", nil)}&region=#{params[:region]}&year=#{params[:year]}&query=#{params[:query]}"}
                 %i.fa.fa-square-o
             .facet-title
-              = mt.first
+              = f.fetch("title", nil)
             %span.number.pull-right
-              = number_with_delimiter(mt.last)
+              = number_with_delimiter(f.fetch("count", 0))
             .clearfix
 
 - if @meta["regions"].present?
@@ -24,18 +24,18 @@
       %h4
         Regions
       %ul
-        - @meta["regions"].each do |r|
+        - @meta["regions"].each do |f|
           %li
             - if params[:region].present?
-              %a{:href => "/members?query=#{params[:query]}"}
+              %a{:href => "/members?member-type=#{params['member-type']}&year=#{params[:year]}&query=#{params[:query]}"}
                 %i.fa.fa-check-square-o
             - else
-              %a{:href => "/members?region=#{r.first}&query=#{params[:query]}"}
+              %a{:href => "/members?region=#{f.fetch("id", nil)}&member-type=#{params['member-type']}&year=#{params[:year]}&query=#{params[:query]}"}
                 %i.fa.fa-square-o
             .facet-title
-              = region_format("region" => r.first)
+              = f.fetch("title", nil)
             %span.number.pull-right
-              = number_with_delimiter(r.last)
+              = number_with_delimiter(f.fetch("count", 0))
             .clearfix
 
 - if @meta["years"].present?
@@ -44,16 +44,16 @@
       %h4
         Year Joined
       %ul
-        - @meta["years"].each do |y|
+        - @meta["years"].each do |f|
           %li
             - if params[:year].present?
-              %a{:href => "/members?query=#{params[:query]}"}
+              %a{:href => "/members?member-type=#{params['member-type']}&region=#{params[:region]}&query=#{params[:query]}"}
                 %i.fa.fa-check-square-o
             - else
-              %a{:href => "/members?year=#{y.first}&query=#{params[:query]}"}
+              %a{:href => "/members?year=#{f.fetch("id", nil)}&member-type=#{params['member-type']}&region=#{params[:region]}&query=#{params[:query]}"}
                 %i.fa.fa-square-o
             .facet-title
-              = y.first
+              = f.fetch("title", nil)
             %span.number.pull-right
-              = number_with_delimiter(y.last)
+              = number_with_delimiter(f.fetch("count", 0))
             .clearfix

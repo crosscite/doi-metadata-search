@@ -146,10 +146,7 @@ get '/works' do
     pager.replace works
   end
 
-  @resource_types = Array(result.fetch(:data, [])).select {|item| item["type"] == "resource-types" }
-  @publishers = Array(result.fetch(:data, [])).select {|item| item["type"] == "publishers" }
   @sources = Array(result.fetch(:data, [])).select {|item| item["type"] == "sources" }
-  @work_types = Array(result.fetch(:data, [])).select {|item| item["type"] == "work-types" }
 
   params[:model] = "works"
 
@@ -282,7 +279,6 @@ get '/data-centers' do
 
   result  = get_datacenters(query: params[:query], offset: offset, "member-id" => params["member-id"])
   datacenters = Array(result.fetch(:data, [])).select {|item| item["type"] == "publishers" }
-  @members = Array(result.fetch(:data, [])).select {|item| item["type"] == "members" }
 
   # check for errors
   if result.fetch(:errors, []).present?
@@ -408,7 +404,6 @@ end
 get '/sources' do
   result = get_sources(query: params[:query], "group-id" => params["group-id"])
   @sources = Array(result.fetch(:data, [])).select {|item| item["type"] == "sources" }
-  @groups = Array(result.fetch(:data, [])).select {|item| item["type"] == "groups" }
   @meta = result[:meta]
 
   # check for errors
@@ -526,8 +521,6 @@ get '/contributions' do
     pager.replace contributions
   end
 
-
-  @contribution_sources = Array(result.fetch(:data, [])).select {|item| item["type"] == "sources" }
   @meta["contribution-total"] = result.fetch(:meta, {}).fetch("total", 0)
   @meta["contribution-sources"] = result.fetch(:meta, {}).fetch("sources", {})
 

@@ -4,16 +4,20 @@
       %h4
         Members
       %ul
-        - @meta["members"].sort_by { |k,v| -v }.each do |x|
-          %li
-            - if @params['member-id'].present?
-              %a{:href => "/data-centers?query=#{params[:query]}"}
+        - @meta["members"].each do |f|
+          - if params['member-id'] == f.fetch("id", nil)
+            %li.active
+              %a{:href => "/data-centers"}
                 %i.fa.fa-check-square-o
-            - else
-              %a{:href => "/data-centers?member-id=#{x.first}&query=#{params[:query]}"}
+              .facet-title
+                = f.fetch("title", nil)
+              %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
+              .clearfix
+          - else
+            %li
+              %a{:href => "/data-centers?member-id=#{f.fetch("id")}&query=#{params[:query]}"}
                 %i.fa.fa-square-o
-            .facet-title
-              = member_title(@members, x.first)
-            %span.number.pull-right
-              = number_with_delimiter(x.last)
-            .clearfix
+              .facet-title
+                = f.fetch("title", nil)
+              %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
+              .clearfix

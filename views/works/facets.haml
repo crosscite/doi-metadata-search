@@ -5,21 +5,21 @@
         Resource Types
       %ul
         - @meta["resource-types"].each do |f|
-          - if params['resource-type-id'] == f.first
+          - if params['resource-type-id'] == f.fetch("id", nil)
             %li.active
               %a{:href => works_query(params.except('resource-type-id'))}
                 %i.fa.fa-check-square-o
               .facet-title
-                = resource_type_title(@resource_types, f.first)
-              %span.number.pull-right= "#{number_with_delimiter(f.last)}"
+                = f.fetch("title", nil)
+              %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
               .clearfix
           - else
             %li
-              %a{:href => works_query(params.merge('resource-type-id' => f.first))}
+              %a{:href => works_query(params.merge('resource-type-id' => f.fetch("id", nil)))}
                 %i.fa.fa-square-o
               .facet-title
-                = resource_type_title(@resource_types, f.first)
-              %span.number.pull-right= "#{number_with_delimiter(f.last)}"
+                = f.fetch("title", nil)
+              %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
               .clearfix
 
   - if @meta["years"].present?
@@ -28,21 +28,21 @@
         Publication Year
       %ul
         - @meta["years"].each do |f|
-          - if params['year'] == f.first
+          - if params['year'] == f.fetch("id", nil)
             %li.active
               %a{:href => works_query(params.except('year'))}
                 %i.fa.fa-check-square-o
               .facet-title
-                = f.first
-              %span.number.pull-right= "#{number_with_delimiter(f.last)}"
+                = f.fetch("title", nil)
+              %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
               .clearfix
           - else
             %li
-              %a{:href => works_query(params.merge('year' => f.first))}
+              %a{:href => works_query(params.merge('year' => f.fetch("id", nil)))}
                 %i.fa.fa-square-o
               .facet-title
-                = f.first
-              %span.number.pull-right= "#{number_with_delimiter(f.last)}"
+                = f.fetch("title", nil)
+              %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
               .clearfix
 
   - if @meta["publishers"].present? && params[:model] != "data-centers" && params[:model] != "sources"
@@ -51,21 +51,21 @@
         Data Centers
       %ul
         - @meta["publishers"].each do |f|
-          - if params['publisher-id'] == f.first
+          - if params['publisher-id'] == f.fetch("id", nil)
             %li.active
               %a{:href => works_query(params.except('publisher-id'))}
                 %i.fa.fa-check-square-o
               .facet-title
-                = publisher_title(@publishers, f.first)
-              %span.number.pull-right= "#{number_with_delimiter(f.last)}"
+                = f.fetch("title", nil)
+              %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
               .clearfix
           - else
             %li
-              %a{:href => works_query(params.merge('publisher-id' => f.first))}
+              %a{:href => works_query(params.merge('publisher-id' => f.fetch("id", nil)))}
                 %i.fa.fa-square-o
               .facet-title
-                = publisher_title(@publishers, f.first)
-              %span.number.pull-right= "#{number_with_delimiter(f.last)}"
+                = f.fetch("title", nil)
+              %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
               .clearfix
 
   - if @meta["sources"].present? && params[:model] != "sources"
@@ -73,22 +73,22 @@
       %h4
         Sources
       %ul
-        - @meta["sources"].sort_by { |k,v| -v }.each do |f|
-          - if params['source-id'] == f.first
+        - @meta["sources"].each do |f|
+          - if params['source-id'] == f.fetch("id", nil)
             %li.active
               %a{:href => works_query(params.except('source-id'))}
                 %i.fa.fa-check-square-o
               .facet-title
-                = source_title(@sources, f.first)
-              %span.number.pull-right= "#{number_with_delimiter(f.last)}"
+                = f.fetch("title", nil)
+              %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
               .clearfix
           - else
             %li
-              %a{:href => works_query(params.merge('source-id' => f.first))}
+              %a{:href => works_query(params.merge('source-id' => f.fetch("id", nil)))}
                 %i.fa.fa-square-o
               .facet-title
-                = source_title(@sources, f.first)
-              %span.number.pull-right= "#{number_with_delimiter(f.last)}"
+                = f.fetch("title", nil)
+              %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
               .clearfix
 
   - if @meta["relation-types"].present?
@@ -96,20 +96,20 @@
       %h4
         Relation Types
       %ul
-        - @meta["relation-types"].sort_by { |k,v| -v }.each do |f|
-          - if params['relation-type-id'] == f.first
+        - @meta["relation-types"].each do |f|
+          - if params['relation-type-id'] == f.fetch("id", nil)
             %li.active
               %a{:href => works_query(params.except('relation-type-id'))}
                 %i.fa.fa-check-square-o
               .facet-title
-                = relation_type_title(@relation_types, f.first)
-              %span.number.pull-right= "#{number_with_delimiter(f.last)}"
+                = f.fetch("title", nil)
+              %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
               .clearfix
           - else
             %li
-              %a{:href => works_query(params.merge('relation-type-id' => f.first))}
+              %a{:href => works_query(params.merge('relation-type-id' => f.fetch("id", nil)))}
                 %i.fa.fa-square-o
               .facet-title
-                = relation_type_title(@relation_types, f.first)
-              %span.number.pull-right= "#{number_with_delimiter(f.last)}"
+                = f.fetch("title", nil)
+              %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
               .clearfix
