@@ -160,7 +160,7 @@ get %r{/works/(.+)} do
   params["id"] = params["id"].gsub(/(http|https):\/+(\w+)/, '\1://\2')
 
   result = get_works(id: params["id"])
-  works = Array(result.fetch(:data, [])).select {|item| item["type"] == "works" }
+  work = result.fetch(:data, {})
 
   # check for errors
   if result.fetch(:errors, []).present?
@@ -170,37 +170,30 @@ get %r{/works/(.+)} do
     @work_error = "Work \"#{params['id']}\" not found."
   end
 
-  @publishers = Array(result.fetch(:data, [])).select {|item| item["type"] == "publishers" }
-  @members = Array(result.fetch(:data, [])).select {|item| item["type"] == "members" }
-  @sources = Array(result.fetch(:data, [])).select {|item| item["type"] == "sources" }
-  @work_types = Array(result.fetch(:data, [])).select {|item| item["type"] == "work-types" }
+  @publishers = Array(result.fetch(:included, [])).select {|item| item["type"] == "publishers" }
+  @resource_types = Array(result.fetch(:included, [])).select {|item| item["type"] == "resource-types" }
+  @work_types = Array(result.fetch(:included, [])).select {|item| item["type"] == "work-types" }
   @meta = result[:meta]
 
   # check for existing claims if user is logged in and work is registered with DataCite
   if current_user && works.first.fetch("attributes", {}).fetch("registration-agency-id", nil) == "datacite"
-    works = get_claimed_items(current_user, works)
+    @work = get_claimed_items(current_user, [work]).first
   end
-
-  @work = works.first
 
   page = params.fetch('page', 1).to_i
   offset = DEFAULT_ROWS * (page - 1)
 
   collection = get_contributions("work-id" => params["id"], "source-id" => params["source-id"], offset: offset, rows: 100)
-  @contributions= Array(collection.fetch(:data, [])).select {|item| item["type"] == "contributions" }
-  @contribution_sources = Array(collection.fetch(:data, [])).select {|item| item["type"] == "sources" }
+  @contributions= Array(collection.fetch(:data, [])
   @meta["contribution-total"] = collection.fetch(:meta, {}).fetch("total", 0)
   @meta["contribution-sources"] = collection.fetch(:meta, {}).fetch("sources", {})
 
   relations = get_relations("work-id" => params["id"], "source-id" => params["source-id"], "relation-type-id" => params["relation-type-id"], offset: offset, rows: 25)
-  @relation_sources = Array(relations.fetch(:data, [])).select {|item| item["type"] == "sources" }
-  @relation_types = Array(relations.fetch(:data, [])).select {|item| item["type"] == "relation-types" }
+  relations = Array(relations.fetch(:data, [])
   @meta["relation-total"] = relations.fetch(:meta, {}).fetch("total", 0)
   @meta["relation-types"] = relations.fetch(:meta, {}).fetch("relation-types", {})
   @meta["relation-sources"] = relations.fetch(:meta, {}).fetch("sources", {})
   @meta["relation-publishers"] = collection.fetch(:meta, {}).fetch("publishers", {})
-
-  relations= Array(relations.fetch(:data, [])).select {|item| item["type"] == "relations" }
 
   # check for existing claims if user is logged in
   works = get_claimed_items(current_user, relations) if current_user
@@ -404,7 +397,7 @@ end
 
 get '/sources' do
   result = get_sources(query: params[:query], "group-id" => params["group-id"])
-  @sources = Array(result.fetch(:data, [])).select {|item| item["type"] == "sources" }
+  @sources = Array(result.fetch(:data, []))
   @meta = result[:meta]
 
   # check for errors
@@ -418,7 +411,7 @@ end
 
 get '/sources/:id' do
   result = get_sources(id: params[:id])
-  @source = Array(result.fetch(:data, [])).find {|item| item["type"] == "sources" }
+  @source = result.fetch(:data, {})
 
   # check for errors
   if result.fetch(:errors, []).present?
@@ -428,7 +421,7 @@ get '/sources/:id' do
     @source_error = "Source \"#{params['id']}\" not found."
   end
 
-  @groups = Array(result.fetch(:data, [])).select {|item| item["type"] == "groups" }
+  @groups = Array(result.fetch(:included, [])).select {|item| item["type"] == "groups" }
   group = @groups.first
 
   page = params.fetch('page', 1).to_i
@@ -509,7 +502,7 @@ get '/contributions' do
   offset = DEFAULT_ROWS * (page - 1)
 
   result = get_contributions(query: params[:query], "publisher-id" => params["publisher-id"], "source-id" => params["source-id"], offset: offset)
-  contributions = Array(result.fetch(:data, [])).select {|item| item["type"] == "contributions" }
+  contributions = Array(result.fetch(:data, []))
   @meta = result[:meta]
 
   # check for errors
