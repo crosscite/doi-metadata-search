@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - nginx/1.11.5
       Date:
-      - Thu, 20 Oct 2016 10:55:57 GMT
+      - Thu, 20 Oct 2016 11:09:08 GMT
       Content-Type:
       - text/html
       Content-Length:
@@ -35,7 +35,7 @@ http_interactions:
       string: "<html>\r\n<head><title>301 Moved Permanently</title></head>\r\n<body
         bgcolor=\"white\">\r\n<center><h1>301 Moved Permanently</h1></center>\r\n<hr><center>nginx/1.11.5</center>\r\n</body>\r\n</html>\r\n"
     http_version: 
-  recorded_at: Thu, 20 Oct 2016 10:55:57 GMT
+  recorded_at: Thu, 20 Oct 2016 11:09:08 GMT
 - request:
     method: get
     uri: https://profiles.datacite.org/api/users/0000-0003-1419-2405/claims?dois=10.6084/M9.FIGSHARE.706340.V1,10.5281/ZENODO.34673
@@ -51,39 +51,48 @@ http_interactions:
       - Token token=<ORCID_UPDATE_KEY>
   response:
     status:
-      code: 401
+      code: 200
       message: ''
     headers:
       Server:
       - nginx/1.11.5
       Date:
-      - Thu, 20 Oct 2016 10:55:57 GMT
+      - Thu, 20 Oct 2016 11:09:08 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
       - keep-alive
       Status:
-      - 401 Unauthorized
+      - 200 OK
       Cache-Control:
-      - no-cache
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
       Vary:
       - Accept-Encoding
+      Access-Control-Max-Age:
+      - '1728000'
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - e16962b0-05ea-46c5-a958-fcfcdbe0cd1d
-      X-Runtime:
-      - '0.068454'
+      - 019903b5-344a-46c8-bb5b-64f25d10f2ee
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Authorization, Token
+      Access-Control-Allow-Methods:
+      - POST, GET, PUT, DELETE, OPTIONS
+      Etag:
+      - W/"797483f8b9b0ee181908ec2942772c3a"
       X-Frame-Options:
       - SAMEORIGIN
+      X-Runtime:
+      - '0.020507'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
       - Phusion Passenger 5.0.30
     body:
       encoding: UTF-8
-      string: '{"errors":[{"status":"401","title":"You are not authorized to access
-        this page."}]}'
+      string: '{"data":[{"id":"84fc1b77-7ea3-4993-8f9b-71e8d712538f","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.6084/M9.FIGSHARE.706340.V1","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2016-03-09T12:14:49Z"}},{"id":"6ce1cfc6-b7d6-47e5-86e3-15bebe0b236d","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.5281/ZENODO.34673","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2016-03-09T12:13:03Z"}}],"links":{},"meta":{"total":2,"total-pages":1,"page":1}}'
     http_version: 
-  recorded_at: Thu, 20 Oct 2016 10:55:57 GMT
+  recorded_at: Thu, 20 Oct 2016 11:09:08 GMT
 recorded_with: VCR 2.9.3

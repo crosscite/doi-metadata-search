@@ -13,7 +13,7 @@ describe "Volpino", type: :model, vcr: true do
     end
 
     it "has api_key" do
-      expect(user.api_key).to eq("GFKyS1Bb2iLevKt8x2H4")
+      expect(user.api_key).not_to be nil
     end
   end
 
@@ -54,7 +54,7 @@ describe "Volpino", type: :model, vcr: true do
       statuses = merged_claims.map { |mc| mc["attributes"]["claim-status"] }
       expect(relations.length).to eq(3)
       expect(statuses.length).to eq(3)
-      expect(statuses.inject(Hash.new(0)) { |total, e| total[e] += 1 ;total}).to eq("none"=>3)
+      expect(statuses.inject(Hash.new(0)) { |total, e| total[e] += 1 ;total}).to eq("none"=>2, "done"=>1)
     end
 
     it "with contributions" do
@@ -66,7 +66,7 @@ describe "Volpino", type: :model, vcr: true do
       statuses = merged_claims.map { |mc| mc["attributes"]["claim-status"] }
       expect(contributions.length).to eq(60)
       expect(statuses.length).to eq(60)
-      expect(statuses.inject(Hash.new(0)) { |total, e| total[e] += 1 ;total}).to eq("none"=>60)
+      expect(statuses.inject(Hash.new(0)) { |total, e| total[e] += 1 ;total}).to eq("done"=>60)
     end
   end
 
@@ -89,7 +89,7 @@ describe "Volpino", type: :model, vcr: true do
       expect(relations_with_claims.length).to eq(3)
       relation = relations_with_claims[2]
       expect(relation["attributes"]["doi"]).to eq("10.5281/ZENODO.30799")
-      expect(relation["attributes"]["claim-status"]).to eq("none")
+      expect(relation["attributes"]["claim-status"]).to eq("done")
     end
 
     it "with contributions" do
@@ -100,7 +100,7 @@ describe "Volpino", type: :model, vcr: true do
       expect(contributions_with_claims.length).to eq(60)
       contribution = contributions_with_claims[0]
       expect(contribution["attributes"]["doi"]).to eq("10.6084/M9.FIGSHARE.90829.V1")
-      expect(contribution["attributes"]["claim-status"]).to eq("none")
+      expect(contribution["attributes"]["claim-status"]).to eq("done")
     end
 
     it "no works" do

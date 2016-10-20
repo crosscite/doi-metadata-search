@@ -60,20 +60,20 @@
               Relations
               - if @relations[:data].length > 0
                 %span.badge
-                  = number_with_delimiter(@relations_meta['total'])
+                  = number_with_delimiter(@relations[:meta]['total'])
         - if @contributions[:data].length > 0
           - if @relations[:data].length > 0
             %li
               %a{href: "#contributions", data: { toggle: "tab" } }
                 Contributions
                 %span.badge
-                  = number_with_delimiter(@contributions_meta['total'])
+                  = number_with_delimiter(@contributions[:meta]['total'])
           - else
             %li.active
               %a{href: "#contributions", data: { toggle: "tab" } }
                 Contributions
                 %span.badge
-                  = number_with_delimiter(@contributions_meta['total'])
+                  = number_with_delimiter(@contributions[:meta]['total'])
 
       .tab-content
         - if @relations[:data].length > 0

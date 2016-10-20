@@ -157,14 +157,16 @@ get %r{/works/(.+)} do
   end
 
   @contributions = get_contributions("work-id" => params["id"], "source-id" => params["source-id"], "publisher-id" => params["publisher-id"], offset: @offset, rows: 100)
-
   @relations = get_relations("work-id" => params["id"], "source-id" => params["source-id"], "relation-type-id" => params["relation-type-id"], offset: @offset, rows: 25)
 
   # check for existing claims if user is logged in
-  @relations[:data] = get_claimed_items(current_user, @relations.fetch(:data, [])) if current_user
+  if current_user
+    @contributions[:data] = get_claimed_items(current_user, @contributions.fetch(:data, []))
+    @relations[:data] = get_claimed_items(current_user, @relations.fetch(:data, []))
+  end
 
   # pagination for relations
-  @relations[:data] = pagination_helper(@relations[:data], @page, @relations.fetch(:meta, {}).fetch("total", 0))
+  #@relations[:data] = pagination_helper(@relations[:data], @page, @relations.fetch(:meta, {}).fetch("total", 0))
 
   haml :'works/show'
 end
