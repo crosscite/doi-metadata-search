@@ -7,8 +7,8 @@
         - if @contributor_error.present?
           %div.alert.alert-warning
             = @contributor_error
-        - elsif @contributor.present?
-          = haml :'contributors/item', locals: { item: @contributor }
+        - elsif @contributor[:data].present?
+          = haml :'contributors/item', locals: { item: @contributor[:data] }
 
       .col-md-9.panel-list#content-contributions
         = haml :'contributions/index'

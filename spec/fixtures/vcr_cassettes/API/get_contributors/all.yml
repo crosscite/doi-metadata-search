@@ -17,9 +17,9 @@ http_interactions:
       message: ''
     headers:
       Server:
-      - nginx/1.11.3
+      - nginx/1.11.5
       Date:
-      - Wed, 12 Oct 2016 13:30:12 GMT
+      - Thu, 20 Oct 2016 05:49:09 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Connection:
@@ -37,7 +37,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 346bbd4f-c79f-432d-ada8-20d539e5ce6a
+      - dacce765-52b7-44ce-9cb5-04164869963d
       Access-Control-Allow-Methods:
       - GET, POST, OPTIONS
       Etag:
@@ -45,7 +45,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.133431'
+      - '0.179551'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -167,5 +167,5 @@ http_interactions:
         cGRhdGVkIjoiMTk3MC0wMS0wMVQwMDowMDowMFoifX1dLCJtZXRhIjp7InRv
         dGFsIjo3MTQxfX0=
     http_version: 
-  recorded_at: Wed, 12 Oct 2016 13:30:13 GMT
+  recorded_at: Thu, 20 Oct 2016 05:49:09 GMT
 recorded_with: VCR 2.9.3

@@ -125,6 +125,12 @@ module Sinatra
       sanitize(description.to_s.strip).truncate_words(75)
     end
 
+    def pagination_helper(items, page, total)
+      WillPaginate::Collection.create(page, DEFAULT_ROWS, total) do |pager|
+        pager.replace items
+      end
+    end
+
     def license_img(license)
       uri = URI.parse(license)
       if uri.host == "creativecommons.org"

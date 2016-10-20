@@ -17,9 +17,9 @@ http_interactions:
       message: ''
     headers:
       Server:
-      - nginx/1.11.3
+      - nginx/1.11.5
       Date:
-      - Wed, 12 Oct 2016 13:30:15 GMT
+      - Thu, 20 Oct 2016 05:49:07 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Connection:
@@ -37,15 +37,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - e3902c97-33ac-4c71-a09e-e53476300f85
+      - 92012ef1-842f-426a-b6c8-1e8a2e501e33
       Access-Control-Allow-Methods:
       - GET, POST, OPTIONS
       Etag:
-      - W/"0c0d8135e307079b58ceba16459e7efc"
+      - W/"a31ea452a3cf7403f860b6adeadf0dda"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.014505'
+      - '0.016964'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -77,8 +77,8 @@ http_interactions:
         to our discussion list: \u003ca href=\"https://groups.google.com/forum/?hl=en#!forum/ands-general\"\u003eANDS
         Google Group\u003c/a\u003e.\u003c/p\u003e\n\n\u003cp\u003eSubscribe to our
         e-newsletter: \u003ca href=\"http://us7.campaign-archive2.com/home/?u=b542ef52e49302569068046d9\u0026amp;id=22b849a4ee\"\u003eandsUP\u003c/a\u003e.\u003c/p\u003e\n","member-type":"allocating","region":"Asia
-        Pacific","country":"Australia","year":2010,"logo-url":"https://assets.datacite.org/images/members/ands.png","email":"contact@ands.org.au","website":"http://www.ands.org.au","phone":"+61
+        Pacific","country":"Australia","year":2010,"logo-url":"https://assets.labs.datacite.org/images/members/ands.png","email":"contact@ands.org.au","website":"http://www.ands.org.au","phone":"+61
         3 9902 0585","updated":"2016-09-09T06:45:50.000Z"}}}'
     http_version: 
-  recorded_at: Wed, 12 Oct 2016 13:30:15 GMT
+  recorded_at: Thu, 20 Oct 2016 05:49:07 GMT
 recorded_with: VCR 2.9.3

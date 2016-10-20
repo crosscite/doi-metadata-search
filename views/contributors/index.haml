@@ -10,16 +10,16 @@
           .alert.alert-warning
             = flash[:error]
 
-        - if @contributors.length > 0
-          - if @contributors.length > 1
+        - if @contributors[:data].length > 0
+          - if @contributors[:data].length > 1
             %h3.results
-              = "#{number_with_delimiter(@meta['total'])} Contributors"
+              = "#{number_with_delimiter(@contributors[:meta]['total'])} Contributors"
 
-          - @contributors.each do |item|
+          - @contributors[:data].each do |item|
             = haml :'contributors/item', locals: { item: item }
 
           .text-center
-            = will_paginate @contributors, renderer: BootstrapPagination::Sinatra, inner_window: 1
+            = will_paginate @contributors[:data], renderer: BootstrapPagination::Sinatra, inner_window: 1
 
         - else
           .alert.alert-simple-info

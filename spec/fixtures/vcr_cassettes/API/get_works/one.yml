@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.labs.datacite.org/works?id=10.6084/M9.FIGSHARE.C.1909847&include=publisher,resource-type,work-type&offset=0&rows=25
+    uri: http://api.labs.datacite.org/works?id=10.2314/COSCV2.53&include=publisher,resource-type,work-type,member,registration-agency&offset=0&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -13,45 +13,52 @@ http_interactions:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
     status:
-      code: 422
+      code: 200
       message: ''
     headers:
       Server:
-      - nginx/1.11.3
+      - nginx/1.11.5
       Date:
-      - Wed, 12 Oct 2016 13:30:51 GMT
+      - Thu, 20 Oct 2016 06:12:31 GMT
       Content-Type:
-      - application/json; charset=utf-8
+      - application/vnd.api+json; charset=utf-8
       Connection:
       - keep-alive
       Status:
-      - 422 Unprocessable Entity
+      - 200 OK
       Cache-Control:
-      - no-cache
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
       Vary:
       - Accept-Encoding
+      Access-Control-Max-Age:
+      - '1728000'
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 85661053-58ff-4c34-b331-11922f442c91
-      X-Runtime:
-      - '0.192284'
+      - bc273fb4-5544-4a46-8288-89e270296a09
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS
+      Etag:
+      - W/"7387a1100adf5915e2c0b91e2cd4a9d0"
       X-Frame-Options:
       - SAMEORIGIN
+      X-Runtime:
+      - '0.269514'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
       - Phusion Passenger 5.0.30
-      Access-Control-Allow-Origin:
-      - "*"
       Access-Control-Allow-Headers:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
-      Access-Control-Allow-Methods:
-      - GET, POST, OPTIONS
     body:
       encoding: UTF-8
-      string: '{"errors":[{"status":"422","title":"undefined method `downcase'' for
-        nil:NilClass"}]}'
+      string: '{"data":{"id":"https://doi.org/10.2314/COSCV2.53","type":"works","attributes":{"doi":"10.2314/COSCV2.53","url":null,"author":[{"family":"Pampel","given":"Heinz","orcid":"http://orcid.org/0000-0003-3334-2771"},{"family":"Neumann","given":"Janna","orcid":"http://orcid.org/0000-0002-0161-1888"}],"title":"Publikation
+        von Forschungsdaten","container-title":"Technische Informationsbibliothek
+        (TIB), Hannover","description":null,"resource-type-subtype":null,"license":null,"schema-version":"3","results":{},"published":"2015","deposited":"2015-05-20T06:35:12Z","updated":"2015-05-20T06:35:12Z"},"relationships":{"resource-type":{"data":{"id":"text","type":"resource-types"}},"work-type":{"data":{"id":"report","type":"work-types"}},"publisher":{"data":{"id":"tib.handbuch","type":"publishers"}}}},"included":[{"id":"text","type":"resource-types","attributes":{"title":"Text","updated":"2016-09-21T00:00:00Z"}},{"id":"report","type":"work-types","attributes":{"title":"Report","container":null,"updated":"2016-03-21T15:05:03Z"}},{"id":"tib.handbuch","type":"publishers","attributes":{"title":"Technische
+        Informationsbibliothek  Open Science Lab","other-names":[],"prefixes":[],"updated":"2016-10-20T05:44:00Z"},"relationships":{"member":{"meta":{}},"registration-agency":{"meta":{}}}}],"meta":{"total":1,"sources":[],"relation-types":[{"id":"is_part_of","title":"Is
+        part of","count":1}]}}'
     http_version: 
-  recorded_at: Wed, 12 Oct 2016 13:30:51 GMT
+  recorded_at: Thu, 20 Oct 2016 06:12:31 GMT
 recorded_with: VCR 2.9.3

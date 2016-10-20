@@ -1,5 +1,5 @@
-- @relations.each do |item|
+- @relations[:data].each do |item|
   = haml :'relations/item', locals: { item: item }
 
 .text-center
-  = will_paginate @relations, renderer: BootstrapPagination::Sinatra, inner_window: 1
+  = will_paginate @relations[:data], renderer: BootstrapPagination::Sinatra, inner_window: 1

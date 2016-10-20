@@ -1,5 +1,5 @@
-- if @works.length > 0
-  - if @works.length > 1
+- if @works[:data].length > 0
+  - if @works[:data].length > 1
     - if params[:model] == "sources" || @datacenter.present? && @datacenter.fetch("attributes", {}).fetch("registration-agency-id", nil) == "crossref"
       .btn-toolbar.pull-right
         .btn-group.btn-group-sm
@@ -17,13 +17,13 @@
                 %a{href: works_query(params.merge('sort' => s["id"]))}
                   = "Sort by " + source_title(@sources, s["id"])
     %h3.results
-      = "#{number_with_delimiter(@meta['total'])} Works"
+      = "#{number_with_delimiter( @works[:meta]['total'])} Works"
 
-  - @works.each do |item|
+  - @works[:data].each do |item|
     = haml :'works/item', locals: { item: item }
 
   .text-center
-    = will_paginate @works, renderer: BootstrapPagination::Sinatra, inner_window: 1
+    = will_paginate @works[:data], renderer: BootstrapPagination::Sinatra, inner_window: 1
 
 - else
   - if @works_error.present?

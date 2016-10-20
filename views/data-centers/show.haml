@@ -1,34 +1,35 @@
 = haml :"#{ENV['RA']}/header", locals: { page: {} }
 
+- member = @datacenter[:included].find { |i| i.fetch("type", nil) == "members" }
+- registration_agency = @datacenter[:included].find { |i| i.fetch("type", nil) == "registration-agencies" }
+
 .container-fluid
   .content
     .row
       .col-md-9#content-data-center
-        - if @datacenter.present?
-          = haml :'data-centers/item', locals: { item: @datacenter }
+        - if @datacenter[:data].present?
+          = haml :'data-centers/item', locals: { item: @datacenter[:data] }
         - elsif @datacenter_error.present?
           %div.alert.alert-warning
             = @datacenter_error
 
-      - if @datacenter.present?
+      - if @datacenter[:data].present?
         .col-md-3
-          - registration_agency_id = @datacenter.fetch("attributes", {}).fetch("registration-agency-id", nil)
-          - member_id = @datacenter.fetch("attributes", {}).fetch("member-id", nil)
           .panel.facets
             .panel-body.metadata
-              - if registration_agency_id == "datacite"
+              - if registration_agency.fetch("id", nil) == "datacite" && member.present?
                 %h5
                   Member
                 .registration_agency
-                  %a{href: "/members/#{member_id}"}
-                    = member_title(@members, member_id)
-              - elsif registration_agency_id.present?
+                  %a{href: "/members/#{member.fetch("id", nil)}"}
+                    = member.fetch("attributes", {}).fetch("title", nil)
+              - elsif registration_agency.present?
                 %h5
                   Registration Agency
                 .registration_agency
-                  = registration_agency_format(@datacenter.fetch("attributes", {}))
+                  = registration_agency.fetch("attributes", {}).fetch("title", nil)
 
-      - if registration_agency_id == "datacite"
+      - if registration_agency.fetch("id", nil) == "datacite"
         .col-md-9
           = haml :'works/search'
 

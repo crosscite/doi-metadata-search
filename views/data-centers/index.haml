@@ -8,16 +8,16 @@
 
     .row
       .col-md-9.panel-list#content
-        - if @datacenters.length > 0
-          - if @datacenters.length > 1
+        - if @datacenters[:data].length > 0
+          - if @datacenters[:data].length > 1
             %h3.results
               = "#{number_with_delimiter(@meta["total"])} Data Centers"
 
-          - @datacenters.each do |item|
+          - @datacenters[:data].each do |item|
             = haml :'data-centers/item', locals: { item: item }
 
           .text-center
-            = will_paginate @datacenters, renderer: BootstrapPagination::Sinatra, inner_window: 1
+            = will_paginate @datacenters[:data], renderer: BootstrapPagination::Sinatra, inner_window: 1
 
         - elsif @datacenters_error.present?
           .alert.alert-warning

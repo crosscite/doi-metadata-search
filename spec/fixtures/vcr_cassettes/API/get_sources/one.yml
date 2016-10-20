@@ -17,9 +17,9 @@ http_interactions:
       message: ''
     headers:
       Server:
-      - nginx/1.11.3
+      - nginx/1.11.5
       Date:
-      - Wed, 12 Oct 2016 13:30:10 GMT
+      - Thu, 20 Oct 2016 05:49:00 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Connection:
@@ -37,15 +37,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 033ff892-eb08-4e56-a7d8-763651e0b1b1
+      - 2d8c36e9-614d-4154-8870-f11ffd54c317
       Access-Control-Allow-Methods:
       - GET, POST, OPTIONS
       Etag:
-      - W/"8f11f382ef595e893f9bfed658631d38"
+      - W/"a92d4e13f72ee12bfc3f075acca55d51"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.039377'
+      - '3.130353'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -56,7 +56,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"data":{"id":"datacite-crossref","type":"sources","attributes":{"title":"DataCite
         (Crossref)","description":"Import works with Crossref DOIs as relatedIdentifier
-        via the DataCite Solr API.","state":"active","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-10-12T13:05:11Z"},"relationships":{"group":{"data":{"id":"relations","type":"groups"}}}},"included":[{"id":"relations","type":"groups","attributes":{"title":"Relations","updated":"2016-03-28T15:25:06Z"}}]}'
+        via the DataCite Solr API.","state":"active","work-count":19893,"relation-count":225467,"result-count":74369,"by-day":{"with-results":0,"without-results":0,"not-updated":225412},"by-month":{"with-results":0,"without-results":0,"not-updated":225412},"updated":"2016-10-20T05:05:24Z"},"relationships":{"group":{"data":{"id":"relations","type":"groups"}}}},"included":[{"id":"relations","type":"groups","attributes":{"title":"Relations","updated":"2016-03-28T15:25:06Z"}}]}'
     http_version: 
-  recorded_at: Wed, 12 Oct 2016 13:30:10 GMT
+  recorded_at: Thu, 20 Oct 2016 05:49:00 GMT
 recorded_with: VCR 2.9.3

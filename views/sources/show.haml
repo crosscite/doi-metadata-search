@@ -4,7 +4,7 @@
   .content
     .row
       .col-md-9#content-work
-        = haml :'sources/item', locals: { item: @source }
+        = haml :'sources/item', locals: { item: @source[:data] }
 
       - if @works.present?
         .col-md-9.panel-list#content-works

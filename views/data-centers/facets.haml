@@ -1,10 +1,10 @@
-- if @meta["members"].present?
+- if @datacenters[:meta]["members"].present?
   .panel.facets
     .panel-body
       %h4
         Members
       %ul
-        - @meta["members"].each do |f|
+        - @datacenters[:meta]["members"].each do |f|
           - if params['member-id'] == f.fetch("id", nil)
             %li.active
               %a{:href => "/data-centers"}

@@ -17,9 +17,9 @@ http_interactions:
       message: ''
     headers:
       Server:
-      - nginx/1.11.3
+      - nginx/1.11.5
       Date:
-      - Wed, 12 Oct 2016 13:30:11 GMT
+      - Thu, 20 Oct 2016 05:49:09 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Connection:
@@ -37,7 +37,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - c7e7e2de-87a7-4e70-9769-fbd7382a782b
+      - 47fd9f1a-8c45-4805-885f-55165d471e62
       Access-Control-Allow-Methods:
       - GET, POST, OPTIONS
       Etag:
@@ -45,7 +45,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.038588'
+      - '0.121339'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -56,5 +56,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"data":[{"id":"http://orcid.org/0000-0001-5882-6823","type":"contributors","attributes":{"given":"Andy","family":"Mabbett","literal":null,"orcid":"0000-0001-5882-6823","github":null,"updated":"1970-01-01T00:00:00Z"}}],"meta":{"total":1}}'
     http_version: 
-  recorded_at: Wed, 12 Oct 2016 13:30:11 GMT
+  recorded_at: Thu, 20 Oct 2016 05:49:09 GMT
 recorded_with: VCR 2.9.3

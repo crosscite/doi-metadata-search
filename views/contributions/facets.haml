@@ -1,10 +1,10 @@
 .panel.facets
-  - if @meta["contribution-sources"].present? && params[:model] != "sources"
+  - if @contributions[:meta]["sources"].present?
     .panel-body
       %h4
         Sources
       %ul
-        - @meta["contribution-sources"].each do |f|
+        - @contributions[:meta]["sources"].each do |f|
           - if params['source-id'] == f.fetch("id", nil)
             %li.active
               %a{:href => works_query(params.except('source-id'))}
@@ -21,12 +21,12 @@
                 = f.fetch("title", nil)
               %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
               .clearfix
-  - if @meta["contribution-publishers"].present?
+  - if @contributions[:meta]["publishers"].present?
     .panel-body
       %h4
         Data Centers
       %ul
-        - @meta["contribution-publishers"].each do |f|
+        - @contributions[:meta]["publishers"].each do |f|
           - if params['publisher-id'] == f.fetch("id", nil)
             %li.active
               %a{:href => works_query(params.except('publisher-id'))}

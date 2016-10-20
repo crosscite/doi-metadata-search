@@ -11,7 +11,7 @@ module Sinatra
                  sort: params.fetch(:sort, nil),
                  query: params.fetch(:query, nil),
                  year: params.fetch('year', nil),
-                 include: 'publisher,resource-type,work-type',
+                 include: 'publisher,resource-type,work-type,member,registration-agency',
                  'resource-type-id' => params.fetch('resource-type-id', nil),
                  'relation-type-id' => params.fetch('relation-type-id', nil),
                  'publisher-id' => params.fetch('publisher-id', nil),
@@ -32,7 +32,7 @@ module Sinatra
                  "source-id" => params.fetch("source-id", nil),
                  offset: params.fetch(:offset, 0),
                  rows: params.fetch(:rows, 25),
-                 include: 'relation-type,source' }.compact
+                 include: 'relation-type,source,publisher' }.compact
       url = "#{ENV['API_URL']}/relations?" + URI.encode_www_form(params)
 
       result = Maremma.get url, timeout: 10

@@ -1,10 +1,10 @@
-- if @meta["member-types"].present?
+- if @members[:meta]["member-types"].present?
   .panel.facets
     .panel-body
       %h4
         Member Types
       %ul
-        - @meta["member-types"].each do |f|
+        - @members[:meta]["member-types"].each do |f|
           %li
             - if @params["member-type"].present?
               %a{:href => "/members?region=#{params[:region]}&year=#{params[:year]}&query=#{params[:query]}"}
@@ -18,13 +18,13 @@
               = number_with_delimiter(f.fetch("count", 0))
             .clearfix
 
-- if @meta["regions"].present?
+- if @members[:meta]["regions"].present?
   .panel.facets
     .panel-body
       %h4
         Regions
       %ul
-        - @meta["regions"].each do |f|
+        - @members[:meta]["regions"].each do |f|
           %li
             - if params[:region].present?
               %a{:href => "/members?member-type=#{params['member-type']}&year=#{params[:year]}&query=#{params[:query]}"}
@@ -38,13 +38,13 @@
               = number_with_delimiter(f.fetch("count", 0))
             .clearfix
 
-- if @meta["years"].present?
+- if @members[:meta]["years"].present?
   .panel.facets
     .panel-body
       %h4
         Year Joined
       %ul
-        - @meta["years"].each do |f|
+        - @members[:meta]["years"].each do |f|
           %li
             - if params[:year].present?
               %a{:href => "/members?member-type=#{params['member-type']}&region=#{params[:region]}&query=#{params[:query]}"}

@@ -1,10 +1,10 @@
 .panel.facets
-  - if @meta["relation-sources"].present?
+  - if @relations[:meta]["sources"].present?
     .panel-body
       %h4
         Sources
       %ul
-        - @meta["relation-sources"].each do |f|
+        - @relations[:meta]["sources"].each do |f|
           - if params['source-id'] == f.fetch("id", nil)
             %li.active
               %a{:href => works_query(params.except('source-id'))}
@@ -22,12 +22,12 @@
               %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
               .clearfix
 
-  - if @meta["relation-publishers"].present?
+  - if @relations[:meta]["publishers"].present?
     .panel-body
       %h4
         Data Centers
       %ul
-        - @meta["relation-publishers"].each do |f|
+        - @relations[:meta]["publishers"].each do |f|
           - if params['publisher-id'] == f.fetch("id", nil)
             %li.active
               %a{:href => works_query(params.except('publisher-id'))}
@@ -45,12 +45,12 @@
               %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
               .clearfix
 
-  - if @meta["relation-types"].present?
+  - if @relations[:meta]["relation-types"].present?
     .panel-body
       %h4
         Relation Types
       %ul
-        - @meta["relation-types"].each do |f|
+        - @relations[:meta]["relation-types"].each do |f|
           - if params['relation-type-id'] == f.fetch("id", nil)
             %li.active
               %a{:href => works_query(params.except('relation-type-id'))}
