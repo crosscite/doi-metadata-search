@@ -140,6 +140,7 @@ get '/works' do
   # pagination
   @works[:data] = pagination_helper(@works[:data], @page, @works.fetch(:meta, {}).fetch("total", 0))
 
+  params[:model] = "works"
   haml :'works/index'
 end
 
@@ -153,7 +154,7 @@ get %r{/works/(.+)} do
 
   # check for existing claims if user is logged in and work is registered with DataCite
   if current_user
-    @work = get_claimed_items(current_user, [@work]).first
+    @work[:data] = get_claimed_items(current_user, [@work[:data]]).first
   end
 
   @contributions = get_contributions("work-id" => params["id"], "source-id" => params["source-id"], "publisher-id" => params["publisher-id"], offset: @offset, rows: 100)
@@ -166,8 +167,9 @@ get %r{/works/(.+)} do
   end
 
   # pagination for relations
-  #@relations[:data] = pagination_helper(@relations[:data], @page, @relations.fetch(:meta, {}).fetch("total", 0))
+  @relations[:data] = pagination_helper(@relations[:data], @page, @relations.fetch(:meta, {}).fetch("total", 0))
 
+  params[:model] = "works"
   haml :'works/show'
 end
 
@@ -185,7 +187,7 @@ get '/contributors/:id' do
 
   @contributor  = get_contributors(id: id)
 
-  @contributions = get_contributions("contributor-id" => id, "source-id" => params["source-id"], offset: @offset)
+  @contributions = get_contributions("contributor-id" => id, "source-id" => params["source-id"], "publisher-id" => params["publisher-id"], offset: @offset)
 
   # check for existing claims if user is logged in
   @contributions[:data] = get_claimed_items(current_user, @contributions.fetch(:data, [])) if current_user
@@ -193,6 +195,7 @@ get '/contributors/:id' do
   # pagination
   @contributions[:data] = pagination_helper(@contributions[:data], @page, @contributions.fetch(:meta, {}).fetch("total", 0))
 
+  params[:model] = "contributors"
   haml :'contributors/show'
 end
 
@@ -216,6 +219,7 @@ get '/data-centers/:id' do
   # pagination for works
   @works[:data] = pagination_helper(@works[:data], @page, @works.fetch(:meta, {}).fetch("total", 0))
 
+  params[:model] = "data-centers"
   haml :'data-centers/show'
 end
 
@@ -236,6 +240,7 @@ get '/members/:id' do
   # pagination for works
   @works[:data] = pagination_helper(@works[:data], @page, @works.fetch(:meta, {}).fetch("total", 0))
 
+  params[:model] = "members"
   haml :'members/show'
 end
 
@@ -248,7 +253,7 @@ end
 get '/sources/:id' do
   @source  = get_sources(id: params[:id])
 
-  group_id = @source.fetch(:included, {})
+  group_id = @source.fetch(:data, {}).fetch("attributes", {}).fetch("group-id", nil)
 
   if %w(relations results).include?(group_id)
     @works = get_works("source-id" => params[:id], offset: @offset, sort: params[:sort], 'relation-type-id' => params['relation-type-id'])
@@ -259,7 +264,7 @@ get '/sources/:id' do
     # pagination for works
     @works[:data] = pagination_helper(@works[:data], @page, @works.fetch(:meta, {}).fetch("total", 0))
   elsif group_id == "contributions"
-    @contributions = get_contributions("source-id" => params[:id], "publisher-id" => params["publisher-id"], offset: offset, rows: 25)
+    @contributions = get_contributions("source-id" => params[:id], "publisher-id" => params["publisher-id"], offset: @offset, rows: 25)
 
     # check for existing claims if user is logged in
     @contributions[:data] = get_claimed_items(current_user, @contributions.fetch(:data, [])) if current_user
@@ -268,11 +273,12 @@ get '/sources/:id' do
     @contributions[:data] = pagination_helper(@contributions[:data], @page, @contributions.fetch(:meta, {}).fetch("total", 0))
   end
 
+  params[:model] = "sources"
   haml :'sources/show'
 end
 
 get '/contributions' do
-  @contributions = get_contributions(query: params[:query], "publisher-id" => params["publisher-id"], "source-id" => params["source-id"], offset: offset)
+  @contributions = get_contributions(query: params[:query], "publisher-id" => params["publisher-id"], "source-id" => params["source-id"], offset: @offset)
 
   # pagination
   @contributions[:data] = pagination_helper(@contributions[:data], @page, @contributions.fetch(:meta, {}).fetch("total", 0))

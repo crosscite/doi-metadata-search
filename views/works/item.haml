@@ -1,4 +1,6 @@
 - attributes = item.fetch("attributes", {})
+- includes = @works.present? ? @works[:included] : @work[:included]
+- work_types = includes.select { |item| item["type"] == "work-types" }
 - new_params = params[:model] == "works" && params["id"].present? ? params.merge(external_link: true) : params
 
 .panel.panel-default
@@ -9,7 +11,7 @@
     - if attributes["author"].present?
       = author_format(attributes["author"])
     .metadata
-      = metadata_format(attributes, work_types: @work_types)
+      = metadata_format(attributes, work_types: work_types)
     - if attributes["description"].present?
       .description
         = description_format(attributes["description"])
@@ -21,7 +23,7 @@
   - if attributes["results"].present?
     - attributes["results"].each do |k, v|
       .panel-footer
-        = source_title(@sources, k)
+        = source_title(@works[:included].select { |item| item["type"] == "sources" }, k)
         %span.badge
           = number_with_delimiter(v)
 

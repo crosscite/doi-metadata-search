@@ -22,7 +22,7 @@
       Contribution
 
     %span.pull-right
-      = source_title(@contribution_sources, item.fetch("attributes", {}).fetch("source-id", nil))
+      = source_title(@contributions[:included].select {|item| item["type"] == "sources" }, item.fetch("relationships", {}).fetch("source", {}).fetch("data", {}).fetch("id", nil))
 
   - if attributes["results"].present?
     - attributes["results"].each do |k, v|
@@ -31,7 +31,7 @@
           = number_with_delimiter(v)
         = (v > 1 ? " Related Identifiers" : " Related Identifier")
         .pull-right
-          = source_title(@contribution_sources, k)
+          = source_title(@contributions[:included].select {|item| item["type"] == "sources" }, k)
 
   .panel-footer.item-links
     %a{:href => attributes["obj-id"]}

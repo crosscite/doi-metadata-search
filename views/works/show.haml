@@ -1,42 +1,46 @@
 = haml :"#{ENV['RA']}/header", locals: { page: {} }
 
+- publisher = @work[:included].find { |i| i.fetch("type", nil) == "publishers" }
+- member = @work[:included].find { |i| i.fetch("type", nil) == "members" }
+- registration_agency = @work[:included].find { |i| i.fetch("type", nil) == "registration-agencies" }
+
 .container-fluid
   .content
     .row
       .col-md-9#content-work
         - if @work[:data].present?
-          = haml :'works/item', locals: { item: @work }
-        - elsif @work_error.present?
+          = haml :'works/item', locals: { item: @work[:data] }
+        - elsif @work[:errors].present?
           %div.alert.alert-warning
-            = @work_error
+            = @work[:errors].first.fetch("title", "")
 
       - if @work[:data].present?
         .col-md-3
           .panel.facets
             .panel-body.metadata
-              - if @registration_agency.fetch("id", nil) == "datacite"
+              - if registration_agency && registration_agency.fetch("id", nil) == "datacite"
                 %h5
                   Data Center
                 .data-center
-                  %a{href: "/data-centers/#{publisher_id}"}
-                    = @publisher.fetch("title", nil)
-              - elsif @publisher.present?
+                  %a{href: "/data-centers/#{publisher.fetch('id')}"}
+                    = publisher.fetch("attributes", {}).fetch("title", nil)
+              - elsif publisher.present?
                 %h5
                   Publisher
                 .data-center
-                  %a{href: "/data-centers/#{publisher_id}"}
-                    = @publisher.fetch("title", nil)
-              - if @registration_agency.fetch("id", nil) == "datacite"
+                  %a{href: "/data-centers/#{publisher.fetch('id')}"}
+                    = publisher.fetch("attributes", {}).fetch("title", nil)
+              - if registration_agency && registration_agency.fetch("id", nil) == "datacite"
                 %h5
                   Member
                 .registration_agency
-                  %a{href: "/members/#{member_id}"}
-                    = @member.fetch("title", nil)
-              - elsif @registration_agency.present?
+                  %a{href: "/members/#{member.fetch('id')}"}
+                    = member.fetch("attributes", {}).fetch("title", nil)
+              - elsif registration_agency.present?
                 %h5
                   Registration Agency
                 .registration_agency
-                  = @registration_agency.fetch("title", nil)
+                  = registration_agency.fetch("attributes", {}).fetch("title", nil)
 
           .panel.tags
             .panel-body

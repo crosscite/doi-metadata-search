@@ -4,9 +4,9 @@
   .content
     .row
       .col-md-9#content-contributor
-        - if @contributor_error.present?
+        - if @contributor[:errors].present?
           %div.alert.alert-warning
-            = @contributor_error
+            = @contributor[:errors].first.fetch("title", "")
         - elsif @contributor[:data].present?
           = haml :'contributors/item', locals: { item: @contributor[:data] }
 

@@ -22,7 +22,7 @@
               %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
               .clearfix
 
-  - if @relations[:meta]["publishers"].present?
+  - if @relations[:meta]["publishers"].present? && @work.nil?
     .panel-body
       %h4
         Data Centers

@@ -36,7 +36,7 @@ module Sinatra
       url = "#{ENV['API_URL']}/relations?" + URI.encode_www_form(params)
 
       result = Maremma.get url, timeout: 10
-      { data: result.fetch("data", []),
+      { data: Array(result.fetch("data", [])),
         included: result.fetch("included", []),
         errors: Array(result.fetch("errors", [])),
         meta: result.fetch("meta", {}) }
@@ -66,7 +66,7 @@ module Sinatra
       url = "#{ENV['API_URL']}/contributions?" + URI.encode_www_form(params)
 
       result = Maremma.get url, timeout: 10
-      { data: result.fetch("data", []),
+      { data: Array(result.fetch("data", [])),
         included: result.fetch("included", []),
         errors: Array(result.fetch("errors", [])),
         meta: result.fetch("meta", {}) }

@@ -30,7 +30,7 @@ module Sinatra
     end
 
     def itemtype_format(attributes)
-      type = attributes.fetch("resource-type-general", nil) || attributes.fetch("type", nil)
+      type = attributes.fetch("resource-type", nil) || attributes.fetch("work-type", nil)
 
       case type
       when "dataset" then "http://schema.org/Dataset"
@@ -43,20 +43,6 @@ module Sinatra
       return id unless resource_type.present?
 
       resource_type.fetch("attributes", {}).fetch("title", "")
-    end
-
-    def publisher_title(publishers, id)
-      publisher = Array(publishers).find { |p| p["id"] == id }
-      return id unless publisher.present?
-
-      publisher.fetch("attributes", {}).fetch("title", "")
-    end
-
-    def member_title(members, id)
-      member = Array(members).find { |m| m["id"] == id }
-      return id unless member.present?
-
-      member.fetch("attributes", {}).fetch("title", "")
     end
 
     def source_title(sources, id)
@@ -104,13 +90,13 @@ module Sinatra
     end
 
     def metadata_format(attributes, options={})
-      if attributes.fetch("type", nil).present?
+      if attributes.fetch("work-type", nil).present?
         work_types = Array(options[:work_types])
-        type = work_type_title(work_types, attributes.fetch("type"))
+        type = work_type_title(work_types, attributes.fetch("work-type"))
         type = type.underscore.humanize
       else
-        type = attributes.fetch("resource-type", nil).presence ||
-               attributes.fetch("resource-type-general", nil).presence || "Work"
+        type = attributes.fetch("resource-type-subtype", nil).presence ||
+               attributes.fetch("resource-type", nil).presence || "Work"
         type = type.underscore.humanize
       end
 

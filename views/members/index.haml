@@ -18,7 +18,7 @@
 
         - elsif @members[:errors].present?
           .alert.alert-warning
-            = [@members[:errors].first.fetch("status", ""), @members[:errors].firstfetch("title", "")].join(" ")
+            = @members[:errors].first.fetch("title", "")
         - else
           .alert.alert-simple-info
             Nothing found.

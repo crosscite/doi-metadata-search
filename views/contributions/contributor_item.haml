@@ -8,7 +8,7 @@
     %span
       Contribution
     %span.pull-right
-      = source_title(@contribution_sources, item.fetch("attributes", {}).fetch("source-id", nil))
+      = source_title(@contributions[:included].select {|item| item["type"] == "sources" }, item.fetch("relationships", {}).fetch("source", {}).fetch("data", {}).fetch("id", nil))
 
   .panel-footer.item-links
     %a{:href => attributes["subj-id"]}

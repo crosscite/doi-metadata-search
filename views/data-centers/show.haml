@@ -9,9 +9,9 @@
       .col-md-9#content-data-center
         - if @datacenter[:data].present?
           = haml :'data-centers/item', locals: { item: @datacenter[:data] }
-        - elsif @datacenter_error.present?
+        - elsif @datacenter[:errors].present?
           %div.alert.alert-warning
-            = @datacenter_error
+            = @datacenter[:errors].first.fetch("title", "")
 
       - if @datacenter[:data].present?
         .col-md-3
@@ -29,7 +29,7 @@
                 .registration_agency
                   = registration_agency.fetch("attributes", {}).fetch("title", nil)
 
-      - if registration_agency.fetch("id", nil) == "datacite"
+      - if registration_agency && registration_agency.fetch("id", nil) == "datacite"
         .col-md-9
           = haml :'works/search'
 

@@ -4,11 +4,11 @@
       = "#{number_with_delimiter(@contributions[:meta]["total"])} Contributions"
 
 - @contributions[:data].each do |item|
-  - if params[:model] == "works"
+  - if @work.present?
     = haml :'contributions/contributor_item', locals: { item: item }
   - else
     = haml :'contributions/work_item', locals: { item: item }
 
-- if %w(contributors sources).include?(params[:model])
+- if @contributor.present? || @source.present?
   .text-center
     = will_paginate @contributions[:data], renderer: BootstrapPagination::Sinatra, inner_window: 1

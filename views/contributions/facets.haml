@@ -21,7 +21,7 @@
                 = f.fetch("title", nil)
               %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
               .clearfix
-  - if @contributions[:meta]["publishers"].present?
+  - if @contributions[:meta]["publishers"].present? && @work.nil?
     .panel-body
       %h4
         Data Centers

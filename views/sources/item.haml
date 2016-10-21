@@ -13,4 +13,4 @@
     %i.fa.fa-info-circle
     = item["id"]
     %span.pull-right
-      = group_title(@groups, item.fetch("attributes", {}).fetch("group-id", nil))
+      = item.fetch("attributes", {}).fetch("group-id", "").humanize

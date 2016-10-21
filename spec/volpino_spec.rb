@@ -22,6 +22,11 @@ describe "Volpino", type: :model, vcr: true do
       works = subject.get_works(query: "martin fenner")[:data]
       expect(subject.found_dois(works).length).to eq(25)
     end
+
+    it "without works" do
+      works = []
+      expect(subject.found_dois(works)).to be_blank
+    end
   end
 
   context "get_claims" do
@@ -42,7 +47,7 @@ describe "Volpino", type: :model, vcr: true do
       statuses = merged_claims.map { |mc| mc["attributes"]["claim-status"] }
       expect(works.length).to eq(25)
       expect(statuses.length).to eq(25)
-      expect(statuses.inject(Hash.new(0)) { |total, e| total[e] += 1 ;total}).to eq("none"=>25)
+      expect(statuses.inject(Hash.new(0)) { |total, e| total[e] += 1 ; total }).to eq("none"=>17, "done"=>8)
     end
 
     it "with relations" do
@@ -78,7 +83,7 @@ describe "Volpino", type: :model, vcr: true do
       expect(works_with_claims.length).to eq(25)
       work = works_with_claims[3]
       expect(work["id"]).to eq("https://doi.org/10.5281/ZENODO.34673")
-      expect(work["attributes"]["claim-status"]).to eq("none")
+      expect(work["attributes"]["claim-status"]).to eq("done")
     end
 
     it "with relations" do
