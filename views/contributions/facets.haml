@@ -1,5 +1,5 @@
 .panel.facets
-  - if @contributions[:meta]["sources"].present?
+  - if @contributions[:meta]["sources"].present? && @source.nil?
     .panel-body
       %h4
         Sources
