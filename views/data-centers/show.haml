@@ -29,8 +29,14 @@
                 .registration_agency
                   = registration_agency.fetch("attributes", {}).fetch("title", nil)
 
-      - if registration_agency && registration_agency.fetch("id", nil) == "datacite"
-        .col-md-9
+      .col-md-9
+        - if registration_agency && registration_agency.fetch("id", nil) != "datacite"
+          %div.alert.alert-info
+            Search is only available for DataCite DOIs. Only DOIs with a related DataCite DOI are shown.
+        - elsif params['source-id'].present? || params['relation-type-id'].present?
+          %div.alert.alert-info
+            Search is not available when the <strong>Sources</strong> and/or <strong>Relation Types</strong> facet are selected.
+        - else
           = haml :'works/search'
 
       .col-md-9.panel-list#content-works

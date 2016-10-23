@@ -68,7 +68,7 @@
               %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
               .clearfix
 
-  - if @works[:meta]["sources"].present? && params[:model] != "sources"
+  - if @works[:meta]["sources"].present? && params[:model] != "sources" && params['resource-type-id'].nil?
     .panel-body
       %h4
         Sources
@@ -91,7 +91,7 @@
               %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
               .clearfix
 
-  - if @works[:meta]["relation-types"].present?
+  - if @works[:meta]["relation-types"].present? && params['resource-type-id'].nil?
     .panel-body
       %h4
         Relation Types

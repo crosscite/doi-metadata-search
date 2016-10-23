@@ -52,13 +52,6 @@ module Sinatra
       source.fetch("attributes", {}).fetch("title", "")
     end
 
-    def group_title(groups, id)
-      group = Array(groups).find { |s| s["id"] == id }
-      return id unless group.present?
-
-      group.fetch("attributes", {}).fetch("title", "")
-    end
-
     def relation_type_title(relation_types, id)
       relation_type = Array(relation_types).find { |s| s["id"] == id }
       return id unless relation_type.present?
@@ -79,14 +72,6 @@ module Sinatra
                                 "datacite" => "DataCite",
                                 "github" => "GitHub" }
       registration_agencies.fetch(ra, "")
-    end
-
-    def region_format(attributes)
-      region = attributes.fetch("region", nil)
-      regions = { "amer" => "Americas",
-                  "apac" => "Asia Pacific",
-                  "emea" => "EMEA" }
-      regions.fetch(region, "")
     end
 
     def metadata_format(attributes, options={})
@@ -168,6 +153,15 @@ module Sinatra
       else
         "/works?" + URI.encode_www_form(params)
       end
+    end
+
+    def data_centers_query(options)
+      params = { "id" => options.fetch("id", nil),
+                 "query" => options.fetch("query", nil),
+                 "member-id" => options.fetch("member-id", nil),
+                 "registration-agency-id" => options.fetch("registration-agency-id", nil) }.compact
+
+      "/data-centers?" + URI.encode_www_form(params)
     end
 
     def contributions_query(options)

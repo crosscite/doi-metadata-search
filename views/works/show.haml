@@ -18,7 +18,7 @@
         .col-md-3
           .panel.facets
             .panel-body.metadata
-              - if registration_agency && registration_agency.fetch("id", nil) == "datacite"
+              - if registration_agency && registration_agency.fetch("id", nil) == "datacite" && publisher.present?
                 %h5
                   Data Center
                 .data-center
@@ -30,7 +30,7 @@
                 .data-center
                   %a{href: "/data-centers/#{publisher.fetch('id')}"}
                     = publisher.fetch("attributes", {}).fetch("title", nil)
-              - if registration_agency && registration_agency.fetch("id", nil) == "datacite"
+              - if registration_agency && registration_agency.fetch("id", nil) == "datacite" && member.present?
                 %h5
                   Member
                 .registration_agency

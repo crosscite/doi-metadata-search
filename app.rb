@@ -36,6 +36,7 @@ TYPICAL_ROWS = [10, 20, 50, 100, 500]
 DEFAULT_ROWS = 25
 MONTH_SHORT_NAMES = %w(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec)
 ORCID_VERSION = '1.2'
+TIMEOUT = 30
 
 require 'sinatra'
 require 'sinatra/json'
@@ -132,7 +133,7 @@ get '/' do
 end
 
 get '/works' do
-  @works = get_works(query: params[:query], offset: @offset, 'publisher-id' => params['publisher-id'], 'resource-type-id' => params['resource-type-id'], 'year' => params['year'])
+  @works = get_works(query: params[:query], offset: @offset, 'publisher-id' => params['publisher-id'], 'source-id' => params['source-id'], 'relation-type-id' => params['relation-type-id'], 'resource-type-id' => params['resource-type-id'], 'year' => params['year'])
 
   # check for existing claims if user is logged in
   @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
@@ -200,7 +201,7 @@ get '/contributors/:id' do
 end
 
 get '/data-centers' do
-  @datacenters  = get_datacenters(query: params[:query], offset: @offset, "member-id" => params["member-id"])
+  @datacenters  = get_datacenters(query: params[:query], offset: @offset, "registration-agency-id" => params["registration-agency-id"], "member-id" => params["member-id"])
 
   # pagination
   @datacenters[:data] = pagination_helper(@datacenters[:data], @page, @datacenters.fetch(:meta, {}).fetch("total", 0))
@@ -232,7 +233,7 @@ end
 get '/members/:id' do
   @member = get_members(id: params[:id])
 
-  @works = get_works(query: params[:query], "member-id" => params[:id], offset: @offset, 'resource-type-id' => params['resource-type-id'], 'publisher-id' => params['publisher-id'], 'year' => params['year'])
+  @works = get_works(query: params[:query], "member-id" => params[:id], offset: @offset, 'resource-type-id' => params['resource-type-id'], 'publisher-id' => params['publisher-id'], 'source-id' => params['source-id'], 'relation-type-id' => params['relation-type-id'], 'year' => params['year'])
 
   # check for existing claims if user is logged in
   @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
@@ -253,24 +254,14 @@ end
 get '/sources/:id' do
   @source  = get_sources(id: params[:id])
 
-  group_id = @source.fetch(:data, {}).fetch("attributes", {}).fetch("group-id", nil)
-
-  if %w(relations results).include?(group_id)
-    @works = get_works("source-id" => params[:id], offset: @offset, sort: params[:sort], 'relation-type-id' => params['relation-type-id'])
+  if %w(relations results contributions).include?(@source.fetch(:data, {}).fetch("attributes", {}).fetch("group-id", nil))
+    @works = get_works("source-id" => params[:id], "publisher-id" => params["publisher-id"], offset: @offset, sort: params[:sort], 'relation-type-id' => params['relation-type-id'])
 
     # check for existing claims if user is logged in
     @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
 
     # pagination for works
     @works[:data] = pagination_helper(@works[:data], @page, @works.fetch(:meta, {}).fetch("total", 0))
-  elsif group_id == "contributions"
-    @contributions = get_contributions("source-id" => params[:id], "publisher-id" => params["publisher-id"], offset: @offset, rows: 25)
-
-    # check for existing claims if user is logged in
-    @contributions[:data] = get_claimed_items(current_user, @contributions.fetch(:data, [])) if current_user
-
-    # pagination for contributions
-    @contributions[:data] = pagination_helper(@contributions[:data], @page, @contributions.fetch(:meta, {}).fetch("total", 0))
   end
 
   params[:model] = "sources"

@@ -1,3 +1,27 @@
+- if @datacenters[:meta]["registration-agencies"].present?
+  .panel.facets
+    .panel-body
+      %h4
+        Registration Agencies
+      %ul
+        - @datacenters[:meta]["registration-agencies"].each do |f|
+          - if params['registration-agency-id'] == f.fetch("id", nil)
+            %li.active
+              %a{:href => data_centers_query(params.except('registration-agency-id'))}
+                %i.fa.fa-check-square-o
+              .facet-title
+                = f.fetch("title", nil)
+              %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
+              .clearfix
+          - else
+            %li
+              %a{:href => data_centers_query(params.merge('registration-agency-id' => f.fetch("id", nil)))}
+                %i.fa.fa-square-o
+              .facet-title
+                = f.fetch("title", nil)
+              %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
+              .clearfix
+
 - if @datacenters[:meta]["members"].present?
   .panel.facets
     .panel-body
@@ -7,7 +31,7 @@
         - @datacenters[:meta]["members"].each do |f|
           - if params['member-id'] == f.fetch("id", nil)
             %li.active
-              %a{:href => "/data-centers"}
+              %a{:href => data_centers_query(params.except('member-id'))}
                 %i.fa.fa-check-square-o
               .facet-title
                 = f.fetch("title", nil)
@@ -15,7 +39,7 @@
               .clearfix
           - else
             %li
-              %a{:href => "/data-centers?member-id=#{f.fetch("id")}&query=#{params[:query]}"}
+              %a{:href => data_centers_query(params.merge('member-id' => f.fetch("id", nil)))}
                 %i.fa.fa-square-o
               .facet-title
                 = f.fetch("title", nil)

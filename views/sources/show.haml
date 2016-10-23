@@ -13,13 +13,6 @@
         .col-md-3
           = haml :'works/facets'
 
-      - elsif @contributions.present?
-        .col-md-9.panel-list#content-works
-          = haml :'contributions/index'
-
-        .col-md-3
-          = haml :'contributions/facets'
-
 = haml :cite_box
 
 = haml :"#{ENV['RA']}/footer"
