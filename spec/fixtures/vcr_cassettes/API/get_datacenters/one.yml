@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.labs.datacite.org/publishers?id=CERN.ZENODO&include=member,registration-agency&offset=0&registration-agency-id=datacite&rows=25
+    uri: http://api.labs.datacite.org/publishers?id=CERN.ZENODO&include=member,registration-agency&offset=0&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - nginx/1.11.5
       Date:
-      - Thu, 20 Oct 2016 05:48:24 GMT
+      - Sun, 23 Oct 2016 08:58:40 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Connection:
@@ -37,15 +37,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 9bebd0d7-56ba-4412-add5-b9a90a686df4
+      - db374188-f633-4c23-98d1-189a47899982
       Access-Control-Allow-Methods:
       - GET, POST, OPTIONS
       Etag:
-      - W/"06d1441ada95287ad123a5484b8f926b"
+      - W/"8fa68faec0bbdfb6ad81bc0b91219c4d"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.025544'
+      - '8.621587'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -57,54 +57,55 @@ http_interactions:
       string: !binary |-
         eyJkYXRhIjp7ImlkIjoiY2Vybi56ZW5vZG8iLCJ0eXBlIjoicHVibGlzaGVy
         cyIsImF0dHJpYnV0ZXMiOnsidGl0bGUiOiJaRU5PRE8gLSBSZXNlYXJjaC4g
-        U2hhcmVkLiIsIm90aGVyLW5hbWVzIjpbXSwicHJlZml4ZXMiOltdLCJ1cGRh
-        dGVkIjoiMjAxNi0xMC0yMFQwNTozNzozNFoifSwicmVsYXRpb25zaGlwcyI6
-        eyJtZW1iZXIiOnsiZGF0YSI6eyJpZCI6ImNlcm4iLCJ0eXBlIjoibWVtYmVy
-        cyJ9fSwicmVnaXN0cmF0aW9uLWFnZW5jeSI6eyJkYXRhIjp7ImlkIjoiZGF0
-        YWNpdGUiLCJ0eXBlIjoicmVnaXN0cmF0aW9uLWFnZW5jaWVzIn19fX0sImlu
-        Y2x1ZGVkIjpbeyJpZCI6ImNlcm4iLCJ0eXBlIjoibWVtYmVycyIsImF0dHJp
-        YnV0ZXMiOnsidGl0bGUiOiJFdXJvcGVhbiBPcmdhbml6YXRpb24gZm9yIE51
-        Y2xlYXIgUmVzZWFyY2giLCJkZXNjcmlwdGlvbiI6Ilx1MDAzY3BcdTAwM2VD
-        RVJOLCB0aGUgRXVyb3BlYW4gT3JnYW5pemF0aW9uIGZvciBOdWNsZWFyIFJl
-        c2VhcmNoLCBpcyB0aGUgd29ybGRcdTAwMjYjMzk7cyBsYXJnZXN0IHBhcnRp
-        Y2xlIHBoeXNpY3MgbGFib3JhdG9yeS4gRm91bmRlZCBpbiAxOTU0IGFuZCBi
-        YXNlZCBvbiB0aGUgRnJhbmNvLVN3aXNzIGJvcmRlciBuZWFyIEdlbmV2YSwg
-        aXQgd2FzIG9uZSBvZiBFdXJvcGVcdTAwMjYjMzk7cyBmaXJzdCBqb2ludCB2
-        ZW50dXJlcyBhbmQgbm93IGhhcyAyMSBtZW1iZXIgc3RhdGVzIGFuZCBtb3Jl
-        IHRoYW4gNTAgY29vcGVyYXRpb24gYWdyZWVtZW50cyBhbmQgc2NpZW50aWZp
-        YyBjb250YWN0cyB3aXRoIG90aGVyIGNvdW50cmllcy5cdTAwM2MvcFx1MDAz
-        ZVxuXG5cdTAwM2NwXHUwMDNlQXQgQ0VSTiwgcGh5c2ljaXN0cyBhbmQgZW5n
-        aW5lZXJzIHByb2JlIHRoZSBmdW5kYW1lbnRhbCBzdHJ1Y3R1cmUgb2YgdGhl
-        IHVuaXZlcnNlLiBUaGV5IHVzZSB0aGUgd29ybGRcdTAwMjYjMzk7cyBsYXJn
-        ZXN0IGFuZCBtb3N0IGNvbXBsZXggc2NpZW50aWZpYyBpbnN0cnVtZW50LCB0
-        aGUgTGFyZ2UgSGFkcm9uIENvbGxpZGVyIChMSEMpLCB0byBzdHVkeSB0aGUg
-        YmFzaWMgY29uc3RpdHVlbnRzIG9mIG1hdHRlci4gVGhlIHJlc3VsdHMgb2Yg
-        dGhlaXIgZXhwZXJpbWVudGFsIGFuZCB0aGVvcmV0aWNhbCB3b3JrIGFyZSBw
-        dWJsaWNseSBhdmFpbGFibGUgZm9sbG93aW5nIENFUk5cdTAwMjYjMzk7cyBP
-        cGVuIEFjY2VzcyBQb2xpY3kuXHUwMDNjL3BcdTAwM2VcblxuXHUwMDNjcFx1
-        MDAzZUNFUk4gc2VydmljZXMgaW1wbGVtZW50aW5nIERPSXMgYXJlIGl0cyBp
-        bnN0aXR1dGlvbmFsIHJlcG9zaXRvcnkgKENEUywgQ0VSTiBEb2N1bWVudCBT
-        ZXJ2ZXIpOyBJTlNQSVJFLUhFUCwgYSBkaWdpdGFsIGxpYnJhcnkgZm9yIHRo
-        ZSBmaWVsZCBvZiBIaWdoLUVuZXJneSBQaHlzaWNzIHJ1biBpbiBjb2xsYWJv
-        cmF0aW9uIHdpdGggb3RoZXIgaW5zdGl0dXRpb25zOyBvciB0aGUgQ0VSTiBP
-        cGVuIERhdGEgUG9ydGFsLCB3aGljaCBwcm92aWRlcyBoaWdoIGxldmVsIGFu
-        ZCBhbmFseXphYmxlIGRhdGEgYW5kIHNvZnR3YXJlIGZyb20gdGhlIExIQyBl
-        eHBlcmltZW50cy5cdTAwM2MvcFx1MDAzZVxuXG5cdTAwM2NwXHUwMDNlRnVy
-        dGhlcm1vcmUsIENFUk4gaXMgYWxzbyBwcm92aWRpbmcgRE9JcyB0byBaRU5P
-        RE8sIGEgbXVsdGlkaXNjaXBsaW5hcnkgZGF0YSByZXBvc2l0b3J5IGZvciB0
-        aGUg4oCcbG9uZyB0YWls4oCdIG9mIHJlc2VhcmNoIHJlc3VsdHMuIEl0IGFs
-        bG93cyByZXNlYXJjaGVycyB0byBzaGFyZSBhbmQgcHJlc2VydmUgdGhlaXIg
-        b3V0cHV0IGluZGVwZW5kZW50IG9mIHNpemUsIHR5cGUgb2YgbWF0ZXJpYWwg
-        b3IgZGlzY2lwbGluZS5cdTAwM2MvcFx1MDAzZVxuIiwibWVtYmVyLXR5cGUi
-        OiJhbGxvY2F0aW5nIiwicmVnaW9uIjoiRU1FQSIsImNvdW50cnkiOiJTd2l0
-        emVybGFuZCIsInllYXIiOjIwMTQsImxvZ28tdXJsIjoiaHR0cHM6Ly9hc3Nl
-        dHMubGFicy5kYXRhY2l0ZS5vcmcvaW1hZ2VzL21lbWJlcnMvQ0VSTi5wbmci
-        LCJlbWFpbCI6ImRvaS1zZXJ2aWNlQGNlcm4uY2giLCJ3ZWJzaXRlIjoiaHR0
-        cDovL2RvaS53ZWIuY2Vybi5jaC8iLCJwaG9uZSI6bnVsbCwidXBkYXRlZCI6
-        IjIwMTYtMDctMzFUMjE6MzA6MjUuMDAwWiJ9fSx7ImlkIjoiZGF0YWNpdGUi
-        LCJ0eXBlIjoicmVnaXN0cmF0aW9uLWFnZW5jaWVzIiwiYXR0cmlidXRlcyI6
-        eyJ0aXRsZSI6IkRhdGFDaXRlIiwidXBkYXRlZCI6IjIwMTYtMDQtMjdUMDI6
-        MjM6MDFaIn19XX0=
+        U2hhcmVkLiIsIm90aGVyLW5hbWVzIjpbXSwicHJlZml4ZXMiOltdLCJtZW1i
+        ZXItaWQiOiJjZXJuIiwicmVnaXN0cmF0aW9uLWFnZW5jeS1pZCI6ImRhdGFj
+        aXRlIiwidXBkYXRlZCI6IjIwMTYtMTAtMjNUMDg6NTc6MDNaIn0sInJlbGF0
+        aW9uc2hpcHMiOnsibWVtYmVyIjp7ImRhdGEiOnsiaWQiOiJjZXJuIiwidHlw
+        ZSI6Im1lbWJlcnMifX0sInJlZ2lzdHJhdGlvbi1hZ2VuY3kiOnsiZGF0YSI6
+        eyJpZCI6ImRhdGFjaXRlIiwidHlwZSI6InJlZ2lzdHJhdGlvbi1hZ2VuY2ll
+        cyJ9fX19LCJpbmNsdWRlZCI6W3siaWQiOiJjZXJuIiwidHlwZSI6Im1lbWJl
+        cnMiLCJhdHRyaWJ1dGVzIjp7InRpdGxlIjoiRXVyb3BlYW4gT3JnYW5pemF0
+        aW9uIGZvciBOdWNsZWFyIFJlc2VhcmNoIiwiZGVzY3JpcHRpb24iOiJcdTAw
+        M2NwXHUwMDNlQ0VSTiwgdGhlIEV1cm9wZWFuIE9yZ2FuaXphdGlvbiBmb3Ig
+        TnVjbGVhciBSZXNlYXJjaCwgaXMgdGhlIHdvcmxkXHUwMDI2IzM5O3MgbGFy
+        Z2VzdCBwYXJ0aWNsZSBwaHlzaWNzIGxhYm9yYXRvcnkuIEZvdW5kZWQgaW4g
+        MTk1NCBhbmQgYmFzZWQgb24gdGhlIEZyYW5jby1Td2lzcyBib3JkZXIgbmVh
+        ciBHZW5ldmEsIGl0IHdhcyBvbmUgb2YgRXVyb3BlXHUwMDI2IzM5O3MgZmly
+        c3Qgam9pbnQgdmVudHVyZXMgYW5kIG5vdyBoYXMgMjEgbWVtYmVyIHN0YXRl
+        cyBhbmQgbW9yZSB0aGFuIDUwIGNvb3BlcmF0aW9uIGFncmVlbWVudHMgYW5k
+        IHNjaWVudGlmaWMgY29udGFjdHMgd2l0aCBvdGhlciBjb3VudHJpZXMuXHUw
+        MDNjL3BcdTAwM2VcblxuXHUwMDNjcFx1MDAzZUF0IENFUk4sIHBoeXNpY2lz
+        dHMgYW5kIGVuZ2luZWVycyBwcm9iZSB0aGUgZnVuZGFtZW50YWwgc3RydWN0
+        dXJlIG9mIHRoZSB1bml2ZXJzZS4gVGhleSB1c2UgdGhlIHdvcmxkXHUwMDI2
+        IzM5O3MgbGFyZ2VzdCBhbmQgbW9zdCBjb21wbGV4IHNjaWVudGlmaWMgaW5z
+        dHJ1bWVudCwgdGhlIExhcmdlIEhhZHJvbiBDb2xsaWRlciAoTEhDKSwgdG8g
+        c3R1ZHkgdGhlIGJhc2ljIGNvbnN0aXR1ZW50cyBvZiBtYXR0ZXIuIFRoZSBy
+        ZXN1bHRzIG9mIHRoZWlyIGV4cGVyaW1lbnRhbCBhbmQgdGhlb3JldGljYWwg
+        d29yayBhcmUgcHVibGljbHkgYXZhaWxhYmxlIGZvbGxvd2luZyBDRVJOXHUw
+        MDI2IzM5O3MgT3BlbiBBY2Nlc3MgUG9saWN5Llx1MDAzYy9wXHUwMDNlXG5c
+        blx1MDAzY3BcdTAwM2VDRVJOIHNlcnZpY2VzIGltcGxlbWVudGluZyBET0lz
+        IGFyZSBpdHMgaW5zdGl0dXRpb25hbCByZXBvc2l0b3J5IChDRFMsIENFUk4g
+        RG9jdW1lbnQgU2VydmVyKTsgSU5TUElSRS1IRVAsIGEgZGlnaXRhbCBsaWJy
+        YXJ5IGZvciB0aGUgZmllbGQgb2YgSGlnaC1FbmVyZ3kgUGh5c2ljcyBydW4g
+        aW4gY29sbGFib3JhdGlvbiB3aXRoIG90aGVyIGluc3RpdHV0aW9uczsgb3Ig
+        dGhlIENFUk4gT3BlbiBEYXRhIFBvcnRhbCwgd2hpY2ggcHJvdmlkZXMgaGln
+        aCBsZXZlbCBhbmQgYW5hbHl6YWJsZSBkYXRhIGFuZCBzb2Z0d2FyZSBmcm9t
+        IHRoZSBMSEMgZXhwZXJpbWVudHMuXHUwMDNjL3BcdTAwM2VcblxuXHUwMDNj
+        cFx1MDAzZUZ1cnRoZXJtb3JlLCBDRVJOIGlzIGFsc28gcHJvdmlkaW5nIERP
+        SXMgdG8gWkVOT0RPLCBhIG11bHRpZGlzY2lwbGluYXJ5IGRhdGEgcmVwb3Np
+        dG9yeSBmb3IgdGhlIOKAnGxvbmcgdGFpbOKAnSBvZiByZXNlYXJjaCByZXN1
+        bHRzLiBJdCBhbGxvd3MgcmVzZWFyY2hlcnMgdG8gc2hhcmUgYW5kIHByZXNl
+        cnZlIHRoZWlyIG91dHB1dCBpbmRlcGVuZGVudCBvZiBzaXplLCB0eXBlIG9m
+        IG1hdGVyaWFsIG9yIGRpc2NpcGxpbmUuXHUwMDNjL3BcdTAwM2VcbiIsIm1l
+        bWJlci10eXBlIjoiYWxsb2NhdGluZyIsInJlZ2lvbiI6IkVNRUEiLCJjb3Vu
+        dHJ5IjoiU3dpdHplcmxhbmQiLCJ5ZWFyIjoyMDE0LCJsb2dvLXVybCI6Imh0
+        dHBzOi8vYXNzZXRzLmxhYnMuZGF0YWNpdGUub3JnL2ltYWdlcy9tZW1iZXJz
+        L0NFUk4ucG5nIiwiZW1haWwiOiJkb2ktc2VydmljZUBjZXJuLmNoIiwid2Vi
+        c2l0ZSI6Imh0dHA6Ly9kb2kud2ViLmNlcm4uY2gvIiwicGhvbmUiOm51bGws
+        InVwZGF0ZWQiOiIyMDE2LTA3LTMxVDIxOjMwOjI1LjAwMFoifX0seyJpZCI6
+        ImRhdGFjaXRlIiwidHlwZSI6InJlZ2lzdHJhdGlvbi1hZ2VuY2llcyIsImF0
+        dHJpYnV0ZXMiOnsidGl0bGUiOiJEYXRhQ2l0ZSIsInVwZGF0ZWQiOiIyMDE2
+        LTA0LTI3VDAyOjIzOjAxWiJ9fV19
     http_version: 
-  recorded_at: Thu, 20 Oct 2016 05:48:24 GMT
+  recorded_at: Sun, 23 Oct 2016 08:58:40 GMT
 recorded_with: VCR 2.9.3
