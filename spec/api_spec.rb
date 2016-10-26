@@ -55,7 +55,7 @@ describe "API", type: :model, vcr: true do
   context "get_datacenters" do
     it "all" do
       response = subject.get_datacenters
-      expect(response[:meta]["registration-agencies"].first).to eq("id"=>"datacite", "title"=>"DataCite", "count"=>807)
+      expect(response[:meta]["registration-agencies"].first).to eq("id"=>"datacite", "title"=>"DataCite", "count"=>814)
       datacenter = response[:data].first
       expect(datacenter["attributes"]["title"]).to eq("027.7 - Zeitschrift für Bibliothekskultur")
     end

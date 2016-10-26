@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.labs.datacite.org/publishers?id=CERN.ZENODO&include=member,registration-agency&offset=0&rows=25
+    uri: http://api.labs.datacite.org/publishers?id=CERN.ZENODO&include=member,registration-agency&offset=0&registration-agency-id=datacite&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - nginx/1.11.5
       Date:
-      - Sun, 23 Oct 2016 08:58:40 GMT
+      - Wed, 26 Oct 2016 17:46:44 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Connection:
@@ -37,15 +37,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - db374188-f633-4c23-98d1-189a47899982
+      - d3042902-7f09-41f7-81ff-52d260c0e8b3
       Access-Control-Allow-Methods:
       - GET, POST, OPTIONS
       Etag:
-      - W/"8fa68faec0bbdfb6ad81bc0b91219c4d"
+      - W/"feb667c8271f98c045487875b1459c1e"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '8.621587'
+      - '0.030432'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -59,7 +59,7 @@ http_interactions:
         cyIsImF0dHJpYnV0ZXMiOnsidGl0bGUiOiJaRU5PRE8gLSBSZXNlYXJjaC4g
         U2hhcmVkLiIsIm90aGVyLW5hbWVzIjpbXSwicHJlZml4ZXMiOltdLCJtZW1i
         ZXItaWQiOiJjZXJuIiwicmVnaXN0cmF0aW9uLWFnZW5jeS1pZCI6ImRhdGFj
-        aXRlIiwidXBkYXRlZCI6IjIwMTYtMTAtMjNUMDg6NTc6MDNaIn0sInJlbGF0
+        aXRlIiwidXBkYXRlZCI6IjIwMTYtMTAtMjZUMTc6MDg6MjNaIn0sInJlbGF0
         aW9uc2hpcHMiOnsibWVtYmVyIjp7ImRhdGEiOnsiaWQiOiJjZXJuIiwidHlw
         ZSI6Im1lbWJlcnMifX0sInJlZ2lzdHJhdGlvbi1hZ2VuY3kiOnsiZGF0YSI6
         eyJpZCI6ImRhdGFjaXRlIiwidHlwZSI6InJlZ2lzdHJhdGlvbi1hZ2VuY2ll
@@ -107,5 +107,5 @@ http_interactions:
         dHJpYnV0ZXMiOnsidGl0bGUiOiJEYXRhQ2l0ZSIsInVwZGF0ZWQiOiIyMDE2
         LTA0LTI3VDAyOjIzOjAxWiJ9fV19
     http_version: 
-  recorded_at: Sun, 23 Oct 2016 08:58:40 GMT
+  recorded_at: Wed, 26 Oct 2016 17:46:42 GMT
 recorded_with: VCR 2.9.3

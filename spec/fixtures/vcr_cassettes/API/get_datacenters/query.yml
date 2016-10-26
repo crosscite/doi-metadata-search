@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.labs.datacite.org/publishers?include=member,registration-agency&offset=0&query=zeno&rows=25
+    uri: http://api.labs.datacite.org/publishers?include=member,registration-agency&offset=0&query=zeno&registration-agency-id=datacite&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - nginx/1.11.5
       Date:
-      - Sun, 23 Oct 2016 08:58:40 GMT
+      - Wed, 26 Oct 2016 17:46:44 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Connection:
@@ -37,15 +37,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 8f4787a6-6874-45b2-b7b0-c6f4cb559bac
+      - bf3213be-e76b-4ff0-b373-f9c877974b8b
       Access-Control-Allow-Methods:
       - GET, POST, OPTIONS
       Etag:
-      - W/"5d3f6e0753ef5ca966ba939914c07895"
+      - W/"463a8c36d074271ee42ec3380b157527"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.109898'
+      - '0.043483'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -59,7 +59,7 @@ http_interactions:
         cnMiLCJhdHRyaWJ1dGVzIjp7InRpdGxlIjoiWkVOT0RPIC0gUmVzZWFyY2gu
         IFNoYXJlZC4iLCJvdGhlci1uYW1lcyI6W10sInByZWZpeGVzIjpbXSwibWVt
         YmVyLWlkIjoiY2VybiIsInJlZ2lzdHJhdGlvbi1hZ2VuY3ktaWQiOiJkYXRh
-        Y2l0ZSIsInVwZGF0ZWQiOiIyMDE2LTEwLTIzVDA4OjU3OjAzWiJ9LCJyZWxh
+        Y2l0ZSIsInVwZGF0ZWQiOiIyMDE2LTEwLTI2VDE3OjA4OjIzWiJ9LCJyZWxh
         dGlvbnNoaXBzIjp7Im1lbWJlciI6eyJkYXRhIjp7ImlkIjoiY2VybiIsInR5
         cGUiOiJtZW1iZXJzIn19LCJyZWdpc3RyYXRpb24tYWdlbmN5Ijp7ImRhdGEi
         OnsiaWQiOiJkYXRhY2l0ZSIsInR5cGUiOiJyZWdpc3RyYXRpb24tYWdlbmNp
@@ -111,5 +111,5 @@ http_interactions:
         biIsInRpdGxlIjoiRXVyb3BlYW4gT3JnYW5pemF0aW9uIGZvciBOdWNsZWFy
         IFJlc2VhcmNoIiwiY291bnQiOjF9XX19
     http_version: 
-  recorded_at: Sun, 23 Oct 2016 08:58:40 GMT
+  recorded_at: Wed, 26 Oct 2016 17:46:42 GMT
 recorded_with: VCR 2.9.3
