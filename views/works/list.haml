@@ -5,7 +5,7 @@
         .btn-group.btn-group-sm
           %a{href: "#", class: "btn btn-default dropdown-toggle", data: { toggle: "dropdown" }}
             %i.fa.fa-sort
-            = params[:sort] ? "Sort by " + source_title(@works[:included].select { |item| item["type"] == "sources" }, params[:sort]) : "Sort by Date"
+            = params[:sort] && @source.present? ? "Sort by " + @source[:data].fetch("attributes", {}).fetch("title", "Source") : "Sort by Date"
             %span.caret
           %ul.dropdown-menu.pull-right
             %li

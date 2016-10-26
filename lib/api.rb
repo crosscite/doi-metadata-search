@@ -80,7 +80,7 @@ module Sinatra
                  query: params.fetch(:query, nil),
                  include: 'member,registration-agency',
                  "member-id" => params.fetch("member-id", nil),
-                 "registration-agency-id" => params.fetch("registration-agency-id", nil) }.compact
+                 "registration-agency-id" => "datacite" }.compact
       url = "#{ENV['API_URL']}/publishers?" + URI.encode_www_form(params)
 
       result = Maremma.get url, timeout: TIMEOUT

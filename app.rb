@@ -255,7 +255,7 @@ get '/sources/:id' do
   @source  = get_sources(id: params[:id])
 
   if %w(relations results contributions).include?(@source.fetch(:data, {}).fetch("attributes", {}).fetch("group-id", nil))
-    @works = get_works("source-id" => params[:id], "publisher-id" => params["publisher-id"], offset: @offset, sort: params[:sort], 'relation-type-id' => params['relation-type-id'])
+    @works = get_works("source-id" => params[:id], "publisher-id" => params["publisher-id"], "resource-type-id" => params["resource-type-id"], "year" => params["year"], offset: @offset, sort: params[:sort], 'relation-type-id' => params['relation-type-id'])
 
     # check for existing claims if user is logged in
     @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
