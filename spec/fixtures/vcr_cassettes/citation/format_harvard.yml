@@ -23,20 +23,20 @@ http_interactions:
       Location:
       - http://data.datacite.org/10.5281%2FZENODO.21430
       Expires:
-      - Sat, 03 Sep 2016 15:48:00 GMT
+      - Thu, 20 Oct 2016 11:27:18 GMT
       Content-Type:
       - text/html;charset=utf-8
       Content-Length:
       - '179'
       Date:
-      - Sat, 03 Sep 2016 15:46:36 GMT
+      - Thu, 20 Oct 2016 10:55:35 GMT
     body:
       encoding: UTF-8
       string: |-
         <html><head><title>Handle Redirect</title></head>
         <body><a href="http://data.datacite.org/10.5281%2FZENODO.21430">http://data.datacite.org/10.5281%2FZENODO.21430</a></body></html>
     http_version: 
-  recorded_at: Sat, 03 Sep 2016 15:46:36 GMT
+  recorded_at: Thu, 20 Oct 2016 10:55:36 GMT
 - request:
     method: get
     uri: http://data.datacite.org/10.5281%2FZENODO.21430
@@ -54,9 +54,9 @@ http_interactions:
       message: ''
     headers:
       Server:
-      - nginx/1.11.3
+      - nginx/1.11.5
       Date:
-      - Sat, 03 Sep 2016 15:46:37 GMT
+      - Thu, 20 Oct 2016 10:55:36 GMT
       Content-Type:
       - text/x-bibliography;charset=iso-8859-1
       Connection:
@@ -69,13 +69,13 @@ http_interactions:
       - Accept
       Access-Control-Allow-Origin:
       - "*"
-      Access-Control-Allow-Headers:
-      - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS
     body:
       encoding: UTF-8
       string: 'Martin Fenner et al., 2015. DataCite-ORCID: 1.0. Available at: https://doi.org/10.5281/ZENODO.21430.
 
 '
     http_version: 
-  recorded_at: Sat, 03 Sep 2016 15:46:37 GMT
+  recorded_at: Thu, 20 Oct 2016 10:55:36 GMT
 recorded_with: VCR 2.9.3

@@ -36,6 +36,7 @@ TYPICAL_ROWS = [10, 20, 50, 100, 500]
 DEFAULT_ROWS = 25
 MONTH_SHORT_NAMES = %w(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec)
 ORCID_VERSION = '1.2'
+TIMEOUT = 30
 
 require 'sinatra'
 require 'sinatra/json'
@@ -98,7 +99,7 @@ configure do
       config.project_root = settings.root
       config.app_version = App::VERSION
       config.release_stage = ENV['RACK_ENV']
-      config.notify_release_stages = %w(production development)
+      config.notify_release_stages = %w(production stage development)
     end
 
     use Bugsnag::Rack
@@ -115,6 +116,12 @@ configure :development do
   # disable :show_exceptions
 end
 
+before do
+  @page = params.fetch('page', 1).to_i
+  @offset = DEFAULT_ROWS * (@page - 1)
+  @meta = {}
+end
+
 after do
   response.headers['Access-Control-Allow-Origin'] = '*'
 end
@@ -126,33 +133,15 @@ get '/' do
 end
 
 get '/works' do
-  page = params.fetch('page', 1).to_i
-  offset = DEFAULT_ROWS * (page - 1)
-
-  result = get_works(query: params[:query], offset: offset, 'publisher-id' => params['publisher-id'], 'resource-type-id' => params['resource-type-id'], 'year' => params['year'])
-  works = Array(result.fetch(:data, [])).select {|item| item["type"] == "works" }
-  @meta = result.fetch(:meta, {})
-
-  # check for errors
-  if result.fetch(:errors, []).present?
-    error = result.fetch(:errors, []).first
-    @works_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
-  end
+  @works = get_works(query: params[:query], offset: @offset, 'publisher-id' => params['publisher-id'], 'source-id' => params['source-id'], 'relation-type-id' => params['relation-type-id'], 'resource-type-id' => params['resource-type-id'], 'year' => params['year'])
 
   # check for existing claims if user is logged in
-  works = get_claimed_items(current_user, works) if current_user
+  @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
 
-  @works = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
-    pager.replace works
-  end
-
-  @resource_types = Array(result.fetch(:data, [])).select {|item| item["type"] == "resource-types" }
-  @publishers = Array(result.fetch(:data, [])).select {|item| item["type"] == "publishers" }
-  @sources = Array(result.fetch(:data, [])).select {|item| item["type"] == "sources" }
-  @work_types = Array(result.fetch(:data, [])).select {|item| item["type"] == "work-types" }
+  # pagination
+  @works[:data] = pagination_helper(@works[:data], @page, @works.fetch(:meta, {}).fetch("total", 0))
 
   params[:model] = "works"
-
   haml :'works/index'
 end
 
@@ -162,319 +151,130 @@ get %r{/works/(.+)} do
   # workaround, as nginx swallows double backslashes
   params["id"] = params["id"].gsub(/(http|https):\/+(\w+)/, '\1://\2')
 
-  result = get_works(id: params["id"])
-  works = Array(result.fetch(:data, [])).select {|item| item["type"] == "works" }
-
-  # check for errors
-  if result.fetch(:errors, []).present?
-    error = result.fetch(:errors, []).first
-    @work_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
-  elsif works.blank?
-    @work_error = "Work \"#{params['id']}\" not found."
-  end
-
-  @publishers = Array(result.fetch(:data, [])).select {|item| item["type"] == "publishers" }
-  @members = Array(result.fetch(:data, [])).select {|item| item["type"] == "members" }
-  @sources = Array(result.fetch(:data, [])).select {|item| item["type"] == "sources" }
-  @work_types = Array(result.fetch(:data, [])).select {|item| item["type"] == "work-types" }
-  @meta = result[:meta]
+  @work = get_works(id: params["id"])
 
   # check for existing claims if user is logged in and work is registered with DataCite
-  if current_user && works.first.fetch("attributes", {}).fetch("registration-agency-id", nil) == "datacite"
-    works = get_claimed_items(current_user, works)
+  if current_user
+    @work[:data] = get_claimed_items(current_user, [@work[:data]]).first
   end
 
-  @work = works.first
-
-  page = params.fetch('page', 1).to_i
-  offset = DEFAULT_ROWS * (page - 1)
-
-  collection = get_contributions("work-id" => params["id"], "source-id" => params["source-id"], offset: offset, rows: 100)
-  @contributions= Array(collection.fetch(:data, [])).select {|item| item["type"] == "contributions" }
-  @contribution_sources = Array(collection.fetch(:data, [])).select {|item| item["type"] == "sources" }
-  @meta["contribution-total"] = collection.fetch(:meta, {}).fetch("total", 0)
-  @meta["contribution-sources"] = collection.fetch(:meta, {}).fetch("sources", {})
-
-  relations = get_relations("work-id" => params["id"], "source-id" => params["source-id"], "relation-type-id" => params["relation-type-id"], offset: offset, rows: 25)
-  @relation_sources = Array(relations.fetch(:data, [])).select {|item| item["type"] == "sources" }
-  @relation_types = Array(relations.fetch(:data, [])).select {|item| item["type"] == "relation-types" }
-  @meta["relation-total"] = relations.fetch(:meta, {}).fetch("total", 0)
-  @meta["relation-types"] = relations.fetch(:meta, {}).fetch("relation-types", {})
-  @meta["relation-sources"] = relations.fetch(:meta, {}).fetch("sources", {})
-
-  relations= Array(relations.fetch(:data, [])).select {|item| item["type"] == "relations" }
+  @contributions = get_contributions("work-id" => params["id"], "source-id" => params["source-id"], "publisher-id" => params["publisher-id"], offset: @offset, rows: 100)
+  @relations = get_relations("work-id" => params["id"], "source-id" => params["source-id"], "relation-type-id" => params["relation-type-id"], offset: @offset, rows: 25)
 
   # check for existing claims if user is logged in
-  works = get_claimed_items(current_user, relations) if current_user
-
-  @relations = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["relation-total"]) do |pager|
-    pager.replace relations
+  if current_user
+    @contributions[:data] = get_claimed_items(current_user, @contributions.fetch(:data, []))
+    @relations[:data] = get_claimed_items(current_user, @relations.fetch(:data, []))
   end
 
-  params[:model] = "works"
+  # pagination for relations
+  @relations[:data] = pagination_helper(@relations[:data], @page, @relations.fetch(:meta, {}).fetch("total", 0))
 
+  params[:model] = "works"
   haml :'works/show'
 end
 
 get '/contributors' do
-  page = params.fetch('page', 1).to_i
-  offset = DEFAULT_ROWS * (page - 1)
+  @contributors = get_contributors(query: params[:query], offset: @offset)
 
-  result = get_contributors(query: params[:query], offset: offset)
-  contributors = Array(result.fetch(:data, []))
-  @meta = result[:meta]
-
-  # check for errors
-  if result.fetch(:errors, []).present?
-    error = result.fetch(:errors, []).first
-    @contributors_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
-  end
-
-  @contributors = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
-    pager.replace contributors
-  end
+  # pagination
+  @contributors[:data] = pagination_helper(@contributors[:data], @page, @contributors.fetch(:meta, {}).fetch("total", 0))
 
   haml :'contributors/index'
 end
 
 get '/contributors/:id' do
-  if validate_orcid(params[:id])
-    id = "orcid.org/#{params[:id]}"
-  else
-    id = "https://github.com/#{params[:id]}"
-  end
-  result = get_contributors(id: id)
-  @contributor = Array(result.fetch(:data, [])).find { |item| item["type"] == "contributors" }
+  id = validate_orcid(params[:id]) ? "orcid.org/#{params[:id]}" : "https://github.com/#{params[:id]}"
 
-  # check for errors
-  if result.fetch(:errors, []).present?
-    error = result.fetch(:errors, []).first
-    @contributor_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
-  elsif @contributor.blank?
-    @contributor_error = "Contributor \"#{params['id']}\" not found."
-  end
+  @contributor  = get_contributors(id: id)
 
-  page = params.fetch('page', 1).to_i
-  offset = DEFAULT_ROWS * (page - 1)
-
-  collection = get_contributions("contributor-id" => id, "source-id" => params["source-id"], offset: offset)
-  contributions = Array(collection.fetch(:data, [])).select {|item| item["type"] == "contributions" }
+  @contributions = get_contributions("contributor-id" => id, "source-id" => params["source-id"], "publisher-id" => params["publisher-id"], offset: @offset)
 
   # check for existing claims if user is logged in
-  contributions = get_claimed_items(current_user, contributions) if current_user
+  @contributions[:data] = get_claimed_items(current_user, @contributions.fetch(:data, [])) if current_user
 
-  @meta = collection[:meta]
-  @contribution_sources = Array(collection.fetch(:data, [])).select {|item| item["type"] == "sources" }
-  @meta["contribution-total"] = collection.fetch(:meta, {}).fetch("total", 0)
-  @meta["contribution-sources"] = collection.fetch(:meta, {}).fetch("sources", {})
-  @contributions = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
-    pager.replace contributions
-  end
+  # pagination
+  @contributions[:data] = pagination_helper(@contributions[:data], @page, @contributions.fetch(:meta, {}).fetch("total", 0))
 
   params[:model] = "contributors"
-
   haml :'contributors/show'
 end
 
 get '/data-centers' do
-  page = params.fetch('page', 1).to_i
-  offset = DEFAULT_ROWS * (page - 1)
+  @datacenters  = get_datacenters(query: params[:query], offset: @offset, "registration-agency-id" => params["registration-agency-id"], "member-id" => params["member-id"])
 
-  result  = get_datacenters(query: params[:query], offset: offset, "member-id" => params["member-id"])
-  datacenters = Array(result.fetch(:data, [])).select {|item| item["type"] == "publishers" }
-  @members = Array(result.fetch(:data, [])).select {|item| item["type"] == "members" }
-
-  # check for errors
-  if result.fetch(:errors, []).present?
-    error = result.fetch(:errors, []).first
-    @datacenters_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
-  end
-
-  @meta = result[:meta]
-
-  @datacenters = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
-    pager.replace datacenters
-  end
+  # pagination
+  @datacenters[:data] = pagination_helper(@datacenters[:data], @page, @datacenters.fetch(:meta, {}).fetch("total", 0))
 
   haml :'data-centers/index'
 end
 
 get '/data-centers/:id' do
-  result = get_datacenters(id: params[:id])
-  @datacenter = Array(result.fetch(:data, [])).find {|item| item["type"] == "publishers" }
-  @members = Array(result.fetch(:data, [])).select {|item| item["type"] == "members" }
+  @datacenter = get_datacenters(id: params[:id])
 
-  # check for errors
-  if result.fetch(:errors, []).present?
-    error = result.fetch(:errors, []).first
-    @datacenter_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
-  elsif @datacenter.blank?
-    @datacenter_error = "Data center \"#{params['id']}\" not found."
-  end
-
-  page = params.fetch('page', 1).to_i
-  offset = DEFAULT_ROWS * (page - 1)
-
-  collection = get_works(query: params[:query], "publisher-id" => params[:id], offset: offset, 'resource-type-id' => params['resource-type-id'], 'source-id' => params['source-id'], 'relation-type-id' => params['relation-type-id'], 'year' => params['year'], sort: params[:sort])
-  works = Array(collection.fetch(:data, [])).select {|item| item["type"] == "works" }
-  @meta = collection[:meta]
-
-  # check for errors
-  if collection.fetch(:errors, []).present?
-    error = collection.fetch(:errors, []).first
-    @works_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
-  end
+  @works = get_works(query: params[:query], "publisher-id" => params[:id], offset: @offset, 'resource-type-id' => params['resource-type-id'], 'source-id' => params['source-id'], 'relation-type-id' => params['relation-type-id'], 'year' => params['year'], sort: params[:sort])
 
   # check for existing claims if user is logged in
-  works = get_claimed_items(current_user, works) if current_user
+  @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
 
-  @works = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
-    pager.replace works
-  end
-
-  @resource_types = Array(collection.fetch(:data, [])).select {|item| item["type"] == "resource-types" }
-  @relation_types = Array(collection.fetch(:data, [])).select {|item| item["type"] == "relation-types" }
-  @work_types = Array(collection.fetch(:data, [])).select {|item| item["type"] == "work-types" }
-  @sources = Array(collection.fetch(:data, [])).select {|item| item["type"] == "sources" }
-
-
-  # Add Claim facet by Type of Source, commit: 45ece1be7f1f2a905c3e4780b7bc6e22e2e7f048
-  # contributions = get_contributions("publisher-id" => params[:id], offset: offset, rows: 100)
-  # @contributions = Array(contributions.fetch(:data, [])).select {|item| item["type"] == "contributions" }
-  # @contribution_sources = Array(contributions.fetch(:data, [])).select {|item| item["type"] == "sources" }
-  # @meta["contribution-total"] = contributions.fetch(:meta, {}).fetch("total", 0)
-  # @meta["contribution-sources"] = contributions.fetch(:meta, {}).fetch("sources", {})
-
+  # pagination for works
+  @works[:data] = pagination_helper(@works[:data], @page, @works.fetch(:meta, {}).fetch("total", 0))
 
   params[:model] = "data-centers"
-
   haml :'data-centers/show'
 end
 
 get '/members' do
-  result = get_members(query: params[:query], "member-type" => params["member-type"], region: params[:region], year: params[:year])
-  @members = Array(result.fetch(:data, [])).select {|item| item["type"] == "members" }
-  @meta = result[:meta]
-
-  # check for errors
-  if result.fetch(:errors, []).present?
-    error = result.fetch(:errors, []).first
-    @members_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
-  end
+  @members = get_members(query: params[:query], "member-type" => params["member-type"], region: params[:region], year: params[:year])
 
   haml :'members/index'
 end
 
 get '/members/:id' do
-  result = get_members(id: params[:id])
-  @member = result.fetch(:data, {})
+  @member = get_members(id: params[:id])
 
-  # check for errors
-  if result.fetch(:errors, []).present?
-    error = result.fetch(:errors, []).first
-    @member_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
-  elsif @member.blank?
-    @member_error = "Member \"#{params['id']}\" not found."
-  end
-
-  page = params.fetch('page', 1).to_i
-  offset = DEFAULT_ROWS * (page - 1)
-
-  collection = get_works(query: params[:query], "member-id" => params[:id], offset: offset, 'resource-type-id' => params['resource-type-id'], 'publisher-id' => params['publisher-id'], 'year' => params['year'])
-  works = Array(collection.fetch(:data, [])).select {|item| item["type"] == "works" }
-  @meta = collection[:meta]
-
-  # check for errors
-  if collection.fetch(:errors, []).present?
-    error = collection.fetch(:errors, []).first
-    @works_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
-  end
+  @works = get_works(query: params[:query], "member-id" => params[:id], offset: @offset, 'resource-type-id' => params['resource-type-id'], 'publisher-id' => params['publisher-id'], 'source-id' => params['source-id'], 'relation-type-id' => params['relation-type-id'], 'year' => params['year'])
 
   # check for existing claims if user is logged in
-  works = get_claimed_items(current_user, works) if current_user
+  @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
 
-  @works = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
-    pager.replace works
-  end
-
-  @resource_types = Array(collection.fetch(:data, [])).select {|item| item["type"] == "resource-types" }
-  @publishers = []
+  # pagination for works
+  @works[:data] = pagination_helper(@works[:data], @page, @works.fetch(:meta, {}).fetch("total", 0))
 
   params[:model] = "members"
-
   haml :'members/show'
 end
 
 get '/sources' do
-  result = get_sources(query: params[:query], "group-id" => params["group-id"])
-  @sources = Array(result.fetch(:data, [])).select {|item| item["type"] == "sources" }
-  @groups = Array(result.fetch(:data, [])).select {|item| item["type"] == "groups" }
-  @meta = result[:meta]
-
-  # check for errors
-  if result.fetch(:errors, []).present?
-    error = result.fetch(:errors, []).first
-    @sources_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
-  end
+  @sources = get_sources(query: params[:query], "group-id" => params["group-id"])
 
   haml :'sources/index'
 end
 
 get '/sources/:id' do
-  result = get_sources(id: params[:id])
-  @source = Array(result.fetch(:data, [])).find {|item| item["type"] == "sources" }
+  @source  = get_sources(id: params[:id])
 
-  # check for errors
-  if result.fetch(:errors, []).present?
-    error = result.fetch(:errors, []).first
-    @source_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
-  elsif @source.blank?
-    @source_error = "Source \"#{params['id']}\" not found."
-  end
-
-  @groups = Array(result.fetch(:data, [])).select {|item| item["type"] == "groups" }
-  group = @groups.first
-
-  page = params.fetch('page', 1).to_i
-  offset = DEFAULT_ROWS * (page - 1)
-
-  if %w(relations results).include?(group["id"])
-    collection = get_works("source-id" => params[:id], offset: offset, sort: params[:sort], 'relation-type-id' => params['relation-type-id'])
-    works = Array(collection.fetch(:data, [])).select {|item| item["type"] == "works" }
-    @sources = Array(collection.fetch(:data, [])).select {|item| item["type"] == "sources" }
-    @relation_types = Array(collection.fetch(:data, [])).select {|item| item["type"] == "relation-types" }
-    @work_types = Array(collection.fetch(:data, [])).select {|item| item["type"] == "work-types" }
-    @meta = collection[:meta]
+  if %w(relations results contributions).include?(@source.fetch(:data, {}).fetch("attributes", {}).fetch("group-id", nil))
+    @works = get_works("source-id" => params[:id], "publisher-id" => params["publisher-id"], "resource-type-id" => params["resource-type-id"], "year" => params["year"], offset: @offset, sort: params[:sort], 'relation-type-id' => params['relation-type-id'])
 
     # check for existing claims if user is logged in
-    works = get_claimed_items(current_user, works) if current_user
+    @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
 
-    @works = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
-      pager.replace works
-    end
-  elsif group["id"] == "contributions"
-    collection = get_contributions("source-id" => params[:id], "publisher-id" => params["publisher-id"], offset: offset, rows: 25)
-    contributions= Array(collection.fetch(:data, [])).select {|item| item["type"] == "contributions" }
-    @contribution_sources = Array(collection.fetch(:data, [])).select {|item| item["type"] == "sources" }
-    @contribution_publishers = Array(collection.fetch(:data, [])).select {|item| item["type"] == "publishers" }
-    @meta = collection[:meta]
-    @meta["contribution-total"] = collection.fetch(:meta, {}).fetch("total", 0)
-    @meta["contribution-sources"] = collection.fetch(:meta, {}).fetch("sources", {})
-    @meta["contribution-publishers"] = collection.fetch(:meta, {}).fetch("publishers", {}).sort_by(&:last).reverse.first 20
-
-    # check for existing claims if user is logged in
-    contributions = get_claimed_items(current_user, contributions) if current_user
-
-    @contributions = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["contribution-total"]) do |pager|
-      pager.replace contributions
-    end
-  else
-    @meta = {}
+    # pagination for works
+    @works[:data] = pagination_helper(@works[:data], @page, @works.fetch(:meta, {}).fetch("total", 0))
   end
 
   params[:model] = "sources"
-
   haml :'sources/show'
+end
+
+get '/contributions' do
+  @contributions = get_contributions(query: params[:query], "publisher-id" => params["publisher-id"], "source-id" => params["source-id"], offset: @offset)
+
+  # pagination
+  @contributions[:data] = pagination_helper(@contributions[:data], @page, @contributions.fetch(:meta, {}).fetch("total", 0))
+
+  haml :'contributions/show'
 end
 
 get '/citation' do
@@ -506,30 +306,4 @@ get '/heartbeat' do
   content_type 'text/html'
 
   'OK'
-end
-
-get '/contributions' do
-  page = params.fetch('page', 1).to_i
-  offset = DEFAULT_ROWS * (page - 1)
-
-  result = get_contributions(query: params[:query], "publisher-id" => params["publisher-id"], "source-id" => params["source-id"], offset: offset)
-  contributions = Array(result.fetch(:data, [])).select {|item| item["type"] == "contributions" }
-  @meta = result[:meta]
-
-  # check for errors
-  if result.fetch(:errors, []).present?
-    error = result.fetch(:errors, []).first
-    @contributions_error = [error.fetch("status", ""), error.fetch("title", "")].join(" ")
-  end
-
-  @contributions = WillPaginate::Collection.create(page, DEFAULT_ROWS, @meta["total"]) do |pager|
-    pager.replace contributions
-  end
-
-
-  @contribution_sources = Array(result.fetch(:data, [])).select {|item| item["type"] == "sources" }
-  @meta["contribution-total"] = result.fetch(:meta, {}).fetch("total", 0)
-  @meta["contribution-sources"] = result.fetch(:meta, {}).fetch("sources", {})
-
-  haml :'contributions/show'
 end

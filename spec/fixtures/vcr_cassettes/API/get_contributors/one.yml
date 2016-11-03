@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datacite.org/contributors?id=orcid.org/0000-0002-4000-4167&offset=0&rows=25
+    uri: http://api.labs.datacite.org/contributors?id=orcid.org/0000-0002-4000-4167&offset=0&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -17,11 +17,11 @@ http_interactions:
       message: ''
     headers:
       Server:
-      - nginx/1.11.3
+      - nginx/1.11.5
       Date:
-      - Sat, 03 Sep 2016 15:41:49 GMT
+      - Thu, 20 Oct 2016 05:49:08 GMT
       Content-Type:
-      - application/json; charset=utf-8
+      - application/vnd.api+json; charset=utf-8
       Connection:
       - keep-alive
       Status:
@@ -37,15 +37,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - a356a69b-2ba7-402a-a5e1-72cebd96bdca
+      - b4823314-a162-4ea8-95b6-9561b9affe9f
       Access-Control-Allow-Methods:
-      - POST, GET, OPTIONS
+      - GET, POST, OPTIONS
       Etag:
-      - W/"a54d8e34532d97531ccfe04a8b0c5b83"
+      - W/"5b5a2ffe0695eb3f4c1075eb2a53f161"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.112406'
+      - '0.039103'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -54,7 +54,7 @@ http_interactions:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
       encoding: UTF-8
-      string: '{"data":[{"id":"http://orcid.org/0000-0002-4000-4167","type":"contributors","attributes":{"given":"Peter","family":"Arend","literal":null,"orcid":"0000-0002-4000-4167","github":null,"updated":"1970-01-01T00:00:00Z"}}]}'
+      string: '{"data":{"id":"http://orcid.org/0000-0002-4000-4167","type":"contributors","attributes":{"given":"Peter","family":"Arend","literal":null,"orcid":"0000-0002-4000-4167","github":null,"updated":"1970-01-01T00:00:00Z"}}}'
     http_version: 
-  recorded_at: Sat, 03 Sep 2016 15:41:49 GMT
+  recorded_at: Thu, 20 Oct 2016 05:49:08 GMT
 recorded_with: VCR 2.9.3

@@ -4,11 +4,11 @@
   .content
     .row
       .col-md-9#content-contributor
-        - if @contributor_error.present?
+        - if @contributor[:errors].present?
           %div.alert.alert-warning
-            = @contributor_error
-        - elsif @contributor.present?
-          = haml :'contributors/item', locals: { item: @contributor }
+            = @contributor[:errors].first.fetch("title", "")
+        - elsif @contributor[:data].present?
+          = haml :'contributors/item', locals: { item: @contributor[:data] }
 
       .col-md-9.panel-list#content-contributions
         = haml :'contributions/index'

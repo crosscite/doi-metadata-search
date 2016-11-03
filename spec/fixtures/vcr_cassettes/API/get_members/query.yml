@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datacite.org/members?query=tib
+    uri: http://api.labs.datacite.org/members?query=tib
     body:
       encoding: US-ASCII
       string: ''
@@ -17,11 +17,11 @@ http_interactions:
       message: ''
     headers:
       Server:
-      - nginx/1.11.3
+      - nginx/1.11.5
       Date:
-      - Sat, 03 Sep 2016 15:41:32 GMT
+      - Thu, 20 Oct 2016 05:49:07 GMT
       Content-Type:
-      - application/json; charset=utf-8
+      - application/vnd.api+json; charset=utf-8
       Connection:
       - keep-alive
       Status:
@@ -37,15 +37,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 4bfc00ac-0116-4708-a5ba-d48fa6589e38
+      - f42ebd72-4275-4668-8ac4-b61cdef5efc0
       Access-Control-Allow-Methods:
-      - POST, GET, OPTIONS
+      - GET, POST, OPTIONS
       Etag:
-      - W/"8791b89ecbeac13d53664f592d3c11ba"
+      - W/"a5e60859ead3e66edc33db82c1a423d1"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.028302'
+      - '0.018925'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -67,8 +67,9 @@ http_interactions:
         members of DataCite and is currently the Business Office. We provide DOI registration
         services for all German data centres in the fields of engineering, architecture,
         chemistry, information technology, mathematics and physics. Our current focus
-        is on providing DOI names for primary data and grey literature.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Germany","year":2009,"logo-url":"https://assets.datacite.org/images/members/TIB.png","email":"doi-info@tib.eu","website":"
-        http://www.tib.eu","phone":"+49 511 762 14226","updated":"2016-08-01T11:13:04.000Z"}}],"meta":{"total":1,"member-types":{"allocating":1},"regions":{"emea":1},"years":{"2009":1}}}'
+        is on providing DOI names for primary data and grey literature.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Germany","year":2009,"logo-url":"https://assets.labs.datacite.org/images/members/TIB.png","email":"doi-info@tib.eu","website":"
+        http://www.tib.eu","phone":"+49 511 762 14226","updated":"2016-08-01T11:13:04.000Z"}}],"meta":{"total":1,"member-types":[{"id":"allocating","title":"Allocating","count":1}],"regions":[{"id":"emea","title":"Europe,
+        Middle East and Africa","count":1}],"years":[{"id":"2009","title":"2009","count":1}]}}'
     http_version: 
-  recorded_at: Sat, 03 Sep 2016 15:41:32 GMT
+  recorded_at: Thu, 20 Oct 2016 05:49:07 GMT
 recorded_with: VCR 2.9.3

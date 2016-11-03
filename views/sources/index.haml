@@ -8,21 +8,19 @@
 
     .row
       .col-md-9.panel-list#content
-        - if flash[:error].present?
-          .alert.alert-warning
-            = flash[:error]
-
-        - if @sources.length > 0
-          - if @sources.length > 1
+        - if @sources[:data].length > 0
+          - if @sources[:data].length > 1
             %h3.results
-              = "#{number_with_delimiter(@meta["total"])} Sources"
+              = "#{number_with_delimiter(@sources[:meta]["total"])} Sources"
 
-          - @sources.each do |item|
+          - @sources[:data].each do |item|
             = haml :'sources/item', locals: { item: item }
 
         - else
-          .alert.alert-simple-info
-            Nothing found.
+          - if @sources[:errors].present?
+            .alert.alert-warning
+              = @sources[:errors].first.fetch("title", "An error occured.")
+          - else
 
       .col-md-3
         = haml :'sources/facets'

@@ -1,5 +1,5 @@
 .search-wide
-  %form.form-horizontal{:method => 'GET', :action => '/data-centers'}
+  %form.form-horizontal{:method => 'GET', :action => data_centers_query(params) }
     .input-group
       - if params['registration-agency-id'].present?
         %input{type: "hidden", name: "registration-agency-id", value: params['registration-agency-id']}

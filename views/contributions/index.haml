@@ -1,14 +1,14 @@
-- if @contributions.length > 0
-  - if @contributions.length > 1
+- if @contributions[:data].length > 0
+  - if @contributions[:data].length > 1
     %h3.results
-      = "#{number_with_delimiter(@meta["total"])} Contributions"
+      = "#{number_with_delimiter(@contributions[:meta]["total"])} Contributions"
 
-- @contributions.each do |item|
-  - if params[:model] == "works"
+- @contributions[:data].each do |item|
+  - if @work.present?
     = haml :'contributions/contributor_item', locals: { item: item }
   - else
     = haml :'contributions/work_item', locals: { item: item }
 
-- if %w(contributors sources).include?(params[:model])
+- if @contributor.present? || @source.present?
   .text-center
-    = will_paginate @contributions, renderer: BootstrapPagination::Sinatra, inner_window: 1
+    = will_paginate @contributions[:data], renderer: BootstrapPagination::Sinatra, inner_window: 1

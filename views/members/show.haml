@@ -8,11 +8,15 @@
           %div.alert.alert-warning
             = @member_error
         - elsif @member.present?
-          = haml :'members/item', locals: { item: @member }
+          = haml :'members/item', locals: { item: @member[:data] }
 
-      - if @member.present? && @member.fetch("attributes", {}).fetch("member-type", nil) == "allocating"
+      - if @member[:data].present? && @member[:data].fetch("attributes", {}).fetch("member-type", nil) == "allocating"
         .col-md-9
-          = haml :'works/search'
+          - if params['source-id'].present? || params['relation-type-id'].present?
+            %div.alert.alert-info
+              Search is not available when the <strong>Sources</strong> and/or <strong>Relation Types</strong> facet are selected.
+          - else
+            = haml :'works/search'
 
         .col-md-9.panel-list#content-works
           = haml :'works/list'

@@ -1,19 +1,19 @@
-- if @meta["groups"].present?
+- if @sources[:meta]["groups"].present?
   .panel.facets
     .panel-body
       %h4
         Groups
       %ul
-        - @meta["groups"].each do |g|
+        - @sources[:meta]["groups"].each do |f|
           %li
             - if params["group-id"].present?
               %a{:href => "/sources?query=#{params[:query]}"}
                 %i.fa.fa-check-square-o
             - else
-              %a{:href => "/sources?group-id=#{g.first}&query=#{params[:query]}"}
+              %a{:href => "/sources?group-id=#{f.fetch("id")}&query=#{params[:query]}"}
                 %i.fa.fa-square-o
             .facet-title
-              = group_title(@groups, g.first)
+              = f.fetch("title", nil)
             %span.number.pull-right
-              = number_with_delimiter(g.last)
+              = number_with_delimiter(f.fetch("count", 0))
             .clearfix

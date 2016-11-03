@@ -1,45 +1,46 @@
 = haml :"#{ENV['RA']}/header", locals: { page: {} }
 
+- publisher = @work[:included].find { |i| i.fetch("type", nil) == "publishers" }
+- member = @work[:included].find { |i| i.fetch("type", nil) == "members" }
+- registration_agency = @work[:included].find { |i| i.fetch("type", nil) == "registration-agencies" }
+
 .container-fluid
   .content
     .row
       .col-md-9#content-work
-        - if @work.present?
-          = haml :'works/item', locals: { item: @work }
-        - elsif @work_error.present?
+        - if @work[:data].present?
+          = haml :'works/item', locals: { item: @work[:data] }
+        - elsif @work[:errors].present?
           %div.alert.alert-warning
-            = @work_error
+            = @work[:errors].first.fetch("title", "")
 
-      - if @work.present?
+      - if @work[:data].present?
         .col-md-3
-          - registration_agency_id = @work.fetch("attributes", {}).fetch("registration-agency-id", nil)
-          - publisher_id = @work.fetch("attributes", {}).fetch("publisher-id", nil)
-          - member_id = @work.fetch("attributes", {}).fetch("member-id", nil)
           .panel.facets
             .panel-body.metadata
-              - if registration_agency_id == "datacite"
+              - if registration_agency && registration_agency.fetch("id", nil) == "datacite" && publisher.present?
                 %h5
                   Data Center
                 .data-center
-                  %a{href: "/data-centers/#{publisher_id}"}
-                    = publisher_title(@publishers, publisher_id)
-              - elsif publisher_id.present?
+                  %a{href: "/data-centers/#{publisher.fetch('id')}"}
+                    = publisher.fetch("attributes", {}).fetch("title", nil)
+              - elsif publisher.present?
                 %h5
                   Publisher
                 .data-center
-                  %a{href: "/data-centers/#{publisher_id}"}
-                    = publisher_title(@publishers, publisher_id)
-              - if registration_agency_id == "datacite"
+                  %a{href: "/data-centers/#{publisher.fetch('id')}"}
+                    = publisher.fetch("attributes", {}).fetch("title", nil)
+              - if registration_agency && registration_agency.fetch("id", nil) == "datacite" && member.present?
                 %h5
                   Member
                 .registration_agency
-                  %a{href: "/members/#{member_id}"}
-                    = member_title(@members, member_id)
-              - elsif registration_agency_id.present?
+                  %a{href: "/members/#{member.fetch('id')}"}
+                    = member.fetch("attributes", {}).fetch("title", nil)
+              - elsif registration_agency.present?
                 %h5
                   Registration Agency
                 .registration_agency
-                  = registration_agency_format(@work.fetch("attributes", {}))
+                  = registration_agency.fetch("attributes", {}).fetch("title", nil)
 
           .panel.tags
             .panel-body
@@ -55,31 +56,31 @@
                       %span.hidden
                         = social['icon']
 
-    - if @relations.length > 0 || @contributions.length > 0
+    - if @relations[:data].length > 0 || @contributions[:data].length > 0
       %ul.nav.nav-pills
-        - if @relations.length > 0
+        - if @relations[:data].length > 0
           %li.active
             %a{href: "#relations", data: { toggle: "tab" } }
               Relations
-              - if @relations.length > 0
+              - if @relations[:data].length > 0
                 %span.badge
-                  = number_with_delimiter(@meta['relation-total'])
-        - if @contributions.length > 0
-          - if @relations.length > 0
+                  = number_with_delimiter(@relations[:meta]['total'])
+        - if @contributions[:data].length > 0
+          - if @relations[:data].length > 0
             %li
               %a{href: "#contributions", data: { toggle: "tab" } }
                 Contributions
                 %span.badge
-                  = number_with_delimiter(@meta['contribution-total'])
+                  = number_with_delimiter(@contributions[:meta]['total'])
           - else
             %li.active
               %a{href: "#contributions", data: { toggle: "tab" } }
                 Contributions
                 %span.badge
-                  = number_with_delimiter(@meta['contribution-total'])
+                  = number_with_delimiter(@contributions[:meta]['total'])
 
       .tab-content
-        - if @relations.length > 0
+        - if @relations[:data].length > 0
           .tab-pane.active#relations
             .row
               .col-md-9.panel-list#content-relations
@@ -88,8 +89,8 @@
               .col-md-3
                 = haml :'relations/facets'
 
-        - if @contributions.length > 0
-          - if @relations.length > 0
+        - if @contributions[:data].length > 0
+          - if @relations[:data].length > 0
             .tab-pane#contributions
               .row
                 .col-md-9.panel-list#content-contributions

@@ -30,7 +30,7 @@ module Sinatra
     end
 
     def itemtype_format(attributes)
-      type = attributes.fetch("resource-type-general", nil) || attributes.fetch("type", nil)
+      type = attributes.fetch("resource-type", nil) || attributes.fetch("work-type", nil)
 
       case type
       when "dataset" then "http://schema.org/Dataset"
@@ -45,32 +45,11 @@ module Sinatra
       resource_type.fetch("attributes", {}).fetch("title", "")
     end
 
-    def publisher_title(publishers, id)
-      publisher = Array(publishers).find { |p| p["id"] == id }
-      return id unless publisher.present?
-
-      publisher.fetch("attributes", {}).fetch("title", "")
-    end
-
-    def member_title(members, id)
-      member = Array(members).find { |m| m["id"] == id }
-      return id unless member.present?
-
-      member.fetch("attributes", {}).fetch("title", "")
-    end
-
     def source_title(sources, id)
       source = Array(sources).find { |s| s["id"] == id }
       return id unless source.present?
 
       source.fetch("attributes", {}).fetch("title", "")
-    end
-
-    def group_title(groups, id)
-      group = Array(groups).find { |s| s["id"] == id }
-      return id unless group.present?
-
-      group.fetch("attributes", {}).fetch("title", "")
     end
 
     def relation_type_title(relation_types, id)
@@ -95,22 +74,14 @@ module Sinatra
       registration_agencies.fetch(ra, "")
     end
 
-    def region_format(attributes)
-      region = attributes.fetch("region", nil)
-      regions = { "amer" => "Americas",
-                  "apac" => "Asia Pacific",
-                  "emea" => "EMEA" }
-      regions.fetch(region, "")
-    end
-
     def metadata_format(attributes, options={})
-      if attributes.fetch("type", nil).present?
+      if attributes.fetch("work-type", nil).present?
         work_types = Array(options[:work_types])
-        type = work_type_title(work_types, attributes.fetch("type"))
+        type = work_type_title(work_types, attributes.fetch("work-type"))
         type = type.underscore.humanize
       else
-        type = attributes.fetch("resource-type", nil).presence ||
-               attributes.fetch("resource-type-general", nil).presence || "Work"
+        type = attributes.fetch("resource-type-subtype", nil).presence ||
+               attributes.fetch("resource-type", nil).presence || "Work"
         type = type.underscore.humanize
       end
 
@@ -123,6 +94,12 @@ module Sinatra
 
     def description_format(description)
       sanitize(description.to_s.strip).truncate_words(75)
+    end
+
+    def pagination_helper(items, page, total)
+      WillPaginate::Collection.create(page, DEFAULT_ROWS, total) do |pager|
+        pager.replace items
+      end
     end
 
     def license_img(license)
@@ -176,6 +153,15 @@ module Sinatra
       else
         "/works?" + URI.encode_www_form(params)
       end
+    end
+
+    def data_centers_query(options)
+      params = { "id" => options.fetch("id", nil),
+                 "query" => options.fetch("query", nil),
+                 "member-id" => options.fetch("member-id", nil),
+                 "registration-agency-id" => options.fetch("registration-agency-id", nil) }.compact
+
+      "/data-centers?" + URI.encode_www_form(params)
     end
 
     def contributions_query(options)

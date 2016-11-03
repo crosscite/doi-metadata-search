@@ -1,45 +1,45 @@
 .panel.facets
-  - if @meta["contribution-sources"].present? && params[:model] != "sources"
+  - if @contributions[:meta]["sources"].present? && @source.nil?
     .panel-body
       %h4
         Sources
       %ul
-        - @meta["contribution-sources"].sort_by { |k,v| -v }.each do |s|
-          - if params['source-id'] == s.first
+        - @contributions[:meta]["sources"].each do |f|
+          - if params['source-id'] == f.fetch("id", nil)
             %li.active
               %a{:href => works_query(params.except('source-id'))}
                 %i.fa.fa-check-square-o
               .facet-title
-                = source_title(@contribution_sources, s.first)
-              %span.number.pull-right= "#{number_with_delimiter(s.last)}"
+                = f.fetch("title", nil)
+              %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
               .clearfix
           - else
             %li
-              %a{:href => works_query(params.merge('source-id' => s.first))}
+              %a{:href => works_query(params.merge('source-id' => f.fetch("id", nil)))}
                 %i.fa.fa-square-o
               .facet-title
-                = source_title(@contribution_sources, s.first)
-              %span.number.pull-right= "#{number_with_delimiter(s.last)}"
+                = f.fetch("title", nil)
+              %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
               .clearfix
-  - if @meta["contribution-publishers"].present?
+  - if @contributions[:meta]["publishers"].present? && @work.nil?
     .panel-body
       %h4
         Data Centers
       %ul
-        - @meta["contribution-publishers"].sort_by { |k,v| -v }.each do |p|
-          - if params['publisher-id'] == p.first
+        - @contributions[:meta]["publishers"].each do |f|
+          - if params['publisher-id'] == f.fetch("id", nil)
             %li.active
               %a{:href => works_query(params.except('publisher-id'))}
                 %i.fa.fa-check-square-o
               .facet-title
-                = publisher_title(@contribution_publishers, p.first)
-              %span.number.pull-right= "#{number_with_delimiter(p.last)}"
+                = f.fetch("title", nil)
+              %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
               .clearfix
           - else
             %li
-              %a{:href => works_query(params.merge('publisher-id' => p.first))}
+              %a{:href => works_query(params.merge('publisher-id' => f.fetch("id", nil)))}
                 %i.fa.fa-square-o
               .facet-title
-                = publisher_title(@contribution_publishers, p.first)
-              %span.number.pull-right= "#{number_with_delimiter(p.last)}"
+                = f.fetch("title", nil)
+              %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
               .clearfix

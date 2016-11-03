@@ -13,7 +13,7 @@ describe "Volpino", type: :model, vcr: true do
     end
 
     it "has api_key" do
-      expect(user.api_key).to eq("GFKyS1Bb2iLevKt8x2H4")
+      expect(user.api_key).not_to be nil
     end
   end
 
@@ -21,6 +21,11 @@ describe "Volpino", type: :model, vcr: true do
     it "with works" do
       works = subject.get_works(query: "martin fenner")[:data]
       expect(subject.found_dois(works).length).to eq(25)
+    end
+
+    it "without works" do
+      works = []
+      expect(subject.found_dois(works)).to be_blank
     end
   end
 
@@ -40,9 +45,9 @@ describe "Volpino", type: :model, vcr: true do
       claims = subject.get_claims(user, dois)[:data]
       merged_claims = subject.merge_claims(works, claims)
       statuses = merged_claims.map { |mc| mc["attributes"]["claim-status"] }
-      expect(works.length).to eq(38)
-      expect(statuses.length).to eq(38)
-      expect(statuses.inject(Hash.new(0)) { |total, e| total[e] += 1 ;total}).to eq("none"=>32, "done"=>6)
+      expect(works.length).to eq(25)
+      expect(statuses.length).to eq(25)
+      expect(statuses.inject(Hash.new(0)) { |total, e| total[e] += 1 ; total }).to eq("none"=>17, "done"=>8)
     end
 
     it "with relations" do
@@ -64,9 +69,9 @@ describe "Volpino", type: :model, vcr: true do
       claims = subject.get_claims(user, dois)[:data]
       merged_claims = subject.merge_claims(contributions, claims)
       statuses = merged_claims.map { |mc| mc["attributes"]["claim-status"] }
-      expect(contributions.length).to eq(59)
-      expect(statuses.length).to eq(59)
-      expect(statuses.inject(Hash.new(0)) { |total, e| total[e] += 1 ;total}).to eq("done"=>54, "none"=>5)
+      expect(contributions.length).to eq(60)
+      expect(statuses.length).to eq(60)
+      expect(statuses.inject(Hash.new(0)) { |total, e| total[e] += 1 ;total}).to eq("done"=>60)
     end
   end
 
@@ -74,10 +79,10 @@ describe "Volpino", type: :model, vcr: true do
     it "with works" do
       works = subject.get_works(query: "martin fenner")[:data]
       works_with_claims = subject.get_claimed_items(user, works)
-      expect(works.length).to eq(38)
-      expect(works_with_claims.length).to eq(38)
+      expect(works.length).to eq(25)
+      expect(works_with_claims.length).to eq(25)
       work = works_with_claims[3]
-      expect(work["id"]).to eq("http://doi.org/10.6084/M9.FIGSHARE.706340.V1")
+      expect(work["id"]).to eq("https://doi.org/10.5281/ZENODO.34673")
       expect(work["attributes"]["claim-status"]).to eq("done")
     end
 
@@ -96,10 +101,10 @@ describe "Volpino", type: :model, vcr: true do
       contributions = subject.get_contributions("contributor-id" => "orcid.org/#{user.orcid}", rows: 100)
       contributions= Array(contributions.fetch(:data, [])).select {|item| item["type"] == "contributions" }
       contributions_with_claims = subject.get_claimed_items(user, contributions)
-      expect(contributions.length).to eq(59)
-      expect(contributions_with_claims.length).to eq(59)
+      expect(contributions.length).to eq(60)
+      expect(contributions_with_claims.length).to eq(60)
       contribution = contributions_with_claims[0]
-      expect(contribution["attributes"]["doi"]).to eq("10.6084/M9.FIGSHARE.3479141")
+      expect(contribution["attributes"]["doi"]).to eq("10.6084/M9.FIGSHARE.90829.V1")
       expect(contribution["attributes"]["claim-status"]).to eq("done")
     end
 

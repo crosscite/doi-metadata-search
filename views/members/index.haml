@@ -8,17 +8,17 @@
 
     .row
       .col-md-9.panel-list#content
-        - if @members.length > 0
-          - if @members.length > 1
+        - if @members[:data].length > 0
+          - if @members[:data].length > 1
             %h3.results
-              = "#{number_with_delimiter(@meta["total"])} Members"
+              = "#{number_with_delimiter(@members[:meta]["total"])} Members"
 
-          - @members.each do |item|
+          - @members[:data].each do |item|
             = haml :'members/item', locals: { item: item }
 
-        - elsif @members_error.present?
+        - elsif @members[:errors].present?
           .alert.alert-warning
-            = @members_error
+            = @members[:errors].first.fetch("title", "")
         - else
           .alert.alert-simple-info
             Nothing found.

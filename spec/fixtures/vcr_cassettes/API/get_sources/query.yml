@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datacite.org/sources?query=cross
+    uri: http://api.labs.datacite.org/sources?include=group&query=cross
     body:
       encoding: US-ASCII
       string: ''
@@ -17,11 +17,11 @@ http_interactions:
       message: ''
     headers:
       Server:
-      - nginx/1.11.3
+      - nginx/1.11.5
       Date:
-      - Sat, 03 Sep 2016 15:41:33 GMT
+      - Thu, 20 Oct 2016 05:52:46 GMT
       Content-Type:
-      - application/json; charset=utf-8
+      - application/vnd.api+json; charset=utf-8
       Connection:
       - keep-alive
       Status:
@@ -37,15 +37,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - f5172b01-ef74-4154-8e02-b06c09ec9395
+      - c82dce46-a99d-413f-be24-fcf68c4f8448
       Access-Control-Allow-Methods:
-      - POST, GET, OPTIONS
+      - GET, POST, OPTIONS
       Etag:
-      - W/"27e3072fc259f54f5d656b3cbd3a0929"
+      - W/"dee9b266eecd77bf5e35052c48589939"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.051022'
+      - '0.034165'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -55,10 +55,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"data":[{"id":"crossref-datacite","type":"sources","attributes":{"title":"Crossref
-        (DataCite)","description":"Import works linked to a DataCite DOI from Crossref.","state":"active","group-id":"relations","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-09-03T14:37:20Z"}},{"id":"datacite-crossref","type":"sources","attributes":{"title":"DataCite
+        (DataCite)","description":"Import works linked to a DataCite DOI from Crossref.","state":"active","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-10-20T05:05:24Z"},"relationships":{"group":{"data":{"id":"relations","type":"groups"}}}},{"id":"datacite-crossref","type":"sources","attributes":{"title":"DataCite
         (Crossref)","description":"Import works with Crossref DOIs as relatedIdentifier
-        via the DataCite Solr API.","state":"active","group-id":"relations","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-09-03T14:37:20Z"}},{"id":"crossref-publisher","type":"sources","attributes":{"title":"Crossref
-        (Publisher)","description":"Import publishers via the Crossref REST API.","state":"active","group-id":"publishers","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-09-03T14:45:49Z"}},{"id":"publishers","type":"groups","attributes":{"title":"Publishers","sources":["crossref_publisher","datacite_datacentre"],"updated":"2016-03-28T15:25:06Z"}},{"id":"relations","type":"groups","attributes":{"title":"Relations","sources":["crossref_datacite","datacite_crossref","datacite_github","datacite_related","europe_pmc_fulltext","plos_fulltext"],"updated":"2016-03-28T15:25:06Z"}}],"meta":{"total":3,"groups":{"relations":2,"publishers":1}}}'
+        via the DataCite Solr API.","state":"active","work-count":19893,"relation-count":225467,"result-count":74369,"by-day":{"with-results":0,"without-results":0,"not-updated":225412},"by-month":{"with-results":0,"without-results":0,"not-updated":225412},"updated":"2016-10-20T05:05:24Z"},"relationships":{"group":{"data":{"id":"relations","type":"groups"}}}},{"id":"crossref-publisher","type":"sources","attributes":{"title":"Crossref
+        (Publisher)","description":"Import publishers via the Crossref REST API.","state":"active","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-10-20T05:05:51Z"},"relationships":{"group":{"data":{"id":"publishers","type":"groups"}}}}],"included":[{"id":"relations","type":"groups","attributes":{"title":"Relations","updated":"2016-03-28T15:25:06Z"}},{"id":"publishers","type":"groups","attributes":{"title":"Publishers","updated":"2016-03-28T15:25:06Z"}}],"meta":{"total":3,"groups":[{"id":"relations","title":"Relations","count":2},{"id":"publishers","title":"Publishers","count":1}]}}'
     http_version: 
-  recorded_at: Sat, 03 Sep 2016 15:41:33 GMT
+  recorded_at: Thu, 20 Oct 2016 05:52:46 GMT
 recorded_with: VCR 2.9.3

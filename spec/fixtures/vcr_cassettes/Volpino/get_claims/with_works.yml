@@ -19,9 +19,9 @@ http_interactions:
       message: ''
     headers:
       Server:
-      - nginx/1.11.3
+      - nginx/1.11.5
       Date:
-      - Sat, 03 Sep 2016 15:39:21 GMT
+      - Fri, 21 Oct 2016 17:00:41 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -39,24 +39,24 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 3d72bc64-2138-444b-b02e-de96337f0fd4
+      - c49d49f6-22d7-43ec-906a-6103025ea9c8
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Authorization, Token
       Access-Control-Allow-Methods:
-      - POST, GET, OPTIONS
+      - POST, GET, PUT, DELETE, OPTIONS
       Etag:
-      - W/"9fac3ccdef1a9d36fa9610d67ceaee45"
+      - W/"797483f8b9b0ee181908ec2942772c3a"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.017510'
+      - '0.035960'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
       - Phusion Passenger 5.0.30
-      Access-Control-Allow-Headers:
-      - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
       encoding: UTF-8
-      string: '{"data":[{"id":"84fc1b77-7ea3-4993-8f9b-71e8d712538f","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.6084/M9.FIGSHARE.706340.V1","source-id":"orcid_search","state":"done","claimed-at":"2016-03-09T12:14:49Z"}},{"id":"6ce1cfc6-b7d6-47e5-86e3-15bebe0b236d","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.5281/ZENODO.34673","source-id":"orcid_search","state":"done","claimed-at":"2016-03-09T12:13:03Z"}}],"links":{},"meta":{"total":2,"total-pages":1,"page":1}}'
+      string: '{"data":[{"id":"84fc1b77-7ea3-4993-8f9b-71e8d712538f","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.6084/M9.FIGSHARE.706340.V1","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2016-03-09T12:14:49Z"}},{"id":"6ce1cfc6-b7d6-47e5-86e3-15bebe0b236d","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.5281/ZENODO.34673","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2016-03-09T12:13:03Z"}}],"links":{},"meta":{"total":2,"total-pages":1,"page":1}}'
     http_version: 
-  recorded_at: Sat, 03 Sep 2016 15:39:21 GMT
+  recorded_at: Fri, 21 Oct 2016 17:00:41 GMT
 recorded_with: VCR 2.9.3

@@ -8,20 +8,20 @@
 
     .row
       .col-md-9.panel-list#content
-        - if @datacenters.length > 0
-          - if @datacenters.length > 1
+        - if @datacenters[:data].length > 0
+          - if @datacenters[:data].length > 1
             %h3.results
-              = "#{number_with_delimiter(@meta["total"])} Data Centers"
+              = "#{number_with_delimiter(@datacenters[:meta]["total"])} Data Centers"
 
-          - @datacenters.each do |item|
+          - @datacenters[:data].each do |item|
             = haml :'data-centers/item', locals: { item: item }
 
           .text-center
-            = will_paginate @datacenters, renderer: BootstrapPagination::Sinatra, inner_window: 1
+            = will_paginate @datacenters[:data], renderer: BootstrapPagination::Sinatra, inner_window: 1
 
-        - elsif @datacenters_error.present?
+        - elsif @datacenters[:errors].present?
           .alert.alert-warning
-            = @datacenters_error
+            = @datacenters[:errors].first.fetch("title", "An error occured.")
         - else
           .alert.alert-simple-info
             Nothing found.

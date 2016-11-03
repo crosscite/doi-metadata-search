@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datacite.org/sources?id=datacite-crossref
+    uri: http://api.labs.datacite.org/sources?id=datacite-crossref&include=group
     body:
       encoding: US-ASCII
       string: ''
@@ -17,11 +17,11 @@ http_interactions:
       message: ''
     headers:
       Server:
-      - nginx/1.11.3
+      - nginx/1.11.5
       Date:
-      - Sat, 03 Sep 2016 15:41:33 GMT
+      - Thu, 20 Oct 2016 05:49:00 GMT
       Content-Type:
-      - application/json; charset=utf-8
+      - application/vnd.api+json; charset=utf-8
       Connection:
       - keep-alive
       Status:
@@ -37,15 +37,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - de291e26-638e-43ae-9114-da190b9972ab
+      - 2d8c36e9-614d-4154-8870-f11ffd54c317
       Access-Control-Allow-Methods:
-      - POST, GET, OPTIONS
+      - GET, POST, OPTIONS
       Etag:
-      - W/"bedbfdfa75330981defd38d2bd2b6eaa"
+      - W/"a92d4e13f72ee12bfc3f075acca55d51"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.053697'
+      - '3.130353'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -54,9 +54,9 @@ http_interactions:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
       encoding: UTF-8
-      string: '{"data":[{"id":"datacite-crossref","type":"sources","attributes":{"title":"DataCite
+      string: '{"data":{"id":"datacite-crossref","type":"sources","attributes":{"title":"DataCite
         (Crossref)","description":"Import works with Crossref DOIs as relatedIdentifier
-        via the DataCite Solr API.","state":"active","group-id":"relations","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-09-03T14:37:20Z"}},{"id":"relations","type":"groups","attributes":{"title":"Relations","sources":["crossref_datacite","datacite_crossref","datacite_github","datacite_related","europe_pmc_fulltext","plos_fulltext"],"updated":"2016-03-28T15:25:06Z"}}]}'
+        via the DataCite Solr API.","state":"active","work-count":19893,"relation-count":225467,"result-count":74369,"by-day":{"with-results":0,"without-results":0,"not-updated":225412},"by-month":{"with-results":0,"without-results":0,"not-updated":225412},"updated":"2016-10-20T05:05:24Z"},"relationships":{"group":{"data":{"id":"relations","type":"groups"}}}},"included":[{"id":"relations","type":"groups","attributes":{"title":"Relations","updated":"2016-03-28T15:25:06Z"}}]}'
     http_version: 
-  recorded_at: Sat, 03 Sep 2016 15:41:33 GMT
+  recorded_at: Thu, 20 Oct 2016 05:49:00 GMT
 recorded_with: VCR 2.9.3

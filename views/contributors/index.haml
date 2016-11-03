@@ -6,23 +6,23 @@
       .col-md-9.panel-list#content
         = haml :'contributors/search'
 
-        - unless flash[:error].nil?
-          .alert.alert-warning
-            = flash[:error]
-
-        - if @contributors.length > 0
-          - if @contributors.length > 1
+        - if @contributors[:data].length > 0
+          - if @contributors[:data].length > 1
             %h3.results
-              = "#{number_with_delimiter(@meta['total'])} Contributors"
+              = "#{number_with_delimiter(@contributors[:meta]['total'])} Contributors"
 
-          - @contributors.each do |item|
+          - @contributors[:data].each do |item|
             = haml :'contributors/item', locals: { item: item }
 
           .text-center
-            = will_paginate @contributors, renderer: BootstrapPagination::Sinatra, inner_window: 1
+            = will_paginate @contributors[:data], renderer: BootstrapPagination::Sinatra, inner_window: 1
 
         - else
-          .alert.alert-simple-info
-            Nothing found.
+          - if @contributors[:errors].present?
+            .alert.alert-warning
+              = @contributors[:errors].first.fetch("title", "An error occured.")
+          - else
+            .alert.alert-simple-info
+              Nothing found.
 
 = haml :"#{ENV['RA']}/footer"

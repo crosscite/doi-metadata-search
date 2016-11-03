@@ -14,10 +14,10 @@
 
   .panel-footer
     %span
-      = relation_type_title(@relation_types, item.fetch("attributes", {}).fetch("relation-type-id", nil))
+      = relation_type_title(@relations[:included].select {|item| item["type"] == "relation-types" }, item.fetch("attributes", {}).fetch("relation-type-id", nil))
       = attributes["obj-id"]
     %span.pull-right
-      = source_title(@relation_sources, item.fetch("attributes", {}).fetch("source-id", nil))
+      = source_title(@relations[:included].select {|item| item["type"] == "sources" }, item.fetch("attributes", {}).fetch("source-id", nil))
 
   .panel-footer.item-links
     %a{:href => attributes["subj-id"]}
