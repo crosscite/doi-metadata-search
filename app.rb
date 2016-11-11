@@ -151,6 +151,8 @@ get %r{/works/(.+)} do
   # workaround, as nginx swallows double backslashes
   params["id"] = params["id"].gsub(/(http|https):\/+(\w+)/, '\1://\2')
 
+  link = validate_doi(params[:id]) ? "https://doi.org/#{validate_doi(params[:id])}" : params[:id]
+
   @work = get_works(id: params["id"])
 
   # check for existing claims if user is logged in and work is registered with DataCite
@@ -171,6 +173,9 @@ get %r{/works/(.+)} do
   @relations[:data] = pagination_helper(@relations[:data], @page, @relations.fetch(:meta, {}).fetch("total", 0))
 
   params[:model] = "works"
+
+  headers['Link'] = "<#{link}> ; rel=\"identifier\""
+
   haml :'works/show'
 end
 
@@ -185,6 +190,7 @@ end
 
 get '/contributors/:id' do
   id = validate_orcid(params[:id]) ? "orcid.org/#{params[:id]}" : "https://github.com/#{params[:id]}"
+  link = validate_orcid(params[:id]) ? "http://orcid.org/#{params[:id]}" : "https://github.com/#{params[:id]}"
 
   @contributor  = get_contributors(id: id)
 
@@ -197,6 +203,9 @@ get '/contributors/:id' do
   @contributions[:data] = pagination_helper(@contributions[:data], @page, @contributions.fetch(:meta, {}).fetch("total", 0))
 
   params[:model] = "contributors"
+
+  headers['Link'] = "<#{link}> ; rel=\"identifier\""
+
   haml :'contributors/show'
 end
 
