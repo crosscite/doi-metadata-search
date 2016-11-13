@@ -1,4 +1,8 @@
 - attributes = item.fetch("attributes", {})
+
+%script{type: "application/ld+json"}
+  = work_as_json_ld(id: attributes["obj-id"], attributes: attributes)
+
 .panel.panel-default
   .panel-body
     %h3.work

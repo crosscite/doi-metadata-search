@@ -5,7 +5,7 @@
 - new_params = params[:model] == "works" && params["id"].present? ? params.merge(external_link: true) : params
 
 %script{type: "application/ld+json"}
-  = work_as_json_ld(id: item["id"], attributes: item["attributes"])
+  = work_as_json_ld(id: item["id"], attributes: attributes)
 
 .panel.panel-default
   .panel-body
