@@ -159,13 +159,11 @@ module Sinatra
         "name" => attributes.fetch("literal", nil) }.compact.to_json
     end
 
-    def meta_tag(hsh)
-      hsh.map do |k, v|
-        if v.is_a?(Array)
-          v.map { |val| "<meta name=\"#{k}\" content=\"#{val}\"" }.join("\n")
-        else
-          "<meta name=\"#{k}\" content=\"#{v}\""
-        end
+    def meta_tag(name:, content:)
+      if content.is_a?(Array)
+        content.map { |val| "<meta name=\"#{name}\" content=\"#{val}\" />" }.join("\n")
+      elsif content.present?
+        "<meta name=\"#{name}\" content=\"#{content}\" />"
       end
     end
 
@@ -179,16 +177,16 @@ module Sinatra
       end
 
       meta = []
-      meta << meta_tag("DC.identifier" => id)
-      meta << meta_tag("DC.type" => attributes.fetch("resource-type-id", nil) || "work")
-      meta << meta_tag("DC.title" => attributes.fetch("title", nil))
-      meta << meta_tag("DC.creator" => author)
-      meta << meta_tag("DC.publisher" => attributes.fetch("publisher", nil))
-      meta << meta_tag("DC.date" => attributes.fetch("published", nil))
-      meta << meta_tag("DC.description" => attributes.fetch("description", nil))
-      meta << meta_tag("DCTERMS.license" => attributes.fetch("license", nil))
+      meta << meta_tag(name: "DC.identifier", content: id)
+      meta << meta_tag(name: "DC.type", content: attributes.fetch("resource-type-id", nil) || "work")
+      meta << meta_tag(name: "DC.title", content: attributes.fetch("title", nil))
+      meta << meta_tag(name: "DC.creator", content: author)
+      meta << meta_tag(name: "DC.publisher", content: attributes.fetch("publisher", nil))
+      meta << meta_tag(name: "DC.date", content: attributes.fetch("published", nil))
+      meta << meta_tag(name: "DC.description", content: attributes.fetch("description", nil))
+      meta << meta_tag(name: "DCTERMS.license", content: attributes.fetch("license", nil))
 
-      meta.join("\n")
+      meta.compact.join("\n")
     end
 
     def contributor_id(attributes)
