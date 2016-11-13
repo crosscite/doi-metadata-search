@@ -174,8 +174,10 @@ get %r{/works/(.+)} do
 
   params[:model] = "works"
 
-  headers['Link'] = "<#{link}> ; rel=\"identifier\""
-
+  headers['Link'] = "<#{link}> ; rel=\"identifier\", " +
+                    "<#{link}> ; rel=\"describedby\" ; type=\"application/vnd.datacite.datacite+xml\", " +
+                    "<#{link}> ; rel=\"describedby\" ; type=\"application/vnd.citationstyles.csl+json\", " +
+                    "<#{link}> ; rel=\"describedby\" ; type=\"application/x-bibtex\""
   haml :'works/show'
 end
 

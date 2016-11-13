@@ -29,12 +29,14 @@ module Sinatra
       end
     end
 
-    def itemtype_format(attributes)
-      type = attributes.fetch("resource-type", nil) || attributes.fetch("work-type", nil)
+    def creative_work_type(attributes)
+      type = attributes.fetch("resource-type-id", nil) || attributes.fetch("work-type-id", nil)
 
       case type
-      when "dataset" then "http://schema.org/Dataset"
-      else "http://schema.org/CreativeWork"
+      when "dataset" then "Dataset"
+      when "text" then "Article"
+      when "software" then "SoftwareApplication"
+      else "CreativeWork"
       end
     end
 
@@ -124,6 +126,35 @@ module Sinatra
       attributes["literal"].presence ||
       attributes["github"].presence ||
       attributes["orcid"]
+    end
+
+    def work_as_json_ld(id:, attributes:)
+      author = attributes.fetch("author", []).map do |a|
+        { "@type" => "Person",
+          "@id" => a.fetch("orcid", nil),
+          "givenName" => a.fetch("given", nil),
+          "familyName" => a.fetch("family", nil),
+          "name" => a.fetch("literal", nil) }.compact
+      end
+
+      { "@context" => "http://schema.org",
+        "@type" => creative_work_type(attributes),
+        "@id" => id,
+        "name" => attributes.fetch("title", nil),
+        "author" => author,
+        "publisher" => attributes.fetch("container-title", nil),
+        "datePublished" => attributes.fetch("published", nil),
+        "dateModified" => attributes.fetch("updated", nil),
+        "version" => attributes.fetch("version", nil) }.compact.to_json
+    end
+
+    def contributor_as_json_ld(id:, attributes:)
+      { "@context" => "http://schema.org",
+        "@type" => "Person",
+        "@id" => id,
+        "givenName" => attributes.fetch("given", nil),
+        "familyName" => attributes.fetch("family", nil),
+        "name" => attributes.fetch("literal", nil) }.compact.to_json
     end
 
     def contributor_id(attributes)
