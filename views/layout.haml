@@ -30,6 +30,11 @@
            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
          })();
+    - if @work.present? && @work[:data].present?
+      - id = @work.fetch(:data, {}).fetch("id", nil)
+      - attributes = @work.fetch(:data, {}).fetch("attributes", {})
+      = work_as_meta_tag(id: id, attributes: attributes)
+
   %body
     .notifications.top-left
     = yield

@@ -130,7 +130,7 @@ module Sinatra
 
     def work_as_json_ld(id:, attributes:)
       author = attributes.fetch("author", []).map do |a|
-        { "@type" => "Person",
+        { "@type" => a.fetch("literal", nil).present? ? "Organisation" : "Person",
           "@id" => a.fetch("orcid", nil),
           "givenName" => a.fetch("given", nil),
           "familyName" => a.fetch("family", nil),
@@ -145,16 +145,48 @@ module Sinatra
         "publisher" => attributes.fetch("container-title", nil),
         "datePublished" => attributes.fetch("published", nil),
         "dateModified" => attributes.fetch("updated", nil),
-        "version" => attributes.fetch("version", nil) }.compact.to_json
+        "version" => attributes.fetch("version", nil),
+        "description" => attributes.fetch("description", nil),
+        "license" => attributes.fetch("license", nil) }.compact.to_json
     end
 
     def contributor_as_json_ld(id:, attributes:)
       { "@context" => "http://schema.org",
-        "@type" => "Person",
+        "@type" => attributes.fetch("literal", nil).present? ? "Organisation" : "Person",
         "@id" => id,
         "givenName" => attributes.fetch("given", nil),
         "familyName" => attributes.fetch("family", nil),
         "name" => attributes.fetch("literal", nil) }.compact.to_json
+    end
+
+    def meta_tag(name:, content:)
+      if content.is_a?(Array)
+        content.map { |val| "<meta name=\"#{name}\" content=\"#{val}\" />" }.join("\n")
+      elsif content.present?
+        "<meta name=\"#{name}\" content=\"#{content}\" />"
+      end
+    end
+
+    def work_as_meta_tag(id:, attributes:)
+      author = attributes.fetch("author", []).map do |a|
+        if a.fetch("literal", nil).present?
+          a.fetch("literal")
+        else
+          [a.fetch("given", nil), a.fetch("family", nil)].compact.join(" ")
+        end
+      end
+
+      meta = []
+      meta << meta_tag(name: "DC.identifier", content: id)
+      meta << meta_tag(name: "DC.type", content: attributes.fetch("resource-type-id", nil) || "work")
+      meta << meta_tag(name: "DC.title", content: attributes.fetch("title", nil))
+      meta << meta_tag(name: "DC.creator", content: author)
+      meta << meta_tag(name: "DC.publisher", content: attributes.fetch("publisher", nil))
+      meta << meta_tag(name: "DC.date", content: attributes.fetch("published", nil))
+      meta << meta_tag(name: "DC.description", content: attributes.fetch("description", nil))
+      meta << meta_tag(name: "DCTERMS.license", content: attributes.fetch("license", nil))
+
+      meta.compact.join("\n")
     end
 
     def contributor_id(attributes)
