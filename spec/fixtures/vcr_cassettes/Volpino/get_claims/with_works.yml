@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://profiles.datacite.org/api/users/0000-0003-1419-2405/claims?dois=10.6084/M9.FIGSHARE.706340.V1,10.5281/ZENODO.34673
+    uri: https://profiles.labs.datacite.org/api/users/0000-0003-1419-2405/claims?dois=10.6084/M9.FIGSHARE.706340.V1,10.5281/ZENODO.34673
     body:
       encoding: US-ASCII
       string: ''
@@ -19,9 +19,9 @@ http_interactions:
       message: ''
     headers:
       Server:
-      - nginx/1.11.5
+      - openresty/1.11.2.1
       Date:
-      - Fri, 21 Oct 2016 17:00:41 GMT
+      - Mon, 21 Nov 2016 16:48:44 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -39,7 +39,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - c49d49f6-22d7-43ec-906a-6103025ea9c8
+      - d4820631-9e66-4b42-9be2-f8f5db1c078a
       Access-Control-Allow-Headers:
       - Origin, Content-Type, Accept, Authorization, Token
       Access-Control-Allow-Methods:
@@ -49,7 +49,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.035960'
+      - '0.035587'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -58,5 +58,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"data":[{"id":"84fc1b77-7ea3-4993-8f9b-71e8d712538f","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.6084/M9.FIGSHARE.706340.V1","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2016-03-09T12:14:49Z"}},{"id":"6ce1cfc6-b7d6-47e5-86e3-15bebe0b236d","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.5281/ZENODO.34673","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2016-03-09T12:13:03Z"}}],"links":{},"meta":{"total":2,"total-pages":1,"page":1}}'
     http_version: 
-  recorded_at: Fri, 21 Oct 2016 17:00:41 GMT
+  recorded_at: Mon, 21 Nov 2016 16:48:44 GMT
 recorded_with: VCR 2.9.3

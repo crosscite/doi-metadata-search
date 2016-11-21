@@ -7,16 +7,6 @@ describe "Volpino", type: :model, vcr: true do
 
   subject { ApiSearch.new }
 
-  context "user" do
-    it "has orcid" do
-      expect(user.orcid).to eq("0000-0003-1419-2405")
-    end
-
-    it "has api_key" do
-      expect(user.api_key).not_to be nil
-    end
-  end
-
   context "found_dois" do
     it "with works" do
       works = subject.get_works(query: "martin fenner")[:data]
@@ -47,7 +37,7 @@ describe "Volpino", type: :model, vcr: true do
       statuses = merged_claims.map { |mc| mc["attributes"]["claim-status"] }
       expect(works.length).to eq(25)
       expect(statuses.length).to eq(25)
-      expect(statuses.inject(Hash.new(0)) { |total, e| total[e] += 1 ; total }).to eq("none"=>17, "done"=>8)
+      expect(statuses.inject(Hash.new(0)) { |total, e| total[e] += 1 ; total }).to eq("done"=>9, "none"=>16)
     end
 
     it "with relations" do
@@ -104,7 +94,7 @@ describe "Volpino", type: :model, vcr: true do
       expect(contributions.length).to eq(60)
       expect(contributions_with_claims.length).to eq(60)
       contribution = contributions_with_claims[0]
-      expect(contribution["attributes"]["doi"]).to eq("10.6084/M9.FIGSHARE.90829.V1")
+      expect(contribution["attributes"]["doi"]).to eq("10.6084/M9.FIGSHARE.1048991.V2")
       expect(contribution["attributes"]["claim-status"]).to eq("done")
     end
 
