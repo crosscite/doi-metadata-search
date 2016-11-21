@@ -14,7 +14,7 @@ gem 'oj'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'iso8601', '~> 0.9.0'
-gem 'maremma', '~> 2.3'
+gem 'maremma', '~> 2.5'
 gem 'gabba'
 gem 'jwt'
 gem 'rack-flash3'
@@ -37,7 +37,8 @@ group :test do
   gem 'poltergeist'
   gem 'webmock', '~> 1.20.0'
   gem 'vcr', '~> 2.9.3'
-  gem 'codeclimate-test-reporter', require: nil
+  gem 'codeclimate-test-reporter', '~> 1.0.0'
+  gem 'simplecov'
 end
 
 group :test, :development do
