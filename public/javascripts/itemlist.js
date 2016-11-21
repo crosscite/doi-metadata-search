@@ -146,7 +146,7 @@ $(document).ready(function() {
         method: "POST",
         data: JSON.stringify({ "doi": $popover.attr('data-doi'),
                                "orcid": $popover.attr('data-orcid'),
-                               "claim_action": "create",
+                               "claim_action": $popover.attr('data-action'),
                                "source_id": "orcid_search" }),
         beforeSend: function (xhr) {
             xhr.setRequestHeader("Content-Type","application/json");
@@ -289,7 +289,7 @@ $(document).ready(function() {
     return false;
   };
 
-  $('.claim-ok').click(claimOkClickFn);
+  $('.claim-ok').click(claimDeleteClickFn);
   $('.claim-waiting').click(claimWaitingClickFn);
   $('.claim-none').click(claimNoneClickFn);
   $('.claim-warn').click(claimWarnClickFn);
