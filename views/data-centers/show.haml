@@ -17,7 +17,7 @@
         .col-md-3
           .panel.facets
             .panel-body.metadata
-              - if registration_agency.fetch("id", nil) == "datacite" && member.present?
+              - if registration_agency.present? && registration_agency.fetch("id", nil) == "datacite" && member.present?
                 %h5
                   Member
                 .registration_agency
