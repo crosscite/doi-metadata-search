@@ -4,6 +4,10 @@
   %span.well-transparent.claim-none{id: attributes["doi"], data: { url: "#{ENV['ORCID_UPDATE_URL']}/api/claims", doi: attributes["doi"], orcid: current_user.orcid, "api-key" => current_user.api_key, action: "create" }}
     %img{src: "//#{ENV['CDN_HOST']}/images/orcid_16x16.gif" }
     %span Add to ORCID record
+- elsif attributes["claim-status"] == "deleted"
+  %span.well-transparent.claim-none{id: attributes["doi"], data: { url: "#{ENV['ORCID_UPDATE_URL']}/api/claims", doi: attributes["doi"], orcid: current_user.orcid, "api-key" => current_user.api_key, action: "create" }}
+    %img{src: "//#{ENV['CDN_HOST']}/images/orcid_16x16.gif" }
+    %span Deleted from your ORCID record
 - elsif attributes["claim-status"] == "ignored"
   %span.well-transparent.claim-none{id: attributes["doi"], data: { url: "#{ENV['ORCID_UPDATE_URL']}/api/claims", doi: attributes["doi"], orcid: current_user.orcid, "api-key" => current_user.api_key, action: "create" }}
     %img{src: "//#{ENV['CDN_HOST']}/images/orcid_16x16.gif" }
