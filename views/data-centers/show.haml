@@ -17,13 +17,13 @@
         .col-md-3
           .panel.facets
             .panel-body.metadata
-              - if registration_agency.present? && registration_agency.fetch("id", nil) == "datacite" && member.present?
+              - if registration_agency.is_a?(Hash) && registration_agency.fetch("id", nil) == "datacite" && member.present?
                 %h5
                   Member
                 .registration_agency
                   %a{href: "/members/#{member.fetch("id", nil)}"}
                     = member.fetch("attributes", {}).fetch("title", nil)
-              - elsif registration_agency.present?
+              - elsif registration_agency.is_a?(Hash)
                 %h5
                   Registration Agency
                 .registration_agency
