@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.labs.datacite.org/contributors?offset=0&query=mabbett&rows=25
+    uri: http://api.labs.datacite.org/relations?include=relation-type,source,publisher&offset=0&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - openresty/1.11.2.1
       Date:
-      - Fri, 25 Nov 2016 19:56:51 GMT
+      - Fri, 25 Nov 2016 20:00:20 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Connection:
@@ -37,15 +37,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 0a53e02a-9853-4647-a483-a11ab44da000
+      - 4bd0c7a4-ed1b-43f9-ad85-f61c126b3d72
       Access-Control-Allow-Methods:
       - GET, POST, OPTIONS
       Etag:
-      - W/"ae24fba2a02b67c4be8b811e22469600"
+      - W/"37a6259cc0c1dae299a7866489dff0bd"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.027548'
+      - '12.978887'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -54,7 +54,7 @@ http_interactions:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
       encoding: UTF-8
-      string: '{"data":[{"id":"http://orcid.org/0000-0001-5882-6823","type":"contributors","attributes":{"given":"Andy","family":"Mabbett","literal":null,"orcid":"0000-0001-5882-6823","github":null,"updated":"1970-01-01T00:00:00Z"}}],"meta":{"total":1}}'
+      string: 'null'
     http_version: 
-  recorded_at: Fri, 25 Nov 2016 05:00:57 GMT
+  recorded_at: Fri, 25 Nov 2016 05:04:26 GMT
 recorded_with: VCR 2.9.3

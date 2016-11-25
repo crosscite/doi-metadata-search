@@ -17,9 +17,9 @@ http_interactions:
       message: ''
     headers:
       Server:
-      - nginx/1.11.5
+      - openresty/1.11.2.1
       Date:
-      - Thu, 20 Oct 2016 06:12:31 GMT
+      - Fri, 25 Nov 2016 19:56:46 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Connection:
@@ -37,15 +37,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - bc273fb4-5544-4a46-8288-89e270296a09
+      - 981f8c40-93c3-40aa-b363-8adfe952f932
       Access-Control-Allow-Methods:
       - GET, POST, OPTIONS
       Etag:
-      - W/"7387a1100adf5915e2c0b91e2cd4a9d0"
+      - W/"9453a256c3c48f665a59fddf82af8003"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.269514'
+      - '0.271678'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -56,9 +56,25 @@ http_interactions:
       encoding: UTF-8
       string: '{"data":{"id":"https://doi.org/10.2314/COSCV2.53","type":"works","attributes":{"doi":"10.2314/COSCV2.53","url":null,"author":[{"family":"Pampel","given":"Heinz","orcid":"http://orcid.org/0000-0003-3334-2771"},{"family":"Neumann","given":"Janna","orcid":"http://orcid.org/0000-0002-0161-1888"}],"title":"Publikation
         von Forschungsdaten","container-title":"Technische Informationsbibliothek
-        (TIB), Hannover","description":null,"resource-type-subtype":null,"license":null,"schema-version":"3","results":{},"published":"2015","deposited":"2015-05-20T06:35:12Z","updated":"2015-05-20T06:35:12Z"},"relationships":{"resource-type":{"data":{"id":"text","type":"resource-types"}},"work-type":{"data":{"id":"report","type":"work-types"}},"publisher":{"data":{"id":"tib.handbuch","type":"publishers"}}}},"included":[{"id":"text","type":"resource-types","attributes":{"title":"Text","updated":"2016-09-21T00:00:00Z"}},{"id":"report","type":"work-types","attributes":{"title":"Report","container":null,"updated":"2016-03-21T15:05:03Z"}},{"id":"tib.handbuch","type":"publishers","attributes":{"title":"Technische
-        Informationsbibliothek  Open Science Lab","other-names":[],"prefixes":[],"updated":"2016-10-20T05:44:00Z"},"relationships":{"member":{"meta":{}},"registration-agency":{"meta":{}}}}],"meta":{"total":1,"sources":[],"relation-types":[{"id":"is_part_of","title":"Is
+        (TIB), Hannover","description":null,"resource-type-subtype":null,"publisher-id":"tib.handbuch","member-id":"tib","registration-agency-id":"datacite","resource-type-id":"text","work-type-id":"report","version":"2.0","license":null,"schema-version":"3","results":[{"id":"datacite_orcid","title":"DataCite
+        (ORCID)","count":1}],"published":"2015","deposited":"2015-05-20T06:35:12Z","updated":"2015-05-20T06:35:12Z"},"relationships":{"publisher":{"data":{"id":"tib.handbuch","type":"publishers"}},"member":{"data":{"id":"tib","type":"members"}},"registration-agency":{"data":{"id":"datacite","type":"registration-agencies"}},"resource-type":{"data":{"id":"text","type":"resource-types"}},"work-type":{"data":{"id":"report","type":"work-types"}}}},"included":[{"id":"tib.handbuch","type":"publishers","attributes":{"title":"Technische
+        Informationsbibliothek  Open Science Lab","other-names":[],"prefixes":[],"member-id":"tib","registration-agency-id":"datacite","updated":"2016-11-25T19:31:04Z"},"relationships":{"member":{"meta":{}},"registration-agency":{"meta":{}}}},{"id":"tib","type":"members","attributes":{"title":"German
+        National Library of Science and Technology","description":"\u003cp\u003eThe
+        TIB is the German National Library for all areas of engineering as well as
+        architecture, chemistry, information technology, mathematics and physics.
+        We are the world\u0026#39;s largest specialised library for science and technology
+        and are part of the German research infrastructure. Our function is the comprehensive
+        procurement and archival storage of technical scientific literature from all
+        over the world. TIB was the first DOI registration agency for primary data
+        worldwide. We have been providing DOI registration services since 2005 and
+        we now work directly with over 40 data centres. TIB is one of the founding
+        members of DataCite and is currently the Business Office. We provide DOI registration
+        services for all German data centres in the fields of engineering, architecture,
+        chemistry, information technology, mathematics and physics. Our current focus
+        is on providing DOI names for primary data and grey literature.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Germany","year":2009,"logo-url":"https://assets.labs.datacite.org/images/members/TIB.png","email":"doi-info@tib.eu","website":"
+        http://www.tib.eu","phone":"+49 511 762 14226","updated":"2016-08-01T11:13:04.000Z"}},{"id":"datacite","type":"registration-agencies","attributes":{"title":"DataCite","updated":"2016-04-27T02:23:01Z"}},{"id":"text","type":"resource-types","attributes":{"title":"Text","updated":"2016-09-21T00:00:00Z"}},{"id":"report","type":"work-types","attributes":{"title":"Report","container":null,"updated":"2016-03-21T15:05:03Z"}}],"meta":{"total":1,"years":[{"id":"2015","title":"2015","count":1}],"sources":[{"id":"datacite-orcid","title":"DataCite
+        (ORCID)","count":1}],"publishers":[],"resource-types":[{"id":"text","title":"Text","count":1}],"relation-types":[{"id":"is-part-of","title":"Is
         part of","count":1}]}}'
     http_version: 
-  recorded_at: Thu, 20 Oct 2016 06:12:31 GMT
+  recorded_at: Fri, 25 Nov 2016 05:00:52 GMT
 recorded_with: VCR 2.9.3

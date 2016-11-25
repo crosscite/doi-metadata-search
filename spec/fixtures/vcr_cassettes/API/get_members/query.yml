@@ -17,9 +17,9 @@ http_interactions:
       message: ''
     headers:
       Server:
-      - nginx/1.11.5
+      - openresty/1.11.2.1
       Date:
-      - Thu, 20 Oct 2016 05:49:07 GMT
+      - Fri, 25 Nov 2016 19:56:53 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Connection:
@@ -37,7 +37,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - f42ebd72-4275-4668-8ac4-b61cdef5efc0
+      - 0a6b2ff1-31af-4537-acef-a25366a34512
       Access-Control-Allow-Methods:
       - GET, POST, OPTIONS
       Etag:
@@ -45,7 +45,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.018925'
+      - '0.020392'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -71,5 +71,5 @@ http_interactions:
         http://www.tib.eu","phone":"+49 511 762 14226","updated":"2016-08-01T11:13:04.000Z"}}],"meta":{"total":1,"member-types":[{"id":"allocating","title":"Allocating","count":1}],"regions":[{"id":"emea","title":"Europe,
         Middle East and Africa","count":1}],"years":[{"id":"2009","title":"2009","count":1}]}}'
     http_version: 
-  recorded_at: Thu, 20 Oct 2016 05:49:07 GMT
+  recorded_at: Fri, 25 Nov 2016 05:00:59 GMT
 recorded_with: VCR 2.9.3

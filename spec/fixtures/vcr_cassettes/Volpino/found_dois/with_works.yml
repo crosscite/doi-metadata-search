@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - openresty/1.11.2.1
       Date:
-      - Mon, 21 Nov 2016 16:48:45 GMT
+      - Fri, 25 Nov 2016 19:57:18 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Connection:
@@ -37,7 +37,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 1e6566a8-c314-4968-9585-3957d26c6f3e
+      - 46378198-b7ad-4eeb-b1f6-9e9d907aafbd
       Access-Control-Allow-Methods:
       - GET, POST, OPTIONS
       Etag:
@@ -45,7 +45,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.491528'
+      - '0.426401'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -2105,5 +2105,5 @@ http_interactions:
         dGl0bGUiOiJTY2hlbWEgMi4yIiwiY291bnQiOjJ9XSwidG90YWwiOjEwMiwi
         c291cmNlcyI6W10sInJlbGF0aW9uLXR5cGVzIjpbXX19
     http_version: 
-  recorded_at: Mon, 21 Nov 2016 16:48:45 GMT
+  recorded_at: Fri, 25 Nov 2016 05:01:25 GMT
 recorded_with: VCR 2.9.3

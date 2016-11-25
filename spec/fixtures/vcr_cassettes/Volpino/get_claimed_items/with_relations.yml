@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - openresty/1.11.2.1
       Date:
-      - Mon, 21 Nov 2016 16:48:41 GMT
+      - Fri, 25 Nov 2016 19:57:12 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Connection:
@@ -37,15 +37,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 85934a56-ced6-47e2-a87e-4e1bc5e06d4c
+      - 6294c5cf-3a39-4506-abf4-1a8fb211bae2
       Access-Control-Allow-Methods:
       - GET, POST, OPTIONS
       Etag:
-      - W/"faa644ae45dc6974a943a148903265d8"
+      - W/"04381d9384090b1599c89ee4c3be2025"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.128428'
+      - '0.101056'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -54,19 +54,19 @@ http_interactions:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
       encoding: UTF-8
-      string: '{"data":[{"id":"7284912e-0df7-4613-b2f0-b77ffffff07d","type":"relations","attributes":{"subj-id":"http://doi.org/10.5281/ZENODO.46761","obj-id":"http://doi.org/10.5281/ZENODO.48705","doi":"10.5281/ZENODO.46761","author":[],"title":"THOR:
-        Metrics and Tools","container-title":null,"source-id":"datacite-related","relation-type-id":"is-supplemented-by","publisher-id":"cern.zenodo","registration-agency-id":"datacite","work-type-id":"report","total":1,"published":"2016","issued":"2016-01-01T00:00:00Z","updated":"2016-06-16T00:49:59Z"},"relationships":{"publisher":{"data":{"id":"cern.zenodo","type":"publishers"}},"source":{"data":{"id":"datacite-related","type":"sources"}},"relation-type":{"data":{"id":"is-supplemented-by","type":"relation-types"}}}},{"id":"b104dc42-5736-4476-acbe-5a8df14e571c","type":"relations","attributes":{"subj-id":"http://doi.org/10.5281/ZENODO.48228","obj-id":"http://doi.org/10.5281/ZENODO.48705","doi":"10.5281/ZENODO.48228","author":[],"title":"THOR
-        Communications Plan","container-title":null,"source-id":"datacite-related","relation-type-id":"is-supplemented-by","publisher-id":"cern.zenodo","registration-agency-id":"datacite","work-type-id":"report","total":1,"published":"2016","issued":"2016-01-01T00:00:00Z","updated":"2016-06-16T00:49:58Z"},"relationships":{"publisher":{"data":{"id":"cern.zenodo","type":"publishers"}},"source":{"data":{"id":"datacite-related","type":"sources"}},"relation-type":{"data":{"id":"is-supplemented-by","type":"relation-types"}}}},{"id":"cb31609e-e2c5-4965-909b-f048c1d3c36d","type":"relations","attributes":{"subj-id":"http://doi.org/10.5281/ZENODO.30799","obj-id":"http://doi.org/10.5281/ZENODO.48705","doi":"10.5281/ZENODO.30799","author":[],"title":"D2.1:
+      string: '{"data":[{"id":"3e2ac4ed-b9d4-4f72-a274-e1d1aec607de","type":"relations","attributes":{"subj-id":"http://doi.org/10.5281/ZENODO.46761","obj-id":"http://doi.org/10.5281/ZENODO.48705","doi":"10.5281/ZENODO.46761","author":[],"title":"THOR:
+        Metrics and Tools","container-title":null,"source-id":"datacite-related","relation-type-id":"is-supplemented-by","publisher-id":"cern.zenodo","registration-agency-id":"datacite","work-type-id":"report","total":1,"published":"2016","issued":"2016-01-01T00:00:00Z","updated":"2016-06-16T00:49:59Z"},"relationships":{"publisher":{"data":{"id":"cern.zenodo","type":"publishers"}},"source":{"data":{"id":"datacite-related","type":"sources"}},"relation-type":{"data":{"id":"is-supplemented-by","type":"relation-types"}}}},{"id":"9241d0aa-cc0e-404a-9e8e-75c83c22f6ae","type":"relations","attributes":{"subj-id":"http://doi.org/10.5281/ZENODO.48228","obj-id":"http://doi.org/10.5281/ZENODO.48705","doi":"10.5281/ZENODO.48228","author":[],"title":"THOR
+        Communications Plan","container-title":null,"source-id":"datacite-related","relation-type-id":"is-supplemented-by","publisher-id":"cern.zenodo","registration-agency-id":"datacite","work-type-id":"report","total":1,"published":"2016","issued":"2016-01-01T00:00:00Z","updated":"2016-06-16T00:49:58Z"},"relationships":{"publisher":{"data":{"id":"cern.zenodo","type":"publishers"}},"source":{"data":{"id":"datacite-related","type":"sources"}},"relation-type":{"data":{"id":"is-supplemented-by","type":"relation-types"}}}},{"id":"ee3e7fef-ae3e-49be-9785-306aa9752700","type":"relations","attributes":{"subj-id":"http://doi.org/10.5281/ZENODO.30799","obj-id":"http://doi.org/10.5281/ZENODO.48705","doi":"10.5281/ZENODO.30799","author":[],"title":"D2.1:
         Artefact, Contributor, and Organisation Relationship Data Schema","container-title":null,"source-id":"datacite-related","relation-type-id":"is-supplemented-by","publisher-id":"cern.zenodo","registration-agency-id":"datacite","work-type-id":"report","total":1,"published":"2015","issued":"2015-01-01T00:00:00Z","updated":"2016-06-16T00:49:57Z"},"relationships":{"publisher":{"data":{"id":"cern.zenodo","type":"publishers"}},"source":{"data":{"id":"datacite-related","type":"sources"}},"relation-type":{"data":{"id":"is-supplemented-by","type":"relation-types"}}}}],"included":[{"id":"cern.zenodo","type":"publishers","attributes":{"title":"ZENODO
-        - Research. Shared.","other-names":[],"prefixes":[],"member-id":"cern","registration-agency-id":"datacite","updated":"2016-11-21T16:44:20Z"},"relationships":{"member":{"meta":{}},"registration-agency":{"meta":{}}}},{"id":"datacite-related","type":"sources","attributes":{"title":"DataCite
+        - Research. Shared.","other-names":[],"prefixes":[],"member-id":"cern","registration-agency-id":"datacite","updated":"2016-11-25T19:08:10Z"},"relationships":{"member":{"meta":{}},"registration-agency":{"meta":{}}}},{"id":"datacite-related","type":"sources","attributes":{"title":"DataCite
         (RelatedIdentifier)","description":"Import works with relatedIdentifiers via
-        the DataCite Solr API.","state":"active","group-id":"relations","work-count":283344,"relation-count":421125,"result-count":2964296,"by-day":{"with-results":0,"without-results":0,"not-updated":421066},"by-month":{"with-results":0,"without-results":500,"not-updated":420566},"updated":"2016-11-21T16:05:16Z"},"relationships":{"group":{"meta":{}}}},{"id":"is-supplemented-by","type":"relation-types","attributes":{"title":"Is
+        the DataCite Solr API.","state":"active","group-id":"relations","work-count":283344,"relation-count":421125,"result-count":2964296,"by-day":{"with-results":0,"without-results":0,"not-updated":421066},"by-month":{"with-results":0,"without-results":0,"not-updated":421066},"updated":"2016-11-25T17:05:06Z"},"relationships":{"group":{"meta":{}}}},{"id":"is-supplemented-by","type":"relation-types","attributes":{"title":"Is
         supplemented by","inverse-title":"Is supplement to","updated":"2016-03-21T15:05:03Z"}}],"meta":{"total":3,"sources":[{"id":"datacite_related","title":"DataCite
         (RelatedIdentifier)","count":3}],"publishers":[{"id":"cern.zenodo","title":"ZENODO
         - Research. Shared.","count":3}],"relation-types":[{"id":"is_supplemented_by","title":"Is
         supplemented by","count":3}]}}'
     http_version: 
-  recorded_at: Mon, 21 Nov 2016 16:48:41 GMT
+  recorded_at: Fri, 25 Nov 2016 05:01:18 GMT
 - request:
     method: get
     uri: https://profiles.labs.datacite.org/api/users/0000-0003-1419-2405/claims?dois=10.5281/ZENODO.46761,10.5281/ZENODO.48228,10.5281/ZENODO.30799
@@ -88,7 +88,7 @@ http_interactions:
       Server:
       - openresty/1.11.2.1
       Date:
-      - Mon, 21 Nov 2016 16:48:41 GMT
+      - Fri, 25 Nov 2016 19:57:12 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -106,24 +106,24 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 9d698bf3-701d-4577-8bee-887a36270e4a
+      - 1c424902-c7ca-4742-bd17-67566fc9011f
       Access-Control-Allow-Headers:
       - Origin, Content-Type, Accept, Authorization, Token
       Access-Control-Allow-Methods:
-      - POST, GET, PUT, DELETE, OPTIONS
+      - GET, POST, OPTIONS
       Etag:
-      - W/"fc6166cb1db39883b342bf1d1b250fa3"
+      - W/"1a5711f518e3a470b03dde6c2c3a0de3"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.052029'
+      - '0.017396'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
       - Phusion Passenger 5.0.30
     body:
       encoding: UTF-8
-      string: '{"data":[{"id":"25a3fdb9-1f4d-465d-8a53-5a7642258e99","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.5281/ZENODO.30799","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2016-03-09T13:01:04Z"}}],"links":{},"meta":{"total":1,"total-pages":1,"page":1}}'
+      string: '{"data":[{"id":"25a3fdb9-1f4d-465d-8a53-5a7642258e99","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.5281/ZENODO.30799","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2016-05-26T08:34:12Z"}}],"links":{},"meta":{"total":1,"total-pages":1,"page":1}}'
     http_version: 
-  recorded_at: Mon, 21 Nov 2016 16:48:41 GMT
+  recorded_at: Fri, 25 Nov 2016 05:01:18 GMT
 recorded_with: VCR 2.9.3

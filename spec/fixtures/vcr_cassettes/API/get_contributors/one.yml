@@ -17,9 +17,9 @@ http_interactions:
       message: ''
     headers:
       Server:
-      - nginx/1.11.5
+      - openresty/1.11.2.1
       Date:
-      - Thu, 20 Oct 2016 05:49:08 GMT
+      - Fri, 25 Nov 2016 19:56:50 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Connection:
@@ -37,7 +37,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - b4823314-a162-4ea8-95b6-9561b9affe9f
+      - 7d121793-0e66-4338-b060-fae73d846a1d
       Access-Control-Allow-Methods:
       - GET, POST, OPTIONS
       Etag:
@@ -45,7 +45,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.039103'
+      - '0.026586'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -56,5 +56,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"data":{"id":"http://orcid.org/0000-0002-4000-4167","type":"contributors","attributes":{"given":"Peter","family":"Arend","literal":null,"orcid":"0000-0002-4000-4167","github":null,"updated":"1970-01-01T00:00:00Z"}}}'
     http_version: 
-  recorded_at: Thu, 20 Oct 2016 05:49:08 GMT
+  recorded_at: Fri, 25 Nov 2016 05:00:56 GMT
 recorded_with: VCR 2.9.3

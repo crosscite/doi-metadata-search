@@ -37,7 +37,7 @@ describe "Volpino", type: :model, vcr: true do
       statuses = merged_claims.map { |mc| mc["attributes"]["claim-status"] }
       expect(works.length).to eq(25)
       expect(statuses.length).to eq(25)
-      expect(statuses.inject(Hash.new(0)) { |total, e| total[e] += 1 ; total }).to eq("done"=>9, "none"=>16)
+      expect(statuses.inject(Hash.new(0)) { |total, e| total[e] += 1 ; total }).to eq("done"=>10, "none"=>15)
     end
 
     it "with relations" do
@@ -61,7 +61,7 @@ describe "Volpino", type: :model, vcr: true do
       statuses = merged_claims.map { |mc| mc["attributes"]["claim-status"] }
       expect(contributions.length).to eq(60)
       expect(statuses.length).to eq(60)
-      expect(statuses.inject(Hash.new(0)) { |total, e| total[e] += 1 ;total}).to eq("done"=>60)
+      expect(statuses.inject(Hash.new(0)) { |total, e| total[e] += 1 ;total}).to eq("done"=>56, "failed"=>2, "none"=>2)
     end
   end
 

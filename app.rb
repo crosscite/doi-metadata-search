@@ -295,22 +295,22 @@ get '/citation' do
   halt 415, json(status: 'error', message: 'Format missing or not supported.') unless citation_format
 
   # use doi content negotiation to get formatted citation
-  result = Maremma.get "http://doi.org/#{params[:doi]}", content_type: citation_format
+  response = Maremma.get "http://doi.org/#{params[:doi]}", accept: citation_format
 
   # check for errors
-  if result.fetch("errors", []).present?
-    error = result.fetch('errors', []).first
+  if response.body.fetch("errors", []).present?
+    error = response.body.fetch('errors', []).first
     status = error.fetch('status', 400).to_i
     message = error.fetch('title', "An error occured.")
     halt status, json(status: 'error', message: message)
-  elsif result["data"].blank?
+  elsif response.body["data"].blank?
     halt 404, json(status: 'error', message: 'Not found')
   end
 
   settings.ga.event('Citations', '/citation', citation_format, nil, true) if ENV['GABBA_COOKIE'] && ENV['RACK_ENV'] != "test"
 
   content_type citation_format + '; charset=utf-8'
-  result.fetch("data", nil)
+  response.body.fetch("data", nil)
 end
 
 get '/heartbeat' do
