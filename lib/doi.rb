@@ -44,11 +44,11 @@ module Sinatra
       doi = to_doi(s)
       normal_short_doi = doi.sub(/10\//, '').downcase
 
-      result = Maremma.get "http://doi.org/10/#{normal_short_doi}", content_type: JSON_TYPE
+      response = Maremma.get "http://doi.org/10/#{normal_short_doi}", content_type: JSON_TYPE
 
-      return nil if result["errors"]
+      return nil if response.body["errors"]
 
-      result.fetch('data', {}).fetch('DOI', nil)
+      response.body.fetch('data', {}).fetch('DOI', nil)
     end
   end
 

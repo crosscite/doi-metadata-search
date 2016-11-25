@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - openresty/1.11.2.1
       Date:
-      - Mon, 21 Nov 2016 16:48:45 GMT
+      - Fri, 25 Nov 2016 19:57:16 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Connection:
@@ -37,7 +37,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 91167c3a-597e-4dc6-936b-ce5db7975784
+      - be903f46-6897-4365-b1d1-5897d39c1dc5
       Access-Control-Allow-Methods:
       - GET, POST, OPTIONS
       Etag:
@@ -45,7 +45,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.631339'
+      - '0.429787'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -2105,7 +2105,7 @@ http_interactions:
         dGl0bGUiOiJTY2hlbWEgMi4yIiwiY291bnQiOjJ9XSwidG90YWwiOjEwMiwi
         c291cmNlcyI6W10sInJlbGF0aW9uLXR5cGVzIjpbXX19
     http_version: 
-  recorded_at: Mon, 21 Nov 2016 16:48:46 GMT
+  recorded_at: Fri, 25 Nov 2016 05:01:22 GMT
 - request:
     method: get
     uri: https://profiles.labs.datacite.org/api/users/0000-0003-1419-2405/claims?dois=10.2314/COSCV1.53,10.2314/COSCV2.53,10.5281/ZENODO.13004,10.5281/ZENODO.34673,10.6084/M9.FIGSHARE.706340.V1,10.3205/12AGMB03,10.6084/M9.FIGSHARE.706340,10.5169/SEALS-355044,10.5169/SEALS-118645,10.15156/BIO/SH132186.07FU,10.15156/BIO/SH073225.07FU,10.15156/BIO/SH171384.07FU,10.15156/BIO/SH031366.07FU,10.15156/BIO/SH299733.07FU,10.15156/BIO/SH470440.07FU,10.15156/BIO/SH470441.07FU,10.15156/BIO/SH470442.07FU,10.15156/BIO/SH470443.07FU,10.15156/BIO/SH470444.07FU,10.15156/BIO/SH470445.07FU,10.15156/BIO/SH470446.07FU,10.15156/BIO/SH444252.07FU,10.15156/BIO/SH219844.07FU,10.5281/ZENODO.31780,10.6084/M9.FIGSHARE.90828.V1
@@ -2127,7 +2127,7 @@ http_interactions:
       Server:
       - openresty/1.11.2.1
       Date:
-      - Mon, 21 Nov 2016 16:48:46 GMT
+      - Fri, 25 Nov 2016 19:57:16 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -2145,24 +2145,24 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 3a86858e-9f67-4bb5-ae00-82630d0bf8bb
+      - 4855b423-e179-43d1-8d39-42db7f1d8e06
       Access-Control-Allow-Headers:
       - Origin, Content-Type, Accept, Authorization, Token
       Access-Control-Allow-Methods:
-      - POST, GET, PUT, DELETE, OPTIONS
+      - GET, POST, OPTIONS
       Etag:
-      - W/"caead27da236424f265d10d97c7ff714"
+      - W/"ee0604ab7a4a8124f5761b83e7b91bb4"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.033666'
+      - '0.028892'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
       - Phusion Passenger 5.0.30
     body:
       encoding: UTF-8
-      string: '{"data":[{"id":"98527a39-ff26-49cd-985b-ea2f1881a6f4","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.2314/COSCV1.53","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2016-11-21T10:30:40Z"}},{"id":"3d81a3b8-c29d-4624-8b4d-029d1944ab23","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.5169/SEALS-355044","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2016-09-25T20:20:40Z"}},{"id":"60fb2400-4401-46a4-a5e8-e87bd7767f02","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.5281/ZENODO.13004","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2016-09-05T10:01:18Z"}},{"id":"16925bfc-23fd-4bb8-9c7c-2a230b8f964c","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.6084/M9.FIGSHARE.90828.V1","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2016-08-02T08:54:57Z"}},{"id":"84fc1b77-7ea3-4993-8f9b-71e8d712538f","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.6084/M9.FIGSHARE.706340.V1","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2016-03-09T12:14:49Z"}},{"id":"6ce1cfc6-b7d6-47e5-86e3-15bebe0b236d","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.5281/ZENODO.34673","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2016-03-09T12:13:03Z"}},{"id":"c3a67e7f-23f0-423c-8cc3-b210bb021abd","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.5281/ZENODO.31780","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2015-11-06T12:47:22Z"}},{"id":"b9c7ea04-4c27-4687-8420-0c7f6efce062","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.3205/12AGMB03","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2013-07-27T06:56:47Z"}},{"id":"6392fcf3-cc68-4085-9701-7984a2b73dc8","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.6084/M9.FIGSHARE.706340","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2013-07-01T12:32:01Z"}}],"links":{},"meta":{"total":9,"total-pages":1,"page":1}}'
+      string: '{"data":[{"id":"0d1024de-aff2-4869-8e45-f8aead94e7a3","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.2314/COSCV2.53","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2016-11-21T17:02:23Z"}},{"id":"98527a39-ff26-49cd-985b-ea2f1881a6f4","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.2314/COSCV1.53","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2016-11-21T10:30:40Z"}},{"id":"3d81a3b8-c29d-4624-8b4d-029d1944ab23","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.5169/SEALS-355044","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2016-09-25T20:20:40Z"}},{"id":"60fb2400-4401-46a4-a5e8-e87bd7767f02","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.5281/ZENODO.13004","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2016-09-05T10:01:18Z"}},{"id":"16925bfc-23fd-4bb8-9c7c-2a230b8f964c","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.6084/M9.FIGSHARE.90828.V1","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2016-08-02T08:54:57Z"}},{"id":"b9c7ea04-4c27-4687-8420-0c7f6efce062","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.3205/12AGMB03","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2016-05-26T08:33:41Z"}},{"id":"6392fcf3-cc68-4085-9701-7984a2b73dc8","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.6084/M9.FIGSHARE.706340","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2016-03-12T20:52:31Z"}},{"id":"84fc1b77-7ea3-4993-8f9b-71e8d712538f","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.6084/M9.FIGSHARE.706340.V1","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2016-03-09T12:14:49Z"}},{"id":"6ce1cfc6-b7d6-47e5-86e3-15bebe0b236d","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.5281/ZENODO.34673","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2016-03-09T12:13:03Z"}},{"id":"c3a67e7f-23f0-423c-8cc3-b210bb021abd","type":"claims","attributes":{"orcid":"0000-0003-1419-2405","doi":"10.5281/ZENODO.31780","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2015-11-06T12:47:22Z"}}],"links":{},"meta":{"total":10,"total-pages":1,"page":1}}'
     http_version: 
-  recorded_at: Mon, 21 Nov 2016 16:48:46 GMT
+  recorded_at: Fri, 25 Nov 2016 05:01:23 GMT
 recorded_with: VCR 2.9.3

@@ -8,17 +8,17 @@ describe "API", type: :model, vcr: true do
   context "get_works" do
     it "all" do
       response = subject.get_works
-      expect(response[:meta]["resource-types"].first).to eq("id"=>"dataset", "title"=>"Dataset", "count"=>2842193)
+      expect(response[:meta]["resource-types"].first).to eq("id"=>"dataset", "title"=>"Dataset", "count"=>2875784)
       work = response[:data].first
-      expect(work["id"]).to eq("https://doi.org/10.5517/CCDC.CSD.CC1LX6TJ")
+      expect(work["id"]).to eq("https://doi.org/10.13140/RG.2.2.18043.31529")
     end
 
     it "one" do
       response = subject.get_works(id: "10.2314/COSCV2.53")
       work = response[:data]
       expect(work["attributes"]["author"].first).to eq("family"=>"Pampel", "given"=>"Heinz", "orcid"=>"http://orcid.org/0000-0003-3334-2771")
-      expect(response[:included].size).to eq(3)
-      resource_type = response[:included].first
+      expect(response[:included].size).to eq(5)
+      resource_type = response[:included][3]
       expect(resource_type).to eq("id"=>"text", "type"=>"resource-types", "attributes"=>{"title"=>"Text", "updated"=>"2016-09-21T00:00:00Z"})
     end
 
@@ -26,7 +26,7 @@ describe "API", type: :model, vcr: true do
       response = subject.get_works(query: "mabbett")
       expect(response[:meta]["resource-types"].first).to eq("id"=>"dataset", "title"=>"Dataset", "count"=>15)
       work = response[:data].first
-      expect(work["id"]).to eq("https://doi.org/10.6084/M9.FIGSHARE.1419601")
+      expect(work["id"]).to eq("https://doi.org/10.6084/M9.FIGSHARE.1371114.V1")
     end
   end
 
@@ -35,7 +35,7 @@ describe "API", type: :model, vcr: true do
       response = subject.get_contributors
       expect(response[:meta]).to eq("total"=>7141)
       contributor = response[:data].first
-      expect(contributor["id"]).to eq("https://github.com/mne-tools")
+      expect(contributor["id"]).to eq("http://orcid.org/0000-0002-7304-0535")
     end
 
     it "one" do
@@ -121,7 +121,7 @@ describe "API", type: :model, vcr: true do
   context "get_relations" do
     it "all" do
       response = subject.get_relations(timeout: 10)
-      expect(response).to eq(:data=>[], :included=>[], :errors=>[{"status"=>408, "title"=>"Request timeout"}], :meta=>{})
+      expect(response).to eq(:data=>["null"], :included=>[], :errors=>[], :meta=>{})
     end
 
     it "by work" do
@@ -135,9 +135,9 @@ describe "API", type: :model, vcr: true do
   context "get_contributions" do
     it "all" do
       response = subject.get_contributions
-      expect(response[:meta]["sources"].first).to eq("id"=>"datacite_orcid", "title"=>"DataCite (ORCID)", "count"=>1071679)
+      expect(response[:meta]["sources"].first).to eq("id"=>"datacite_orcid", "title"=>"DataCite (ORCID)", "count"=>1071634)
       contribution = response[:data].first
-      expect(contribution["attributes"]["subj-id"]).to eq("http://orcid.org/0000-0001-7629-2140")
+      expect(contribution["attributes"]["subj-id"]).to eq("http://orcid.org/0000-0001-6280-8695")
     end
 
     it "by contributor" do

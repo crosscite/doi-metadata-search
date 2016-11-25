@@ -17,9 +17,9 @@ http_interactions:
       message: ''
     headers:
       Server:
-      - nginx/1.11.5
+      - openresty/1.11.2.1
       Date:
-      - Wed, 26 Oct 2016 17:46:44 GMT
+      - Fri, 25 Nov 2016 19:55:59 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Connection:
@@ -37,15 +37,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - bf3213be-e76b-4ff0-b373-f9c877974b8b
+      - 3a3f2357-88fa-4037-a81e-ff8ae9a74061
       Access-Control-Allow-Methods:
       - GET, POST, OPTIONS
       Etag:
-      - W/"463a8c36d074271ee42ec3380b157527"
+      - W/"dc0087c08c8ac9dd5a3c05d5ab4ea247"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.043483'
+      - '0.042382'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -59,7 +59,7 @@ http_interactions:
         cnMiLCJhdHRyaWJ1dGVzIjp7InRpdGxlIjoiWkVOT0RPIC0gUmVzZWFyY2gu
         IFNoYXJlZC4iLCJvdGhlci1uYW1lcyI6W10sInByZWZpeGVzIjpbXSwibWVt
         YmVyLWlkIjoiY2VybiIsInJlZ2lzdHJhdGlvbi1hZ2VuY3ktaWQiOiJkYXRh
-        Y2l0ZSIsInVwZGF0ZWQiOiIyMDE2LTEwLTI2VDE3OjA4OjIzWiJ9LCJyZWxh
+        Y2l0ZSIsInVwZGF0ZWQiOiIyMDE2LTExLTI1VDE5OjA4OjEwWiJ9LCJyZWxh
         dGlvbnNoaXBzIjp7Im1lbWJlciI6eyJkYXRhIjp7ImlkIjoiY2VybiIsInR5
         cGUiOiJtZW1iZXJzIn19LCJyZWdpc3RyYXRpb24tYWdlbmN5Ijp7ImRhdGEi
         OnsiaWQiOiJkYXRhY2l0ZSIsInR5cGUiOiJyZWdpc3RyYXRpb24tYWdlbmNp
@@ -111,5 +111,5 @@ http_interactions:
         biIsInRpdGxlIjoiRXVyb3BlYW4gT3JnYW5pemF0aW9uIGZvciBOdWNsZWFy
         IFJlc2VhcmNoIiwiY291bnQiOjF9XX19
     http_version: 
-  recorded_at: Wed, 26 Oct 2016 17:46:42 GMT
+  recorded_at: Fri, 25 Nov 2016 05:00:06 GMT
 recorded_with: VCR 2.9.3

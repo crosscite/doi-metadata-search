@@ -17,9 +17,9 @@ http_interactions:
       message: ''
     headers:
       Server:
-      - nginx/1.11.5
+      - openresty/1.11.2.1
       Date:
-      - Thu, 20 Oct 2016 10:51:29 GMT
+      - Fri, 25 Nov 2016 19:56:00 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Connection:
@@ -37,15 +37,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 193ca49a-2c3b-4b49-90f0-caa5ac1248a0
+      - 8f8c1009-d26a-4e64-b0d1-44a5fcfbe93e
       Access-Control-Allow-Methods:
       - GET, POST, OPTIONS
       Etag:
-      - W/"4a8caf1c655f7eae8a3e2e938b951755"
+      - W/"ff01ae1a6e9dd2502b3f309c9d1896df"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.084193'
+      - '0.087652'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -54,15 +54,15 @@ http_interactions:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
       encoding: UTF-8
-      string: '{"data":[{"id":"28e56fed-a259-4fde-bfb7-46f9af9eb79e","type":"relations","attributes":{"subj-id":"http://doi.org/10.6084/M9.FIGSHARE.3394312.V1","obj-id":"http://doi.org/10.6084/M9.FIGSHARE.3394312","doi":"10.6084/M9.FIGSHARE.3394312.V1","author":[{"given":"Samuel","family":"Asumadu-Sarkodie","orcid":"http://orcid.org/0000-0001-5035-5983"},{"given":"Phebe
+      string: '{"data":[{"id":"b0701204-d4dc-4e48-8b76-79aa0a8c192f","type":"relations","attributes":{"subj-id":"http://doi.org/10.6084/M9.FIGSHARE.3394312.V1","obj-id":"http://doi.org/10.6084/M9.FIGSHARE.3394312","doi":"10.6084/M9.FIGSHARE.3394312.V1","author":[{"given":"Samuel","family":"Asumadu-Sarkodie","orcid":"http://orcid.org/0000-0001-5035-5983"},{"given":"Phebe
         Asantewaa","family":"Owusu","orcid":"http://orcid.org/0000-0001-7364-1640"}],"title":"Global
-        Annual Installations 2000-2013","container-title":"Figshare","publisher-id":"CDL.DIGSCI","registration-agency-id":null,"work-type":null,"total":1,"published":"2016","issued":"2016-05-20T20:40:22Z","updated":"2016-06-01T20:01:21Z"},"relationships":{"relation-type":{"data":{"id":"is-identical-to","type":"relation-types"}},"source":{"data":{"id":"datacite-related","type":"sources"}}}}],"included":[{"id":"is-identical-to","type":"relation-types","attributes":{"title":"Is
-        identical to","inverse-title":"Is identical to","updated":"2016-03-21T15:05:04Z"}},{"id":"datacite-related","type":"sources","attributes":{"title":"DataCite
+        Annual Installations 2000-2013","container-title":"Figshare","source-id":"datacite-related","relation-type-id":"is-identical-to","publisher-id":"figshare.ars","registration-agency-id":null,"work-type-id":"graphic","total":1,"published":"2016","issued":"2016-05-20T20:40:22Z","updated":"2016-06-01T20:01:21Z"},"relationships":{"publisher":{"data":null},"source":{"data":{"id":"datacite-related","type":"sources"}},"relation-type":{"data":{"id":"is-identical-to","type":"relation-types"}}}}],"included":[{"id":"datacite-related","type":"sources","attributes":{"title":"DataCite
         (RelatedIdentifier)","description":"Import works with relatedIdentifiers via
-        the DataCite Solr API.","state":"active","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-10-20T10:18:11Z"},"relationships":{"group":{"meta":{}}}}],"meta":{"total":1,"sources":[{"id":"datacite_related","title":"DataCite
+        the DataCite Solr API.","state":"active","group-id":"relations","work-count":283344,"relation-count":421125,"result-count":2964296,"by-day":{"with-results":0,"without-results":0,"not-updated":421066},"by-month":{"with-results":0,"without-results":0,"not-updated":421066},"updated":"2016-11-25T17:05:06Z"},"relationships":{"group":{"meta":{}}}},{"id":"is-identical-to","type":"relation-types","attributes":{"title":"Is
+        identical to","inverse-title":"Is identical to","updated":"2016-03-21T15:05:04Z"}}],"meta":{"total":1,"sources":[{"id":"datacite_related","title":"DataCite
         (RelatedIdentifier)","count":1}],"publishers":[{"id":"cdl.digsci","title":"Digital
         Science","count":1}],"relation-types":[{"id":"is_identical_to","title":"Is
         identical to","count":1}]}}'
     http_version: 
-  recorded_at: Thu, 20 Oct 2016 10:51:29 GMT
+  recorded_at: Fri, 25 Nov 2016 05:00:06 GMT
 recorded_with: VCR 2.9.3
