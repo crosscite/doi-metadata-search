@@ -36,6 +36,8 @@ module Sinatra
       when "dataset" then "Dataset"
       when "text" then "Article"
       when "software" then "SoftwareApplication"
+      when "collection" then "Collection"
+      when "image" then "ImageObject"
       else "CreativeWork"
       end
     end
@@ -130,7 +132,7 @@ module Sinatra
 
     def work_as_json_ld(id:, attributes:)
       author = attributes.fetch("author", []).map do |a|
-        { "@type" => a.fetch("literal", nil).present? ? "Organisation" : "Person",
+        { "@type" => a.fetch("literal", nil).present? ? "Organization" : "Person",
           "@id" => a.fetch("orcid", nil),
           "givenName" => a.fetch("given", nil),
           "familyName" => a.fetch("family", nil),
@@ -152,7 +154,7 @@ module Sinatra
 
     def contributor_as_json_ld(id:, attributes:)
       { "@context" => "http://schema.org",
-        "@type" => attributes.fetch("literal", nil).present? ? "Organisation" : "Person",
+        "@type" => attributes.fetch("literal", nil).present? ? "Organization" : "Person",
         "@id" => id,
         "givenName" => attributes.fetch("given", nil),
         "familyName" => attributes.fetch("family", nil),
