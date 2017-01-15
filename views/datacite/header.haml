@@ -33,6 +33,8 @@
               %span.caret
             %ul.dropdown-menu{role: 'menu'}
               - if ENV['RACK_ENV'] == "development"
+                %li.dropdown-header
+                  Development
                 - settings.development_links.each do |item|
                   - if item['name'] == "divider"
                     %li.divider
@@ -42,6 +44,8 @@
                         %i.fa{class: "fa-#{item['icon']}"}
                         = item['name']
               - elsif ENV['RACK_ENV'] == "stage"
+                %li.dropdown-header
+                  Test Services
                 - settings.stage_links.each do |item|
                   - if item['name'] == "divider"
                     %li.divider
