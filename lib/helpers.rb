@@ -10,7 +10,7 @@ module Sinatra
     def author_format(author)
       authors = Array(author).map do |a|
         name = a.fetch("literal", nil).presence || a.fetch("given", nil).to_s + " " + a.fetch("family", nil).to_s
-        a["orcid"].present? ? "<a href=\"/contributors/#{orcid_from_url(a["orcid"])}\">#{name}</a>" : name
+        a["orcid"].present? ? "<a href=\"/people/#{orcid_from_url(a["orcid"])}\">#{name}</a>" : name
       end
 
       case authors.length
@@ -212,7 +212,7 @@ module Sinatra
       elsif options[:model] == "sources"
         "/sources/#{params['id']}?" + URI.encode_www_form(params.except('id'))
       elsif options[:model] == "contributors"
-        "/contributors/#{params['id']}?" + URI.encode_www_form(params.except('id'))
+        "/people/#{params['id']}?" + URI.encode_www_form(params.except('id'))
       elsif params["id"].present?
         "/works/#{params['id']}?" + URI.encode_www_form(params.except('id'))
       else
@@ -266,7 +266,7 @@ module Sinatra
       if params[:external_link].present?
         item["id"]
       else
-        "/contributors/" + contributor_id(item.fetch("attributes", {}))
+        "/people/" + contributor_id(item.fetch("attributes", {}))
       end
     end
 
