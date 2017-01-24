@@ -181,7 +181,7 @@ get %r{/works/(.+)} do
   haml :'works/show'
 end
 
-get '/contributors' do
+get '/people' do
   @contributors = get_contributors(query: params[:query], offset: @offset)
 
   # pagination
@@ -190,7 +190,7 @@ get '/contributors' do
   haml :'contributors/index'
 end
 
-get '/contributors/:id' do
+get '/people/:id' do
   id = validate_orcid(params[:id]) ? "orcid.org/#{params[:id]}" : "https://github.com/#{params[:id]}"
   link = validate_orcid(params[:id]) ? "http://orcid.org/#{params[:id]}" : "https://github.com/#{params[:id]}"
 
