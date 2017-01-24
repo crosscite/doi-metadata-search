@@ -47,7 +47,7 @@ module Sinatra
                  offset: params.fetch(:offset, 0),
                  rows: params.fetch(:rows, 25),
                  query: params.fetch(:query, nil) }.compact
-      url = "#{ENV['API_URL']}/contributors?" + URI.encode_www_form(params)
+      url = "#{ENV['API_URL']}/people?" + URI.encode_www_form(params)
 
       response = Maremma.get url, timeout: TIMEOUT
       { data: response.body.fetch("data", []),
