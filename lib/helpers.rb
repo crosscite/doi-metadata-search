@@ -192,6 +192,8 @@ module Sinatra
     end
 
     def escape_quotes(str)
+      return str if str.nil?
+
       str.gsub(/"/, '\"')
     end
 
