@@ -3,6 +3,7 @@
 - work_types = includes.select { |item| item["type"] == "work-types" }
 - sources = @works.present? ? @works[:meta].fetch("sources", []) : []
 - new_params = params[:model] == "works" && params["id"].present? ? params.merge(external_link: true) : params
+- title = attributes["title"].gsub(/"/, '\"')
 
 %script{type: "application/ld+json"}
   = work_as_json_ld(id: item["id"], attributes: attributes)
@@ -36,7 +37,7 @@
       %i.fa.fa-external-link
       = item["id"]
     - if attributes["doi"].present?
-      %a.cite-link.nowrap{:href => "javascript:showCiteBox('#{attributes["doi"]}', '#{attributes["title"]}');"}
+      %a.cite-link.nowrap{:href => "javascript:showCiteBox(\"#{attributes["doi"]}\", \"#{title}\");"}
         %i.fa.fa-quote-left
         Cite
 
