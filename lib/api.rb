@@ -78,6 +78,7 @@ module Sinatra
                  offset: params.fetch(:offset, 0),
                  rows: params.fetch(:rows, 25),
                  query: params.fetch(:query, nil),
+                 year: params.fetch(:year, nil),
                  include: 'member,registration-agency',
                  "member-id" => params.fetch("member-id", nil),
                  "registration-agency-id" => "datacite" }.compact

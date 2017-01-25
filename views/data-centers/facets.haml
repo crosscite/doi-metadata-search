@@ -22,6 +22,26 @@
 /               %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
 /               .clearfix
 
+- if @datacenters[:meta]["years"].present?
+  .panel.facets
+    .panel-body
+      %h4
+        Year Joined
+      %ul
+        - @datacenters[:meta]["years"].each do |f|
+          %li
+            - if params[:year].present?
+              %a{:href => data_centers_query(params.except('year'))}
+                %i.fa.fa-check-square-o
+            - else
+              %a{:href => data_centers_query(params.merge('year' => f.fetch("id", nil)))}
+                %i.fa.fa-square-o
+            .facet-title
+              = f.fetch("title", nil)
+            %span.number.pull-right
+              = number_with_delimiter(f.fetch("count", 0))
+            .clearfix
+
 - if @datacenters[:meta]["members"].present?
   .panel.facets
     .panel-body
