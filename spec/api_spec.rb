@@ -8,9 +8,9 @@ describe "API", type: :model, vcr: true do
   context "get_works" do
     it "all" do
       response = subject.get_works
-      expect(response[:meta]["resource-types"].first).to eq("id"=>"dataset", "title"=>"Dataset", "count"=>2875784)
+      expect(response[:meta]["resource-types"].first).to eq("id"=>"dataset", "title"=>"Dataset", "count"=>2942316)
       work = response[:data].first
-      expect(work["id"]).to eq("https://doi.org/10.13140/RG.2.2.18043.31529")
+      expect(work["id"]).to eq("https://doi.org/10.4225/35/588805FA8DD28")
     end
 
     it "one" do
@@ -77,7 +77,7 @@ describe "API", type: :model, vcr: true do
   context "get_members" do
     it "all" do
       response = subject.get_members
-      expect(response[:meta]["member-types"].first).to eq("id"=>"allocating", "title"=>"Allocating", "count"=>31)
+      expect(response[:meta]["member-types"].first).to eq("id"=>"allocating", "title"=>"Allocating", "count"=>33)
       member = response[:data].first
       expect(member["id"]).to eq("ands")
     end
@@ -121,15 +121,15 @@ describe "API", type: :model, vcr: true do
   context "get_relations" do
     it "all" do
       response = subject.get_relations(timeout: 10)
-      expect(response).to eq(:data=>["null"], :included=>[], :errors=>[], :meta=>{})
+      expect(response).to eq(:data=>[], :included=>[], :errors=>[], :meta=>{"total"=>nil, "sources"=>nil, "publishers"=>nil, "relation-types"=>nil})
     end
 
-    it "by work" do
-      response = subject.get_relations("work-id" => "10.6084/M9.FIGSHARE.3394312", timeout: 30)
-      expect(response[:meta]["relation-types"]).to eq([{"id"=>"is_identical_to", "title"=>"Is identical to", "count"=>1}])
-      relation = response[:data].first
-      expect(relation["attributes"]["subj-id"]).to eq("http://doi.org/10.6084/M9.FIGSHARE.3394312.V1")
-    end
+    # it "by work" do
+    #   response = subject.get_relations("work-id" => "10.6084/M9.FIGSHARE.3394312", timeout: 30)
+    #   expect(response[:meta]["relation-types"]).to eq([{"id"=>"is_identical_to", "title"=>"Is identical to", "count"=>1}])
+    #   relation = response[:data].first
+    #   expect(relation["attributes"]["subj-id"]).to eq("http://doi.org/10.6084/M9.FIGSHARE.3394312.V1")
+    # end
   end
 
   context "get_contributions" do

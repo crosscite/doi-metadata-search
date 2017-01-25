@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.labs.datacite.org/members?query=tib
+    uri: https://api.datacite.org/members?query=tib
     body:
       encoding: US-ASCII
       string: ''
@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - openresty/1.11.2.1
       Date:
-      - Fri, 25 Nov 2016 19:56:53 GMT
+      - Wed, 25 Jan 2017 08:22:06 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Connection:
@@ -37,19 +37,19 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 0a6b2ff1-31af-4537-acef-a25366a34512
+      - 6c35f33d-2523-46af-b119-751372f2f407
       Access-Control-Allow-Methods:
       - GET, POST, OPTIONS
       Etag:
-      - W/"a5e60859ead3e66edc33db82c1a423d1"
+      - W/"4d6abec5ff097e87b7c4dd97c013cfea"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.020392'
+      - '0.019036'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
-      - Phusion Passenger 5.0.30
+      - Phusion Passenger 5.1.1
       Access-Control-Allow-Headers:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
@@ -67,9 +67,9 @@ http_interactions:
         members of DataCite and is currently the Business Office. We provide DOI registration
         services for all German data centres in the fields of engineering, architecture,
         chemistry, information technology, mathematics and physics. Our current focus
-        is on providing DOI names for primary data and grey literature.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Germany","year":2009,"logo-url":"https://assets.labs.datacite.org/images/members/TIB.png","email":"doi-info@tib.eu","website":"
-        http://www.tib.eu","phone":"+49 511 762 14226","updated":"2016-08-01T11:13:04.000Z"}}],"meta":{"total":1,"member-types":[{"id":"allocating","title":"Allocating","count":1}],"regions":[{"id":"emea","title":"Europe,
+        is on providing DOI names for primary data and grey literature.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Germany","year":2009,"logo-url":"https://assets.datacite.org/images/members/tib.png","email":"doi-info@tib.eu","website":"
+        http://www.tib.eu","phone":"+49 511 762 17642","updated":"2017-01-20T15:28:53.000Z"}}],"meta":{"total":1,"member-types":[{"id":"allocating","title":"Allocating","count":1}],"regions":[{"id":"emea","title":"Europe,
         Middle East and Africa","count":1}],"years":[{"id":"2009","title":"2009","count":1}]}}'
     http_version: 
-  recorded_at: Fri, 25 Nov 2016 05:00:59 GMT
+  recorded_at: Wed, 25 Jan 2017 08:22:06 GMT
 recorded_with: VCR 2.9.3

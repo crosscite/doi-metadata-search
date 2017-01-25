@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.labs.datacite.org/contributors?offset=0&rows=25
+    uri: https://api.datacite.org/people?offset=0&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - openresty/1.11.2.1
       Date:
-      - Fri, 25 Nov 2016 19:56:51 GMT
+      - Wed, 25 Jan 2017 08:22:03 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Connection:
@@ -37,7 +37,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 00385c24-6d78-45ae-80d3-79894ebc6eb9
+      - f4132bd2-5922-4af8-8504-6e9524ce3b62
       Access-Control-Allow-Methods:
       - GET, POST, OPTIONS
       Etag:
@@ -45,11 +45,11 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.059474'
+      - '0.079185'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
-      - Phusion Passenger 5.0.30
+      - Phusion Passenger 5.1.1
       Access-Control-Allow-Headers:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
@@ -176,5 +176,5 @@ http_interactions:
         bnVsbCwidXBkYXRlZCI6IjE5NzAtMDEtMDFUMDA6MDA6MDBaIn19XSwibWV0
         YSI6eyJ0b3RhbCI6NzE0MX19
     http_version: 
-  recorded_at: Fri, 25 Nov 2016 05:00:57 GMT
+  recorded_at: Wed, 25 Jan 2017 08:22:03 GMT
 recorded_with: VCR 2.9.3

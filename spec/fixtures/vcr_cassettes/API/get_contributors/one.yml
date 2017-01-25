@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.labs.datacite.org/contributors?id=orcid.org/0000-0002-4000-4167&offset=0&rows=25
+    uri: https://api.datacite.org/people?id=orcid.org/0000-0002-4000-4167&offset=0&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - openresty/1.11.2.1
       Date:
-      - Fri, 25 Nov 2016 19:56:50 GMT
+      - Wed, 25 Jan 2017 08:22:03 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Connection:
@@ -37,7 +37,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 7d121793-0e66-4338-b060-fae73d846a1d
+      - 50b3b1b3-692d-4b8f-9ade-c34a4ee15d5c
       Access-Control-Allow-Methods:
       - GET, POST, OPTIONS
       Etag:
@@ -45,16 +45,16 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.026586'
+      - '0.049335'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
-      - Phusion Passenger 5.0.30
+      - Phusion Passenger 5.1.1
       Access-Control-Allow-Headers:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
       encoding: UTF-8
       string: '{"data":{"id":"http://orcid.org/0000-0002-4000-4167","type":"contributors","attributes":{"given":"Peter","family":"Arend","literal":null,"orcid":"0000-0002-4000-4167","github":null,"updated":"1970-01-01T00:00:00Z"}}}'
     http_version: 
-  recorded_at: Fri, 25 Nov 2016 05:00:56 GMT
+  recorded_at: Wed, 25 Jan 2017 08:22:03 GMT
 recorded_with: VCR 2.9.3
