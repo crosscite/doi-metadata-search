@@ -81,7 +81,7 @@ module Sinatra
                  include: 'member,registration-agency',
                  "member-id" => params.fetch("member-id", nil),
                  "registration-agency-id" => "datacite" }.compact
-      url = "#{ENV['API_URL']}/publishers?" + URI.encode_www_form(params)
+      url = "#{ENV['API_URL']}/data-centers?" + URI.encode_www_form(params)
 
       response = Maremma.get url, timeout: TIMEOUT
       { data: response.body.fetch("data", []),

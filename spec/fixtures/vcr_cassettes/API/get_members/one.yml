@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.labs.datacite.org/members?id=ANDS
+    uri: https://api.datacite.org/members?id=ANDS
     body:
       encoding: US-ASCII
       string: ''
@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - openresty/1.11.2.1
       Date:
-      - Fri, 25 Nov 2016 19:56:52 GMT
+      - Wed, 25 Jan 2017 08:22:06 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Connection:
@@ -37,19 +37,19 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - d4b739be-2fb9-4de4-ac3f-7861048e39ad
+      - e9636ea4-8931-4ce7-90da-48cfe6029962
       Access-Control-Allow-Methods:
       - GET, POST, OPTIONS
       Etag:
-      - W/"a31ea452a3cf7403f860b6adeadf0dda"
+      - W/"fe8de044b106000486574286495baea0"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.014395'
+      - '0.016822'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
-      - Phusion Passenger 5.0.30
+      - Phusion Passenger 5.1.1
       Access-Control-Allow-Headers:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
@@ -77,8 +77,8 @@ http_interactions:
         to our discussion list: \u003ca href=\"https://groups.google.com/forum/?hl=en#!forum/ands-general\"\u003eANDS
         Google Group\u003c/a\u003e.\u003c/p\u003e\n\n\u003cp\u003eSubscribe to our
         e-newsletter: \u003ca href=\"http://us7.campaign-archive2.com/home/?u=b542ef52e49302569068046d9\u0026amp;id=22b849a4ee\"\u003eandsUP\u003c/a\u003e.\u003c/p\u003e\n","member-type":"allocating","region":"Asia
-        Pacific","country":"Australia","year":2010,"logo-url":"https://assets.labs.datacite.org/images/members/ands.png","email":"contact@ands.org.au","website":"http://www.ands.org.au","phone":"+61
-        3 9902 0585","updated":"2016-09-09T06:45:50.000Z"}}}'
+        Pacific","country":"Australia","year":2010,"logo-url":"https://assets.datacite.org/images/members/ands.png","email":"contact@ands.org.au","website":"http://www.ands.org.au","phone":"+61
+        3 9902 0585","updated":"2017-01-12T21:54:40.000Z"}}}'
     http_version: 
-  recorded_at: Fri, 25 Nov 2016 05:00:59 GMT
+  recorded_at: Wed, 25 Jan 2017 08:22:06 GMT
 recorded_with: VCR 2.9.3

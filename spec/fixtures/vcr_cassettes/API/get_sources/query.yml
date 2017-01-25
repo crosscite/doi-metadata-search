@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.labs.datacite.org/sources?include=group&query=cross
+    uri: https://api.datacite.org/sources?include=group&query=cross
     body:
       encoding: US-ASCII
       string: ''
@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - openresty/1.11.2.1
       Date:
-      - Fri, 25 Nov 2016 19:56:50 GMT
+      - Wed, 25 Jan 2017 08:22:03 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Connection:
@@ -37,28 +37,28 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - b44ddf5a-27be-48fa-becd-56a3e0244ea6
+      - bf0ad470-0628-47df-8441-f81e7ff4a8ae
       Access-Control-Allow-Methods:
       - GET, POST, OPTIONS
       Etag:
-      - W/"a0c0ddfac54de38708fc3a682e001826"
+      - W/"c96f0cbaeba753a3a3f3c04f63065c7a"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.038427'
+      - '0.051509'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
-      - Phusion Passenger 5.0.30
+      - Phusion Passenger 5.1.1
       Access-Control-Allow-Headers:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
       encoding: UTF-8
       string: '{"data":[{"id":"crossref-datacite","type":"sources","attributes":{"title":"Crossref
-        (DataCite)","description":"Import works linked to a DataCite DOI from Crossref.","state":"active","group-id":"relations","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-11-25T19:05:06Z"},"relationships":{"group":{"data":{"id":"relations","type":"groups"}}}},{"id":"datacite-crossref","type":"sources","attributes":{"title":"DataCite
+        (DataCite)","description":"Import works linked to a DataCite DOI from Crossref.","state":"active","group-id":"relations","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2017-01-04T19:40:44Z"},"relationships":{"group":{"data":{"id":"relations","type":"groups"}}}},{"id":"datacite-crossref","type":"sources","attributes":{"title":"DataCite
         (Crossref)","description":"Import works with Crossref DOIs as relatedIdentifier
-        via the DataCite Solr API.","state":"active","group-id":"relations","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-11-25T19:42:48Z"},"relationships":{"group":{"data":{"id":"relations","type":"groups"}}}},{"id":"crossref-publisher","type":"sources","attributes":{"title":"Crossref
-        (Publisher)","description":"Import publishers via the Crossref REST API.","state":"active","group-id":"publishers","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2016-11-25T19:19:01Z"},"relationships":{"group":{"data":{"id":"publishers","type":"groups"}}}}],"included":[{"id":"relations","type":"groups","attributes":{"title":"Relations","updated":"2016-03-28T15:25:06Z"}},{"id":"publishers","type":"groups","attributes":{"title":"Publishers","updated":"2016-03-28T15:25:06Z"}}],"meta":{"total":3,"groups":[{"id":"relations","title":"Relations","count":2},{"id":"publishers","title":"Publishers","count":1}]}}'
+        via the DataCite Solr API.","state":"active","group-id":"relations","work-count":19893,"relation-count":225467,"result-count":74369,"by-day":{"with-results":0,"without-results":0,"not-updated":225412},"by-month":{"with-results":0,"without-results":0,"not-updated":225412},"updated":"2017-01-04T19:40:44Z"},"relationships":{"group":{"data":{"id":"relations","type":"groups"}}}},{"id":"crossref-publisher","type":"sources","attributes":{"title":"Crossref
+        (Publisher)","description":"Import publishers via the Crossref REST API.","state":"active","group-id":"publishers","work-count":0,"relation-count":0,"result-count":0,"by-day":{"with-results":0,"without-results":0,"not-updated":0},"by-month":{"with-results":0,"without-results":0,"not-updated":0},"updated":"2017-01-04T19:40:46Z"},"relationships":{"group":{"data":{"id":"publishers","type":"groups"}}}}],"included":[{"id":"relations","type":"groups","attributes":{"title":"Relations","updated":"2016-03-28T15:25:06Z"}},{"id":"publishers","type":"groups","attributes":{"title":"Publishers","updated":"2016-03-28T15:25:06Z"}}],"meta":{"total":3,"groups":[{"id":"relations","title":"Relations","count":2},{"id":"publishers","title":"Publishers","count":1}]}}'
     http_version: 
-  recorded_at: Fri, 25 Nov 2016 05:00:56 GMT
+  recorded_at: Wed, 25 Jan 2017 08:22:03 GMT
 recorded_with: VCR 2.9.3

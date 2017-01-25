@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.labs.datacite.org/relations?include=relation-type,source,publisher&offset=0&rows=25
+    uri: https://api.datacite.org/relations?include=relation-type,source,publisher&offset=0&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -19,7 +19,7 @@ http_interactions:
       Server:
       - openresty/1.11.2.1
       Date:
-      - Fri, 25 Nov 2016 20:00:20 GMT
+      - Wed, 25 Jan 2017 08:22:07 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Connection:
@@ -37,24 +37,24 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 4bd0c7a4-ed1b-43f9-ad85-f61c126b3d72
+      - a964dfa9-4153-46f3-8433-758740ccb91d
       Access-Control-Allow-Methods:
       - GET, POST, OPTIONS
       Etag:
-      - W/"37a6259cc0c1dae299a7866489dff0bd"
+      - W/"ec9a09ffe7e1853830b627a8232f1de5"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '12.978887'
+      - '0.078703'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
-      - Phusion Passenger 5.0.30
+      - Phusion Passenger 5.1.1
       Access-Control-Allow-Headers:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
       encoding: UTF-8
-      string: 'null'
+      string: '{"data":[],"meta":{"total":null,"sources":null,"publishers":null,"relation-types":null}}'
     http_version: 
-  recorded_at: Fri, 25 Nov 2016 05:04:26 GMT
+  recorded_at: Wed, 25 Jan 2017 08:22:07 GMT
 recorded_with: VCR 2.9.3
