@@ -192,7 +192,7 @@ module Sinatra
     end
 
     def escape_quotes(str)
-      %Q(#{str})
+      str.gsub(/"/, '\"')
     end
 
     def contributor_id(attributes)
