@@ -181,14 +181,18 @@ module Sinatra
       meta = []
       meta << meta_tag(name: "DC.identifier", content: id)
       meta << meta_tag(name: "DC.type", content: attributes.fetch("resource-type-id", nil) || "work")
-      meta << meta_tag(name: "DC.title", content: attributes.fetch("title", nil))
+      meta << meta_tag(name: "DC.title", content: escape_quotes(attributes.fetch("title", nil)))
       meta << meta_tag(name: "DC.creator", content: author)
-      meta << meta_tag(name: "DC.publisher", content: attributes.fetch("publisher", nil))
-      meta << meta_tag(name: "DC.date", content: attributes.fetch("published", nil))
-      meta << meta_tag(name: "DC.description", content: attributes.fetch("description", nil))
-      meta << meta_tag(name: "DCTERMS.license", content: attributes.fetch("license", nil))
+      meta << meta_tag(name: "DC.publisher", content: escape_quotes(attributes.fetch("publisher", nil)))
+      meta << meta_tag(name: "DC.date", content: escape_quotes(attributes.fetch("published", nil)))
+      meta << meta_tag(name: "DC.description", content: escape_quotes(attributes.fetch("description", nil)))
+      meta << meta_tag(name: "DCTERMS.license", content: escape_quotes(attributes.fetch("license", nil)))
 
       meta.compact.join("\n")
+    end
+
+    def escape_quotes(str)
+      %Q(#{str})
     end
 
     def contributor_id(attributes)
