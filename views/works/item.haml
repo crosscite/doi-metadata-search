@@ -3,7 +3,7 @@
 - work_types = includes.select { |item| item["type"] == "work-types" }
 - sources = @works.present? ? @works[:meta].fetch("sources", []) : []
 - new_params = params[:model] == "works" && params["id"].present? ? params.merge(external_link: true) : params
-- title = attributes["title"].gsub(/"/, '\"')
+- title = attributes["title"].to_s.gsub(/"/, '\"')
 
 %script{type: "application/ld+json"}
   = work_as_json_ld(id: item["id"], attributes: attributes)
