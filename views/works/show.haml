@@ -18,7 +18,7 @@
         .col-md-3
           .panel.facets
             .panel-body.metadata
-              - if registration_agency && registration_agency.fetch("id", nil) == "datacite" && publisher.present?
+              - if registration_agency && registration_agency.fetch("id", nil) == "datacite" && data_center.present?
                 %h5
                   Data Center
                 .data-center

@@ -42,7 +42,7 @@ module Sinatra
         meta: response.body.fetch("meta", {}) }
     end
 
-    def get_contributors(params = {})
+    def get_people(params = {})
       params = { id: params.fetch(:id, nil),
                  offset: params.fetch(:offset, 0),
                  rows: params.fetch(:rows, 25),

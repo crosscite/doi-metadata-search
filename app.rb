@@ -182,10 +182,10 @@ get %r{/works/(.+)} do
 end
 
 get '/people' do
-  @contributors = get_contributors(query: params[:query], offset: @offset)
+  @people = get_people(query: params[:query], offset: @offset)
 
   # pagination
-  @contributors[:data] = pagination_helper(@contributors[:data], @page, @contributors.fetch(:meta, {}).fetch("total", 0))
+  @people[:data] = pagination_helper(@people[:data], @page, @people.fetch(:meta, {}).fetch("total", 0))
 
   haml :'people/index'
 end
@@ -194,7 +194,7 @@ get '/people/:id' do
   id = validate_orcid(params[:id]) ? "orcid.org/#{params[:id]}" : "https://github.com/#{params[:id]}"
   link = validate_orcid(params[:id]) ? "http://orcid.org/#{params[:id]}" : "https://github.com/#{params[:id]}"
 
-  @contributor  = get_contributors(id: id)
+  @person  = get_people(id: id)
 
   @contributions = get_contributions("contributor-id" => id, "source-id" => params["source-id"], "data-center-id" => params["data-center-id"], offset: @offset)
 
