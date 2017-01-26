@@ -230,6 +230,7 @@ module Sinatra
       params = { "id" => options.fetch("id", nil),
                  "query" => options.fetch("query", nil),
                  "member-id" => options.fetch("member-id", nil),
+                 "year" => options.fetch("year", nil),
                  "registration-agency-id" => options.fetch("registration-agency-id", nil) }.compact
 
       "/data-centers?" + URI.encode_www_form(params)
