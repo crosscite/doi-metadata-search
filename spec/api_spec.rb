@@ -30,22 +30,22 @@ describe "API", type: :model, vcr: true do
     end
   end
 
-  context "get_contributors" do
+  context "get_people" do
     it "all" do
-      response = subject.get_contributors
+      response = subject.get_people
       expect(response[:meta]).to eq("total"=>7141)
       contributor = response[:data].first
       expect(contributor["id"]).to eq("http://orcid.org/0000-0002-7304-0535")
     end
 
     it "one" do
-      response = subject.get_contributors(id: "orcid.org/0000-0002-4000-4167")
+      response = subject.get_people(id: "orcid.org/0000-0002-4000-4167")
       contributor = response[:data]
       expect(contributor).to eq("id"=>"http://orcid.org/0000-0002-4000-4167", "type"=>"contributors", "attributes"=>{"given"=>"Peter", "family"=>"Arend", "literal"=>nil, "orcid"=>"0000-0002-4000-4167", "github"=>nil, "updated"=>"1970-01-01T00:00:00Z"})
     end
 
     it "query" do
-      response = subject.get_contributors(query: "mabbett")
+      response = subject.get_people(query: "mabbett")
       expect(response[:meta]).to eq("total"=>1)
       contributor = response[:data].first
       expect(contributor).to eq("id"=>"http://orcid.org/0000-0001-5882-6823", "type"=>"contributors", "attributes"=>{"given"=>"Andy", "family"=>"Mabbett", "literal"=>nil, "orcid"=>"0000-0001-5882-6823", "github"=>nil, "updated"=>"1970-01-01T00:00:00Z"})

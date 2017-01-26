@@ -1,4 +1,4 @@
-- new_params = params[:model] == "contributors" && params["id"].present? ? params.merge(external_link: true) : params
+- new_params = params[:model] == "people" && params["id"].present? ? params.merge(external_link: true) : params
 
 %script{type: "application/ld+json"}
   = contributor_as_json_ld(id: item["id"], attributes: item["attributes"])

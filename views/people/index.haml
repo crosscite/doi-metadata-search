@@ -4,23 +4,23 @@
   .content
     .row
       .col-md-9.panel-list#content
-        = haml :'contributors/search'
+        = haml :'people/search'
 
-        - if @contributors[:data].length > 0
-          - if @contributors[:data].length > 1
+        - if @people[:data].length > 0
+          - if @people[:data].length > 1
             %h3.results
-              = "#{number_with_delimiter(@contributors[:meta]['total'])} Contributors"
+              = "#{number_with_delimiter(@people[:meta]['total'])} People"
 
-          - @contributors[:data].each do |item|
-            = haml :'contributors/item', locals: { item: item }
+          - @people[:data].each do |item|
+            = haml :'people/item', locals: { item: item }
 
           .text-center
-            = will_paginate @contributors[:data], renderer: BootstrapPagination::Sinatra, inner_window: 1
+            = will_paginate @people[:data], renderer: BootstrapPagination::Sinatra, inner_window: 1
 
         - else
-          - if @contributors[:errors].present?
+          - if @people[:errors].present?
             .alert.alert-warning
-              = @contributors[:errors].first.fetch("title", "An error occured.")
+              = @people[:errors].first.fetch("title", "An error occured.")
           - else
             .alert.alert-simple-info
               Nothing found.
