@@ -212,7 +212,7 @@ get '/people/:id' do
 end
 
 get '/data-centers' do
-  @datacenters  = get_datacenters(query: params[:query], offset: @offset, "registration-agency-id" => params["registration-agency-id"], "member-id" => params["member-id"], "year" => params["year"])
+  @datacenters  = get_datacenters(query: params[:query], offset: @offset, "registration-agency-id" => params["registration-agency-id"], "member-id" => params["member-id"], year: params["year"])
 
   # pagination
   @datacenters[:data] = pagination_helper(@datacenters[:data], @page, @datacenters.fetch(:meta, {}).fetch("total", 0))
