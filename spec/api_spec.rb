@@ -121,7 +121,7 @@ describe "API", type: :model, vcr: true do
   context "get_relations" do
     it "all" do
       response = subject.get_relations(timeout: 10)
-      expect(response).to eq(:data=>[], :included=>[], :errors=>[], :meta=>{"total"=>nil, "sources"=>nil, "publishers"=>nil, "relation-types"=>nil})
+      expect(response).to eq(:data=>[], :included=>[], :errors=>[], :meta=>{"total"=>nil, "sources"=>nil, "data-centers"=>nil, "relation-types"=>nil})
     end
 
     # it "by work" do
@@ -140,7 +140,7 @@ describe "API", type: :model, vcr: true do
       expect(contribution["attributes"]["subj-id"]).to eq("http://orcid.org/0000-0001-6280-8695")
     end
 
-    it "by contributor" do
+    it "by person" do
       response = subject.get_contributions("contributor-id" => "orcid.org/0000-0002-8635-8390")
       expect(response[:meta]["sources"].first).to eq("id"=>"datacite_orcid", "title"=>"DataCite (ORCID)", "count"=>162040)
       contribution = response[:data].first
@@ -148,14 +148,14 @@ describe "API", type: :model, vcr: true do
     end
 
 
-    it "by publisher/datacenter" do
-      response = subject.get_contributions("publisher-id" => "DK.GBIF")
+    it "by data center" do
+      response = subject.get_contributions("data-center-id" => "DK.GBIF")
       expect(response[:meta]["sources"].length).to eq(1)
-      expect(response[:meta]["publishers"].first).to eq("id"=>"dk.gbif", "title"=>"Global Biodiversity Information Facility", "count"=>20)
+      expect(response[:meta]["data-centers"].first).to eq("id"=>"dk.gbif", "title"=>"Global Biodiversity Information Facility", "count"=>20)
       fullresponse = subject.get_contributions
       expect(response[:data].length).to be <= fullresponse[:data].length
-      publisher = response[:included].find { |i| i["type"] == "publishers" }
-      expect(publisher["id"]).to eq("dk.gbif")
+      data_center = response[:included].find { |i| i["type"] == "data-centers" }
+      expect(data_center["id"]).to eq("dk.gbif")
     end
 
 

@@ -45,15 +45,15 @@
               %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
               .clearfix
 
-  - if @datacenter.blank? && @works[:meta]["publishers"].present?
+  - if @datacenter.blank? && @works[:meta]["data-centers"].present?
     .panel-body
       %h4
         Data Centers
       %ul
-        - @works[:meta]["publishers"].each do |f|
-          - if params['publisher-id'] == f.fetch("id", nil)
+        - @works[:meta]["data-centers"].each do |f|
+          - if params['data-center-id'] == f.fetch("id", nil)
             %li.active
-              %a{:href => works_query(params.except('publisher-id'))}
+              %a{:href => works_query(params.except('data-center-id'))}
                 %i.fa.fa-check-square-o
               .facet-title
                 = f.fetch("title", nil)
@@ -61,7 +61,7 @@
               .clearfix
           - else
             %li
-              %a{:href => works_query(params.merge('publisher-id' => f.fetch("id", nil)))}
+              %a{:href => works_query(params.merge('data-center-id' => f.fetch("id", nil)))}
                 %i.fa.fa-square-o
               .facet-title
                 = f.fetch("title", nil)

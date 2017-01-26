@@ -133,7 +133,7 @@ get '/' do
 end
 
 get '/works' do
-  @works = get_works(query: params[:query], offset: @offset, 'publisher-id' => params['publisher-id'], 'source-id' => params['source-id'], 'relation-type-id' => params['relation-type-id'], 'resource-type-id' => params['resource-type-id'], 'year' => params['year'])
+  @works = get_works(query: params[:query], offset: @offset, 'data-center-id' => params['data-center-id'], 'source-id' => params['source-id'], 'relation-type-id' => params['relation-type-id'], 'resource-type-id' => params['resource-type-id'], 'year' => params['year'])
 
   # check for existing claims if user is logged in
   @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
@@ -160,7 +160,7 @@ get %r{/works/(.+)} do
     @work[:data] = get_claimed_items(current_user, [@work[:data]]).first
   end
 
-  @contributions = get_contributions("work-id" => params["id"], "source-id" => params["source-id"], "publisher-id" => params["publisher-id"], offset: @offset, rows: 100)
+  @contributions = get_contributions("work-id" => params["id"], "source-id" => params["source-id"], "data-center-id" => params["data-center-id"], offset: @offset, rows: 100)
   @relations = get_relations("work-id" => params["id"], "source-id" => params["source-id"], "relation-type-id" => params["relation-type-id"], offset: @offset, rows: 25)
 
   # check for existing claims if user is logged in
@@ -196,7 +196,7 @@ get '/people/:id' do
 
   @contributor  = get_contributors(id: id)
 
-  @contributions = get_contributions("contributor-id" => id, "source-id" => params["source-id"], "publisher-id" => params["publisher-id"], offset: @offset)
+  @contributions = get_contributions("contributor-id" => id, "source-id" => params["source-id"], "data-center-id" => params["data-center-id"], offset: @offset)
 
   # check for existing claims if user is logged in
   @contributions[:data] = get_claimed_items(current_user, @contributions.fetch(:data, [])) if current_user
@@ -223,7 +223,7 @@ end
 get '/data-centers/:id' do
   @datacenter = get_datacenters(id: params[:id])
 
-  @works = get_works(query: params[:query], "publisher-id" => params[:id], offset: @offset, 'resource-type-id' => params['resource-type-id'], 'source-id' => params['source-id'], 'relation-type-id' => params['relation-type-id'], 'year' => params['year'], sort: params[:sort])
+  @works = get_works(query: params[:query], "data-center-id" => params[:id], offset: @offset, 'resource-type-id' => params['resource-type-id'], 'source-id' => params['source-id'], 'relation-type-id' => params['relation-type-id'], 'year' => params['year'], sort: params[:sort])
 
   # check for existing claims if user is logged in
   @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
@@ -244,7 +244,7 @@ end
 get '/members/:id' do
   @member = get_members(id: params[:id])
 
-  @works = get_works(query: params[:query], "member-id" => params[:id], offset: @offset, 'resource-type-id' => params['resource-type-id'], 'publisher-id' => params['publisher-id'], 'source-id' => params['source-id'], 'relation-type-id' => params['relation-type-id'], 'year' => params['year'])
+  @works = get_works(query: params[:query], "member-id" => params[:id], offset: @offset, 'resource-type-id' => params['resource-type-id'], 'data-center-id' => params['data-center-id'], 'source-id' => params['source-id'], 'relation-type-id' => params['relation-type-id'], 'year' => params['year'])
 
   # check for existing claims if user is logged in
   @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
@@ -266,7 +266,7 @@ get '/sources/:id' do
   @source  = get_sources(id: params[:id])
 
   if %w(relations results contributions).include?(@source.fetch(:data, {}).fetch("attributes", {}).fetch("group-id", nil))
-    @works = get_works("source-id" => params[:id], "publisher-id" => params["publisher-id"], "resource-type-id" => params["resource-type-id"], "year" => params["year"], offset: @offset, sort: params[:sort], 'relation-type-id' => params['relation-type-id'])
+    @works = get_works("source-id" => params[:id], "data-center-id" => params["data-center-id"], "resource-type-id" => params["resource-type-id"], "year" => params["year"], offset: @offset, sort: params[:sort], 'relation-type-id' => params['relation-type-id'])
 
     # check for existing claims if user is logged in
     @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
@@ -280,7 +280,7 @@ get '/sources/:id' do
 end
 
 get '/contributions' do
-  @contributions = get_contributions(query: params[:query], "publisher-id" => params["publisher-id"], "source-id" => params["source-id"], offset: @offset)
+  @contributions = get_contributions(query: params[:query], "data-center-id" => params["data-center-id"], "source-id" => params["source-id"], offset: @offset)
 
   # pagination
   @contributions[:data] = pagination_helper(@contributions[:data], @page, @contributions.fetch(:meta, {}).fetch("total", 0))
