@@ -206,7 +206,7 @@ module Sinatra
                  "query" => options.fetch("query", nil),
                  "resource-type-id" => options.fetch("resource-type-id", nil),
                  "relation-type-id" => options.fetch("relation-type-id", nil),
-                 "publisher-id" => options.fetch("publisher-id", nil),
+                 "data-center-id" => options.fetch("data-center-id", nil),
                  "source-id" => options.fetch("source-id", nil),
                  "year" => options.fetch("year", nil),
                  "sort" => options.fetch("sort", nil) }.compact
@@ -217,7 +217,7 @@ module Sinatra
         "/members/#{params['id']}?" + URI.encode_www_form(params.except('id'))
       elsif options[:model] == "sources"
         "/sources/#{params['id']}?" + URI.encode_www_form(params.except('id'))
-      elsif options[:model] == "contributors"
+      elsif options[:model] == "people"
         "/people/#{params['id']}?" + URI.encode_www_form(params.except('id'))
       elsif params["id"].present?
         "/works/#{params['id']}?" + URI.encode_www_form(params.except('id'))
@@ -241,13 +241,13 @@ module Sinatra
                  "query" => options.fetch("query", nil),
                  "resource-type-id" => options.fetch("resource-type-id", nil),
                  "relation-type-id" => options.fetch("relation-type-id", nil),
-                 "publisher-id" => options.fetch("publisher-id", nil),
+                 "data-center-id" => options.fetch("data-center-id", nil),
                  "source-id" => options.fetch("source-id", nil),
                  "year" => options.fetch("year", nil),
                  "sort" => options.fetch("sort", nil) }.compact
 
       if options[:model] == "data-centers"
-         "/contributions?publisher-id=#{params['id']}&" + URI.encode_www_form(params.except('id'))
+         "/contributions?data-center-id=#{params['id']}&" + URI.encode_www_form(params.except('id'))
         elsif options[:model] == "sources"
          "/contributions?source-id=#{params['id']}&" + URI.encode_www_form(params.except('id'))
         else

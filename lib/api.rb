@@ -11,10 +11,10 @@ module Sinatra
                  sort: params.fetch(:sort, nil),
                  query: params.fetch(:query, nil),
                  year: params.fetch('year', nil),
-                 include: 'publisher,resource-type,work-type,member,registration-agency',
+                 include: 'data-center,resource-type,work-type,member,registration-agency',
                  'resource-type-id' => params.fetch('resource-type-id', nil),
                  'relation-type-id' => params.fetch('relation-type-id', nil),
-                 'publisher-id' => params.fetch('publisher-id', nil),
+                 'data-center-id' => params.fetch('data-center-id', nil),
                  'member-id' => params.fetch('member-id', nil),
                  'source-id' => params.fetch('source-id', nil) }.compact
       url = "#{ENV['API_URL']}/works?" + URI.encode_www_form(params)
@@ -32,7 +32,7 @@ module Sinatra
                  "source-id" => params.fetch("source-id", nil),
                  offset: params.fetch(:offset, 0),
                  rows: params.fetch(:rows, 25),
-                 include: 'relation-type,source,publisher' }.compact
+                 include: 'relation-type,data-center' }.compact
       url = "#{ENV['API_URL']}/relations?" + URI.encode_www_form(params)
 
       response = Maremma.get url, timeout: TIMEOUT
@@ -59,10 +59,10 @@ module Sinatra
       params = { "contributor-id" => params.fetch("contributor-id", nil),
                  "work-id" => params.fetch("work-id", nil),
                  "source-id" => params.fetch("source-id", nil),
-                 "publisher-id" => params.fetch("publisher-id", nil),
+                 "data-center-id" => params.fetch("data-center-id", nil),
                  offset: params.fetch(:offset, 0),
                  rows: params.fetch(:rows, 25),
-                 include: 'publisher,source' }.compact
+                 include: 'data-center' }.compact
       url = "#{ENV['API_URL']}/contributions?" + URI.encode_www_form(params)
 
       response = Maremma.get url, timeout: TIMEOUT
