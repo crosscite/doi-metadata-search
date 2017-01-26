@@ -187,7 +187,7 @@ get '/people' do
   # pagination
   @contributors[:data] = pagination_helper(@contributors[:data], @page, @contributors.fetch(:meta, {}).fetch("total", 0))
 
-  haml :'contributors/index'
+  haml :'people/index'
 end
 
 get '/people/:id' do
@@ -208,7 +208,7 @@ get '/people/:id' do
 
   headers['Link'] = "<#{link}> ; rel=\"identifier\""
 
-  haml :'contributors/show'
+  haml :'people/show'
 end
 
 get '/data-centers' do

@@ -1,0 +1,7 @@
+.search-wide
+  %form.form-horizontal{:method => 'GET', :action => '/people'}
+    .input-group
+      %input.form-control{type: "text", name: 'query', id: 'query', value: params[:query], placeholder: "Search for person"}
+      .input-group-btn
+        %button.btn.btn-primary{type: "submit"}
+          Search
