@@ -208,6 +208,7 @@ module Sinatra
                  "relation-type-id" => options.fetch("relation-type-id", nil),
                  "data-center-id" => options.fetch("data-center-id", nil),
                  "source-id" => options.fetch("source-id", nil),
+                 "person-id" => options.fetch("person-id", nil),
                  "year" => options.fetch("year", nil),
                  "sort" => options.fetch("sort", nil) }.compact
 

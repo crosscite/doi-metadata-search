@@ -10,11 +10,14 @@
         - elsif @person[:data].present?
           = haml :'people/item', locals: { item: @person[:data] }
 
-      .col-md-9.panel-list#content-contributions
-        = haml :'contributions/index'
+      .col-md-9
+        = haml :'works/search'
+
+      .col-md-9.panel-list#content-works
+        = haml :'works/list'
 
       .col-md-3
-        = haml :'contributions/facets'
+        = haml :'works/facets'
 
 = haml :cite_box
 
