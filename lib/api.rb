@@ -56,7 +56,7 @@ module Sinatra
     end
 
     def get_contributions(params = {})
-      params = { "contributor-id" => params.fetch("contributor-id", nil),
+      params = { "person-id" => params.fetch("person-id", nil),
                  "work-id" => params.fetch("work-id", nil),
                  "source-id" => params.fetch("source-id", nil),
                  "data-center-id" => params.fetch("data-center-id", nil),
