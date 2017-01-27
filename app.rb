@@ -196,7 +196,7 @@ get '/people/:id' do
 
   @person  = get_people(id: id)
 
-  @contributions = get_contributions("contributor-id" => id, "source-id" => params["source-id"], "data-center-id" => params["data-center-id"], offset: @offset)
+  @contributions = get_contributions("person-id" => id, "source-id" => params["source-id"], "data-center-id" => params["data-center-id"], offset: @offset)
 
   # check for existing claims if user is logged in
   @contributions[:data] = get_claimed_items(current_user, @contributions.fetch(:data, [])) if current_user
@@ -204,7 +204,7 @@ get '/people/:id' do
   # pagination
   @contributions[:data] = pagination_helper(@contributions[:data], @page, @contributions.fetch(:meta, {}).fetch("total", 0))
 
-  params[:model] = "contributors"
+  params[:model] = "people"
 
   headers['Link'] = "<#{link}> ; rel=\"identifier\""
 
