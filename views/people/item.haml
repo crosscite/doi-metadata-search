@@ -6,7 +6,7 @@
 .panel.panel-default
   .panel-body
     %h3.work
-      %a{:href => contributors_action(item, new_params)}
+      %a{:href => people_action(item, new_params)}
         = credit_name(item["attributes"])
   .panel-footer.item-links
     %a{ href: item["id"] }

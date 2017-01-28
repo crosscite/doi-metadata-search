@@ -197,10 +197,6 @@ module Sinatra
       str.gsub(/"/, '&quot;')
     end
 
-    def contributor_id(attributes)
-      attributes.fetch("orcid", nil).presence || attributes.fetch("github", nil)
-    end
-
     def works_query(options)
       params = { "id" => options.fetch("id", nil),
                  "query" => options.fetch("query", nil),
@@ -270,11 +266,11 @@ module Sinatra
       "/works/#{id}"
     end
 
-    def contributors_action(item, params)
+    def people_action(item, params)
       if params[:external_link].present?
         item["id"]
-      else
-        "/people/" + contributor_id(item.fetch("attributes", {}))
+      elsif orcid = orcid_from_url(item["id"])
+        "/people/#{orcid}"
       end
     end
 

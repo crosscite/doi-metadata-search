@@ -191,21 +191,31 @@ get '/people' do
 end
 
 get '/people/:id' do
-  link = "http://orcid.org/#{params[:id]}"
+  @person = get_people(id: params[:id])
 
-  @person  = get_people(id: params[:id])
+  if !validate_orcid(params[:id])
+    @works = { data: [] }
+  elsif @person[:errors].present?
+    link = "http://orcid.org/#{params[:id]}"
+    headers['Link'] = "<#{link}> ; rel=\"identifier\""
 
-  @works = get_works(query: params[:query], "person-id" => params[:id], offset: @offset, 'resource-type-id' => params['resource-type-id'], 'source-id' => params['source-id'], 'relation-type-id' => params['relation-type-id'], 'year' => params['year'], sort: params[:sort])
+    @person = { data: { "id" => link, "attributes" => { "orcid" => params[:id] } },
+                errors: [{ "status" => "400", "title" => "The owner of this ORCID ID has not registered with DataCite, or has not made his record public." }] }
+    @works = { data: [] }
+  else
+    link = "http://orcid.org/#{params[:id]}"
+    headers['Link'] = "<#{link}> ; rel=\"identifier\""
 
-  # check for existing claims if user is logged in
-  @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
+    @works = get_works(query: params[:query], "person-id" => params[:id], offset: @offset, 'resource-type-id' => params['resource-type-id'], 'source-id' => params['source-id'], 'relation-type-id' => params['relation-type-id'], 'year' => params['year'], sort: params[:sort])
+
+    # check for existing claims if user is logged in
+    @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
+  end
 
   # pagination for works
   @works[:data] = pagination_helper(@works[:data], @page, @works.fetch(:meta, {}).fetch("total", 0))
 
   params[:model] = "people"
-
-  headers['Link'] = "<#{link}> ; rel=\"identifier\""
 
   haml :'people/show'
 end

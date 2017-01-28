@@ -3,24 +3,33 @@
 .container-fluid
   .content
     .row
-      .col-md-9#content-contributor
-        - if @person[:errors].present?
-          %div.alert.alert-warning
-            = @person[:errors].first.fetch("title", "")
-        - elsif @person[:data].present?
+      - if @person[:data].present?
+        .col-md-9#content-contributor
           = haml :'people/item', locals: { item: @person[:data] }
 
-      .col-md-9
-        = haml :'works/search'
+      - if @person[:errors].present? && @person[:errors].first.fetch("status", nil) == "400"
+        .col-md-9
+          .alert.alert-simple-info
+            = @person[:errors].first.fetch("title", "")
+      - elsif @person[:errors].present?
+        .col-md-9
+          .alert.alert-warning
+            = @person[:errors].first.fetch("title", "")
 
-      .col-md-9.panel-list#content-works
-        = haml :'works/list'
+      - else
+        - if @works[:data].length > 0
+          .col-md-9
+            = haml :'works/search'
 
-      .col-md-3
-        = haml :'works/facets'
+        .col-md-9.panel-list#content-works
+          = haml :'works/list'
 
-= haml :cite_box
+        - if @works[:data].length > 0
+          .col-md-3
+            = haml :'works/facets'
 
-%script{:type => 'text/javascript', :src => '/javascripts/itemlist.js'}
+          = haml :cite_box
+
+          %script{:type => 'text/javascript', :src => '/javascripts/itemlist.js'}
 
 = haml :"#{ENV['RA']}/footer"
