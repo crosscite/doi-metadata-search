@@ -36,14 +36,19 @@
         - elsif params['source-id'].present? || params['relation-type-id'].present?
           %div.alert.alert-info
             Search is not available when the <strong>Sources</strong> and/or <strong>Relation Types</strong> facet are selected.
-        - else
+      - if @works[:data].length > 0
+        .col-md-9
           = haml :'works/search'
 
-      .col-md-9.panel-list#content-works
-        = haml :'works/list'
+        .col-md-9.panel-list#content-works
+          = haml :'works/list'
 
-      .col-md-3
-        = haml :'works/facets'
+        .col-md-3
+          = haml :'works/facets'
+      - else
+        .col-md-9
+          .alert.alert-simple-info
+            Nothing found.
 
 = haml :cite_box
 

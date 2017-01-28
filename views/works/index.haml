@@ -5,7 +5,7 @@
     .row
       .col-md-9
         - if params['source-id'].present? || params['relation-type-id'].present?
-          %div.alert.alert-info
+          .alert.alert-info
             Search is not available when the <strong>Sources</strong> and/or <strong>Relation Types</strong> facet are selected.
         - else
           = haml :'works/search'

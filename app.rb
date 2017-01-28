@@ -191,22 +191,31 @@ get '/people' do
 end
 
 get '/people/:id' do
-  id = validate_orcid(params[:id]) ? "orcid.org/#{params[:id]}" : "https://github.com/#{params[:id]}"
-  link = validate_orcid(params[:id]) ? "http://orcid.org/#{params[:id]}" : "https://github.com/#{params[:id]}"
+  @person = get_people(id: params[:id])
 
-  @person  = get_people(id: id)
+  if !validate_orcid(params[:id])
+    @works = { data: [] }
+  elsif @person[:errors].present?
+    link = "http://orcid.org/#{params[:id]}"
+    headers['Link'] = "<#{link}> ; rel=\"identifier\""
 
-  @contributions = get_contributions("person-id" => id, "source-id" => params["source-id"], "data-center-id" => params["data-center-id"], offset: @offset)
+    @person = { data: { "id" => link, "attributes" => { "orcid" => params[:id] } },
+                errors: [{ "status" => "400", "title" => "The owner of this ORCID ID has not registered with DataCite, or has not made his record public." }] }
+    @works = { data: [] }
+  else
+    link = "http://orcid.org/#{params[:id]}"
+    headers['Link'] = "<#{link}> ; rel=\"identifier\""
 
-  # check for existing claims if user is logged in
-  @contributions[:data] = get_claimed_items(current_user, @contributions.fetch(:data, [])) if current_user
+    @works = get_works(query: params[:query], "person-id" => params[:id], offset: @offset, 'resource-type-id' => params['resource-type-id'], 'source-id' => params['source-id'], 'relation-type-id' => params['relation-type-id'], 'year' => params['year'], sort: params[:sort])
 
-  # pagination
-  @contributions[:data] = pagination_helper(@contributions[:data], @page, @contributions.fetch(:meta, {}).fetch("total", 0))
+    # check for existing claims if user is logged in
+    @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
+  end
+
+  # pagination for works
+  @works[:data] = pagination_helper(@works[:data], @page, @works.fetch(:meta, {}).fetch("total", 0))
 
   params[:model] = "people"
-
-  headers['Link'] = "<#{link}> ; rel=\"identifier\""
 
   haml :'people/show'
 end
@@ -277,15 +286,6 @@ get '/sources/:id' do
 
   params[:model] = "sources"
   haml :'sources/show'
-end
-
-get '/contributions' do
-  @contributions = get_contributions(query: params[:query], "data-center-id" => params["data-center-id"], "source-id" => params["source-id"], offset: @offset)
-
-  # pagination
-  @contributions[:data] = pagination_helper(@contributions[:data], @page, @contributions.fetch(:meta, {}).fetch("total", 0))
-
-  haml :'contributions/show'
 end
 
 get '/citation' do

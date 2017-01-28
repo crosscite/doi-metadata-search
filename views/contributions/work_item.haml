@@ -20,7 +20,7 @@
     %span
     - if params[:model] == "sources"
       Contributed by
-      %a{href: contributors_action(item, params)}
+      %a{href: people_action(item, params)}
         = attributes["credit-name"]
     - else
       Contribution

@@ -16,6 +16,7 @@ module Sinatra
                  'relation-type-id' => params.fetch('relation-type-id', nil),
                  'data-center-id' => params.fetch('data-center-id', nil),
                  'member-id' => params.fetch('member-id', nil),
+                 'person-id' => params.fetch('person-id', nil),
                  'source-id' => params.fetch('source-id', nil) }.compact
       url = "#{ENV['API_URL']}/works?" + URI.encode_www_form(params)
 
