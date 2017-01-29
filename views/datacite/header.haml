@@ -78,7 +78,7 @@
                       Works
                   %li.divider
                   %li
-                    %a{:href => "http://orcid.org/#{current_user.orcid}"}
+                    %a{:href => "#{ENV['ORCID_URL']}/#{current_user.orcid}"}
                       %i.fa.fa-external-link
                       ORCID Record
                   %li.divider
