@@ -14,6 +14,16 @@
 
     %script{:type => 'text/javascript', :src => '//code.jquery.com/jquery-2.2.3.min.js'}
     %script{:type => 'text/javascript', :src => '//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'}
+
+    %script{type: "text/x-mathjax-config"}
+      :plain
+        MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [["$","$"],["\\(","\\)"]]
+          }
+        });
+    %script{:type => 'text/javascript', :src => '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML'}
+
     %script{:type => 'text/javascript', :src => '/javascripts/bootstrap.notify.js'}
     %script{:type => 'text/javascript', :src => '/javascripts/spin.min.js'}
     %script{:type => 'text/javascript', :src => '/javascripts/jquery.oauthpopup.js'}
