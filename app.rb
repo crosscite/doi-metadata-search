@@ -160,17 +160,13 @@ get %r{/works/(.+)} do
     @work[:data] = get_claimed_items(current_user, [@work[:data]]).first
   end
 
-  @contributions = get_contributions("work-id" => params["id"], "source-id" => params["source-id"], "data-center-id" => params["data-center-id"], offset: @offset, rows: 100)
-  @relations = get_relations("work-id" => params["id"], "source-id" => params["source-id"], "relation-type-id" => params["relation-type-id"], offset: @offset, rows: 25)
+  @works = get_works(query: params[:query], "work-id" => params[:id], offset: @offset, 'resource-type-id' => params['resource-type-id'], 'source-id' => params['source-id'], 'relation-type-id' => params['relation-type-id'], 'year' => params['year'], sort: params[:sort])
 
   # check for existing claims if user is logged in
-  if current_user
-    @contributions[:data] = get_claimed_items(current_user, @contributions.fetch(:data, []))
-    @relations[:data] = get_claimed_items(current_user, @relations.fetch(:data, []))
-  end
+  @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
 
-  # pagination for relations
-  @relations[:data] = pagination_helper(@relations[:data], @page, @relations.fetch(:meta, {}).fetch("total", 0))
+  # pagination
+  @works[:data] = pagination_helper(@works[:data], @page, @works.fetch(:meta, {}).fetch("total", 0))
 
   params[:model] = "works"
 
@@ -263,29 +259,6 @@ get '/members/:id' do
 
   params[:model] = "members"
   haml :'members/show'
-end
-
-get '/sources' do
-  @sources = get_sources(query: params[:query], "group-id" => params["group-id"])
-
-  haml :'sources/index'
-end
-
-get '/sources/:id' do
-  @source  = get_sources(id: params[:id])
-
-  if %w(relations results contributions).include?(@source.fetch(:data, {}).fetch("attributes", {}).fetch("group-id", nil))
-    @works = get_works("source-id" => params[:id], "data-center-id" => params["data-center-id"], "resource-type-id" => params["resource-type-id"], "year" => params["year"], offset: @offset, sort: params[:sort], 'relation-type-id' => params['relation-type-id'])
-
-    # check for existing claims if user is logged in
-    @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
-
-    # pagination for works
-    @works[:data] = pagination_helper(@works[:data], @page, @works.fetch(:meta, {}).fetch("total", 0))
-  end
-
-  params[:model] = "sources"
-  haml :'sources/show'
 end
 
 get '/citation' do

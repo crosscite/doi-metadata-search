@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datacite.org/members?query=tib
+    uri: http://api/members?query=tib
     body:
       encoding: US-ASCII
       string: ''
@@ -16,10 +16,6 @@ http_interactions:
       code: 200
       message: ''
     headers:
-      Server:
-      - openresty/1.11.2.1
-      Date:
-      - Wed, 25 Jan 2017 08:22:06 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Connection:
@@ -27,29 +23,37 @@ http_interactions:
       Status:
       - 200 OK
       Cache-Control:
-      - max-age=0, private, must-revalidate
+      - no-store, must-revalidate, private, max-age=0
       Access-Control-Allow-Origin:
       - "*"
       Vary:
       - Accept-Encoding
+      X-Miniprofiler-Ids:
+      - '["xnxxhcdnc9rctm3tnuq","m8b6ft16l944a8q0jrsi","g37an15kw0at5cm7kegw","wei4adhmjmi7dv62klcb","dwhha1alobkcht8ka0ju","cr8kxjh4aj19qlk9waa6","n1s4vz62xphk28m1ofmi","s9adxpwc1wak1lu2dvi7","aeb29hvprivkjz9rcyz","mmredrlgek0vkqbh3jgr","rx64fn9ku851ndzmmsay","t5c3pifw1pv9dhh0kukm","hez49b830tfma6d4khmq","g2ymwy4d9o8juuwinf0o","tuays1t94xsgugdhv9n0"]'
       Access-Control-Max-Age:
       - '1728000'
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 6c35f33d-2523-46af-b119-751372f2f407
+      - 73911099-cec8-441d-9f11-848992899a2e
       Access-Control-Allow-Methods:
-      - GET, POST, OPTIONS
+      - POST, GET, OPTIONS
       Etag:
-      - W/"4d6abec5ff097e87b7c4dd97c013cfea"
+      - W/"239915b615b3aa4c057fae4c84d64b94"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.019036'
+      - '0.514976'
       X-Content-Type-Options:
       - nosniff
+      Date:
+      - Sat, 04 Feb 2017 21:06:29 GMT
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
       X-Powered-By:
-      - Phusion Passenger 5.1.1
+      - Phusion Passenger 5.0.30
+      Server:
+      - nginx/1.10.1 + Phusion Passenger 5.0.30
       Access-Control-Allow-Headers:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
@@ -67,9 +71,9 @@ http_interactions:
         members of DataCite and is currently the Business Office. We provide DOI registration
         services for all German data centres in the fields of engineering, architecture,
         chemistry, information technology, mathematics and physics. Our current focus
-        is on providing DOI names for primary data and grey literature.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Germany","year":2009,"logo-url":"https://assets.datacite.org/images/members/tib.png","email":"doi-info@tib.eu","website":"
-        http://www.tib.eu","phone":"+49 511 762 17642","updated":"2017-01-20T15:28:53.000Z"}}],"meta":{"total":1,"member-types":[{"id":"allocating","title":"Allocating","count":1}],"regions":[{"id":"emea","title":"Europe,
+        is on providing DOI names for primary data and grey literature.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Germany","year":2009,"logo-url":"https://assets.test.datacite.org/images/members/tib.png","email":"doi-info@tib.eu","website":"
+        http://www.tib.eu","phone":"+49 511 762 14226","updated":"2016-08-01T11:13:04.000Z"}}],"meta":{"total":1,"member-types":[{"id":"allocating","title":"Allocating","count":1}],"regions":[{"id":"emea","title":"Europe,
         Middle East and Africa","count":1}],"years":[{"id":"2009","title":"2009","count":1}]}}'
     http_version: 
-  recorded_at: Wed, 25 Jan 2017 08:22:06 GMT
+  recorded_at: Sat, 04 Feb 2017 21:06:29 GMT
 recorded_with: VCR 2.9.3
