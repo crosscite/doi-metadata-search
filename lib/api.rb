@@ -16,28 +16,13 @@ module Sinatra
                  'relation-type-id' => params.fetch('relation-type-id', nil),
                  'data-center-id' => params.fetch('data-center-id', nil),
                  'member-id' => params.fetch('member-id', nil),
+                 'work-id' => params.fetch('work-id', nil),
                  'person-id' => params.fetch('person-id', nil),
                  'source-id' => params.fetch('source-id', nil) }.compact
       url = "#{ENV['API_URL']}/works?" + URI.encode_www_form(params)
 
       response = Maremma.get url, timeout: TIMEOUT
       { data: response.body.fetch("data", []),
-        included: response.body.fetch("included", []),
-        errors: Array(response.body.fetch("errors", [])),
-        meta: response.body.fetch("meta", {}) }
-    end
-
-    def get_relations(params = {})
-      params = { "work-id" => params.fetch("work-id", nil),
-                 "relation-type-id" => params.fetch("relation-type-id", nil),
-                 "source-id" => params.fetch("source-id", nil),
-                 offset: params.fetch(:offset, 0),
-                 rows: params.fetch(:rows, 25),
-                 include: 'relation-type,data-center' }.compact
-      url = "#{ENV['API_URL']}/relations?" + URI.encode_www_form(params)
-
-      response = Maremma.get url, timeout: TIMEOUT
-      { data: Array(response.body.fetch("data", [])),
         included: response.body.fetch("included", []),
         errors: Array(response.body.fetch("errors", [])),
         meta: response.body.fetch("meta", {}) }
@@ -52,23 +37,6 @@ module Sinatra
 
       response = Maremma.get url, timeout: TIMEOUT
       { data: response.body.fetch("data", []),
-        errors: Array(response.body.fetch("errors", [])),
-        meta: response.body.fetch("meta", {}) }
-    end
-
-    def get_contributions(params = {})
-      params = { "person-id" => params.fetch("person-id", nil),
-                 "work-id" => params.fetch("work-id", nil),
-                 "source-id" => params.fetch("source-id", nil),
-                 "data-center-id" => params.fetch("data-center-id", nil),
-                 offset: params.fetch(:offset, 0),
-                 rows: params.fetch(:rows, 25),
-                 include: 'data-center' }.compact
-      url = "#{ENV['API_URL']}/contributions?" + URI.encode_www_form(params)
-
-      response = Maremma.get url, timeout: TIMEOUT
-      { data: Array(response.body.fetch("data", [])),
-        included: response.body.fetch("included", []),
         errors: Array(response.body.fetch("errors", [])),
         meta: response.body.fetch("meta", {}) }
     end
@@ -102,20 +70,6 @@ module Sinatra
 
       response = Maremma.get url, timeout: TIMEOUT
       { data: response.body.fetch("data", []),
-        errors: Array(response.body.fetch("errors", [])),
-        meta: response.body.fetch("meta", {}) }
-    end
-
-    def get_sources(params = {})
-      params = { id: params.fetch(:id, nil),
-                 query: params.fetch(:query, nil),
-                 include: 'group',
-                 'group-id' => params.fetch('group-id', nil) }.compact
-      url = "#{ENV['API_URL']}/sources?" + URI.encode_www_form(params)
-
-      response = Maremma.get url, timeout: TIMEOUT
-      { data: response.body.fetch("data", []),
-        included: response.body.fetch("included", []),
         errors: Array(response.body.fetch("errors", [])),
         meta: response.body.fetch("meta", {}) }
     end

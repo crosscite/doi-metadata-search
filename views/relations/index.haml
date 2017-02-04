@@ -1,5 +1,0 @@
-- @relations[:data].each do |item|
-  = haml :'relations/item', locals: { item: item }
-
-.text-center
-  = will_paginate @relations[:data], renderer: BootstrapPagination::Sinatra, inner_window: 1

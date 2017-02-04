@@ -1,9 +1,0 @@
-.search-wide
-  %form.form-horizontal{:method => 'GET', :action => '/sources'}
-    .input-group
-      - if params["group-id"].present?
-        %input{type: "hidden", name: "group-id", value: params["group-id"]}
-      %input.form-control{type: "text", name: 'query', id: 'query', value: params[:query], placeholder: "Search for source"}
-      .input-group-btn
-        %button.btn.btn-primary{type: "submit"}
-          Search

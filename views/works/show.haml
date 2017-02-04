@@ -56,56 +56,15 @@
                       %span.hidden
                         = social['icon']
 
-    - if @relations[:data].length > 0 || @contributions[:data].length > 0
-      %ul.nav.nav-pills
-        - if @relations[:data].length > 0
-          %li.active
-            %a{href: "#relations", data: { toggle: "tab" } }
-              Relations
-              - if @relations[:data].length > 0
-                %span.badge
-                  = number_with_delimiter(@relations[:meta]['total'])
-        - if @contributions[:data].length > 0
-          - if @relations[:data].length > 0
-            %li
-              %a{href: "#contributions", data: { toggle: "tab" } }
-                Contributions
-                %span.badge
-                  = number_with_delimiter(@contributions[:meta]['total'])
-          - else
-            %li.active
-              %a{href: "#contributions", data: { toggle: "tab" } }
-                Contributions
-                %span.badge
-                  = number_with_delimiter(@contributions[:meta]['total'])
+      - if @works && @works[:data].length > 0
+        .col-md-9
+          = haml :'works/search'
 
-      .tab-content
-        - if @relations[:data].length > 0
-          .tab-pane.active#relations
-            .row
-              .col-md-9.panel-list#content-relations
-                = haml :'relations/index'
+        .col-md-9.panel-list#content-works
+          = haml :'works/list'
 
-              .col-md-3
-                = haml :'relations/facets'
-
-        - if @contributions[:data].length > 0
-          - if @relations[:data].length > 0
-            .tab-pane#contributions
-              .row
-                .col-md-9.panel-list#content-contributions
-                  = haml :'contributions/index'
-
-                .col-md-3
-                  = haml :'contributions/facets'
-          - else
-            .tab-pane.active#contributions
-              .row
-                .col-md-9#content-contributions
-                  = haml :'contributions/index'
-
-                .col-md-3
-                  = haml :'contributions/facets'
+        .col-md-3
+          = haml :'works/facets'
 
 = haml :cite_box
 

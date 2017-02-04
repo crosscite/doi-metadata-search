@@ -23,20 +23,20 @@ http_interactions:
       Location:
       - http://data.datacite.org/10.5281%2FZENODO.21430
       Expires:
-      - Wed, 25 Jan 2017 08:27:03 GMT
+      - Sat, 04 Feb 2017 22:03:36 GMT
       Content-Type:
       - text/html;charset=utf-8
       Content-Length:
       - '179'
       Date:
-      - Wed, 25 Jan 2017 08:22:11 GMT
+      - Sat, 04 Feb 2017 21:07:55 GMT
     body:
       encoding: UTF-8
       string: |-
         <html><head><title>Handle Redirect</title></head>
         <body><a href="http://data.datacite.org/10.5281%2FZENODO.21430">http://data.datacite.org/10.5281%2FZENODO.21430</a></body></html>
     http_version: 
-  recorded_at: Wed, 25 Jan 2017 08:22:12 GMT
+  recorded_at: Sat, 04 Feb 2017 21:06:21 GMT
 - request:
     method: get
     uri: http://data.datacite.org/10.5281%2FZENODO.21430
@@ -56,7 +56,7 @@ http_interactions:
       Server:
       - openresty/1.11.2.1
       Date:
-      - Wed, 25 Jan 2017 08:22:12 GMT
+      - Sat, 04 Feb 2017 21:07:56 GMT
       Content-Type:
       - text/html
       Content-Length:
@@ -70,7 +70,7 @@ http_interactions:
       string: "<html>\r\n<head><title>301 Moved Permanently</title></head>\r\n<body
         bgcolor=\"white\">\r\n<center><h1>301 Moved Permanently</h1></center>\r\n<hr><center>openresty/1.11.2.1</center>\r\n</body>\r\n</html>\r\n"
     http_version: 
-  recorded_at: Wed, 25 Jan 2017 08:22:12 GMT
+  recorded_at: Sat, 04 Feb 2017 21:06:21 GMT
 - request:
     method: get
     uri: https://data.datacite.org/10.5281%2FZENODO.21430
@@ -90,7 +90,7 @@ http_interactions:
       Server:
       - openresty/1.11.2.1
       Date:
-      - Wed, 25 Jan 2017 08:22:12 GMT
+      - Sat, 04 Feb 2017 21:07:56 GMT
       Content-Type:
       - text/x-bibliography;charset=iso-8859-1
       Connection:
@@ -112,5 +112,5 @@ http_interactions:
         dXIgQS4gVGhvcmlzc29uLCBhbmQgUm9iZXJ0IFBldGVycywg4oCcRGF0YUNp
         dGUtT1JDSUQ6IDEuMC7igJ0gWmVub2RvLCAyMDE1Lgo=
     http_version: 
-  recorded_at: Wed, 25 Jan 2017 08:22:12 GMT
+  recorded_at: Sat, 04 Feb 2017 21:06:21 GMT
 recorded_with: VCR 2.9.3
