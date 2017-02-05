@@ -1,0 +1,85 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api/works?include=data-center,resource-type,work-type,member,registration-agency&offset=0&rows=25&work-id=10.5061/DRYAD.Q447C
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Maremma - http://search.local
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - no-store, must-revalidate, private, max-age=0
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      X-Miniprofiler-Ids:
+      - '["89p5atj0aumm6csz87xn","b82rovkm0jl3uwsp5sep","efexegi0js9xzf42c4h0","yolyhhbicdk7fag667i8","z2q3uyf52r49m3514ll4","ljkjyd37xbpfpirkv16j","oji834j2v2jncz5f14fy","5h9xw6c48suth3hun53e","5r0mv2kimlckb3a1f08g","vln4vxvj3bscy77t7x6z","dglu3lk4l4f95aezkpqm","alwtt9f58g2g40suubxk","7rq4qo2unrh46n690dlk","pfpk0pe2hrz9iqqxixzh","6p8ndb3jqzmopktwhdz3","1neaffyjm4pb087lyrfa","q279tqlya1r05zzshnqt","b21qjou1e2gue1hceizt","eggxwzuvla4ahucd2nwd","f4arqf9n33f1uu6lzg3y"]'
+      Access-Control-Max-Age:
+      - '1728000'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 9270bf15-1e7d-4179-8a70-1a0d15aeebd1
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Etag:
+      - W/"9c42e79b1851135f429683996c7cb2b8"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.968866'
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Sun, 05 Feb 2017 18:32:56 GMT
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      X-Powered-By:
+      - Phusion Passenger 5.0.30
+      Server:
+      - nginx/1.10.1 + Phusion Passenger 5.0.30
+      Access-Control-Allow-Headers:
+      - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"https://doi.org/10.5061/DRYAD.Q447C/3","type":"works","attributes":{"doi":"10.5061/DRYAD.Q447C/3","url":null,"author":[{"family":"Elbakyan","given":"Alexandra"},{"family":"Bohannon","given":"John"}],"title":"Sci-Hub
+        publisher DOI prefixes","container-title":"Dryad Digital Repository","description":"Data
+        scraped from the CrossRef website which can be used to replicate the analysis
+        of downloads by publisher.","resource-type-subtype":"DataFile","data-center-id":"cdl.dryad","member-id":"cdl","registration-agency-id":"datacite","resource-type-id":"dataset","work-type-id":"dataset","version":null,"license":null,"schema-version":"2.2","results":[],"related-identifiers":[],"published":"2016","deposited":"2016-04-28T18:04:00Z","updated":"2016-04-28T18:04:25Z","media":null,"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMi4yIiB4bWxuczpkcnlhZD0iaHR0cDovL3B1cmwub3JnL2RyeWFkL3Rlcm1zLyIgeG1sbnM6ZGltPSJodHRwOi8vd3d3LmRzcGFjZS5vcmcveG1sbnMvZHNwYWNlL2RpbSIgeG1sbnM6ZHNwYWNlPSJodHRwOi8vd3d3LmRzcGFjZS5vcmcveG1sbnMvZHNwYWNlL2RpbSIgeG1sbnM6bWV0cz0iaHR0cDovL3d3dy5sb2MuZ292L01FVFMvIiB4bWxuczp4c2k9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIiBtZXRhZGF0YVZlcnNpb25OdW1iZXI9IjEiIGxhc3RNZXRhZGF0YVVwZGF0ZT0iMjAwNi0wNS0wNCIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMi4yIGh0dHA6Ly9zY2hlbWEuZGF0YWNpdGUub3JnL21ldGEva2VybmVsLTIuMi9tZXRhZGF0YS54c2QiPgogIDxpZGVudGlmaWVyIGlkZW50aWZpZXJUeXBlPSJET0kiPjEwLjUwNjEvRFJZQUQuUTQ0N0MvMzwvaWRlbnRpZmllcj4KICA8Y3JlYXRvcnM+CiAgICA8Y3JlYXRvcj4KICAgICAgPGNyZWF0b3JOYW1lPkVsYmFreWFuLCBBbGV4YW5kcmE8L2NyZWF0b3JOYW1lPgogICAgPC9jcmVhdG9yPgogICAgPGNyZWF0b3I+CiAgICAgIDxjcmVhdG9yTmFtZT5Cb2hhbm5vbiwgSm9objwvY3JlYXRvck5hbWU+CiAgICA8L2NyZWF0b3I+CiAgPC9jcmVhdG9ycz4KICA8dGl0bGVzPgogICAgPHRpdGxlPlNjaS1IdWIgcHVibGlzaGVyIERPSSBwcmVmaXhlczwvdGl0bGU+CiAgPC90aXRsZXM+CiAgPHB1Ymxpc2hlcj5EcnlhZCBEaWdpdGFsIFJlcG9zaXRvcnk8L3B1Ymxpc2hlcj4KICA8cHVibGljYXRpb25ZZWFyPjIwMTY8L3B1YmxpY2F0aW9uWWVhcj4KICA8c3ViamVjdHM+CiAgICA8c3ViamVjdD5vcGVuIGFjY2Vzczwvc3ViamVjdD4KICAgIDxzdWJqZWN0PnNjaWVudGlmaWMgY29tbXVuaWNhdGlvbjwvc3ViamVjdD4KICAgIDxzdWJqZWN0Pkdsb2JhbDwvc3ViamVjdD4KICA8L3N1YmplY3RzPgogIDxkYXRlcz4KICAgIDxkYXRlIGRhdGVUeXBlPSJBY2NlcHRlZCI+MjAxNi0wNC0yODwvZGF0ZT4KICA8L2RhdGVzPgogIDxyZXNvdXJjZVR5cGUgcmVzb3VyY2VUeXBlR2VuZXJhbD0iRGF0YXNldCI+RGF0YUZpbGU8L3Jlc291cmNlVHlwZT4KICA8cmVsYXRlZElkZW50aWZpZXJzPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0aW9uVHlwZT0iSXNQYXJ0T2YiIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIj4xMC41MDYxL0RSWUFELlE0NDdDPC9yZWxhdGVkSWRlbnRpZmllcj4KICA8L3JlbGF0ZWRJZGVudGlmaWVycz4KICA8c2l6ZXM+CiAgICA8c2l6ZT41Nzg1NzEgYnl0ZXM8L3NpemU+CiAgPC9zaXplcz4KICA8cmlnaHRzPmh0dHA6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL3B1YmxpY2RvbWFpbi96ZXJvLzEuMC88L3JpZ2h0cz4KICA8ZGVzY3JpcHRpb25zPgogICAgPGRlc2NyaXB0aW9uIGRlc2NyaXB0aW9uVHlwZT0iT3RoZXIiPkRhdGEgc2NyYXBlZCBmcm9tIHRoZSBDcm9zc1JlZiB3ZWJzaXRlIHdoaWNoIGNhbiBiZSB1c2VkIHRvIHJlcGxpY2F0ZSB0aGUgYW5hbHlzaXMgb2YgZG93bmxvYWRzIGJ5IHB1Ymxpc2hlci48L2Rlc2NyaXB0aW9uPgogIDwvZGVzY3JpcHRpb25zPgo8L3Jlc291cmNlPg=="},"relationships":{"data-center":{"data":{"id":"cdl.dryad","type":"data-centers"}},"member":{"data":{"id":"cdl","type":"members"}},"registration-agency":{"data":{"id":"datacite","type":"registration-agencies"}},"resource-type":{"data":{"id":"dataset","type":"resource-types"}},"work-type":{"data":{"id":"dataset","type":"work-types"}}}},{"id":"https://doi.org/10.5061/DRYAD.Q447C/2","type":"works","attributes":{"doi":"10.5061/DRYAD.Q447C/2","url":null,"author":[{"family":"Elbakyan","given":"Alexandra"},{"family":"Bohannon","given":"John"}],"title":"IPython
+        Notebook for Sci-Hub raw data","container-title":"Dryad Digital Repository","description":"IPython
+        Notebook used to process the raw server log data (processing the GIS files
+        into CSV, scraping DOI metadata, etc.).","resource-type-subtype":"DataFile","data-center-id":"cdl.dryad","member-id":"cdl","registration-agency-id":"datacite","resource-type-id":"dataset","work-type-id":"dataset","version":null,"license":null,"schema-version":"2.2","results":[],"related-identifiers":[],"published":"2016","deposited":"2016-04-28T18:03:59Z","updated":"2016-04-28T18:04:25Z","media":null,"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMi4yIiB4bWxuczpkcnlhZD0iaHR0cDovL3B1cmwub3JnL2RyeWFkL3Rlcm1zLyIgeG1sbnM6ZGltPSJodHRwOi8vd3d3LmRzcGFjZS5vcmcveG1sbnMvZHNwYWNlL2RpbSIgeG1sbnM6ZHNwYWNlPSJodHRwOi8vd3d3LmRzcGFjZS5vcmcveG1sbnMvZHNwYWNlL2RpbSIgeG1sbnM6bWV0cz0iaHR0cDovL3d3dy5sb2MuZ292L01FVFMvIiB4bWxuczp4c2k9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIiBtZXRhZGF0YVZlcnNpb25OdW1iZXI9IjEiIGxhc3RNZXRhZGF0YVVwZGF0ZT0iMjAwNi0wNS0wNCIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMi4yIGh0dHA6Ly9zY2hlbWEuZGF0YWNpdGUub3JnL21ldGEva2VybmVsLTIuMi9tZXRhZGF0YS54c2QiPgogIDxpZGVudGlmaWVyIGlkZW50aWZpZXJUeXBlPSJET0kiPjEwLjUwNjEvRFJZQUQuUTQ0N0MvMjwvaWRlbnRpZmllcj4KICA8Y3JlYXRvcnM+CiAgICA8Y3JlYXRvcj4KICAgICAgPGNyZWF0b3JOYW1lPkVsYmFreWFuLCBBbGV4YW5kcmE8L2NyZWF0b3JOYW1lPgogICAgPC9jcmVhdG9yPgogICAgPGNyZWF0b3I+CiAgICAgIDxjcmVhdG9yTmFtZT5Cb2hhbm5vbiwgSm9objwvY3JlYXRvck5hbWU+CiAgICA8L2NyZWF0b3I+CiAgPC9jcmVhdG9ycz4KICA8dGl0bGVzPgogICAgPHRpdGxlPklQeXRob24gTm90ZWJvb2sgZm9yIFNjaS1IdWIgcmF3IGRhdGE8L3RpdGxlPgogIDwvdGl0bGVzPgogIDxwdWJsaXNoZXI+RHJ5YWQgRGlnaXRhbCBSZXBvc2l0b3J5PC9wdWJsaXNoZXI+CiAgPHB1YmxpY2F0aW9uWWVhcj4yMDE2PC9wdWJsaWNhdGlvblllYXI+CiAgPHN1YmplY3RzPgogICAgPHN1YmplY3Q+b3BlbiBhY2Nlc3M8L3N1YmplY3Q+CiAgICA8c3ViamVjdD5zY2llbnRpZmljIGNvbW11bmljYXRpb248L3N1YmplY3Q+CiAgICA8c3ViamVjdD5HbG9iYWw8L3N1YmplY3Q+CiAgPC9zdWJqZWN0cz4KICA8ZGF0ZXM+CiAgICA8ZGF0ZSBkYXRlVHlwZT0iQWNjZXB0ZWQiPjIwMTYtMDQtMjg8L2RhdGU+CiAgPC9kYXRlcz4KICA8cmVzb3VyY2VUeXBlIHJlc291cmNlVHlwZUdlbmVyYWw9IkRhdGFzZXQiPkRhdGFGaWxlPC9yZXNvdXJjZVR5cGU+CiAgPHJlbGF0ZWRJZGVudGlmaWVycz4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGlvblR5cGU9IklzUGFydE9mIiByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSI+MTAuNTA2MS9EUllBRC5RNDQ3QzwvcmVsYXRlZElkZW50aWZpZXI+CiAgPC9yZWxhdGVkSWRlbnRpZmllcnM+CiAgPHNpemVzPgogICAgPHNpemU+NTkzOTM0IGJ5dGVzPC9zaXplPgogICAgPHNpemU+NDE0OTY5IGJ5dGVzPC9zaXplPgogIDwvc2l6ZXM+CiAgPHJpZ2h0cz5odHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9wdWJsaWNkb21haW4vemVyby8xLjAvPC9yaWdodHM+CiAgPGRlc2NyaXB0aW9ucz4KICAgIDxkZXNjcmlwdGlvbiBkZXNjcmlwdGlvblR5cGU9Ik90aGVyIj5JUHl0aG9uIE5vdGVib29rIHVzZWQgdG8gcHJvY2VzcyB0aGUgcmF3IHNlcnZlciBsb2cgZGF0YSAocHJvY2Vzc2luZyB0aGUgR0lTIGZpbGVzIGludG8gQ1NWLCBzY3JhcGluZyBET0kgbWV0YWRhdGEsIGV0Yy4pLjwvZGVzY3JpcHRpb24+CiAgPC9kZXNjcmlwdGlvbnM+CjwvcmVzb3VyY2U+"},"relationships":{"data-center":{"data":{"id":"cdl.dryad","type":"data-centers"}},"member":{"data":{"id":"cdl","type":"members"}},"registration-agency":{"data":{"id":"datacite","type":"registration-agencies"}},"resource-type":{"data":{"id":"dataset","type":"resource-types"}},"work-type":{"data":{"id":"dataset","type":"work-types"}}}},{"id":"https://doi.org/10.5061/DRYAD.Q447C/1","type":"works","attributes":{"doi":"10.5061/DRYAD.Q447C/1","url":null,"author":[{"family":"Elbakyan","given":"Alexandra"},{"family":"Bohannon","given":"John"}],"title":"Sci-Hub
+        download data","container-title":"Dryad Digital Repository","description":"These
+        data include 28 million download request events from the server logs of Sci-Hub
+        from 1 September 2015 through 29 February 2016. The uncompressed 2.7 gigabytes
+        of data are separated into 6 data files, one for each month, in MapInfo TAB
+        format.","resource-type-subtype":"DataFile","data-center-id":"cdl.dryad","member-id":"cdl","registration-agency-id":"datacite","resource-type-id":"dataset","work-type-id":"dataset","version":null,"license":null,"schema-version":"2.2","results":[],"related-identifiers":[],"published":"2016","deposited":"2016-04-22T14:57:01Z","updated":"2016-04-28T18:04:17Z","media":null,"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMi4yIiB4bWxuczpkcnlhZD0iaHR0cDovL3B1cmwub3JnL2RyeWFkL3Rlcm1zLyIgeG1sbnM6ZGltPSJodHRwOi8vd3d3LmRzcGFjZS5vcmcveG1sbnMvZHNwYWNlL2RpbSIgeG1sbnM6ZHNwYWNlPSJodHRwOi8vd3d3LmRzcGFjZS5vcmcveG1sbnMvZHNwYWNlL2RpbSIgeG1sbnM6bWV0cz0iaHR0cDovL3d3dy5sb2MuZ292L01FVFMvIiB4bWxuczp4c2k9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIiBtZXRhZGF0YVZlcnNpb25OdW1iZXI9IjEiIGxhc3RNZXRhZGF0YVVwZGF0ZT0iMjAwNi0wNS0wNCIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMi4yIGh0dHA6Ly9zY2hlbWEuZGF0YWNpdGUub3JnL21ldGEva2VybmVsLTIuMi9tZXRhZGF0YS54c2QiPgogIDxpZGVudGlmaWVyIGlkZW50aWZpZXJUeXBlPSJET0kiPjEwLjUwNjEvRFJZQUQuUTQ0N0MvMTwvaWRlbnRpZmllcj4KICA8Y3JlYXRvcnM+CiAgICA8Y3JlYXRvcj4KICAgICAgPGNyZWF0b3JOYW1lPkVsYmFreWFuLCBBbGV4YW5kcmE8L2NyZWF0b3JOYW1lPgogICAgPC9jcmVhdG9yPgogICAgPGNyZWF0b3I+CiAgICAgIDxjcmVhdG9yTmFtZT5Cb2hhbm5vbiwgSm9objwvY3JlYXRvck5hbWU+CiAgICA8L2NyZWF0b3I+CiAgPC9jcmVhdG9ycz4KICA8dGl0bGVzPgogICAgPHRpdGxlPlNjaS1IdWIgZG93bmxvYWQgZGF0YTwvdGl0bGU+CiAgPC90aXRsZXM+CiAgPHB1Ymxpc2hlcj5EcnlhZCBEaWdpdGFsIFJlcG9zaXRvcnk8L3B1Ymxpc2hlcj4KICA8cHVibGljYXRpb25ZZWFyPjIwMTY8L3B1YmxpY2F0aW9uWWVhcj4KICA8c3ViamVjdHM+CiAgICA8c3ViamVjdD5vcGVuIGFjY2Vzczwvc3ViamVjdD4KICAgIDxzdWJqZWN0PnNjaWVudGlmaWMgY29tbXVuaWNhdGlvbjwvc3ViamVjdD4KICAgIDxzdWJqZWN0Pmdsb2JhbDwvc3ViamVjdD4KICA8L3N1YmplY3RzPgogIDxkYXRlcz4KICAgIDxkYXRlIGRhdGVUeXBlPSJBY2NlcHRlZCI+MjAxNi0wNC0yODwvZGF0ZT4KICA8L2RhdGVzPgogIDxyZXNvdXJjZVR5cGUgcmVzb3VyY2VUeXBlR2VuZXJhbD0iRGF0YXNldCI+RGF0YUZpbGU8L3Jlc291cmNlVHlwZT4KICA8cmVsYXRlZElkZW50aWZpZXJzPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0aW9uVHlwZT0iSXNQYXJ0T2YiIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIj4xMC41MDYxL0RSWUFELlE0NDdDPC9yZWxhdGVkSWRlbnRpZmllcj4KICA8L3JlbGF0ZWRJZGVudGlmaWVycz4KICA8c2l6ZXM+CiAgICA8c2l6ZT42ODQ1NjQ3OTcgYnl0ZXM8L3NpemU+CiAgPC9zaXplcz4KICA8cmlnaHRzPmh0dHA6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL3B1YmxpY2RvbWFpbi96ZXJvLzEuMC88L3JpZ2h0cz4KICA8ZGVzY3JpcHRpb25zPgogICAgPGRlc2NyaXB0aW9uIGRlc2NyaXB0aW9uVHlwZT0iT3RoZXIiPlRoZXNlIGRhdGEgaW5jbHVkZSAyOCBtaWxsaW9uIGRvd25sb2FkIHJlcXVlc3QgZXZlbnRzIGZyb20gdGhlIHNlcnZlciBsb2dzIG9mIFNjaS1IdWIgZnJvbSAxIFNlcHRlbWJlciAyMDE1IHRocm91Z2ggMjkgRmVicnVhcnkgMjAxNi4gVGhlIHVuY29tcHJlc3NlZCAyLjcgZ2lnYWJ5dGVzIG9mIGRhdGEgYXJlIHNlcGFyYXRlZCBpbnRvIDYgZGF0YSBmaWxlcywgb25lIGZvciBlYWNoIG1vbnRoLCBpbiBNYXBJbmZvIFRBQiBmb3JtYXQuPC9kZXNjcmlwdGlvbj4KICA8L2Rlc2NyaXB0aW9ucz4KPC9yZXNvdXJjZT4="},"relationships":{"data-center":{"data":{"id":"cdl.dryad","type":"data-centers"}},"member":{"data":{"id":"cdl","type":"members"}},"registration-agency":{"data":{"id":"datacite","type":"registration-agencies"}},"resource-type":{"data":{"id":"dataset","type":"resource-types"}},"work-type":{"data":{"id":"dataset","type":"work-types"}}}}],"included":[{"id":"cdl.dryad","type":"data-centers","attributes":{"title":"Dryad","other-names":[],"prefixes":[],"member-id":"cdl","registration-agency-id":"datacite","year":null,"created":null,"updated":null},"relationships":{"member":{"meta":{}},"registration-agency":{"meta":{}}}},{"id":"cdl","type":"members","attributes":{"title":"California
+        Digital Library","description":"\u003cp\u003eCalifornia Digital Library (CDL)
+        handles scholarly information at every stage of its life. CDL provides technology
+        and expertise to help the University of California (UC) collect, publish,
+        access, and preserve its full range of information resources. CDL partners
+        with organizations outside the UCs on far-reaching problems.\u003c/p\u003e\n\n\u003cp\u003eCDL
+        offers DataCite DOIs and other identifiers via the EZID service, a service
+        CDL developed to help educational, non-profit, governmental and commercial
+        clients create and manage globally unique identifiers for data and other sources.\u003c/p\u003e\n","member-type":"allocating","region":"Americas","country":"United
+        States","year":2009,"logo-url":"https://assets.test.datacite.org/images/members/cdl.png","email":"ezid@ucop.edu","website":"http://ezid.cdlib.org","phone":"1-510-987-0469","updated":"2016-09-09T17:46:16.000Z"}},{"id":"datacite","type":"registration-agencies","attributes":{"title":"DataCite","updated":"2016-04-27T02:23:01Z"}},{"id":"dataset","type":"resource-types","attributes":{"title":"Dataset","updated":"2016-09-21T00:00:00Z"}},{"id":"dataset","type":"work-types","attributes":{"title":"Dataset","container":null,"updated":"2016-03-21T15:05:03Z"}}],"meta":{"resource-types":[{"id":"dataset","title":"Dataset","count":3}],"years":[{"id":"2016","title":"2016","count":3}],"data-centers":[],"schema-versions":[{"id":"2.2","title":"Schema
+        2.2","count":3}],"total":3}}'
+    http_version: 
+  recorded_at: Sun, 05 Feb 2017 18:32:56 GMT
+recorded_with: VCR 2.9.3

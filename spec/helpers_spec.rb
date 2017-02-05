@@ -57,4 +57,14 @@ describe "Helpers", type: :model, vcr: true do
       expect(response).to be_nil
     end
   end
+
+  context "helpers" do
+    it "relation_type_title" do
+      related_identifiers = [{ "relation-type-id" => "HasPart",
+                               "related-identifier" => "https://doi.org/10.5061/DRYAD.T748P/1" }]
+      id = "https://doi.org/10.5061/DRYAD.T748P/1"
+      response = subject.relation_type_title(related_identifiers, id)
+      expect(response).to eq("Is part of")
+    end
+  end
 end

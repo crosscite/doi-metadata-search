@@ -22,6 +22,13 @@ describe "API", type: :model, vcr: true do
       expect(resource_type).to eq("id"=>"text", "type"=>"resource-types", "attributes"=>{"title"=>"Text", "updated"=>"2016-09-21T00:00:00Z"})
     end
 
+    it "related_identifiers" do
+      response = subject.get_works("work-id" => "10.5061/DRYAD.Q447C")
+      expect(response[:meta]["resource-types"].first).to eq("id"=>"dataset", "title"=>"Dataset", "count"=>3)
+      work = response[:data].first
+      expect(work["id"]).to eq("https://doi.org/10.5061/DRYAD.Q447C/3")
+    end
+
     it "query" do
       response = subject.get_works(query: "mabbett")
       expect(response[:meta]["resource-types"].first).to eq("id"=>"dataset", "title"=>"Dataset", "count"=>15)
