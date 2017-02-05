@@ -7,6 +7,38 @@ module Sinatra
     include Sinatra::Doi
     include Sinatra::SessionHelper
 
+    INVERSE_RELATION_TYPES = {
+      "Cites" => "IsCitedBy",
+      "Compiles" => "IsCompiledBy",
+      "Continues" => "IsContinueddBy",
+      "Corrects" => "IsCorrectedBy",
+      "Documents" => "IsDocumentedBy",
+      "HasMetadata" => "IsMetadataFor",
+      "HasPart" => "IsPartOf",
+      "IsCitedBy" => "Cites",
+      "IsCompiledBy" => "Compiles",
+      "IsContinuedBy" => "Continues",
+      "IsCorrectedBy" => "Corrects",
+      "IsDerivedFrom" => "IsSourceOf",
+      "IsDocumenteddBy" => "Documents",
+      "IsIdenticalTo" => "IsIdenticalTo",
+      "IsMetadataFor" => "HasMetadata",
+      "IsNewVersionOf" => "IsPreviousVersionOf",
+      "IsOriginalFormOf" => "IsVariantFormOf",
+      "IsPartOf" => "HasPart",
+      "IsPreviousVersionOf" => "IsNewVersionOf",
+      "IsRecommendedBy" => "Recommends",
+      "IsReferencedBy" => "References",
+      "IsReviewedBy" => "Reviews",
+      "IsSourceOf" => "IsDerivedFrom",
+      "IsSupplementTo" => "IsSupplementedBy",
+      "IsSupplementedBy" => "IsSupplementTo",
+      "IsVariantFormOf" => "IsOriginalFromOf",
+      "Recommends" => "isRecommendedBy",
+      "References" => "isReferencedBy",
+      "Reviews" => "isReviewedBy",
+    }
+
     def author_format(author)
       authors = Array(author).map do |a|
         name = a.fetch("literal", nil).presence || a.fetch("given", nil).to_s + " " + a.fetch("family", nil).to_s
@@ -56,11 +88,12 @@ module Sinatra
       source.fetch("attributes", {}).fetch("title", "")
     end
 
-    def relation_type_title(relation_types, id)
-      relation_type = Array(relation_types).find { |s| s["id"] == id }
-      return id unless relation_type.present?
+    def relation_type_title(related_identifiers, id)
+      related_identifier = Array(related_identifiers).find { |r| r["related-identifier"] == id }
+      return "" unless related_identifier.present?
 
-      relation_type.fetch("attributes", {}).fetch("title", "")
+      id = related_identifier.fetch("relation-type-id", nil)
+      INVERSE_RELATION_TYPES.fetch(id, "").underscore.humanize
     end
 
     def work_type_title(work_types, id)
@@ -378,6 +411,16 @@ module Sinatra
 
     def sanitize(string)
       Sanitize.fragment(string, :elements => ['br'])
+    end
+
+    def pluralize(n, singular, plural=nil)
+      if n.to_s == "1"
+          "1 #{singular}"
+      elsif plural
+          "#{n} #{plural}"
+      else
+          "#{n} #{singular}s"
+      end
     end
 
     def format_date(attributes)

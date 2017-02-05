@@ -56,12 +56,19 @@
                       %span.hidden
                         = social['icon']
 
-      - if @works && @works[:data].length > 0
-        .col-md-9
-          = haml :'works/search'
+      - if @works[:data].length > 0
+        / - if @works[:data].length > 1
+        /   .col-md-9
+        /     = haml :'works/search'
 
         .col-md-9.panel-list#content-works
-          = haml :'works/list'
+          %h3.results
+            = pluralize(number_with_delimiter(@works[:meta]['total']), "Related Work")
+          - @works[:data].each do |item|
+            = haml :'works/item', locals: { item: item }
+
+          .text-center
+            = will_paginate @works[:data], renderer: BootstrapPagination::Sinatra, inner_window: 1
 
         .col-md-3
           = haml :'works/facets'

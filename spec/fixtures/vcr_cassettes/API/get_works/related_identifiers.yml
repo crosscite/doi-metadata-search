@@ -1,0 +1,64 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api/works?include=data-center,resource-type,work-type,member,registration-agency&offset=0&rows=25&work-id=10.5061/DRYAD.Q447C
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Maremma - http://search.local
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - no-store, must-revalidate, private, max-age=0
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      X-Miniprofiler-Ids:
+      - '["37d4ndtafzc1xhknzhjt","spe88isw3eiax87vs21k","3pfkxe0t7rrwyqb16ufo","u7elaxjdya9rxctveayz","lm76gqm32u0rnfwkqddi","861jqmj0sd6l8gn9j04i","cr8kxjh4aj19qlk9waa6","fgel8i771okbtsor6r4x","e7g3oyx7le4y2al8w678","g37an15kw0at5cm7kegw","o7oq7r5gzdhd6x3k0vgq","mmrpsswqxg63gmvyvnos","on1fjharw6rb3ywocz47","78ex3yjkch2o3j7m8vt1","xjpn3nvcqtfu3hjbp93y","1qqg54sxr34brf6u2vtc","qa81jycrce7dga002j0r","nppdnlvot26negxg4mug","wlzdpzbbt9vub8zd15wi","s7l0kf0iq9xuql4r71td"]'
+      Access-Control-Max-Age:
+      - '1728000'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 74f13ee8-e8f9-492a-9274-0ccd9611b33b
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Etag:
+      - W/"f4cdcb3962d6f4a419502f8290ed69a7"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.788861'
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Sat, 04 Feb 2017 23:01:09 GMT
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      X-Powered-By:
+      - Phusion Passenger 5.0.30
+      Server:
+      - nginx/1.10.1 + Phusion Passenger 5.0.30
+      Access-Control-Allow-Headers:
+      - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '{"data":[],"meta":{"resource-types":[],"years":[],"data-centers":[],"schema-versions":[],"total":0,"sources":[],"relation-types":[]}}'
+    http_version: 
+  recorded_at: Sat, 04 Feb 2017 23:01:09 GMT
+recorded_with: VCR 2.9.3
