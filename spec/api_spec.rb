@@ -24,9 +24,9 @@ describe "API", type: :model, vcr: true do
 
     it "related_identifiers" do
       response = subject.get_works("work-id" => "10.5061/DRYAD.Q447C")
-      expect(response[:meta]["resource-types"].first).to eq("id"=>"dataset", "title"=>"Dataset", "count"=>15)
+      expect(response[:meta]["resource-types"].first).to eq("id"=>"dataset", "title"=>"Dataset", "count"=>3)
       work = response[:data].first
-      expect(work["id"]).to eq("https://doi.org/10.6084/M9.FIGSHARE.1371114.V1")
+      expect(work["id"]).to eq("https://doi.org/10.5061/DRYAD.Q447C/3")
     end
 
     it "query" do

@@ -64,7 +64,7 @@ describe "Helpers", type: :model, vcr: true do
                                "related-identifier" => "https://doi.org/10.5061/DRYAD.T748P/1" }]
       id = "https://doi.org/10.5061/DRYAD.T748P/1"
       response = subject.relation_type_title(related_identifiers, id)
-      expect(response).to eq("Has part")
+      expect(response).to eq("Is part of")
     end
   end
 end
