@@ -89,9 +89,7 @@ module Sinatra
     end
 
     def relation_type_title(related_identifiers, id)
-      related_identifier = Array(related_identifiers).find { |r| r["related-identifier"] == id }
-      return "" unless related_identifier.present?
-
+      related_identifier = Array(related_identifiers).find { |r| r["related-identifier"] == id } || {}
       id = related_identifier.fetch("relation-type-id", nil)
       INVERSE_RELATION_TYPES.fetch(id, "").underscore.humanize
     end
