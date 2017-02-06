@@ -66,5 +66,20 @@ describe "Helpers", type: :model, vcr: true do
       response = subject.relation_type_title(related_identifiers, id)
       expect(response).to eq("Is part of")
     end
+
+    it "missing" do
+      related_identifiers = [{ "relation-type-id" => "HasPart",
+                               "related-identifier" => "https://doi.org/10.5061/DRYAD.T748P/2" }]
+      id = "https://doi.org/10.5061/DRYAD.T748P/1"
+      response = subject.relation_type_title(related_identifiers, id)
+      expect(response).to eq("")
+    end
+
+    it "is identical" do
+      related_identifiers = [{"relation-type-id"=>"IsIdenticalTo", "related-identifier"=>"https://doi.org/10.6084/M9.FIGSHARE.4621336"}]
+      id = "https://doi.org/10.6084/M9.FIGSHARE.4621336"
+      response = subject.relation_type_title(related_identifiers, id)
+      expect(response).to eq("Is identical to")
+    end
   end
 end

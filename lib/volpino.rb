@@ -35,7 +35,7 @@ module Sinatra
     # select works registered via this registration agency, or any relation or contribution
     def found_dois(items)
       items.reduce([]) do |sum, item|
-        if item.fetch("type", nil) != "works" || item.fetch("attributes", {}).fetch("registration-agency-id", nil) == ENV['RA']
+        if item.is_a?(Hash) && item.fetch("attributes", {}).fetch("registration-agency-id", nil) == ENV['RA']
           sum << item.fetch("attributes", {}).fetch("doi", nil)
         else
           sum
