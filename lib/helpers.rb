@@ -117,7 +117,6 @@ module Sinatra
       else
         type = attributes.fetch("resource-type-subtype", nil).presence ||
                attributes.fetch("resource-type", nil).presence || "Work"
-        type = type.underscore.humanize
       end
 
       published = format_date(attributes)
