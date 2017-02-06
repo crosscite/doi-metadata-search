@@ -25,15 +25,16 @@
         %a{:href => attributes["license"]}
           %img{:src => license_img(attributes["license"])}
 
-  - if @work.present? && @work.fetch(:data, {}).fetch("id", "work") == item["id"] && attributes["results"].present?
+  - if @work.present? && @work.fetch(:data, {}).fetch("attributes", {}).fetch("related-identifiers", nil).present? && @work.fetch(:data, {}).fetch("id", "work") != item["id"]
+    .panel-footer
+      = relation_type_title(@work.fetch(:data, {}).fetch("attributes", {}).fetch("related-identifiers"), item["id"]) + " " + @work.fetch(:data, {}).fetch("id", nil)
+
+  - if attributes["results"].present?
     - attributes["results"].each do |s|
       .panel-footer
         = s.fetch("title", nil)
         %span.badge
           = number_with_delimiter(s.fetch("count", 0))
-  - elsif @work.present? && @work.fetch(:data, {}).fetch("attributes", {}).fetch("related-identifiers", nil).present?
-    .panel-footer
-      = relation_type_title(@work.fetch(:data, {}).fetch("attributes", {}).fetch("related-identifiers"), item["id"]) + " " + @work.fetch(:data, {}).fetch("id", nil)
 
   .panel-footer.item-links
     %a{:href => item["id"]}
