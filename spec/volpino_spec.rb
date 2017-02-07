@@ -23,8 +23,8 @@ describe "Volpino", type: :model, vcr: true do
     it "with works" do
       dois = ["10.6084/M9.FIGSHARE.706340.V1", "10.5281/ZENODO.34673"]
       claims = subject.get_claims(user, dois)
-      expect(claims[:data].length).to eq(0)
-      # expect(claims[:data].first["attributes"]["orcid"]).to eq("0000-0003-1419-2405")
+      expect(claims[:data].length).to eq(2)
+      expect(claims[:data].first["attributes"]["orcid"]).to eq("0000-0003-1419-2405")
     end
   end
 
@@ -37,7 +37,7 @@ describe "Volpino", type: :model, vcr: true do
       statuses = merged_claims.map { |mc| mc["attributes"]["claim-status"] }
       expect(works.length).to eq(25)
       expect(statuses.length).to eq(25)
-      expect(statuses.inject(Hash.new(0)) { |total, e| total[e] += 1 ; total }).to eq("none"=>25)
+      expect(statuses.inject(Hash.new(0)) { |total, e| total[e] += 1 ; total }).to eq("done"=>7, "failed"=>1, "none"=>17)
     end
   end
 
@@ -48,8 +48,8 @@ describe "Volpino", type: :model, vcr: true do
       expect(works.length).to eq(25)
       expect(works_with_claims.length).to eq(25)
       work = works_with_claims[3]
-      expect(work["id"]).to eq("https://doi.org/10.6084/M9.FIGSHARE.706340.V1")
-      expect(work["attributes"]["claim-status"]).to eq("none")
+      expect(work["id"]).to eq("https://doi.org/10.5438/S8GF-0CK9")
+      expect(work["attributes"]["claim-status"]).to eq("failed")
     end
 
     it "no works" do

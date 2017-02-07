@@ -8,9 +8,9 @@ describe "API", type: :model, vcr: true do
   context "get_works" do
     it "all" do
       response = subject.get_works
-      expect(response[:meta]["resource-types"].first).to eq("id"=>"dataset", "title"=>"Dataset", "count"=>3177633)
+      expect(response[:meta]["resource-types"].first).to eq("id"=>"dataset", "title"=>"Dataset", "count"=>3171707)
       work = response[:data].first
-      expect(work["id"]).to eq("https://doi.org/10.13140/RG.2.2.30483.48169")
+      expect(work["id"]).to eq("https://doi.org/10.15781/T2JM23K39")
     end
 
     it "one" do
@@ -33,14 +33,14 @@ describe "API", type: :model, vcr: true do
       response = subject.get_works(query: "mabbett")
       expect(response[:meta]["resource-types"].first).to eq("id"=>"dataset", "title"=>"Dataset", "count"=>15)
       work = response[:data].first
-      expect(work["id"]).to eq("https://doi.org/10.6084/M9.FIGSHARE.1371114.V1")
+      expect(work["id"]).to eq("https://doi.org/10.6084/M9.FIGSHARE.2220529.V1")
     end
   end
 
   context "get_people" do
     it "all" do
       response = subject.get_people
-      expect(response[:meta]).to eq("total"=>16575)
+      expect(response[:meta]).to eq("total"=>21305)
       contributor = response[:data].first
       expect(contributor["id"]).to eq("http://orcid.org/0000-0002-6909-1823")
     end
@@ -62,7 +62,7 @@ describe "API", type: :model, vcr: true do
   context "get_datacenters" do
     it "all" do
       response = subject.get_datacenters
-      expect(response[:meta]["registration-agencies"].first).to eq("id"=>"datacite", "title"=>"DataCite", "count"=>1264)
+      expect(response[:meta]["registration-agencies"].first).to eq("id"=>"datacite", "title"=>"DataCite", "count"=>1266)
       datacenter = response[:data].first
       expect(datacenter["attributes"]["title"]).to eq("(TIB-intern) Grafische Einzelbl\u00E4tter der Sammlung Haupt (GESAH)")
     end
@@ -75,7 +75,7 @@ describe "API", type: :model, vcr: true do
 
     it "query" do
       response = subject.get_datacenters(query: "zeno")
-      expect(response[:meta]["members"].first).to eq("id"=>"cdl", "title"=>"California Digital Library", "count"=>235)
+      expect(response[:meta]["members"].first).to eq("id"=>"cern", "title"=>"CERN - European Organization for Nuclear Research", "count"=>1)
       datacenter = response[:data].first
       expect(datacenter["id"]).to eq("cern.zenodo")
     end
@@ -84,7 +84,7 @@ describe "API", type: :model, vcr: true do
   context "get_members" do
     it "all" do
       response = subject.get_members
-      expect(response[:meta]["member-types"].first).to eq("id"=>"allocating", "title"=>"Allocating", "count"=>30)
+      expect(response[:meta]["member-types"].first).to eq("id"=>"allocating", "title"=>"Allocating", "count"=>31)
       member = response[:data].first
       expect(member["id"]).to eq("ands")
     end

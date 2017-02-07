@@ -23,20 +23,20 @@ http_interactions:
       Location:
       - http://data.datacite.org/10.5281%2FZENODO.21430
       Expires:
-      - Sat, 04 Feb 2017 22:03:36 GMT
+      - Tue, 07 Feb 2017 09:23:33 GMT
       Content-Type:
       - text/html;charset=utf-8
       Content-Length:
       - '179'
       Date:
-      - Sat, 04 Feb 2017 21:07:52 GMT
+      - Tue, 07 Feb 2017 09:16:31 GMT
     body:
       encoding: UTF-8
       string: |-
         <html><head><title>Handle Redirect</title></head>
         <body><a href="http://data.datacite.org/10.5281%2FZENODO.21430">http://data.datacite.org/10.5281%2FZENODO.21430</a></body></html>
     http_version: 
-  recorded_at: Sat, 04 Feb 2017 21:06:18 GMT
+  recorded_at: Tue, 07 Feb 2017 09:16:32 GMT
 - request:
     method: get
     uri: http://data.datacite.org/10.5281%2FZENODO.21430
@@ -56,7 +56,7 @@ http_interactions:
       Server:
       - openresty/1.11.2.1
       Date:
-      - Sat, 04 Feb 2017 21:07:53 GMT
+      - Tue, 07 Feb 2017 09:16:32 GMT
       Content-Type:
       - text/html
       Content-Length:
@@ -70,7 +70,7 @@ http_interactions:
       string: "<html>\r\n<head><title>301 Moved Permanently</title></head>\r\n<body
         bgcolor=\"white\">\r\n<center><h1>301 Moved Permanently</h1></center>\r\n<hr><center>openresty/1.11.2.1</center>\r\n</body>\r\n</html>\r\n"
     http_version: 
-  recorded_at: Sat, 04 Feb 2017 21:06:19 GMT
+  recorded_at: Tue, 07 Feb 2017 09:16:32 GMT
 - request:
     method: get
     uri: https://data.datacite.org/10.5281%2FZENODO.21430
@@ -90,7 +90,7 @@ http_interactions:
       Server:
       - openresty/1.11.2.1
       Date:
-      - Sat, 04 Feb 2017 21:07:53 GMT
+      - Tue, 07 Feb 2017 09:16:33 GMT
       Content-Type:
       - text/x-bibliography;charset=iso-8859-1
       Connection:
@@ -113,5 +113,5 @@ http_interactions:
         T1JDSUQ6IDEuMC7igJ0gWmVub2RvLCAyMDE1LiBkb2k6MTAuNTI4MS9aRU5P
         RE8uMjE0MzAuCg==
     http_version: 
-  recorded_at: Sat, 04 Feb 2017 21:06:19 GMT
+  recorded_at: Tue, 07 Feb 2017 09:16:33 GMT
 recorded_with: VCR 2.9.3
