@@ -191,11 +191,11 @@ module Sinatra
         "name" => attributes.fetch("literal", nil) }.compact.to_json
     end
 
-    def meta_tag(name:, content:)
+    def meta_tag(name:, content:, label: "name")
       if content.is_a?(Array)
-        content.map { |val| "<meta name=\"#{name}\" content=\"#{val}\" />" }.join("\n")
+        content.map { |val| "<meta #{label}=\"#{name}\" content=\"#{val}\" />" }.join("\n")
       elsif content.present?
-        "<meta name=\"#{name}\" content=\"#{content}\" />"
+        "<meta #{label}=\"#{name}\" content=\"#{content}\" />"
       end
     end
 
@@ -208,15 +208,21 @@ module Sinatra
         end
       end
 
+      title = escape_quotes(attributes.fetch("title", nil))
+      description = escape_quotes(attributes.fetch("description", nil))
+
       meta = []
       meta << meta_tag(name: "DC.identifier", content: id)
       meta << meta_tag(name: "DC.type", content: attributes.fetch("resource-type-id", nil) || "work")
-      meta << meta_tag(name: "DC.title", content: escape_quotes(attributes.fetch("title", nil)))
+      meta << meta_tag(name: "DC.title", content: title)
       meta << meta_tag(name: "DC.creator", content: author)
       meta << meta_tag(name: "DC.publisher", content: escape_quotes(attributes.fetch("publisher", nil)))
       meta << meta_tag(name: "DC.date", content: escape_quotes(attributes.fetch("published", nil)))
-      meta << meta_tag(name: "DC.description", content: escape_quotes(attributes.fetch("description", nil)))
+      meta << meta_tag(name: "DC.description", content: description)
       meta << meta_tag(name: "DCTERMS.license", content: escape_quotes(attributes.fetch("license", nil)))
+
+      meta << meta_tag(name: "og:site_name", content: title, label: "property")
+      meta << meta_tag(name: "og:description", content: description, label: "property")
 
       meta.compact.join("\n")
     end
