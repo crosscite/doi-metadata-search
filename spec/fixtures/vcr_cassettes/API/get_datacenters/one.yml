@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api/data-centers?id=CERN.ZENODO&include=member,registration-agency&offset=0&registration-agency-id=datacite&rows=25
+    uri: https://api.test.datacite.org/data-centers?id=CERN.ZENODO&include=member,registration-agency&offset=0&registration-agency-id=datacite&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -16,6 +16,10 @@ http_interactions:
       code: 200
       message: ''
     headers:
+      Server:
+      - openresty/1.11.2.1
+      Date:
+      - Tue, 07 Feb 2017 09:16:22 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Connection:
@@ -23,37 +27,29 @@ http_interactions:
       Status:
       - 200 OK
       Cache-Control:
-      - no-store, must-revalidate, private, max-age=0
+      - max-age=0, private, must-revalidate
       Access-Control-Allow-Origin:
       - "*"
       Vary:
       - Accept-Encoding
-      X-Miniprofiler-Ids:
-      - '["g2ymwy4d9o8juuwinf0o","wei4adhmjmi7dv62klcb","g37an15kw0at5cm7kegw","cr8kxjh4aj19qlk9waa6","s9adxpwc1wak1lu2dvi7","aeb29hvprivkjz9rcyz","hez49b830tfma6d4khmq","tuays1t94xsgugdhv9n0"]'
       Access-Control-Max-Age:
       - '1728000'
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 99c2eb01-b32b-4cb3-8fc5-b22f15a12f93
+      - 2129aeca-5f76-4594-a935-d220b9a681ec
       Access-Control-Allow-Methods:
-      - POST, GET, OPTIONS
+      - GET, POST, OPTIONS
       Etag:
-      - W/"c1fbb0a7c01f61248592f0edbed5a0d4"
+      - W/"0b82acdd6336daef708e0f00cacfad59"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.440207'
+      - '0.010733'
       X-Content-Type-Options:
       - nosniff
-      Date:
-      - Sat, 04 Feb 2017 21:06:23 GMT
-      Set-Cookie:
-      - __profilin=p%3Dt; path=/
       X-Powered-By:
-      - Phusion Passenger 5.0.30
-      Server:
-      - nginx/1.10.1 + Phusion Passenger 5.0.30
+      - Phusion Passenger 5.1.2
       Access-Control-Allow-Headers:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
@@ -110,7 +106,7 @@ http_interactions:
         bCwidXBkYXRlZCI6IjIwMTYtMDctMzFUMjE6MzA6MjUuMDAwWiJ9fSx7Imlk
         IjoiZGF0YWNpdGUiLCJ0eXBlIjoicmVnaXN0cmF0aW9uLWFnZW5jaWVzIiwi
         YXR0cmlidXRlcyI6eyJ0aXRsZSI6IkRhdGFDaXRlIiwidXBkYXRlZCI6IjIw
-        MTYtMDQtMjdUMDI6MjM6MDFaIn19XX0=
+        MTctMDEtMDZUMTY6MDY6MzRaIn19XX0=
     http_version: 
-  recorded_at: Sat, 04 Feb 2017 21:06:23 GMT
+  recorded_at: Tue, 07 Feb 2017 09:16:22 GMT
 recorded_with: VCR 2.9.3

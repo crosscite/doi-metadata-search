@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api/data-centers?include=member,registration-agency&offset=0&query=zeno&registration-agency-id=datacite&rows=25
+    uri: https://api.test.datacite.org/data-centers?include=member,registration-agency&offset=0&query=zeno&registration-agency-id=datacite&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -16,6 +16,10 @@ http_interactions:
       code: 200
       message: ''
     headers:
+      Server:
+      - openresty/1.11.2.1
+      Date:
+      - Tue, 07 Feb 2017 09:16:22 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Connection:
@@ -23,37 +27,29 @@ http_interactions:
       Status:
       - 200 OK
       Cache-Control:
-      - no-store, must-revalidate, private, max-age=0
+      - max-age=0, private, must-revalidate
       Access-Control-Allow-Origin:
       - "*"
       Vary:
       - Accept-Encoding
-      X-Miniprofiler-Ids:
-      - '["rx64fn9ku851ndzmmsay","wei4adhmjmi7dv62klcb","g37an15kw0at5cm7kegw","cr8kxjh4aj19qlk9waa6","s9adxpwc1wak1lu2dvi7","g2ymwy4d9o8juuwinf0o","aeb29hvprivkjz9rcyz","hez49b830tfma6d4khmq","tuays1t94xsgugdhv9n0"]'
       Access-Control-Max-Age:
       - '1728000'
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - a6f92720-e832-491c-a3a8-fa9041e80379
+      - 7f4119ed-ab0d-4b2b-8c4c-1eb44b1aa428
       Access-Control-Allow-Methods:
-      - POST, GET, OPTIONS
+      - GET, POST, OPTIONS
       Etag:
-      - W/"add1cdb60682d5d49ed2ea317ea2f10b"
+      - W/"3d26bddfafdafb70b9ce6833bfdf1aad"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.423039'
+      - '0.015521'
       X-Content-Type-Options:
       - nosniff
-      Date:
-      - Sat, 04 Feb 2017 21:06:24 GMT
-      Set-Cookie:
-      - __profilin=p%3Dt; path=/
       X-Powered-By:
-      - Phusion Passenger 5.0.30
-      Server:
-      - nginx/1.10.1 + Phusion Passenger 5.0.30
+      - Phusion Passenger 5.1.2
       Access-Control-Allow-Headers:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
@@ -110,72 +106,12 @@ http_interactions:
         dWxsLCJ1cGRhdGVkIjoiMjAxNi0wNy0zMVQyMTozMDoyNS4wMDBaIn19LHsi
         aWQiOiJkYXRhY2l0ZSIsInR5cGUiOiJyZWdpc3RyYXRpb24tYWdlbmNpZXMi
         LCJhdHRyaWJ1dGVzIjp7InRpdGxlIjoiRGF0YUNpdGUiLCJ1cGRhdGVkIjoi
-        MjAxNi0wNC0yN1QwMjoyMzowMVoifX1dLCJtZXRhIjp7InRvdGFsIjoxLCJy
+        MjAxNy0wMS0wNlQxNjowNjozNFoifX1dLCJtZXRhIjp7InRvdGFsIjoxLCJy
         ZWdpc3RyYXRpb24tYWdlbmNpZXMiOlt7ImlkIjoiZGF0YWNpdGUiLCJ0aXRs
         ZSI6IkRhdGFDaXRlIiwiY291bnQiOjF9XSwibWVtYmVycyI6W3siaWQiOiJj
-        ZGwiLCJ0aXRsZSI6IkNhbGlmb3JuaWEgRGlnaXRhbCBMaWJyYXJ5IiwiY291
-        bnQiOjIzNX0seyJpZCI6InRpYiIsInRpdGxlIjoiR2VybWFuIE5hdGlvbmFs
-        IExpYnJhcnkgb2YgU2NpZW5jZSBhbmQgVGVjaG5vbG9neSIsImNvdW50Ijox
-        Nzd9LHsiaWQiOiJibCIsInRpdGxlIjoiVGhlIEJyaXRpc2ggTGlicmFyeSIs
-        ImNvdW50IjoxMTN9LHsiaWQiOiJhbmRzIiwidGl0bGUiOiJBdXN0cmFsaWFu
-        IE5hdGlvbmFsIERhdGEgU2VydmljZSIsImNvdW50Ijo5OH0seyJpZCI6Imdl
-        c2lzIiwidGl0bGUiOiJHRVNJUyAtIExlaWJuaXogSW5zdGl0dXRlIGZvciB0
-        aGUgU29jaWFsIFNjaWVuY2VzIiwiY291bnQiOjkwfSx7ImlkIjoibXRha2lr
-        IiwidGl0bGUiOiJNVEEgS8O2bnl2dMOhcmEiLCJjb3VudCI6NTl9LHsiaWQi
-        OiJpbmlzdCIsInRpdGxlIjoiSW5zdGl0dXRlIGZvciBTY2llbnRpZmljIGFu
-        ZCBUZWNobmljYWwgSW5mb3JtYXRpb24iLCJjb3VudCI6NTd9LHsiaWQiOiJl
-        dGh6IiwidGl0bGUiOiJFVEggWnVyaWNoIiwiY291bnQiOjU0fSx7ImlkIjoi
-        b3N0aSIsInRpdGxlIjoiT2ZmaWNlIG9mIFNjaWVudGlmaWMgYW5kIFRlY2hu
-        aWNhbCBJbmZvcm1hdGlvbiAoT1NUSSksIFVTIERlcGFydG1lbnQgb2YgRW5l
-        cmd5IiwiY291bnQiOjUyfSx7ImlkIjoiemJtZWQiLCJ0aXRsZSI6Ikdlcm1h
-        biBOYXRpb25hbCBMaWJyYXJ5IG9mIE1lZGljaW5lIiwiY291bnQiOjUwfSx7
-        ImlkIjoiY3J1aSIsInRpdGxlIjoiQ1JVSTIwMTEiLCJjb3VudCI6NDZ9LHsi
-        aWQiOiJwdXJkdWUiLCJ0aXRsZSI6IlB1cmR1ZSBVbml2ZXJzaXR5IExpYnJh
-        cnkiLCJjb3VudCI6NDB9LHsiaWQiOiJjaXN0aSIsInRpdGxlIjoiQ2FuYWRh
-        IEluc3RpdHV0ZSBmb3IgU2NpZW50aWZpYyBhbmQgVGVjaG5pY2FsIEluZm9y
-        bWF0aW9uIiwiY291bnQiOjM1fSx7ImlkIjoiZGVsZnQiLCJ0aXRsZSI6IlRV
-        IERlbGZ0IExpYnJhcnkiLCJjb3VudCI6MjJ9LHsiaWQiOiJzbmQiLCJ0aXRs
-        ZSI6IlN3ZWRpc2ggTmF0aW9uYWwgRGF0YSBTZXJ2aWNlIiwiY291bnQiOjE3
-        fSx7ImlkIjoiZGsiLCJ0aXRsZSI6IlRlY2huaWNhbCBJbmZvcm1hdGlvbiBD
-        ZW50ZXIgb2YgRGVubWFyayIsImNvdW50IjoxN30seyJpZCI6ImVzdGRvaSIs
-        InRpdGxlIjoiVGFydHUgVW5pdmVyc2l0eSIsImNvdW50IjoxM30seyJpZCI6
-        ImNlcm4iLCJ0aXRsZSI6IkNFUk4gLSBFdXJvcGVhbiBPcmdhbml6YXRpb24g
-        Zm9yIE51Y2xlYXIgUmVzZWFyY2giLCJjb3VudCI6MTJ9LHsiaWQiOiJ0ZXN0
-        IiwidGl0bGUiOiJUZXN0IEFsbG9jYXRvciIsImNvdW50IjoxMX0seyJpZCI6
-        InpidyIsInRpdGxlIjoiRGV1dHNjaGUgWmVudHJhbGJpYmxpb3RoZWsgZsO8
-        ciBXaXJ0c2NoYWZ0c3dpc3NlbnNjaGFmdGVuIOKAkyBMZWlibml6LUluZm9y
-        bWF0aW9uc3plbnRydW0gV2lydHNjaGFmdCIsImNvdW50IjoxMX0seyJpZCI6
-        ImJpYnN5cyIsInRpdGxlIjoiQklCU1lTIiwiY291bnQiOjd9LHsiaWQiOiJz
-        cGJwdSIsInRpdGxlIjoiU1BiUFUiLCJjb3VudCI6N30seyJpZCI6InN1Ymdv
-        ZSIsInRpdGxlIjoiTmllZGVyc8OkY2hzaXNjaGUgU3RhYXRzLSB1bmQgVW5p
-        dmVyc2l0w6R0c2JpYmxpb3RoZWsgR8O2dHRpbmdlbiIsImNvdW50Ijo2fSx7
-        ImlkIjoiZGF0YWNpdGUiLCJ0aXRsZSI6IkRhdGFDaXRlIiwiY291bnQiOjV9
-        LHsiaWQiOiJ0aW5kIiwidGl0bGUiOiJUSU5EIFRlY2hub2xvZ2llcyIsImNv
-        dW50Ijo0fSx7ImlkIjoibnJjdCIsInRpdGxlIjoiTmF0aW9uYWwgUmVzZWFy
-        Y2ggQ291bmNpbCBvZiBUaGFpbGFuZCIsImNvdW50IjozfSx7ImlkIjoiZmln
-        c2hhcmUiLCJ0aXRsZSI6IkZpZ3NoYXJlIiwiY291bnQiOjN9LHsiaWQiOiJw
-        ZXRlcnNzIiwidGl0bGUiOiJTZWJhc3RpYW4ncyB0ZXN0IGFsbG9jYXRvciBh
-        Y2NvdW50IiwiY291bnQiOjJ9LHsiaWQiOiJucmYiLCJ0aXRsZSI6Ik5hdGlv
-        bmFsIFJlc2VhcmNoIEZvdW5kYXRpb24gb2YgU291dGggQWZpY2EiLCJjb3Vu
-        dCI6Mn0seyJpZCI6ImphbGMiLCJ0aXRsZSI6IkphcGFuIExpbmsgQ2VudGVy
-        IiwiY291bnQiOjJ9LHsiaWQiOiJjc2ljIiwidGl0bGUiOiJDU0lDIiwiY291
-        bnQiOjJ9LHsiaWQiOiJjc2MiLCJ0aXRsZSI6IkNTQyAtIElUIENlbnRlciBm
-        b3IgU2NpZW5jZSBMdGQuIiwiY291bnQiOjJ9LHsiaWQiOiJkZXYiLCJ0aXRs
-        ZSI6IkRldmVsb3BlciBBY2NvdW50IiwiY291bnQiOjF9LHsiaWQiOiJlZCIs
-        InRpdGxlIjoiRWQncyB0ZXN0IGFsbG9jYXRvciIsImNvdW50IjoxfSx7Imlk
-        IjoiZmFvIiwidGl0bGUiOiJGb29kIGFuZCBBZ3JpY3VsdHVyZSBPcmdhbml6
-        YXRpb24gb2YgdGhlIFVuaXRlZCBOYXRpb25zIiwiY291bnQiOjF9LHsiaWQi
-        OiJ0c2luZ2h1YSIsInRpdGxlIjoiVHNpbmdodWEgVW5pdmVyc2l0eSBMaWJy
-        YXJ5IiwiY291bnQiOjF9LHsiaWQiOiJyZyIsInRpdGxlIjoiUmVzZWFyY2hH
-        YXRlIiwiY291bnQiOjF9LHsiaWQiOiJ1c2dzIiwidGl0bGUiOiJVbml0ZWQg
-        U3RhdGVzIEdlb2xvZ2ljYWwgU3VydmV5IiwiY291bnQiOjF9LHsiaWQiOiJu
-        ZW9uIiwidGl0bGUiOiJORU9OIiwiY291bnQiOjF9LHsiaWQiOiJvY2VhbiIs
-        InRpdGxlIjoiQ29kZSBPY2VhbiIsImNvdW50IjoxfSx7ImlkIjoiY3liZXJs
-        IiwidGl0bGUiOiJDeWJlckxlbmlua2EiLCJjb3VudCI6MX0seyJpZCI6ImVp
-        dWMiLCJ0aXRsZSI6IkV1cm9wZWFuIEludGVyLVVuaXZlcnNpdHkgQ2VudHJl
-        IGZvciBIdW1hbiBSaWdodHMgYW5kIERlbW9jcmF0aXNhdGlvbiIsImNvdW50
-        IjoxfV0sInllYXJzIjpbeyJpZCI6IjIwMTQiLCJ0aXRsZSI6IjIwMTQiLCJj
-        b3VudCI6MX1dfX0=
+        ZXJuIiwidGl0bGUiOiJDRVJOIC0gRXVyb3BlYW4gT3JnYW5pemF0aW9uIGZv
+        ciBOdWNsZWFyIFJlc2VhcmNoIiwiY291bnQiOjF9XSwieWVhcnMiOlt7Imlk
+        IjoiMjAxNCIsInRpdGxlIjoiMjAxNCIsImNvdW50IjoxfV19fQ==
     http_version: 
-  recorded_at: Sat, 04 Feb 2017 21:06:24 GMT
+  recorded_at: Tue, 07 Feb 2017 09:16:22 GMT
 recorded_with: VCR 2.9.3

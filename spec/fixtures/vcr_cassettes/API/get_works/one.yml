@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api/works?id=10.2314/COSCV2.53&include=data-center,resource-type,work-type,member,registration-agency&offset=0&rows=25
+    uri: https://api.test.datacite.org/works?id=10.2314/COSCV2.53&include=data-center,resource-type,work-type,member,registration-agency&offset=0&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -16,6 +16,10 @@ http_interactions:
       code: 200
       message: ''
     headers:
+      Server:
+      - openresty/1.11.2.1
+      Date:
+      - Tue, 07 Feb 2017 09:16:21 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Connection:
@@ -23,44 +27,37 @@ http_interactions:
       Status:
       - 200 OK
       Cache-Control:
-      - no-store, must-revalidate, private, max-age=0
+      - max-age=0, private, must-revalidate
       Access-Control-Allow-Origin:
       - "*"
       Vary:
       - Accept-Encoding
-      X-Miniprofiler-Ids:
-      - '["ztf6okvn9inpqqwupdas","m8b6ft16l944a8q0jrsi","g37an15kw0at5cm7kegw","wei4adhmjmi7dv62klcb","dwhha1alobkcht8ka0ju","cr8kxjh4aj19qlk9waa6","n1s4vz62xphk28m1ofmi","s9adxpwc1wak1lu2dvi7","xnxxhcdnc9rctm3tnuq","xuv8b4vdkpkvhlwg5nof","aeb29hvprivkjz9rcyz","mmredrlgek0vkqbh3jgr","rx64fn9ku851ndzmmsay","t5c3pifw1pv9dhh0kukm","hez49b830tfma6d4khmq","g2ymwy4d9o8juuwinf0o","tuays1t94xsgugdhv9n0"]'
       Access-Control-Max-Age:
       - '1728000'
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - dfbdecbd-243d-4edf-af1f-aac3d47adacd
+      - 884c3d22-d07d-43a7-b59e-72a0dead2881
       Access-Control-Allow-Methods:
-      - POST, GET, OPTIONS
+      - GET, POST, OPTIONS
       Etag:
-      - W/"9b35b1dc86e281d1ebd33c26b0e44edd"
+      - W/"aa1bbc33befd91160f0493b9a294a3e6"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.786476'
+      - '0.229064'
       X-Content-Type-Options:
       - nosniff
-      Date:
-      - Sat, 04 Feb 2017 21:06:32 GMT
-      Set-Cookie:
-      - __profilin=p%3Dt; path=/
       X-Powered-By:
-      - Phusion Passenger 5.0.30
-      Server:
-      - nginx/1.10.1 + Phusion Passenger 5.0.30
+      - Phusion Passenger 5.1.2
       Access-Control-Allow-Headers:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
       encoding: UTF-8
       string: '{"data":{"id":"https://doi.org/10.2314/COSCV2.53","type":"works","attributes":{"doi":"10.2314/COSCV2.53","url":null,"author":[{"family":"Pampel","given":"Heinz","orcid":"http://orcid.org/0000-0003-3334-2771"},{"family":"Neumann","given":"Janna","orcid":"http://orcid.org/0000-0002-0161-1888"}],"title":"Publikation
         von Forschungsdaten","container-title":"Technische Informationsbibliothek
-        (TIB), Hannover","description":"","resource-type-subtype":null,"data-center-id":"tib.handbuch","member-id":"tib","registration-agency-id":"datacite","resource-type-id":"text","work-type-id":"report","version":"2.0","license":null,"schema-version":"3","results":[],"published":"2015","deposited":"2015-05-20T06:35:12Z","updated":"2015-05-20T06:35:12Z","media":null,"xml":"PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4KPHJlc291cmNlIHhtbG5zPSdodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMycgeG1sbnM6eHNpPSdodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZScgeHNpOnNjaGVtYUxvY2F0aW9uPSdodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMyBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC0zL21ldGFkYXRhLnhzZCc+CjxpZGVudGlmaWVyIGlkZW50aWZpZXJUeXBlPSdET0knPjEwLjIzMTQvY29zY3YyLjUzIDwvaWRlbnRpZmllcj4KPGNyZWF0b3JzPgoJPGNyZWF0b3I+CgkJPGNyZWF0b3JOYW1lPlBhbXBlbCwgSGVpbno8L2NyZWF0b3JOYW1lPgoJCTxuYW1lSWRlbnRpZmllciBuYW1lSWRlbnRpZmllclNjaGVtZT0nT1JDSUQnIHNjaGVtZVVSST0naHR0cDovL3d3dy5vcmNpZC5vcmcnPjAwMDAtMDAwMy0zMzM0LTI3NzE8L25hbWVJZGVudGlmaWVyPgoJPC9jcmVhdG9yPgoJPGNyZWF0b3I+CgkJPGNyZWF0b3JOYW1lPk5ldW1hbm4sIEphbm5hPC9jcmVhdG9yTmFtZT4KCQk8bmFtZUlkZW50aWZpZXIgbmFtZUlkZW50aWZpZXJTY2hlbWU9J09SQ0lEJyBzY2hlbWVVUkk9J2h0dHA6Ly93d3cub3JjaWQub3JnJz4wMDAwLTAwMDItMDE2MS0xODg4PC9uYW1lSWRlbnRpZmllcj4KCTwvY3JlYXRvcj4KPC9jcmVhdG9ycz4KPHRpdGxlcz4KCTx0aXRsZT5QdWJsaWthdGlvbiB2b24gRm9yc2NodW5nc2RhdGVuPC90aXRsZT4KPC90aXRsZXM+CjxwdWJsaXNoZXI+VGVjaG5pc2NoZSBJbmZvcm1hdGlvbnNiaWJsaW90aGVrIChUSUIpLCBIYW5ub3ZlcjwvcHVibGlzaGVyPgo8cHVibGljYXRpb25ZZWFyPjIwMTU8L3B1YmxpY2F0aW9uWWVhcj4KPGNvbnRyaWJ1dG9ycz4KCTxjb250cmlidXRvciBjb250cmlidXRvclR5cGU9J090aGVyJz4KCQk8Y29udHJpYnV0b3JOYW1lPkZlbm5lciwgTWFydGluPC9jb250cmlidXRvck5hbWU+CgkJPG5hbWVJZGVudGlmaWVyIG5hbWVJZGVudGlmaWVyU2NoZW1lPSdPUkNJRCcgc2NoZW1lVVJJPSdodHRwOi8vd3d3Lm9yY2lkLm9yZyc+MDAwMC0wMDAzLTE0MTktMjQwNTwvbmFtZUlkZW50aWZpZXI+Cgk8L2NvbnRyaWJ1dG9yPgoJPGNvbnRyaWJ1dG9yIGNvbnRyaWJ1dG9yVHlwZT0nT3RoZXInPgoJCTxjb250cmlidXRvck5hbWU+VHVsbG5leSwgTWFyY288L2NvbnRyaWJ1dG9yTmFtZT4KCQk8bmFtZUlkZW50aWZpZXIgbmFtZUlkZW50aWZpZXJTY2hlbWU9J09SQ0lEJyBzY2hlbWVVUkk9J2h0dHA6Ly93d3cub3JjaWQub3JnJz4wMDAwLTAwMDItNTExMS0yNzg4PC9uYW1lSWRlbnRpZmllcj4KCTwvY29udHJpYnV0b3I+CjwvY29udHJpYnV0b3JzPgo8bGFuZ3VhZ2U+ZGU8L2xhbmd1YWdlPgo8cmVzb3VyY2VUeXBlIHJlc291cmNlVHlwZUdlbmVyYWw9J1RleHQnPjwvcmVzb3VyY2VUeXBlPgo8cmVsYXRlZElkZW50aWZpZXJzPgoJPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0nRE9JJyByZWxhdGlvblR5cGU9J0lzUGFydE9mJz4xMC4yMzE0L2Nvc2N2MjwvcmVsYXRlZElkZW50aWZpZXI+CjwvcmVsYXRlZElkZW50aWZpZXJzPgo8dmVyc2lvbj4yLjA8L3ZlcnNpb24+CjxyaWdodHNMaXN0PgoJPHJpZ2h0cz5odHRwczovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5zZXMvYnkvNC4wL2xlZ2FsY29kZSZxdW90OyZndDtDcmVhdGl2ZSBDb21tb25zIEF0dHJpYnV0aW9uIDQuMCBJbnRlcm5hdGlvbmFsIFB1YmxpYzwvcmlnaHRzPgo8L3JpZ2h0c0xpc3Q+CjwvcmVzb3VyY2U+"},"relationships":{"data-center":{"data":{"id":"tib.handbuch","type":"data-centers"}},"member":{"data":{"id":"tib","type":"members"}},"registration-agency":{"data":{"id":"datacite","type":"registration-agencies"}},"resource-type":{"data":{"id":"text","type":"resource-types"}},"work-type":{"data":{"id":"report","type":"work-types"}}}},"included":[{"id":"tib.handbuch","type":"data-centers","attributes":{"title":"Technische
+        (TIB), Hannover","description":"","resource-type-subtype":null,"data-center-id":"tib.handbuch","member-id":"tib","registration-agency-id":"datacite","resource-type-id":"text","work-type-id":"report","version":"2.0","license":null,"schema-version":"3","results":[{"id":"IsPartOf","title":"Is
+        part of","count":1}],"related-identifiers":[{"relation-type-id":"IsPartOf","related-identifier":"https://doi.org/10.2314/COSCV2"}],"published":"2015","deposited":"2015-05-20T06:35:12Z","updated":"2015-05-20T06:35:12Z","media":null,"xml":"PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4KPHJlc291cmNlIHhtbG5zPSdodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMycgeG1sbnM6eHNpPSdodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZScgeHNpOnNjaGVtYUxvY2F0aW9uPSdodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMyBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC0zL21ldGFkYXRhLnhzZCc+CjxpZGVudGlmaWVyIGlkZW50aWZpZXJUeXBlPSdET0knPjEwLjIzMTQvY29zY3YyLjUzIDwvaWRlbnRpZmllcj4KPGNyZWF0b3JzPgoJPGNyZWF0b3I+CgkJPGNyZWF0b3JOYW1lPlBhbXBlbCwgSGVpbno8L2NyZWF0b3JOYW1lPgoJCTxuYW1lSWRlbnRpZmllciBuYW1lSWRlbnRpZmllclNjaGVtZT0nT1JDSUQnIHNjaGVtZVVSST0naHR0cDovL3d3dy5vcmNpZC5vcmcnPjAwMDAtMDAwMy0zMzM0LTI3NzE8L25hbWVJZGVudGlmaWVyPgoJPC9jcmVhdG9yPgoJPGNyZWF0b3I+CgkJPGNyZWF0b3JOYW1lPk5ldW1hbm4sIEphbm5hPC9jcmVhdG9yTmFtZT4KCQk8bmFtZUlkZW50aWZpZXIgbmFtZUlkZW50aWZpZXJTY2hlbWU9J09SQ0lEJyBzY2hlbWVVUkk9J2h0dHA6Ly93d3cub3JjaWQub3JnJz4wMDAwLTAwMDItMDE2MS0xODg4PC9uYW1lSWRlbnRpZmllcj4KCTwvY3JlYXRvcj4KPC9jcmVhdG9ycz4KPHRpdGxlcz4KCTx0aXRsZT5QdWJsaWthdGlvbiB2b24gRm9yc2NodW5nc2RhdGVuPC90aXRsZT4KPC90aXRsZXM+CjxwdWJsaXNoZXI+VGVjaG5pc2NoZSBJbmZvcm1hdGlvbnNiaWJsaW90aGVrIChUSUIpLCBIYW5ub3ZlcjwvcHVibGlzaGVyPgo8cHVibGljYXRpb25ZZWFyPjIwMTU8L3B1YmxpY2F0aW9uWWVhcj4KPGNvbnRyaWJ1dG9ycz4KCTxjb250cmlidXRvciBjb250cmlidXRvclR5cGU9J090aGVyJz4KCQk8Y29udHJpYnV0b3JOYW1lPkZlbm5lciwgTWFydGluPC9jb250cmlidXRvck5hbWU+CgkJPG5hbWVJZGVudGlmaWVyIG5hbWVJZGVudGlmaWVyU2NoZW1lPSdPUkNJRCcgc2NoZW1lVVJJPSdodHRwOi8vd3d3Lm9yY2lkLm9yZyc+MDAwMC0wMDAzLTE0MTktMjQwNTwvbmFtZUlkZW50aWZpZXI+Cgk8L2NvbnRyaWJ1dG9yPgoJPGNvbnRyaWJ1dG9yIGNvbnRyaWJ1dG9yVHlwZT0nT3RoZXInPgoJCTxjb250cmlidXRvck5hbWU+VHVsbG5leSwgTWFyY288L2NvbnRyaWJ1dG9yTmFtZT4KCQk8bmFtZUlkZW50aWZpZXIgbmFtZUlkZW50aWZpZXJTY2hlbWU9J09SQ0lEJyBzY2hlbWVVUkk9J2h0dHA6Ly93d3cub3JjaWQub3JnJz4wMDAwLTAwMDItNTExMS0yNzg4PC9uYW1lSWRlbnRpZmllcj4KCTwvY29udHJpYnV0b3I+CjwvY29udHJpYnV0b3JzPgo8bGFuZ3VhZ2U+ZGU8L2xhbmd1YWdlPgo8cmVzb3VyY2VUeXBlIHJlc291cmNlVHlwZUdlbmVyYWw9J1RleHQnPjwvcmVzb3VyY2VUeXBlPgo8cmVsYXRlZElkZW50aWZpZXJzPgoJPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0nRE9JJyByZWxhdGlvblR5cGU9J0lzUGFydE9mJz4xMC4yMzE0L2Nvc2N2MjwvcmVsYXRlZElkZW50aWZpZXI+CjwvcmVsYXRlZElkZW50aWZpZXJzPgo8dmVyc2lvbj4yLjA8L3ZlcnNpb24+CjxyaWdodHNMaXN0PgoJPHJpZ2h0cz5odHRwczovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5zZXMvYnkvNC4wL2xlZ2FsY29kZSZxdW90OyZndDtDcmVhdGl2ZSBDb21tb25zIEF0dHJpYnV0aW9uIDQuMCBJbnRlcm5hdGlvbmFsIFB1YmxpYzwvcmlnaHRzPgo8L3JpZ2h0c0xpc3Q+CjwvcmVzb3VyY2U+"},"relationships":{"data-center":{"data":{"id":"tib.handbuch","type":"data-centers"}},"member":{"data":{"id":"tib","type":"members"}},"registration-agency":{"data":{"id":"datacite","type":"registration-agencies"}},"resource-type":{"data":{"id":"text","type":"resource-types"}},"work-type":{"data":{"id":"report","type":"work-types"}}}},"included":[{"id":"tib.handbuch","type":"data-centers","attributes":{"title":"Technische
         Informationsbibliothek Open Science Lab","other-names":[],"prefixes":[],"member-id":"tib","registration-agency-id":"datacite","year":2016,"created":"2016-04-14T12:17:54Z","updated":"2016-04-14T12:17:54Z"},"relationships":{"member":{"meta":{}},"registration-agency":{"meta":{}}}},{"id":"tib","type":"members","attributes":{"title":"German
         National Library of Science and Technology","description":"\u003cp\u003eThe
         TIB is the German National Library for all areas of engineering as well as
@@ -75,7 +72,7 @@ http_interactions:
         services for all German data centres in the fields of engineering, architecture,
         chemistry, information technology, mathematics and physics. Our current focus
         is on providing DOI names for primary data and grey literature.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Germany","year":2009,"logo-url":"https://assets.test.datacite.org/images/members/tib.png","email":"doi-info@tib.eu","website":"
-        http://www.tib.eu","phone":"+49 511 762 14226","updated":"2016-08-01T11:13:04.000Z"}},{"id":"datacite","type":"registration-agencies","attributes":{"title":"DataCite","updated":"2016-04-27T02:23:01Z"}},{"id":"text","type":"resource-types","attributes":{"title":"Text","updated":"2016-09-21T00:00:00Z"}},{"id":"report","type":"work-types","attributes":{"title":"Report","container":null,"updated":"2016-03-21T15:05:03Z"}}]}'
+        http://www.tib.eu","phone":"+49 511 762 14226","updated":"2016-08-01T11:13:04.000Z"}},{"id":"datacite","type":"registration-agencies","attributes":{"title":"DataCite","updated":"2017-01-06T16:06:34Z"}},{"id":"text","type":"resource-types","attributes":{"title":"Text","updated":"2016-09-21T00:00:00Z"}},{"id":"report","type":"work-types","attributes":{"title":"Report","container":null,"updated":"2017-01-06T16:06:34Z"}}]}'
     http_version: 
-  recorded_at: Sat, 04 Feb 2017 21:06:32 GMT
+  recorded_at: Tue, 07 Feb 2017 09:16:21 GMT
 recorded_with: VCR 2.9.3

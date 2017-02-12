@@ -10,7 +10,8 @@ gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'haml'
 gem 'multi_json'
-gem 'oj'
+gem 'json', '~> 1.8', '>= 1.8.5'
+gem 'oj', '~> 2.18', '>= 2.18.1'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'iso8601', '~> 0.9.0'
@@ -42,5 +43,5 @@ group :test do
 end
 
 group :test, :development do
-  gem 'rubocop', '~> 0.27.0', require: false
+  gem 'rubocop', '~> 0.39.0', require: false
 end

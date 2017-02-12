@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api/works?include=data-center,resource-type,work-type,member,registration-agency&offset=0&rows=25&work-id=10.5061/DRYAD.Q447C
+    uri: https://api.test.datacite.org/works?include=data-center,resource-type,work-type,member,registration-agency&offset=0&rows=25&work-id=10.5061/DRYAD.Q447C
     body:
       encoding: US-ASCII
       string: ''
@@ -16,6 +16,10 @@ http_interactions:
       code: 200
       message: ''
     headers:
+      Server:
+      - openresty/1.11.2.1
+      Date:
+      - Tue, 07 Feb 2017 09:16:20 GMT
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Connection:
@@ -23,37 +27,29 @@ http_interactions:
       Status:
       - 200 OK
       Cache-Control:
-      - no-store, must-revalidate, private, max-age=0
+      - max-age=0, private, must-revalidate
       Access-Control-Allow-Origin:
       - "*"
       Vary:
       - Accept-Encoding
-      X-Miniprofiler-Ids:
-      - '["89p5atj0aumm6csz87xn","b82rovkm0jl3uwsp5sep","efexegi0js9xzf42c4h0","yolyhhbicdk7fag667i8","z2q3uyf52r49m3514ll4","ljkjyd37xbpfpirkv16j","oji834j2v2jncz5f14fy","5h9xw6c48suth3hun53e","5r0mv2kimlckb3a1f08g","vln4vxvj3bscy77t7x6z","dglu3lk4l4f95aezkpqm","alwtt9f58g2g40suubxk","7rq4qo2unrh46n690dlk","pfpk0pe2hrz9iqqxixzh","6p8ndb3jqzmopktwhdz3","1neaffyjm4pb087lyrfa","q279tqlya1r05zzshnqt","b21qjou1e2gue1hceizt","eggxwzuvla4ahucd2nwd","f4arqf9n33f1uu6lzg3y"]'
       Access-Control-Max-Age:
       - '1728000'
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 9270bf15-1e7d-4179-8a70-1a0d15aeebd1
+      - fcdb0fe9-ad3c-4764-bc82-4dd464adb617
       Access-Control-Allow-Methods:
-      - POST, GET, OPTIONS
+      - GET, POST, OPTIONS
       Etag:
-      - W/"9c42e79b1851135f429683996c7cb2b8"
+      - W/"41da6adfa9f698d460e44fc2add55d8f"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.968866'
+      - '0.220740'
       X-Content-Type-Options:
       - nosniff
-      Date:
-      - Sun, 05 Feb 2017 18:32:56 GMT
-      Set-Cookie:
-      - __profilin=p%3Dt; path=/
       X-Powered-By:
-      - Phusion Passenger 5.0.30
-      Server:
-      - nginx/1.10.1 + Phusion Passenger 5.0.30
+      - Phusion Passenger 5.1.2
       Access-Control-Allow-Headers:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
     body:
@@ -78,8 +74,8 @@ http_interactions:
         offers DataCite DOIs and other identifiers via the EZID service, a service
         CDL developed to help educational, non-profit, governmental and commercial
         clients create and manage globally unique identifiers for data and other sources.\u003c/p\u003e\n","member-type":"allocating","region":"Americas","country":"United
-        States","year":2009,"logo-url":"https://assets.test.datacite.org/images/members/cdl.png","email":"ezid@ucop.edu","website":"http://ezid.cdlib.org","phone":"1-510-987-0469","updated":"2016-09-09T17:46:16.000Z"}},{"id":"datacite","type":"registration-agencies","attributes":{"title":"DataCite","updated":"2016-04-27T02:23:01Z"}},{"id":"dataset","type":"resource-types","attributes":{"title":"Dataset","updated":"2016-09-21T00:00:00Z"}},{"id":"dataset","type":"work-types","attributes":{"title":"Dataset","container":null,"updated":"2016-03-21T15:05:03Z"}}],"meta":{"resource-types":[{"id":"dataset","title":"Dataset","count":3}],"years":[{"id":"2016","title":"2016","count":3}],"data-centers":[],"schema-versions":[{"id":"2.2","title":"Schema
+        States","year":2009,"logo-url":"https://assets.test.datacite.org/images/members/cdl.png","email":"ezid@ucop.edu","website":"http://ezid.cdlib.org","phone":"1-510-987-0469","updated":"2016-09-09T17:46:16.000Z"}},{"id":"datacite","type":"registration-agencies","attributes":{"title":"DataCite","updated":"2017-01-06T16:06:34Z"}},{"id":"dataset","type":"resource-types","attributes":{"title":"Dataset","updated":"2016-09-21T00:00:00Z"}},{"id":"dataset","type":"work-types","attributes":{"title":"Dataset","container":null,"updated":"2017-01-06T16:06:34Z"}}],"meta":{"resource-types":[{"id":"dataset","title":"Dataset","count":3}],"years":[{"id":"2016","title":"2016","count":3}],"data-centers":[{"id":"cdl.dryad","title":"Dryad","count":3}],"schema-versions":[{"id":"2.2","title":"Schema
         2.2","count":3}],"total":3}}'
     http_version: 
-  recorded_at: Sun, 05 Feb 2017 18:32:56 GMT
+  recorded_at: Tue, 07 Feb 2017 09:16:20 GMT
 recorded_with: VCR 2.9.3
