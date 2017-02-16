@@ -143,7 +143,7 @@ module Sinatra
         if prefix == "publicdomain"
           "https://licensebuttons.net/p/zero/1.0/80x15.png"
         else
-          version = version.to_s.gsub(/(\d)\.\d/, '/1.0')
+          #version = version.to_s.gsub(/(\d)\.\d/, '/1.0')
           "https://licensebuttons.net/l/#{type}/#{version}/80x15.png"
         end
       elsif uri.host == "opensource.org"
