@@ -196,7 +196,7 @@ get '/people/:id' do
     headers['Link'] = "<#{link}> ; rel=\"identifier\""
 
     @person = { data: { "id" => link, "attributes" => { "orcid" => params[:id] } },
-                errors: [{ "status" => "400", "title" => "The owner of this ORCID ID has not registered with DataCite, or has not made his record public." }] }
+                errors: [{ "status" => "400", "title" => "The owner of this ORCID ID has not registered with DataCite, or has not made their record public." }] }
     @works = { data: [] }
   else
     link = "http://orcid.org/#{params[:id]}"
