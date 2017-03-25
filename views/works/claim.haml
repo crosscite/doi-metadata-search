@@ -2,25 +2,25 @@
 
 - if attributes["claim-status"] == "none"
   %span.well-transparent.claim-none{id: attributes["doi"], data: { url: "#{ENV['ORCID_UPDATE_URL']}/api/claims", doi: attributes["doi"], orcid: current_user.orcid, "api-key" => current_user.api_key, action: "create" }}
-    %img{src: "//#{ENV['CDN_HOST']}/images/orcid_16x16.gif" }
+    %img{src: "#{ENV['CDN_URL']}/images/orcid_16x16.gif" }
     %span Add to ORCID record
 - elsif attributes["claim-status"] == "deleted"
   %span.well-transparent.claim-none{id: attributes["doi"], data: { url: "#{ENV['ORCID_UPDATE_URL']}/api/claims", doi: attributes["doi"], orcid: current_user.orcid, "api-key" => current_user.api_key, action: "create" }}
-    %img{src: "//#{ENV['CDN_HOST']}/images/orcid_16x16.gif" }
+    %img{src: "#{ENV['CDN_URL']}/images/orcid_16x16.gif" }
     %span Deleted from your ORCID record
 - elsif attributes["claim-status"] == "ignored"
   %span.well-transparent.claim-none{id: attributes["doi"], data: { url: "#{ENV['ORCID_UPDATE_URL']}/api/claims", doi: attributes["doi"], orcid: current_user.orcid, "api-key" => current_user.api_key, action: "create" }}
-    %img{src: "//#{ENV['CDN_HOST']}/images/orcid_16x16.gif" }
+    %img{src: "#{ENV['CDN_URL']}/images/orcid_16x16.gif" }
     %span Contains your ORCID ID, add to ORCID record
 - elsif attributes["claim-status"] == "failed"
   %span.well-transparent.claim-warn{id: attributes["doi"], data: { url: "#{ENV['ORCID_UPDATE_URL']}/api/claims", doi: attributes["doi"], orcid: current_user.orcid, "api-key" => current_user.api_key, action: "create" }}
-    %img{src: "//#{ENV['CDN_HOST']}/images/orcid_16x16.gif" }
+    %img{src: "#{ENV['CDN_URL']}/images/orcid_16x16.gif" }
     %span An error occured while adding to ORCID record
 - elsif attributes["claim-status"] == "waiting"
   %span.well-transparent.claim-waiting{id: attributes["doi"], data: { doi: attributes["doi"] }}
-    %img{src: "//#{ENV['CDN_HOST']}/images/orcid_16x16.gif" }
+    %img{src: "#{ENV['CDN_URL']}/images/orcid_16x16.gif" }
     %span Queued for your ORCID record
 - elsif attributes["claim-status"] == "done"
   %span.well-transparent.claim-ok{id: attributes["doi"], data: { url: "#{ENV['ORCID_UPDATE_URL']}/api/claims", doi: attributes["doi"], orcid: current_user.orcid, "api-key" => current_user.api_key, action: "delete" }}
-    %img{src: "//#{ENV['CDN_HOST']}/images/orcid_16x16.gif" }
+    %img{src: "#{ENV['CDN_URL']}/images/orcid_16x16.gif" }
     %span In your ORCID record

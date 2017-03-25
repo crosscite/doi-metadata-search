@@ -126,8 +126,6 @@ services_links:
    url: https://www.datacite.org/citation.html
  - name: Statistics
    url: https://www.datacite.org/stats.html
- - name: Service status
-   url: https://www.datacite.org/service.html
  - name: Content negotiation
    url: https://www.datacite.org/content.html
  - name: OAI-PMH
