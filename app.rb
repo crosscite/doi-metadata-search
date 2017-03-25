@@ -264,7 +264,7 @@ end
 get '/citation' do
   halt 422, json(status: 'error', message: 'DOI missing or wrong format.') unless params[:doi] && doi?(params[:doi])
 
-  citation_format = settings.citation_formats.fetch(params[:format], nil)
+  citation_format = settings.citation_formats.fetch(params[:format], 'text/x-bibliography; style=apa')
   halt 415, json(status: 'error', message: 'Format missing or not supported.') unless citation_format
 
   # use doi content negotiation to get formatted citation
