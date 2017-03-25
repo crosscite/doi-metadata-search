@@ -12,12 +12,18 @@
     - else
       %link{:rel => 'stylesheet', :href => "/stylesheets/#{ENV['RA']}.css", :type => 'text/css'}
 
+    - if @work.present? && @work[:data].present?
+      - id = @work.fetch(:data, {}).fetch("id", nil)
+      - attributes = @work.fetch(:data, {}).fetch("attributes", {})
+      = work_as_meta_tag(id: id, attributes: attributes)
+
+  %body
+    .notifications.top-left
+    = yield
+
     %script{:type => 'text/javascript', :src => '//code.jquery.com/jquery-2.2.3.min.js'}
     %script{:type => 'text/javascript', :src => '//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'}
     %script{:type => 'text/javascript', :src => '//cdn.statuspage.io/se-v2.js'}
-    - if ENV['CDN_URL']
-      %script{:type => 'text/javascript', :src => "#{ENV['CDN_URL']}/javascripts/default.js"}
-
     %script{type: "text/x-mathjax-config"}
       :plain
         MathJax.Hub.Config({
@@ -26,10 +32,13 @@
           }
         });
     %script{:type => 'text/javascript', :src => '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML'}
-
+    %script{:type => 'text/javascript', :src => 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js'}
+    %script{:type => 'text/javascript', :src => '/javascripts/citebox.js'}
+    %script{:type => 'text/javascript', :src => '/javascripts/itemlist.js'}
     %script{:type => 'text/javascript', :src => '/javascripts/bootstrap.notify.js'}
     %script{:type => 'text/javascript', :src => '/javascripts/spin.min.js'}
-    %script{:type => 'text/javascript', :src => '/javascripts/jquery.oauthpopup.js'}
+    - if ENV['CDN_URL']
+      %script{:type => 'text/javascript', :src => "#{ENV['CDN_URL']}/javascripts/default.js"}
     - if ENV['BUGSNAG_JS_KEY']
       %script{:type => 'text/javascript', :src => '//d2wy8f7a9ursnm.cloudfront.net/bugsnag-2.min.js', :data => { 'apikey' => "#{ENV['BUGSNAG_JS_KEY']}" }}
     - if ENV['GABBA_COOKIE']
@@ -43,12 +52,3 @@
            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
          })();
-
-    - if @work.present? && @work[:data].present?
-      - id = @work.fetch(:data, {}).fetch("id", nil)
-      - attributes = @work.fetch(:data, {}).fetch("attributes", {})
-      = work_as_meta_tag(id: id, attributes: attributes)
-
-  %body
-    .notifications.top-left
-    = yield

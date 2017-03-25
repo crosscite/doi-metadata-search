@@ -41,7 +41,7 @@
       %i.fa.fa-external-link
       = item["id"]
     - if attributes["doi"].present?
-      %a.cite-link.nowrap{:href => "javascript:showCiteBox(\"#{attributes["doi"]}\", \"#{title}\");"}
+      %a.cite-link.nowrap{href: '#', onclick: "showCiteBox(\"#{attributes["doi"]}\", \"#{title}\"); return false;"}
         %i.fa.fa-quote-left
         Cite
 
