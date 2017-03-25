@@ -6,8 +6,8 @@
       = flash[:error]
 
   .centered
-    - if ENV['CDN_HOST']
-      %img{class: 'img-big', src: "//#{ENV['CDN_HOST']}/images/logo-big.png"}
+    - if ENV['CDN_URL']
+      %img{class: 'img-big', src: "#{ENV['CDN_URL']}/images/logo-big.png"}
     - else
       %img{class: 'img-big', src: "/images/#{ENV['RA']}/logo-big.png"}
 
