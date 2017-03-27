@@ -49,3 +49,19 @@ function setCiteBoxFormat(format) {
   spinner.spin(document.getElementById('spinner'));
   updateCiteBox();
 };
+
+$(document).ready(function(e) {
+  citationInfo = {format: 'apa'};
+  spinnerOpts = {shadow: true, width: 2, speed: 2};
+  spinner = new Spinner(spinnerOpts);
+  $('#citation-modal-close').click(function(e) {
+    $('#citation-modal').modal('hide');
+  });
+
+
+  $('.cite-link').click(function(e) {
+    setCiteBoxFormat($(this).parent().attr('id'));
+    $('#cite-nav li').removeClass('active');
+    $(this).parent().addClass('active');
+  });
+});
