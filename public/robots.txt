@@ -4,10 +4,6 @@
 # User-agent: *
 # Disallow: /
 
-<<<<<<< HEAD
-Sitemap: https://search.test.datacite.org/sitemaps/sitemap.xml.gz
-=======
 Sitemap: https://search.datacite.org/sitemaps/sitemap.xml.gz
->>>>>>> master
 User-agent: Pingdom.com_bot_version_1.4_(http://www.pingdom.com/)
 Disallow: /ui
