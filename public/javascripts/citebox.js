@@ -51,6 +51,7 @@ function setCiteBoxFormat(format) {
 };
 
 $(document).ready(function(e) {
+  var citationInfo, spinnerOpts;
   citationInfo = {format: 'apa'};
   spinnerOpts = {shadow: true, width: 2, speed: 2};
   spinner = new Spinner(spinnerOpts);
