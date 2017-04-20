@@ -167,7 +167,7 @@ get %r{/works/(.+)} do
   @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
 
   # use content negotiation to get DOI in schema.org/JSON-LD format
-  response = Maremma.get "ENV['CONTENT_NEGOTIATION_URL']/#{doi}",
+  response = Maremma.get "#{ENV['CONTENT_NEGOTIATION_URL']}/#{doi}",
     accept: "application/vnd.schemaorg.ld+json", raw: true
   @json_ld = response.body.fetch("data", nil)
 
