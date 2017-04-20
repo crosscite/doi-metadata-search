@@ -101,14 +101,6 @@ module Sinatra
       work_type.fetch("attributes", {}).fetch("title", "")
     end
 
-    def registration_agency_format(attributes)
-      ra = attributes.fetch("registration-agency-id", nil)
-      registration_agencies = { "crossref" => "Crossref",
-                                "datacite" => "DataCite",
-                                "github" => "GitHub" }
-      registration_agencies.fetch(ra, "")
-    end
-
     def metadata_format(attributes, options={})
       if attributes.fetch("work-type", nil).present?
         work_types = Array(options[:work_types])

@@ -1,7 +1,6 @@
 = haml :"#{ENV['RA']}/header", locals: { page: {} }
 
 - member = @datacenter[:included].find { |i| i.fetch("type", nil) == "members" }
-- registration_agency = @datacenter[:included].find { |i| i.fetch("type", nil) == "registration-agencies" }
 
 .container-fluid
   .content
@@ -17,17 +16,12 @@
         .col-md-3
           .panel.facets
             .panel-body.metadata
-              - if registration_agency.is_a?(Hash) && registration_agency.fetch("id", nil) == "datacite" && member.present?
+              - if member.present?
                 %h5
                   Member
                 .registration_agency
                   %a{href: "/members/#{member.fetch("id", nil)}"}
                     = member.fetch("attributes", {}).fetch("title", nil)
-              - elsif registration_agency.is_a?(Hash)
-                %h5
-                  Registration Agency
-                .registration_agency
-                  = registration_agency.fetch("attributes", {}).fetch("title", nil)
 
       - if @works[:data].length > 0
         .col-md-9
