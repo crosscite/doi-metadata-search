@@ -2,7 +2,6 @@
 
 - data_center = @work[:included].find { |i| i.fetch("type", nil) == "data-centers" }
 - member = @work[:included].find { |i| i.fetch("type", nil) == "members" }
-- registration_agency = @work[:included].find { |i| i.fetch("type", nil) == "registration-agencies" }
 
 .container-fluid
   .content
@@ -18,29 +17,17 @@
         .col-md-3
           .panel.facets
             .panel-body.metadata
-              - if registration_agency && registration_agency.fetch("id", nil) == "datacite" && data_center.present?
-                %h5
-                  Data Center
-                .data-center
-                  %a{href: "/data-centers/#{data_center.fetch('id')}"}
-                    = data_center.fetch("attributes", {}).fetch("title", nil)
-              - elsif data_center.present?
-                %h5
-                  Publisher
-                .data-center
-                  %a{href: "/data-centers/#{data_center.fetch('id')}"}
-                    = data_center.fetch("attributes", {}).fetch("title", nil)
-              - if registration_agency && registration_agency.fetch("id", nil) == "datacite" && member.present?
+              %h5
+                Data Center
+              .data-center
+                %a{href: "/data-centers/#{data_center.fetch('id')}"}
+                  = data_center.fetch("attributes", {}).fetch("title", nil)
+              - if member.present?
                 %h5
                   Member
                 .registration_agency
                   %a{href: "/members/#{member.fetch('id')}"}
                     = member.fetch("attributes", {}).fetch("title", nil)
-              - elsif registration_agency.present?
-                %h5
-                  Registration Agency
-                .registration_agency
-                  = registration_agency.fetch("attributes", {}).fetch("title", nil)
 
           .panel.tags
             .panel-body
