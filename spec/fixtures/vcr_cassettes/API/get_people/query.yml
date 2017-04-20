@@ -16,42 +16,44 @@ http_interactions:
       code: 200
       message: ''
     headers:
-      Server:
-      - openresty/1.11.2.1
-      Date:
-      - Tue, 07 Feb 2017 09:16:19 GMT
-      Content-Type:
-      - application/vnd.api+json; charset=utf-8
-      Connection:
-      - keep-alive
-      Status:
-      - 200 OK
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Access-Control-Allow-Origin:
-      - "*"
-      Vary:
-      - Accept-Encoding
-      Access-Control-Max-Age:
-      - '1728000'
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Request-Id:
-      - 742945be-4b9e-4931-b751-9d270df65c16
-      Access-Control-Allow-Methods:
-      - GET, POST, OPTIONS
-      Etag:
-      - W/"b746811dc2a4e0ab632b8437aca5249f"
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Runtime:
-      - '0.092938'
-      X-Content-Type-Options:
-      - nosniff
-      X-Powered-By:
-      - Phusion Passenger 5.1.2
       Access-Control-Allow-Headers:
       - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/vnd.api+json; charset=utf-8
+      Date:
+      - Thu, 20 Apr 2017 21:40:45 GMT
+      Etag:
+      - W/"b746811dc2a4e0ab632b8437aca5249f"
+      Server:
+      - openresty/1.11.2.2
+      Status:
+      - 200 OK
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Powered-By:
+      - Phusion Passenger 5.1.2
+      X-Request-Id:
+      - d4931627-f10f-4bb9-b970-a0870fe44f50
+      X-Runtime:
+      - '0.099839'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '1048'
+      Connection:
+      - keep-alive
     body:
       encoding: UTF-8
       string: '{"data":[{"id":"http://orcid.org/0000-0003-3484-6875","type":"people","attributes":{"given":"Kristian","family":"Garza","literal":"K.
@@ -60,5 +62,5 @@ http_interactions:
         JOSE","family":"IGARZA UGALDEA","literal":"JUAN JOSE IGARZA UGALDEA","orcid":"http://orcid.org/0000-0003-3493-3709","github":null,"updated":"2015-11-27T13:50:58.000Z"}},{"id":"http://orcid.org/0000-0003-0332-808X","type":"people","attributes":{"given":"Hassan","family":"Zargarzadeh","literal":"Hassan
         Zargarzadeh","orcid":"http://orcid.org/0000-0003-0332-808X","github":null,"updated":"2016-11-04T19:59:59.000Z"}}],"meta":{"total":4}}'
     http_version: 
-  recorded_at: Tue, 07 Feb 2017 09:16:19 GMT
+  recorded_at: Thu, 20 Apr 2017 21:40:45 GMT
 recorded_with: VCR 2.9.3
