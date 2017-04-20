@@ -8,17 +8,17 @@ describe "API", type: :model, vcr: true do
   context "get_works" do
     it "all" do
       response = subject.get_works
-      expect(response[:meta]["resource-types"].first).to eq("id"=>"dataset", "title"=>"Dataset", "count"=>3171707)
+      expect(response[:meta]["resource-types"].first).to eq("id"=>"dataset", "title"=>"Dataset", "count"=>3258929)
       work = response[:data].first
-      expect(work["id"]).to eq("https://doi.org/10.15781/T2JM23K39")
+      expect(work["id"]).to eq("https://doi.org/10.13140/RG.2.2.16557.49126")
     end
 
     it "one" do
       response = subject.get_works(id: "10.2314/COSCV2.53")
       work = response[:data]
       expect(work["attributes"]["author"].first).to eq("family"=>"Pampel", "given"=>"Heinz", "orcid"=>"http://orcid.org/0000-0003-3334-2771")
-      expect(response[:included].size).to eq(5)
-      resource_type = response[:included][3]
+      expect(response[:included].size).to eq(3)
+      resource_type = response[:included][2]
       expect(resource_type).to eq("id"=>"text", "type"=>"resource-types", "attributes"=>{"title"=>"Text", "updated"=>"2016-09-21T00:00:00Z"})
     end
 
@@ -62,7 +62,6 @@ describe "API", type: :model, vcr: true do
   context "get_datacenters" do
     it "all" do
       response = subject.get_datacenters
-      expect(response[:meta]["registration-agencies"].first).to eq("id"=>"datacite", "title"=>"DataCite", "count"=>1266)
       datacenter = response[:data].first
       expect(datacenter["attributes"]["title"]).to eq("(TIB-intern) Grafische Einzelbl\u00E4tter der Sammlung Haupt (GESAH)")
     end

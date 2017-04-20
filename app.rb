@@ -24,6 +24,7 @@ ENV['LOG_LEVEL'] ||= "info"
 ENV['RA'] ||= "datacite"
 ENV['TRUSTED_IP'] ||= "172.0.0.0/8"
 ENV['API_URL'] ||= "https://api.datacite.org"
+ENV['CONTENT_NEGOTIATION_URL'] ||= "https://data.test.datacite.org"
 
 env_vars = %w(SITE_TITLE LOG_LEVEL RA API_URL SECRET_KEY_BASE)
 env_vars.each { |env| fail ArgumentError,  "ENV[#{env}] is not set" unless ENV[env].present? }
@@ -150,8 +151,8 @@ get %r{/works/(.+)} do
 
   # workaround, as nginx swallows double backslashes
   params["id"] = params["id"].gsub(/(http|https):\/+(\w+)/, '\1://\2')
-
-  link = validate_doi(params[:id]) ? "https://doi.org/#{validate_doi(params[:id])}" : params[:id]
+  doi = validate_doi(params[:id])
+  link = doi ? "https://doi.org/#{doi}" : params[:id]
 
   @work = get_works(id: params["id"])
 
@@ -164,6 +165,11 @@ get %r{/works/(.+)} do
 
   # check for existing claims if user is logged in
   @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
+
+  # use content negotiation to get DOI in schema.org/JSON-LD format
+  response = Maremma.get "ENV['CONTENT_NEGOTIATION_URL']/#{doi}",
+    accept: "application/vnd.schemaorg.ld+json", raw: true
+  @json_ld = response.body.fetch("data", nil)
 
   # pagination
   @works[:data] = pagination_helper(@works[:data], @page, @works.fetch(:meta, {}).fetch("total", 0))
@@ -268,7 +274,7 @@ get '/citation' do
   halt 415, json(status: 'error', message: 'Format missing or not supported.') unless citation_format
 
   # use doi content negotiation to get formatted citation
-  response = Maremma.get "http://doi.org/#{params[:doi]}", accept: citation_format
+  response = Maremma.get "#{ENV['CONTENT_NEGOTIATION_URL']}/#{params[:doi]}", accept: citation_format
 
   # check for errors
   if response.body.fetch("errors", []).present?

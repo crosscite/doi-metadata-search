@@ -152,28 +152,6 @@ module Sinatra
       attributes["orcid"]
     end
 
-    def work_as_json_ld(id:, attributes:)
-      author = attributes.fetch("author", []).map do |a|
-        { "@type" => a.fetch("literal", nil).present? ? "Organization" : "Person",
-          "@id" => a.fetch("orcid", nil),
-          "givenName" => a.fetch("given", nil),
-          "familyName" => a.fetch("family", nil),
-          "name" => a.fetch("literal", nil) }.compact
-      end
-
-      { "@context" => "http://schema.org",
-        "@type" => creative_work_type(attributes),
-        "@id" => id,
-        "name" => attributes.fetch("title", nil),
-        "author" => author,
-        "publisher" => attributes.fetch("container-title", nil),
-        "datePublished" => attributes.fetch("published", nil),
-        "dateModified" => attributes.fetch("updated", nil),
-        "version" => attributes.fetch("version", nil),
-        "description" => attributes.fetch("description", nil),
-        "license" => attributes.fetch("license", nil) }.compact.to_json
-    end
-
     def contributor_as_json_ld(id:, attributes:)
       { "@context" => "http://schema.org",
         "@type" => attributes.fetch("literal", nil).present? ? "Organization" : "Person",

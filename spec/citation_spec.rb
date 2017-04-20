@@ -92,17 +92,13 @@ describe 'citation', vcr: true do
 
   it 'missing format' do
     get "/citation?doi=#{doi}"
-    expect(last_response.status).to eq(415)
-    body = JSON.parse(last_response.body)
-    expect(body).to eq('status' => 'error',
-                       'message' => 'Format missing or not supported.')
+    expect(last_response.status).to eq(200)
+    expect(last_response.body).to eq("Martin Fenner, Karl Jonathan Ward, Gudmundur A. Thorisson, & Robert Peters. (2015). DataCite-ORCID: 1.0. Zenodo. https://doi.org/10.5281/ZENODO.21430")
   end
 
   it 'unsupported format' do
     get "/citation?doi=#{doi}&format=plos"
-    expect(last_response.status).to eq(415)
-    body = JSON.parse(last_response.body)
-    expect(body).to eq('status' => 'error',
-                       'message' => 'Format missing or not supported.')
+    expect(last_response.status).to eq(200)
+    expect(last_response.body).to eq("Martin Fenner, Karl Jonathan Ward, Gudmundur A. Thorisson, & Robert Peters. (2015). DataCite-ORCID: 1.0. Zenodo. https://doi.org/10.5281/ZENODO.21430")
   end
 end
