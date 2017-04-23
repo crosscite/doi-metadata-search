@@ -22,8 +22,8 @@ function updateCiteBox() {
   var url;
   if (citationInfo['style'] == 'bibtex') {
     url = 'https://data.datacite.org/application/x-bibtex/' + citationInfo['doi'];
-  } else if (citationInfo['style'] == 'citeproc') {
-    url = 'https://data.datacite.org/application/vnd.citationstyles.csl+json/' + citationInfo['doi'];
+  } else if (citationInfo['style'] == 'ris') {
+    url = 'https://data.datacite.org/application/x-research-info-systems/' + citationInfo['doi'];
   } else {
     url = 'https://citation.datacite.org/format?style=' + citationInfo['style'];
     url += '&doi=' + citationInfo['doi'] + '&locale=en-US';
@@ -34,10 +34,8 @@ function updateCiteBox() {
     success: function(body) {
       $('#citation-text').css("color", "black");
 
-      if (citationInfo['style'] === "bibtex") {
+      if (citationInfo['style'] === "bibtex" || citationInfo['style'] === "ris") {
         body = "<pre>" + body + "</pre>";
-      } else if (citationInfo['style'] === "citeproc") {
-        body = "<pre>" + JSON.stringify(body, null, 2) + "</pre>";
       }
 
       $('#citation-text').html(body);
