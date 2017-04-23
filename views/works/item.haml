@@ -5,10 +5,6 @@
 - new_params = params[:model] == "works" && params["id"] == attributes.fetch("doi", nil) ? params.merge(external_link: true) : params
 - title = attributes["title"].to_s.gsub(/"/, '\"')
 
-- if @json_ld.present? && params["id"] == attributes.fetch("doi", nil)
-  %script{type: "application/ld+json"}
-    = @json_ld
-
 .panel.panel-default
   .panel-body
     %h3.work
