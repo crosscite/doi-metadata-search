@@ -1,5 +1,9 @@
 $(document).ready(function() {
-  var doi = $("meta[name='DC.identifier']").attr("content").substr(16);
+  var doi = $("meta[name='DC.identifier']").attr("content")
+  if (doi === undefined) {
+    return;
+  }
+  doi = doi .substr(16);
   var url = 'https://data.datacite.org/application/vnd.schemaorg.ld+json/' + doi;
 
   $.ajax({
