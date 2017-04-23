@@ -74,18 +74,6 @@ configure do
   # Enable logging
   enable :logging
 
-  # Citation format types
-  set :citation_formats,
-      'bibtex' => 'application/x-bibtex',
-      'ris' => 'application/x-research-info-systems',
-      'apa' => 'text/x-bibliography; style=apa',
-      'harvard' => 'text/x-bibliography; style=harvard1',
-      'ieee' => 'text/x-bibliography; style=ieee',
-      'mla' => 'text/x-bibliography; style=modern-language-association',
-      'vancouver' => 'text/x-bibliography; style=vancouver',
-      'chicago' => 'text/x-bibliography; style=chicago-fullnote-bibliography',
-      'citeproc' => 'application/vnd.citationstyles.csl+json'
-
   # Set facet fields
   set :facet_fields, %w(resourceType_facet publicationYear datacentre_facet rightsURI)
 
@@ -165,11 +153,6 @@ get %r{/works/(.+)} do
 
   # check for existing claims if user is logged in
   @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
-
-  # use content negotiation to get DOI in schema.org/JSON-LD format
-  response = Maremma.get "#{ENV['CONTENT_NEGOTIATION_URL']}/#{doi}",
-    accept: "application/vnd.schemaorg.ld+json", raw: true
-  @json_ld = response.body.fetch("data", nil)
 
   # pagination
   @works[:data] = pagination_helper(@works[:data], @page, @works.fetch(:meta, {}).fetch("total", 0))
@@ -265,31 +248,6 @@ get '/members/:id' do
 
   params[:model] = "members"
   haml :'members/show'
-end
-
-get '/citation' do
-  halt 422, json(status: 'error', message: 'DOI missing or wrong format.') unless params[:doi] && doi?(params[:doi])
-
-  citation_format = settings.citation_formats.fetch(params[:format], 'text/x-bibliography; style=apa')
-  halt 415, json(status: 'error', message: 'Format missing or not supported.') unless citation_format
-
-  # use doi content negotiation to get formatted citation
-  response = Maremma.get "#{ENV['CONTENT_NEGOTIATION_URL']}/#{params[:doi]}", accept: citation_format
-
-  # check for errors
-  if response.body.fetch("errors", []).present?
-    error = response.body.fetch('errors', []).first
-    status = error.fetch('status', 400).to_i
-    message = error.fetch('title', "An error occured.")
-    halt status, json(status: 'error', message: message)
-  elsif response.body["data"].blank?
-    halt 404, json(status: 'error', message: 'Not found')
-  end
-
-  settings.ga.event('Citations', '/citation', citation_format, nil, true) if ENV['GABBA_COOKIE'] && ENV['RACK_ENV'] != "test"
-
-  content_type citation_format + '; charset=utf-8'
-  response.body.fetch("data", nil)
 end
 
 get '/heartbeat' do
