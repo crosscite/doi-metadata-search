@@ -21,9 +21,9 @@ function updateCiteBox() {
 
   var url;
   if (citationInfo['style'] == 'bibtex') {
-    url = 'https://data.datacite.org/application/x-bibtex/' + citationInfo['doi'];
+    url = 'https://data.test.datacite.org/application/x-bibtex/' + citationInfo['doi'];
   } else if (citationInfo['style'] == 'ris') {
-    url = 'https://data.datacite.org/application/x-research-info-systems/' + citationInfo['doi'];
+    url = 'https://data.test.datacite.org/application/x-research-info-systems/' + citationInfo['doi'];
   } else {
     url = 'https://citation.datacite.org/format?style=' + citationInfo['style'];
     url += '&doi=' + citationInfo['doi'] + '&locale=en-US';
