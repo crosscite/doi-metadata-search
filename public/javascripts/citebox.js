@@ -25,8 +25,8 @@ function updateCiteBox() {
   } else if (citationInfo['style'] == 'ris') {
     url = 'https://data.test.datacite.org/application/x-research-info-systems/' + citationInfo['doi'];
   } else {
-    url = 'https://citation.datacite.org/format?style=' + citationInfo['style'];
-    url += '&doi=' + citationInfo['doi'] + '&locale=en-US';
+    url = 'https://data.test.datacite.org/text/x-bibliography/' + citationInfo['doi'];
+    url += '?style=' + citationInfo['style']; + '&locale=en-US';
   }
 
   $.ajax({
