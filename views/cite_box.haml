@@ -3,7 +3,7 @@
     .modal-content
       .modal-header
         %a.button.close#citation-modal-close &times;
-        %h4#citation-modal-title
+        %h4#citation-modal-title{'data-conneg': ENV['DATA_URL'] }
       .modal-body
         .nav-tabs-navigation
           .nav-tabs-wrapper

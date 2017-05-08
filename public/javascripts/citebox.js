@@ -18,13 +18,14 @@ function updateCiteBox() {
   $('#cite-nav li').removeClass('active');
   $('#' + citationInfo['style']).addClass('active');
 
-  var url;
+  var url = $('#citation-modal-title').attr('data-conneg');
+
   if (citationInfo['style'] == 'bibtex') {
-    url = 'https://data.test.datacite.org/application/x-bibtex/' + citationInfo['doi'];
+    url += '/application/x-bibtex/' + citationInfo['doi'];
   } else if (citationInfo['style'] == 'ris') {
-    url = 'https://data.test.datacite.org/application/x-research-info-systems/' + citationInfo['doi'];
+    url += '/application/x-research-info-systems/' + citationInfo['doi'];
   } else {
-    url = 'https://data.test.datacite.org/text/x-bibliography/' + citationInfo['doi'];
+    url += '/text/x-bibliography/' + citationInfo['doi'];
     url += '?style=' + citationInfo['style']; + '&locale=en-US';
   }
 
