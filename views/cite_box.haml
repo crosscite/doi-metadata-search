@@ -10,7 +10,7 @@
             %ul.nav.nav-tabs#cite-nav
               %li.active.citation-link#apa
                 %a.cite-link{:href => '#'} APA
-              %li.citation-link#harvard1
+              %li.citation-link#harvard-cite-them-right
                 %a.cite-link{:href => '#'} Harvard
               %li.citation-link#modern-language-association
                 %a.cite-link{:href => '#'} MLA
@@ -26,7 +26,6 @@
                 %a.cite-link{:href => '#'} RIS
 
         #citation-text
-        #spinner
 
         .pull-right
           %button.btn.btn-fill.btn-sm.btn-neutral{id: "clipboard-btn", title: "Copy to Clipboard", style: "display: none;", data: { "clipboard-target" => "#citation-text" }, "onClick" => "_gaq.push(['_trackEvent', 'copytoclipb', 'click', 'Copied Ref', 10, false]);"}
