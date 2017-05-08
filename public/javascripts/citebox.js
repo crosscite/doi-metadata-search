@@ -2,7 +2,7 @@ function showCiteBox(doi, title) {
   citationInfo['doi'] = doi;
   citationInfo['title'] = title;
 
-  $('#citation-text').html('');
+  //$('#citation-text').html('');
   updateCiteBox();
   $('#citation-modal').modal();
 };
@@ -52,7 +52,7 @@ function updateCiteBox() {
 
 function setCiteBoxStyle(style) {
   citationInfo['style'] = style;
-  $('#citation-text').html('');
+  //$('#citation-text').html('');
   updateCiteBox();
 };
 
