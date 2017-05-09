@@ -2,7 +2,6 @@ function showCiteBox(doi, title) {
   citationInfo['doi'] = doi;
   citationInfo['title'] = title;
 
-  //$('#citation-text').html('');
   updateCiteBox();
   $('#citation-modal').modal();
 };
@@ -13,7 +12,6 @@ function updateCiteBox() {
 
   $('#citation-description').text(citationInfo['doi']);
   $('#citation-modal-title').html(citationInfo['title']);
-  $('#clipboard-btn').css("display", "none");
 
   $('#cite-nav li').removeClass('active');
   $('#' + citationInfo['style']).addClass('active');
@@ -25,8 +23,7 @@ function updateCiteBox() {
   } else if (citationInfo['style'] == 'ris') {
     url += '/application/x-research-info-systems/' + citationInfo['doi'];
   } else {
-    url += '/text/x-bibliography/' + citationInfo['doi'];
-    url += '?style=' + citationInfo['style']; + '&locale=en-US';
+    url += '/text/x-bibliography;style=' + citationInfo['style'] + '/' + citationInfo['doi'];
   }
 
   $.ajax({
@@ -46,13 +43,14 @@ function updateCiteBox() {
       console.log(error.responseJSON);
       $('#citation-text').css("color", "#e67e22");
       $('#citation-text').text(error.responseJSON);
+      $('#clipboard-btn').css("display", "none");
     }
   });
 };
 
 function setCiteBoxStyle(style) {
   citationInfo['style'] = style;
-  //$('#citation-text').html('');
+  $('#citation-text').html('');
   updateCiteBox();
 };
 
@@ -64,7 +62,5 @@ $(document).ready(function(e) {
 
   $('.cite-link').click(function(e) {
     setCiteBoxStyle($(this).parent().attr('id'));
-    $('#cite-nav li').removeClass('active');
-    $(this).parent().addClass('active');
   });
 });
