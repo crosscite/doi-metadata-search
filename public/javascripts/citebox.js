@@ -16,7 +16,7 @@ function updateCiteBox() {
   $('#cite-nav li').removeClass('active');
   $('#' + citationInfo['style']).addClass('active');
 
-  var url = $('#citation-modal-title').attr('data-conneg');
+  var url = $('#site-title').attr('data-conneg');
 
   if (citationInfo['style'] == 'bibtex') {
     url += '/application/x-bibtex/' + citationInfo['doi'];

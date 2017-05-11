@@ -3,8 +3,10 @@ $(document).ready(function() {
   if (doi === undefined) {
     return;
   }
-  doi = doi .substr(16);
-  var url = 'https://data.test.datacite.org/application/vnd.schemaorg.ld+json/' + doi;
+  doi = doi.substr(16);
+  var url = $('#site-title').attr('data-conneg');
+  url += '/application/vnd.schemaorg.ld+json/' + doi;
+  console.log(url)
 
   $.ajax({
     url: url,
