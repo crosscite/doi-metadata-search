@@ -28,6 +28,11 @@
                 .registration_agency
                   %a{href: "/members/#{member.fetch('id')}"}
                     = member.fetch("attributes", {}).fetch("title", nil)
+              %h5
+                Download
+
+              %a{href: ENV['DATA_URL'] + "/application/vnd.datacite.datacite+xml/#{@work[:data].dig('attributes', 'doi')}"}
+                DataCite XML
 
           .panel.tags
             .panel-body
