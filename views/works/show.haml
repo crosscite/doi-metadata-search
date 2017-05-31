@@ -45,6 +45,11 @@
               %br
               %a{href: ENV['DATA_URL'] + "/application/x-research-info-systems/#{@work[:data].dig('attributes', 'doi')}"}
                 RIS
+              %br
+              - @work[:data].dig('attributes', 'media').each do |media|
+                %a{href: media['url']}
+                  = media['media-type']
+                  %br
 
           .panel.tags
             .panel-body
