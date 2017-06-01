@@ -31,7 +31,7 @@
               %h5
                 Download
 
-              %a{href: ENV['DATA_URL'] + "/application/vnd.datacite.datacite+xml/#{@work[:data].dig('attributes', 'doi')}"}
+              %a{href: ENV['DATA_URL'] + "/application/vnd.datacite.datacite+xml/#{@work[:data].dig('attributes', 'doi')}", id: "xml_download"}
                 DataCite XML
               %br
               %a{href: ENV['DATA_URL'] + "/application/vnd.schemaorg.ld+json/#{@work[:data].dig('attributes', 'doi')}"}
@@ -48,7 +48,7 @@
               %br
               - if @work[:data].dig('attributes', 'media').present?
                 - @work[:data].dig('attributes', 'media').each do |media|
-                  %a{href: media['url']}
+                  %a{href: media['url'], id: media['media-type'] }
                     = media['media-type']
                     %br
 
