@@ -170,3 +170,310 @@ social:
    share_url: https://www.facebook.com/sharer.php
    share_title: "?t="
    share_link: "&amp;u="
+chem_mime_types:
+  - type: application/pdf
+    extension: pdf
+    description: Adobe PDF format
+    example: example.pdf
+    unique: Heilbronner
+    source: http://www.adobe.com/
+  - type: chemical/x-alchemy
+    extension: alc
+    description: Alchemy format
+    example: example.alc
+    unique: example_alc
+    source: http://www.camsoft.com/plugins/
+  - type: chemical/x-cache-csf
+    extension: csf
+    description:
+    example: example.csf
+    unique: example_csf
+    source:
+  - type: chemical/x-cactvs-binary
+    extension: cbin
+    description: CACTVS binary format
+    example: example.cbin
+    unique:
+    source: http://cactvs.cit.nih.gov
+  - type: chemical/x-cactvs-binary
+    extension: cascii
+    description: CACTVS ascii format
+    example: example.cascii
+    unique: example_cascii
+    source: http://cactvs.cit.nih.gov
+  - type: chemical/x-cactvs-binary
+    extension: ctab
+    description: CACTVS table format
+    example: example.ctab
+    unique:
+    source: http://cactvs.cit.nih.gov
+  - type: chemical/x-cdx
+    extension: cdx
+    description: ChemDraw eXchange file
+    example: example.cdx
+    unique:
+    source: http://www.camsoft.com/plugins/
+  - type: chemical/x-cerius
+    extension: cer
+    description: MSI Cerius II format
+    example: example.cer
+    unique: example_cer
+    source: http://www.msi.com/
+  - type: chemical/x-chemdraw
+    extension: chm
+    description: ChemDraw file
+    example: example.chm
+    unique:
+    source: http://www.camsoft.com/plugins/
+  - type: chemical/x-cif
+    extension: cif
+    description: Crystallographic Interchange Format
+    example: example.cif
+    unique: example_cif
+    source: "http://www.bernstein-plus-sons.com/software/rasmol/\n\n http://ndbserver.rutgers.edu/NDB/mmcif/examples/index.html"
+  - type: chemical/x-mmcif
+    extension: mcif
+    description: MacroMolecular CIF
+    example: example.mcif
+    unique: example_mcif
+    source: "http://www.bernstein-plus-sons.com/software/rasmol/\n\n http://ndbserver.rutgers.edu/NDB/mmcif/examples/index.html"
+  - type: chemical/x-chem3d
+    extension: c3d
+    description: Chem3D Format
+    example: example.c3d
+    unique:
+    source: CambridgeSoft
+  - type: chemical/x-cmdf
+    extension: cmdf
+    description: CrystalMaker Data format
+    example: example.cmdf
+    unique: example_cmdf
+    source: http://www.crystalmaker.co.uk/
+  - type: chemical/x-compass
+    extension: cpa
+    description: Compass program of the Takahashi
+    example: example.cpa
+    unique:
+    source:
+  - type: chemical/x-crossfire
+    extension: bsd
+    description: Crossfire file
+    example: example.bsd
+    unique: example_bsd
+    source:
+  - type: chemical/x-cml
+    extension: cml
+    description: Chemical Markup Language
+    example: example.cml
+    unique:
+    source: http://cml.sourceforge.net/
+  - type: chemical/x-csml
+    extension: csml, csm
+    description: Chemical Style Markup Language
+    example: example.csml
+    unique:
+    source: http://www.mdli.com/
+  - type: chemical/x-ctx
+    extension: ctx
+    description: Gasteiger group CTX file format
+    example: example.ctx
+    unique: example_ctx
+    source:
+  - type: chemical/x-cxf
+    extension: cxf
+    description:
+    example: example.cxf
+    unique:
+    source:
+  - type: chemical/x-daylight-smiles
+    extension: smi
+    description: Smiles Format
+    example: example.smi
+    unique: example_smi
+    source: http://www.daylight/dayhtml/smiles/index.html
+  - type: chemical/x-embl-dl-nucleotide
+    extension: emb
+    description: EMBL nucleotide format
+    example: example.emb
+    unique: example_emb
+    source: http://mercury.ebi.ac.uk/
+  - type: chemical/x-galactic-spc
+    extension: spc
+    description: SPC format for spectral and chromatographic data.
+    example: example.spc
+    unique:
+    source: "http://www.galactic.com/galactic/\n\n Data/spcvue.htm"
+  - type: chemical/x-gamess-input
+    extension: inp, gam
+    description: GAMESS Input format
+    example: example.inp
+    unique: example_inp
+    source: http://www.msg.ameslab.gov/GAMESS/Graphics/MacMolPlt.shtml
+  - type: chemical/x-gaussian-input
+    extension: gau
+    description: Gaussian Input format
+    example: example.gau
+    unique: example_gau
+    source: http://www.mdli.com/
+  - type: chemical/x-gaussian-checkpoint
+    extension: fch,fchk
+    description: Gaussian Checkpoint format
+    example: example.fch
+    unique:
+    source: http://products.camsoft.com/
+  - type: chemical/x-gaussian-cube
+    extension: cub
+    description: Gaussian Cube (Wavefunction) format
+    example: example.cub
+    unique:
+    source: http://www.mdli.com/
+  - type: chemical/x-gcg8-sequence
+    extension: gcg
+    description:
+    example: example.gcg
+    unique: example_gcg
+    source:
+  - type: chemical/x-genbank
+    extension: gen
+    description: ToGenBank format
+    example: example.gen
+    unique: example_gen
+    source: http://www2.ebi.ac.uk:80/egcg-html/
+  - type: chemical/x-isostar
+    extension: istr, ist
+    description: IsoStar Library of intermolecular interactions
+    example: example.istr
+    unique: example_istr
+    source: http://www.ccdc.cam.ac.uk/
+  - type: chemical/x-jcamp-dx
+    extension: jdx, dx
+    description: JCAMP Spectroscopic Data Exchange Format
+    example: example.dx
+    unique: example_dx
+    source: http://www.mdli.com/
+  - type: chemical/x-kinemage
+    extension: kin
+    description: Kinetic (Protein Structure) Images
+    example: example.kin
+    unique: example_kin
+    source: "http://www.faseb.org/protein/kinemages/\n\n MageSoftware.html"
+  - type: chemical/x-macmolecule
+    extension: mcm
+    description: MacMolecule File Format
+    example: example.mcm
+    unique: example_mcm
+    source: http://www.molvent.com/
+  - type: chemical/x-macromodel-input
+    extension: mmd, mmod
+    description: MacroModel Molecular Mechanics
+    example: example.mmd
+    unique: example_mmd
+    source: "http://www.columbia.edu/cu/chemistry/\n\n mmod/mmod.html"
+  - type: chemical/x-mdl-molfile
+    extension: mol
+    description: MDL Molfile
+    example: example.mol
+    unique: example_mol
+    source: http://www.mdli.com/
+  - type: chemical/x-mdl-rdfile
+    extension: rd
+    description: Reaction-data file
+    example: example.rd
+    unique: example_rd
+    source: http://www.mdli.com/
+  - type: chemical/x-mdl-rxnfile
+    extension: rxn
+    description: MDL Reaction format
+    example: example.rxn
+    unique: example_rxn
+    source: http://www.mdli.com/
+  - type: chemical/x-mdl-sdfile
+    extension: sd
+    description: MDL Structure-data file
+    example: example.sd
+    unique: example_sd
+    source: http://www.mdli.com/
+  - type: chemical/x-mdl-tgf
+    extension: tgf
+    description: MDL Transportable Graphics Format
+    example: example.tgf
+    unique: example_tgf
+    source: http://www.mdli.com/
+  - type: chemical/x-mif
+    extension: mif
+    description:
+    example: example.mif
+    unique:
+    source:
+  - type: chemical/x-mol2
+    extension: mol2
+    description: Portable representation of a SYBYL molecule
+    example: example.mol2
+    unique: example_mol2
+    source: http://www.tripos.com/TechBriefs/mol2_format/mol2.html
+  - type: chemical/x-molconn-Z
+    extension: b
+    description: Molconn-Z format
+    example: example.b
+    unique: example_b
+    source: http://www.eslc.vabiotech.com/molconn/molconnz.html
+  - type: chemical/x-mopac-input
+    extension: mop
+    description: MOPAC Input format
+    example: example.mop
+    unique: example_mop
+    source: http://www.mdli.com/
+  - type: chemical/x-mopac-graph
+    extension: gpt
+    description: MOPAC Graph format
+    example: example.gpt
+    unique:
+    source: http://products.camsoft.com/
+  - type: chemical/x-ncbi-asn1
+    extension: asn (old form)
+    description:
+    example: example.asn
+    unique:
+    source:
+  - type: chemical/x-ncbi-asn1-binary
+    extension: val
+    description:
+    example: example.val
+    unique:
+    source:
+  - type: chemical/x-pdb
+    extension: pdb
+    description: Protein DataBank
+    example: example.pdb
+    unique: example_pdb
+    source: http://www.mdli.com/
+  - type: chemical/x-swissprot
+    extension: sw
+    description: SWISS-PROT protein sequence database
+    example: example.sw
+    unique: example_sw
+    source: http://www.expasy.ch/spdbv/text/download.htm
+  - type: chemical/x-vamas-iso14976
+    extension: vms
+    description: Versailles Agreement on Materials and Standards
+    example: example.vms
+    unique: example_vms
+    source: http://www.acolyte co uk/JISO/
+  - type: chemical/x-vmd
+    extension: vmd
+    description: Visual Molecular Dynamics
+    example: example.vmd
+    unique:
+    source: http://www.ks.uiuc.edu/Research/vmd/
+  - type: chemical/x-xtel
+    extension: xtel
+    description: Xtelplot file format
+    example: example.xtel
+    unique: example_xtel
+    source: http://www.iumsc.indiana.edu/graphics/xtelplot/xtelplot.htm
+  - type: chemical/x-xyz
+    extension: xyz
+    description: Co-ordinate Animation format
+    example: example.xyz
+    unique: example_xyz
+    source: http://www.mdli.com/
