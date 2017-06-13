@@ -230,13 +230,13 @@ chem_mime_types:
     description: Crystallographic Interchange Format
     example: example.cif
     unique: example_cif
-    source: "http://www.bernstein-plus-sons.com/software/rasmol/\n\n http://ndbserver.rutgers.edu/NDB/mmcif/examples/index.html"
+    source: "http://www.bernstein-plus-sons.com/software/rasmol/"
   - type: chemical/x-mmcif
     extension: mcif
     description: MacroMolecular CIF
     example: example.mcif
     unique: example_mcif
-    source: "http://www.bernstein-plus-sons.com/software/rasmol/\n\n http://ndbserver.rutgers.edu/NDB/mmcif/examples/index.html"
+    source: "http://www.bernstein-plus-sons.com/software/rasmol/"
   - type: chemical/x-chem3d
     extension: c3d
     description: Chem3D Format
@@ -302,7 +302,7 @@ chem_mime_types:
     description: SPC format for spectral and chromatographic data.
     example: example.spc
     unique:
-    source: "http://www.galactic.com/galactic/\n\n Data/spcvue.htm"
+    source: "http://www.galactic.com/galactic/Data/spcvue.htm"
   - type: chemical/x-gamess-input
     extension: inp, gam
     description: GAMESS Input format
@@ -356,7 +356,7 @@ chem_mime_types:
     description: Kinetic (Protein Structure) Images
     example: example.kin
     unique: example_kin
-    source: "http://www.faseb.org/protein/kinemages/\n\n MageSoftware.html"
+    source: "http://www.faseb.org/protein/kinemages/MageSoftware.html"
   - type: chemical/x-macmolecule
     extension: mcm
     description: MacMolecule File Format
@@ -368,7 +368,7 @@ chem_mime_types:
     description: MacroModel Molecular Mechanics
     example: example.mmd
     unique: example_mmd
-    source: "http://www.columbia.edu/cu/chemistry/\n\n mmod/mmod.html"
+    source: "http://www.columbia.edu/cu/chemistry/mmod/mmod.html"
   - type: chemical/x-mdl-molfile
     extension: mol
     description: MDL Molfile
