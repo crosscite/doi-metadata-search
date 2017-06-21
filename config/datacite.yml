@@ -139,8 +139,6 @@ resources_links:
    url: https://www.datacite.org/technical.html
  - name: Outreach material
    url: https://www.datacite.org/outreach.html
- - name: Events
-   url: https://www.datacite.org/events.html
 community_links:
  - name: Members
    url: https://www.datacite.org/members.html
@@ -150,6 +148,10 @@ community_links:
    url: https://www.datacite.org/steering.html
  - name: Events
    url: https://www.datacite.org/events.html
+ - name: Roadmap
+   url: https://www.datacite.org/roadmap.html
+ - name: User Stories
+   url: https://www.datacite.org/user-stories.html
 contact_links:
  - name: Terms and conditions
    url: https://www.datacite.org/terms.html
