@@ -1,8 +1,11 @@
 language: ruby
 cache: bundler
-sudo: false
+sudo: required
 rvm:
   - 2.3.3
+
+services:
+  - docker
 
 before_install:
   - gem update --system
@@ -16,6 +19,14 @@ before_script:
 
 script:
   - bundle exec rspec
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -u="$DOCKER_USER" -p="$DOCKER_PASS";
+    export REPO=crosscite/doi-metadata-search;
+    docker build -f Dockerfile -t $REPO:$COMMIT .;
+    docker push $REPO:$COMMIT;
+    fi
 
 addons:
   code_climate:
