@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe User, vcr: true do
-  let(:jwt) { [{"uid"=>"0000-0003-1419-2405", "api_key"=>ENV['ORCID_UPDATE_KEY'], "name"=>"Martin Fenner", "email"=>nil, "role"=>"user", "iat"=>1472762438}, {"typ"=>"JWT", "alg"=>"HS256"}] }
-  let(:user) { User.new(jwt.first) }
+  let(:jwt) { ENV['JWT_EXAMPLE'] }
+  let(:user) { User.new(jwt) }
 
   subject { user }
 
@@ -11,12 +11,12 @@ describe User, vcr: true do
       expect(subject.orcid).to eq("0000-0003-1419-2405")
     end
 
-    it "has api_key" do
-      expect(user.api_key).not_to be nil
+    it "has name" do
+      expect(user.name).to eq("Martin Fenner")
     end
 
     it "has role" do
-      expect(subject.role).to eq("user")
+      expect(subject.role).to eq("admin")
     end
   end
 end

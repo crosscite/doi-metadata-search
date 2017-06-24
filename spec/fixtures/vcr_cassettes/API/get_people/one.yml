@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/people?id=0000-0003-3484-6875&offset=0&rows=25
+    uri: https://api.datacite.org/people?id=0000-0003-3484-6875&offset=0&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -29,25 +29,35 @@ http_interactions:
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Date:
-      - Thu, 20 Apr 2017 21:40:40 GMT
+      - Sat, 24 Jun 2017 17:37:16 GMT
       Etag:
-      - W/"06b6ef5183e29b507a712d50a51277f3"
+      - W/"691d7507e8a1427e7e7be022240eb8b9"
       Server:
       - openresty/1.11.2.2
       Status:
       - 200 OK
       Vary:
       - Accept-Encoding
+      Via:
+      - kong/0.10.3
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
       - SAMEORIGIN
+      X-Kong-Proxy-Latency:
+      - '0'
+      X-Kong-Upstream-Latency:
+      - '32'
       X-Powered-By:
-      - Phusion Passenger 5.1.2
+      - Phusion Passenger 5.1.5
+      X-Ratelimit-Limit-Hour:
+      - '100000'
+      X-Ratelimit-Remaining-Hour:
+      - '99986'
       X-Request-Id:
-      - a85c8972-3252-49b9-b7e5-6789bfdb2348
+      - f47e5d65-9198-40f3-adfd-37a8f5da4846
       X-Runtime:
-      - '0.018104'
+      - '0.030703'
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
@@ -57,7 +67,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"data":{"id":"http://orcid.org/0000-0003-3484-6875","type":"people","attributes":{"given":"Kristian","family":"Garza","literal":"K.
-        J. Garza","orcid":"http://orcid.org/0000-0003-3484-6875","github":"https://github.com/kjgarza","updated":"2016-09-07T13:24:13.000Z"}}}'
+        J. Garza","orcid":"http://orcid.org/0000-0003-3484-6875","github":"https://github.com/kjgarza","updated":"2017-06-12T13:40:13.000Z"}}}'
     http_version: 
-  recorded_at: Thu, 20 Apr 2017 21:40:40 GMT
+  recorded_at: Sat, 24 Jun 2017 17:37:14 GMT
 recorded_with: VCR 2.9.3

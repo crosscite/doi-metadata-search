@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/data-centers?id=CERN.ZENODO&include=member,registration-agency&offset=0&registration-agency-id=datacite&rows=25
+    uri: https://api.datacite.org/data-centers?id=CERN.ZENODO&include=member,registration-agency&offset=0&registration-agency-id=datacite&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -29,29 +29,39 @@ http_interactions:
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Date:
-      - Thu, 20 Apr 2017 21:41:00 GMT
+      - Sat, 24 Jun 2017 17:37:08 GMT
       Etag:
-      - W/"8cfb0b454d45445e6051ac584c7d7b0f"
+      - W/"55e7f73ae2739e787384776ad90733de"
       Server:
       - openresty/1.11.2.2
       Status:
       - 200 OK
       Vary:
       - Accept-Encoding
+      Via:
+      - kong/0.10.3
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
       - SAMEORIGIN
+      X-Kong-Proxy-Latency:
+      - '1'
+      X-Kong-Upstream-Latency:
+      - '10'
       X-Powered-By:
-      - Phusion Passenger 5.1.2
+      - Phusion Passenger 5.1.5
+      X-Ratelimit-Limit-Hour:
+      - '100000'
+      X-Ratelimit-Remaining-Hour:
+      - '99989'
       X-Request-Id:
-      - 2b29416f-27fa-4127-aa13-9ab6c846c95b
+      - 27f96367-1ae1-4a27-a873-bb22e6ed2dd7
       X-Runtime:
-      - '0.006532'
+      - '0.008395'
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '2086'
+      - '2081'
       Connection:
       - keep-alive
     body:
@@ -60,9 +70,9 @@ http_interactions:
         eyJkYXRhIjp7ImlkIjoiY2Vybi56ZW5vZG8iLCJ0eXBlIjoiZGF0YS1jZW50
         ZXJzIiwiYXR0cmlidXRlcyI6eyJ0aXRsZSI6IlpFTk9ETyAtIFJlc2VhcmNo
         LiBTaGFyZWQuIiwib3RoZXItbmFtZXMiOltdLCJwcmVmaXhlcyI6W10sIm1l
-        bWJlci1pZCI6ImNlcm4iLCJ5ZWFyIjoyMDE0LCJjcmVhdGVkIjoiMjAxNC0w
-        OS0yNFQxNDo1NDoyMFoiLCJ1cGRhdGVkIjoiMjAxNC0wOS0yNFQxNDo1NDoy
-        MFoifSwicmVsYXRpb25zaGlwcyI6eyJtZW1iZXIiOnsiZGF0YSI6eyJpZCI6
+        bWJlci1pZCI6ImNlcm4iLCJ5ZWFyIjoyMDEzLCJjcmVhdGVkIjoiMjAxMy0w
+        MS0yOFQxMjowNzo0OFoiLCJ1cGRhdGVkIjoiMjAxNC0wOC0wNlQxMjoyMTox
+        N1oifSwicmVsYXRpb25zaGlwcyI6eyJtZW1iZXIiOnsiZGF0YSI6eyJpZCI6
         ImNlcm4iLCJ0eXBlIjoibWVtYmVycyJ9fX19LCJpbmNsdWRlZCI6W3siaWQi
         OiJjZXJuIiwidHlwZSI6Im1lbWJlcnMiLCJhdHRyaWJ1dGVzIjp7InRpdGxl
         IjoiRXVyb3BlYW4gT3JnYW5pemF0aW9uIGZvciBOdWNsZWFyIFJlc2VhcmNo
@@ -99,11 +109,11 @@ http_interactions:
         ZGVudCBvZiBzaXplLCB0eXBlIG9mIG1hdGVyaWFsIG9yIGRpc2NpcGxpbmUu
         XHUwMDNjL3BcdTAwM2VcbiIsIm1lbWJlci10eXBlIjoiYWxsb2NhdGluZyIs
         InJlZ2lvbiI6IkVNRUEiLCJjb3VudHJ5IjoiU3dpdHplcmxhbmQiLCJ5ZWFy
-        IjoyMDE0LCJsb2dvLXVybCI6Imh0dHBzOi8vYXNzZXRzLnRlc3QuZGF0YWNp
-        dGUub3JnL2ltYWdlcy9tZW1iZXJzL2Nlcm4ucG5nIiwiZW1haWwiOiJkb2kt
-        c2VydmljZUBjZXJuLmNoIiwid2Vic2l0ZSI6Imh0dHA6Ly9kb2kud2ViLmNl
-        cm4uY2gvIiwicGhvbmUiOm51bGwsInVwZGF0ZWQiOiIyMDE2LTA3LTMxVDIx
-        OjMwOjI1LjAwMFoifX1dfQ==
+        IjoyMDE0LCJsb2dvLXVybCI6Imh0dHBzOi8vYXNzZXRzLmRhdGFjaXRlLm9y
+        Zy9pbWFnZXMvbWVtYmVycy9jZXJuLnBuZyIsImVtYWlsIjoiZG9pLXNlcnZp
+        Y2VAY2Vybi5jaCIsIndlYnNpdGUiOiJodHRwOi8vZG9pLndlYi5jZXJuLmNo
+        LyIsInBob25lIjpudWxsLCJ1cGRhdGVkIjoiMjAxNi0wNy0zMVQyMTozMDoy
+        NS4wMDBaIn19XX0=
     http_version: 
-  recorded_at: Thu, 20 Apr 2017 21:41:00 GMT
+  recorded_at: Sat, 24 Jun 2017 17:37:07 GMT
 recorded_with: VCR 2.9.3

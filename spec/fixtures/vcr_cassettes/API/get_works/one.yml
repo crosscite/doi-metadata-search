@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/works?id=10.2314/COSCV2.53&include=data-center,resource-type,work-type,member,registration-agency&offset=0&rows=25
+    uri: https://api.datacite.org/works?id=10.2314/COSCV2.53&include=data-center,resource-type,work-type,member,registration-agency&offset=0&rows=25
     body:
       encoding: US-ASCII
       string: ''
@@ -29,36 +29,47 @@ http_interactions:
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Date:
-      - Thu, 20 Apr 2017 21:40:51 GMT
+      - Sat, 24 Jun 2017 17:36:53 GMT
       Etag:
-      - W/"e1ac08ab48f3891706d97c22033a911f"
+      - W/"5e036273b3487942a0c7131fa88a1254"
       Server:
       - openresty/1.11.2.2
       Status:
       - 200 OK
       Vary:
       - Accept-Encoding
+      Via:
+      - kong/0.10.3
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
       - SAMEORIGIN
+      X-Kong-Proxy-Latency:
+      - '0'
+      X-Kong-Upstream-Latency:
+      - '49'
       X-Powered-By:
-      - Phusion Passenger 5.1.2
+      - Phusion Passenger 5.1.5
+      X-Ratelimit-Limit-Hour:
+      - '100000'
+      X-Ratelimit-Remaining-Hour:
+      - '99995'
       X-Request-Id:
-      - 6930186f-4ffa-47c2-939c-2062633f39a6
+      - b2ca14ea-5d31-45fe-97bd-bd3a328e6209
       X-Runtime:
-      - '0.183624'
+      - '0.047717'
       X-Xss-Protection:
       - 1; mode=block
+      Content-Length:
+      - '5070'
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: '{"data":{"id":"https://doi.org/10.2314/COSCV2.53","type":"works","attributes":{"doi":"10.2314/COSCV2.53","url":null,"author":[{"family":"Pampel","given":"Heinz","orcid":"http://orcid.org/0000-0003-3334-2771"},{"family":"Neumann","given":"Janna","orcid":"http://orcid.org/0000-0002-0161-1888"}],"title":"Publikation
         von Forschungsdaten","container-title":"Technische Informationsbibliothek
-        (TIB), Hannover","description":"","resource-type-subtype":null,"data-center-id":"tib.handbuch","member-id":"tib","resource-type-id":"text","version":"2.0","license":null,"schema-version":"3","results":[{"id":"IsPartOf","title":"Is
-        part of","count":1}],"related-identifiers":[{"relation-type-id":"IsPartOf","related-identifier":"https://doi.org/10.2314/COSCV2"}],"published":"2015","deposited":"2015-05-20T06:35:12Z","updated":"2015-05-20T06:35:12Z","media":null,"xml":"PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4KPHJlc291cmNlIHhtbG5zPSdodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMycgeG1sbnM6eHNpPSdodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZScgeHNpOnNjaGVtYUxvY2F0aW9uPSdodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMyBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC0zL21ldGFkYXRhLnhzZCc+CjxpZGVudGlmaWVyIGlkZW50aWZpZXJUeXBlPSdET0knPjEwLjIzMTQvY29zY3YyLjUzIDwvaWRlbnRpZmllcj4KPGNyZWF0b3JzPgoJPGNyZWF0b3I+CgkJPGNyZWF0b3JOYW1lPlBhbXBlbCwgSGVpbno8L2NyZWF0b3JOYW1lPgoJCTxuYW1lSWRlbnRpZmllciBuYW1lSWRlbnRpZmllclNjaGVtZT0nT1JDSUQnIHNjaGVtZVVSST0naHR0cDovL3d3dy5vcmNpZC5vcmcnPjAwMDAtMDAwMy0zMzM0LTI3NzE8L25hbWVJZGVudGlmaWVyPgoJPC9jcmVhdG9yPgoJPGNyZWF0b3I+CgkJPGNyZWF0b3JOYW1lPk5ldW1hbm4sIEphbm5hPC9jcmVhdG9yTmFtZT4KCQk8bmFtZUlkZW50aWZpZXIgbmFtZUlkZW50aWZpZXJTY2hlbWU9J09SQ0lEJyBzY2hlbWVVUkk9J2h0dHA6Ly93d3cub3JjaWQub3JnJz4wMDAwLTAwMDItMDE2MS0xODg4PC9uYW1lSWRlbnRpZmllcj4KCTwvY3JlYXRvcj4KPC9jcmVhdG9ycz4KPHRpdGxlcz4KCTx0aXRsZT5QdWJsaWthdGlvbiB2b24gRm9yc2NodW5nc2RhdGVuPC90aXRsZT4KPC90aXRsZXM+CjxwdWJsaXNoZXI+VGVjaG5pc2NoZSBJbmZvcm1hdGlvbnNiaWJsaW90aGVrIChUSUIpLCBIYW5ub3ZlcjwvcHVibGlzaGVyPgo8cHVibGljYXRpb25ZZWFyPjIwMTU8L3B1YmxpY2F0aW9uWWVhcj4KPGNvbnRyaWJ1dG9ycz4KCTxjb250cmlidXRvciBjb250cmlidXRvclR5cGU9J090aGVyJz4KCQk8Y29udHJpYnV0b3JOYW1lPkZlbm5lciwgTWFydGluPC9jb250cmlidXRvck5hbWU+CgkJPG5hbWVJZGVudGlmaWVyIG5hbWVJZGVudGlmaWVyU2NoZW1lPSdPUkNJRCcgc2NoZW1lVVJJPSdodHRwOi8vd3d3Lm9yY2lkLm9yZyc+MDAwMC0wMDAzLTE0MTktMjQwNTwvbmFtZUlkZW50aWZpZXI+Cgk8L2NvbnRyaWJ1dG9yPgoJPGNvbnRyaWJ1dG9yIGNvbnRyaWJ1dG9yVHlwZT0nT3RoZXInPgoJCTxjb250cmlidXRvck5hbWU+VHVsbG5leSwgTWFyY288L2NvbnRyaWJ1dG9yTmFtZT4KCQk8bmFtZUlkZW50aWZpZXIgbmFtZUlkZW50aWZpZXJTY2hlbWU9J09SQ0lEJyBzY2hlbWVVUkk9J2h0dHA6Ly93d3cub3JjaWQub3JnJz4wMDAwLTAwMDItNTExMS0yNzg4PC9uYW1lSWRlbnRpZmllcj4KCTwvY29udHJpYnV0b3I+CjwvY29udHJpYnV0b3JzPgo8bGFuZ3VhZ2U+ZGU8L2xhbmd1YWdlPgo8cmVzb3VyY2VUeXBlIHJlc291cmNlVHlwZUdlbmVyYWw9J1RleHQnPjwvcmVzb3VyY2VUeXBlPgo8cmVsYXRlZElkZW50aWZpZXJzPgoJPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0nRE9JJyByZWxhdGlvblR5cGU9J0lzUGFydE9mJz4xMC4yMzE0L2Nvc2N2MjwvcmVsYXRlZElkZW50aWZpZXI+CjwvcmVsYXRlZElkZW50aWZpZXJzPgo8dmVyc2lvbj4yLjA8L3ZlcnNpb24+CjxyaWdodHNMaXN0PgoJPHJpZ2h0cz5odHRwczovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5zZXMvYnkvNC4wL2xlZ2FsY29kZSZxdW90OyZndDtDcmVhdGl2ZSBDb21tb25zIEF0dHJpYnV0aW9uIDQuMCBJbnRlcm5hdGlvbmFsIFB1YmxpYzwvcmlnaHRzPgo8L3JpZ2h0c0xpc3Q+CjwvcmVzb3VyY2U+"},"relationships":{"data-center":{"data":{"id":"tib.handbuch","type":"data-centers"}},"member":{"data":{"id":"tib","type":"members"}},"resource-type":{"data":{"id":"text","type":"resource-types"}}}},"included":[{"id":"tib.handbuch","type":"data-centers","attributes":{"title":"Technische
-        Informationsbibliothek Open Science Lab","other-names":[],"prefixes":[],"member-id":"tib","year":2016,"created":"2016-04-14T12:17:54Z","updated":"2016-04-14T12:17:54Z"},"relationships":{"member":{"meta":{}}}},{"id":"tib","type":"members","attributes":{"title":"German
+        (TIB), Hannover","description":"","resource-type-subtype":null,"data-center-id":"tib.handbuch","member-id":"tib","resource-type-id":"text","version":"2.0","license":null,"schema-version":"3","results":[],"related-identifiers":[],"published":"2015","deposited":"2015-05-20T06:35:12Z","updated":"2015-05-20T06:35:12Z","media":null,"xml":"PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4KPHJlc291cmNlIHhtbG5zPSdodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMycgeG1sbnM6eHNpPSdodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZScgeHNpOnNjaGVtYUxvY2F0aW9uPSdodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMyBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC0zL21ldGFkYXRhLnhzZCc+CjxpZGVudGlmaWVyIGlkZW50aWZpZXJUeXBlPSdET0knPjEwLjIzMTQvY29zY3YyLjUzIDwvaWRlbnRpZmllcj4KPGNyZWF0b3JzPgoJPGNyZWF0b3I+CgkJPGNyZWF0b3JOYW1lPlBhbXBlbCwgSGVpbno8L2NyZWF0b3JOYW1lPgoJCTxuYW1lSWRlbnRpZmllciBuYW1lSWRlbnRpZmllclNjaGVtZT0nT1JDSUQnIHNjaGVtZVVSST0naHR0cDovL3d3dy5vcmNpZC5vcmcnPjAwMDAtMDAwMy0zMzM0LTI3NzE8L25hbWVJZGVudGlmaWVyPgoJPC9jcmVhdG9yPgoJPGNyZWF0b3I+CgkJPGNyZWF0b3JOYW1lPk5ldW1hbm4sIEphbm5hPC9jcmVhdG9yTmFtZT4KCQk8bmFtZUlkZW50aWZpZXIgbmFtZUlkZW50aWZpZXJTY2hlbWU9J09SQ0lEJyBzY2hlbWVVUkk9J2h0dHA6Ly93d3cub3JjaWQub3JnJz4wMDAwLTAwMDItMDE2MS0xODg4PC9uYW1lSWRlbnRpZmllcj4KCTwvY3JlYXRvcj4KPC9jcmVhdG9ycz4KPHRpdGxlcz4KCTx0aXRsZT5QdWJsaWthdGlvbiB2b24gRm9yc2NodW5nc2RhdGVuPC90aXRsZT4KPC90aXRsZXM+CjxwdWJsaXNoZXI+VGVjaG5pc2NoZSBJbmZvcm1hdGlvbnNiaWJsaW90aGVrIChUSUIpLCBIYW5ub3ZlcjwvcHVibGlzaGVyPgo8cHVibGljYXRpb25ZZWFyPjIwMTU8L3B1YmxpY2F0aW9uWWVhcj4KPGNvbnRyaWJ1dG9ycz4KCTxjb250cmlidXRvciBjb250cmlidXRvclR5cGU9J090aGVyJz4KCQk8Y29udHJpYnV0b3JOYW1lPkZlbm5lciwgTWFydGluPC9jb250cmlidXRvck5hbWU+CgkJPG5hbWVJZGVudGlmaWVyIG5hbWVJZGVudGlmaWVyU2NoZW1lPSdPUkNJRCcgc2NoZW1lVVJJPSdodHRwOi8vd3d3Lm9yY2lkLm9yZyc+MDAwMC0wMDAzLTE0MTktMjQwNTwvbmFtZUlkZW50aWZpZXI+Cgk8L2NvbnRyaWJ1dG9yPgoJPGNvbnRyaWJ1dG9yIGNvbnRyaWJ1dG9yVHlwZT0nT3RoZXInPgoJCTxjb250cmlidXRvck5hbWU+VHVsbG5leSwgTWFyY288L2NvbnRyaWJ1dG9yTmFtZT4KCQk8bmFtZUlkZW50aWZpZXIgbmFtZUlkZW50aWZpZXJTY2hlbWU9J09SQ0lEJyBzY2hlbWVVUkk9J2h0dHA6Ly93d3cub3JjaWQub3JnJz4wMDAwLTAwMDItNTExMS0yNzg4PC9uYW1lSWRlbnRpZmllcj4KCTwvY29udHJpYnV0b3I+CjwvY29udHJpYnV0b3JzPgo8bGFuZ3VhZ2U+ZGU8L2xhbmd1YWdlPgo8cmVzb3VyY2VUeXBlIHJlc291cmNlVHlwZUdlbmVyYWw9J1RleHQnPjwvcmVzb3VyY2VUeXBlPgo8cmVsYXRlZElkZW50aWZpZXJzPgoJPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0nRE9JJyByZWxhdGlvblR5cGU9J0lzUGFydE9mJz4xMC4yMzE0L2Nvc2N2MjwvcmVsYXRlZElkZW50aWZpZXI+CjwvcmVsYXRlZElkZW50aWZpZXJzPgo8dmVyc2lvbj4yLjA8L3ZlcnNpb24+CjxyaWdodHNMaXN0PgoJPHJpZ2h0cz5odHRwczovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5zZXMvYnkvNC4wL2xlZ2FsY29kZSZxdW90OyZndDtDcmVhdGl2ZSBDb21tb25zIEF0dHJpYnV0aW9uIDQuMCBJbnRlcm5hdGlvbmFsIFB1YmxpYzwvcmlnaHRzPgo8L3JpZ2h0c0xpc3Q+CjwvcmVzb3VyY2U+"},"relationships":{"data-center":{"data":{"id":"tib.handbuch","type":"data-centers"}},"member":{"data":{"id":"tib","type":"members"}},"resource-type":{"data":{"id":"text","type":"resource-types"}}}},"included":[{"id":"tib.handbuch","type":"data-centers","attributes":{"title":"Technische
+        Informationsbibliothek  Open Science Lab","other-names":[],"prefixes":[],"member-id":"tib","year":2016,"created":"2016-04-14T12:11:14Z","updated":"2016-09-05T14:04:06Z"},"relationships":{"member":{"meta":{}}}},{"id":"tib","type":"members","attributes":{"title":"German
         National Library of Science and Technology","description":"\u003cp\u003eThe
         TIB is the German National Library for all areas of engineering as well as
         architecture, chemistry, information technology, mathematics and physics.
@@ -71,8 +82,8 @@ http_interactions:
         members of DataCite and is currently the Business Office. We provide DOI registration
         services for all German data centres in the fields of engineering, architecture,
         chemistry, information technology, mathematics and physics. Our current focus
-        is on providing DOI names for primary data and grey literature.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Germany","year":2009,"logo-url":"https://assets.test.datacite.org/images/members/tib.png","email":"doi-info@tib.eu","website":"
-        http://www.tib.eu","phone":"+49 511 762 14226","updated":"2016-08-01T11:13:04.000Z"}},{"id":"text","type":"resource-types","attributes":{"title":"Text","updated":"2016-09-21T00:00:00Z"}}]}'
+        is on providing DOI names for primary data and grey literature.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Germany","year":2009,"logo-url":"https://assets.datacite.org/images/members/tib.png","email":"doi-info@tib.eu","website":"
+        http://www.tib.eu","phone":"+49 511 762 17642","updated":"2017-01-20T15:28:53.000Z"}},{"id":"text","type":"resource-types","attributes":{"title":"Text","updated":"2016-09-21T00:00:00Z"}}]}'
     http_version: 
-  recorded_at: Thu, 20 Apr 2017 21:40:51 GMT
+  recorded_at: Sat, 24 Jun 2017 17:36:52 GMT
 recorded_with: VCR 2.9.3

@@ -1,14 +1,17 @@
 require 'sinatra/base'
 
 class User
-  attr_accessor :name, :uid, :email, :role, :api_key, :orcid
+  attr_accessor :name, :uid, :email, :jwt, :role, :orcid
 
-  def initialize(jwt={})
-    @uid = jwt.fetch("uid", nil)
-    @name = jwt.fetch("name", nil)
-    @email = jwt.fetch("email", nil)
-    @role = jwt.fetch("role", nil)
-    @api_key = jwt.fetch("api_key", nil)
+  def initialize(jwt)
+    public_key = OpenSSL::PKey::RSA.new(ENV['JWT_PUBLIC_KEY'].to_s.gsub('\n', "\n"))
+    jwt_hsh = JWT.decode(jwt, public_key, true, { :algorithm => 'RS256' }).first
+
+    @jwt = jwt
+    @uid = jwt_hsh.fetch("uid", nil)
+    @name = jwt_hsh.fetch("name", nil)
+    @email = jwt_hsh.fetch("email", nil)
+    @role = jwt_hsh.fetch("role", nil)
   end
 
   alias_method :orcid, :uid

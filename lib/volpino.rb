@@ -9,7 +9,7 @@ module Sinatra
       return {} unless current_user.present? && dois.present? && current_user.orcid.present?
 
       url = "#{ENV['ORCID_UPDATE_URL']}/api/users/#{current_user.orcid}/claims?dois=#{dois.join(",")}"
-      response = Maremma.get url, token: current_user.api_key, timeout: 20
+      response = Maremma.get url, token: current_user.jwt, timeout: 20
 
       { data: Array(response.body.fetch("data", [])),
         errors: Array(response.body.fetch("errors", [])),

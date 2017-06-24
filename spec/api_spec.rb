@@ -8,9 +8,9 @@ describe "API", type: :model, vcr: true do
   context "get_works" do
     it "all" do
       response = subject.get_works
-      expect(response[:meta]["resource-types"].first).to eq("id"=>"dataset", "title"=>"Dataset", "count"=>3258929)
+      expect(response[:meta]["resource-types"].first).to eq("id"=>"dataset", "title"=>"Dataset", "count"=>3387093)
       work = response[:data].first
-      expect(work["id"]).to eq("https://doi.org/10.13140/RG.2.2.16557.49126")
+      expect(work["id"]).to eq("https://doi.org/10.13140/RG.2.2.28002.53448")
     end
 
     it "one" do
@@ -33,29 +33,29 @@ describe "API", type: :model, vcr: true do
       response = subject.get_works(query: "mabbett")
       expect(response[:meta]["resource-types"].first).to eq("id"=>"dataset", "title"=>"Dataset", "count"=>15)
       work = response[:data].first
-      expect(work["id"]).to eq("https://doi.org/10.6084/M9.FIGSHARE.2220529.V1")
+      expect(work["id"]).to eq("https://doi.org/10.6084/M9.FIGSHARE.5114329")
     end
   end
 
   context "get_people" do
     it "all" do
       response = subject.get_people
-      expect(response[:meta]).to eq("total"=>21305)
+      expect(response[:meta]).to eq("total"=>32490)
       contributor = response[:data].first
-      expect(contributor["id"]).to eq("http://orcid.org/0000-0002-6909-1823")
+      expect(contributor["id"]).to eq("http://orcid.org/0000-0002-7079-2475")
     end
 
     it "one" do
       response = subject.get_people(id: "0000-0003-3484-6875")
       contributor = response[:data]
-      expect(contributor).to eq("id"=>"http://orcid.org/0000-0003-3484-6875", "type"=>"people", "attributes"=>{"given"=>"Kristian", "family"=>"Garza", "literal"=>"K. J. Garza", "orcid"=>"http://orcid.org/0000-0003-3484-6875", "github"=>"https://github.com/kjgarza", "updated"=>"2016-09-07T13:24:13.000Z"})
+      expect(contributor).to eq("id"=>"http://orcid.org/0000-0003-3484-6875", "type"=>"people", "attributes"=>{"given"=>"Kristian", "family"=>"Garza", "literal"=>"K. J. Garza", "orcid"=>"http://orcid.org/0000-0003-3484-6875", "github"=>"https://github.com/kjgarza", "updated"=>"2017-06-12T13:40:13.000Z"})
     end
 
     it "query" do
       response = subject.get_people(query: "garza")
-      expect(response[:meta]).to eq("total"=>4)
-      contributor = response[:data].first
-      expect(contributor).to eq("id"=>"http://orcid.org/0000-0003-3484-6875", "type"=>"people", "attributes"=>{"given"=>"Kristian", "family"=>"Garza", "literal"=>"K. J. Garza", "orcid"=>"http://orcid.org/0000-0003-3484-6875", "github"=>"https://github.com/kjgarza", "updated"=>"2016-09-07T13:24:13.000Z"})
+      expect(response[:meta]).to eq("total"=>7)
+      contributor = response[:data][1]
+      expect(contributor).to eq("id"=>"http://orcid.org/0000-0003-3484-6875", "type"=>"people", "attributes"=>{"given"=>"Kristian", "family"=>"Garza", "literal"=>"K. J. Garza", "orcid"=>"http://orcid.org/0000-0003-3484-6875", "github"=>"https://github.com/kjgarza", "updated"=>"2017-06-12T13:40:13.000Z"})
     end
   end
 
@@ -63,7 +63,7 @@ describe "API", type: :model, vcr: true do
     it "all" do
       response = subject.get_datacenters
       datacenter = response[:data].first
-      expect(datacenter["attributes"]["title"]).to eq("(TIB-intern) Grafische Einzelbl\u00E4tter der Sammlung Haupt (GESAH)")
+      expect(datacenter["attributes"]["title"]).to eq("027.7 - Zeitschrift f\u00FCr Bibliothekskultur")
     end
 
     it "one" do
@@ -83,7 +83,7 @@ describe "API", type: :model, vcr: true do
   context "get_members" do
     it "all" do
       response = subject.get_members
-      expect(response[:meta]["member-types"].first).to eq("id"=>"allocating", "title"=>"Allocating", "count"=>31)
+      expect(response[:meta]["member-types"].first).to eq("id"=>"allocating", "title"=>"Allocating", "count"=>40)
       member = response[:data].first
       expect(member["id"]).to eq("ands")
     end

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/works?include=data-center,resource-type,work-type,member,registration-agency&offset=0&rows=25&work-id=10.5061/DRYAD.Q447C
+    uri: https://api.datacite.org/works?include=data-center,resource-type,work-type,member,registration-agency&offset=0&rows=25&work-id=10.5061/DRYAD.Q447C
     body:
       encoding: US-ASCII
       string: ''
@@ -29,27 +29,39 @@ http_interactions:
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Date:
-      - Thu, 20 Apr 2017 21:40:56 GMT
+      - Sat, 24 Jun 2017 17:37:01 GMT
       Etag:
-      - W/"a7966ee15aea9a76ef44a3f388b10a62"
+      - W/"0af4fdf701083f2d230cf40dd6c8af3d"
       Server:
       - openresty/1.11.2.2
       Status:
       - 200 OK
       Vary:
       - Accept-Encoding
+      Via:
+      - kong/0.10.3
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
       - SAMEORIGIN
+      X-Kong-Proxy-Latency:
+      - '1'
+      X-Kong-Upstream-Latency:
+      - '182'
       X-Powered-By:
-      - Phusion Passenger 5.1.2
+      - Phusion Passenger 5.1.5
+      X-Ratelimit-Limit-Hour:
+      - '100000'
+      X-Ratelimit-Remaining-Hour:
+      - '99992'
       X-Request-Id:
-      - c319f235-c287-4ed4-adf6-b6878da7c0a4
+      - 7bc1f210-6197-4c26-8351-928e064ebd4d
       X-Runtime:
-      - '0.214921'
+      - '0.180826'
       X-Xss-Protection:
       - 1; mode=block
+      Content-Length:
+      - '12039'
       Connection:
       - keep-alive
     body:
@@ -74,8 +86,8 @@ http_interactions:
         offers DataCite DOIs and other identifiers via the EZID service, a service
         CDL developed to help educational, non-profit, governmental and commercial
         clients create and manage globally unique identifiers for data and other sources.\u003c/p\u003e\n","member-type":"allocating","region":"Americas","country":"United
-        States","year":2009,"logo-url":"https://assets.test.datacite.org/images/members/cdl.png","email":"ezid@ucop.edu","website":"http://ezid.cdlib.org","phone":"1-510-987-0469","updated":"2016-09-09T17:46:16.000Z"}},{"id":"dataset","type":"resource-types","attributes":{"title":"Dataset","updated":"2016-09-21T00:00:00Z"}}],"meta":{"resource-types":[{"id":"dataset","title":"Dataset","count":3}],"years":[{"id":"2016","title":"2016","count":3}],"data-centers":[{"id":"cdl.dryad","title":"Dryad","count":3}],"schema-versions":[{"id":"3","title":"Schema
+        States","year":2009,"logo-url":"https://assets.datacite.org/images/members/cdl.png","email":"ezid@ucop.edu","website":"http://ezid.cdlib.org","phone":"1-510-987-0469","updated":"2016-09-09T17:46:16.000Z"}},{"id":"dataset","type":"resource-types","attributes":{"title":"Dataset","updated":"2016-09-21T00:00:00Z"}}],"meta":{"resource-types":[{"id":"dataset","title":"Dataset","count":3}],"years":[{"id":"2016","title":"2016","count":3}],"data-centers":[{"id":"cdl.dryad","title":"Dryad","count":3}],"schema-versions":[{"id":"3","title":"Schema
         3","count":3}],"total":3}}'
     http_version: 
-  recorded_at: Thu, 20 Apr 2017 21:40:56 GMT
+  recorded_at: Sat, 24 Jun 2017 17:37:00 GMT
 recorded_with: VCR 2.9.3
