@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datacite.org/members?id=ANDS
+    uri: https://api.test.datacite.org/members?id=ANDS
     body:
       encoding: US-ASCII
       string: ''
@@ -29,9 +29,9 @@ http_interactions:
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Date:
-      - Sat, 24 Jun 2017 17:37:22 GMT
+      - Sun, 25 Jun 2017 11:03:41 GMT
       Etag:
-      - W/"fe8de044b106000486574286495baea0"
+      - W/"62c45dace372d719510c5994c0af359d"
       Server:
       - openresty/1.11.2.2
       Status:
@@ -39,29 +39,25 @@ http_interactions:
       Vary:
       - Accept-Encoding
       Via:
-      - kong/0.10.3
+      - kong/0.10.2
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
       - SAMEORIGIN
       X-Kong-Proxy-Latency:
-      - '1'
+      - '0'
       X-Kong-Upstream-Latency:
-      - '19'
+      - '14'
       X-Powered-By:
       - Phusion Passenger 5.1.5
-      X-Ratelimit-Limit-Hour:
-      - '100000'
-      X-Ratelimit-Remaining-Hour:
-      - '99983'
       X-Request-Id:
-      - a53ffc77-5f73-4c4b-a491-66e0efa6d63d
+      - 75452ba0-5c67-40b7-8e4d-c221e4bab517
       X-Runtime:
-      - '0.017962'
+      - '0.012309'
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
-      - '2271'
+      - '2276'
       Connection:
       - keep-alive
     body:
@@ -89,8 +85,8 @@ http_interactions:
         to our discussion list: \u003ca href=\"https://groups.google.com/forum/?hl=en#!forum/ands-general\"\u003eANDS
         Google Group\u003c/a\u003e.\u003c/p\u003e\n\n\u003cp\u003eSubscribe to our
         e-newsletter: \u003ca href=\"http://us7.campaign-archive2.com/home/?u=b542ef52e49302569068046d9\u0026amp;id=22b849a4ee\"\u003eandsUP\u003c/a\u003e.\u003c/p\u003e\n","member-type":"allocating","region":"Asia
-        Pacific","country":"Australia","year":2010,"logo-url":"https://assets.datacite.org/images/members/ands.png","email":"contact@ands.org.au","website":"http://www.ands.org.au","phone":"+61
-        3 9902 0585","updated":"2017-01-12T21:54:40.000Z"}}}'
+        Pacific","country":"Australia","year":2010,"logo-url":"https://assets.test.datacite.org/images/members/ands.png","email":"contact@ands.org.au","website":"http://www.ands.org.au","phone":"+61
+        3 9902 0585","updated":"2017-01-12T21:48:51.000Z"}}}'
     http_version: 
-  recorded_at: Sat, 24 Jun 2017 17:37:21 GMT
+  recorded_at: Sun, 25 Jun 2017 11:03:41 GMT
 recorded_with: VCR 2.9.3
