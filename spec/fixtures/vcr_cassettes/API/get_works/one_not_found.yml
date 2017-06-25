@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.test.datacite.org/works/10.4226/xxxx?include=data-center,resource-type,work-type,member,registration-agency
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Maremma - http://search.local
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 404
+      message: ''
+    headers:
+      Access-Control-Allow-Headers:
+      - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 25 Jun 2017 20:35:27 GMT
+      Server:
+      - openresty/1.11.2.2
+      Status:
+      - 404 Not Found
+      Vary:
+      - Accept-Encoding
+      Via:
+      - kong/0.10.2
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Kong-Proxy-Latency:
+      - '0'
+      X-Kong-Upstream-Latency:
+      - '21'
+      X-Powered-By:
+      - Phusion Passenger 5.1.5
+      X-Request-Id:
+      - 0eb1d7d9-2838-408a-90df-7fa5eb4524bd
+      X-Runtime:
+      - '0.019264'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '87'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"errors":[{"status":"404","title":"The resource you are looking for
+        doesn''t exist."}]}'
+    http_version: 
+  recorded_at: Sun, 25 Jun 2017 20:35:27 GMT
+recorded_with: VCR 2.9.3

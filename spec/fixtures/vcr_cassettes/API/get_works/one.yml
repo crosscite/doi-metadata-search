@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/works?id=10.4124/CCDC.CSD.CC1JJR93&include=data-center,resource-type,work-type,member,registration-agency&offset=0&rows=25
+    uri: https://api.test.datacite.org/works/10.4124/CCDC.CSD.CC1JJR93?include=data-center,resource-type,work-type,member,registration-agency
     body:
       encoding: US-ASCII
       string: ''
@@ -29,7 +29,7 @@ http_interactions:
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Date:
-      - Sun, 25 Jun 2017 11:13:31 GMT
+      - Sun, 25 Jun 2017 20:32:08 GMT
       Etag:
       - W/"7b01e38b12e5815579aa3f538fb4cb22"
       Server:
@@ -45,15 +45,15 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Kong-Proxy-Latency:
-      - '1'
+      - '0'
       X-Kong-Upstream-Latency:
-      - '267'
+      - '49'
       X-Powered-By:
       - Phusion Passenger 5.1.5
       X-Request-Id:
-      - f2abc21c-ec43-4a9d-a1f7-0c70f81145f5
+      - 1fb1e9ca-567a-4b7e-b267-14fa704f91f1
       X-Runtime:
-      - '0.266186'
+      - '0.048346'
       X-Xss-Protection:
       - 1; mode=block
       Connection:
@@ -214,5 +214,5 @@ http_interactions:
         eXBlIjoicmVzb3VyY2UtdHlwZXMiLCJhdHRyaWJ1dGVzIjp7InRpdGxlIjoi
         RGF0YXNldCIsInVwZGF0ZWQiOiIyMDE2LTA5LTIxVDAwOjAwOjAwWiJ9fV19
     http_version: 
-  recorded_at: Sun, 25 Jun 2017 11:13:31 GMT
+  recorded_at: Sun, 25 Jun 2017 20:32:08 GMT
 recorded_with: VCR 2.9.3

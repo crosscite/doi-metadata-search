@@ -5,21 +5,25 @@ require 'rack-flash'
 module Sinatra
   module Api
     def get_works(params = {})
-      params = { id: params.fetch(:id, nil),
-                 offset: params.fetch(:offset, 0),
-                 rows: params.fetch(:rows, 25),
-                 sort: params.fetch(:sort, nil),
-                 query: params.fetch(:query, nil),
-                 year: params.fetch('year', nil),
-                 include: 'data-center,resource-type,work-type,member,registration-agency',
-                 'resource-type-id' => params.fetch('resource-type-id', nil),
-                 'relation-type-id' => params.fetch('relation-type-id', nil),
-                 'data-center-id' => params.fetch('data-center-id', nil),
-                 'member-id' => params.fetch('member-id', nil),
-                 'work-id' => params.fetch('work-id', nil),
-                 'person-id' => params.fetch('person-id', nil),
-                 'source-id' => params.fetch('source-id', nil) }.compact
-      url = "#{ENV['API_URL']}/works?" + URI.encode_www_form(params)
+      if params.fetch(:id, nil).present?
+        url = "#{ENV['API_URL']}/works/#{params[:id]}?include=data-center,resource-type,work-type,member,registration-agency"
+      else
+        params = { id: params.fetch(:id, nil),
+                   offset: params.fetch(:offset, 0),
+                   rows: params.fetch(:rows, 25),
+                   sort: params.fetch(:sort, nil),
+                   query: params.fetch(:query, nil),
+                   year: params.fetch('year', nil),
+                   include: 'data-center,resource-type,work-type,member,registration-agency',
+                   'resource-type-id' => params.fetch('resource-type-id', nil),
+                   'relation-type-id' => params.fetch('relation-type-id', nil),
+                   'data-center-id' => params.fetch('data-center-id', nil),
+                   'member-id' => params.fetch('member-id', nil),
+                   'work-id' => params.fetch('work-id', nil),
+                   'person-id' => params.fetch('person-id', nil),
+                   'source-id' => params.fetch('source-id', nil) }.compact
+        url = "#{ENV['API_URL']}/works?" + URI.encode_www_form(params)
+      end
 
       response = Maremma.get url, timeout: TIMEOUT
       { data: response.body.fetch("data", []),

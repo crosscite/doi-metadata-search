@@ -139,10 +139,12 @@ get %r{/works/(.+)} do
 
   # workaround, as nginx swallows double backslashes
   params["id"] = params["id"].gsub(/(http|https):\/+(\w+)/, '\1://\2')
-  doi = validate_doi(params[:id])
-  link = doi ? "https://doi.org/#{doi}" : params[:id]
 
   @work = get_works(id: params["id"])
+  halt 404 if @work[:errors].present?
+
+  doi = validate_doi(params[:id])
+  link = doi ? "https://doi.org/#{doi}" : params[:id]
 
   # check for existing claims if user is logged in and work is registered with DataCite
   if current_user
