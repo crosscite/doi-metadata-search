@@ -141,6 +141,8 @@ $(document).ready(function() {
   };
 
   var performClaim = function($popover) {
+    var jwt = getCookieValue('_datacite_jwt');
+
     $.ajax({
         url: $popover.attr('data-url'),
         method: "POST",
@@ -150,7 +152,7 @@ $(document).ready(function() {
                                "source_id": "orcid_search" }),
         beforeSend: function (xhr) {
             xhr.setRequestHeader("Content-Type","application/json");
-            xhr.setRequestHeader("Authorization", "Token token=" + $popover.attr('data-api-key'));
+            xhr.setRequestHeader("Authorization", "Token token=" + jwt);
         },
         success: function(response) {
           if (typeof response.data !== "undefined" && response.data.attributes.state === 'waiting') {
@@ -288,6 +290,11 @@ $(document).ready(function() {
     e.preventDefault();
     return false;
   };
+
+  function getCookieValue(a) {
+    var b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
+    return b ? b.pop() : '';
+  }
 
   $('.claim-ok').click(claimDeleteClickFn);
   $('.claim-waiting').click(claimWaitingClickFn);
