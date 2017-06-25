@@ -8,7 +8,7 @@ describe User, vcr: true do
 
   context "user" do
     it "has orcid" do
-      expect(subject.orcid).to eq("0000-0003-1419-2405")
+      expect(subject.orcid).to eq("0000-0001-6528-2027")
     end
 
     it "has name" do

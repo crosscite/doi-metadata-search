@@ -6,7 +6,6 @@ $(document).ready(function() {
   doi = doi.substr(16);
   var url = $('#site-title').attr('data-conneg');
   url += '/application/vnd.schemaorg.ld+json/' + doi;
-  console.log(url)
 
   $.ajax({
     url: url,

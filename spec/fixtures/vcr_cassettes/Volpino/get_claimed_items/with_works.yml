@@ -29,7 +29,7 @@ http_interactions:
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Date:
-      - Sun, 25 Jun 2017 11:03:53 GMT
+      - Sun, 25 Jun 2017 17:38:28 GMT
       Etag:
       - W/"ff8e0ab94b933bfe90900b8cf8d29053"
       Server:
@@ -45,15 +45,15 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Kong-Proxy-Latency:
-      - '0'
+      - '1'
       X-Kong-Upstream-Latency:
-      - '115'
+      - '113'
       X-Powered-By:
       - Phusion Passenger 5.1.5
       X-Request-Id:
-      - d4168297-57b8-4278-83ba-35c348c348b6
+      - 7be4dd9b-d10d-456a-958e-4a3ed1cd0de3
       X-Runtime:
-      - '0.114005'
+      - '0.111523'
       X-Xss-Protection:
       - 1; mode=block
       Connection:
@@ -2090,5 +2090,64 @@ http_interactions:
         c2lvbnMiOlt7ImlkIjoiNCIsInRpdGxlIjoiU2NoZW1hIDQiLCJjb3VudCI6
         MjQxfV0sInRvdGFsIjoyNDF9fQ==
     http_version: 
-  recorded_at: Sun, 25 Jun 2017 11:03:53 GMT
+  recorded_at: Sun, 25 Jun 2017 17:38:28 GMT
+- request:
+    method: get
+    uri: http://profiles/api/users/0000-0001-6528-2027/claims?dois=10.5438/BG66-DJN~,10.5438/G59A-FBT2,10.5438/3Q29-9NWT,10.5438/9SNZ-VV1Y,10.5438/A997-PAB1,10.5438/5653-THGW,10.5438/CT6S-F4X*,10.5438/6DDP-WW08,10.5438/53NZ-N4G7,10.5438/87E5-GKYY,10.5438/31V8-C457,10.5438/0MAE-2Y7~,10.5438/0XJG-XW5Q,10.5438/GY9W-92W=,10.5438/879W-C2W7,10.5438/NZ7N-4YHF,10.5438/0QCA-V2AP,10.5438/VAKZ-08VB,10.5438/B77P-W36R,10.5438/5K96-CDVP,10.5438/G9Z6-J964,10.5438/RN1Z-DWRB,10.5438/1M69-A1ZK,10.5438/GFD7-6QA1,10.5438/0S9T-VT1H
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Maremma - http://search.local
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Authorization:
+      - Token token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDEtNjUyOC0yMDI3IiwibmFtZSI6Ik1hcnRpbiBGZW5uZXIiLCJlbWFpbCI6bnVsbCwicm9sZSI6ImFkbWluIiwiaWF0IjoxNDk4MzgzMTc3LCJleHAiOjE0OTk1OTI3Nzd9.qgx4pkoQ_g56xqXIWCHtA94b6WnVQO9J0AZyAPaisLK_eEAxuIl4NavVTagIGyFX0tg06wwmvOQfnWTfYMDKT9Wz-IEoqnMG39cYRRXPLFdWQHhm84TxFXMFN-cbPkiFkHXXEegK3E2h4iWMNtZlLsGdmsYgWGBWZ8Zd8dANMekl7V0XWrEw80tUFfZp3XuGl7J3r7jifnG-z0uj_B1mAkq6wVF3eFRA7T5t-D5CGQ_LT04KJFUd0qQkaQAkpMcI8AyHV_N5BsS6O53XHqUpE4MkgPyhTEgxblOJXfBGNdNBBdnTIIInl0OKsWcigoYuHUVhasK_GolLN_p-fz4UFw
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Access-Control-Max-Age:
+      - '1728000'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - dade2ad6-0195-4582-aa5e-dd49a577f862
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Authorization, Token
+      Access-Control-Allow-Methods:
+      - POST, GET, PUT, DELETE, OPTIONS
+      Etag:
+      - W/"b51bebe39d768ddba08b933fc1d45274"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.850710'
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Sun, 25 Jun 2017 17:38:41 GMT
+      X-Powered-By:
+      - Phusion Passenger 5.1.5
+      Server:
+      - nginx/1.10.3 + Phusion Passenger 5.1.5
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"4c1d20a8-9cef-4d57-bce4-2d823293e7f2","type":"claims","attributes":{"orcid":"0000-0001-6528-2027","doi":"10.5438/0MAE-2Y7~","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2017-06-25T15:20:22Z"}},{"id":"c01c24bf-49ee-43c8-87ad-dbc03018a4a3","type":"claims","attributes":{"orcid":"0000-0001-6528-2027","doi":"10.5438/BG66-DJN~","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2017-06-25T14:01:19Z"}},{"id":"df123bae-0d60-4713-8b9b-c259e34f4514","type":"claims","attributes":{"orcid":"0000-0001-6528-2027","doi":"10.5438/53NZ-N4G7","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2017-06-25T14:01:19Z"}},{"id":"936cffc5-9651-45ea-a917-e588c2fd4857","type":"claims","attributes":{"orcid":"0000-0001-6528-2027","doi":"10.5438/G59A-FBT2","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2017-06-25T14:01:18Z"}}],"links":{},"meta":{"total":4,"total-pages":1,"page":1}}'
+    http_version: 
+  recorded_at: Sun, 25 Jun 2017 17:38:41 GMT
 recorded_with: VCR 2.9.3

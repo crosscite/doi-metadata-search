@@ -19,7 +19,7 @@ class User
     @email = jwt_hsh.fetch("email", nil)
     @role = jwt_hsh.fetch("role", nil)
   end
-  
+
   alias_method :orcid, :uid
 
   # Helper method to check for admin user

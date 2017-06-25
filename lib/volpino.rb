@@ -6,7 +6,7 @@ module Sinatra
   module Volpino
     # query Profiles server, check whether list of dois has been claimed by particular user
     def get_claims(current_user, dois)
-      return {} unless current_user.present? && dois.present? && current_user.orcid.present?
+      return {} unless current_user.present? && current_user.orcid.present? && dois.present?
 
       url = "#{ENV['ORCID_UPDATE_URL']}/api/users/#{current_user.orcid}/claims?dois=#{dois.join(",")}"
       response = Maremma.get url, token: current_user.jwt, timeout: 20
