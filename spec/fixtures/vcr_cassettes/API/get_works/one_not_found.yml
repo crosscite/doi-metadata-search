@@ -27,7 +27,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Sun, 25 Jun 2017 20:35:27 GMT
+      - Mon, 03 Jul 2017 21:27:08 GMT
       Server:
       - openresty/1.11.2.2
       Status:
@@ -43,13 +43,13 @@ http_interactions:
       X-Kong-Proxy-Latency:
       - '0'
       X-Kong-Upstream-Latency:
-      - '21'
+      - '20'
       X-Powered-By:
       - Phusion Passenger 5.1.5
       X-Request-Id:
-      - 0eb1d7d9-2838-408a-90df-7fa5eb4524bd
+      - 174e0a86-2234-41b8-aa90-f9c979c4c95d
       X-Runtime:
-      - '0.019264'
+      - '0.018951'
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
@@ -61,5 +61,5 @@ http_interactions:
       string: '{"errors":[{"status":"404","title":"The resource you are looking for
         doesn''t exist."}]}'
     http_version: 
-  recorded_at: Sun, 25 Jun 2017 20:35:27 GMT
+  recorded_at: Mon, 03 Jul 2017 21:27:08 GMT
 recorded_with: VCR 2.9.3

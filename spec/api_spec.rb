@@ -25,10 +25,7 @@ describe "API", type: :model, vcr: true do
     it "one not found" do
       response = subject.get_works(id: "10.4226/xxxx")
       work = response[:data]
-      expect(work).to eq("family"=>"Koumousi", "given"=>"Evangelia S.")
-      expect(response[:included].size).to eq(3)
-      resource_type = response[:included][2]
-      expect(resource_type).to eq("id"=>"dataset", "type"=>"resource-types", "attributes"=>{"title"=>"Dataset", "updated"=>"2016-09-21T00:00:00Z"})
+      expect(work).to be_empty
     end
 
     it "related_identifiers" do

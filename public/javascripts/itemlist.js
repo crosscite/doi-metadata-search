@@ -152,7 +152,7 @@ $(document).ready(function() {
                                "source_id": "orcid_search" }),
         beforeSend: function (xhr) {
             xhr.setRequestHeader("Content-Type","application/json");
-            xhr.setRequestHeader("Authorization", "Token token=" + jwt);
+            xhr.setRequestHeader("Authorization", "Bearer " + jwt);
         },
         success: function(response) {
           if (typeof response.data !== "undefined" && response.data.attributes.state === 'waiting') {
