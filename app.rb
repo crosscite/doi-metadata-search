@@ -183,14 +183,14 @@ get '/people/:id' do
   if !validate_orcid(params[:id])
     @works = { data: [] }
   elsif @person[:errors].present?
-    link = "http://orcid.org/#{params[:id]}"
+    link = "https://orcid.org/#{params[:id]}"
     headers['Link'] = "<#{link}> ; rel=\"identifier\""
 
     @person = { data: { "id" => link, "attributes" => { "orcid" => params[:id] } },
                 errors: [{ "status" => "400", "title" => "The owner of this ORCID ID has not registered with DataCite, or has not made their record public." }] }
     @works = { data: [] }
   else
-    link = "http://orcid.org/#{params[:id]}"
+    link = "https://orcid.org/#{params[:id]}"
     headers['Link'] = "<#{link}> ; rel=\"identifier\""
 
     @works = get_works(query: params[:query], "person-id" => params[:id], offset: @offset, 'resource-type-id' => params['resource-type-id'], 'source-id' => params['source-id'], 'relation-type-id' => params['relation-type-id'], 'year' => params['year'], sort: params[:sort])

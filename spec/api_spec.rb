@@ -48,20 +48,20 @@ describe "API", type: :model, vcr: true do
       response = subject.get_people
       expect(response[:meta]).to eq("total"=>21305)
       contributor = response[:data].first
-      expect(contributor["id"]).to eq("http://orcid.org/0000-0002-6909-1823")
+      expect(contributor["id"]).to eq("https://orcid.org/0000-0002-6909-1823")
     end
 
     it "one" do
       response = subject.get_people(id: "0000-0003-3484-6875")
       contributor = response[:data]
-      expect(contributor).to eq("id"=>"http://orcid.org/0000-0003-3484-6875", "type"=>"people", "attributes" => {"given"=>"Kristian", "family"=>"Garza", "literal"=>"K. J. Garza", "orcid"=>"http://orcid.org/0000-0003-3484-6875", "github"=>"https://github.com/kjgarza", "updated"=>"2016-09-07T13:24:13.000Z"})
+      expect(contributor).to eq("id"=>"https://orcid.org/0000-0003-3484-6875", "type"=>"people", "attributes" => {"given"=>"Kristian", "family"=>"Garza", "literal"=>"K. J. Garza", "orcid"=>"https://orcid.org/0000-0003-3484-6875", "github"=>"https://github.com/kjgarza", "updated"=>"2016-09-07T13:24:13.000Z"})
     end
 
     it "query" do
       response = subject.get_people(query: "garza")
       expect(response[:meta]).to eq("total"=>4)
       contributor = response[:data][1]
-      expect(contributor).to eq("id"=>"http://orcid.org/0000-0002-5493-877X", "type"=>"people", "attributes" => {"given"=>"Jose Arturo", "family"=>"Garza-Reyes", "literal"=>"Jose Arturo Garza-Reyes", "orcid"=>"http://orcid.org/0000-0002-5493-877X", "github"=>nil, "updated"=>"2016-10-14T11:38:01.000Z"})
+      expect(contributor).to eq("id"=>"https://orcid.org/0000-0002-5493-877X", "type"=>"people", "attributes" => {"given"=>"Jose Arturo", "family"=>"Garza-Reyes", "literal"=>"Jose Arturo Garza-Reyes", "orcid"=>"https://orcid.org/0000-0002-5493-877X", "github"=>nil, "updated"=>"2016-10-14T11:38:01.000Z"})
     end
   end
 

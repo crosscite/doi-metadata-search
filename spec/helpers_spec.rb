@@ -34,7 +34,7 @@ describe "Helpers", type: :model, vcr: true do
 
   context "validate_orcid" do
     it "validate_orcid" do
-      orcid = "http://orcid.org/0000-0002-2590-225X"
+      orcid = "https://orcid.org/0000-0002-2590-225X"
       response = subject.validate_orcid(orcid)
       expect(response).to eq("0000-0002-2590-225X")
     end

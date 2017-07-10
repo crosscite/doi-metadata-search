@@ -298,7 +298,7 @@ module Sinatra
     end
 
     def validate_orcid(orcid)
-      Array(/\A(?:http:\/\/orcid\.org\/)?(\d{4}-\d{4}-\d{4}-\d{3}[0-9X]+)\z/.match(orcid)).last
+      Array(/\A(?:(http|https):\/\/orcid\.org\/)?(\d{4}-\d{4}-\d{4}-\d{3}[0-9X]+)\z/.match(orcid)).last
     end
 
     def validate_doi(doi)
