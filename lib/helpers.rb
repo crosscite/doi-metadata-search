@@ -294,7 +294,7 @@ module Sinatra
     end
 
     def orcid_from_url(url)
-      Array(/\Ahttp:\/\/orcid\.org\/(.+)/.match(url)).last
+      Array(/\A(http|https):\/\/orcid\.org\/(.+)/.match(url)).last
     end
 
     def validate_orcid(orcid)
