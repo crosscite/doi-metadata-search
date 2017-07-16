@@ -68,7 +68,7 @@
             - if user_signed_in?
               %li.dropdown
                 %a.dropdown-toggle{href: '#', id: "account_menu_link", data: { toggle: "dropdown"}, aria: { haspopup: "true", expanded: "false" }}
-                  = current_user.name
+                  %image{src: current_user.image_url, class: "img-circle img-no-padding"}
                   %span.caret
                 %ul.dropdown-menu{role: 'menu'}
                   %li

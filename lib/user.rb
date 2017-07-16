@@ -1,7 +1,7 @@
 require 'sinatra/base'
 
 class User
-  attr_accessor :name, :uid, :email, :jwt, :role, :orcid, :member_id, :datacenter_id
+  attr_accessor :name, :uid, :email, :jwt, :image_url, :role, :orcid, :member_id, :datacenter_id
 
   def initialize(jwt)
     return false unless jwt.present?
@@ -17,6 +17,7 @@ class User
     @uid = payload.fetch("uid", nil)
     @name = payload.fetch("name", nil)
     @email = payload.fetch("email", nil)
+    @image_url = payload.fetch("image_url", nil)
     @role = payload.fetch("role", nil)
     @member_id = payload.fetch("member_id", nil)
     @datacenter_id = payload.fetch("datacenter_id", nil)
