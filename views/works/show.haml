@@ -34,17 +34,14 @@
               %a{href: ENV['DATA_URL'] + "/application/vnd.datacite.datacite+xml/#{@work[:data].dig('attributes', 'doi')}", id: "xml_download"}
                 DataCite XML
               %br
-              %a{href: ENV['DATA_URL'] + "/application/vnd.schemaorg.ld+json/#{@work[:data].dig('attributes', 'doi')}"}
-                JSON-LD
-              %br
               %a{href: ENV['DATA_URL'] + "/application/rdf+xml/#{@work[:data].dig('attributes', 'doi')}"}
-                RDF XML
+                RDF-XML
+              %br
+              %a{href: ENV['DATA_URL'] + "/application/vnd.schemaorg.ld+json/#{@work[:data].dig('attributes', 'doi')}"}
+                Schema.org JSON-LD
               %br
               %a{href: ENV['DATA_URL'] + "/application/vnd.citationstyles.csl+json/#{@work[:data].dig('attributes', 'doi')}"}
-                Citeproc
-              %br
-              %a{href: ENV['DATA_URL'] + "/application/x-research-info-systems/#{@work[:data].dig('attributes', 'doi')}"}
-                RIS
+                Citeproc JSON
               %br
               - if @work[:data].dig('attributes', 'media').present?
                 - @work[:data].dig('attributes', 'media').each do |media|
