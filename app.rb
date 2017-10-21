@@ -25,6 +25,7 @@ ENV['RA'] ||= "datacite"
 ENV['TRUSTED_IP'] ||= "172.0.0.0/8"
 ENV['API_URL'] ||= "https://api.datacite.org"
 ENV['DATA_URL'] ||= "https://data.datacite.org"
+ENV['CDN_URL'] ||= "https://assets.datacite.org"
 
 env_vars = %w(SITE_TITLE LOG_LEVEL RA API_URL SECRET_KEY_BASE)
 env_vars.each { |env| fail ArgumentError,  "ENV[#{env}] is not set" unless ENV[env].present? }

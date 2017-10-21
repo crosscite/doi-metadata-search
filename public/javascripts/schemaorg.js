@@ -1,11 +1,10 @@
 $(document).ready(function() {
-  var doi = $("meta[name='DC.identifier']").attr("content")
+  var doi = new URL($("meta[name='DC.identifier']").attr("content"));
   if (doi === undefined) {
     return;
   }
-  doi = doi.substr(16);
   var url = $('#site-title').attr('data-conneg');
-  url += '/application/vnd.schemaorg.ld+json/' + doi;
+  url += '/application/vnd.schemaorg.ld+json/' + doi.pathname;
 
   $.ajax({
     url: url,

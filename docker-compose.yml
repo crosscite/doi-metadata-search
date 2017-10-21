@@ -2,12 +2,11 @@ version: '2'
 
 services:
   search:
-    env_file:
-      - .env
+    env_file: .env
     image: crosscite/doi-metadata-search
     build: .
     ports:
-      - "8000:80"
+      - "8095:80"
     volumes:
       - ./config:/home/app/webapp/config
       - ./lib:/home/app/webapp/lib
