@@ -47,8 +47,8 @@ module Sinatra
 
       case authors.length
       when 0..2 then authors.join(" & ")
-      when 3..25 then authors[0..-2].join(", ") + " & " + authors.last
-      else authors[0..24].join(", ") + " … & " + authors.last
+      when 3..25 then authors[0..-2].join(", ").to_s + " & " + authors.last.to_s
+      else authors[0..24].join(", ").to_s + " … & " + authors.last.to_s
       end
     end
 
