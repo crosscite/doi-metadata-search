@@ -268,7 +268,7 @@ module Sinatra
       else
         id = item.fetch('attributes', {}).fetch("doi", nil).presence || item["id"]
       end
-      id = id.gsub("http://doi.org/","")
+      id = id.gsub("https://doi.org/","")
       "/works/#{id}"
     end
 
