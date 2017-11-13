@@ -59,8 +59,8 @@ describe "Helpers", type: :model, vcr: true do
       expect(response).to eq("10.6084/M9.FIGSHARE.3501629")
     end
 
-    it "validate_doi http" do
-      doi = "http://doi.org/10.6084/M9.FIGSHARE.3501629"
+    it "validate_doi https" do
+      doi = "https://doi.org/10.6084/M9.FIGSHARE.3501629"
       response = subject.validate_doi(doi)
       expect(response).to eq("10.6084/M9.FIGSHARE.3501629")
     end

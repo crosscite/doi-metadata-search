@@ -327,7 +327,7 @@ module Sinatra
     end
 
     def related_link(id)
-      if id.starts_with?("http://doi.org")
+      if id.starts_with?("https://doi.org")
         "?query=#{id[15..-1]}"
       else
         id
