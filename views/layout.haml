@@ -17,6 +17,16 @@
       - attributes = @work.fetch(:data, {}).fetch("attributes", {})
       = work_as_meta_tag(id: id, attributes: attributes)
 
+    %script{:type => 'text/javascript'}
+      :plain
+        var _prum = [['id', '5a1420c253eca68350edbf98'], ['mark', 'firstbyte', (new Date()).getTime()]];
+        (function() {
+          var s = document.getElementsByTagName('script')[0], p = document.createElement('script');
+          p.async = 'async';
+          p.src = '//rum-static.pingdom.net/prum.min.js';
+          s.parentNode.insertBefore(p, s);
+        })();
+
   %body
     .notifications.top-left
     = yield
