@@ -5,4 +5,6 @@
 # Disallow: /
 
 Sitemap: https://search.datacite.org/sitemaps/sitemap.xml.gz
+
+User-agent: *
 Disallow: /ui
