@@ -6,7 +6,7 @@
       %ul
         - @members[:meta]["member-types"].each do |f|
           %li
-            - if @params["member-type"].present?
+            - if @params["member-type"] == f.fetch("id", nil)
               %a{:href => "/members?region=#{params[:region]}&year=#{params[:year]}&query=#{params[:query]}"}
                 %i.fa.fa-check-square-o
             - else

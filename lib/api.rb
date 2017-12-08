@@ -9,8 +9,8 @@ module Sinatra
         url = "#{ENV['API_URL']}/works/#{params[:id]}?include=data-center,resource-type,work-type,member"
       else
         params = { id: params.fetch(:id, nil),
-                   offset: params.fetch(:offset, 0),
-                   rows: params.fetch(:rows, 25),
+                   'page[number]': params.fetch('page[number]', 1),
+                   'page[size]': params.fetch('page[size]', 25),
                    sort: params.fetch(:sort, nil),
                    query: params.fetch(:query, nil),
                    year: params.fetch('year', nil),
@@ -38,8 +38,8 @@ module Sinatra
         url = "#{ENV['API_URL']}/people/" + params.fetch(:id)
       else
         params = { id: params.fetch(:id, nil),
-                   offset: params.fetch(:offset, 0),
-                   rows: params.fetch(:rows, 25),
+                   'page[number]': params.fetch('page[number]', 1),
+                   'page[size]': params.fetch('page[size]', 25),
                    query: params.fetch(:query, nil) }.compact
         url = "#{ENV['API_URL']}/people?" + URI.encode_www_form(params)
       end
@@ -56,8 +56,8 @@ module Sinatra
       else
         params = { id: params.fetch(:id, nil),
                    ids: params.fetch(:ids, nil),
-                   offset: params.fetch(:offset, 0),
-                   rows: params.fetch(:rows, 25),
+                   'page[number]': params.fetch('page[number]', 1),
+                   'page[size]': params.fetch('page[size]', 25),
                    query: params.fetch(:query, nil),
                    year: params.fetch(:year, nil),
                    include: 'member',
