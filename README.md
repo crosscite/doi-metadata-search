@@ -1,6 +1,6 @@
 # DOI Metadata Search
 
-[![Build Status](https://travis-ci.org/crosscite/doi-metadata-search.svg)](https://travis-ci.org/crosscite/doi-metadata-search) [![Code Climate](https://codeclimate.com/github/crosscite/doi-metadata-search/badges/gpa.svg)](https://codeclimate.com/github/crosscite/doi-metadata-search) [![Test Coverage](https://codeclimate.com/github/crosscite/doi-metadata-search/badges/coverage.svg)](https://codeclimate.com/github/crosscite/doi-metadata-search/coverage)
+[![Build Status](https://travis-ci.org/crosscite/doi-metadata-search.svg)](https://travis-ci.org/crosscite/doi-metadata-search)  [![Maintainability](https://api.codeclimate.com/v1/badges/69aca8f548125bd813f3/maintainability)](https://codeclimate.com/github/crosscite/doi-metadata-search/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/69aca8f548125bd813f3/test_coverage)](https://codeclimate.com/github/crosscite/doi-metadata-search/test_coverage)
 
 An online tool for searching for works in the CrossRef or DataCite metadata
 catalogue. Also allows users to find their works and add them to their ORCID profile.
