@@ -17,21 +17,21 @@ http_interactions:
       message: ''
     headers:
       Access-Control-Allow-Headers:
-      - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
+      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
       Access-Control-Allow-Methods:
-      - GET, POST, OPTIONS
+      - GET, POST, PATCH, PUT, DELETE, OPTIONS
       Access-Control-Allow-Origin:
       - "*"
-      Access-Control-Max-Age:
-      - '1728000'
+      Access-Control-Expose-Headers:
+      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
       Cache-Control:
       - max-age=0, private, must-revalidate
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Date:
-      - Sun, 25 Jun 2017 11:03:39 GMT
+      - Fri, 08 Dec 2017 22:22:23 GMT
       Etag:
-      - W/"239915b615b3aa4c057fae4c84d64b94"
+      - W/"29098efb63dad41ccb502dee33a2ecf7"
       Server:
       - openresty/1.11.2.2
       Status:
@@ -39,45 +39,41 @@ http_interactions:
       Vary:
       - Accept-Encoding
       Via:
-      - kong/0.10.2
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
+      - kong/0.10.3
+      X-Anonymous-Consumer:
+      - 'true'
       X-Kong-Proxy-Latency:
       - '0'
       X-Kong-Upstream-Latency:
-      - '18'
+      - '19'
       X-Powered-By:
-      - Phusion Passenger 5.1.5
+      - Phusion Passenger 5.1.12
       X-Request-Id:
-      - 5885565b-cba7-4658-bf67-91ac2968b79c
+      - c27cd540-38d6-4f00-b230-b0eb35154ea8
       X-Runtime:
-      - '0.016772'
-      X-Xss-Protection:
-      - 1; mode=block
+      - '0.017820'
       Content-Length:
-      - '1572'
+      - '1590'
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: '{"data":[{"id":"tib","type":"members","attributes":{"title":"German
-        National Library of Science and Technology","description":"\u003cp\u003eThe
-        TIB is the German National Library for all areas of engineering as well as
-        architecture, chemistry, information technology, mathematics and physics.
-        We are the world\u0026#39;s largest specialised library for science and technology
-        and are part of the German research infrastructure. Our function is the comprehensive
-        procurement and archival storage of technical scientific literature from all
-        over the world. TIB was the first DOI registration agency for primary data
-        worldwide. We have been providing DOI registration services since 2005 and
-        we now work directly with over 40 data centres. TIB is one of the founding
-        members of DataCite and is currently the Business Office. We provide DOI registration
+        National Library of Science and Technology","description":"The TIB is the
+        German National Library for all areas of engineering as well as architecture,
+        chemistry, information technology, mathematics and physics. We are the world''s
+        largest specialised library for science and technology and are part of the
+        German research infrastructure. Our function is the comprehensive procurement
+        and archival storage of technical scientific literature from all over the
+        world. TIB was the first DOI registration agency for primary data worldwide.
+        We have been providing DOI registration services since 2005 and we now work
+        directly with over 40 data centres. TIB is one of the founding members of
+        DataCite and is currently the Business Office. We provide DOI registration
         services for all German data centres in the fields of engineering, architecture,
         chemistry, information technology, mathematics and physics. Our current focus
-        is on providing DOI names for primary data and grey literature.\u003c/p\u003e\n","member-type":"allocating","region":"EMEA","country":"Germany","year":2009,"logo-url":"https://assets.test.datacite.org/images/members/tib.png","email":"doi-info@tib.eu","website":"
-        http://www.tib.eu","phone":"+49 511 762 14226","updated":"2016-08-01T11:13:04.000Z"}}],"meta":{"total":1,"member-types":[{"id":"allocating","title":"Allocating","count":1}],"regions":[{"id":"emea","title":"Europe,
+        is on providing DOI names for primary data and grey literature.\n","member-type":"allocating","region":"EMEA","country":"Germany","year":2009,"logo-url":"https://assets.test.datacite.org/images/members/tib.png","email":"doi-info@tib.eu","website":"
+        http://www.tib.eu","phone":"+49 511 762 14226","created":"2016-02-15T16:27:11Z","updated":"2016-08-01T11:13:04Z"}}],"meta":{"total":1,"total-pages":1,"page":1,"member-types":[{"id":"allocating","title":"Allocating","count":1}],"regions":[{"id":"emea","title":"Europe,
         Middle East and Africa","count":1}],"years":[{"id":"2009","title":"2009","count":1}]}}'
     http_version: 
-  recorded_at: Sun, 25 Jun 2017 11:03:39 GMT
+  recorded_at: Fri, 08 Dec 2017 22:22:26 GMT
 recorded_with: VCR 2.9.3

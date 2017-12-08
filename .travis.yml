@@ -24,7 +24,7 @@ script:
   - bundle exec rspec spec
   - bundle exec codeclimate-test-reporter
 
-after_script:
+after_success:
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
   - export REPO=crosscite/doi-metadata-search;
   - if [ "${TRAVIS_TAG?}" ]; then

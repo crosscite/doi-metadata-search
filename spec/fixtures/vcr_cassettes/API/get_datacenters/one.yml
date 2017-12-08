@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/data-centers?id=CERN.ZENODO&include=member,registration-agency&offset=0&registration-agency-id=datacite&rows=25
+    uri: https://api.test.datacite.org/data-centers/CERN.ZENODO?include=member
     body:
       encoding: US-ASCII
       string: ''
@@ -17,21 +17,21 @@ http_interactions:
       message: ''
     headers:
       Access-Control-Allow-Headers:
-      - Content-Type,Accept,Accept-Encoding,Origin,User-Agent,Cache-Control,Keep-Alive
+      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
       Access-Control-Allow-Methods:
-      - GET, POST, OPTIONS
+      - GET, POST, PATCH, PUT, DELETE, OPTIONS
       Access-Control-Allow-Origin:
       - "*"
-      Access-Control-Max-Age:
-      - '1728000'
+      Access-Control-Expose-Headers:
+      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
       Cache-Control:
       - max-age=0, private, must-revalidate
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Date:
-      - Sun, 25 Jun 2017 11:03:31 GMT
+      - Fri, 08 Dec 2017 22:22:28 GMT
       Etag:
-      - W/"8cfb0b454d45445e6051ac584c7d7b0f"
+      - W/"0330380481b27513999a030fc3eef900"
       Server:
       - openresty/1.11.2.2
       Status:
@@ -39,77 +39,27 @@ http_interactions:
       Vary:
       - Accept-Encoding
       Via:
-      - kong/0.10.2
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
+      - kong/0.10.3
+      X-Anonymous-Consumer:
+      - 'true'
       X-Kong-Proxy-Latency:
       - '0'
       X-Kong-Upstream-Latency:
-      - '8'
+      - '9'
       X-Powered-By:
-      - Phusion Passenger 5.1.5
+      - Phusion Passenger 5.1.12
       X-Request-Id:
-      - 1e2c3f7d-dc0c-4c20-86aa-884271d1ef78
+      - aec3704b-b87c-4060-8bea-4a5955736b3c
       X-Runtime:
-      - '0.006914'
-      X-Xss-Protection:
-      - 1; mode=block
+      - '0.008027'
       Content-Length:
-      - '2086'
+      - '1946'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        eyJkYXRhIjp7ImlkIjoiY2Vybi56ZW5vZG8iLCJ0eXBlIjoiZGF0YS1jZW50
-        ZXJzIiwiYXR0cmlidXRlcyI6eyJ0aXRsZSI6IlpFTk9ETyAtIFJlc2VhcmNo
-        LiBTaGFyZWQuIiwib3RoZXItbmFtZXMiOltdLCJwcmVmaXhlcyI6W10sIm1l
-        bWJlci1pZCI6ImNlcm4iLCJ5ZWFyIjoyMDE0LCJjcmVhdGVkIjoiMjAxNC0w
-        OS0yNFQxNDo1NDoyMFoiLCJ1cGRhdGVkIjoiMjAxNC0wOS0yNFQxNDo1NDoy
-        MFoifSwicmVsYXRpb25zaGlwcyI6eyJtZW1iZXIiOnsiZGF0YSI6eyJpZCI6
-        ImNlcm4iLCJ0eXBlIjoibWVtYmVycyJ9fX19LCJpbmNsdWRlZCI6W3siaWQi
-        OiJjZXJuIiwidHlwZSI6Im1lbWJlcnMiLCJhdHRyaWJ1dGVzIjp7InRpdGxl
-        IjoiRXVyb3BlYW4gT3JnYW5pemF0aW9uIGZvciBOdWNsZWFyIFJlc2VhcmNo
-        IiwiZGVzY3JpcHRpb24iOiJcdTAwM2NwXHUwMDNlQ0VSTiwgdGhlIEV1cm9w
-        ZWFuIE9yZ2FuaXphdGlvbiBmb3IgTnVjbGVhciBSZXNlYXJjaCwgaXMgdGhl
-        IHdvcmxkXHUwMDI2IzM5O3MgbGFyZ2VzdCBwYXJ0aWNsZSBwaHlzaWNzIGxh
-        Ym9yYXRvcnkuIEZvdW5kZWQgaW4gMTk1NCBhbmQgYmFzZWQgb24gdGhlIEZy
-        YW5jby1Td2lzcyBib3JkZXIgbmVhciBHZW5ldmEsIGl0IHdhcyBvbmUgb2Yg
-        RXVyb3BlXHUwMDI2IzM5O3MgZmlyc3Qgam9pbnQgdmVudHVyZXMgYW5kIG5v
-        dyBoYXMgMjEgbWVtYmVyIHN0YXRlcyBhbmQgbW9yZSB0aGFuIDUwIGNvb3Bl
-        cmF0aW9uIGFncmVlbWVudHMgYW5kIHNjaWVudGlmaWMgY29udGFjdHMgd2l0
-        aCBvdGhlciBjb3VudHJpZXMuXHUwMDNjL3BcdTAwM2VcblxuXHUwMDNjcFx1
-        MDAzZUF0IENFUk4sIHBoeXNpY2lzdHMgYW5kIGVuZ2luZWVycyBwcm9iZSB0
-        aGUgZnVuZGFtZW50YWwgc3RydWN0dXJlIG9mIHRoZSB1bml2ZXJzZS4gVGhl
-        eSB1c2UgdGhlIHdvcmxkXHUwMDI2IzM5O3MgbGFyZ2VzdCBhbmQgbW9zdCBj
-        b21wbGV4IHNjaWVudGlmaWMgaW5zdHJ1bWVudCwgdGhlIExhcmdlIEhhZHJv
-        biBDb2xsaWRlciAoTEhDKSwgdG8gc3R1ZHkgdGhlIGJhc2ljIGNvbnN0aXR1
-        ZW50cyBvZiBtYXR0ZXIuIFRoZSByZXN1bHRzIG9mIHRoZWlyIGV4cGVyaW1l
-        bnRhbCBhbmQgdGhlb3JldGljYWwgd29yayBhcmUgcHVibGljbHkgYXZhaWxh
-        YmxlIGZvbGxvd2luZyBDRVJOXHUwMDI2IzM5O3MgT3BlbiBBY2Nlc3MgUG9s
-        aWN5Llx1MDAzYy9wXHUwMDNlXG5cblx1MDAzY3BcdTAwM2VDRVJOIHNlcnZp
-        Y2VzIGltcGxlbWVudGluZyBET0lzIGFyZSBpdHMgaW5zdGl0dXRpb25hbCBy
-        ZXBvc2l0b3J5IChDRFMsIENFUk4gRG9jdW1lbnQgU2VydmVyKTsgSU5TUElS
-        RS1IRVAsIGEgZGlnaXRhbCBsaWJyYXJ5IGZvciB0aGUgZmllbGQgb2YgSGln
-        aC1FbmVyZ3kgUGh5c2ljcyBydW4gaW4gY29sbGFib3JhdGlvbiB3aXRoIG90
-        aGVyIGluc3RpdHV0aW9uczsgb3IgdGhlIENFUk4gT3BlbiBEYXRhIFBvcnRh
-        bCwgd2hpY2ggcHJvdmlkZXMgaGlnaCBsZXZlbCBhbmQgYW5hbHl6YWJsZSBk
-        YXRhIGFuZCBzb2Z0d2FyZSBmcm9tIHRoZSBMSEMgZXhwZXJpbWVudHMuXHUw
-        MDNjL3BcdTAwM2VcblxuXHUwMDNjcFx1MDAzZUZ1cnRoZXJtb3JlLCBDRVJO
-        IGlzIGFsc28gcHJvdmlkaW5nIERPSXMgdG8gWkVOT0RPLCBhIG11bHRpZGlz
-        Y2lwbGluYXJ5IGRhdGEgcmVwb3NpdG9yeSBmb3IgdGhlIOKAnGxvbmcgdGFp
-        bOKAnSBvZiByZXNlYXJjaCByZXN1bHRzLiBJdCBhbGxvd3MgcmVzZWFyY2hl
-        cnMgdG8gc2hhcmUgYW5kIHByZXNlcnZlIHRoZWlyIG91dHB1dCBpbmRlcGVu
-        ZGVudCBvZiBzaXplLCB0eXBlIG9mIG1hdGVyaWFsIG9yIGRpc2NpcGxpbmUu
-        XHUwMDNjL3BcdTAwM2VcbiIsIm1lbWJlci10eXBlIjoiYWxsb2NhdGluZyIs
-        InJlZ2lvbiI6IkVNRUEiLCJjb3VudHJ5IjoiU3dpdHplcmxhbmQiLCJ5ZWFy
-        IjoyMDE0LCJsb2dvLXVybCI6Imh0dHBzOi8vYXNzZXRzLnRlc3QuZGF0YWNp
-        dGUub3JnL2ltYWdlcy9tZW1iZXJzL2Nlcm4ucG5nIiwiZW1haWwiOiJkb2kt
-        c2VydmljZUBjZXJuLmNoIiwid2Vic2l0ZSI6Imh0dHA6Ly9kb2kud2ViLmNl
-        cm4uY2gvIiwicGhvbmUiOm51bGwsInVwZGF0ZWQiOiIyMDE2LTA3LTMxVDIx
-        OjMwOjI1LjAwMFoifX1dfQ==
+        eyJkYXRhIjp7ImlkIjoiY2Vybi56ZW5vZG8iLCJ0eXBlIjoiZGF0YS1jZW50ZXJzIiwiYXR0cmlidXRlcyI6eyJ0aXRsZSI6Ilplbm9kbyIsIm90aGVyLW5hbWVzIjpbXSwicHJlZml4ZXMiOltdLCJtZW1iZXItaWQiOiJjZXJuIiwieWVhciI6MjAxNCwiY3JlYXRlZCI6IjIwMTQtMDktMjRUMTQ6NTQ6MjBaIiwidXBkYXRlZCI6IjIwMTctMTItMDJUMjI6NDk6MDdaIn0sInJlbGF0aW9uc2hpcHMiOnsibWVtYmVyIjp7ImRhdGEiOnsiaWQiOiJjZXJuIiwidHlwZSI6Im1lbWJlcnMifX19fSwiaW5jbHVkZWQiOlt7ImlkIjoiY2VybiIsInR5cGUiOiJtZW1iZXJzIiwiYXR0cmlidXRlcyI6eyJ0aXRsZSI6IkV1cm9wZWFuIE9yZ2FuaXphdGlvbiBmb3IgTnVjbGVhciBSZXNlYXJjaCIsImRlc2NyaXB0aW9uIjoiQ0VSTiwgdGhlIEV1cm9wZWFuIE9yZ2FuaXphdGlvbiBmb3IgTnVjbGVhciBSZXNlYXJjaCwgaXMgdGhlIHdvcmxkJ3MgbGFyZ2VzdCBwYXJ0aWNsZSBwaHlzaWNzIGxhYm9yYXRvcnkuIEZvdW5kZWQgaW4gMTk1NCBhbmQgYmFzZWQgb24gdGhlIEZyYW5jby1Td2lzcyBib3JkZXIgbmVhciBHZW5ldmEsIGl0IHdhcyBvbmUgb2YgRXVyb3BlJ3MgZmlyc3Qgam9pbnQgdmVudHVyZXMgYW5kIG5vdyBoYXMgMjEgbWVtYmVyIHN0YXRlcyBhbmQgbW9yZSB0aGFuIDUwIGNvb3BlcmF0aW9uIGFncmVlbWVudHMgYW5kIHNjaWVudGlmaWMgY29udGFjdHMgd2l0aCBvdGhlciBjb3VudHJpZXMuXG5cbkF0IENFUk4sIHBoeXNpY2lzdHMgYW5kIGVuZ2luZWVycyBwcm9iZSB0aGUgZnVuZGFtZW50YWwgc3RydWN0dXJlIG9mIHRoZSB1bml2ZXJzZS4gVGhleSB1c2UgdGhlIHdvcmxkJ3MgbGFyZ2VzdCBhbmQgbW9zdCBjb21wbGV4IHNjaWVudGlmaWMgaW5zdHJ1bWVudCwgdGhlIExhcmdlIEhhZHJvbiBDb2xsaWRlciAoTEhDKSwgdG8gc3R1ZHkgdGhlIGJhc2ljIGNvbnN0aXR1ZW50cyBvZiBtYXR0ZXIuIFRoZSByZXN1bHRzIG9mIHRoZWlyIGV4cGVyaW1lbnRhbCBhbmQgdGhlb3JldGljYWwgd29yayBhcmUgcHVibGljbHkgYXZhaWxhYmxlIGZvbGxvd2luZyBDRVJOJ3MgT3BlbiBBY2Nlc3MgUG9saWN5LlxuXG5DRVJOIHNlcnZpY2VzIGltcGxlbWVudGluZyBET0lzIGFyZSBpdHMgaW5zdGl0dXRpb25hbCByZXBvc2l0b3J5IChDRFMsIENFUk4gRG9jdW1lbnQgU2VydmVyKTsgSU5TUElSRS1IRVAsIGEgZGlnaXRhbCBsaWJyYXJ5IGZvciB0aGUgZmllbGQgb2YgSGlnaC1FbmVyZ3kgUGh5c2ljcyBydW4gaW4gY29sbGFib3JhdGlvbiB3aXRoIG90aGVyIGluc3RpdHV0aW9uczsgb3IgdGhlIENFUk4gT3BlbiBEYXRhIFBvcnRhbCwgd2hpY2ggcHJvdmlkZXMgaGlnaCBsZXZlbCBhbmQgYW5hbHl6YWJsZSBkYXRhIGFuZCBzb2Z0d2FyZSBmcm9tIHRoZSBMSEMgZXhwZXJpbWVudHMuXG5cbkZ1cnRoZXJtb3JlLCBDRVJOIGlzIGFsc28gcHJvdmlkaW5nIERPSXMgdG8gWkVOT0RPLCBhIG11bHRpZGlzY2lwbGluYXJ5IGRhdGEgcmVwb3NpdG9yeSBmb3IgdGhlIOKAnGxvbmcgdGFpbOKAnSBvZiByZXNlYXJjaCByZXN1bHRzLiBJdCBhbGxvd3MgcmVzZWFyY2hlcnMgdG8gc2hhcmUgYW5kIHByZXNlcnZlIHRoZWlyIG91dHB1dCBpbmRlcGVuZGVudCBvZiBzaXplLCB0eXBlIG9mIG1hdGVyaWFsIG9yIGRpc2NpcGxpbmUuXG4iLCJtZW1iZXItdHlwZSI6ImFsbG9jYXRpbmciLCJyZWdpb24iOiJFTUVBIiwiY291bnRyeSI6IlN3aXR6ZXJsYW5kIiwieWVhciI6MjAxNCwibG9nby11cmwiOiJodHRwczovL2Fzc2V0cy5kYXRhY2l0ZS5vcmcvaW1hZ2VzL21lbWJlcnMvY2Vybi5wbmciLCJlbWFpbCI6ImRvaS1zZXJ2aWNlQGNlcm4uY2giLCJ3ZWJzaXRlIjoiaHR0cDovL2RvaS53ZWIuY2Vybi5jaC8iLCJwaG9uZSI6bnVsbCwiY3JlYXRlZCI6IjIwMTYtMDItMTVUMTY6MTU6NTZaIiwidXBkYXRlZCI6IjIwMTYtMDctMzFUMjE6MzA6MjVaIn19XX0=
     http_version: 
-  recorded_at: Sun, 25 Jun 2017 11:03:32 GMT
+  recorded_at: Fri, 08 Dec 2017 22:22:31 GMT
 recorded_with: VCR 2.9.3

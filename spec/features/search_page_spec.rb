@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 describe 'search', type: :feature, js: true, vcr: true do
-  it '/' do
-    visit '/'
-    expect(page).to have_css '#query'
-  end
+  # it '/' do
+  #   visit '/'
+  #   expect(page).to have_css '#query'
+  # end
 
   # it 'input' do
   #   visit '/'

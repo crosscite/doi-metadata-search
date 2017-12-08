@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://profiles/api/users/0000-0001-6528-2027/claims?dois=10.5438/53NZ-N4G7,10.5438/G59A-FBT2
+    uri: https://profiles.datacite.org/api/users/0000-0001-5489-3594/claims?dois=10.5438/53NZ-N4G7,10.5438/G59A-FBT2
     body:
       encoding: US-ASCII
       string: ''
@@ -12,51 +12,46 @@ http_interactions:
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
       Authorization:
-      - Token token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDEtNjUyOC0yMDI3IiwibmFtZSI6Ik1hcnRpbiBGZW5uZXIiLCJlbWFpbCI6bnVsbCwicm9sZSI6ImFkbWluIiwiaWF0IjoxNDk4MzgzMTc3LCJleHAiOjE0OTk1OTI3Nzd9.qgx4pkoQ_g56xqXIWCHtA94b6WnVQO9J0AZyAPaisLK_eEAxuIl4NavVTagIGyFX0tg06wwmvOQfnWTfYMDKT9Wz-IEoqnMG39cYRRXPLFdWQHhm84TxFXMFN-cbPkiFkHXXEegK3E2h4iWMNtZlLsGdmsYgWGBWZ8Zd8dANMekl7V0XWrEw80tUFfZp3XuGl7J3r7jifnG-z0uj_B1mAkq6wVF3eFRA7T5t-D5CGQ_LT04KJFUd0qQkaQAkpMcI8AyHV_N5BsS6O53XHqUpE4MkgPyhTEgxblOJXfBGNdNBBdnTIIInl0OKsWcigoYuHUVhasK_GolLN_p-fz4UFw
+      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDEtNTQ4OS0zNTk0IiwibmFtZSI6Ikpvc2lhaCBDYXJiZXJyeSIsInJvbGVfaWQiOiJzdGFmZl9hZG1pbiIsImlhdCI6MTUxMjc3Mzk1MCwiZXhwIjoxNTEyNzczOTgwfQ.R7bW-wAB41XRsF4QBWx9yfe9sKX7FJi_BMp-O5m5AQCishofrMt_SJz7bkroYnElRkhB22hOO7gRtjxITkN1KKVQdunZzeZNWlYuX6VE6nJMVB_0999iCgHfY2vx8imYIJmMMbSM7wHcEjyF6FnFrcN7nJWPILEt17gQfiwIw83sbjAbNvP-0e4-lYxqNSYb5gFJf66M0H35PNce0_FDP0qQlnLwvpenGT0iPnNXMdTwOPocWJxoiG-nOgO0wZCTn-U_F0tTj8JB1mc5Bf8I1NRN5hCnN_KxOuceoZPxobjNjK_DltVuNYtjZ_TXrNJhaYPODsyyfHgtOgEkrhnDeA
   response:
     status:
-      code: 200
+      code: 404
       message: ''
     headers:
-      Content-Type:
-      - application/json; charset=utf-8
-      Connection:
-      - keep-alive
-      Status:
-      - 200 OK
-      Cache-Control:
-      - max-age=0, private, must-revalidate
+      Access-Control-Allow-Methods:
+      - GET, POST, PATCH, PUT, DELETE, OPTIONS
       Access-Control-Allow-Origin:
       - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 08 Dec 2017 22:59:05 GMT
+      Server:
+      - openresty/1.11.2.2
+      Status:
+      - 404 Not Found
       Vary:
       - Accept-Encoding
-      Access-Control-Max-Age:
-      - '1728000'
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Request-Id:
-      - ce7e4732-c686-4c17-aebb-91f48c936a0e
-      Access-Control-Allow-Headers:
-      - Origin, Content-Type, Accept, Authorization, Token
-      Access-Control-Allow-Methods:
-      - POST, GET, PUT, DELETE, OPTIONS
-      Etag:
-      - W/"52eb9a1a0a6665991f9a6d68e0fddb1c"
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Runtime:
-      - '0.173692'
       X-Content-Type-Options:
       - nosniff
-      Date:
-      - Sun, 25 Jun 2017 17:38:46 GMT
+      X-Frame-Options:
+      - SAMEORIGIN
       X-Powered-By:
-      - Phusion Passenger 5.1.5
-      Server:
-      - nginx/1.10.3 + Phusion Passenger 5.1.5
+      - Phusion Passenger 5.1.12
+      X-Request-Id:
+      - 73aaf1ad-3cb3-4de3-9b37-d76111039198
+      X-Runtime:
+      - '0.007363'
+      X-Xss-Protection:
+      - 1; mode=block
+      Connection:
+      - keep-alive
     body:
       encoding: UTF-8
-      string: '{"data":[{"id":"df123bae-0d60-4713-8b9b-c259e34f4514","type":"claims","attributes":{"orcid":"0000-0001-6528-2027","doi":"10.5438/53NZ-N4G7","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2017-06-25T14:01:19Z"}},{"id":"936cffc5-9651-45ea-a917-e588c2fd4857","type":"claims","attributes":{"orcid":"0000-0001-6528-2027","doi":"10.5438/G59A-FBT2","source-id":"orcid_search","state":"done","claim-action":"create","claimed-at":"2017-06-25T14:01:18Z"}}],"links":{},"meta":{"total":2,"total-pages":1,"page":1}}'
+      string: '{"errors":[{"status":"404","title":"The page you are looking for doesn''t
+        exist."}]}'
     http_version: 
-  recorded_at: Sun, 25 Jun 2017 17:38:46 GMT
+  recorded_at: Fri, 08 Dec 2017 22:59:11 GMT
 recorded_with: VCR 2.9.3
