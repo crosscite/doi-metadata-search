@@ -25,7 +25,6 @@ script:
   - bundle exec codeclimate-test-reporter
 
 after_success:
-  - set -e
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
   - REPO=crosscite/doi-metadata-search;
   - AUTO_DEPLOY=false;
@@ -52,7 +51,7 @@ after_success:
       export GIT_SHA=$(git rev-parse --short HEAD);
       export GIT_TAG=$(git describe --tags $(git rev-list --tags --max-count=1));
       git clone "https://${TRAVIS_SECURE_TOKEN}@github.com/datacite/${TERRAFORM_REPO}.git";
-      ./dockerize -template vendor/docker/_doi-metadata-search.auto.tfvars.tmpl:${TERRAFORM_REPO}/doi-metadata-search.auto.tfvars;
+      ./dockerize -template vendor/docker/_doi-metadata-search.auto.tfvars.tmpl:${TERRAFORM_REPO}/_doi-metadata-search.auto.tfvars;
       cd ${TERRAFORM_REPO};
       git remote;
       git config user.email ${DOCKER_EMAIL};
