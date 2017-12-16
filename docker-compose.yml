@@ -1,7 +1,7 @@
 version: '2'
 
 services:
-  search:
+  web:
     env_file: .env
     image: crosscite/doi-metadata-search
     build: .
