@@ -1,8 +1,9 @@
 $(document).ready(function() {
-  var doi = new URL($("meta[name='DC.identifier']").attr("content"));
-  if (doi === undefined) {
+  var identifier = $("meta[name='DC.identifier']").attr("content");
+  if (identifier === undefined) {
     return;
   }
+  var doi = new URL(identifier);
   var url = $('#site-title').attr('data-conneg');
   url += '/application/vnd.schemaorg.ld+json/' + doi.pathname;
 

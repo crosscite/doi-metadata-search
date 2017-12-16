@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/works?include=data-center,resource-type,work-type,member&page%5Bnumber%5D=1&page%5Bsize%5D=25&query=martin%20fenner
+    uri: https://api.test.datacite.org/works?include=data-center,resource-type,member&page%5Bnumber%5D=1&page%5Bsize%5D=25&query=martin%20fenner
     body:
       encoding: US-ASCII
       string: ''
@@ -29,9 +29,9 @@ http_interactions:
       Content-Type:
       - application/vnd.api+json; charset=utf-8
       Date:
-      - Fri, 08 Dec 2017 22:22:20 GMT
+      - Sat, 16 Dec 2017 15:42:42 GMT
       Etag:
-      - W/"37639387b41ebc467da8f86905e706e9"
+      - W/"e0cbe3b0ab47a03aa11166f34296a352"
       Server:
       - openresty/1.11.2.2
       Status:
@@ -42,30 +42,24 @@ http_interactions:
       - kong/0.10.3
       X-Anonymous-Consumer:
       - 'true'
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
       X-Kong-Proxy-Latency:
       - '0'
       X-Kong-Upstream-Latency:
-      - '41'
+      - '559'
       X-Powered-By:
       - Phusion Passenger 5.1.12
       X-Request-Id:
-      - fcbc0cb0-3ab8-4bc2-9ea6-6b3d0d40c763
+      - fbe5b76f-bfd4-41e3-9070-ad09c0fdbaca
       X-Runtime:
-      - '0.039369'
-      X-Xss-Protection:
-      - 1; mode=block
+      - '0.556453'
       Content-Length:
-      - '2002'
+      - '1952'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        eyJkYXRhIjpbXSwibWV0YSI6eyJyZXNvdXJjZS10eXBlcyI6W10sInllYXJzIjpbXSwicmVnaXN0ZXJlZCI6W10sImRhdGEtY2VudGVycyI6W3siaWQiOiJ0aWIuZ29vYmkiLCJ0aXRsZSI6IihUSUItaW50ZXJuKSBHcmFmaXNjaGUgRWluemVsYmzDpHR0ZXIgZGVyIFNhbW1sdW5nIEhhdXB0IChHRVNBSCkiLCJjb3VudCI6MH0seyJpZCI6ImV0aHoudWJhc29qcyIsInRpdGxlIjoiMDI3LjcgLSBaZWl0c2NocmlmdCBmw7xyIEJpYmxpb3RoZWtza3VsdHVyIiwiY291bnQiOjB9LHsiaWQiOiJkZWxmdC5kYXRhY2VudCIsInRpdGxlIjoiM1RVIERhdGFjZW50cnVtIiwiY291bnQiOjB9LHsiaWQiOiJkZWxmdC5kYXRhNHR1IiwidGl0bGUiOiI0VFUuQ2VudHJlIGZvciBSZXNlYXJjaCBEYXRhIiwiY291bnQiOjB9LHsiaWQiOiJkay5hYXUiLCJ0aXRsZSI6IkFhbGJvcmcgVW5pdmVyc2l0eSBMaWJyYXJ5IiwiY291bnQiOjB9LHsiaWQiOiJjZGwuYWFzIiwidGl0bGUiOiJBQVMiLCJjb3VudCI6MH0seyJpZCI6ImRhdGFjaXRlLmFiYyIsInRpdGxlIjoiQUJDIiwiY291bnQiOjB9LHsiaWQiOiJibC5hYmVydGF5IiwidGl0bGUiOiJBYmVydGF5IFVuaXZlcnNpdHkiLCJjb3VudCI6MH0seyJpZCI6Im10YWtpay5hYnBhIiwidGl0bGUiOiJBY3RhIEJpb2xvZ2ljYSBQbGFudGFydW0gQWdyaWVuc2lzIiwiY291bnQiOjB9LHsiaWQiOiJtdGFraWsucmVncnVydW0iLCJ0aXRsZSI6IkFjdGEgUmVnaW9uaXMgUnVydW0iLCJjb3VudCI6MH0seyJpZCI6InRpYi5hZGFtYSIsInRpdGxlIjoiQURBTUEgV2ViIFMuTC4iLCJjb3VudCI6MH0seyJpZCI6ImNkbC5hZGFwdGl2ZSIsInRpdGxlIjoiQWRhcHRpdmUgQmlvdGVjaG5vbG9naWVzIiwiY291bnQiOjB9LHsiaWQiOiJpbmlzdC5hZXJpcyIsInRpdGxlIjoiQUVSSVMgLSBQw7RsZSBmcmFuw6dhaXMgZGUgZG9ubsOpZXMgZXQgc2VydmljZXMgcG91ciBsJ2F0bW9zcGjDqHJlIiwiY291bnQiOjB9LHsiaWQiOiJjcnVpLmFwaHJjIiwidGl0bGUiOiJBZnJpY2FuIFBvcHVsYXRpb24gYW5kIEhlYWx0aCBSZXNlYXJjaCBDZW50cmUiLCJjb3VudCI6MH0seyJpZCI6ImFuZHMuY2VudHJlODgiLCJ0aXRsZSI6IkFncmljdWx0dXJlIFZpY3RvcmlhIiwiY291bnQiOjB9LHsiaWQiOiJ0aWIuY2JhIiwidGl0bGUiOiJBa2FkZW1pZSBkZXIgYmlsZGVuZGVuIEvDvG5zdGUgd2llbiIsImNvdW50IjowfSx7ImlkIjoidGliLmFrYmlsZCIsInRpdGxlIjoiQWthZGVtaWUgZGVyIGJpbGRlbmRlbiBLw7xuc3RlIFdpZW4iLCJjb3VudCI6MH0seyJpZCI6InpibWVkLmFwcyIsInRpdGxlIjoiQWt0aW9uc2LDvG5kbmlzIFBhdGllbnRlbnNpY2hlcmhlaXQgZS5WLiIsImNvdW50IjowfSx7ImlkIjoiZ2VzaXMuaGlpZyIsInRpdGxlIjoiQWxleGFuZGVyIHZvbiBIdW1ib2xkdCBJbnN0aXR1dCBmw7xyIEludGVybmV0IHVuZCBHZXNlbGxzY2hhZnQiLCJjb3VudCI6MH0seyJpZCI6InRpYi5hd2kiLCJ0aXRsZSI6IkFsZnJlZC1XZWdlbmVyLUluc3RpdHV0IiwiY291bnQiOjB9LHsiaWQiOiJtdGFraWsuYWxrbnllbHYiLCJ0aXRsZSI6IkFsa2FsbWF6b3R0IE55ZWx2dHVkb23DoW55IiwiY291bnQiOjB9LHsiaWQiOiJtdGFraWsuYWxrcHNpY2giLCJ0aXRsZSI6IkFsa2FsbWF6b3R0IFBzemljaG9sw7NnaWEiLCJjb3VudCI6MH0seyJpZCI6InB1cmR1ZS5hY3Nlc3MiLCJ0aXRsZSI6IkFsbGlhbmNlIGZvciBDcm9wcywgU29pbHMsIGFuZCBFbnZpcm9ubWVudGFsIFNjaWVuY2UgU29jaWV0aWVzIiwiY291bnQiOjB9LHsiaWQiOiJjZGwuYWNzZXNzIiwidGl0bGUiOiJBbGxpYW5jZSBmb3IgQ3JvcHMsIFNvaWxzLCBhbmQgRW52aXJvbm1lbnRhbCBTY2llbmNlIFNvY2lldGllcyIsImNvdW50IjowfSx7ImlkIjoiZXRoei5ib3BhbHQiLCJ0aXRsZSI6IkFMVCBQcm9jZWVkaW5ncyAvIFVCIEJlcm4iLCJjb3VudCI6MH1dLCJzY2hlbWEtdmVyc2lvbnMiOltdLCJ0b3RhbCI6MCwidG90YWwtcGFnZXMiOjAsInBhZ2UiOjF9fQ==
+        eyJkYXRhIjpbXSwibWV0YSI6eyJyZXNvdXJjZS10eXBlcyI6W10sInllYXJzIjpbXSwicmVnaXN0ZXJlZCI6W10sImRhdGEtY2VudGVycyI6W3siaWQiOiJldGh6LnViYXNvanMiLCJ0aXRsZSI6IjAyNy43IC0gWmVpdHNjaHJpZnQgZsO8ciBCaWJsaW90aGVrc2t1bHR1ciIsImNvdW50IjowfSx7ImlkIjoiZGVsZnQuZGF0YWNlbnQiLCJ0aXRsZSI6IjNUVSBEYXRhY2VudHJ1bSIsImNvdW50IjowfSx7ImlkIjoiZGVsZnQuZGF0YTR0dSIsInRpdGxlIjoiNFRVLkNlbnRyZSBmb3IgUmVzZWFyY2ggRGF0YSIsImNvdW50IjowfSx7ImlkIjoiZGsuYWF1IiwidGl0bGUiOiJBYWxib3JnIFVuaXZlcnNpdHkgTGlicmFyeSIsImNvdW50IjowfSx7ImlkIjoiY2RsLmFhcyIsInRpdGxlIjoiQUFTIiwiY291bnQiOjB9LHsiaWQiOiJkYXRhY2l0ZS5hYmMiLCJ0aXRsZSI6IkFCQyIsImNvdW50IjowfSx7ImlkIjoiYmwuYWJlcnRheSIsInRpdGxlIjoiQWJlcnRheSBVbml2ZXJzaXR5IiwiY291bnQiOjB9LHsiaWQiOiJtdGFraWsuYWJwYSIsInRpdGxlIjoiQWN0YSBCaW9sb2dpY2EgUGxhbnRhcnVtIEFncmllbnNpcyIsImNvdW50IjowfSx7ImlkIjoibXRha2lrLnJlZ3J1cnVtIiwidGl0bGUiOiJBY3RhIFJlZ2lvbmlzIFJ1cnVtIiwiY291bnQiOjB9LHsiaWQiOiJ0aWIuYWRhbWEiLCJ0aXRsZSI6IkFEQU1BIFdlYiBTLkwuIiwiY291bnQiOjB9LHsiaWQiOiJjZGwuYWRhcHRpdmUiLCJ0aXRsZSI6IkFkYXB0aXZlIEJpb3RlY2hub2xvZ2llcyIsImNvdW50IjowfSx7ImlkIjoiaW5pc3QuYWVyaXMiLCJ0aXRsZSI6IkFFUklTIC0gUMO0bGUgZnJhbsOnYWlzIGRlIGRvbm7DqWVzIGV0IHNlcnZpY2VzIHBvdXIgbCdhdG1vc3Bow6hyZSIsImNvdW50IjowfSx7ImlkIjoiY3J1aS5hcGhyYyIsInRpdGxlIjoiQWZyaWNhbiBQb3B1bGF0aW9uIGFuZCBIZWFsdGggUmVzZWFyY2ggQ2VudHJlIiwiY291bnQiOjB9LHsiaWQiOiJhbmRzLmNlbnRyZTg4IiwidGl0bGUiOiJBZ3JpY3VsdHVyZSBWaWN0b3JpYSIsImNvdW50IjowfSx7ImlkIjoidGliLmNiYSIsInRpdGxlIjoiQWthZGVtaWUgZGVyIGJpbGRlbmRlbiBLw7xuc3RlIHdpZW4iLCJjb3VudCI6MH0seyJpZCI6InRpYi5ha2JpbGQiLCJ0aXRsZSI6IkFrYWRlbWllIGRlciBiaWxkZW5kZW4gS8O8bnN0ZSBXaWVuIiwiY291bnQiOjB9LHsiaWQiOiJ6Ym1lZC5hcHMiLCJ0aXRsZSI6IkFrdGlvbnNiw7xuZG5pcyBQYXRpZW50ZW5zaWNoZXJoZWl0IGUuVi4iLCJjb3VudCI6MH0seyJpZCI6Imdlc2lzLmhpaWciLCJ0aXRsZSI6IkFsZXhhbmRlciB2b24gSHVtYm9sZHQgSW5zdGl0dXQgZsO8ciBJbnRlcm5ldCB1bmQgR2VzZWxsc2NoYWZ0IiwiY291bnQiOjB9LHsiaWQiOiJ0aWIuYXdpIiwidGl0bGUiOiJBbGZyZWQtV2VnZW5lci1JbnN0aXR1dCIsImNvdW50IjowfSx7ImlkIjoibXRha2lrLmFsa255ZWx2IiwidGl0bGUiOiJBbGthbG1hem90dCBOeWVsdnR1ZG9tw6FueSIsImNvdW50IjowfSx7ImlkIjoibXRha2lrLmFsa3BzaWNoIiwidGl0bGUiOiJBbGthbG1hem90dCBQc3ppY2hvbMOzZ2lhIiwiY291bnQiOjB9LHsiaWQiOiJwdXJkdWUuYWNzZXNzIiwidGl0bGUiOiJBbGxpYW5jZSBmb3IgQ3JvcHMsIFNvaWxzLCBhbmQgRW52aXJvbm1lbnRhbCBTY2llbmNlIFNvY2lldGllcyIsImNvdW50IjowfSx7ImlkIjoiY2RsLmFjc2VzcyIsInRpdGxlIjoiQWxsaWFuY2UgZm9yIENyb3BzLCBTb2lscywgYW5kIEVudmlyb25tZW50YWwgU2NpZW5jZSBTb2NpZXRpZXMiLCJjb3VudCI6MH0seyJpZCI6ImV0aHouYm9wYWx0IiwidGl0bGUiOiJBTFQgUHJvY2VlZGluZ3MgLyBVQiBCZXJuIiwiY291bnQiOjB9LHsiaWQiOiJldGh6LnV6aC1hbCIsInRpdGxlIjoiYWx0cmVsZXR0ZXJlIiwiY291bnQiOjB9XSwic2NoZW1hLXZlcnNpb25zIjpbXSwidG90YWwiOjAsInRvdGFsLXBhZ2VzIjowLCJwYWdlIjoxfX0=
     http_version: 
-  recorded_at: Fri, 08 Dec 2017 22:22:23 GMT
+  recorded_at: Sat, 16 Dec 2017 15:42:47 GMT
 recorded_with: VCR 2.9.3
