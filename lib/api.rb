@@ -14,6 +14,7 @@ module Sinatra
                    sort: params.fetch(:sort, nil),
                    query: params.fetch(:query, nil),
                    year: params.fetch('year', nil),
+                   registered: params.fetch('registered', nil),
                    include: 'data-center,resource-type,work-type,member',
                    'resource-type-id' => params.fetch('resource-type-id', nil),
                    'relation-type-id' => params.fetch('relation-type-id', nil),

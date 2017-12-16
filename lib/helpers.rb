@@ -212,6 +212,7 @@ module Sinatra
                  "source-id" => options.fetch("source-id", nil),
                  "person-id" => options.fetch("person-id", nil),
                  "year" => options.fetch("year", nil),
+                 "registered" => options.fetch("registered", nil),
                  "sort" => options.fetch("sort", nil) }.compact
 
       if options[:model] == "data-centers"
