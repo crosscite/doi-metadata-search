@@ -20,7 +20,7 @@
     - if attributes["license"].present?
       .license
         %a{:href => attributes["license"]}
-          %img{:src => license_img(attributes["license"])}
+          = license_img(attributes["license"])
 
   - if @work.present? && @work.fetch(:data, {}).fetch("attributes", {}).fetch("related-identifiers", nil).present? && @work.fetch(:data, {}).fetch("id", "work") != item["id"]
     .panel-footer

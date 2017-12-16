@@ -130,18 +130,24 @@ module Sinatra
 
     def license_img(license)
       uri = URI.parse(license)
+
       if uri.host == "creativecommons.org"
-        _head, prefix, type, version, _tail = uri.path.split('/', 5)
-        if prefix == "publicdomain"
-          "https://licensebuttons.net/p/zero/1.0/80x15.png"
-        else
-          #version = version.to_s.gsub(/(\d)\.\d/, '/1.0')
-          "https://licensebuttons.net/l/#{type}/#{version}/80x15.png"
-        end
+        labels = uri.path.split('/')[2].split('-')
+        labels.unshift("cc")
+
+        labels.reduce([]) do |sum, key|
+          key = "zero" if %w(public publicdomain).include?(key)
+
+          if %w(cc by nd nc sa zero).include?(key)
+            sum << '<i class="cc cc-' + key + '"> </i>'
+          end
+          sum
+        end.join(' ')
       elsif uri.host == "opensource.org"
-        _head, prefix, type = uri.path.split('/', 3)
-        type = type.gsub('-', ' ')
-        "https://img.shields.io/:license-#{URI.escape(type)}-blue.svg"
+        case uri.path.split('/')[1]
+        when 'MIT'
+          '<img src="https://img.shields.io/:license-MIT-blue.svg" />'
+        end
       end
     end
 
