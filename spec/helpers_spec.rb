@@ -8,27 +8,27 @@ describe "Helpers", type: :model, vcr: true do
   context "license_img" do
     it "understands CC Zero" do
       license = "https://creativecommons.org/publicdomain/zero/1.0/"
-      expect(subject.license_img(license)).to eq("https://licensebuttons.net/p/zero/1.0/80x15.png")
+      expect(subject.license_img(license)).to eq("<i class=\"cc cc-cc\"> </i> <i class=\"cc cc-zero\"> </i>")
     end
 
     it "understands CC-BY" do
       license = "https://creativecommons.org/licenses/by/4.0/"
-      expect(subject.license_img(license)).to eq("https://licensebuttons.net/l/by/4.0/80x15.png")
+      expect(subject.license_img(license)).to eq("<i class=\"cc cc-cc\"> </i> <i class=\"cc cc-by\"> </i>")
     end
 
     it "understands CC-BY-NC" do
       license = "https://creativecommons.org/licenses/by-nc/4.0/"
-      expect(subject.license_img(license)).to eq("https://licensebuttons.net/l/by-nc/4.0/80x15.png")
+      expect(subject.license_img(license)).to eq("<i class=\"cc cc-cc\"> </i> <i class=\"cc cc-by\"> </i> <i class=\"cc cc-nc\"> </i>")
     end
 
     it "understands CC-BY-SA" do
       license = "https://creativecommons.org/licenses/by-sa/4.0/"
-      expect(subject.license_img(license)).to eq("https://licensebuttons.net/l/by-sa/4.0/80x15.png")
+      expect(subject.license_img(license)).to eq("<i class=\"cc cc-cc\"> </i> <i class=\"cc cc-by\"> </i> <i class=\"cc cc-sa\"> </i>")
     end
 
     it "understands CC-BY-NC-ND" do
       license = "https://creativecommons.org/licenses/by-nc-nd/4.0/"
-      expect(subject.license_img(license)).to eq("https://licensebuttons.net/l/by-nc-nd/4.0/80x15.png")
+      expect(subject.license_img(license)).to eq("<i class=\"cc cc-cc\"> </i> <i class=\"cc cc-by\"> </i> <i class=\"cc cc-nc\"> </i> <i class=\"cc cc-nd\"> </i>")
     end
   end
 
