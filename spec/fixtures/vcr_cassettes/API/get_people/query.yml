@@ -29,7 +29,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Fri, 08 Dec 2017 22:22:28 GMT
+      - Sat, 16 Dec 2017 15:40:31 GMT
       Etag:
       - W/"a861f2356a10eff51e95e062d4f06940"
       Server:
@@ -49,13 +49,13 @@ http_interactions:
       X-Kong-Proxy-Latency:
       - '0'
       X-Kong-Upstream-Latency:
-      - '94'
+      - '100'
       X-Powered-By:
       - Phusion Passenger 5.1.12
       X-Request-Id:
-      - 6b6e3525-3cce-44e5-b046-f76cedcac403
+      - 8e90c872-8025-45ea-858f-2b500724ae94
       X-Runtime:
-      - '0.092395'
+      - '0.098672'
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
@@ -70,5 +70,5 @@ http_interactions:
         JOSE","family":"IGARZA UGALDEA","literal":"JUAN JOSE IGARZA UGALDEA","orcid":"https://orcid.org/0000-0003-3493-3709","github":null,"updated":"2015-11-27T13:50:58.000Z"}},{"id":"https://orcid.org/0000-0003-0332-808X","type":"people","attributes":{"given":"Hassan","family":"Zargarzadeh","literal":"Hassan
         Zargarzadeh","orcid":"https://orcid.org/0000-0003-0332-808X","github":null,"updated":"2016-11-04T19:59:59.000Z"}}],"links":{"self":"http://api.test.datacite.org/people?page%5Bnumber%5D=1\u0026page%5Bsize%5D=25\u0026query=garza","first":"http://api.test.datacite.org/people?page%5Bnumber%5D=1\u0026page%5Bsize%5D=25\u0026query=garza","prev":null,"next":null,"last":"http://api.test.datacite.org/people?page%5Bnumber%5D=1\u0026page%5Bsize%5D=25\u0026query=garza"},"meta":{"total":4,"total-pages":1,"page":1}}'
     http_version: 
-  recorded_at: Fri, 08 Dec 2017 22:22:32 GMT
+  recorded_at: Sat, 16 Dec 2017 15:40:36 GMT
 recorded_with: VCR 2.9.3

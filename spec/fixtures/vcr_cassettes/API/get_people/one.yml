@@ -29,7 +29,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Fri, 08 Dec 2017 23:24:05 GMT
+      - Sat, 16 Dec 2017 15:40:31 GMT
       Etag:
       - W/"af06cc8bf6288fd54e7544a7975b8c29"
       Server:
@@ -47,15 +47,15 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Kong-Proxy-Latency:
-      - '2'
+      - '0'
       X-Kong-Upstream-Latency:
       - '6'
       X-Powered-By:
       - Phusion Passenger 5.1.12
       X-Request-Id:
-      - 7b08efed-8c86-495b-a698-ecbac4a59e15
+      - 111db96c-7787-4a52-8943-4a080a79e270
       X-Runtime:
-      - '0.004695'
+      - '0.004579'
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
@@ -67,5 +67,5 @@ http_interactions:
       string: '{"data":{"id":"https://orcid.org/0000-0001-6528-2027","type":"people","attributes":{"given":"Martin","family":"Fenner","literal":"Martin
         Fenner","orcid":"https://orcid.org/0000-0001-6528-2027","github":"mfenner","updated":"2017-10-20T08:28:24.000Z"}}}'
     http_version: 
-  recorded_at: Fri, 08 Dec 2017 23:24:13 GMT
+  recorded_at: Sat, 16 Dec 2017 15:40:36 GMT
 recorded_with: VCR 2.9.3
