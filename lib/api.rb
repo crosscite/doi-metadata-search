@@ -6,7 +6,7 @@ module Sinatra
   module Api
     def get_works(params = {})
       if params.fetch(:id, nil).present?
-        url = "#{ENV['API_URL']}/works/#{params[:id]}?include=data-center,resource-type,work-type,member"
+        url = "#{ENV['API_URL']}/works/#{params[:id]}?include=data-center,resource-type,member"
       else
         params = { id: params.fetch(:id, nil),
                    'page[number]': params.fetch('page[number]', 1),
@@ -15,9 +15,8 @@ module Sinatra
                    query: params.fetch(:query, nil),
                    year: params.fetch('year', nil),
                    registered: params.fetch('registered', nil),
-                   include: 'data-center,resource-type,work-type,member',
+                   include: 'data-center,resource-type,member',
                    'resource-type-id' => params.fetch('resource-type-id', nil),
-                   'relation-type-id' => params.fetch('relation-type-id', nil),
                    'data-center-id' => params.fetch('data-center-id', nil),
                    'member-id' => params.fetch('member-id', nil),
                    'work-id' => params.fetch('work-id', nil),

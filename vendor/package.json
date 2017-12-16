@@ -1,22 +1,16 @@
 {
-  "name": "vendor",
-  "version": "0.0.0",
+  "name": "doi-metadata-search",
+  "version": "1.2.1",
   "description": "vendor",
   "private": true,
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
-  "scripts": {
-    "postinstall": "node_modules/.bin/bower install"
-  },
   "repository": "",
   "engines": {
     "node": ">= 0.12.0"
   },
-  "author": "",
-  "license": "MIT",
-  "dependencies": {
-    "bower": "1.8.0"
-  }
+  "author": "Martin Fenner",
+  "license": "MIT"
 }

@@ -90,7 +90,7 @@ configure do
       config.project_root = settings.root
       config.app_version = App::VERSION
       config.release_stage = ENV['RACK_ENV']
-      config.notify_release_stages = %w(production stage development)
+      config.notify_release_stages = %w(production stage)
     end
 
     use Bugsnag::Rack
@@ -108,7 +108,8 @@ configure :development do
 end
 
 before do
-  @page = params.fetch('page', 1).to_i
+
+  @page = params[:page].is_a?(String) ? params[:page].to_i : 1
   @meta = {}
 end
 
