@@ -58,6 +58,7 @@ require 'jwt'
 require 'open-uri'
 require 'uri'
 require 'better_errors'
+require 'librato-rack'
 
 Dir[File.join(File.dirname(__FILE__), 'lib', '*.rb')].each { |f| require f }
 
@@ -65,6 +66,9 @@ config_file "config/#{ENV['RA']}.yml"
 
 configure do
   set :root, File.dirname(__FILE__)
+
+  # Collect metrics for librato
+  use Librato::Rack
 
   # Configure sessions and flash
   use Rack::Session::Cookie, secret: ENV['SECRET_KEY_BASE']
