@@ -24,6 +24,7 @@ gem 'sanitize'
 gem 'rake'
 gem 'namae'
 gem 'sass'
+gem 'librato-rack', '~> 1.1'
 
 group :development do
   gem "better_errors"
