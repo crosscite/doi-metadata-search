@@ -132,7 +132,7 @@ module Sinatra
       uri = URI.parse(license)
 
       if uri.host == "creativecommons.org"
-        labels = uri.path.split('/')[2].split('-')
+        labels = uri.path.split('/')[2].to_s.split('-')
         labels.unshift("cc")
 
         labels.reduce([]) do |sum, key|
@@ -144,10 +144,9 @@ module Sinatra
           sum
         end.join(' ')
       elsif uri.host == "opensource.org"
-        case uri.path.split('/')[1]
-        when 'MIT'
-          '<img src="https://img.shields.io/:license-MIT-blue.svg" />'
-        end
+        type = uri.path.split('/', 3).last.to_s.gsub('-', ' ')
+
+        "<img src=\"https://img.shields.io/:license-#{URI.escape(type)}-blue.svg\" />"
       end
     end
 

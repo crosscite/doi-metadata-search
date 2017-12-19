@@ -30,6 +30,31 @@ describe "Helpers", type: :model, vcr: true do
       license = "https://creativecommons.org/licenses/by-nc-nd/4.0/"
       expect(subject.license_img(license)).to eq("<i class=\"cc cc-cc\"> </i> <i class=\"cc cc-by\"> </i> <i class=\"cc cc-nc\"> </i> <i class=\"cc cc-nd\"> </i>")
     end
+
+    it "understands CC url" do
+      license = "https://creativecommons.org/"
+      expect(subject.license_img(license)).to eq("<i class=\"cc cc-cc\"> </i>")
+    end
+
+    it "understands MIT" do
+      license = "https://opensource.org/licenses/MIT"
+      expect(subject.license_img(license)).to eq("<img src=\"https://img.shields.io/:license-MIT-blue.svg\" />")
+    end
+
+    it "understands Apache 2.0" do
+      license = "https://opensource.org/licenses/Apache-2.0"
+      expect(subject.license_img(license)).to eq("<img src=\"https://img.shields.io/:license-Apache%202.0-blue.svg\" />")
+    end
+
+    it "understands GPL 3.0" do
+      license = "https://opensource.org/licenses/GPL-3.0"
+      expect(subject.license_img(license)).to eq("<img src=\"https://img.shields.io/:license-GPL%203.0-blue.svg\" />")
+    end
+
+    it "understands Mozilla Public License" do
+      license = "https://opensource.org/licenses/MPL-2.0"
+      expect(subject.license_img(license)).to eq("<img src=\"https://img.shields.io/:license-MPL%202.0-blue.svg\" />")
+    end
   end
 
   context "validate_orcid" do
