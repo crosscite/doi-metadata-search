@@ -1,5 +1,4 @@
 .DS_Store
-.vagrant*
 .bundle/*
 .sass-cache/*
 *~
@@ -19,7 +18,6 @@ log/*
 packer_cache/*
 output-*
 /vendor/node_modules/*
-/vendor/bower_components/*
 /vendor/npm-debug.log
 /vendor/assets/*
 !/vendor/assets/.keep
