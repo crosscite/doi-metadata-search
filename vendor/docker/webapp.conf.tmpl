@@ -1,0 +1,20 @@
+server {
+    listen 80 default_server;
+    server_name _;
+    root /home/app/webapp/public;
+
+    passenger_enabled on;
+    passenger_user app;
+    passenger_ruby /usr/bin/ruby;
+    merge_slashes off;
+
+    location /sitemaps {
+        proxy_pass {{ default .Env.SITEMAPS_URL "" }}
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Server $host;
+        proxy_set_header X-Forwarded-Proto $http_x_forwarded_proto;
+    }
+}
