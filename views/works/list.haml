@@ -1,24 +1,4 @@
 - if @works[:data].length > 0
-  - if @works[:data].length > 1
-    - if params[:model] == "sources" || @datacenter.present? && @datacenter.fetch("attributes", {}).fetch("registration-agency-id", nil) == "crossref"
-      .btn-toolbar.pull-right
-        .btn-group.btn-group-sm
-          %a{href: "#", class: "btn btn-default dropdown-toggle", data: { toggle: "dropdown" }}
-            %i.fa.fa-sort
-            = params[:sort] && @source.present? ? "Sort by " + @source[:data].fetch("attributes", {}).fetch("title", "Source") : "Sort by Date"
-            %span.caret
-          %ul.dropdown-menu.pull-right
-            %li
-              %a{href: works_query(params.except('sort'))}
-                Sort by Date
-            %li.divider
-            - @works[:meta].fetch("sources", []).each do |s|
-              %li
-                %a{href: works_query(params.merge('sort' => s["id"]))}
-                  = "Sort by " + s.fetch("title", nil)
-    %h3.results
-      = "#{number_with_delimiter( @works[:meta]['total'])} Works"
-
   - @works[:data].each do |item|
     = haml :'works/item', locals: { item: item }
 
