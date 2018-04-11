@@ -16,42 +16,30 @@ http_interactions:
       code: 404
       message: ''
     headers:
-      Access-Control-Allow-Methods:
-      - GET, POST, PATCH, PUT, DELETE, OPTIONS
-      Access-Control-Allow-Origin:
-      - "*"
-      Cache-Control:
-      - no-cache
+      Date:
+      - Wed, 11 Apr 2018 09:33:48 GMT
       Content-Type:
       - application/json; charset=utf-8
-      Date:
-      - Sat, 16 Dec 2017 15:40:33 GMT
-      Server:
-      - openresty/1.11.2.2
-      Status:
-      - 404 Not Found
-      Vary:
-      - Accept-Encoding
-      Via:
-      - kong/0.10.3
-      X-Kong-Proxy-Latency:
-      - '0'
-      X-Kong-Upstream-Latency:
-      - '23'
-      X-Powered-By:
-      - Phusion Passenger 5.1.12
-      X-Request-Id:
-      - 90ac4034-7c06-4325-b6fc-79a094c14ac8
-      X-Runtime:
-      - '0.022315'
-      Content-Length:
-      - '87'
       Connection:
       - keep-alive
+      Status:
+      - 404 Not Found
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Accept-Encoding
+      X-Runtime:
+      - '0.052706'
+      X-Request-Id:
+      - fc8cde6a-b571-4436-939b-b2300df7e18e
+      X-Powered-By:
+      - Phusion Passenger 5.2.3
+      Server:
+      - nginx/1.12.2 + Phusion Passenger 5.2.3
     body:
       encoding: UTF-8
       string: '{"errors":[{"status":"404","title":"The resource you are looking for
         doesn''t exist."}]}'
     http_version: 
-  recorded_at: Sat, 16 Dec 2017 15:40:38 GMT
+  recorded_at: Wed, 11 Apr 2018 09:33:57 GMT
 recorded_with: VCR 2.9.3

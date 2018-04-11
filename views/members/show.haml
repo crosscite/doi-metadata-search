@@ -10,7 +10,7 @@
         - elsif @member.present?
           = haml :'members/item', locals: { item: @member[:data] }
 
-      - if @member[:data].present? && @member[:data].fetch("attributes", {}).fetch("member-type", nil) == "allocating"
+      - if @member[:data].present? && @member[:data].fetch("attributes", {}).fetch("member-type", nil) == "provider"
         .col-md-9
           - if params['source-id'].present? || params['relation-type-id'].present?
             %div.alert.alert-info

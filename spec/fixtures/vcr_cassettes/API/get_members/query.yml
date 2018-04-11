@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/members?query=tib
+    uri: https://api.test.datacite.org/members?query=ands
     body:
       encoding: US-ASCII
       string: ''
@@ -16,64 +16,62 @@ http_interactions:
       code: 200
       message: ''
     headers:
-      Access-Control-Allow-Headers:
-      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
-      Access-Control-Allow-Methods:
-      - GET, POST, PATCH, PUT, DELETE, OPTIONS
-      Access-Control-Allow-Origin:
-      - "*"
-      Access-Control-Expose-Headers:
-      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Content-Type:
-      - application/vnd.api+json; charset=utf-8
       Date:
-      - Sat, 16 Dec 2017 15:40:31 GMT
-      Etag:
-      - W/"29098efb63dad41ccb502dee33a2ecf7"
-      Server:
-      - openresty/1.11.2.2
-      Status:
-      - 200 OK
-      Vary:
-      - Accept-Encoding
-      Via:
-      - kong/0.10.3
-      X-Anonymous-Consumer:
-      - 'true'
-      X-Kong-Proxy-Latency:
-      - '0'
-      X-Kong-Upstream-Latency:
-      - '20'
-      X-Powered-By:
-      - Phusion Passenger 5.1.12
-      X-Request-Id:
-      - 7a968c69-fa7c-4121-a41b-c9387fe7ecc9
-      X-Runtime:
-      - '0.018352'
-      Content-Length:
-      - '1590'
+      - Wed, 11 Apr 2018 09:45:51 GMT
+      Content-Type:
+      - application/json; charset=utf-8
       Connection:
       - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - W/"73ef5b612dd8e9a19dba06320d888ea8"
+      X-Runtime:
+      - '0.043142'
+      X-Request-Id:
+      - a2170969-8b2e-46c6-9ea6-efb826ef8627
+      X-Powered-By:
+      - Phusion Passenger 5.2.3
+      Server:
+      - nginx/1.12.2 + Phusion Passenger 5.2.3
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Allow-Headers:
+      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
+      Access-Control-Expose-Headers:
+      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
     body:
       encoding: UTF-8
-      string: '{"data":[{"id":"tib","type":"members","attributes":{"title":"German
-        National Library of Science and Technology","description":"The TIB is the
-        German National Library for all areas of engineering as well as architecture,
-        chemistry, information technology, mathematics and physics. We are the world''s
-        largest specialised library for science and technology and are part of the
-        German research infrastructure. Our function is the comprehensive procurement
-        and archival storage of technical scientific literature from all over the
-        world. TIB was the first DOI registration agency for primary data worldwide.
-        We have been providing DOI registration services since 2005 and we now work
-        directly with over 40 data centres. TIB is one of the founding members of
-        DataCite and is currently the Business Office. We provide DOI registration
-        services for all German data centres in the fields of engineering, architecture,
-        chemistry, information technology, mathematics and physics. Our current focus
-        is on providing DOI names for primary data and grey literature.\n","member-type":"allocating","region":"EMEA","country":"Germany","year":2009,"logo-url":"https://assets.test.datacite.org/images/members/tib.png","email":"doi-info@tib.eu","website":"
-        http://www.tib.eu","phone":"+49 511 762 14226","created":"2016-02-15T16:27:11Z","updated":"2016-08-01T11:13:04Z"}}],"meta":{"total":1,"total-pages":1,"page":1,"member-types":[{"id":"allocating","title":"Allocating","count":1}],"regions":[{"id":"emea","title":"Europe,
-        Middle East and Africa","count":1}],"years":[{"id":"2009","title":"2009","count":1}]}}'
+      string: '{"data":[{"id":"ands","type":"members","attributes":{"title":"Australian
+        National Data Service","description":"The Australian National Data Service
+        (ANDS) makes Australia''s research data assets more valuable for researchers,
+        research institutions and the nation.\n\nWe do this through working in trusted
+        partnerships on research data projects, delivering reliable national services
+        and enhancing the capability of Australia''s research data system.\n \nA key
+        ANDS service is the [Research Data Australia](http://researchdata.ands.org.au/)
+        discovery portal where you can find, access and reuse Australian research
+        data.\n\nANDS is a partnership led by Monash University, in collaboration
+        with the Australian National University and CSIRO. It is funded by the Australian
+        Government through the National Collaborative Research Infrastructure Strategy
+        (NCRIS).\n \nANDS involvement in the DataCite consortium ensures that we are
+        active in global initiatives addressing the issues surrounding research data,
+        including those of publication, citation and standards. ANDS has run its [Cite
+        My Data](http://ands.org.au/services/cite-my-data.html) service since 2011.
+        This service allows Australian research organisations to assign DOIs to their
+        own research collections. This, in turn, provides researchers with a means
+        of citing their published data and achieving recognition for their research
+        data output.\n \nSubscribe to our discussion list: [ANDS Google Group](https://groups.google.com/forum/?hl=en#!forum/ands-general).\n
+        \nSubscribe to our e-newsletter: [andsUP](http://us7.campaign-archive2.com/home/?u=b542ef52e49302569068046d9&amp;id=22b849a4ee).","member-type":"provider","region":"Asia
+        Pacific","country":"Australia","year":null,"logo-url":"https://assets.datacite.org/images/members/ands.png","email":"services@ands.org.au","website":"http://www.ands.org.au","phone":null,"created":"2010-01-01T00:00:00.000Z","updated":"2018-04-11T01:25:40.000Z"},"relationships":{}}],"meta":{"total":1,"total-pages":1,"page":1,"regions":[{"id":"apac","title":"Asia
+        and Pacific","count":1}],"years":[]}}'
     http_version: 
-  recorded_at: Sat, 16 Dec 2017 15:40:36 GMT
+  recorded_at: Wed, 11 Apr 2018 09:46:01 GMT
 recorded_with: VCR 2.9.3

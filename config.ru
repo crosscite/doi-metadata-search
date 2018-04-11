@@ -5,7 +5,7 @@ require 'bundler'
 
 Bundler.require
 require 'sass/plugin/rack'
-require './app'
+require './app.rb'
 
 # use scss for stylesheets
 Sass::Plugin.options[:style] = :compressed

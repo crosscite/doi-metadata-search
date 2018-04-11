@@ -25,6 +25,7 @@ ENV['RA'] ||= "datacite"
 ENV['TRUSTED_IP'] ||= "172.0.0.0/8"
 ENV['API_URL'] ||= "https://api.datacite.org"
 ENV['ORCID_UPDATE_URL'] ||= "https://profiles.datacite.org"
+ENV['VOLPINO_URL'] ||= "https://profiles.datacite.org"
 ENV['DATA_URL'] ||= "https://data.datacite.org"
 ENV['CDN_URL'] ||= "https://assets.datacite.org"
 

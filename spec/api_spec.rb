@@ -8,18 +8,18 @@ describe "API", type: :model, vcr: true do
   context "get_works" do
     it "all" do
       response = subject.get_works
-      expect(response[:meta]["resource-types"].first).to eq("id"=>"text", "title"=>"Text", "count"=>1033)
+      expect(response[:meta]["resource-types"].first).to eq("id"=>"dataset", "title"=>"Dataset", "count"=>5738)
       work = response[:data].first
-      expect(work["id"]).to eq("https://handle.test.datacite.org/10.4124/tshgfz6ynz.1")
+      expect(work["id"]).to eq("https://handle.test.datacite.org/10.4124/73nbydxz48.1")
     end
 
     it "one" do
-      response = subject.get_works(id: "10.22002/d1.638")
+      response = subject.get_works(id: "10.21956/mniopenres.14275.r26250")
       work = response[:data]
-      expect(work["attributes"]["author"].first).to eq("family"=>"Dawson", "given"=>"Charles Alexander")
+      expect(work["attributes"]["author"].first).to eq("literal"=>"A A")
       expect(response[:included].size).to eq(3)
-      resource_type = response[:included][2]
-      expect(resource_type).to eq("id"=>"image", "type"=>"resource-types", "attributes"=>{"title"=>"Image", "updated"=>"2016-09-21T00:00:00Z"})
+      resource_type = response[:included][1]
+      expect(resource_type).to eq("id"=>"text", "type"=>"resource-types", "attributes"=>{"title"=>"Text", "updated"=>"2016-09-21T00:00:00Z"}, "relationships"=>{})
     end
 
     it "one not found" do
@@ -39,14 +39,14 @@ describe "API", type: :model, vcr: true do
       response = subject.get_works(query: "california")
       #expect(response[:meta]["resource-types"].first).to eq("id"=>"dataset", "title"=>"Dataset", "count"=>109)
       work = response[:data].first
-      expect(work["id"]).to eq("https://handle.test.datacite.org/10.22002/d1.598")
+      expect(work["id"]).to eq("https://handle.test.datacite.org/10.22002/d1.505")
     end
   end
 
   context "get_people" do
     it "all" do
       response = subject.get_people
-      expect(response[:meta]).to eq("total"=>21324, "total-pages"=>853, "page"=>1)
+      expect(response[:meta]).to eq("total"=>21327, "total-pages"=>854, "page"=>1)
       contributor = response[:data].first
       expect(contributor["id"]).to eq("https://orcid.org/0000-0002-6909-1823")
     end
@@ -54,7 +54,7 @@ describe "API", type: :model, vcr: true do
     it "one" do
       response = subject.get_people(id: "0000-0001-6528-2027")
       contributor = response[:data]
-      expect(contributor).to eq("id"=>"https://orcid.org/0000-0001-6528-2027", "type"=>"people", "attributes" => {"given"=>"Martin", "family"=>"Fenner", "literal"=>"Martin Fenner", "orcid"=>"https://orcid.org/0000-0001-6528-2027", "github"=>"mfenner", "updated"=>"2017-10-20T08:28:24.000Z"})
+      expect(contributor).to eq("id"=>"https://orcid.org/0000-0001-6528-2027", "type"=>"people", "attributes"=>{"given"=>"Martin", "family"=>"Fenner", "literal"=>"Martin Fenner", "orcid"=>"https://orcid.org/0000-0001-6528-2027", "github"=>"mfenner", "updated"=>"2018-01-03T16:18:11.000Z"})
     end
 
     it "query" do
@@ -89,9 +89,9 @@ describe "API", type: :model, vcr: true do
   context "get_members" do
     it "all" do
       response = subject.get_members
-      expect(response[:meta]["member-types"].first).to eq("id"=>"allocating", "title"=>"Allocating", "count"=>31)
+      expect(response[:meta]["regions"].first).to eq("id"=>"amer", "title"=>"Americas", "count"=>1)
       member = response[:data].first
-      expect(member["id"]).to eq("ands")
+      expect(member["id"]).to eq("nansa")
     end
 
     it "one" do
@@ -101,10 +101,10 @@ describe "API", type: :model, vcr: true do
     end
 
     it "query" do
-      response = subject.get_members(query: "tib")
-      expect(response[:meta]["member-types"].first).to eq("id"=>"allocating", "title"=>"Allocating", "count"=>1)
+      response = subject.get_members(query: "ands")
+      expect(response[:meta]["regions"].first).to eq("id"=>"apac", "title"=>"Asia and Pacific", "count"=>1)
       member = response[:data].first
-      expect(member["id"]).to eq("tib")
+      expect(member["id"]).to eq("ands")
     end
   end
 end

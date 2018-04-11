@@ -10,5 +10,5 @@
     %i.fa.fa-info-circle
     = item["id"].upcase
     %span.pull-right
-      = item.fetch("attributes", {}).fetch("member-type", nil) + " member"
+      = item.fetch("attributes", {}).fetch("member-type", nil).to_s.humanize
 

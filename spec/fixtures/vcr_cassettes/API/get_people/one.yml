@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/people/0000-0001-6528-2027
+    uri: https://profiles.test.datacite.org/people/0000-0001-6528-2027
     body:
       encoding: US-ASCII
       string: ''
@@ -16,56 +16,48 @@ http_interactions:
       code: 200
       message: ''
     headers:
-      Access-Control-Allow-Headers:
-      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
-      Access-Control-Allow-Methods:
-      - GET, POST, PATCH, PUT, DELETE, OPTIONS
-      Access-Control-Allow-Origin:
-      - "*"
-      Access-Control-Expose-Headers:
-      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
-      Cache-Control:
-      - max-age=0, private, must-revalidate
+      Date:
+      - Wed, 11 Apr 2018 09:33:51 GMT
       Content-Type:
       - application/json; charset=utf-8
-      Date:
-      - Sat, 16 Dec 2017 15:40:31 GMT
-      Etag:
-      - W/"af06cc8bf6288fd54e7544a7975b8c29"
-      Server:
-      - openresty/1.11.2.2
-      Status:
-      - 200 OK
-      Vary:
-      - Accept-Encoding
-      Via:
-      - kong/0.10.3
-      X-Anonymous-Consumer:
-      - 'true'
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Kong-Proxy-Latency:
-      - '0'
-      X-Kong-Upstream-Latency:
-      - '6'
-      X-Powered-By:
-      - Phusion Passenger 5.1.12
-      X-Request-Id:
-      - 111db96c-7787-4a52-8943-4a080a79e270
-      X-Runtime:
-      - '0.004579'
-      X-Xss-Protection:
-      - 1; mode=block
-      Content-Length:
-      - '251'
       Connection:
       - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - 694603d2-d82a-4acf-8b22-3aff136733f0
+      Etag:
+      - W/"b236cc13b2a3a1d4acdb362e96abc06f"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.006755'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 5.2.2
+      Server:
+      - nginx/1.12.2 + Phusion Passenger 5.2.2
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Allow-Headers:
+      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
+      Access-Control-Expose-Headers:
+      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
     body:
       encoding: UTF-8
       string: '{"data":{"id":"https://orcid.org/0000-0001-6528-2027","type":"people","attributes":{"given":"Martin","family":"Fenner","literal":"Martin
-        Fenner","orcid":"https://orcid.org/0000-0001-6528-2027","github":"mfenner","updated":"2017-10-20T08:28:24.000Z"}}}'
+        Fenner","orcid":"https://orcid.org/0000-0001-6528-2027","github":"mfenner","updated":"2018-01-03T16:18:11.000Z"}}}'
     http_version: 
-  recorded_at: Sat, 16 Dec 2017 15:40:36 GMT
+  recorded_at: Wed, 11 Apr 2018 09:34:00 GMT
 recorded_with: VCR 2.9.3

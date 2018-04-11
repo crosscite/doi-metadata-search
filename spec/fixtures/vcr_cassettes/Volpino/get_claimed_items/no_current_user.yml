@@ -16,50 +16,41 @@ http_interactions:
       code: 200
       message: ''
     headers:
-      Access-Control-Allow-Headers:
-      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
-      Access-Control-Allow-Methods:
-      - GET, POST, PATCH, PUT, DELETE, OPTIONS
-      Access-Control-Allow-Origin:
-      - "*"
-      Access-Control-Expose-Headers:
-      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Content-Type:
-      - application/vnd.api+json; charset=utf-8
       Date:
-      - Sat, 16 Dec 2017 15:42:42 GMT
-      Etag:
-      - W/"e0cbe3b0ab47a03aa11166f34296a352"
-      Server:
-      - openresty/1.11.2.2
-      Status:
-      - 200 OK
-      Vary:
-      - Accept-Encoding
-      Via:
-      - kong/0.10.3
-      X-Anonymous-Consumer:
-      - 'true'
-      X-Kong-Proxy-Latency:
-      - '0'
-      X-Kong-Upstream-Latency:
-      - '559'
-      X-Powered-By:
-      - Phusion Passenger 5.1.12
-      X-Request-Id:
-      - fbe5b76f-bfd4-41e3-9070-ad09c0fdbaca
-      X-Runtime:
-      - '0.556453'
-      Content-Length:
-      - '1952'
+      - Wed, 11 Apr 2018 09:33:52 GMT
+      Content-Type:
+      - application/json; charset=utf-8
       Connection:
       - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - W/"245ebb5cdc9b1b4553ccfdd88cdc2224"
+      X-Runtime:
+      - '0.024817'
+      X-Request-Id:
+      - f510de62-acf4-4e5b-95bc-d84a652d3746
+      X-Powered-By:
+      - Phusion Passenger 5.2.3
+      Server:
+      - nginx/1.12.2 + Phusion Passenger 5.2.3
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Allow-Headers:
+      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
+      Access-Control-Expose-Headers:
+      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        eyJkYXRhIjpbXSwibWV0YSI6eyJyZXNvdXJjZS10eXBlcyI6W10sInllYXJzIjpbXSwicmVnaXN0ZXJlZCI6W10sImRhdGEtY2VudGVycyI6W3siaWQiOiJldGh6LnViYXNvanMiLCJ0aXRsZSI6IjAyNy43IC0gWmVpdHNjaHJpZnQgZsO8ciBCaWJsaW90aGVrc2t1bHR1ciIsImNvdW50IjowfSx7ImlkIjoiZGVsZnQuZGF0YWNlbnQiLCJ0aXRsZSI6IjNUVSBEYXRhY2VudHJ1bSIsImNvdW50IjowfSx7ImlkIjoiZGVsZnQuZGF0YTR0dSIsInRpdGxlIjoiNFRVLkNlbnRyZSBmb3IgUmVzZWFyY2ggRGF0YSIsImNvdW50IjowfSx7ImlkIjoiZGsuYWF1IiwidGl0bGUiOiJBYWxib3JnIFVuaXZlcnNpdHkgTGlicmFyeSIsImNvdW50IjowfSx7ImlkIjoiY2RsLmFhcyIsInRpdGxlIjoiQUFTIiwiY291bnQiOjB9LHsiaWQiOiJkYXRhY2l0ZS5hYmMiLCJ0aXRsZSI6IkFCQyIsImNvdW50IjowfSx7ImlkIjoiYmwuYWJlcnRheSIsInRpdGxlIjoiQWJlcnRheSBVbml2ZXJzaXR5IiwiY291bnQiOjB9LHsiaWQiOiJtdGFraWsuYWJwYSIsInRpdGxlIjoiQWN0YSBCaW9sb2dpY2EgUGxhbnRhcnVtIEFncmllbnNpcyIsImNvdW50IjowfSx7ImlkIjoibXRha2lrLnJlZ3J1cnVtIiwidGl0bGUiOiJBY3RhIFJlZ2lvbmlzIFJ1cnVtIiwiY291bnQiOjB9LHsiaWQiOiJ0aWIuYWRhbWEiLCJ0aXRsZSI6IkFEQU1BIFdlYiBTLkwuIiwiY291bnQiOjB9LHsiaWQiOiJjZGwuYWRhcHRpdmUiLCJ0aXRsZSI6IkFkYXB0aXZlIEJpb3RlY2hub2xvZ2llcyIsImNvdW50IjowfSx7ImlkIjoiaW5pc3QuYWVyaXMiLCJ0aXRsZSI6IkFFUklTIC0gUMO0bGUgZnJhbsOnYWlzIGRlIGRvbm7DqWVzIGV0IHNlcnZpY2VzIHBvdXIgbCdhdG1vc3Bow6hyZSIsImNvdW50IjowfSx7ImlkIjoiY3J1aS5hcGhyYyIsInRpdGxlIjoiQWZyaWNhbiBQb3B1bGF0aW9uIGFuZCBIZWFsdGggUmVzZWFyY2ggQ2VudHJlIiwiY291bnQiOjB9LHsiaWQiOiJhbmRzLmNlbnRyZTg4IiwidGl0bGUiOiJBZ3JpY3VsdHVyZSBWaWN0b3JpYSIsImNvdW50IjowfSx7ImlkIjoidGliLmNiYSIsInRpdGxlIjoiQWthZGVtaWUgZGVyIGJpbGRlbmRlbiBLw7xuc3RlIHdpZW4iLCJjb3VudCI6MH0seyJpZCI6InRpYi5ha2JpbGQiLCJ0aXRsZSI6IkFrYWRlbWllIGRlciBiaWxkZW5kZW4gS8O8bnN0ZSBXaWVuIiwiY291bnQiOjB9LHsiaWQiOiJ6Ym1lZC5hcHMiLCJ0aXRsZSI6IkFrdGlvbnNiw7xuZG5pcyBQYXRpZW50ZW5zaWNoZXJoZWl0IGUuVi4iLCJjb3VudCI6MH0seyJpZCI6Imdlc2lzLmhpaWciLCJ0aXRsZSI6IkFsZXhhbmRlciB2b24gSHVtYm9sZHQgSW5zdGl0dXQgZsO8ciBJbnRlcm5ldCB1bmQgR2VzZWxsc2NoYWZ0IiwiY291bnQiOjB9LHsiaWQiOiJ0aWIuYXdpIiwidGl0bGUiOiJBbGZyZWQtV2VnZW5lci1JbnN0aXR1dCIsImNvdW50IjowfSx7ImlkIjoibXRha2lrLmFsa255ZWx2IiwidGl0bGUiOiJBbGthbG1hem90dCBOeWVsdnR1ZG9tw6FueSIsImNvdW50IjowfSx7ImlkIjoibXRha2lrLmFsa3BzaWNoIiwidGl0bGUiOiJBbGthbG1hem90dCBQc3ppY2hvbMOzZ2lhIiwiY291bnQiOjB9LHsiaWQiOiJwdXJkdWUuYWNzZXNzIiwidGl0bGUiOiJBbGxpYW5jZSBmb3IgQ3JvcHMsIFNvaWxzLCBhbmQgRW52aXJvbm1lbnRhbCBTY2llbmNlIFNvY2lldGllcyIsImNvdW50IjowfSx7ImlkIjoiY2RsLmFjc2VzcyIsInRpdGxlIjoiQWxsaWFuY2UgZm9yIENyb3BzLCBTb2lscywgYW5kIEVudmlyb25tZW50YWwgU2NpZW5jZSBTb2NpZXRpZXMiLCJjb3VudCI6MH0seyJpZCI6ImV0aHouYm9wYWx0IiwidGl0bGUiOiJBTFQgUHJvY2VlZGluZ3MgLyBVQiBCZXJuIiwiY291bnQiOjB9LHsiaWQiOiJldGh6LnV6aC1hbCIsInRpdGxlIjoiYWx0cmVsZXR0ZXJlIiwiY291bnQiOjB9XSwic2NoZW1hLXZlcnNpb25zIjpbXSwidG90YWwiOjAsInRvdGFsLXBhZ2VzIjowLCJwYWdlIjoxfX0=
+      encoding: UTF-8
+      string: '{"data":[],"included":[],"meta":{"resource-types":[],"years":[],"registered":[],"data-centers":[],"schema-versions":[],"total":0,"total_pages":0,"page":1}}'
     http_version: 
-  recorded_at: Sat, 16 Dec 2017 15:42:47 GMT
+  recorded_at: Wed, 11 Apr 2018 09:34:01 GMT
 recorded_with: VCR 2.9.3

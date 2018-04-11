@@ -20,8 +20,7 @@ module Sinatra
                    'data-center-id' => params.fetch('data-center-id', nil),
                    'member-id' => params.fetch('member-id', nil),
                    'work-id' => params.fetch('work-id', nil),
-                   'person-id' => params.fetch('person-id', nil),
-                   'source-id' => params.fetch('source-id', nil) }.compact
+                   'person-id' => params.fetch('person-id', nil) }.compact
 
         url = "#{ENV['API_URL']}/works?" + URI.encode_www_form(params)
       end
@@ -35,13 +34,13 @@ module Sinatra
 
     def get_people(params = {})
       if params.fetch(:id, nil).present?
-        url = "#{ENV['API_URL']}/people/" + params.fetch(:id)
+        url = "#{ENV['VOLPINO_URL']}/people/" + params.fetch(:id)
       else
         params = { id: params.fetch(:id, nil),
                    'page[number]': params.fetch('page[number]', 1),
                    'page[size]': params.fetch('page[size]', 25),
                    query: params.fetch(:query, nil) }.compact
-        url = "#{ENV['API_URL']}/people?" + URI.encode_www_form(params)
+        url = "#{ENV['VOLPINO_URL']}/people?" + URI.encode_www_form(params)
       end
 
       response = Maremma.get url, timeout: TIMEOUT
@@ -60,6 +59,7 @@ module Sinatra
                    'page[size]': params.fetch('page[size]', 25),
                    query: params.fetch(:query, nil),
                    year: params.fetch(:year, nil),
+                   registered: params.fetch(:registered, nil),
                    include: 'member',
                    "member-id" => params.fetch("member-id", nil),
                    "registration-agency-id" => "datacite" }.compact
