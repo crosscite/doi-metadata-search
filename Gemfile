@@ -13,7 +13,7 @@ gem 'multi_json'
 gem 'json', '~> 1.8', '>= 1.8.5'
 gem 'oj', '~> 2.18', '>= 2.18.1'
 gem 'will_paginate'
-gem 'will_paginate-bootstrap'
+gem 'will_paginate-bootstrap', git: "https://github.com/HeyPublisher/will_paginate-bootstrap"
 gem 'iso8601', '~> 0.9.0'
 gem 'maremma', '~> 3.0'
 gem 'gabba'
@@ -24,7 +24,6 @@ gem 'sanitize'
 gem 'rake'
 gem 'namae'
 gem 'sass'
-gem 'librato-rack', '~> 1.1'
 
 group :development do
   gem "better_errors"

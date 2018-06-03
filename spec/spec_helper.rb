@@ -52,7 +52,6 @@ end
 
 Capybara.javascript_driver = :poltergeist
 Capybara.default_selector = :css
-Capybara.save_and_open_page_path = "tmp/capybara"
 Capybara::Screenshot.prune_strategy = :keep_last_run
 
 Capybara.configure do |config|
