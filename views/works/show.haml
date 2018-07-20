@@ -12,7 +12,7 @@
         - elsif @work[:errors].present?
           %div.alert.alert-warning
             = @work[:errors].first.fetch("title", "")
-
+-#
       - if @work[:data].present?
         .col-md-3
           .panel.facets
@@ -64,7 +64,7 @@
                       %i.fa{class: "fa-#{social['icon']}"}
                       %span.hidden
                         = social['icon']
-
+-#
       - if @works[:data].length > 0
         / - if @works[:data].length > 1
         /   .col-md-9

@@ -158,13 +158,13 @@ get %r{/works/(.+)} do
     @work[:data] = get_claimed_items(current_user, [@work[:data]]).first
   end
 
-  @works = get_works("work-id" => params[:id], query: params[:query], 'page[number]' => @page, 'data-center-id' => params['data-center-id'], 'relation-type-id' => params['relation-type-id'], 'resource-type-id' => params['resource-type-id'], 'year' => params['year'])
-
+  # Removing related works to avoid crawlers nested repetive crawling when there are a lot.
+  #@works = get_works("work-id" => params[:id], query: params[:query], 'page[number]' => @page, 'data-center-id' => params['data-center-id'], 'relation-type-id' => params['relation-type-id'], 'resource-type-id' => params['resource-type-id'], 'year' => params['year'])
   # check for existing claims if user is logged in
-  @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
+  #@works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
 
   # pagination
-  @works[:data] = pagination_helper(@works[:data], @page, @works.fetch(:meta, {}).fetch("total", 0))
+  #@works[:data] = pagination_helper(@works[:data], @page, @works.fetch(:meta, {}).fetch("total", 0))
 
   params[:model] = "works"
 
