@@ -12,7 +12,7 @@
         - elsif @work[:errors].present?
           %div.alert.alert-warning
             = @work[:errors].first.fetch("title", "")
--#
+
       - if @work[:data].present?
         .col-md-3
           .panel.facets
