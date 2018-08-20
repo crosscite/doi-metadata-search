@@ -61,8 +61,7 @@ module Sinatra
                    year: params.fetch(:year, nil),
                    registered: params.fetch(:registered, nil),
                    include: 'member',
-                   "member-id" => params.fetch("member-id", nil),
-                   "registration-agency-id" => "datacite" }.compact
+                   "member-id" => params.fetch("member-id", nil) }.compact
         url = "#{ENV['API_URL']}/data-centers?" + URI.encode_www_form(params)
       end
 

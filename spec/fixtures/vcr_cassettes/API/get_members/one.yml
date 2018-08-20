@@ -17,7 +17,7 @@ http_interactions:
       message: ''
     headers:
       Date:
-      - Wed, 11 Apr 2018 09:45:29 GMT
+      - Mon, 20 Aug 2018 16:56:38 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -31,15 +31,15 @@ http_interactions:
       Vary:
       - Accept-Encoding
       Etag:
-      - W/"541b5537f77a6a38fa61a974141ee811"
+      - W/"affa441d249c5ef839bb93093852f4ad"
       X-Runtime:
-      - '0.076481'
+      - '0.086158'
       X-Request-Id:
-      - 0072c447-2e62-42e1-9d96-5f1187fc575f
+      - cae9ec81-570c-45ea-af1c-1d6e79059dcc
       X-Powered-By:
-      - Phusion Passenger 5.2.3
+      - Phusion Passenger 5.3.2
       Server:
-      - nginx/1.12.2 + Phusion Passenger 5.2.3
+      - nginx/1.14.0 + Phusion Passenger 5.3.2
       Access-Control-Allow-Origin:
       - "*"
       Access-Control-Allow-Methods:
@@ -69,8 +69,7 @@ http_interactions:
         own research collections. This, in turn, provides researchers with a means
         of citing their published data and achieving recognition for their research
         data output.\n \nSubscribe to our discussion list: [ANDS Google Group](https://groups.google.com/forum/?hl=en#!forum/ands-general).\n
-        \nSubscribe to our e-newsletter: [andsUP](http://us7.campaign-archive2.com/home/?u=b542ef52e49302569068046d9&amp;id=22b849a4ee).","member-type":"provider","region":"Asia
-        Pacific","country":"Australia","year":null,"logo-url":"https://assets.datacite.org/images/members/ands.png","email":"services@ands.org.au","website":"http://www.ands.org.au","phone":null,"created":"2010-01-01T00:00:00.000Z","updated":"2018-04-11T01:25:40.000Z"},"relationships":{}}}'
+        \nSubscribe to our e-newsletter: [andsUP](http://us7.campaign-archive2.com/home/?u=b542ef52e49302569068046d9&amp;id=22b849a4ee).","member-type":"provider","region":"APAC","country":"AU","year":null,"logo-url":"https://assets.datacite.org/images/members/ands.png","email":"services@ands.org.au","website":"http://www.ands.org.au","phone":null,"created":"2010-01-01T00:00:00.000Z","updated":"2018-08-20T01:25:39.000Z"},"relationships":{}}}'
     http_version: 
-  recorded_at: Wed, 11 Apr 2018 09:45:39 GMT
+  recorded_at: Mon, 20 Aug 2018 16:56:38 GMT
 recorded_with: VCR 2.9.3

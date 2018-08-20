@@ -17,7 +17,7 @@ http_interactions:
       message: ''
     headers:
       Date:
-      - Wed, 11 Apr 2018 09:33:51 GMT
+      - Mon, 20 Aug 2018 16:41:32 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -29,35 +29,27 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       Vary:
-      - Accept-Encoding
+      - Accept-Encoding, Origin
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 694603d2-d82a-4acf-8b22-3aff136733f0
+      - 3bd0ec86-8d17-4ff9-8ed0-7bd044b92f48
       Etag:
-      - W/"b236cc13b2a3a1d4acdb362e96abc06f"
+      - W/"7ea05081e9c6b9515d686019975af66c"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.006755'
+      - '0.006780'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
-      - Phusion Passenger 5.2.2
+      - Phusion Passenger 5.3.4
       Server:
-      - nginx/1.12.2 + Phusion Passenger 5.2.2
-      Access-Control-Allow-Origin:
-      - "*"
-      Access-Control-Allow-Methods:
-      - GET, POST, PUT, DELETE, OPTIONS
-      Access-Control-Allow-Headers:
-      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
-      Access-Control-Expose-Headers:
-      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
+      - nginx/1.14.0 + Phusion Passenger 5.3.4
     body:
       encoding: UTF-8
-      string: '{"data":{"id":"https://orcid.org/0000-0001-6528-2027","type":"people","attributes":{"given":"Martin","family":"Fenner","literal":"Martin
-        Fenner","orcid":"https://orcid.org/0000-0001-6528-2027","github":"mfenner","updated":"2018-01-03T16:18:11.000Z"}}}'
+      string: '{"data":{"id":"0000-0001-6528-2027","type":"people","attributes":{"given":"Martin","family":"Fenner","literal":"Martin
+        Fenner","orcid":"https://orcid.org/0000-0001-6528-2027","github":null,"updated":"2018-08-20T16:40:54.000Z"}}}'
     http_version: 
-  recorded_at: Wed, 11 Apr 2018 09:34:00 GMT
+  recorded_at: Mon, 20 Aug 2018 16:41:32 GMT
 recorded_with: VCR 2.9.3

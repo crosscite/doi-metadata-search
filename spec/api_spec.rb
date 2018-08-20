@@ -8,18 +8,21 @@ describe "API", type: :model, vcr: true do
   context "get_works" do
     it "all" do
       response = subject.get_works
-      expect(response[:meta]["resource-types"].first).to eq("id"=>"dataset", "title"=>"Dataset", "count"=>5738)
+      expect(response[:meta]["resource-types"].first).to eq("id"=>"dataset", "title"=>"Dataset", "count"=>6585)
       work = response[:data].first
-      expect(work["id"]).to eq("https://handle.test.datacite.org/10.4124/73nbydxz48.1")
+      expect(work["id"]).to eq("https://handle.test.datacite.org/10.4124/test94485")
     end
 
     it "one" do
-      response = subject.get_works(id: "10.21956/mniopenres.14275.r26250")
+      response = subject.get_works(id: "10.4124/test94485")
       work = response[:data]
-      expect(work["attributes"]["author"].first).to eq("literal"=>"A A")
+      expect(work["attributes"]["author"].first).to eq("literal"=>"Person_1")
       expect(response[:included].size).to eq(3)
-      resource_type = response[:included][1]
-      expect(resource_type).to eq("id"=>"text", "type"=>"resource-types", "attributes"=>{"title"=>"Text", "updated"=>"2016-09-21T00:00:00Z"}, "relationships"=>{})
+      data_center = response[:included][0]
+      expect(data_center).to eq("attributes" => {"created"=>"2014-10-03T15:53:41.000Z", "member-id"=>"bl", "title"=>"Mendeley Data", "updated"=>"2018-08-20T01:30:40.000Z", "year"=>2014},
+        "id" => "bl.mendeley",
+        "relationships" => {"member"=>{"data"=>{"id"=>"bl", "type"=>"members"}}},
+        "type" => "data-centers")
     end
 
     it "one not found" do
@@ -46,22 +49,22 @@ describe "API", type: :model, vcr: true do
   context "get_people" do
     it "all" do
       response = subject.get_people
-      expect(response[:meta]).to eq("total"=>21327, "total-pages"=>854, "page"=>1)
+      expect(response[:meta]).to eq("total"=>61823, "total-pages"=>2473, "page"=>1)
       contributor = response[:data].first
-      expect(contributor["id"]).to eq("https://orcid.org/0000-0002-6909-1823")
+      expect(contributor["id"]).to eq("0000-0003-1564-2260")
     end
 
     it "one" do
       response = subject.get_people(id: "0000-0001-6528-2027")
       contributor = response[:data]
-      expect(contributor).to eq("id"=>"https://orcid.org/0000-0001-6528-2027", "type"=>"people", "attributes"=>{"given"=>"Martin", "family"=>"Fenner", "literal"=>"Martin Fenner", "orcid"=>"https://orcid.org/0000-0001-6528-2027", "github"=>"mfenner", "updated"=>"2018-01-03T16:18:11.000Z"})
+      expect(contributor).to eq("id" => "0000-0001-6528-2027", "type"=>"people", "attributes" => {"family"=>"Fenner", "github"=>nil, "given"=>"Martin", "literal"=>"Martin Fenner", "orcid"=>"https://orcid.org/0000-0001-6528-2027", "updated"=>"2018-08-20T16:40:54.000Z"})
     end
 
     it "query" do
       response = subject.get_people(query: "garza")
-      expect(response[:meta]).to eq("total"=>4, "total-pages"=>1, "page"=>1)
+      expect(response[:meta]).to eq("total"=>9, "total-pages"=>1, "page"=>1)
       contributor = response[:data][1]
-      expect(contributor).to eq("id"=>"https://orcid.org/0000-0002-5493-877X", "type"=>"people", "attributes" => {"given"=>"Jose Arturo", "family"=>"Garza-Reyes", "literal"=>"Jose Arturo Garza-Reyes", "orcid"=>"https://orcid.org/0000-0002-5493-877X", "github"=>nil, "updated"=>"2016-10-14T11:38:01.000Z"})
+      expect(contributor).to eq("id" => "0000-0002-5099-0079", "type"=>"people", "attributes" => {"family"=>"Cardenas-de la Garza", "github"=>nil, "given"=>"Jesus Alberto", "literal"=>"Jesus Alberto Cardenas-de la Garza", "orcid"=>"https://orcid.org/0000-0002-5099-0079", "updated"=>"2018-05-14T20:22:20.000Z"})
     end
   end
 
@@ -69,7 +72,7 @@ describe "API", type: :model, vcr: true do
     it "all" do
       response = subject.get_datacenters
       datacenter = response[:data].first
-      expect(datacenter["attributes"]["title"]).to eq("027.7 - Zeitschrift für Bibliothekskultur")
+      expect(datacenter["attributes"]["title"]).to eq("UK Data Archive")
     end
 
     it "one" do
@@ -82,16 +85,16 @@ describe "API", type: :model, vcr: true do
       response = subject.get_datacenters(query: "zeno")
       #expect(response[:meta]["members"].first).to eq("id"=>"cern", "title"=>"CERN - European Organization for Nuclear Research", "count"=>1)
       datacenter = response[:data].first
-      expect(datacenter["id"]).to eq("cern.zenodo")
+      expect(datacenter["id"]).to eq("dk.openaire")
     end
   end
 
   context "get_members" do
     it "all" do
       response = subject.get_members
-      expect(response[:meta]["regions"].first).to eq("id"=>"amer", "title"=>"Americas", "count"=>1)
+      expect(response[:meta]["regions"].first).to eq("id"=>"amer", "title"=>"Americas", "count"=>2)
       member = response[:data].first
-      expect(member["id"]).to eq("nansa")
+      expect(member["id"]).to eq("inist")
     end
 
     it "one" do
@@ -102,7 +105,7 @@ describe "API", type: :model, vcr: true do
 
     it "query" do
       response = subject.get_members(query: "ands")
-      expect(response[:meta]["regions"].first).to eq("id"=>"apac", "title"=>"Asia and Pacific", "count"=>1)
+      expect(response[:meta]["regions"].first).to eq("id"=>"apac", "title"=>"Asia Pacific", "count"=>1)
       member = response[:data].first
       expect(member["id"]).to eq("ands")
     end

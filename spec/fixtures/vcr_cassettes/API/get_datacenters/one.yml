@@ -17,7 +17,7 @@ http_interactions:
       message: ''
     headers:
       Date:
-      - Wed, 11 Apr 2018 09:33:51 GMT
+      - Mon, 20 Aug 2018 16:18:52 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -31,15 +31,15 @@ http_interactions:
       Vary:
       - Accept-Encoding
       Etag:
-      - W/"aa82983e1e8e9335fb31c25c478b5b30"
+      - W/"0f023c462bba29f3216bd5468d589410"
       X-Runtime:
-      - '0.031617'
+      - '0.074601'
       X-Request-Id:
-      - cb720718-5e95-458d-b7d4-d0c84d341299
+      - 66ef0599-41e2-4f68-aef4-458244272387
       X-Powered-By:
-      - Phusion Passenger 5.2.3
+      - Phusion Passenger 5.3.2
       Server:
-      - nginx/1.12.2 + Phusion Passenger 5.2.3
+      - nginx/1.14.0 + Phusion Passenger 5.3.2
       Access-Control-Allow-Origin:
       - "*"
       Access-Control-Allow-Methods:
@@ -50,7 +50,7 @@ http_interactions:
       - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
     body:
       encoding: UTF-8
-      string: '{"data":{"id":"cern.zenodo","type":"data-centers","attributes":{"title":"Zenodo","member-id":"cern","year":2014,"created":"2014-09-24T14:54:20Z","updated":"2018-04-11T01:30:35Z"},"relationships":{"member":{"data":{"id":"cern","type":"members"}}}}}'
+      string: '{"data":{"id":"cern.zenodo","type":"data-centers","attributes":{"title":"Zenodo","member-id":"cern","year":2014,"created":"2014-09-24T14:54:20.000Z","updated":"2018-08-20T01:30:38.000Z"},"relationships":{"member":{"data":{"id":"cern","type":"members"}}}}}'
     http_version: 
-  recorded_at: Wed, 11 Apr 2018 09:34:00 GMT
+  recorded_at: Mon, 20 Aug 2018 16:18:52 GMT
 recorded_with: VCR 2.9.3

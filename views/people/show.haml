@@ -1,5 +1,8 @@
 = haml :"#{ENV['RA']}/header", locals: { page: {} }
 
+%script{type: "application/ld+json"}
+  = contributor_as_json_ld(id: @person[:data]["orcid"], attributes: @person[:data]["attributes"])
+
 .container-fluid
   .content
     .row

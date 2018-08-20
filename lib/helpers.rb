@@ -159,7 +159,7 @@ module Sinatra
 
     def contributor_as_json_ld(id:, attributes:)
       { "@context" => "http://schema.org",
-        "@type" => attributes.fetch("literal", nil).present? ? "Organization" : "Person",
+        "@type" => attributes.fetch("family", nil).present? ? "Person" : "Organization",
         "@id" => id,
         "givenName" => attributes.fetch("given", nil),
         "familyName" => attributes.fetch("family", nil),
@@ -280,9 +280,9 @@ module Sinatra
 
     def people_action(item, params)
       if params[:external_link].present?
-        item["id"]
-      elsif orcid = orcid_from_url(item["id"])
-        "/people/#{orcid}"
+        item.dig("attributes", "orcid")
+      else
+        "/people/#{item["id"]}"
       end
     end
 

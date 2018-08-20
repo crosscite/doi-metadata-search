@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/works/10.21956/mniopenres.14275.r26250?include=data-center,resource-type,member
+    uri: https://api.test.datacite.org/works/10.4124/test94485?include=data-center,resource-type,member
     body:
       encoding: US-ASCII
       string: ''
@@ -17,7 +17,7 @@ http_interactions:
       message: ''
     headers:
       Date:
-      - Wed, 11 Apr 2018 09:33:49 GMT
+      - Mon, 20 Aug 2018 16:43:12 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -31,15 +31,15 @@ http_interactions:
       Vary:
       - Accept-Encoding
       Etag:
-      - W/"98a1948cde4d5e824c3d4f0537473cea"
+      - W/"1f86531bf725839e427ea9eef2f1b3c9"
       X-Runtime:
-      - '0.130080'
+      - '0.563894'
       X-Request-Id:
-      - 621a6e78-5bcf-4021-8037-2b9588de519d
+      - 368c41f0-ccbe-42d0-8c9b-2065835b616d
       X-Powered-By:
-      - Phusion Passenger 5.2.3
+      - Phusion Passenger 5.3.2
       Server:
-      - nginx/1.12.2 + Phusion Passenger 5.2.3
+      - nginx/1.14.0 + Phusion Passenger 5.3.2
       Access-Control-Allow-Origin:
       - "*"
       Access-Control-Allow-Methods:
@@ -50,11 +50,9 @@ http_interactions:
       - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
     body:
       encoding: UTF-8
-      string: '{"data":{"id":"https://handle.test.datacite.org/10.21956/mniopenres.14275.r26250","type":"works","attributes":{"doi":"10.21956/mniopenres.14275.r26250","identifier":"https://handle.test.datacite.org/10.21956/mniopenres.14275.r26250","url":"https://dev1mni.f1000internal.com/articles/2-15/v1#referee-response-26250","author":[{"literal":"A
-        A"}],"title":"Referee report. For: RESEARCH-6339 [version 1; referees: 1 approved]","container-title":"F1000
-        Research Limited","description":null,"resource-type-subtype":null,"data-center-id":"bl.f1000r","member-id":"bl","resource-type-id":"text","version":null,"license":null,"schema-version":"3","results":[],"related-identifiers":[],"published":"2018","registered":"2018-03-02T17:15:18Z","checked":"2018-03-03T11:38:04Z","updated":"2018-03-03T11:38:04Z","media":null,"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxyZXNvdXJjZSB4c2k6c2NoZW1hTG9jYXRpb249Imh0dHA6Ly9kYXRhY2l0ZS5vcmcvc2NoZW1hL2tlcm5lbC0zIGh0dHA6Ly9zY2hlbWEuZGF0YWNpdGUub3JnL21ldGEva2VybmVsLTMvbWV0YWRhdGEueHNkIiB4bWxucz0iaHR0cDovL2RhdGFjaXRlLm9yZy9zY2hlbWEva2VybmVsLTMiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiPjxpZGVudGlmaWVyIGlkZW50aWZpZXJUeXBlPSJET0kiPjEwLjIxOTU2L21uaW9wZW5yZXMuMTQyNzUucjI2MjUwPC9pZGVudGlmaWVyPjxjcmVhdG9ycz48Y3JlYXRvcj48Y3JlYXRvck5hbWU+YSBhPC9jcmVhdG9yTmFtZT48L2NyZWF0b3I+PC9jcmVhdG9ycz48dGl0bGVzPjx0aXRsZT5SZWZlcmVlIHJlcG9ydC4gRm9yOiBSRVNFQVJDSC02MzM5IFt2ZXJzaW9uIDE7IHJlZmVyZWVzOiAxIGFwcHJvdmVkXTwvdGl0bGU+PC90aXRsZXM+PHB1Ymxpc2hlcj5GMTAwMCBSZXNlYXJjaCBMaW1pdGVkPC9wdWJsaXNoZXI+PHB1YmxpY2F0aW9uWWVhcj4yMDE4PC9wdWJsaWNhdGlvblllYXI+PHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJUZXh0Ii8+PC9yZXNvdXJjZT4="},"relationships":{"data-center":{"data":{"id":"bl.f1000r","type":"data-centers"}},"member":{"data":{"id":"bl","type":"members"}},"resource-type":{"data":{"id":"text","type":"resource-types"}}}},"included":[{"id":"bl.f1000r","type":"data-centers","attributes":{"title":"Faculty
-        of 1000 Research","member-id":"bl","year":2013,"created":"2013-11-07T13:41:36Z","updated":"2018-04-11T01:30:28Z"},"relationships":{"member":{"data":{"id":"bl","type":"members"}}}},{"id":"text","type":"resource-types","attributes":{"title":"Text","updated":"2016-09-21T00:00:00Z"},"relationships":{}},{"id":"bl","type":"members","attributes":{"title":"The
-        British Library","description":null,"member-type":"provider","region":null,"country":null,"year":null,"logo-url":null,"email":"datasets@bl.uk","website":null,"phone":null,"created":"2010-01-01T00:00:00.000Z","updated":"2018-04-11T01:25:40.000Z"},"relationships":{}}]}'
+      string: '{"data":{"id":"https://handle.test.datacite.org/10.4124/test94485","type":"works","attributes":{"doi":"10.4124/test94485","identifier":"https://handle.test.datacite.org/10.4124/test94485","url":"http://gtexportal.org/home/","author":[{"literal":"Person_1"}],"title":"Test","container-title":"SevenBridges","description":"Test
+        Catalog1","resource-type-subtype":"Dataset","data-center-id":"bl.mendeley","member-id":"bl","resource-type-id":"dataset","version":null,"license":null,"schema-version":"3","results":[],"related-identifiers":[],"published":"2018","registered":"2018-08-20T15:40:22Z","checked":null,"updated":"2018-08-20T15:40:22Z","media":null,"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMyIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMyBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC0zL21ldGFkYXRhLnhzZCI+CiAgPGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuNDEyNC9URVNUOTQ0ODU8L2lkZW50aWZpZXI+CiAgPHRpdGxlcz4KICAgIDx0aXRsZT5UZXN0PC90aXRsZT4KICA8L3RpdGxlcz4KICA8ZGVzY3JpcHRpb25zPgogICAgPGRlc2NyaXB0aW9uIGRlc2NyaXB0aW9uVHlwZT0iQWJzdHJhY3QiPlRlc3QgQ2F0YWxvZzE8L2Rlc2NyaXB0aW9uPgogIDwvZGVzY3JpcHRpb25zPgogIDxyZXNvdXJjZVR5cGUgcmVzb3VyY2VUeXBlR2VuZXJhbD0iRGF0YXNldCI+RGF0YXNldDwvcmVzb3VyY2VUeXBlPgogIDxzdWJqZWN0cz4KICAgIDxzdWJqZWN0PnRlc3Q8L3N1YmplY3Q+CiAgPC9zdWJqZWN0cz4KICA8Y3JlYXRvcnM+CiAgICA8Y3JlYXRvcj4KICAgICAgPGNyZWF0b3JOYW1lPlBlcnNvbl8xPC9jcmVhdG9yTmFtZT4KICAgIDwvY3JlYXRvcj4KICA8L2NyZWF0b3JzPgogIDxkYXRlcz4KICAgIDxkYXRlIGRhdGVUeXBlPSJDcmVhdGVkIj4yMDE4LTAxLTAxPC9kYXRlPgogICAgPGRhdGUgZGF0ZVR5cGU9IkF2YWlsYWJsZSI+MjAxOC0wMi0wMjwvZGF0ZT4KICA8L2RhdGVzPgogIDxwdWJsaWNhdGlvblllYXI+MjAxODwvcHVibGljYXRpb25ZZWFyPgogIDxwdWJsaXNoZXI+U2V2ZW5CcmlkZ2VzPC9wdWJsaXNoZXI+CiAgPHJpZ2h0c0xpc3Q+CiAgICA8cmlnaHRzIHJpZ2h0c1VSST0iaW5mbzpldS1yZXBvL3NlbWFudGljcy9lbWJhcmdvZWRBY2Nlc3MiPkFwYWNoZSBMaWNlbnNlIDIuMCAoRW1iYXJnbzogMjAyNi0wMy0zMCk8L3JpZ2h0cz4KICA8L3JpZ2h0c0xpc3Q+CjwvcmVzb3VyY2U+"},"relationships":{"data-center":{"data":{"id":"bl.mendeley","type":"data-centers"}},"member":{"data":{"id":"bl","type":"members"}},"resource-type":{"data":{"id":"dataset","type":"resource-types"}}}},"included":[{"id":"bl.mendeley","type":"data-centers","attributes":{"title":"Mendeley
+        Data","member-id":"bl","year":2014,"created":"2014-10-03T15:53:41.000Z","updated":"2018-08-20T01:30:40.000Z"},"relationships":{"member":{"data":{"id":"bl","type":"members"}}}},{"id":"bl","type":"members","attributes":{"title":null,"description":null,"member-type":null,"region":null,"country":null,"year":null,"logo-url":null,"email":null,"website":null,"phone":null,"created":"2010-01-01T00:00:00.000Z","updated":"2018-08-20T01:25:39.000Z"},"relationships":{}},{"id":"dataset","type":"resource-types","attributes":{"title":"Dataset","updated":"2016-09-21T00:00:00Z"},"relationships":{}}]}'
     http_version: 
-  recorded_at: Wed, 11 Apr 2018 09:33:58 GMT
+  recorded_at: Mon, 20 Aug 2018 16:43:12 GMT
 recorded_with: VCR 2.9.3

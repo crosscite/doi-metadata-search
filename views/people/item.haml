@@ -1,14 +1,11 @@
 - new_params = params[:model] == "people" && params["id"].present? ? params.merge(external_link: true) : params
 
-%script{type: "application/ld+json"}
-  = contributor_as_json_ld(id: item["id"], attributes: item["attributes"])
-
 .panel.panel-default
   .panel-body
     %h3.work
       %a{:href => people_action(item, new_params)}
         = credit_name(item["attributes"])
   .panel-footer.item-links
-    %a{ href: item["id"] }
+    %a{ href: item.dig("attributes", "orcid") }
       %i.fa.fa-external-link
-      = item["id"]
+      = item.dig("attributes", "orcid")
