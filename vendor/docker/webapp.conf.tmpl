@@ -8,7 +8,7 @@ server {
     passenger_ruby /usr/bin/ruby;
     merge_slashes off;
     resolver 8.8.8.8;
-    set $backend {{ default .Env.SITEMAPS_BUCKET_URL "http://search.test.datacite.org.s3.amazonaws.com" }}/sitemaps/;
+    set $backend {{ default .Env.SITEMAPS_BUCKET_URL "http://search.test.datacite.org.s3.amazonaws.com" }}$request_uri;
 
     location /sitemaps/ {
         proxy_pass $backend;
