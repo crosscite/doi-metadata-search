@@ -7,10 +7,11 @@ server {
     passenger_user app;
     passenger_ruby /usr/bin/ruby;
     merge_slashes off;
+    set $backend {{ default .Env.SITEMAPS_BUCKET_URL "http://search.test.datacite.org.s3-website-eu-west-1.amazonaws.com" }}/sitemaps;
 
     location /sitemaps {
-        proxy_pass {{ default .Env.SITEMAPS_BUCKET_URL "http://search.test.datacite.org.s3-website-eu-west-1.amazonaws.com" }};
-        proxy_set_header Host {{ default .Env.SITEMAPS_BUCKET_URL "http://search.test.datacite.org.s3-website-eu-west-1.amazonaws.com" }};
+        proxy_pass $backend;
+        proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Host $host;
