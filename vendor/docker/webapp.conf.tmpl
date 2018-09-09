@@ -7,7 +7,7 @@ server {
     passenger_user app;
     passenger_ruby /usr/bin/ruby;
     merge_slashes off;
-    set $backend {{ default .Env.SITEMAPS_BUCKET_URL "http://search.test.datacite.org.s3-website-eu-west-1.amazonaws.com" }}/sitemaps;
+    set $backend {{ default .Env.SITEMAPS_BUCKET_URL "http://search.test.datacite.org.s3-website-eu-west-1.amazonaws.com" }};
 
     location /sitemaps {
         proxy_pass $backend;
