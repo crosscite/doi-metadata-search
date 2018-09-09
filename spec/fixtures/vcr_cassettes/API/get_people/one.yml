@@ -17,7 +17,7 @@ http_interactions:
       message: ''
     headers:
       Date:
-      - Mon, 20 Aug 2018 16:41:32 GMT
+      - Sun, 09 Sep 2018 10:33:05 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -30,18 +30,18 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Request-Id:
-      - 3bd0ec86-8d17-4ff9-8ed0-7bd044b92f48
       Etag:
       - W/"7ea05081e9c6b9515d686019975af66c"
       X-Frame-Options:
       - SAMEORIGIN
-      X-Runtime:
-      - '0.006780'
+      X-Xss-Protection:
+      - 1; mode=block
       X-Content-Type-Options:
       - nosniff
+      X-Runtime:
+      - '0.006430'
+      X-Request-Id:
+      - 65761f7a-94b2-43ed-93c3-8ff21b1db177
       X-Powered-By:
       - Phusion Passenger 5.3.4
       Server:
@@ -51,5 +51,5 @@ http_interactions:
       string: '{"data":{"id":"0000-0001-6528-2027","type":"people","attributes":{"given":"Martin","family":"Fenner","literal":"Martin
         Fenner","orcid":"https://orcid.org/0000-0001-6528-2027","github":null,"updated":"2018-08-20T16:40:54.000Z"}}}'
     http_version: 
-  recorded_at: Mon, 20 Aug 2018 16:41:32 GMT
+  recorded_at: Sun, 09 Sep 2018 10:33:05 GMT
 recorded_with: VCR 2.9.3

@@ -17,7 +17,7 @@ http_interactions:
       message: ''
     headers:
       Date:
-      - Mon, 20 Aug 2018 16:56:38 GMT
+      - Sun, 09 Sep 2018 10:32:58 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -31,11 +31,11 @@ http_interactions:
       Vary:
       - Accept-Encoding
       Etag:
-      - W/"affa441d249c5ef839bb93093852f4ad"
+      - W/"33a6d09b00c6e06893938ff196abb42e"
       X-Runtime:
-      - '0.086158'
+      - '0.035763'
       X-Request-Id:
-      - cae9ec81-570c-45ea-af1c-1d6e79059dcc
+      - a7c129db-a88c-4caf-9802-49278d52a886
       X-Powered-By:
       - Phusion Passenger 5.3.2
       Server:
@@ -69,7 +69,7 @@ http_interactions:
         own research collections. This, in turn, provides researchers with a means
         of citing their published data and achieving recognition for their research
         data output.\n \nSubscribe to our discussion list: [ANDS Google Group](https://groups.google.com/forum/?hl=en#!forum/ands-general).\n
-        \nSubscribe to our e-newsletter: [andsUP](http://us7.campaign-archive2.com/home/?u=b542ef52e49302569068046d9&amp;id=22b849a4ee).","member-type":"provider","region":"APAC","country":"AU","year":null,"logo-url":"https://assets.datacite.org/images/members/ands.png","email":"services@ands.org.au","website":"http://www.ands.org.au","phone":null,"created":"2010-01-01T00:00:00.000Z","updated":"2018-08-20T01:25:39.000Z"},"relationships":{}}}'
+        \nSubscribe to our e-newsletter: [andsUP](http://us7.campaign-archive2.com/home/?u=b542ef52e49302569068046d9&amp;id=22b849a4ee).","member-type":"provider","region":"APAC","country":"AU","year":null,"logo-url":"https://assets.datacite.org/images/members/ands.png","email":"services@ands.org.au","website":"http://www.ands.org.au","phone":null,"created":"2010-01-01T00:00:00.000Z","updated":"2018-08-26T01:25:40.000Z"},"relationships":{}}}'
     http_version: 
-  recorded_at: Mon, 20 Aug 2018 16:56:38 GMT
+  recorded_at: Sun, 09 Sep 2018 10:32:58 GMT
 recorded_with: VCR 2.9.3

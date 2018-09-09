@@ -25,7 +25,6 @@ RUN rm -f /etc/service/nginx/down && \
     rm /etc/nginx/sites-enabled/default
 COPY vendor/docker/00_app_env.conf /etc/nginx/conf.d/00_app_env.conf
 COPY vendor/docker/cors.conf /etc/nginx/conf.d/cors.conf
-COPY vendor/docker/webapp.conf /etc/nginx/sites-enabled/webapp.conf
 
 # Install dockerize
 RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
@@ -49,6 +48,10 @@ WORKDIR /home/app/webapp
 RUN gem update --system && \
     gem install bundler && \
     /sbin/setuser app bundle install --path vendor/bundle
+
+# Run additional scripts during container startup (i.e. not at build time)
+RUN mkdir -p /etc/my_init.d
+COPY vendor/docker/70_templates.sh /etc/my_init.d/70_templates.sh
 
 # Expose web
 EXPOSE 80

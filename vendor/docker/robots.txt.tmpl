@@ -4,7 +4,7 @@
 # User-agent: *
 # Disallow: /
 
-Sitemap: https://search.test.datacite.org/sitemaps/sitemap.xml.gz
+Sitemap: {{ default .Env.APP_URL "https://search.test.datacite.org" }}/sitemaps/sitemap.xml.gz
 
 User-agent: *
 Disallow: /ui

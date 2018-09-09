@@ -8,9 +8,9 @@ describe "API", type: :model, vcr: true do
   context "get_works" do
     it "all" do
       response = subject.get_works
-      expect(response[:meta]["resource-types"].first).to eq("id"=>"dataset", "title"=>"Dataset", "count"=>6585)
+      expect(response[:meta]["resource-types"].first).to eq("id"=>"dataset", "title"=>"Dataset", "count"=>6938)
       work = response[:data].first
-      expect(work["id"]).to eq("https://handle.test.datacite.org/10.4124/test94485")
+      expect(work["id"]).to eq("https://handle.test.datacite.org/10.15771/imejidev.rv")
     end
 
     it "one" do
@@ -19,7 +19,7 @@ describe "API", type: :model, vcr: true do
       expect(work["attributes"]["author"].first).to eq("literal"=>"Person_1")
       expect(response[:included].size).to eq(3)
       data_center = response[:included][0]
-      expect(data_center).to eq("attributes" => {"created"=>"2014-10-03T15:53:41.000Z", "member-id"=>"bl", "title"=>"Mendeley Data", "updated"=>"2018-08-20T01:30:40.000Z", "year"=>2014},
+      expect(data_center).to eq("attributes" => {"created"=>"2014-10-03T15:53:41.000Z", "member-id"=>"bl", "title"=>"Mendeley Data", "updated"=>"2018-08-26T01:30:43.000Z", "year"=>2014},
         "id" => "bl.mendeley",
         "relationships" => {"member"=>{"data"=>{"id"=>"bl", "type"=>"members"}}},
         "type" => "data-centers")
@@ -49,7 +49,7 @@ describe "API", type: :model, vcr: true do
   context "get_people" do
     it "all" do
       response = subject.get_people
-      expect(response[:meta]).to eq("total"=>61823, "total-pages"=>2473, "page"=>1)
+      expect(response[:meta]).to eq("total"=>61824, "total-pages"=>2473, "page"=>1)
       contributor = response[:data].first
       expect(contributor["id"]).to eq("0000-0003-1564-2260")
     end
@@ -72,7 +72,7 @@ describe "API", type: :model, vcr: true do
     it "all" do
       response = subject.get_datacenters
       datacenter = response[:data].first
-      expect(datacenter["attributes"]["title"]).to eq("UK Data Archive")
+      expect(datacenter["attributes"]["title"]).to eq("027.7 - Zeitschrift für Bibliothekskultur")
     end
 
     it "one" do
@@ -94,7 +94,7 @@ describe "API", type: :model, vcr: true do
       response = subject.get_members
       expect(response[:meta]["regions"].first).to eq("id"=>"amer", "title"=>"Americas", "count"=>2)
       member = response[:data].first
-      expect(member["id"]).to eq("inist")
+      expect(member["id"]).to eq("nansa")
     end
 
     it "one" do
