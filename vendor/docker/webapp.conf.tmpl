@@ -7,9 +7,10 @@ server {
     passenger_user app;
     passenger_ruby /usr/bin/ruby;
     merge_slashes off;
-    set $backend {{ default .Env.SITEMAPS_BUCKET_URL "http://search.test.datacite.org.s3-website-eu-west-1.amazonaws.com" }};
+    resolver 8.8.8.8;
+    set $backend {{ default .Env.SITEMAPS_BUCKET_URL "http://search.test.datacite.org.s3.amazonaws.com" }}/sitemaps/;
 
-    location /sitemaps {
+    location /sitemaps/ {
         proxy_pass $backend;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
