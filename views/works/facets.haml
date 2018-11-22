@@ -1,50 +1,4 @@
 .panel.facets
-  - if @works[:meta]["resource-types"].present?
-    .panel-body
-      %h4
-        Resource Types
-      %ul
-        - @works[:meta]["resource-types"].each do |f|
-          - if params['resource-type-id'] == f.fetch("id", nil)
-            %li.active
-              %a{:href => works_query(params.except('resource-type-id'))}
-                %i.fa.fa-check-square-o
-              .facet-title
-                = f.fetch("title", nil)
-              %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
-              .clearfix
-          - else
-            %li
-              %a{:href => works_query(params.merge('resource-type-id' => f.fetch("id", nil)))}
-                %i.fa.fa-square-o
-              .facet-title
-                = f.fetch("title", nil)
-              %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
-              .clearfix
-
-  - if @works[:meta]["years"].present?
-    .panel-body
-      %h4
-        Publication Year
-      %ul
-        - @works[:meta]["years"].each do |f|
-          - if params['year'] == f.fetch("id", nil)
-            %li.active
-              %a{:href => works_query(params.except('year'))}
-                %i.fa.fa-check-square-o
-              .facet-title
-                = f.fetch("title", nil)
-              %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
-              .clearfix
-          - else
-            %li
-              %a{:href => works_query(params.merge('year' => f.fetch("id", nil)))}
-                %i.fa.fa-square-o
-              .facet-title
-                = f.fetch("title", nil)
-              %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
-              .clearfix
-
   - if @works[:meta]["registered"].present?
     .panel-body
       %h4
@@ -62,6 +16,29 @@
           - else
             %li
               %a{:href => works_query(params.merge('registered' => f.fetch("id", nil)))}
+                %i.fa.fa-square-o
+              .facet-title
+                = f.fetch("title", nil)
+              %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
+              .clearfix
+              
+  - if @works[:meta]["resource-types"].present?
+    .panel-body
+      %h4
+        Resource Types
+      %ul
+        - @works[:meta]["resource-types"].each do |f|
+          - if params['resource-type-id'] == f.fetch("id", nil)
+            %li.active
+              %a{:href => works_query(params.except('resource-type-id'))}
+                %i.fa.fa-check-square-o
+              .facet-title
+                = f.fetch("title", nil)
+              %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
+              .clearfix
+          - else
+            %li
+              %a{:href => works_query(params.merge('resource-type-id' => f.fetch("id", nil)))}
                 %i.fa.fa-square-o
               .facet-title
                 = f.fetch("title", nil)
