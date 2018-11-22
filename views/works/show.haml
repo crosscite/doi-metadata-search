@@ -34,9 +34,6 @@
               %a{href: ENV['DATA_URL'] + "/application/vnd.datacite.datacite+xml/#{@work[:data].dig('attributes', 'doi')}", id: "xml_download"}
                 DataCite XML
               %br
-              %a{href: ENV['DATA_URL'] + "/application/rdf+xml/#{@work[:data].dig('attributes', 'doi')}"}
-                RDF-XML
-              %br
               %a{href: ENV['DATA_URL'] + "/application/vnd.schemaorg.ld+json/#{@work[:data].dig('attributes', 'doi')}"}
                 Schema.org JSON-LD
               %br

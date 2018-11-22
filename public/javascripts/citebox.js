@@ -23,7 +23,7 @@ function updateCiteBox() {
   } else if (citationInfo['style'] == 'ris') {
     url += '/application/x-research-info-systems/' + citationInfo['doi'];
   } else {
-    url += '/text/x-bibliography;style=' + citationInfo['style'] + '/' + citationInfo['doi'];
+    url += '/text/x-bibliography/' + citationInfo['doi'] + '?style=' + citationInfo['style'];
   }
 
   $.ajax({
