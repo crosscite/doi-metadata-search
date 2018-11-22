@@ -26,9 +26,9 @@ ENV['TRUSTED_IP'] ||= "172.0.0.0/8"
 ENV['API_URL'] ||= "https://api.datacite.org"
 ENV['ORCID_UPDATE_URL'] ||= "https://profiles.datacite.org"
 ENV['VOLPINO_URL'] ||= "https://profiles.datacite.org"
-ENV['DATA_URL'] ||= "https://data.datacite.org"
+ENV['DATA_URL'] ||= "https://api.datacite.org"
 ENV['CDN_URL'] ||= "https://assets.datacite.org"
-ENV['APP_URL'] ||= "https://search.test.datacite.org"
+ENV['API_URL'] ||= "https://search.test.datacite.org"
 
 env_vars = %w(SITE_TITLE LOG_LEVEL RA API_URL SECRET_KEY_BASE)
 env_vars.each { |env| fail ArgumentError,  "ENV[#{env}] is not set" unless ENV[env].present? }
