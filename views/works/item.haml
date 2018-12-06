@@ -4,6 +4,8 @@
 - sources = @works.present? ? @works[:meta].fetch("sources", []) : []
 - new_params = params[:model] == "works" && params["id"] == attributes.fetch("doi", nil) ? params.merge(external_link: true) : params
 - title = attributes["title"].to_s.gsub(/"/, '\"')
+- views = (metrics.find_all {|type| type.fetch("total-dataset-investigations-regular",0) > 1 }).first["total-dataset-investigations-regular"].to_i 
+- downloads = (metrics.find_all {|type| type.fetch("total-dataset-requests-regular",0) > 1 }).first["total-dataset-requests-regular"].to_i 
 
 .panel.panel-default
   .panel-body
@@ -21,6 +23,14 @@
       .license
         %a{:href => attributes["license"]}
           = license_img(attributes["license"])
+    - if views.present?
+      .fa.fa-eye
+      = views
+      Views
+    - if downloads.present?
+      .fa.fa-angle-double-down
+      = downloads
+      Downloads
 
   - if @work.present? && @work.fetch(:data, {}).fetch("attributes", {}).fetch("related-identifiers", nil).present? && @work.fetch(:data, {}).fetch("id", "work") != item["id"]
     .panel-footer
