@@ -103,6 +103,25 @@ describe "Helpers", type: :model, vcr: true do
     end
   end
 
+  context "reduce_aggs" do
+    let(:meta) {file_fixture('usage_metrics_meta.json').read}
+    let(:empty_meta) {{}}
+
+    it "reduce for usage" do
+      relation_types = subject.reduce_aggs(meta)
+      expect(relation_types.third).to have_key("total-dataset-requests-regular")
+      expect(relation_types.size).to eq(6)
+      expect(relation_types.third.dig("total-dataset-requests-regular")).to be(34.0)
+    end
+
+    it "reduce when there is no meta" do
+      relation_types = subject.reduce_aggs(empty_meta)
+      expect(relation_types.size).to eq(0)
+    end
+  end
+
+
+
   context "helpers" do
     it "relation_type_title" do
       related_identifiers = [{ "relation-type-id" => "HasPart",

@@ -16,6 +16,10 @@ require 'tilt/haml'
 
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
 
+def file_fixture(name)
+  File.new(File.join(File.dirname(__FILE__), "/fixtures/#{name}"))
+end
+
 # require support files, and files in lib folder
 Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |f| require f }
 Dir[File.join(File.dirname(__FILE__), '../lib/**/*.rb')].each { |f| require f }
@@ -73,6 +77,10 @@ VCR.configure do |c|
   c.filter_sensitive_data('<ORCID_UPDATE_TOKEN>') { ENV['ORCID_UPDATE_TOKEN'] }
   c.allow_http_connections_when_no_cassette = false
   c.configure_rspec_metadata!
+
+
+  record_mode = ENV["VCR"] ? ENV["VCR"].to_sym : :once
+  c.default_cassette_options = { :record => record_mode }
 end
 
 def capture_stdout(&block)

@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.datacite.org/events?obj-id=10.4226/xxxx
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Maremma - http://search.local
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Thu, 06 Dec 2018 19:37:48 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding, Origin
+      X-Request-Id:
+      - 3a493431-d18f-4ad4-985c-4605fa306c08
+      Etag:
+      - W/"9da5b661b2e1075d66b7974b37d721f2"
+      X-Runtime:
+      - '0.037232'
+      X-Powered-By:
+      - Phusion Passenger 5.3.5
+      Server:
+      - nginx/1.14.0 + Phusion Passenger 5.3.5
+    body:
+      encoding: UTF-8
+      string: '{"data":[],"meta":{"total":0,"total-pages":0},"links":{"self":"https://api.datacite.org/events?obj-id=10.4226%2Fxxxx"}}'
+    http_version: 
+  recorded_at: Thu, 06 Dec 2018 19:37:48 GMT
+recorded_with: VCR 2.9.3
