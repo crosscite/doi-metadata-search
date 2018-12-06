@@ -150,6 +150,10 @@ get %r{/works/(.+)} do
   doi = validate_doi(params[:id])
   link = doi ? "https://doi.org/#{doi}" : params[:id]
 
+  events  = get_events('page[number]' => 0, "obj-id" => link,  "source-id" =>"datacite-usage")
+  @work[:metrics] = reduce_aggs(events[:meta])
+
+
   # check for existing claims if user is logged in and work is registered with DataCite
   if current_user
     @work[:data] = get_claimed_items(current_user, [@work[:data]]).first
