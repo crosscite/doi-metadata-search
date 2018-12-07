@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datacite.org/events?query=10.7272/q6g15xs4
+    uri: https://api.datacite.org/events?obj-id=https://doi.org/10.7272/q6g15xs4
     body:
       encoding: US-ASCII
       string: ''
@@ -17,7 +17,7 @@ http_interactions:
       message: ''
     headers:
       Date:
-      - Fri, 07 Dec 2018 13:15:03 GMT
+      - Fri, 07 Dec 2018 13:05:23 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -31,11 +31,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Origin
       X-Request-Id:
-      - 12ca450b-6d00-4a2d-b39a-2ac43c7ff73c
+      - 386221d9-d2f6-484b-97d9-d7b7b25081b3
       Etag:
-      - W/"1d68ae0626c3340794aa624cc09a8bf8"
+      - W/"a26650a9d0c0e602ceba9142275e4ace"
       X-Runtime:
-      - '0.564356'
+      - '0.108326'
       X-Powered-By:
       - Phusion Passenger 5.3.5
       Server:
@@ -59,7 +59,7 @@ http_interactions:
         2018","sum":5.0},{"id":"2018-07","title":"July 2018","sum":5.0},{"id":"2018-11","title":"November
         2018","sum":3.0}]},{"id":"total-dataset-investigations-machine","title":"total-dataset-investigations-machine","count":1,"year-months":[{"id":"2018-08","title":"August
         2018","sum":1.0}]},{"id":"unique-dataset-investigations-machine","title":"unique-dataset-investigations-machine","count":1,"year-months":[{"id":"2018-08","title":"August
-        2018","sum":1.0}]}]},"links":{"self":"https://api.datacite.org/events?query=10.7272%2Fq6g15xs4","next":"https://api.datacite.org/events?page%5Bcursor%5D=1544124728388&query=10.7272%2Fq6g15xs4"}}'
+        2018","sum":1.0}]}]},"links":{"self":"https://api.datacite.org/events?obj-id=https%3A%2F%2Fdoi.org%2F10.7272%2Fq6g15xs4","next":"https://api.datacite.org/events?obj-id=https%3A%2F%2Fdoi.org%2F10.7272%2Fq6g15xs4&page%5Bcursor%5D=1544124728388"}}'
     http_version: 
-  recorded_at: Fri, 07 Dec 2018 13:15:03 GMT
+  recorded_at: Fri, 07 Dec 2018 13:05:23 GMT
 recorded_with: VCR 2.9.3
