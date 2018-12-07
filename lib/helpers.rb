@@ -133,10 +133,12 @@ module Sinatra
     def reduce_aggs meta, options={}
       meta = ::JSON.parse(meta) if meta.respond_to?("downcase")
       relation_types = meta.fetch("relation-types",[])
-      relation_types.map do |type|
+      metrics = {}
+      relation_types.each do |type|
         qty = type["year-months"].map { |period| period.dig("sum")}.sum
-        {type.dig("id") => qty}
+        metrics[type.dig("id")] = qty
       end
+      metrics
     end
 
     def license_img(license)

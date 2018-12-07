@@ -109,9 +109,9 @@ describe "Helpers", type: :model, vcr: true do
 
     it "reduce for usage" do
       relation_types = subject.reduce_aggs(meta)
-      expect(relation_types.third).to have_key("total-dataset-requests-regular")
+      expect(relation_types).to have_key("total-dataset-requests-regular")
       expect(relation_types.size).to eq(6)
-      expect(relation_types.third.dig("total-dataset-requests-regular")).to be(34.0)
+      expect(relation_types.dig("total-dataset-requests-regular")).to be(34.0)
     end
 
     it "reduce when there is no meta" do
