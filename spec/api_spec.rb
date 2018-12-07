@@ -112,59 +112,59 @@ describe "API", type: :model, vcr: true do
   end
 
 
-  context "get_events" do
-    it "all" do
-      response = subject.get_events
-      expect(response[:meta]["resource-types"].first).to eq("id"=>"dataset", "title"=>"Dataset", "count"=>6938)
-      work = response[:data].first
-      expect(work["id"]).to eq("https://handle.test.datacite.org/10.15771/imejidev.rv")
-    end
+  # context "get_events" do
+  #   it "all" do
+  #     response = subject.get_events
+  #     expect(response[:meta]["resource-types"].first).to eq("id"=>"dataset", "title"=>"Dataset", "count"=>6938)
+  #     work = response[:data].first
+  #     expect(work["id"]).to eq("https://handle.test.datacite.org/10.15771/imejidev.rv")
+  #   end
 
-    it "one" do
-      response = subject.get_events(id: "10.4124/test94485")
-      events = response[:data]
-      expect(events["attributes"]["author"].first).to eq("subj-id"=>"https://api.datacite.org/reports/fa2ad308-1b25-4394-9bc6-e0c7511e763d")
-      expect(response[:included].size).to eq(3)
-      data_center = response[:included][0]
-      expect(data_center).to eq("attributes" => {"created"=>"2014-10-03T15:53:41.000Z", "member-id"=>"bl", "title"=>"Mendeley Data", "updated"=>"2018-08-26T01:30:43.000Z", "year"=>2014},
-        "id" => "bl.mendeley",
-        "relationships" => {"member"=>{"data"=>{"id"=>"bl", "type"=>"members"}}},
-        "type" => "data-centers")
-    end
+  #   it "one" do
+  #     response = subject.get_events(id: "10.4124/test94485")
+  #     events = response[:data]
+  #     expect(events["attributes"]["author"].first).to eq("subj-id"=>"https://api.datacite.org/reports/fa2ad308-1b25-4394-9bc6-e0c7511e763d")
+  #     expect(response[:included].size).to eq(3)
+  #     data_center = response[:included][0]
+  #     expect(data_center).to eq("attributes" => {"created"=>"2014-10-03T15:53:41.000Z", "member-id"=>"bl", "title"=>"Mendeley Data", "updated"=>"2018-08-26T01:30:43.000Z", "year"=>2014},
+  #       "id" => "bl.mendeley",
+  #       "relationships" => {"member"=>{"data"=>{"id"=>"bl", "type"=>"members"}}},
+  #       "type" => "data-centers")
+  #   end
 
-    it "one" do
-      response = subject.get_events("obj-id" => "https://doi.org/10.7272/q6g15xs4")
-      events = response[:data]
-      expect(events.first["attributes"]["subj-id"]).to eq("https://api.datacite.org/reports/fa2ad308-1b25-4394-9bc6-e0c7511e763d")
-      expect(response[:meta]["relation-types"].size).to eq(6)
-      type = response[:meta]["relation-types"][0]
-      expect(type).to eq({"id"=>"total-dataset-investigations-regular", "title"=>"total-dataset-investigations-regular", "count"=>13, "year-months"=>[{"id"=>"2018-04", "title"=>"April 2018", "sum"=>120.0}, {"id"=>"2018-05", "title"=>"May 2018", "sum"=>382.0}, {"id"=>"2018-06", "title"=>"June 2018", "sum"=>33.0}, {"id"=>"2018-07", "title"=>"July 2018", "sum"=>36.0}, {"id"=>"2018-08", "title"=>"August 2018", "sum"=>29.0}, {"id"=>"2018-09", "title"=>"September 2018", "sum"=>4.0}, {"id"=>"2018-11", "title"=>"November 2018", "sum"=>31.0}, {"id"=>"2018-12", "title"=>"December 2018", "sum"=>1.0}]})
-    end
+  #   it "one doi" do
+  #     response = subject.get_events("obj-id" => "https://doi.org/10.7272/q6g15xs4")
+  #     events = response[:data]
+  #     expect(events.first["attributes"]["subj-id"]).to eq("https://api.datacite.org/reports/fa2ad308-1b25-4394-9bc6-e0c7511e763d")
+  #     expect(response[:meta]["relation-types"].size).to eq(6)
+  #     type = response[:meta]["relation-types"][0]
+  #     expect(type).to eq({"id"=>"total-dataset-investigations-regular", "title"=>"total-dataset-investigations-regular", "count"=>13, "year-months"=>[{"id"=>"2018-04", "title"=>"April 2018", "sum"=>120.0}, {"id"=>"2018-05", "title"=>"May 2018", "sum"=>382.0}, {"id"=>"2018-06", "title"=>"June 2018", "sum"=>33.0}, {"id"=>"2018-07", "title"=>"July 2018", "sum"=>36.0}, {"id"=>"2018-08", "title"=>"August 2018", "sum"=>29.0}, {"id"=>"2018-09", "title"=>"September 2018", "sum"=>4.0}, {"id"=>"2018-11", "title"=>"November 2018", "sum"=>31.0}, {"id"=>"2018-12", "title"=>"December 2018", "sum"=>1.0}]})
+  #   end
 
 
-    it "one not found" do
-      response = subject.get_events("obj-id" => "10.4226/xxxx")
-      work = response[:data]
-      expect(work).to be_empty
-    end
+  #   it "one not found" do
+  #     response = subject.get_events("obj-id" => "10.4226/xxxx")
+  #     work = response[:data]
+  #     expect(work).to be_empty
+  #   end
 
-    it "filter by source and filter pages" do
-      response = subject.get_events("source-id" => "datacite-usage", "page[size]" =>3)
-      work = response[:data]
-      expect(work["attributes"]["author"].first).to eq("literal"=>"Person_1")
-      expect(response[:included].size).to eq(3)
-      data_center = response[:included][0]
-      expect(data_center).to eq("attributes" => {"created"=>"2014-10-03T15:53:41.000Z", "member-id"=>"bl", "title"=>"Mendeley Data", "updated"=>"2018-08-26T01:30:43.000Z", "year"=>2014},
-        "id" => "bl.mendeley",
-        "relationships" => {"member"=>{"data"=>{"id"=>"bl", "type"=>"members"}}},
-        "type" => "data-centers")
-    end
+  #   it "filter by source and filter pages" do
+  #     response = subject.get_events("source-id" => "datacite-usage", "page[size]" =>3)
+  #     work = response[:data]
+  #     expect(work["attributes"]["author"].first).to eq("literal"=>"Person_1")
+  #     expect(response[:included].size).to eq(3)
+  #     data_center = response[:included][0]
+  #     expect(data_center).to eq("attributes" => {"created"=>"2014-10-03T15:53:41.000Z", "member-id"=>"bl", "title"=>"Mendeley Data", "updated"=>"2018-08-26T01:30:43.000Z", "year"=>2014},
+  #       "id" => "bl.mendeley",
+  #       "relationships" => {"member"=>{"data"=>{"id"=>"bl", "type"=>"members"}}},
+  #       "type" => "data-centers")
+  #   end
 
-    it "query" do
-      response = subject.get_events(query: "california")
-      #expect(response[:meta]["resource-types"].first).to eq("id"=>"dataset", "title"=>"Dataset", "count"=>109)
-      work = response[:data].first
-      expect(work["id"]).to eq("https://handle.test.datacite.org/10.22002/d1.505")
-    end
-  end
+  #   it "query" do
+  #     response = subject.get_events(query: "california")
+  #     #expect(response[:meta]["resource-types"].first).to eq("id"=>"dataset", "title"=>"Dataset", "count"=>109)
+  #     work = response[:data].first
+  #     expect(work["id"]).to eq("https://handle.test.datacite.org/10.22002/d1.505")
+  #   end
+  # end
 end
