@@ -1,6 +1,8 @@
 require_relative 'doi'
 require_relative 'session_helper'
 require 'sanitize'
+require "json"
+
 
 module Sinatra
   module Helpers
@@ -126,6 +128,17 @@ module Sinatra
       WillPaginate::Collection.create(page, DEFAULT_ROWS, [total, 1000].min) do |pager|
         pager.replace items
       end
+    end
+
+    def reduce_aggs meta, options={}
+      meta = ::JSON.parse(meta) if meta.respond_to?("downcase")
+      relation_types = meta.fetch("relation-types",[])
+      metrics = {}
+      relation_types.each do |type|
+        qty = type["year-months"].map { |period| period.dig("sum")}.sum
+        metrics[type.dig("id")] = qty
+      end
+      metrics
     end
 
     def license_img(license)

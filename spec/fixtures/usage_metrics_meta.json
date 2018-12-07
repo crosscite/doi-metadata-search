@@ -1,0 +1,195 @@
+{
+  "total": 44,
+  "total-pages": 0,
+  "sources": [
+    {
+      "id": "datacite-usage",
+      "title": "DataCite Usage Stats",
+      "count": 44
+    }
+  ],
+  "prefixes": [
+    {
+      "id": "10.7272",
+      "title": "10.7272",
+      "count": 44
+    }
+  ],
+  "citation-types": [
+    
+  ],
+  "relation-types": [
+    {
+      "id": "total-dataset-investigations-regular",
+      "title": "total-dataset-investigations-regular",
+      "count": 12,
+      "year-months": [
+        {
+          "id": "2018-04",
+          "title": "April 2018",
+          "sum": 120.0
+        },
+        {
+          "id": "2018-05",
+          "title": "May 2018",
+          "sum": 382.0
+        },
+        {
+          "id": "2018-06",
+          "title": "June 2018",
+          "sum": 33.0
+        },
+        {
+          "id": "2018-07",
+          "title": "July 2018",
+          "sum": 36.0
+        },
+        {
+          "id": "2018-08",
+          "title": "August 2018",
+          "sum": 29.0
+        },
+        {
+          "id": "2018-09",
+          "title": "September 2018",
+          "sum": 4.0
+        },
+        {
+          "id": "2018-11",
+          "title": "November 2018",
+          "sum": 31.0
+        }
+      ]
+    },
+    {
+      "id": "unique-dataset-investigations-regular",
+      "title": "unique-dataset-investigations-regular",
+      "count": 12,
+      "year-months": [
+        {
+          "id": "2018-04",
+          "title": "April 2018",
+          "sum": 101.0
+        },
+        {
+          "id": "2018-05",
+          "title": "May 2018",
+          "sum": 118.0
+        },
+        {
+          "id": "2018-06",
+          "title": "June 2018",
+          "sum": 27.0
+        },
+        {
+          "id": "2018-07",
+          "title": "July 2018",
+          "sum": 33.0
+        },
+        {
+          "id": "2018-08",
+          "title": "August 2018",
+          "sum": 28.0
+        },
+        {
+          "id": "2018-09",
+          "title": "September 2018",
+          "sum": 4.0
+        },
+        {
+          "id": "2018-11",
+          "title": "November 2018",
+          "sum": 29.0
+        }
+      ]
+    },
+    {
+      "id": "total-dataset-requests-regular",
+      "title": "total-dataset-requests-regular",
+      "count": 9,
+      "year-months": [
+        {
+          "id": "2018-04",
+          "title": "April 2018",
+          "sum": 18.0
+        },
+        {
+          "id": "2018-05",
+          "title": "May 2018",
+          "sum": 2.0
+        },
+        {
+          "id": "2018-06",
+          "title": "June 2018",
+          "sum": 5.0
+        },
+        {
+          "id": "2018-07",
+          "title": "July 2018",
+          "sum": 5.0
+        },
+        {
+          "id": "2018-11",
+          "title": "November 2018",
+          "sum": 4.0
+        }
+      ]
+    },
+    {
+      "id": "unique-dataset-requests-regular",
+      "title": "unique-dataset-requests-regular",
+      "count": 9,
+      "year-months": [
+        {
+          "id": "2018-04",
+          "title": "April 2018",
+          "sum": 12.0
+        },
+        {
+          "id": "2018-05",
+          "title": "May 2018",
+          "sum": 2.0
+        },
+        {
+          "id": "2018-06",
+          "title": "June 2018",
+          "sum": 5.0
+        },
+        {
+          "id": "2018-07",
+          "title": "July 2018",
+          "sum": 5.0
+        },
+        {
+          "id": "2018-11",
+          "title": "November 2018",
+          "sum": 3.0
+        }
+      ]
+    },
+    {
+      "id": "total-dataset-investigations-machine",
+      "title": "total-dataset-investigations-machine",
+      "count": 1,
+      "year-months": [
+        {
+          "id": "2018-08",
+          "title": "August 2018",
+          "sum": 1.0
+        }
+      ]
+    },
+    {
+      "id": "unique-dataset-investigations-machine",
+      "title": "unique-dataset-investigations-machine",
+      "count": 1,
+      "year-months": [
+        {
+          "id": "2018-08",
+          "title": "August 2018",
+          "sum": 1.0
+        }
+      ]
+    }
+  ]
+}
