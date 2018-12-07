@@ -19,11 +19,11 @@ function updateCiteBox() {
   var url = $('#site-title').attr('data-conneg');
 
   if (citationInfo['style'] == 'bibtex') {
-    url += '/application/x-bibtex/' + citationInfo['doi'];
+    url += '/dois/application/x-bibtex/' + citationInfo['doi'];
   } else if (citationInfo['style'] == 'ris') {
-    url += '/application/x-research-info-systems/' + citationInfo['doi'];
+    url += '/dois/application/x-research-info-systems/' + citationInfo['doi'];
   } else {
-    url += '/text/x-bibliography/' + citationInfo['doi'] + '?style=' + citationInfo['style'];
+    url += '/dois/text/x-bibliography/' + citationInfo['doi'] + '?style=' + citationInfo['style'];
   }
 
   $.ajax({

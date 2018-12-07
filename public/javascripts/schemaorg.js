@@ -5,7 +5,7 @@ $(document).ready(function() {
   }
   var doi = new URL(identifier);
   var url = $('#site-title').attr('data-conneg');
-  url += '/application/vnd.schemaorg.ld+json/' + doi.pathname;
+  url += '/dois/application/vnd.schemaorg.ld+json/' + doi.pathname;
 
   $.ajax({
     url: url,
