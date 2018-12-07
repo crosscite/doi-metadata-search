@@ -150,7 +150,7 @@ get %r{/works/(.+)} do
   doi = validate_doi(params[:id])
   link = doi ? "https://doi.org/#{doi}" : params[:id]
 
-  events  = get_events('page[number]' => 0, "obj-id" => link,  "source-id" =>"datacite-usage")
+  events  = get_events('page[number]' => 0, "obj-id" => link)
   @work[:metrics] = reduce_aggs(events[:meta])
 
 
