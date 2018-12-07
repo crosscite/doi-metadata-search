@@ -80,7 +80,7 @@ VCR.configure do |c|
 
 
   record_mode = ENV["VCR"] ? ENV["VCR"].to_sym : :once
-  c.default_cassette_options = { :record => record_mode }
+  # c.default_cassette_options = { :record => record_mode }
 end
 
 def capture_stdout(&block)
