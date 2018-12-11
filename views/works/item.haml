@@ -25,30 +25,29 @@
       .license
         %a{:href => attributes["license"]}
           = license_img(attributes["license"])
+
+  .panel-footer
     - unless views < 1
-      .fa.fa-eye
-      = "#{views} Views"
+      %span
+        .fa.fa-eye
+        = "#{views} Views"
     - unless downloads < 1
-      .fa.fa-arrow-circle-down
-      = "#{downloads} Downloads"
+      %span
+        .fa.fa-arrow-circle-down
+        = "#{downloads} Downloads"
     - unless resolutions < 1
-      .fa.fa-bolt
-      = "#{resolutions} Resolutions"
+      %span
+        .fa.fa-bolt
+        = "#{resolutions} Resolutions"
     - unless citations < 1 
-      .fa.fa-thumbs-o-up
-      = "#{citations} Citations"
+      %span
+        .fa.fa-thumbs-o-up
+        = "#{citations} Citations"
                     
 
   - if @work.present? && @work.fetch(:data, {}).fetch("attributes", {}).fetch("related-identifiers", nil).present? && @work.fetch(:data, {}).fetch("id", "work") != item["id"]
     .panel-footer
       = relation_type_title(@work.fetch(:data, {}).fetch("attributes", {}).fetch("related-identifiers"), item["id"]) + " " + @work.fetch(:data, {}).fetch("id", nil)
-
-  - if attributes["results"].present?
-    - attributes["results"].each do |s|
-      .panel-footer
-        = s.fetch("title", nil)
-        %span.badge
-          = number_with_delimiter(s.fetch("count", 0))
 
   .panel-footer.item-links
     %a{:href => item["id"]}
