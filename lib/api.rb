@@ -92,7 +92,7 @@ module Sinatra
 
     def get_events(params = {})
       if params.fetch(:id, nil).present?
-        url = "https://api.datacite.org/events/#{params.fetch(:id)}"
+        url = "https://api.test.datacite.org/events/#{params.fetch(:id)}"
       else
         params = { id: params.fetch(:id, nil),
                    'source-id' => params.fetch('source-id', nil),

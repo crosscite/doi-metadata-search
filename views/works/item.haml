@@ -4,10 +4,10 @@
 - sources = @works.present? ? @works[:meta].fetch("sources", []) : []
 - new_params = params[:model] == "works" && params["id"] == attributes.fetch("doi", nil) ? params.merge(external_link: true) : params
 - title = attributes["title"].to_s.gsub(/"/, '\"')
-- views =  @works.present? ? 0 : metrics.fetch("total-dataset-investigations-regular",0).to_i +  metrics.fetch("total-dataset-investigations-machine",0).to_i
-- downloads = @works.present? ? 0 : metrics.fetch("total-dataset-requests-regular",0).to_i + metrics.fetch("total-dataset-requests-machine",0).to_i
-- resolutions = @works.present? ? 0 : metrics.fetch("total-resolutions-regular",0).to_i + metrics.fetch("total-resolutions-machine",0).to_i
-- citations = @works.present? ? 0 : metrics.fetch("references",0).to_i + metrics.fetch("cites",0).to_i
+- views = metrics.fetch("total-dataset-investigations-regular",0).to_i +  metrics.fetch("total-dataset-investigations-machine",0).to_i
+- downloads =  metrics.fetch("total-dataset-requests-regular",0).to_i + metrics.fetch("total-dataset-requests-machine",0).to_i
+- resolutions =  metrics.fetch("total-resolutions-regular",0).to_i + metrics.fetch("total-resolutions-machine",0).to_i
+- citations =  metrics.fetch("references",0).to_i + metrics.fetch("cites",0).to_i
 
 .panel.panel-default
   .panel-body
@@ -26,23 +26,24 @@
         %a{:href => attributes["license"]}
           = license_img(attributes["license"])
 
-  .panel-footer
-    - unless views < 1
-      %span
-        .fa.fa-eye
-        = "#{views} Views"
-    - unless downloads < 1
-      %span
-        .fa.fa-arrow-circle-down
-        = "#{downloads} Downloads"
-    - unless resolutions < 1
-      %span
-        .fa.fa-bolt
-        = "#{resolutions} Resolutions"
-    - unless citations < 1 
-      %span
-        .fa.fa-thumbs-o-up
-        = "#{citations} Citations"
+  - if metrics.any?
+    .panel-footer
+      - unless views < 1
+        %span
+          .fa.fa-eye
+          = "#{views} Views"
+      - unless downloads < 1
+        %span
+          .fa.fa-arrow-circle-down
+          = "#{downloads} Downloads"
+      - unless resolutions < 1
+        %span
+          .fa.fa-bolt
+          = "#{resolutions} Resolutions"
+      - unless citations < 1 
+        %span
+          .fa.fa-thumbs-o-up
+          = "#{citations} Citations"
                     
 
   - if @work.present? && @work.fetch(:data, {}).fetch("attributes", {}).fetch("related-identifiers", nil).present? && @work.fetch(:data, {}).fetch("id", "work") != item["id"]

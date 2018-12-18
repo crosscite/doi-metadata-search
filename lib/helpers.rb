@@ -141,6 +141,15 @@ module Sinatra
       metrics
     end
 
+    def trasnform_metrics_array relationTypes, options={}
+      return {} if relationTypes.empty?
+      instance = {}
+      relationTypes.each do |type|
+        instance[type.dig("id")] = type.dig("sum")
+      end
+      instance
+    end
+
     def license_img(license)
       uri = URI.parse(license)
 

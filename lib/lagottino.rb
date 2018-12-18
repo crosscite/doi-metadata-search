@@ -7,6 +7,7 @@ module Sinatra
  
 
     def get_metrics(items)
+      return [] if items.empty?
       dois = items.reduce([]) do |sum, item|
         # if item.is_a?(Hash) && item.fetch("attributes", {}).fetch("registration-agency-id", nil) == ENV['RA']
         if item.is_a?(Hash)
@@ -16,8 +17,7 @@ module Sinatra
         end
       end.compact
       metrics = call_metrics(dois)
-      puts metrics
-      merge_metrics(items, metrics.dig("meta","doisRelationTypes"))
+      merge_metrics(items, metrics.dig(:meta,"doisRelationTypes"))
     end
 
     def normalize_doi(doi)
@@ -41,9 +41,10 @@ module Sinatra
       items.map do |item|
         doi = normalize_doi(item.fetch('attributes', {}).fetch('doi', "item"))
         metric = Array(metrics).find { |c| c.fetch('id', {}) == doi } || {}
-        item["metrics"] = metric["relationTypes"]
+        item["metrics"] = trasnform_metrics_array(metric.fetch("relationTypes",[]))
         item
       end
     end
   end
+  helpers Lagottino
 end
