@@ -4,10 +4,10 @@
 - sources = @works.present? ? @works[:meta].fetch("sources", []) : []
 - new_params = params[:model] == "works" && params["id"] == attributes.fetch("doi", nil) ? params.merge(external_link: true) : params
 - title = attributes["title"].to_s.gsub(/"/, '\"')
-- views = metrics.fetch("total-dataset-investigations-regular",0).to_i +  metrics.fetch("total-dataset-investigations-machine",0).to_i
-- downloads =  metrics.fetch("total-dataset-requests-regular",0).to_i + metrics.fetch("total-dataset-requests-machine",0).to_i
-- resolutions =  metrics.fetch("total-resolutions-regular",0).to_i + metrics.fetch("total-resolutions-machine",0).to_i
-- citations =  metrics.fetch("references",0).to_i + metrics.fetch("cites",0).to_i
+- views = metrics.to_h.fetch("total-dataset-investigations-regular",0).to_i +  metrics.to_h.fetch("total-dataset-investigations-machine",0).to_i 
+- downloads =  metrics.to_h.fetch("total-dataset-requests-regular",0).to_i + metrics.to_h.fetch("total-dataset-requests-machine",0).to_i 
+- resolutions =  metrics.to_h.fetch("total-resolutions-regular",0).to_i + metrics.to_h.fetch("total-resolutions-machine",0).to_i 
+- citations =  metrics.to_h.fetch("references",0).to_i + metrics.to_h.fetch("cites",0).to_i 
 
 .panel.panel-default
   .panel-body
