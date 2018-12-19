@@ -27,43 +27,6 @@
           %li
             %a{:href => "https://support.datacite.org"}
               Support
-          %li.dropdown
-            %a.dropdown-toggle{href: '#', data: { toggle: "dropdown"}, aria: { haspopup: "true", expanded: "false" }}
-              %i.fa.fa-th
-              %span.caret
-            %ul.dropdown-menu{role: 'menu'}
-              - if ENV['RACK_ENV'] == "development"
-                %li.dropdown-header
-                  Development
-                - settings.development_links.each do |item|
-                  - if item['name'] == "divider"
-                    %li.divider
-                  - else
-                    %li
-                      %a{:href => item['url']}
-                        %i.fa{class: "fa-#{item['icon']}"}
-                        = item['name']
-              - elsif ENV['RACK_ENV'] == "stage"
-                %li.dropdown-header
-                  Test Services
-                - settings.stage_links.each do |item|
-                  - if item['name'] == "divider"
-                    %li.divider
-                  - else
-                    %li
-                      %a{:href => item['url']}
-                        %i.fa.fa-fw{class: "fa-#{item['icon']}"}
-                        = item['name']
-              - else
-                - settings.production_links.each do |item|
-                  - if item['name'] == "divider"
-                    %li.divider
-                  - else
-                    %li
-                      %a{:href => item['url']}
-                        %i.fa.fa-fw{class: "fa-#{item['icon']}"}
-                        = item['name']
-
           - if ENV['JWT_HOST'].present?
             - if user_signed_in?
               %li.dropdown
