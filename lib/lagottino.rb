@@ -26,11 +26,11 @@ module Sinatra
       "https://doi.org/#{doi}" if doi.present?
     end
 
-    def call_metrics(dois)
+    def call_metrics dois, options={}
 
-      # url = "#{ENV['API_URL']}/events?ids=#{dois.join(",")}&" + URI.encode_www_form({"extra"=> true, "page[size]"=> 50})
-      url = "https://api.test.datacite.org/events?ids=#{dois.join(",")}&" + URI.encode_www_form({"extra"=> true, "page[size]"=> 50})
-      response = Maremma.get url, timeout: 20
+      url = "#{ENV['API_URL']}/events?ids=#{dois.join(",")}&" + URI.encode_www_form({"extra"=> true, "page[size]"=> 50})
+      # dependency injection
+      response = options[:response].present? ? options[:response] : Maremma.get(url, timeout: 20)
 
      { data: Array(response.body.fetch("data", [])),
         errors: Array(response.body.fetch("errors", [])),
