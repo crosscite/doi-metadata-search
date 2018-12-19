@@ -49,8 +49,7 @@ RUN /sbin/setuser app npm install
 
 # Install Ruby gems
 WORKDIR /home/app/webapp
-RUN gem update --system && \
-    gem install bundler && \
+RUN gem install bundler && \
     /sbin/setuser app bundle install --path vendor/bundle
 
 # Run additional scripts during container startup (i.e. not at build time)
