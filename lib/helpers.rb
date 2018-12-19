@@ -420,6 +420,8 @@ module Sinatra
       return "" unless published.present?
 
       date = get_datetime_from_iso8601(published)
+      return "" unless date.present?
+      
       year, month, day = get_year_month_day(published)
 
       if day
