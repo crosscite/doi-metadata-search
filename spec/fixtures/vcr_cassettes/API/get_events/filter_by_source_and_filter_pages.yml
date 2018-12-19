@@ -1,0 +1,79 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.datacite.org/events?page%5Bsize%5D=3&source-id=datacite-usage
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Maremma - http://search.local
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Thu, 06 Dec 2018 19:37:48 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding, Origin
+      X-Request-Id:
+      - 6fac7d69-1a4d-4f98-976d-da99aa0c6aa4
+      Etag:
+      - W/"b87e441a6adb8e403535ca56fd02926e"
+      X-Runtime:
+      - '0.041665'
+      X-Powered-By:
+      - Phusion Passenger 5.3.5
+      Server:
+      - nginx/1.14.0 + Phusion Passenger 5.3.5
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"308185f3-1607-478b-a25e-ed5671994db5","type":"events","attributes":{"subj-id":"https://api.datacite.org/reports/fa2ad308-1b25-4394-9bc6-e0c7511e763d","obj-id":"https://doi.org/10.7272/q6g15xs4","source-id":"datacite-usage","relation-type-id":"total-dataset-investigations-regular","total":4,"message-action":"create","source-token":"43ba99ae-5cf0-11e8-9c2d-fa7ae01bbebc","license":"https://creativecommons.org/publicdomain/zero/1.0/","occurred-at":"2018-09-01T00:00:00.000Z","timestamp":"2018-09-02T14:32:58.896Z"},"relationships":{"subj":{"data":{"id":"https://api.datacite.org/reports/fa2ad308-1b25-4394-9bc6-e0c7511e763d","type":"objects"}},"obj":{"data":{"id":"https://doi.org/10.7272/q6g15xs4","type":"objects"}}}},{"id":"3494f670-66be-423d-b9f8-90ffe0058689","type":"events","attributes":{"subj-id":"https://api.datacite.org/reports/fa2ad308-1b25-4394-9bc6-e0c7511e763d","obj-id":"https://doi.org/10.7272/q6g15xs4","source-id":"datacite-usage","relation-type-id":"unique-dataset-investigations-regular","total":4,"message-action":"create","source-token":"43ba99ae-5cf0-11e8-9c2d-fa7ae01bbebc","license":"https://creativecommons.org/publicdomain/zero/1.0/","occurred-at":"2018-09-01T00:00:00.000Z","timestamp":"2018-09-02T14:32:59.780Z"},"relationships":{"subj":{"data":{"id":"https://api.datacite.org/reports/fa2ad308-1b25-4394-9bc6-e0c7511e763d","type":"objects"}},"obj":{"data":{"id":"https://doi.org/10.7272/q6g15xs4","type":"objects"}}}},{"id":"b06f9282-b04b-43b8-b8ea-4f7d4e478247","type":"events","attributes":{"subj-id":"https://api.datacite.org/reports/fa2ad308-1b25-4394-9bc6-e0c7511e763d","obj-id":"https://doi.org/10.6078/d14h46","source-id":"datacite-usage","relation-type-id":"total-dataset-requests-regular","total":3,"message-action":"create","source-token":"43ba99ae-5cf0-11e8-9c2d-fa7ae01bbebc","license":"https://creativecommons.org/publicdomain/zero/1.0/","occurred-at":"2018-09-01T00:00:00.000Z","timestamp":"2018-09-02T14:33:00.658Z"},"relationships":{"subj":{"data":{"id":"https://api.datacite.org/reports/fa2ad308-1b25-4394-9bc6-e0c7511e763d","type":"objects"}},"obj":{"data":{"id":"https://doi.org/10.6078/d14h46","type":"objects"}}}}],"meta":{"total":16051,"total-pages":5351,"sources":[{"id":"datacite-usage","title":"DataCite
+        Usage Stats","count":16051}],"prefixes":[{"id":"10.15146","title":"10.15146","count":4933},{"id":"10.7280","title":"10.7280","count":2116},{"id":"10.6078","title":"10.6078","count":1971},{"id":"10.5063","title":"10.5063","count":1612},{"id":"10.7272","title":"10.7272","count":1440},{"id":"10.6085","title":"10.6085","count":864},{"id":"10.6086","title":"10.6086","count":741},{"id":"10.25338","title":"10.25338","count":690},{"id":"10.6073","title":"10.6073","count":472},{"id":"10.6071","title":"10.6071","count":426},{"id":"10.7291","title":"10.7291","count":392},{"id":"10.5060","title":"10.5060","count":194},{"id":"10.5068","title":"10.5068","count":104},{"id":"10.17916","title":"10.17916","count":96}],"citation-types":[],"relation-types":[{"id":"total-dataset-investigations-regular","title":"total-dataset-investigations-regular","count":5281,"year-months":[{"id":"2018-04","title":"April
+        2018","sum":62177.0},{"id":"2018-05","title":"May 2018","sum":19513.0},{"id":"2018-06","title":"June
+        2018","sum":6473.0},{"id":"2018-07","title":"July 2018","sum":4760.0},{"id":"2018-08","title":"August
+        2018","sum":6840.0},{"id":"2018-09","title":"September 2018","sum":211.0},{"id":"2018-11","title":"November
+        2018","sum":399582.0},{"id":"2018-12","title":"December 2018","sum":5905.0}]},{"id":"unique-dataset-investigations-regular","title":"unique-dataset-investigations-regular","count":5257,"year-months":[{"id":"2018-04","title":"April
+        2018","sum":14636.0},{"id":"2018-05","title":"May 2018","sum":4748.0},{"id":"2018-06","title":"June
+        2018","sum":3291.0},{"id":"2018-07","title":"July 2018","sum":2537.0},{"id":"2018-08","title":"August
+        2018","sum":4806.0},{"id":"2018-09","title":"September 2018","sum":137.0},{"id":"2018-11","title":"November
+        2018","sum":18935.0},{"id":"2018-12","title":"December 2018","sum":1468.0}]},{"id":"total-dataset-requests-regular","title":"total-dataset-requests-regular","count":2584,"year-months":[{"id":"2018-04","title":"April
+        2018","sum":152160.0},{"id":"2018-05","title":"May 2018","sum":3041.0},{"id":"2018-06","title":"June
+        2018","sum":4697.0},{"id":"2018-07","title":"July 2018","sum":3166.0},{"id":"2018-08","title":"August
+        2018","sum":2654.0},{"id":"2018-09","title":"September 2018","sum":130.0},{"id":"2018-11","title":"November
+        2018","sum":34538.0},{"id":"2018-12","title":"December 2018","sum":5341.0}]},{"id":"unique-dataset-requests-regular","title":"unique-dataset-requests-regular","count":2570,"year-months":[{"id":"2018-04","title":"April
+        2018","sum":12084.0},{"id":"2018-05","title":"May 2018","sum":1002.0},{"id":"2018-06","title":"June
+        2018","sum":1345.0},{"id":"2018-07","title":"July 2018","sum":945.0},{"id":"2018-08","title":"August
+        2018","sum":953.0},{"id":"2018-09","title":"September 2018","sum":57.0},{"id":"2018-11","title":"November
+        2018","sum":8002.0},{"id":"2018-12","title":"December 2018","sum":1001.0}]},{"id":"total-dataset-investigations-machine","title":"total-dataset-investigations-machine","count":127,"year-months":[{"id":"2018-04","title":"April
+        2018","sum":248.0},{"id":"2018-05","title":"May 2018","sum":71.0},{"id":"2018-06","title":"June
+        2018","sum":14.0},{"id":"2018-07","title":"July 2018","sum":10.0},{"id":"2018-08","title":"August
+        2018","sum":72.0},{"id":"2018-11","title":"November 2018","sum":20.0},{"id":"2018-12","title":"December
+        2018","sum":14.0}]},{"id":"unique-dataset-investigations-machine","title":"unique-dataset-investigations-machine","count":121,"year-months":[{"id":"2018-04","title":"April
+        2018","sum":177.0},{"id":"2018-05","title":"May 2018","sum":43.0},{"id":"2018-06","title":"June
+        2018","sum":13.0},{"id":"2018-07","title":"July 2018","sum":8.0},{"id":"2018-08","title":"August
+        2018","sum":56.0},{"id":"2018-11","title":"November 2018","sum":19.0},{"id":"2018-12","title":"December
+        2018","sum":10.0}]},{"id":"total-dataset-requests-machine","title":"total-dataset-requests-machine","count":57,"year-months":[{"id":"2018-04","title":"April
+        2018","sum":132.0},{"id":"2018-05","title":"May 2018","sum":81.0},{"id":"2018-06","title":"June
+        2018","sum":2.0},{"id":"2018-08","title":"August 2018","sum":27.0},{"id":"2018-11","title":"November
+        2018","sum":12.0},{"id":"2018-12","title":"December 2018","sum":2.0}]},{"id":"unique-dataset-requests-machine","title":"unique-dataset-requests-machine","count":54,"year-months":[{"id":"2018-04","title":"April
+        2018","sum":123.0},{"id":"2018-05","title":"May 2018","sum":50.0},{"id":"2018-06","title":"June
+        2018","sum":1.0},{"id":"2018-08","title":"August 2018","sum":20.0},{"id":"2018-11","title":"November
+        2018","sum":12.0},{"id":"2018-12","title":"December 2018","sum":2.0}]}]},"links":{"self":"https://api.datacite.org/events?page%5Bsize%5D=3&source-id=datacite-usage","next":"https://api.datacite.org/events?page%5Bcursor%5D=1535898780658&page%5Bsize%5D=3&source-id=datacite-usage"}}'
+    http_version: 
+  recorded_at: Thu, 06 Dec 2018 19:37:48 GMT
+recorded_with: VCR 2.9.3
