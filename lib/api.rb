@@ -103,7 +103,7 @@ module Sinatra
         url = "#{ENV['API_URL']}/events?" + URI.encode_www_form(params)
       end
   
-      response = Maremma.get url, timeout: TIMEOUT
+      response = params[:response].present? ? params[:response] : Maremma.get(url, timeout: TIMEOUT)
       { data: response.body.fetch("data", []),
         errors: Array(response.body.fetch("errors", [])),
         meta: response.body.fetch("meta", {}) }

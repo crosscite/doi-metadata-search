@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.test.datacite.org/works?include=data-center,resource-type,member&page%5Bnumber%5D=1&page%5Bsize%5D=25&query=10.7272/q6g15xs4
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Maremma - http://search.local
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Wed, 19 Dec 2018 10:12:44 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding, Origin
+      X-Request-Id:
+      - b8a99fa4-b7bb-4585-9d6f-4648600e9e34
+      Etag:
+      - W/"7344a208616377da58e59a084d3389c6"
+      X-Runtime:
+      - '0.049615'
+      X-Powered-By:
+      - Phusion Passenger 6.0.0
+      Server:
+      - nginx/1.15.7 + Phusion Passenger 6.0.0
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"https://handle.test.datacite.org/10.7272/q6g15xs4","type":"works","attributes":{"doi":"10.7272/q6g15xs4","identifier":"https://handle.test.datacite.org/10.7272/q6g15xs4","url":"https://datashare.ucsf.edu/stash/dataset/doi:10.7272/Q6G15XS4","author":[{"given":"Robert","family":"Rodriguez"},{"given":"William","family":"Mower"}],"title":"NEXUS
+        Head CT","container-title":"UC San Francisco","description":null,"resource-type-subtype":null,"data-center-id":"cdl.ucsfctsi","member-id":"cdl","resource-type-id":"dataset","version":null,"license":"https://creativecommons.org/licenses/by/4.0","schema-version":"3","results":[],"related-identifiers":[],"published":"2017","registered":"2018-12-07T09:48:20.000Z","checked":null,"updated":"2018-12-19T09:31:53.000Z","media":[],"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMyIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMyBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC0zL21ldGFkYXRhLnhzZCI+CiAgPGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuNzI3Mi9RNkcxNVhTNDwvaWRlbnRpZmllcj4KICA8Y3JlYXRvcnM+CiAgICA8Y3JlYXRvcj4KICAgICAgPGNyZWF0b3JOYW1lPlJvZHJpZ3VleiwgUm9iZXJ0PC9jcmVhdG9yTmFtZT4KICAgICAgPGFmZmlsaWF0aW9uPlVDIFNhbiBGcmFuY2lzY288L2FmZmlsaWF0aW9uPgogICAgPC9jcmVhdG9yPgogICAgPGNyZWF0b3I+CiAgICAgIDxjcmVhdG9yTmFtZT5Nb3dlciwgV2lsbGlhbTwvY3JlYXRvck5hbWU+CiAgICAgIDxhZmZpbGlhdGlvbj5VQ0xBPC9hZmZpbGlhdGlvbj4KICAgIDwvY3JlYXRvcj4KICA8L2NyZWF0b3JzPgogIDx0aXRsZXM+CiAgICA8dGl0bGU+TkVYVVMgSGVhZCBDVDwvdGl0bGU+CiAgPC90aXRsZXM+CiAgPHB1Ymxpc2hlcj5VQyBTYW4gRnJhbmNpc2NvPC9wdWJsaXNoZXI+CiAgPHB1YmxpY2F0aW9uWWVhcj4yMDE3PC9wdWJsaWNhdGlvblllYXI+CiAgPGxhbmd1YWdlPmVuPC9sYW5ndWFnZT4KICA8cmVzb3VyY2VUeXBlIHJlc291cmNlVHlwZUdlbmVyYWw9IkRhdGFzZXQiLz4KICA8c2l6ZXM+CiAgICA8c2l6ZT4xNDk1MjA0IGJ5dGVzPC9zaXplPgogIDwvc2l6ZXM+CiAgPHZlcnNpb24+MTwvdmVyc2lvbj4KICA8cmlnaHRzTGlzdD4KICAgIDxyaWdodHMgcmlnaHRzVVJJPSJodHRwczovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5zZXMvYnkvNC4wLyI+Q3JlYXRpdmUgQ29tbW9ucyBBdHRyaWJ1dGlvbiA0LjAgSW50ZXJuYXRpb25hbCAoQ0MgQlkgNC4wKTwvcmlnaHRzPgogIDwvcmlnaHRzTGlzdD4KICA8ZGVzY3JpcHRpb25zPgogICAgPGRlc2NyaXB0aW9uIGRlc2NyaXB0aW9uVHlwZT0iQWJzdHJhY3QiPgogICAgICBCYWNrZ3JvdW5kIENsaW5pY2lhbnMsIGFmcmFpZCBvZiBtaXNzaW5nIGludHJhY3JhbmlhbCBpbmp1cmllcywgbGliZXJhbGx5CiAgICAgIG9idGFpbiBjb21wdXRlZCB0b21vZ3JhcGhpYyAoQ1QpIGhlYWQgaW1hZ2luZyBpbiBibHVudCB0cmF1bWEgcGF0aWVudHMuCiAgICAgIFByaW9yIHdvcmsgc3VnZ2VzdHMgdGhhdCBjbGluaWNhbCBjcml0ZXJpYSAoTkVYVVMgSGVhZCBDVCBkZWNpc2lvbgogICAgICBpbnN0cnVtZW50KSBjYW4gcmVsaWFibHkgaWRlbnRpZnkgcGF0aWVudHMgd2l0aCBpbXBvcnRhbnQgaW5qdXJpZXMsIHdoaWxlCiAgICAgIGV4Y2x1ZGluZyBpbmp1cnksIGFuZCB0aGUgbmVlZCBmb3IgaW1hZ2luZyBpbiBtYW55IHBhdGllbnRzLiBNZXRob2RzIFdlCiAgICAgIGNvbmR1Y3RlZCBhIHByb3NwZWN0aXZlIG9ic2VydmF0aW9uYWwgc3R1ZHkgb2YgdGhlIE5FWFVTIEhlYWQgQ1QgZGVjaXNpb24KICAgICAgaW5zdHJ1bWVudCAoREkpIHRoYXQgcmVxdWlyZXMgcGF0aWVudHMgdG8gbWVldCBlaWdodCBjcml0ZXJpYSB0byBhY2hpZXZlCiAgICAgIOKAnGxvdy1yaXNr4oCdIGNsYXNzaWZpY2F0aW9uLiBXZSBleGFtaW5lZCB0aGUgaW5zdHJ1bWVudOKAmXMgcGVyZm9ybWFuY2UgaW4KICAgICAgaWRlbnRpZnlpbmcgcGF0aWVudHMgcmVxdWlyaW5nIG5ldXJvbG9naWNhbCBpbnRlcnZlbnRpb24gZnJvbSBhbW9uZyBhCiAgICAgIGNvaG9ydCBvZiAxMSw3NzAgYmx1bnQgaGVhZCBpbmp1cnkgcGF0aWVudHMuIFJlc3VsdHMgVGhlIE5FWFVTIEhlYWQgQ1QgREkKICAgICAgYXNzaWduZWQgaGlnaC1yaXNrIHN0YXR1cyB0byA0MjAgb2YgNDIwIHBhdGllbnRzIHJlcXVpcmluZyBuZXVyb2xvZ2ljYWwKICAgICAgaW50ZXJ2ZW50aW9uIChzZW5zaXRpdml0eSwgMTAwLjAlIFs5NSUgY29uZmlkZW5jZSBpbnRlcnZhbCBbQ0ldOiA5OS4xJSDigJMKICAgICAgMTAwLjAlXSkuIFRoZSBpbnN0cnVtZW50IGFzc2lnbmVkIGxvdy1yaXNrIHN0YXR1cyB0byAyLDgyMyBvZiAxMSwzNTAKICAgICAgcGF0aWVudHMgd2hvIGRpZCBub3QgcmVxdWlyZSBuZXVyb2xvZ2ljYWwgaW50ZXJ2ZW50aW9uIChzcGVjaWZpY2l0eSwgMjQuOSUKICAgICAgWzk1JSBDSTogMjQuMSUgLSAyNS43JV0pLiBOb25lIG9mIHRoZSAyLDgyMyBsb3ctcmlzayBwYXRpZW50cyByZXF1aXJlZAogICAgICBuZXVyb2xvZ2ljYWwgaW50ZXJ2ZW50aW9uIChOUFYsIDEwMC4wJSBbOTUlIENJOiA5OS45JSAtIDEwMC4wJV0pLiBUaGUgREkKICAgICAgYXNzaWduZWQgaGlnaC1yaXNrIHN0YXR1cyB0byA3NTkgb2YgNzY3IHBhdGllbnRzIHdpdGggc2lnbmlmaWNhbnQKICAgICAgaW50cmFjcmFuaWFsIGluanVyaWVzIChzZW5zaXRpdml0eSwgOTkuMCUgWzk1JSBDSTogOTguMCUgLSA5OS42JV0pLiBUaGUKICAgICAgaW5zdHJ1bWVudCBhc3NpZ25lZCBsb3ctcmlzayBzdGF0dXMgdG8gMiw4MTUgb2YgMTEsMDAzIHBhdGllbnRzIHdobyBkaWQKICAgICAgbm90IGhhdmUgc2lnbmlmaWNhbnQgaW5qdXJpZXMgKHNwZWNpZmljaXR5LCAyNS42JSBbOTUlIENJOiAyNC44JSAtCiAgICAgIDI2LjQlXSkuIFNpZ25pZmljYW50IGluanVyaWVzIHdlcmUgYWJzZW50IGluIDIsODE1IG9mIHRoZSAyLDgyMyBwYXRpZW50cwogICAgICBhc3NpZ25lZCBsb3ctcmlzayBzdGF0dXMgKE5QViwgOTkuNyUgWzk1JSBDSTogOTkuNCUgLSA5OS45JV0pLiBDb25jbHVzaW9ucwogICAgICBUaGUgTkVYVVMgSGVhZCBDVCBESSByZWxpYWJseSBpZGVudGlmaWVzIGJsdW50IHRyYXVtYSBwYXRpZW50cyB3aG8gcmVxdWlyZQogICAgICBoZWFkIENUIGltYWdpbmcsIGFuZCBjb3VsZCBzaWduaWZpY2FudGx5IHJlZHVjaW5nIHRoZSB1c2Ugb2YgQ1QgaW1hZ2luZy4KICAgIDwvZGVzY3JpcHRpb24+CiAgICA8ZGVzY3JpcHRpb24gZGVzY3JpcHRpb25UeXBlPSJNZXRob2RzIj5Qcm9zcGVjdGl2ZSBtdWx0aWNlbnRlcjwvZGVzY3JpcHRpb24+CiAgPC9kZXNjcmlwdGlvbnM+CiAgPGdlb0xvY2F0aW9ucz4KICAgIDxnZW9Mb2NhdGlvbj4KICAgICAgPGdlb0xvY2F0aW9uUG9pbnQ+MzcuMjUwMjIgLTExOS43NTEyNjwvZ2VvTG9jYXRpb25Qb2ludD4KICAgICAgPGdlb0xvY2F0aW9uUGxhY2U+Q2FsaWZvcm5pYSwgVVNBPC9nZW9Mb2NhdGlvblBsYWNlPgogICAgPC9nZW9Mb2NhdGlvbj4KICA8L2dlb0xvY2F0aW9ucz4KPC9yZXNvdXJjZT4="},"relationships":{"data-center":{"data":{"id":"cdl.ucsfctsi","type":"data-centers"}},"member":{"data":{"id":"cdl","type":"members"}},"resource-type":{"data":{"id":"dataset","type":"resource-types"}}}}],"included":[{"id":"cdl.ucsfctsi","type":"data-centers","attributes":{"title":"UCSF
+        Clinical & Translational Science Institute (CTSI)","other-names":[],"prefixes":[],"member-id":"cdl","year":2012,"created":"2012-07-10T20:59:53.000Z","updated":"2018-08-26T01:30:31.000Z"},"relationships":{"member":{"data":{"id":"cdl","type":"members"}}}},{"id":"cdl","type":"members","attributes":{"title":"California
+        Digital Library","description":null,"member-type":"provider","organization-type":"academicInstitution","focus-area":"general","region":"AMER","country":"US","year":null,"logo-url":null,"email":"gjanee@ucop.edu","website":null,"phone":null,"joined":null,"created":"2010-01-01T00:00:00.000Z","updated":"2018-11-24T16:21:26.000Z"}},{"id":"dataset","type":"resource-types","attributes":{"title":"Dataset","updated":"2016-09-21T00:00:00Z"},"relationships":{}}],"meta":{"resource-types":[{"id":"dataset","title":"Dataset","count":1}],"registered":[{"id":"2018","title":"2018","count":1}],"data-centers":[{"id":"cdl.ucsfctsi","title":"UCSF
+        Clinical & Translational Science Institute (CTSI)","count":1}],"total":1,"total-pages":1,"page":1}}'
+    http_version: 
+  recorded_at: Wed, 19 Dec 2018 10:12:44 GMT
+recorded_with: VCR 2.9.3

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datacite.org/events?obj-id=10.4226/xxxx
+    uri: https://api.datacite.org/events?obj-id=https://doi.org/10.4226/xxxx
     body:
       encoding: US-ASCII
       string: ''
@@ -17,7 +17,7 @@ http_interactions:
       message: ''
     headers:
       Date:
-      - Thu, 06 Dec 2018 19:37:48 GMT
+      - Fri, 07 Dec 2018 13:15:02 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -30,19 +30,19 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
-      X-Request-Id:
-      - 3a493431-d18f-4ad4-985c-4605fa306c08
       Etag:
-      - W/"9da5b661b2e1075d66b7974b37d721f2"
+      - W/"04646d28e0b2429c43c707e4916333c3"
       X-Runtime:
-      - '0.037232'
+      - '0.032829'
+      X-Request-Id:
+      - ffe67750-78b4-4acf-b3d9-17df5b1cda59
       X-Powered-By:
       - Phusion Passenger 5.3.5
       Server:
       - nginx/1.14.0 + Phusion Passenger 5.3.5
     body:
       encoding: UTF-8
-      string: '{"data":[],"meta":{"total":0,"total-pages":0},"links":{"self":"https://api.datacite.org/events?obj-id=10.4226%2Fxxxx"}}'
+      string: '{"data":[],"meta":{"total":0,"total-pages":0},"links":{"self":"https://api.datacite.org/events?obj-id=https%3A%2F%2Fdoi.org%2F10.4226%2Fxxxx"}}'
     http_version: 
-  recorded_at: Thu, 06 Dec 2018 19:37:48 GMT
+  recorded_at: Fri, 07 Dec 2018 13:15:02 GMT
 recorded_with: VCR 2.9.3

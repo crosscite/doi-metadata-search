@@ -130,6 +130,7 @@ get '/works' do
 
   # check for existing claims if user is logged in
   @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
+  @works[:data] = get_metrics(@works.fetch(:data, []))
 
   # pagination
   @works[:data] = pagination_helper(@works[:data], @page, @works.fetch(:meta, {}).fetch("total", 0))

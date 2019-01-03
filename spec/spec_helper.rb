@@ -77,6 +77,7 @@ VCR.configure do |c|
   c.filter_sensitive_data('<ORCID_UPDATE_TOKEN>') { ENV['ORCID_UPDATE_TOKEN'] }
   c.allow_http_connections_when_no_cassette = false
   c.configure_rspec_metadata!
+  c.default_cassette_options = { :match_requests_on => [:method, :path] }
 
 
   record_mode = ENV["VCR"] ? ENV["VCR"].to_sym : :once

@@ -4,7 +4,7 @@
       = "#{number_with_delimiter(@works[:meta]["total"])} Works"
 
   - @works[:data].each do |item|
-    = haml :'works/item', locals: { item: item }
+    = haml :'works/item', locals: { item: item, metrics: item["metrics"] }
 
   .text-center
     = will_paginate @works[:data], renderer: BootstrapPagination::Sinatra, inner_window: 1
