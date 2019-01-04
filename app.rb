@@ -111,7 +111,8 @@ end
 
 before do
 
-  @page = params[:page].is_a?(String) ? params[:page].to_i : 1
+  page = params[:page].is_a?(String) ? params[:page].to_i : 1
+  @page = page < 1 ? 1 : page
   @meta = {}
 end
 
