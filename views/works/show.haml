@@ -8,7 +8,7 @@
     .row
       .col-md-9#content-work
         - if @work[:data].present?
-          = haml :'works/item', locals: { item: @work[:data], metrics: @work[:metrics] }
+          = haml :'works/item', locals: { item: @work[:data], metrics: @work[:metrics] || [] }
         - elsif @work[:errors].present?
           %div.alert.alert-warning
             = @work[:errors].first.fetch("title", "")
