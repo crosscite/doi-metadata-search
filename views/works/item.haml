@@ -26,7 +26,7 @@
         %a{:href => attributes["license"]}
           = license_img(attributes["license"])
 
-  - if Array.wrap(metrics).any?
+  - if Array.wrap(metrics).any? && ENV['RACK_ENV'] != "production"
     .panel-footer
       - unless views < 1
         %span
