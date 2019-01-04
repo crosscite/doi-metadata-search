@@ -125,6 +125,7 @@ module Sinatra
     end
 
     def pagination_helper(items, page, total)
+      page = page.integer? ? page : 1
       WillPaginate::Collection.create(page, DEFAULT_ROWS, [total, 1000].min) do |pager|
         pager.replace items
       end
