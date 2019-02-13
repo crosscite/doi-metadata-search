@@ -3,6 +3,15 @@
   %head
     %title#site-title{'data-conneg': ENV['DATA_URL'] }
       = ENV['SITE_TITLE']
+
+    - if ENV['GTM_CONTAINER']
+      :javascript
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-N5QLLGF');
+
     %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
 
     %link{:rel => 'stylesheet', :href => '//maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css', :type => 'text/css'}
@@ -30,11 +39,17 @@
 
   %body
     .notifications.top-left
+      - if ENV['GTM_CONTAINER']
+        %noscript
+          %iframe{:height => "0", :src => "https://www.googletagmanager.com/ns.html?id=GTM-N5QLLGF", :style => "display:none;visibility:hidden", :width => "0"}
+
     = yield
 
     %script{:type => 'text/javascript', :src => '//code.jquery.com/jquery-2.2.3.min.js'}
     %script{:type => 'text/javascript', :src => '//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'}
     %script{:type => 'text/javascript', :src => '/javascripts/citebox.js'}
+    = include_gon()
+    %script{:type => 'text/javascript', :src => '/javascripts/work_metrics.js'}
     %script{:type => 'text/javascript', :src => '//cdn.statuspage.io/se-v2.js'}
     %script{type: "text/x-mathjax-config"}
       :plain
@@ -62,3 +77,4 @@
            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
          })();
+
