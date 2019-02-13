@@ -8,8 +8,7 @@ ENV DOCKERIZE_VERSION v0.6.0
 # Allow app user to read /etc/container_environment
 RUN usermod -a -G docker_env app
 
-# Fix for boot2docker image see https://github.com/boot2docker/boot2docker/issues/581
-# Specifically ensuring the non root user (1000) is actually our app user.
+# This is to ensure when mounting volumes the non root user is actually our app user.
 # This ensures editing on both host/container.
 RUN usermod -u 1000 app
 RUN groupmod -g 1000 app
