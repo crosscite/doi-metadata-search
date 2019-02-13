@@ -22,3 +22,4 @@ output-*
 /vendor/assets/*
 !/vendor/assets/.keep
 /.idea
+.ruby-version
