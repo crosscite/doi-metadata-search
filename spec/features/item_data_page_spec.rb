@@ -1,8 +1,18 @@
 require 'spec_helper'
 
 describe 'item', type: :feature, js: true, vcr: true do
-  # it '/works?query=climate' do
-  #   visit '/works?query=climate'
-  #   expect(page).to have_css 'h4.results'
-  # end
+  describe 'metrics tests' do
+
+    before do
+      visit '/works/10.7272/q6g15xs4'
+    end
+
+    it 'has metrics views' do
+      expect(page).to have_css 'span.metrics-views'
+    end
+
+    it 'has metrics downloads' do
+      expect(page).to have_css 'span.metrics-downloads'
+    end
+  end
 end
