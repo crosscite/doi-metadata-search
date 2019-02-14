@@ -10,6 +10,7 @@ services:
 addons:
   code_climate:
     repo_token: $CODECLIMATE_REPO_TOKEN
+  chrome: stable
 
 install:
   - travis_retry bundle install
@@ -53,7 +54,7 @@ after_success:
       export GIT_TAG=$(git describe --tags $(git rev-list --tags --max-count=1));
       git clone "https://${TRAVIS_SECURE_TOKEN}@github.com/datacite/mastino.git";
       ./dockerize -template vendor/docker/_doi-metadata-search.auto.tfvars.tmpl:mastino/stage/services/search/_doi-metadata-search.auto.tfvars;
-      
+
       if [ "${TRAVIS_TAG?}" ]; then
         ./dockerize -template vendor/docker/_doi-metadata-search.auto.tfvars.tmpl:mastino/prod-eu-west/services/search/_doi-metadata-search.auto.tfvars;
       fi
@@ -62,7 +63,7 @@ after_success:
       git remote;
       git config user.email ${DOCKER_EMAIL};
       git config user.name ${DOCKER_USERNAME};
-      
+
       if [ "${TRAVIS_TAG?}" ]; then
         git add prod-eu-west/services/search/_doi-metadata-search.auto.tfvars;
         git commit -m "Adding doi-metadata-search git variables for commit tagged ${TRAVIS_TAG?}";
