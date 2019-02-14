@@ -36,8 +36,8 @@ var spec = {
   ],
 
   "axes": [
-    { "orient": "bottom", "scale": "xscale", "tickCount": 5 },
-    { "orient": "left", "scale": "yscale", "tickCount": 5}
+    { "orient": "bottom", "scale": "xscale", "tickCount": 5},
+    { "orient": "left", "scale": "yscale", "tickCount": 5, "labelFont":"'Raleway', 'Helvetica', Arial, sans-serif"}
   ],
 
   "marks": [
@@ -52,10 +52,10 @@ var spec = {
           "y2": {"scale": "yscale", "value": 0}
         },
         "update": {
-          "fill": {"value": "gray"}
+          "fill": {"value": "#68B3C8"}
         },
         "hover": {
-          "fill": {"value": "steelblue"}
+          "fill": {"value": "gray"}
         }
       }
     },
@@ -81,22 +81,39 @@ var spec = {
   ]
 };
 
-var data = [
-  {
-    "name": "iris",
-    "values": []
-  }
-];
 
-data[0].values= gon.chart_views
-spec.data = data;
-
-
-
-// uncooment to activate
+// // uncooment to activate
 // $(document).ready(function(e) {
-//     vegaEmbed(
-//       '#visualisation',
-//       spec, {actions: false}
-//     );
+//   var data = [
+//     {
+//       "name": "iris",
+//       "values": []
+//     }
+//   ];
+  
+
+//   data[0].values= gon.chart_views
+//   spec.data = data;
+//   var spec_views = spec;
+//   vegaEmbed(
+//     '#views-chart',
+//     spec_views, {actions: false}
+//   );
 // });
+
+$(document).ready(function(e) {
+  var data = [
+    {
+      "name": "iris",
+      "values": []
+    }
+  ];
+
+  data[0].values= gon.chart_downloads
+  spec.data = data;
+  var spec_downloads = spec;
+  vegaEmbed(
+    '#downloads-chart',
+    spec_downloads, {actions: false}
+  );
+});

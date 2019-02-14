@@ -1,5 +1,5 @@
  
-$(document).ready(function(e) {
+
     /*global d3, startDate, endDate, startTime, endTime, formatWeek, formatHour, numberToHumanSize, formatFixed, formatDate, formatTime, numberWithDelimiter */
 
     // var width = 340,
@@ -13,13 +13,11 @@ $(document).ready(function(e) {
     //     s = 2;   // spacing between bars
 
 
-    var views = gon.chart_views;
-    var downloads = gon.chart_downloads;
-
-    console.log(views[0].id)
 
 
-    let data = (this.data) ? this.data : [];
+
+
+    // let data = (this.data) ? this.data : [];
 
     // let height = 100;
 
@@ -29,14 +27,12 @@ $(document).ready(function(e) {
     // let length = d3.time.years(startDate, endDate).length;
     // let width = length * 22;
 
-    var div = "#visualisation";
-    var format = "months";
 
-    function barViz(data, div, count, format) {
 
-  
-      var startDate = new Date(views[0].id);
-      var endDate = new Date(views[views.length - 1].id);
+    function bar2Viz(data, div, count, format) {
+
+      var startDate = new Date(data[0].id);
+      var endDate = new Date(data[data.length - 1].id);
 
       var timeStamp = null;
       let formatYear = d3.time.format.utc("%Y");
@@ -80,7 +76,7 @@ $(document).ready(function(e) {
         // .attr("height", margin.top + height + margin.bottom)
         .attr("preserveAspectRatio","meet")
         .attr("viewBox","-30 0 350 200")
-        .attr("style","position:absolute")
+        .attr("style","position:relative")
         .attr("class", "chart barchart")
         .append("svg:g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -230,5 +226,11 @@ $(document).ready(function(e) {
       d3.select("#" + name + "-loading").remove();
     }
 
-    barViz(views,div,"sum",format);
+    
+$(document).ready(function(e) {
+    var views = gon.chart_views;
+    var downloads = gon.chart_downloads;
+  
+    bar2Viz(views,"#views-chart","sum","months");
+    // bar2Viz(downloads,"#downloads-chart","sum","months");
 });
