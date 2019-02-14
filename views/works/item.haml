@@ -31,19 +31,19 @@
   - if metrics.any? && ENV['RACK_ENV'] != "production"
     .panel-footer
       - unless views < 1
-        %span
+        %span{class: "usage-counts", onmouseover:"onMetricsHover(this);"}
           .fa.fa-eye
           = "#{views} Views"
       - unless downloads < 1
-        %span
+        %span{class: "usage-counts", onmouseover:"onMetricsHover(this);"}
           .fa.fa-download
           = "#{downloads} Downloads"
       - unless resolutions < 1
-        %span
+        %span{class: "usage-counts", :onmouseover =>"onMetricsHover(this);"}
           .fa.fa-bolt
           = "#{resolutions} Resolutions"
       - unless citations < 1 
-        %span
+        %span{class: "usage-counts", onmouseover:"onMetricsHover(this);"}
           .fa.fa-thumbs-o-up
           = "#{citations} Citations"
                     
@@ -66,4 +66,4 @@
   
 .panel.panel-default
   .panel-body
-    = haml :'works/visualisation'
+    = haml :'works/visualisation', locals: { item: item, views: views, downloads: downloads}
