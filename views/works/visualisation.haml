@@ -1,10 +1,54 @@
-.panel.panel-default
+.panel
   .panel-body
-    .row
-      .col-md-4
-        .p 
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ornare nibh at ligula feugiat, non malesuada turpis facilisis. Morbi interdum bibendum elit sit amet dignissim. Mauris cursus felis in auctor dictum. In vel elit sagittis, vulputate massa nec, hendrerit est. Suspendisse pharetra ex vel viverra cursus. Integer quis vehicula quam, auctor blandit nulla. Maecenas ullamcorper magna in nisl tincidunt fermentum. Donec nulla lacus, scelerisque eget lorem et, lacinia fringilla mi. Suspendisse semper quis arcu ut viverra. Suspendisse nec est eget massa euismod sodales. Sed id tincidunt quam. Sed vestibulum diam sit amet vehicula ultricies.
-      .col-md-8#visualisation
+    %ul.nav.nav-tabs{:role => "tablist"}
+      %li.nav-item
+        %a#views-tab.nav-link.active{"aria-controls" => "views", "aria-selected" => "true", "id"=>"views-tab","data-toggle" => "tab", :href => "#views", :role => "tab"} Views
+   
+      %li.nav-item
+        %a#downloads-tab.nav-link{"aria-controls" => "downloads", "aria-selected" => "false", "id"=>"downloads-tab", "data-toggle" => "tab", :href => "#downloads", :role => "tab"} Downloads
+
+ 
+    #myTabContent.tab-content{:style => "height: 250px;"}
+      .row#views.tab-pane.fade.show{"aria-labelledby" => "views-tab", :role => "tabpanel",:style => "position: absolute;"} 
+        .col-md-4
+          .p
+            These counts follow the 
+            %a{href: 'https://doi.org/10.7287/peerj.preprints.26505v1'}
+              COUNTER Code of Practice for Research Data,
+          .p
+            meaning that Internet robots and repeats within a certain time frame are excluded.
+          .p
+            There were        
+          .p
+            total views including repeats and robots.
+
+
+        .col-md-8
+          .row
+            .p
+              = puts item
+              = "#{views} views since its publication in #{item.dig("attributes", "published")}"
+          .row#views-chart
+ 
+ 
+
+      .row#downloads.tab-pane.fade{"aria-labelledby" => "downloads-tab", :role => "tabpanel", :style => "position: absolute;"} 
+        .col-md-4
+          .p
+            These counts follow the 
+            %a{href: 'https://doi.org/10.7287/peerj.preprints.26505v1'}
+              COUNTER Code of Practice for Research Data,
+          .p
+            meaning that Internet robots and repeats within a certain time frame are excluded.
+          .p
+            There were        
+          .p
+            total views including repeats and robots.
+        .col-md-8
+          .row
+            .p
+              = "#{downloads} downloads since its publication in #{item.dig("attributes", "published")}"
+          .row#downloads-chart
       
 
 
