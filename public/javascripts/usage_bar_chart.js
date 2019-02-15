@@ -232,5 +232,5 @@ $(document).ready(function(e) {
     var downloads = gon.chart_downloads;
   
     bar2Viz(views,"#views-chart","sum","months");
-    // bar2Viz(downloads,"#downloads-chart","sum","months");
+    bar2Viz(downloads,"#downloads-chart","sum","months");
 });
