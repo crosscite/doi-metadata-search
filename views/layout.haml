@@ -4,14 +4,6 @@
     %title#site-title{'data-conneg': ENV['DATA_URL'] }
       = ENV['SITE_TITLE']
 
-    - if ENV['GTM_CONTAINER']
-      :javascript
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-N5QLLGF');
-
     %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
 
     %link{:rel => 'stylesheet', :href => '//maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css', :type => 'text/css'}
@@ -26,9 +18,6 @@
       - id = @work.fetch(:data, {}).fetch("id", nil)
       - attributes = @work.fetch(:data, {}).fetch("attributes", {})
       = work_as_meta_tag(id: id, attributes: attributes)
-    %script{:src => "https://cdn.jsdelivr.net/npm/vega@4.4.0"}
-    %script{:src => "https://cdn.jsdelivr.net/npm/vega-lite@2.6.0"}
-    %script{:src => "https://cdn.jsdelivr.net/npm/vega-embed@3.24.2"}
   
     %script{:type => 'text/javascript'}
       :plain
@@ -42,10 +31,6 @@
 
   %body
     .notifications.top-left
-      - if ENV['GTM_CONTAINER']
-        %noscript
-          %iframe{:height => "0", :src => "https://www.googletagmanager.com/ns.html?id=GTM-N5QLLGF", :style => "display:none;visibility:hidden", :width => "0"}
-
     = yield
 
     %script{:type => 'text/javascript', :src => '//code.jquery.com/jquery-2.2.3.min.js'}
@@ -53,8 +38,6 @@
     %script{:type => 'text/javascript', :src => '/javascripts/citebox.js'}
     = include_gon()
     %script{:type => 'text/javascript', :src => '/javascripts/usage_bar_chart.js'}
-    %script{:type => 'text/javascript', :src => '/javascripts/vega_bar_chart.js'}
-    %script{:type => 'text/javascript', :src => '/javascripts/ga.js'}
     %script{:type => 'text/javascript', :src => '//cdn.statuspage.io/se-v2.js'}
     %script{type: "text/x-mathjax-config"}
       :plain
@@ -72,12 +55,15 @@
     - if ENV['BUGSNAG_JS_KEY']
       %script{:type => 'text/javascript', :src => '//d2wy8f7a9ursnm.cloudfront.net/bugsnag-2.min.js', :data => { 'apikey' => "#{ENV['BUGSNAG_JS_KEY']}" }}
     - if ENV['GABBA_COOKIE']
-      %script{:async => "", :src => "https://www.googletagmanager.com/gtag/js?id=UA-22806196-5"}
       :javascript
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'UA-22806196-5');
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', '#{ENV['GABBA_COOKIE']}']);
+        _gaq.push(['_trackPageview']);
 
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
         
 
