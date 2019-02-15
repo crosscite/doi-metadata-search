@@ -1,5 +1,6 @@
 - attributes = item.fetch("attributes", {})
 - type = attributes.fetch("resource-type-id", nil)
+- puts @work
 - includes = @works.present? ? @works[:included] : @work[:included]
 - work_types = includes.select { |item| item["type"] == "work-types" }
 - sources = @works.present? ? @works[:meta].fetch("sources", []) : []
@@ -69,8 +70,8 @@
     - if user_signed_in? && attributes["member-id"].to_i == 0
       = haml :'works/claim', locals: { item: item }
 
-- if type == "dataset" 
-  - if @work.present? && metrics.any? && ENV['RACK_ENV'] != "production"
+- if type == "dataset" && @work.present?
+  - if metrics.any? && ENV['RACK_ENV'] != "production"
     .panel.panel-default
       .panel-body
         = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads, total_views: total_views, total_downloads: total_downloads}
