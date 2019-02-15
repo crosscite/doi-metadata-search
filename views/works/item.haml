@@ -1,17 +1,16 @@
 - attributes = item.fetch("attributes", {})
 - type = attributes.fetch("resource-type-id", nil)
-- puts @work
 - includes = @works.present? ? @works[:included] : @work[:included]
 - work_types = includes.select { |item| item["type"] == "work-types" }
 - sources = @works.present? ? @works[:meta].fetch("sources", []) : []
 - new_params = params[:model] == "works" && params["id"] == attributes.fetch("doi", nil) ? params.merge(external_link: true) : params
 - title = attributes["title"].to_s.gsub(/"/, '\"')
-- views = metrics.to_h.fetch("unique-dataset-investigations-regular",0).to_i 
-- total_views = metrics.to_h.fetch("total-dataset-investigations-regular",0).to_i 
-- downloads =  metrics.to_h.fetch("unique-dataset-requests-regular",0).to_i 
-- total_downloads = metrics.to_h.fetch("total-dataset-requests-regular",0).to_i 
-- resolutions =  metrics.to_h.fetch("unique-resolutions-regular",0).to_i + metrics.to_h.fetch("unique-resolutions-machine",0).to_i 
-- citations =  metrics.to_h.fetch("references",0).to_i + metrics.to_h.fetch("cites",0).to_i 
+- views = metrics.to_h.fetch("unique-dataset-investigations-regular","--") 
+- total_views = metrics.to_h.fetch("total-dataset-investigations-regular","--") 
+- downloads =  metrics.to_h.fetch("unique-dataset-requests-regular","--") 
+- total_downloads = metrics.to_h.fetch("total-dataset-requests-regular","--") 
+- resolutions =  metrics.to_h.fetch("unique-resolutions-regular",0).to_i + metrics.to_h.fetch("unique-resolutions-machine","--").to_i 
+- citations =  metrics.to_h.fetch("references",0).to_i + metrics.to_h.fetch("cites","--").to_i 
 - if @work.present? && metrics.any? && ENV['RACK_ENV'] != "production"
   - gon.chart_views =  chart.select{|hash| hash["id"] == "unique-dataset-investigations-regular" }[0].fetch("year-months",[])
   - gon.chart_downloads =  chart.select{|hash| hash["id"] == "unique-dataset-requests-regular" }[0].fetch("year-months",[])
@@ -33,25 +32,21 @@
         %a{:href => attributes["license"]}
           = license_img(attributes["license"])
 
-  - if metrics.any? && ENV['RACK_ENV'] != "production"
-    .panel-footer
-      - if type == "dataset"
-        - unless views < 1
-          %span.usage-counts{style: "margin-right: 1.5em;"}
-            .fa.fa-eye
-            = "#{views} Views"
-        - unless downloads < 1
-          %span.usage-counts{style: "margin-right: 1.5em;"}
-            .fa.fa-download
-            = "#{downloads} Downloads"
-      - unless resolutions < 1
+  - if ENV['RACK_ENV'] != "production" 
+    - if type == "dataset"
+      .panel-footer
         %span.usage-counts{style: "margin-right: 1.5em;"}
-          .fa.fa-bolt
-          = "#{resolutions} Resolutions"
-      - unless citations < 1 
+          .fa.fa-eye
+          = "#{views} Views"
         %span.usage-counts{style: "margin-right: 1.5em;"}
-          .fa.fa-thumbs-o-up
-          = "#{citations} Citations"
+          .fa.fa-download            
+          = "#{downloads} Downloads"
+      -# %span.usage-counts{style: "margin-right: 1.5em;"}
+      -#   .fa.fa-bolt
+      -#   = "#{resolutions} Resolutions"
+      -# %span.usage-counts{style: "margin-right: 1.5em;"}
+      -#   .fa.fa-thumbs-o-up
+      -#   = "#{citations} Citations"
                     
 
   - if @work.present? && @work.fetch(:data, {}).fetch("attributes", {}).fetch("related-identifiers", nil).present? && @work.fetch(:data, {}).fetch("id", "work") != item["id"]
