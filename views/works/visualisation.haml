@@ -15,18 +15,11 @@
             These counts follow the 
             %a{href: 'https://doi.org/10.7287/peerj.preprints.26505v1'}
               COUNTER Code of Practice for Research Data,
-          .p
-            meaning that Internet robots and repeats within a certain time frame are excluded.
-          .p
-            There were        
-          .p
-            total views including repeats and robots.
-
+            = "meaning that Internet robots and repeats within a certain time frame are excluded. There were #{views}    total views including repeats and robots."
 
         .col-md-8
           .row
             .p
-              = puts item
               = "#{views} views since its publication in #{item.dig("attributes", "published")}"
           .row#views-chart
  
@@ -39,11 +32,8 @@
             %a{href: 'https://doi.org/10.7287/peerj.preprints.26505v1'}
               COUNTER Code of Practice for Research Data,
           .p
-            meaning that Internet robots and repeats within a certain time frame are excluded.
-          .p
-            There were        
-          .p
-            total views including repeats and robots.
+            = "meaning that Internet robots and repeats within a certain time frame are excluded. There were  #{downloads}  total downloads including repeats and robots."
+            
         .col-md-8
           .row
             .p
