@@ -32,12 +32,13 @@
     function bar2Viz(data, div, count, format) {
 
       var startDate = new Date(data[0].id);
-      var endDate = new Date(data[data.length - 1].id);
+      // var endDate = new Date(data[data.length - 1].id);
+      var endDate = new Date("2019-05-01");
 
       var timeStamp = null;
       let formatYear = d3.time.format.utc("%Y");
       let formatHour = d3.time.format.utc("%h");
-      let formatMonthYear = d3.time.format.utc("%Y-%B");
+      let formatMonthYear = d3.time.format.utc("%B %Y");
       let formatFixed = d3.format(",.0f");
       let formatTime = d3.time.format.utc("%H:%M:%S");
 
@@ -119,13 +120,15 @@
         .attr("class", "label")
         .attr("text-anchor", "middle")
         .attr("transform", "translate(11," + (height + 18) + ")")
-        .text(formatYear(startDate));
+        .text(formatMonthYear(startDate))
+        .style("font-size", "8px");
   
       chart.append("text")
         .attr("class", "label")
         .attr("text-anchor", "middle")
         .attr("transform", "translate(" + (width - 11) + "," + (height + 18) + ")")
-        .text(formatYear(endDate));
+        .text(formatMonthYear(endDate))
+        .style("font-size", "8px");
 
 
       chart.selectAll("rect").each(
