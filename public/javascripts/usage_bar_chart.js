@@ -32,8 +32,9 @@
     function bar2Viz(data, div, count, format) {
 
       var startDate = new Date(data[0].id);
+      var startDate = new Date("2018-03-01");
       // var endDate = new Date(data[data.length - 1].id);
-      var endDate = new Date("2019-05-01");
+      var endDate = new Date("2019-03-01");
 
       var timeStamp = null;
       let formatYear = d3.time.format.utc("%Y");
