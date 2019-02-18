@@ -12,8 +12,8 @@
 - resolutions =  metrics.to_h.fetch("unique-resolutions-regular",0).to_i + metrics.to_h.fetch("unique-resolutions-machine","--").to_i 
 - citations =  metrics.to_h.fetch("references",0).to_i + metrics.to_h.fetch("cites","--").to_i 
 - if @work.present? && metrics.any? && ENV['RACK_ENV'] != "production"
-  - gon.chart_views =  chart.select{|hash| hash["id"] == "unique-dataset-investigations-regular" }[0].fetch("year-months",[])
-  - gon.chart_downloads =  chart.select{|hash| hash["id"] == "unique-dataset-requests-regular" }[0].fetch("year-months",[])
+  - gon.chart_views =  chart.select{|hash| hash["id"] == "unique-dataset-investigations-regular" }[0].fetch("yearMonths",[])
+  - gon.chart_downloads =  chart.select{|hash| hash["id"] == "unique-dataset-requests-regular" }[0].fetch("yearMonths",[])
 
 .panel.panel-default
   .panel-body

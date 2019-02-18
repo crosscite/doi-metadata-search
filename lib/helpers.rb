@@ -132,10 +132,10 @@ module Sinatra
 
     def reduce_aggs meta, options={}
       meta = ::JSON.parse(meta) if meta.respond_to?("downcase")
-      relation_types = meta.fetch("relation-types",[])
+      relation_types = meta.fetch("relationTypes",[])
       metrics = {}
       relation_types.each do |type|
-        qty = type["year-months"].map { |period| period.dig("sum")}.sum.to_i
+        qty = type["yearMonths"].map { |period| period.dig("sum")}.sum.to_i
         metrics[type.dig("id")] = qty
       end
       metrics
@@ -145,7 +145,7 @@ module Sinatra
       return {} if relationTypes.empty?
       instance = {}
       relationTypes.each do |type|
-        instance[type.dig("id")] = type.dig("sum")
+        instance[type.dig("id")] = type.dig("sum").to_i
       end
       instance
     end
