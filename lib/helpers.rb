@@ -135,7 +135,7 @@ module Sinatra
       relation_types = meta.fetch("relation-types",[])
       metrics = {}
       relation_types.each do |type|
-        qty = type["year-months"].map { |period| period.dig("sum")}.sum
+        qty = type["year-months"].map { |period| period.dig("sum")}.sum.to_i
         metrics[type.dig("id")] = qty
       end
       metrics

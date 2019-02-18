@@ -1,0 +1,43 @@
+%ul.nav.nav-tabs{:role => "tablist"}
+  %li.nav-item
+    %a#views-tab.nav-link.active{"aria-controls" => "views", "aria-selected" => "true", "id"=>"views-tab","data-toggle" => "tab", :href => "#views", :role => "tab"} Views
+
+  %li.nav-item
+    %a#downloads-tab.nav-link{"aria-controls" => "downloads", "aria-selected" => "false", "id"=>"downloads-tab", "data-toggle" => "tab", :href => "#downloads", :role => "tab"} Downloads
+
+
+#myTabContent.tab-content{:style => "height: 280px;"}
+  .row#views.tab-pane.active{"aria-labelledby" => "views-tab", :role => "tabpanel",:style => "position: absolute;"} 
+    .col-md-4
+      .p
+        These counts follow the 
+        %a{href: 'https://doi.org/10.7287/peerj.preprints.26505v1'}
+          COUNTER Code of Practice for Research Data,
+        = "meaning that Internet robots and repeats within a certain time frame are excluded. </br>There were <strong>#{total_views} </strong> total views including repeats and robots."
+
+    .col-md-8
+      .row
+        .p
+          = "<strong>#{views}</strong> unique views </br> <small>since its publication in #{attributes.fetch("published", "")}</small>"
+      .row#views-chart
+
+
+
+  .row#downloads.tab-pane.fade{"aria-labelledby" => "downloads-tab", :role => "tabpanel", :style => "position: absolute;"} 
+    .col-md-4
+      .p
+        These counts follow the 
+        %a{href: 'https://doi.org/10.7287/peerj.preprints.26505v1'}
+          COUNTER Code of Practice for Research Data,
+      .p
+        = "meaning that Internet robots and repeats within a certain time frame are excluded.</br> There were  <strong>#{total_downloads}</strong>  total downloads including repeats and robots."
+        
+    .col-md-8
+      .row
+        .p
+          = "<strong>#{downloads} unique downloads</strong> </br> <small>since its publication in #{attributes.fetch("published", "")}</small>"
+      .row#downloads-chart
+  
+
+
+      
