@@ -48,7 +48,10 @@ end
 Capybara.register_driver :cuprite do |app|
   Capybara::Cuprite::Driver.new(app, {
     timeout: 60,
-    window_size: [1024, 768]
+    window_size: [1024, 768],
+    host: "127.0.0.1",
+    port: 33689,
+    browser_options: {'no-sandbox' => nil}
   })
 end
 
