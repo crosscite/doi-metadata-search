@@ -87,12 +87,30 @@ var spec = {
 //   var data = [
 //     {
 //       "name": "iris",
-//       "values": []
+//       "values": [
+//         {
+//         "id": "2009-03-01",
+//         "title": "March 2009",
+//         "sum": 12
+//         },
+//         {
+//         "id": "2018-04-01",
+//         "title": "April 2018",
+//         "sum": 388
+//         },
+//         {
+//         "id": "2018-05-01",
+//         "title": "May 2018",
+//         "sum": 201
+//         }
+//         ],
+//       "transform": [
+//       {"type": "formula", "as": "date", "expr": "toDate(datum.id)"}]
 //     }
 //   ];
   
 
-//   data[0].values= gon.chart_views
+//   // data[0].values= gon.chart_views
 //   spec.data = data;
 //   var spec_views = spec;
 //   vegaEmbed(
@@ -101,19 +119,19 @@ var spec = {
 //   );
 // });
 
-$(document).ready(function(e) {
-  var data = [
-    {
-      "name": "iris",
-      "values": []
-    }
-  ];
+// $(document).ready(function(e) {
+//   var data = [
+//     {
+//       "name": "iris",
+//       "values": []
+//     }
+//   ];
 
-  data[0].values= gon.chart_downloads
-  spec.data = data;
-  var spec_downloads = spec;
-  vegaEmbed(
-    '#downloads-chart',
-    spec_downloads, {actions: false}
-  );
-});
+//   data[0].values= gon.chart_downloads
+//   spec.data = data;
+//   var spec_downloads = spec;
+//   vegaEmbed(
+//     '#downloads-chart',
+//     spec_downloads, {actions: false}
+//   );
+// });
