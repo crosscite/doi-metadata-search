@@ -35,10 +35,10 @@
   - if ENV['RACK_ENV'] != "production"
     - if type == "dataset"
       .panel-footer
-        %a.usage-counts{:href => works_action(item,{})}
+        %a.usage-counts.usage-views{:href => works_action(item,{})}
           .fa.fa-eye
           = "#{views} Views"
-        %a.usage-counts{:href => works_action(item,{})}
+        %a.usage-counts.usage-downloads{:href => works_action(item,{})}
           .fa.fa-download            
           = "#{downloads} Downloads"
         - unless metrics.any?
