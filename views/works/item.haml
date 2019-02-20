@@ -35,17 +35,17 @@
   - if ENV['RACK_ENV'] != "production"
     - if type == "dataset"
       .panel-footer
-        %span.usage-counts
+        %span.usage-counts.usage-views
           .fa.fa-eye
           = "#{views} Views"
-        %span.usage-counts
+        %span.usage-counts.usage-downloads
           .fa.fa-download
           = "#{downloads} Downloads"
-      -# %span.usage-counts
+      -# %span.usage-counts.usage-resolutions
       -#   .fa.fa-bolt
       -#   = "#{resolutions} Resolutions"
       -# %span.usage-counts
-      -#   .fa.fa-thumbs-o-up
+      -#   .fa.fa-thumbs-o-up.usage-citations
       -#   = "#{citations} Citations"
 
 
@@ -68,7 +68,7 @@
 - if type == "dataset" && @work.present?
   - if metrics.any? && ENV['RACK_ENV'] != "production"
     .panel.panel-default
-      .panel-body
+      .panel-body.usage-charts
         = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads, total_views: total_views, total_downloads: total_downloads}
   - else
     .panel.panel-default

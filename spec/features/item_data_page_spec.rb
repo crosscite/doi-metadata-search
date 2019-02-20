@@ -1,18 +1,21 @@
 require 'spec_helper'
 
 describe 'item', type: :feature, js: true, vcr: true do
-  describe 'metrics tests' do
+  describe 'usage tests' do
 
-    it 'when metrics should exist has metrics' do
+    it 'when usage metrics should be displayed' do
       visit '/works/10.7272/q6g15xs4'
-      expect(page).to have_css 'span.metrics-views'
-      expect(page).to have_css 'span.metrics-downloads'
+      # Check for usage data spans
+      expect(page).to have_css 'span.usage-views'
+      expect(page).to have_css 'span.usage-downloads'
+      # Check for the charts
+      expect(page).to have_css 'div.usage-charts'
     end
 
-    it 'when metrics should not exist doesnt have has metrics' do
-      visit '/works/10.15468/dl.ow2im1'
-      expect(page).not_to have_css 'span.metrics-views'
-      expect(page).not_to have_css 'span.metrics-downloads'
+    it 'when usage metrics should be hidden' do
+      visit '/works/10.21956/aasopenres.13896.r26067'
+      expect(page).not_to have_css 'span.usage-views'
+      expect(page).not_to have_css 'span.usage-downloads'
     end
 
   end
