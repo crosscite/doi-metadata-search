@@ -10,7 +10,7 @@ require 'rack/test'
 require 'webmock/rspec'
 require 'vcr'
 require 'capybara/rspec'
-require 'capybara/poltergeist'
+require "capybara/cuprite"
 require 'capybara-screenshot/rspec'
 require 'tilt/haml'
 
@@ -45,16 +45,17 @@ RSpec.configure do |config|
   config.order = :random
 end
 
-Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new(app, {
+Capybara.register_driver :cuprite do |app|
+  Capybara::Cuprite::Driver.new(app, {
     timeout: 60,
-    inspector: true,
-    debug: false,
-    window_size: [1024, 768]
+    window_size: [1024, 768],
+    host: "127.0.0.1",
+    port: 33689,
+    browser_options: {'no-sandbox' => nil}
   })
 end
 
-Capybara.javascript_driver = :poltergeist
+Capybara.javascript_driver = :cuprite
 Capybara.default_selector = :css
 Capybara::Screenshot.prune_strategy = :keep_last_run
 
