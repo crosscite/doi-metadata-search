@@ -82,37 +82,52 @@ var spec = {
 };
 
 
+var specLite = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v2.6.0.json",
+  "description": "A simple bar chart with embedded data.",
+  "selection": {
+    "grid": {
+      "type": "interval", "bind": "scales"
+    }
+  },
+  "data": {
+  },
+  "axes": [
+    { "orient": "bottom", "scale": "xscale", "tickCount": 5},
+    { "orient": "left", "scale": "yscale", "tickCount": 5, "labelFont":"'Raleway', 'Helvetica', Arial, sans-serif"}
+  ],  
+  "mark": 
+    {
+      "type": "bar",
+      "color":"#68B3C8"
+    }
+  ,
+  "width": 500,
+  "encoding": {
+    "x": {"field": "id","type": "temporal", "timeUnit":"yearmonth","title": "", "scale": {"domain": ["2017-12", "2019-05"]}, "axis":{"grid":false}},
+    "y": {"field": "sum", "type": "quantitative", "title": "","scale": {"domain": [0, 500]}},
+    "tooltip": {"field": "sum", "type": "quantitative"}
+  }
+}
+
+
 // // uncooment to activate
 // $(document).ready(function(e) {
 //   var data = [
 //     {
 //       "name": "iris",
-//       "values": [
-//         {
-//         "id": "2009-03-01",
-//         "title": "March 2009",
-//         "sum": 12
-//         },
-//         {
-//         "id": "2018-04-01",
-//         "title": "April 2018",
-//         "sum": 388
-//         },
-//         {
-//         "id": "2018-05-01",
-//         "title": "May 2018",
-//         "sum": 201
-//         }
-//         ],
-//       "transform": [
-//       {"type": "formula", "as": "date", "expr": "toDate(datum.id)"}]
+//       "values": []
 //     }
 //   ];
+//   var data = 
+//     {
+//       "values": []
+//     };
   
 
-//   // data[0].values= gon.chart_views
-//   spec.data = data;
-//   var spec_views = spec;
+//   data.values= gon.chart_views
+//   specLite.data = data;
+//   var spec_views = specLite;
 //   vegaEmbed(
 //     '#views-chart',
 //     spec_views, {actions: false}

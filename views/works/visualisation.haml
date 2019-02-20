@@ -5,7 +5,7 @@
   %li.nav-item
     %a#downloads-tab.nav-link{"aria-controls" => "downloads", "aria-selected" => "false", "id"=>"downloads-tab", "data-toggle" => "tab", :href => "#downloads", :role => "tab"} Downloads
 
-
+%br
 #myTabContent.tab-content{:style => "height: 280px;"}
   .row#views.tab-pane.active{"aria-labelledby" => "views-tab", :role => "tabpanel",:style => "position: absolute;"} 
     .col-md-4
@@ -18,7 +18,7 @@
     .col-md-8
       .row
         .p
-          = "<strong>#{views}</strong> unique views </br> <small>since its publication in #{attributes.fetch("published", "")}</small>"
+          = "<strong>#{views}</strong> views </br> <small>since its publication in #{attributes.fetch("published", "")}</small>"
       .row#views-chart
 
 
@@ -35,7 +35,7 @@
     .col-md-8
       .row
         .p
-          = "<strong>#{downloads} unique downloads</strong> </br> <small>since its publication in #{attributes.fetch("published", "")}</small>"
+          = "<strong>#{downloads} downloads</strong> </br> <small>since its publication in #{attributes.fetch("published", "")}</small>"
       .row#downloads-chart
   
 

@@ -31,10 +31,21 @@
 
     function bar2Viz(data, div, count, format) {
 
-      var startDate = new Date(data[0].id);
-      var startDate = new Date("2018-03-01");
-      // var endDate = new Date(data[data.length - 1].id);
-      var endDate = new Date("2019-03-01");
+      var width = 340,
+        height = 100
+        margin = { top: 7, right: 10, bottom: 5, left: 5 },
+        colors = ["#1abc9c","#2ecc71","#3498db","#9b59b6","#34495e","#95a6a6"],
+        l = 250, // left margin
+        r = 150, // right margin
+        w = 400, // width of drawing area
+        h = 24,  // bar height
+        s = 2;   // spacing between bars
+
+
+      // var startDate = new Date(data[0].id);
+      var lastDataPoint = new Date(data[data.length - 1].id);
+      var endDate = new Date(lastDataPoint.setMonth( lastDataPoint.getMonth() + 2 ));
+      var startDate = new Date(lastDataPoint.setMonth( lastDataPoint.getMonth() - 11 ));
 
       var timeStamp = null;
       let formatYear = d3.time.format.utc("%Y");
@@ -43,9 +54,7 @@
       let formatFixed = d3.format(",.0f");
       let formatTime = d3.time.format.utc("%H:%M:%S");
 
-      let margin = { top: 10, right: 5, bottom: 20, left: 5 };
-
-
+      // let margin = { top: 10, right: 5, bottom: 20, left: 5 };
 
       if (format === "days") {
         var domain = [startDate, endDate];
@@ -141,7 +150,7 @@
           if (count === "sfum") {
             title = numberToHumanSize(d.sum);
           } else if (count === "sum") {
-            title = formatFixed(d.sum) + " counts";
+            title = formatFixed(d.sum);
           } else {
             title = formatFixed(d.sum);
           }
@@ -232,9 +241,11 @@
 
     
 $(document).ready(function(e) {
+  if (typeof gon !== 'undefined'){
     var views = gon.chart_views;
     var downloads = gon.chart_downloads;
   
     bar2Viz(views,"#views-chart","sum","months");
     bar2Viz(downloads,"#downloads-chart","sum","months");
+  }
 });
