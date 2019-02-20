@@ -57,6 +57,11 @@ WORKDIR /home/app/webapp
 RUN gem install bundler && \
     /sbin/setuser app bundle install --path vendor/bundle
 
+# Install Chrome for headless testing
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+RUN apt-get update && apt-get install -y google-chrome-stable
+
 # Run additional scripts during container startup (i.e. not at build time)
 RUN mkdir -p /etc/my_init.d
 COPY vendor/docker/70_templates.sh /etc/my_init.d/70_templates.sh
