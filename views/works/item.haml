@@ -35,19 +35,21 @@
   - if ENV['RACK_ENV'] != "production" 
     - if type == "dataset"
       .panel-footer
-        %span.usage-counts
+        %a.usage-counts{:href => works_action(item,{})}
           .fa.fa-eye
           = "#{views} Views"
-        %span.usage-counts
+        %a.usage-counts{:href => works_action(item,{})}
           .fa.fa-download            
           = "#{downloads} Downloads"
+        - unless metrics.any?
+          %span{:title => "This data center is not currently submitting usage information."}
+            .fa.fa-info-circle   
       -# %span.usage-counts
       -#   .fa.fa-bolt
       -#   = "#{resolutions} Resolutions"
       -# %span.usage-counts
       -#   .fa.fa-thumbs-o-up
       -#   = "#{citations} Citations"
-                    
 
   - if @work.present? && @work.fetch(:data, {}).fetch("attributes", {}).fetch("related-identifiers", nil).present? && @work.fetch(:data, {}).fetch("id", "work") != item["id"]
     .panel-footer

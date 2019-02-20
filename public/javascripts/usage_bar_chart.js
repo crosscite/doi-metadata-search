@@ -244,6 +244,8 @@ $(document).ready(function(e) {
   if (typeof gon !== 'undefined'){
     var views = gon.chart_views;
     var downloads = gon.chart_downloads;
+
+    $('#views-tab').tab("show")
   
     bar2Viz(views,"#views-chart","sum","months");
     bar2Viz(downloads,"#downloads-chart","sum","months");

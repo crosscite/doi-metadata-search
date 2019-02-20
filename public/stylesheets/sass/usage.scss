@@ -1,4 +1,4 @@
-span.usage-counts{
+a.usage-counts{
   margin-right: 1.5em;
 }
 
@@ -28,4 +28,8 @@ span.usage-counts{
   background-color: #ffffffff;
   border: 1px solid #dddddd;
   border-bottom-color: #ffffffff;
+}
+
+.nav-tabs>li.active :before {
+  border-bottom: 11px solid #ffffffff;
 }
