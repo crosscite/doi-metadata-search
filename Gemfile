@@ -24,6 +24,7 @@ gem 'sanitize'
 gem 'rake'
 gem 'namae'
 gem 'sass'
+gem 'gon-sinatra'
 
 group :development do
   gem "better_errors"

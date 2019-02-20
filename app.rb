@@ -60,6 +60,10 @@ require 'jwt'
 require 'open-uri'
 require 'uri'
 require 'better_errors'
+require 'gon-sinatra'
+
+Sinatra::register Gon::Sinatra
+register Gon::Sinatra
 
 Dir[File.join(File.dirname(__FILE__), 'lib', '*.rb')].each { |f| require f }
 
@@ -151,10 +155,10 @@ get %r{/works/(.+)} do
 
   doi = validate_doi(params[:id])
   link = doi ? "https://doi.org/#{doi}" : params[:id]
-
   events  = get_events('page[number]' => 0, "obj-id" => link)
   @work[:metrics] = reduce_aggs(events[:meta])
 
+  @work[:chart] = events[:meta].fetch("relationTypes", [])
 
   # check for existing claims if user is logged in and work is registered with DataCite
   if current_user

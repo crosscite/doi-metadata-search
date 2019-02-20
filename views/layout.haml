@@ -3,21 +3,29 @@
   %head
     %title#site-title{'data-conneg': ENV['DATA_URL'] }
       = ENV['SITE_TITLE']
+
     %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
 
     %link{:rel => 'stylesheet', :href => '//maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css', :type => 'text/css'}
     %link{:rel => 'stylesheet', :href => "//fonts.googleapis.com/css?family=Raleway:400,600,400italic,600italic", :type => 'text/css'}
     %link{:rel => 'stylesheet', :href => "//cdnjs.cloudflare.com/ajax/libs/cc-icons/1.2.1/css/cc-icons.min.css", :type => 'text/css'}
+
     - if ENV['CDN_URL']
       %link{:rel => 'stylesheet', :href => "#{ENV['CDN_URL']}/stylesheets/datacite.css", :type => 'text/css'}
     - else
       %link{:rel => 'stylesheet', :href => "/stylesheets/#{ENV['RA']}.css", :type => 'text/css'}
 
+
+    %link{:rel => 'stylesheet', :href => "/stylesheets/usage.css", :type => 'text/css'}
+
     - if @work.present? && @work[:data].present?
       - id = @work.fetch(:data, {}).fetch("id", nil)
       - attributes = @work.fetch(:data, {}).fetch("attributes", {})
       = work_as_meta_tag(id: id, attributes: attributes)
-
+      %script{:src => "https://cdn.jsdelivr.net/npm/vega@4.4.0"}
+      %script{:src => "https://cdn.jsdelivr.net/npm/vega-lite@2.6.0"}
+      %script{:src => "https://cdn.jsdelivr.net/npm/vega-embed@3.24.2"}
+  
     %script{:type => 'text/javascript'}
       :plain
         var _prum = [['id', '5a1420c253eca68350edbf98'], ['mark', 'firstbyte', (new Date()).getTime()]];
@@ -35,6 +43,10 @@
     %script{:type => 'text/javascript', :src => '//code.jquery.com/jquery-2.2.3.min.js'}
     %script{:type => 'text/javascript', :src => '//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'}
     %script{:type => 'text/javascript', :src => '/javascripts/citebox.js'}
+    = include_gon()
+    %script{:type => 'text/javascript', :src => '/javascripts/usage_bar_chart.js'}
+    %script{:type => 'text/javascript', :src => '/javascripts/vega_bar_chart.js'}
+    %script{:type => 'text/javascript', :src => '/javascripts/ga.js'}
     %script{:type => 'text/javascript', :src => '//cdn.statuspage.io/se-v2.js'}
     %script{type: "text/x-mathjax-config"}
       :plain
@@ -52,13 +64,13 @@
     - if ENV['BUGSNAG_JS_KEY']
       %script{:type => 'text/javascript', :src => '//d2wy8f7a9ursnm.cloudfront.net/bugsnag-2.min.js', :data => { 'apikey' => "#{ENV['BUGSNAG_JS_KEY']}" }}
     - if ENV['GABBA_COOKIE']
+      %script{:async => "", :src => "https://www.googletagmanager.com/gtag/js?id=UA-22806196-5"}
       :javascript
-         var _gaq = _gaq || [];
-         _gaq.push(['_setAccount', '#{ENV['GABBA_COOKIE']}']);
-         _gaq.push(['_trackPageview']);
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'UA-22806196-5');
+        
+        
 
-         (function() {
-           var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-           ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-           var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-         })();
