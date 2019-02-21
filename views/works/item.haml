@@ -42,7 +42,7 @@
           .fa.fa-download            
           = "#{downloads} Downloads"
         - unless metrics.any?
-          %span{:title => "This data center is not currently submitting usage information."}
+          %span.usage-info{:title => "This data center is not currently submitting usage information."}
             .fa.fa-info-circle   
       -# %span.usage-counts
       -#   .fa.fa-bolt

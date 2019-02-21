@@ -33,3 +33,8 @@ a.usage-counts{
 .nav-tabs>li.active :before {
   border-bottom: 11px solid #ffffffff;
 }
+
+span.usage-info :hover{
+  transition: 0s all ease;
+  transition-delay: 0s;
+}

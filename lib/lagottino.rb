@@ -30,7 +30,7 @@ module Sinatra
 
       url = "#{ENV['API_URL']}/events?ids=#{dois.join(",")}&" + URI.encode_www_form({"extra"=> true, "page[size]"=> 50})
       # dependency injection
-      response = options[:response].present? ? options[:response] : Maremma.get(url, timeout: 20)
+      response = options[:response].present? ? options[:response] : Maremma.get(url, headers: {"Accept"=> "application/vnd.api+json; version=2"}, timeout: 20)
 
      { data: Array(response.body.fetch("data", [])),
         errors: Array(response.body.fetch("errors", [])),
