@@ -47,6 +47,7 @@
     %script{:type => 'text/javascript', :src => '/javascripts/usage_bar_chart.js'}
     %script{:type => 'text/javascript', :src => '/javascripts/vega_bar_chart.js'}
     %script{:type => 'text/javascript', :src => '/javascripts/ga.js'}
+    %script{:type => 'text/javascript', :src => '/javascripts/usersnap.js'}
     %script{:type => 'text/javascript', :src => '//cdn.statuspage.io/se-v2.js'}
     %script{type: "text/x-mathjax-config"}
       :plain
@@ -70,7 +71,7 @@
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
         
-          gtag('config', 'UA-22806196-5');
+          gtag('config', '#{ENV['GABBA_COOKIE']}');
         
         
 
