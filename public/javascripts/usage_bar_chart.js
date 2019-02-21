@@ -167,3 +167,7 @@ $(document).ready(function(e) {
     bar2Viz(downloads,"#downloads-chart","sum","months",10);
   }
 });
+
+$(document).ready(function(e) {
+  $('.usage-info').tooltip({show: {effect:"none", delay:0}});
+});
