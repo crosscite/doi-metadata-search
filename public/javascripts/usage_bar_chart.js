@@ -5,7 +5,7 @@
     function bar2Viz(data, div, count, format, displayMode) {
 
       var width = 340,
-        height = 100
+        height = 200
         margin = { top: 7, right: 10, bottom: 5, left: 5 },
         colors = ["#1abc9c","#2ecc71","#3498db","#9b59b6","#34495e","#95a6a6"],
         l = 250, // left margin
@@ -34,7 +34,7 @@
       let formatFixed = d3.format(",.0f");
       let formatTime = d3.time.format.utc("%H:%M:%S");
 
-      var margin = { top: 10, right: 5, bottom: 20, left: 5 };
+      var margin = { top: 10, right: 20, bottom: 20, left: 20 };
 
       if (format === "days") {
         var domain = [startDate, endDate];
@@ -42,7 +42,7 @@
       } else if (format === "months") {
         var domain = [startDate, endDate];
         var length = d3.time.months(startDate, endDate).length;
-        width = 250;
+        width = 400;
       } else {
         var domain = [startTime, endTime];
         var length = 24;
@@ -63,10 +63,8 @@
 
       var chart = d3.select(div).append("svg")
         .data([data])
-        // .attr("width", margin.left + width + margin.right)
-        // .attr("height", margin.top + height + margin.bottom)
-        // .attr("preserveAspectRatio","meet")
-        .attr("viewBox","-30 0 350 200")
+        .attr("width", margin.left + width + margin.right)
+        .attr("height", margin.top + height + margin.bottom)
         .attr("style","position:relative")
         .attr("class", "chart barchart")
         .append("svg:g")
@@ -111,14 +109,14 @@
         .attr("text-anchor", "middle")
         .attr("transform", "translate(11," + (height + 18) + ")")
         .text(formatMonthYear(startDate))
-        .style("font-size", "8px");
+        .style("font-size", "13px");
   
       chart.append("text")
         .attr("class", "label")
         .attr("text-anchor", "middle")
         .attr("transform", "translate(" + (width - 11) + "," + (height + 18) + ")")
         .text(formatMonthYear(endDate))
-        .style("font-size", "8px");
+        .style("font-size", "13px");
 
 
       chart.selectAll("rect").each(
