@@ -71,7 +71,18 @@
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
         
-          gtag('config', '#{ENV['GABBA_COOKIE']}');
+          gtag('config', '#{ENV['GABBA_COOKIE']}',{
+            'custom_map': {
+               'dimension1':'doi',
+               'dimension2':'views',
+               'dimension3':'downloads',
+               'dimension4':'resolutions',
+               'dimension5':'citations'
+            },
+            'linker': {
+              'domains': ['https://search.datacite.org', 'https://doi.datacite.org']
+            }
+          });
         
         
 

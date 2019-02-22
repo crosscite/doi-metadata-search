@@ -65,7 +65,7 @@
         .data([data])
         // .attr("width", margin.left + width + margin.right)
         // .attr("height", margin.top + height + margin.bottom)
-        .attr("preserveAspectRatio","meet")
+        // .attr("preserveAspectRatio","meet")
         .attr("viewBox","-30 0 350 200")
         .attr("style","position:relative")
         .attr("class", "chart barchart")
@@ -163,8 +163,8 @@ $(document).ready(function(e) {
 
     $('#views-tab').tab("show")
 
-    bar2Viz(views,"#views-chart","sum","months",8);
-    bar2Viz(downloads,"#downloads-chart","sum","months",10);
+    bar2Viz(views,"#views-chart","sum","months","full");
+    bar2Viz(downloads,"#downloads-chart","sum","months","full");
   }
 });
 

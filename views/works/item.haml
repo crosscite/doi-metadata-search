@@ -67,7 +67,7 @@
     - if user_signed_in? && attributes["member-id"].to_i == 0
       = haml :'works/claim', locals: { item: item }
 
-- if type == "dataset" && @work.present?
+- if type == "dataset" && @work.present? && ENV['RACK_ENV'] != "production"
   - if metrics.any? && ENV['RACK_ENV'] != "production"
     .panel.panel-default
       .panel-body.usage-charts

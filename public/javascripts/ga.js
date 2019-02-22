@@ -1,35 +1,51 @@
  
 function onMetricsHover(item) {
+  views = $('.usage-views')['0'] !== undefined ? $('.usage-views')['0'].innerText.replace(/[|a-z,A-Z]/g, "") : "0"
+  downloads = $('.usage-downloads')['0'] !== undefined ? $('.usage-downloads')['0'].innerText.replace(/[|a-z,A-Z]/g, "") : "0"
   gtag("event", 'metric',{
-    eventCategory: 'metrics',
-    eventAction: item.className,
-    eventLabel: item.innerText,
-    dimension1: window.location,
-    dimension2: $('a#doi-link').innerText
+    event_category: item.className,
+    event_label: parseInt(item.innerText.replace(/[|a-z,A-Z]/g, "")),
+    value: 1,
+    views: views,
+    downloads: downloads,
+    // resolutions: ($('.resolutions')['0'].innerText.replace(/[|a-z,A-Z]/g, "")),
+    // citations: ($('.citations')['0'].innerText.replace(/[|a-z,A-Z]/g, ""))
   }); 
 };
 
 function onDoiClick(item) {
+  views = $('.usage-views')['0'] !== undefined ? $('.usage-views')['0'].innerText.replace(/[|a-z,A-Z]/g, "") : "0"
+  downloads = $('.usage-downloads')['0'] !== undefined ? $('.usage-downloads')['0'].innerText.replace(/[|a-z,A-Z]/g, "") : "0"
   gtag("event", 'links',{
-    eventCategory: 'dois',
-    eventAction: item.className,
-    eventLabel: item.innerText,
-    dimension1: window.location,
-    dimension2: $('a#doi-link').innerText
+    event_category: item.className,
+    event_label: item.className,
+    value: 1,
+    views: views,
+    downloads: downloads,
   }); 
 };
 
 
+function setGaPage(e){
+  gtag('set', {
+    'page': window.location,
+    'views': $('span.usage-counts.usage-views').innerText,
+    'downloads': $('span.usage-counts.usage-downloads').innerText,
+    'position': '1',
+  });
+};
 
 
 $(document).ready(function(e) {
-  $('span.usage-counts').on("mouseover", function(e) {
+  setGaPage(e);
+
+  $('.usage-counts').on("mouseover", function(e) {
     onMetricsHover(this);
   });
-  $('a#doi-link').on("click", function(e) {
+  $('#doi-link').on("click", function(e) {
     onDoiClick(this);
   });
-  $('a#title-link').on("click", function(e) {
+  $('#title-link').on("click", function(e) {
     onDoiClick(this);
   });
   $('row.tab-pane').on("mouseover", function(e) {
