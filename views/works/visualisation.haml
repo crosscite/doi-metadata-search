@@ -18,7 +18,7 @@
     .col-md-8
       .row
         .p
-          = "<strong>#{views}</strong> views </br> <small>since its publication in #{attributes.fetch("published", "")}</small>"
+          = "<strong>#{views} views</strong> <small> reported since #{gon.chart_views[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
       .row#views-chart
   .row#downloads.tab-pane.fade{"aria-labelledby" => "downloads-tab", :role => "tabpanel", :style => "position: absolute;"} 
     .col-md-4
@@ -32,7 +32,7 @@
     .col-md-8
       .row
         .p
-          = "<strong>#{downloads} downloads</strong> </br> <small>since its publication in #{attributes.fetch("published", "")}</small>"
+          = "<strong>#{downloads} downloads</strong> <small> reported since #{gon.chart_downloads[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
       .row#downloads-chart
   
 
