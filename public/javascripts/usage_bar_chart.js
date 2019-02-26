@@ -17,7 +17,7 @@
       if(Number.isInteger(displayMode) == false){
         var startDate = new Date(data[0].id);
         var lastDataPoint = new Date(data[data.length - 1].id);
-        var endDate = new Date(lastDataPoint.setMonth( lastDataPoint.getMonth() + 2 ));
+        var endDate = new Date(lastDataPoint.setMonth( lastDataPoint.getMonth() + 1 )); // creates a bit of space at the end
       }
       else {
         var lastDataPoint = new Date(data[data.length - 1].id);
@@ -115,9 +115,8 @@
         .attr("class", "label")
         .attr("text-anchor", "middle")
         .attr("transform", "translate(" + (width - 11) + "," + (height + 18) + ")")
-        .text(formatMonthYear(endDate))
+        .text(formatMonthYear(new Date(data[data.length - 1].id)))
         .style("font-size", "13px");
-
 
       chart.selectAll("rect").each(
         function(d) {
@@ -158,8 +157,9 @@ $(document).ready(function(e) {
   if (typeof gon !== 'undefined'){
     var views = gon.chart_views;
     var downloads = gon.chart_downloads;
+    var tab = window.location.hash.substring(1)
 
-    $('#views-tab').tab("show")
+    $('#'+tab).tab("show")
 
     bar2Viz(views,"#views-chart","sum","months","full");
     bar2Viz(downloads,"#downloads-chart","sum","months","full");
