@@ -153,13 +153,34 @@
       return chart;
     }
 
+
+    function tabs_interaction(){
+      var tab = window.location.hash.substring(1)
+
+
+      if(tab){
+        $('#'+tab).tab("show")
+      }else{
+        $('#views-tab').tab("show")
+      }
+  
+      $('.usage-counts.usage-views').on('click', function (e) {
+        e.preventDefault()
+        $("#views-tab").tab('show')
+      })
+      
+      $('.usage-counts.usage-downloads').on('click', function (e) {
+        e.preventDefault()
+        $("#downloads-tab").tab('show')
+      })
+    }
+
 $(document).ready(function(e) {
   if (typeof gon !== 'undefined'){
     var views = gon.chart_views;
     var downloads = gon.chart_downloads;
-    var tab = window.location.hash.substring(1)
 
-    $('#'+tab).tab("show")
+    tabs_interaction()
 
     bar2Viz(views,"#views-chart","sum","months","full");
     bar2Viz(downloads,"#downloads-chart","sum","months","full");
