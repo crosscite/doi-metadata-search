@@ -484,6 +484,16 @@ module Sinatra
         'applicationxstata' => 'Stata',
         'applicationxr' => 'R' }
     end
+
+    def chart_data? data, type
+      type_data = data.select{|hash| hash["id"] == type }
+      type_data.any?
+    end
+
+    def process_chart_data data, type
+      type_data = data.select{|hash| hash["id"] == type }
+      type_data[0].fetch("yearMonths",[]) if type_data.any?
+    end
   end
 end
 
