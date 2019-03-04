@@ -494,6 +494,13 @@ module Sinatra
       type_data = data.select{|hash| hash["id"] == type }
       type_data[0].fetch("yearMonths",[]) if type_data.any?
     end
+
+    def has_usage? metrics
+      views = metrics.to_h.fetch("total-dataset-investigations-regular",0)
+      downloads = metrics.to_h.fetch("total-dataset-requests-regular",0)
+      return true if ((views + downloads) > 0)  
+      false
+    end
   end
 end
 

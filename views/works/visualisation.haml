@@ -1,43 +1,49 @@
 %ul.nav.nav-tabs{:role => "tablist"}
-  %li.nav-item
-    %a#views-tab.nav-link.active{"aria-controls" => "views", "aria-selected" => "true","data-toggle" => "tab", :href => "#views", :role => "tab"} Views
+  - if views > 0
+    %li.nav-item
+      %a#views-tab.nav-link.active{"aria-controls" => "views", "aria-selected" => "true","data-toggle" => "tab", :href => "#views", :role => "tab"} Views
 
-  %li.nav-item
-    %a#downloads-tab.nav-link{"aria-controls" => "downloads", "aria-selected" => "false",  "data-toggle" => "tab", :href => "#downloads", :role => "tab"} Downloads
+  - if downloads > 0
+    %li.nav-item
+      %a#downloads-tab.nav-link{"aria-controls" => "downloads", "aria-selected" => "false",  "data-toggle" => "tab", :href => "#downloads", :role => "tab"} Downloads
 
 %br
 #myTabContent.tab-content{:style => "height: 280px;"}
-  .row#views.tab-pane.active{"aria-labelledby" => "views-tab", :role => "tabpanel",:style => "position: absolute;"} 
-    .col-md-4
-      .p
-        These counts follow the 
-        %a{href: 'https://doi.org/10.7287/peerj.preprints.26505v1'}
-          COUNTER Code of Practice for Research Data,
-        = "meaning that Internet robots and repeats within a certain time frame are excluded.</br> "
-        -# "</br>There were <strong>#{total_views} </strong> total views including repeats and robots."
-        %a{href: 'https://support.datacite.org/docs/usage-stats'}
-          What does this mean?
-    .col-md-8
-      .row
+
+  - if views > 0
+    .row#views.tab-pane.active{"aria-labelledby" => "views-tab", :role => "tabpanel",:style => "position: absolute;"} 
+      .col-md-4
         .p
-          = "<strong>#{views} views</strong> <small> reported since #{gon.chart_views[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
-      .row#views-chart
-  .row#downloads.tab-pane.fade{"aria-labelledby" => "downloads-tab", :role => "tabpanel", :style => "position: absolute;"} 
-    .col-md-4
-      .p
-        These counts follow the 
-        %a{href: 'https://doi.org/10.7287/peerj.preprints.26505v1'}
-          COUNTER Code of Practice for Research Data,
-      .p
-        = "meaning that Internet robots and repeats within a certain time frame are excluded.</br>"
-        -# " There were  <strong>#{total_downloads}</strong>  total downloads including repeats and robots."
-        %a{href: 'https://support.datacite.org/docs/usage-stats'}
-          What does this mean?
-    .col-md-8
-      .row
+          These counts follow the 
+          %a{href: 'https://doi.org/10.7287/peerj.preprints.26505v1'}
+            COUNTER Code of Practice for Research Data,
+          = "meaning that Internet robots and repeats within a certain time frame are excluded.</br> "
+          -# "</br>There were <strong>#{total_views} </strong> total views including repeats and robots."
+          %a{href: 'https://support.datacite.org/docs/usage-stats'}
+            What does this mean?
+      .col-md-8
+        .row
+          .p
+            = "<strong>#{views} views</strong> <small> reported since #{gon.chart_views[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
+        .row#views-chart
+
+  - if downloads > 0
+    .row#downloads.tab-pane.fade{"aria-labelledby" => "downloads-tab", :role => "tabpanel", :style => "position: absolute;"} 
+      .col-md-4
         .p
-          = "<strong>#{downloads} downloads</strong> <small> reported since #{gon.chart_downloads[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
-      .row#downloads-chart
+          These counts follow the 
+          %a{href: 'https://doi.org/10.7287/peerj.preprints.26505v1'}
+            COUNTER Code of Practice for Research Data,
+        .p
+          = "meaning that Internet robots and repeats within a certain time frame are excluded.</br>"
+          -# " There were  <strong>#{total_downloads}</strong>  total downloads including repeats and robots."
+          %a{href: 'https://support.datacite.org/docs/usage-stats'}
+            What does this mean?
+      .col-md-8
+        .row
+          .p
+            = "<strong>#{downloads} downloads</strong> <small> reported since #{gon.chart_downloads[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
+        .row#downloads-chart
   
 
 
