@@ -39,7 +39,7 @@ function setGaPage(e){
 $(document).ready(function(e) {
   setGaPage(e);
 
-  $('.usage-counts').on("mouseover", function(e) {
+  $('.usage-counts').on("click", function(e) {
     onMetricsHover(this);
   });
   $('#doi-link').on("click", function(e) {
@@ -48,7 +48,7 @@ $(document).ready(function(e) {
   $('#title-link').on("click", function(e) {
     onDoiClick(this);
   });
-  $('row.tab-pane').on("mouseover", function(e) {
+  $('row.tab-pane').on("click", function(e) {
     onMetricsHover(this);
   });
 

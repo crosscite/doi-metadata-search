@@ -182,7 +182,6 @@ $(document).ready(function(e) {
     var views = gon.chart_views;
     var downloads = gon.chart_downloads;
     var yop = gon.yop;
-    console.log(yop);
 
     tabs_interaction()
 

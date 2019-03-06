@@ -117,7 +117,7 @@ module Sinatra
       container_title = attributes.fetch("container-title", nil)
       container_title = " via " + container_title if container_title.present?
 
-      [type, "published", published, container_title].join(" ")
+      [type.titlecase, "published", published, container_title].join(" ")
     end
 
     def description_format(description)
