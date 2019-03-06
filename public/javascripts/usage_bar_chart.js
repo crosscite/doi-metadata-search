@@ -2,7 +2,7 @@
 
     /*global d3, startDate, endDate, startTime, endTime, formatWeek, formatHour, numberToHumanSize, formatFixed, formatDate, formatTime, numberWithDelimiter */
 
-    function bar2Viz(data, div, count, format, displayMode) {
+    function bar2Viz(data, div, count, format, displayMode, yop) {
 
       var width = 340,
         height = 200
@@ -25,7 +25,9 @@
         var startDate = new Date(lastDataPoint.setMonth( lastDataPoint.getMonth() - displayMode ));
       }
 
-
+      if(yop){
+        var startDate = new Date(yop+"-01-01");
+      }
 
       var timeStamp = null;
       let formatYear = d3.time.format.utc("%Y");
@@ -179,11 +181,13 @@ $(document).ready(function(e) {
   if (typeof gon !== 'undefined'){
     var views = gon.chart_views;
     var downloads = gon.chart_downloads;
+    var yop = gon.yop;
+    console.log(yop);
 
     tabs_interaction()
 
-    bar2Viz(views,"#views-chart","sum","months","full");
-    bar2Viz(downloads,"#downloads-chart","sum","months","full");
+    bar2Viz(views,"#views-chart","sum","months","full",yop);
+    bar2Viz(downloads,"#downloads-chart","sum","months","full",yop);
   }
 });
 
