@@ -11,10 +11,12 @@
 - total_downloads = has_usage?(metrics) ? metrics.to_h.fetch("total-dataset-requests-regular",0) : "--"
 - resolutions =  metrics.to_h.fetch("unique-resolutions-regular",0).to_i + metrics.to_h.fetch("unique-resolutions-machine","--").to_i
 - citations =  metrics.to_h.fetch("references",0).to_i + metrics.to_h.fetch("cites","--").to_i
+- gon.yop = attributes.fetch("published", "").to_i
 - if @work.present? && chart_data?(chart, "unique-dataset-investigations-regular") && ENV['RACK_ENV'] != "production"
   - gon.chart_views = process_chart_data chart, "unique-dataset-investigations-regular"
 - if @work.present? && chart_data?(chart, "unique-dataset-requests-regular") && ENV['RACK_ENV'] != "production"
   - gon.chart_downloads = process_chart_data chart, "unique-dataset-requests-regular"
+
 
 .panel.panel-default
   .panel-body
@@ -42,7 +44,7 @@
         %a.usage-counts.usage-downloads{:href => "#{works_action(item,{})+'#downloads-tab'}"}
           .fa.fa-download            
           = "#{downloads} Downloads"
-        - unless gon.chart_views.present?
+        - unless has_usage?(metrics)
           %span.usage-info{:title => "This data center is not currently submitting usage information."}
             .fa.fa-info-circle   
       -# %span.usage-counts
