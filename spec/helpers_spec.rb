@@ -120,6 +120,21 @@ describe "Helpers", type: :model, vcr: true do
     end
   end
 
+  context "filter_relation_types" do
+    let(:metrics) {{"references"=>"2165", "has-part"=>"1", "is-cited-by"=>"2", "total-dataset-investigations-regular"=>"40"}}
+    let(:usage) {{ "has-part"=>"1",  "total-dataset-investigations-regular"=>"40"}}
+
+    it "filter for citations" do
+      citations = subject.filter_relation_types(metrics)
+      expect(citations).to eq(2167)
+    end
+
+    it "no citations" do
+      citations = subject.filter_relation_types(usage)
+      expect(citations).to eq(0)
+    end
+  end
+
 
 
   context "helpers" do

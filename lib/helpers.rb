@@ -41,6 +41,19 @@ module Sinatra
       "Reviews" => "isReviewedBy",
     }
 
+    INCLUDED_RELATION_TYPES = [
+      "cites", "is-cited-by",
+      "compiles", "is-compiled-by",
+      "documents", "is-documented-by",
+      "hasmetadata", "is-metadata-for",
+      "is-supplement-to", "is-supplemented-by",
+      "is-derived-from", "is-source-of",
+      "references", "is-referenced-by",
+      "reviews", "is-reviewed-by",
+      "requires", "is-required-by",
+      "describes", "is-described-by"
+    ]
+
     def author_format(author)
       authors = Array(author).map do |a|
         name = a.fetch("literal", nil).presence || a.fetch("given", nil).to_s + " " + a.fetch("family", nil).to_s
@@ -490,8 +503,13 @@ module Sinatra
       type_data.any?
     end
 
-    def process_chart_data data, type
-      type_data = data.select{|hash| hash["id"] == type }
+    def process_chart_data data, types
+      type_data = []
+      puts data
+      puts types
+      types.each do |tpy|
+        type_data = data.select{|hash| hash["id"] == tpy }
+      end
       type_data[0].fetch("yearMonths",[]) if type_data.any?
     end
 
@@ -500,6 +518,15 @@ module Sinatra
       downloads = metrics.to_h.fetch("total-dataset-requests-regular",0)
       return true if ((views + downloads) > 0)  
       false
+    end
+
+    def filter_relation_types metrics
+      hsh_metrics = metrics.to_h
+      citations = 0
+      INCLUDED_RELATION_TYPES.each do |type|
+        citations += hsh_metrics.fetch(type,0).to_i
+      end
+      citations
     end
   end
 end

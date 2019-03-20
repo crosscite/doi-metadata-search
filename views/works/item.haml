@@ -5,18 +5,21 @@
 - sources = @works.present? ? @works[:meta].fetch("sources", []) : []
 - new_params = params[:model] == "works" && params["id"] == attributes.fetch("doi", nil) ? params.merge(external_link: true) : params
 - title = attributes["title"].to_s.gsub(/"/, '\"')
-- views = has_usage?(metrics) ? metrics.to_h.fetch("unique-dataset-investigations-regular",0) : "--"
-- total_views = has_usage?(metrics) ? metrics.to_h.fetch("total-dataset-investigations-regular",0) : "--"
-- downloads =  has_usage?(metrics) ? metrics.to_h.fetch("unique-dataset-requests-regular",0) : "--"
-- total_downloads = has_usage?(metrics) ? metrics.to_h.fetch("total-dataset-requests-regular",0) : "--"
+- views = has_usage?(metrics) ? metrics.to_h.fetch("unique-dataset-investigations-regular",0) : 0
+- total_views = has_usage?(metrics) ? metrics.to_h.fetch("total-dataset-investigations-regular",0) : 0
+- downloads =  has_usage?(metrics) ? metrics.to_h.fetch("unique-dataset-requests-regular",0) : 0
+- total_downloads = has_usage?(metrics) ? metrics.to_h.fetch("total-dataset-requests-regular",0) : 0
 - resolutions =  metrics.to_h.fetch("unique-resolutions-regular",0).to_i + metrics.to_h.fetch("unique-resolutions-machine","--").to_i
-- citations =  metrics.to_h.fetch("references",0).to_i + metrics.to_h.fetch("cites","--").to_i
+- citations =  filter_relation_types metrics
 - if @work.present? && chart_data?(chart, "unique-dataset-investigations-regular") && ENV['RACK_ENV'] != "production"
-  - gon.chart_views = process_chart_data chart, "unique-dataset-investigations-regular"
+  - gon.chart_views = process_chart_data chart, ["unique-dataset-investigations-regular"]
   - gon.yop = attributes.fetch("published", "").to_i
 - if @work.present? && chart_data?(chart, "unique-dataset-requests-regular") && ENV['RACK_ENV'] != "production"
-  - gon.chart_downloads = process_chart_data chart, "unique-dataset-requests-regular"
+  - gon.chart_downloads = process_chart_data chart, ["unique-dataset-requests-regular"]
   - gon.yop = attributes.fetch("published", "").to_i
+-# - if @work.present? && citations > 0 && ENV['RACK_ENV'] != "production"
+-#   - gon.chart_citations = process_chart_data chart, INCLUDED_RELATION_TYPES
+-#   - gon.yop = attributes.fetch("published", "").to_i
 
 
 .panel.panel-default
@@ -37,23 +40,23 @@
           = license_img(attributes["license"])
 
   - if ENV['RACK_ENV'] != "production"
-    - if type == "dataset"
-      .panel-footer
+    .panel-footer
+      - if type == "dataset"
         %a.usage-counts.usage-views{:href => "#{works_action(item,{})+'#views-tab'}"}
           .fa.fa-eye
           = "#{views} Views"
         %a.usage-counts.usage-downloads{:href => "#{works_action(item,{})+'#downloads-tab'}"}
           .fa.fa-download            
-          = "#{downloads} Downloads"
-        - unless has_usage?(metrics)
-          %span.usage-info{:title => "This data center is not currently submitting usage information."}
-            .fa.fa-info-circle   
-      -# %span.usage-counts
-      -#   .fa.fa-bolt
-      -#   = "#{resolutions} Resolutions"
-      -# %span.usage-counts
-      -#   .fa.fa-thumbs-o-up.usage-citations
-      -#   = "#{citations} Citations"
+          = "#{downloads} Downloads"  
+        -# %span.usage-counts
+        -#   .fa.fa-bolt
+        -#   = "#{resolutions} Resolutions"
+      %a.usage-counts.citations{:href => "#{works_action(item,{})+'#citations-tab'}"}
+        .fa.fa-thumbs-o-up.usage-citations
+        = "#{citations} Citations"
+      - unless has_usage?(metrics)
+        %span.usage-info{:title => "This data center is not currently reporting usage information."}
+          .fa.fa-info-circle 
 
   - if @work.present? && @work.fetch(:data, {}).fetch("attributes", {}).fetch("related-identifiers", nil).present? && @work.fetch(:data, {}).fetch("id", "work") != item["id"]
     .panel-footer
@@ -71,14 +74,14 @@
     - if user_signed_in? && attributes["member-id"].to_i == 0
       = haml :'works/claim', locals: { item: item }
 
-- if type == "dataset" && @work.present? && ENV['RACK_ENV'] != "production"
-  - if has_usage?(metrics) && ENV['RACK_ENV'] != "production"
+- if @work.present? && ENV['RACK_ENV'] != "production"
+  - if (has_usage?(metrics) || citations > 0 )&& ENV['RACK_ENV'] != "production"
     .panel.panel-default
       .panel-body.usage-charts
-        = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads, total_views: total_views, total_downloads: total_downloads}
+        = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads, citations: citations, total_views: total_views, total_downloads: total_downloads}
   - else
     .panel.panel-default
       .panel-body
-        = "This data center is not currently submitting usage information. For information on how your repository can submit usage information, please see"
+        = "This data center is not currently reporting usage information. For information on how your repository can submit usage information, please see"
         %a{href: 'https://support.datacite.org/docs/usage-reports-api-guide'}
           our Documentation.
