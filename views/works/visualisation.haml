@@ -6,6 +6,10 @@
   - if downloads > 0
     %li.nav-item
       %a#downloads-tab.nav-link{"aria-controls" => "downloads", "aria-selected" => "false",  "data-toggle" => "tab", :href => "#downloads", :role => "tab"} Downloads
+  
+  - if citations > 0
+    %li.nav-item
+      %a#citations-tab.nav-link{"aria-controls" => "citations", "aria-selected" => "false",  "data-toggle" => "tab", :href => "#citations", :role => "tab"} Citations
 
 %br
 #myTabContent.tab-content{:style => "height: 280px;"}
@@ -44,6 +48,19 @@
           .p
             = "<strong>#{downloads} downloads</strong> <small> reported since #{gon.chart_downloads[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
         .row#downloads-chart
+
+  - if citations > 0
+    .row#citations.tab-pane.fade{"aria-labelledby" => "citations-tab", :role => "tabpanel", :style => "position: absolute;"} 
+      .col-md-4
+        .p
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id enim tristique dui commodo venenatis eu ac purus.  
+          %a{href: 'https://doi.org/10.7287/peerj.preprints.26505v1'}
+          Nulla finibus ligula ac ligula venenatis dapibus
+      .col-md-8
+        .row
+          .p
+            -# = "<strong>#{citations} citations</strong> <small> reported since #{gon.chart_citations[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
+        .row#citations-chart
   
 
 
