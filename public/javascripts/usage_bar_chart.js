@@ -10,7 +10,7 @@
         colors = ["#1abc9c","#2ecc71","#3498db","#9b59b6","#34495e","#95a6a6"],
         l = 250, // left margin
         r = 150, // right margin
-        w = 400, // width of drawing area
+        w = 1080, // width of drawing area
         h = 24,  // bar height
         s = 2;   // spacing between bars
 
@@ -44,7 +44,7 @@
       } else if (format === "months") {
         var domain = [startDate, endDate];
         var length = d3.time.months(startDate, endDate).length;
-        width = 400;
+        width = 920;
       } else {
         var domain = [startTime, endTime];
         var length = 24;
@@ -181,12 +181,16 @@ $(document).ready(function(e) {
   if (typeof gon !== 'undefined'){
     var views = gon.chart_views;
     var downloads = gon.chart_downloads;
+    // var citations = gon.chart_citations;
     var yop = gon.yop;
 
+    // console.log(citations)
+    
     tabs_interaction()
 
     bar2Viz(views,"#views-chart","sum","months","full",yop);
     bar2Viz(downloads,"#downloads-chart","sum","months","full",yop);
+    // bar2Viz(citations,"#citations-chart","sum","months","full",yop);
   }
 });
 
