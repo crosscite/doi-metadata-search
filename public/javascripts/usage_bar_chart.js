@@ -10,14 +10,16 @@
         colors = ["#1abc9c","#2ecc71","#3498db","#9b59b6","#34495e","#95a6a6"],
         l = 250, // left margin
         r = 150, // right margin
-        w = 1080, // width of drawing area
+        w = 920, // width of drawing area
         h = 24,  // bar height
         s = 2;   // spacing between bars
 
       if(Number.isInteger(displayMode) == false){
         var startDate = new Date(data[0].id);
         var lastDataPoint = new Date(data[data.length - 1].id);
-        var endDate = new Date(lastDataPoint.setMonth( lastDataPoint.getMonth() + 1 )); // creates a bit of space at the end
+        var today = new Date();
+        var endDate = new Date(today.setMonth( today.getMonth() + 1 )); // creates a bit of space at the end
+        // var endDate = new Date(lastDataPoint.setMonth( lastDataPoint.getMonth() + 1 )); // creates a bit of space at the end
       }
       else {
         var lastDataPoint = new Date(data[data.length - 1].id);
@@ -44,7 +46,7 @@
       } else if (format === "months") {
         var domain = [startDate, endDate];
         var length = d3.time.months(startDate, endDate).length;
-        width = 920;
+        width = 800;
       } else {
         var domain = [startTime, endTime];
         var length = 24;

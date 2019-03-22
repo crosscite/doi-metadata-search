@@ -25,38 +25,38 @@
       "count": 12,
       "yearMonths": [
         {
-          "id": "2018-04",
-          "title": "April 2018",
+          "id": "2016-04",
+          "title": "April 2016",
           "sum": 120.0
         },
         {
-          "id": "2018-05",
-          "title": "May 2018",
+          "id": "2016-05",
+          "title": "May 2016",
           "sum": 382.0
         },
         {
-          "id": "2018-06",
-          "title": "June 2018",
+          "id": "2016-06",
+          "title": "June 2016",
           "sum": 33.0
         },
         {
-          "id": "2018-07",
-          "title": "July 2018",
+          "id": "2016-07",
+          "title": "July 2016",
           "sum": 36.0
         },
         {
-          "id": "2018-08",
-          "title": "August 2018",
+          "id": "2016-08",
+          "title": "August 2016",
           "sum": 29.0
         },
         {
-          "id": "2018-09",
-          "title": "September 2018",
+          "id": "2016-09",
+          "title": "September 2016",
           "sum": 4.0
         },
         {
-          "id": "2018-11",
-          "title": "November 2018",
+          "id": "2016-11",
+          "title": "November 2016",
           "sum": 31.0
         }
       ]
@@ -67,39 +67,44 @@
       "count": 12,
       "yearMonths": [
         {
-          "id": "2018-04",
-          "title": "April 2018",
+          "id": "2016-04",
+          "title": "April 2016",
           "sum": 101.0
         },
         {
-          "id": "2018-05",
-          "title": "May 2018",
+          "id": "2016-05",
+          "title": "May 2016",
           "sum": 118.0
         },
         {
-          "id": "2018-06",
-          "title": "June 2018",
+          "id": "2016-06",
+          "title": "June 2016",
           "sum": 27.0
         },
         {
-          "id": "2018-07",
-          "title": "July 2018",
+          "id": "2016-07",
+          "title": "July 2016",
           "sum": 33.0
         },
         {
-          "id": "2018-08",
-          "title": "August 2018",
+          "id": "2016-08",
+          "title": "August 2016",
           "sum": 28.0
         },
         {
-          "id": "2018-09",
-          "title": "September 2018",
+          "id": "2016-09",
+          "title": "September 2016",
           "sum": 4.0
         },
         {
-          "id": "2018-11",
-          "title": "November 2018",
+          "id": "2016-11",
+          "title": "November 2016",
           "sum": 29.0
+        },
+        {
+          "id": "2018-01",
+          "title": "November 2016",
+          "sum": 31.0
         }
       ]
     },
@@ -109,28 +114,28 @@
       "count": 9,
       "yearMonths": [
         {
-          "id": "2018-04",
-          "title": "April 2018",
+          "id": "2016-04",
+          "title": "April 2016",
           "sum": 18.0
         },
         {
-          "id": "2018-05",
-          "title": "May 2018",
+          "id": "2016-05",
+          "title": "May 2016",
           "sum": 2.0
         },
         {
-          "id": "2018-06",
-          "title": "June 2018",
+          "id": "2016-06",
+          "title": "June 2016",
           "sum": 5.0
         },
         {
-          "id": "2018-07",
-          "title": "July 2018",
+          "id": "2016-07",
+          "title": "July 2016",
           "sum": 5.0
         },
         {
-          "id": "2018-11",
-          "title": "November 2018",
+          "id": "2016-11",
+          "title": "November 2016",
           "sum": 4.0
         }
       ]
@@ -141,28 +146,28 @@
       "count": 9,
       "yearMonths": [
         {
-          "id": "2018-04",
-          "title": "April 2018",
+          "id": "2016-04",
+          "title": "April 2016",
           "sum": 12.0
         },
         {
-          "id": "2018-05",
-          "title": "May 2018",
+          "id": "2016-05",
+          "title": "May 2016",
           "sum": 2.0
         },
         {
-          "id": "2018-06",
-          "title": "June 2018",
+          "id": "2016-06",
+          "title": "June 2016",
           "sum": 5.0
         },
         {
-          "id": "2018-07",
-          "title": "July 2018",
+          "id": "2016-07",
+          "title": "July 2016",
           "sum": 5.0
         },
         {
-          "id": "2018-11",
-          "title": "November 2018",
+          "id": "2016-11",
+          "title": "November 2016",
           "sum": 3.0
         }
       ]
@@ -173,8 +178,8 @@
       "count": 1,
       "yearMonths": [
         {
-          "id": "2018-08",
-          "title": "August 2018",
+          "id": "2016-08",
+          "title": "August 2016",
           "sum": 1.0
         }
       ]
@@ -185,8 +190,8 @@
       "count": 1,
       "yearMonths": [
         {
-          "id": "2018-08",
-          "title": "August 2018",
+          "id": "2016-08",
+          "title": "August 2016",
           "sum": 1.0
         }
       ]

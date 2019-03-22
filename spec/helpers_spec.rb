@@ -108,15 +108,23 @@ describe "Helpers", type: :model, vcr: true do
     let(:empty_meta) {{}}
 
     it "reduce for usage" do
-      relation_types = subject.reduce_aggs(meta)
+      relation_types = subject.reduce_aggs(meta,{yop: 2015})
       expect(relation_types).to have_key("total-dataset-requests-regular")
       expect(relation_types.size).to eq(6)
       expect(relation_types.dig("total-dataset-requests-regular")).to be(34)
     end
 
     it "reduce when there is no meta" do
-      relation_types = subject.reduce_aggs(empty_meta)
+      relation_types = subject.reduce_aggs(empty_meta,{yop: 2015})
       expect(relation_types.size).to eq(0)
+    end
+
+    it "reduce with out of bounds data" do
+      relation_types = subject.reduce_aggs(meta,{yop: 2017})
+      expect(relation_types.size).to eq(6)
+      expect(relation_types.dig("unique-dataset-investigations-regular")).to be(31)
+      expect(relation_types.dig("total-dataset-requests-regular")).to be(0)
+      expect(relation_types.dig("total-dataset-investigations-regular")).to be(0)
     end
   end
 

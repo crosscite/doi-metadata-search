@@ -12,10 +12,10 @@
 - resolutions =  metrics.to_h.fetch("unique-resolutions-regular",0).to_i + metrics.to_h.fetch("unique-resolutions-machine","--").to_i
 - citations =  filter_relation_types metrics
 - if @work.present? && chart_data?(chart, "unique-dataset-investigations-regular") && ENV['RACK_ENV'] != "production"
-  - gon.chart_views = process_chart_data chart, ["unique-dataset-investigations-regular"]
+  - gon.chart_views = process_chart_data chart, ["unique-dataset-investigations-regular"], attributes.fetch("published", "").to_i
   - gon.yop = attributes.fetch("published", "").to_i
 - if @work.present? && chart_data?(chart, "unique-dataset-requests-regular") && ENV['RACK_ENV'] != "production"
-  - gon.chart_downloads = process_chart_data chart, ["unique-dataset-requests-regular"]
+  - gon.chart_downloads = process_chart_data chart, ["unique-dataset-requests-regular"], attributes.fetch("published", "").to_i
   - gon.yop = attributes.fetch("published", "").to_i
 -# - if @work.present? && citations > 0 && ENV['RACK_ENV'] != "production"
 -#   - gon.chart_citations = process_chart_data chart, INCLUDED_RELATION_TYPES
