@@ -111,7 +111,12 @@ describe "Helpers", type: :model, vcr: true do
       relation_types = subject.reduce_aggs(meta,{yop: 2015})
       expect(relation_types).to have_key("total-dataset-requests-regular")
       expect(relation_types.size).to eq(6)
+      expect(relation_types.dig("total-dataset-investigations-regular")).to be(635)
+      expect(relation_types.dig("unique-dataset-investigations-regular")).to be(371)
       expect(relation_types.dig("total-dataset-requests-regular")).to be(34)
+      expect(relation_types.dig("unique-dataset-requests-regular")).to be(27)
+      expect(relation_types.dig("total-dataset-investigations-machine")).to be(1)
+      expect(relation_types.dig("unique-dataset-investigations-machine")).to be(1)
     end
 
     it "reduce when there is no meta" do
@@ -125,6 +130,10 @@ describe "Helpers", type: :model, vcr: true do
       expect(relation_types.dig("unique-dataset-investigations-regular")).to be(31)
       expect(relation_types.dig("total-dataset-requests-regular")).to be(0)
       expect(relation_types.dig("total-dataset-investigations-regular")).to be(0)
+      expect(relation_types.dig("total-dataset-requests-regular")).to be(0)
+      expect(relation_types.dig("unique-dataset-requests-regular")).to be(0)
+      expect(relation_types.dig("total-dataset-investigations-machine")).to be(0)
+      expect(relation_types.dig("unique-dataset-investigations-machine")).to be(0)
     end
   end
 

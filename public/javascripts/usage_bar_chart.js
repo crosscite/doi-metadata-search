@@ -2,6 +2,18 @@
 
     /*global d3, startDate, endDate, startTime, endTime, formatWeek, formatHour, numberToHumanSize, formatFixed, formatDate, formatTime, numberWithDelimiter */
 
+    function barWidth(width,length){
+      let calc_width =(width/length - 1);
+      let bar_width = calc_width;
+      if (calc_width > 50){
+        bar_width = 25;
+      }else if(calc_width < 7){
+        bar_width = 7;
+      }
+      return bar_width
+    }
+
+
     function bar2Viz(data, div, count, format, displayMode, yop) {
 
       var width = 340,
@@ -16,9 +28,9 @@
 
       if(Number.isInteger(displayMode) == false){
         var startDate = new Date(data[0].id);
-        var lastDataPoint = new Date(data[data.length - 1].id);
+        // var lastDataPoint = new Date(data[data.length - 1].id);
         var today = new Date();
-        var endDate = new Date(today.setMonth( today.getMonth() + 1 )); // creates a bit of space at the end
+        var endDate = new Date(today.setMonth( today.getMonth())); // creates a bit of space at the end
         // var endDate = new Date(lastDataPoint.setMonth( lastDataPoint.getMonth() + 1 )); // creates a bit of space at the end
       }
       else {
@@ -99,7 +111,7 @@
           } else {
             return x(new Date(Date.parse(d.id + ':00:00Z')));
           }})
-        .attr("width", width/length - 1)
+        .attr("width", barWidth(width,length))
         .attr("y", function(d) { return y(d.sum); })
         .attr("height", function(d) { return height - y(d.sum); });
 
@@ -119,7 +131,7 @@
         .attr("class", "label")
         .attr("text-anchor", "middle")
         .attr("transform", "translate(" + (width - 11) + "," + (height + 18) + ")")
-        .text(formatMonthYear(new Date(data[data.length - 1].id)))
+        .text(formatMonthYear(endDate))
         .style("font-size", "13px");
 
       chart.selectAll("rect").each(
@@ -156,7 +168,6 @@
       // return chart object
       return chart;
     }
-
 
     function tabs_interaction(){
       var tab = window.location.hash.substring(1)
