@@ -61,6 +61,7 @@ require 'open-uri'
 require 'uri'
 require 'better_errors'
 require 'gon-sinatra'
+require 'git'
 
 Sinatra::register Gon::Sinatra
 register Gon::Sinatra
@@ -88,18 +89,25 @@ configure do
   # Google analytics event tracking
   set :ga, Gabba::Gabba.new(ENV['GABBA_COOKIE'], ENV['GABBA_URL']) if ENV['GABBA_COOKIE']
 
-  # optionally use Bugsnag for error tracking
-  if ENV['BUGSNAG_KEY']
-    require 'bugsnag'
-    Bugsnag.configure do |config|
-      config.api_key = ENV['BUGSNAG_KEY']
-      config.project_root = settings.root
-      config.app_version = App::VERSION
-      config.release_stage = ENV['RACK_ENV']
-      config.notify_release_stages = %w(production stage)
+  # fetch version and revision from git
+  g = Git.open(Sinatra::Application.root)
+  begin
+    set :version, g.tags.map { |t| Gem::Version.new(t.name) }.sort.last.to_s
+  rescue ArgumentError
+    set :version, "1.0"
+  end
+  set :revision, g.object('HEAD').sha
+
+  # use Sentry for error tracking
+  if ENV['SENTRY_DSN']
+    require 'raven'
+
+    Raven.configure do |config|
+      config.dsn = ENV['SENTRY_DSN']
+      config.release = "doi-metadata-search:" + Sinatra::Application.version
     end
 
-    use Bugsnag::Rack
+    use Raven::Rack
     enable :raise_errors
   end
 end

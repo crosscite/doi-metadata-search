@@ -1,8 +1,7 @@
 source 'http://rubygems.org'
-#ruby '2.3.1'
 
 gem 'dotenv'
-gem 'bugsnag'
+gem 'sentry-raven', '~> 2.9'
 gem 'awesome_print'
 gem 'activesupport'
 gem 'actionpack'
@@ -25,6 +24,7 @@ gem 'rake'
 gem 'namae'
 gem 'sass'
 gem 'gon-sinatra'
+gem 'git', '~> 1.5'
 
 group :development do
   gem "better_errors"

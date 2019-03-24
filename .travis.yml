@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-- 2.4.1
+- 2.4.4
 sudo: required
 
 services:
@@ -14,6 +14,8 @@ addons:
 
 install:
   - travis_retry bundle install
+  - curl -sL https://sentry.io/get-cli/ | bash
+  - sentry-cli --version
 
 before_script:
   - cp .env.travis .env
@@ -55,9 +57,16 @@ after_success:
       git clone "https://${TRAVIS_SECURE_TOKEN}@github.com/datacite/mastino.git";
       ./dockerize -template vendor/docker/_doi-metadata-search.auto.tfvars.tmpl:mastino/stage/services/search/_doi-metadata-search.auto.tfvars;
 
+      sentry-cli releases new doi-metadata-search:${GIT_TAG} --finalize --project doi-metadata-search;
+
       if [ "${TRAVIS_TAG?}" ]; then
         ./dockerize -template vendor/docker/_doi-metadata-search.auto.tfvars.tmpl:mastino/prod-eu-west/services/search/_doi-metadata-search.auto.tfvars;
+        sentry-cli releases deploys doi-metadata-search:${GIT_TAG} new -e production;
+      else
+        sentry-cli releases deploys doi-metadata-search:${GIT_TAG} new -e stage;
       fi
+
+      sentry-cli releases set-commits --auto doi-metadata-search:${GIT_TAG};
 
       cd mastino;
       git remote;
