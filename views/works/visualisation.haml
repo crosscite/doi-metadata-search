@@ -18,7 +18,7 @@
 
       - if views > 0
         .row#views.tab-pane.active{"aria-labelledby" => "views-tab", :role => "tabpanel",:style => "position: absolute;"} 
-          .col-md-12
+          .col-lg-12
             .row
               .p{:style => "padding-left:20px;"}
                 = "<strong>#{views} views</strong> <small> reported since #{gon.chart_views[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
@@ -37,7 +37,7 @@
 
       - if downloads > 0
         .row#downloads.tab-pane.fade{"aria-labelledby" => "downloads-tab", :role => "tabpanel", :style => "position: absolute;"} 
-          .col-md-12
+          .col-lg-12
             .row
               .p{:style => "padding-left:20px;"}
                 = "<strong>#{downloads} downloads</strong> <small> reported since #{gon.chart_downloads[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
@@ -49,7 +49,6 @@
                   These counts follow the 
                   %a{href: 'https://doi.org/10.7287/peerj.preprints.26505v1'}
                     COUNTER Code of Practice for Research Data,
-                .p
                   = "meaning that Internet robots and repeats within a certain time frame are excluded.</br>"
                   -# " There were  <strong>#{total_downloads}</strong>  total downloads including repeats and robots."
                   %a{href: 'https://support.datacite.org/docs/usage-stats'}
