@@ -5,10 +5,10 @@
 - sources = @works.present? ? @works[:meta].fetch("sources", []) : []
 - new_params = params[:model] == "works" && params["id"] == attributes.fetch("doi", nil) ? params.merge(external_link: true) : params
 - title = attributes["title"].to_s.gsub(/"/, '\"')
-- views = has_usage?(metrics) ? metrics.to_h.fetch("unique-dataset-investigations-regular",0) : 0
-- total_views = has_usage?(metrics) ? metrics.to_h.fetch("total-dataset-investigations-regular",0) : 0
-- downloads =  has_usage?(metrics) ? metrics.to_h.fetch("unique-dataset-requests-regular",0) : 0
-- total_downloads = has_usage?(metrics) ? metrics.to_h.fetch("total-dataset-requests-regular",0) : 0
+- views =  metrics.to_h.fetch("unique-dataset-investigations-regular",0) 
+- total_views =  metrics.to_h.fetch("total-dataset-investigations-regular",0) 
+- downloads =   metrics.to_h.fetch("unique-dataset-requests-regular",0) 
+- total_downloads =  metrics.to_h.fetch("total-dataset-requests-regular",0) 
 - resolutions =  metrics.to_h.fetch("unique-resolutions-regular",0).to_i + metrics.to_h.fetch("unique-resolutions-machine","--").to_i
 - citations =  filter_relation_types metrics
 - if @work.present? && chart_data?(chart, "unique-dataset-investigations-regular") && ENV['RACK_ENV'] != "production"
