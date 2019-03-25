@@ -150,7 +150,7 @@ module Sinatra
       relation_types.each do |type|
         qty = type["yearMonths"].map do |period| 
           year = Date.strptime(period.dig("id")+"-01", '%Y-%m-%d').year
-          quantity = year > options[:yop] && year <= Date.today.year ? period.dig("sum") : 0
+          quantity = (options[:yop]..Date.today.year) === year ? period.dig("sum") : 0
           quantity
         end
         metrics[type.dig("id")] = qty.sum.to_i
@@ -519,7 +519,7 @@ module Sinatra
         end
         x = type_data[0]["yearMonths"].map do |period|
           year = Date.strptime(period.dig("id")+"-01", '%Y-%m-%d').year
-          month = year > yop && year <= Date.today.year ? period : nil
+          month = (yop..Date.today.year) === year ? period : nil
           month
         end
       end
