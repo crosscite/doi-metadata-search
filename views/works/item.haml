@@ -20,8 +20,7 @@
 -# - if @work.present? && citations > 0 && ENV['RACK_ENV'] != "production"
 -#   - gon.chart_citations = process_chart_data chart, INCLUDED_RELATION_TYPES
 -#   - gon.yop = attributes.fetch("published", "").to_i
-- puts "sjsdjksdjkds"
-- puts metrics
+
 
 .panel.panel-default
   .panel-body
@@ -42,21 +41,24 @@
 
   - if ENV['RACK_ENV'] != "production"
     .panel-footer
-      %a.usage-counts.usage-views{:href => "#{works_action(item,{})+'#views-tab'}"}
-        .fa.fa-eye
-        = "#{views} Views"
-      %a.usage-counts.usage-downloads{:href => "#{works_action(item,{})+'#downloads-tab'}"}
-        .fa.fa-download            
-        = "#{downloads} Downloads"  
+      - if has_usage?(metrics)
+        %a.usage-counts.usage-views{:href => "#{works_action(item,{})+'#views-tab'}"}
+          .fa.fa-eye
+          = "#{views} Views"
+        %a.usage-counts.usage-downloads{:href => "#{works_action(item,{})+'#downloads-tab'}"}
+          .fa.fa-download            
+          = "#{downloads} Downloads"
       -# %span.usage-counts
       -#   .fa.fa-bolt
       -#   = "#{resolutions} Resolutions"
-      %a.usage-counts.citations{:href => "#{works_action(item,{})+'#citations-tab'}"}
-        .fa.fa-thumbs-o-up.usage-citations
-        = "#{citations} Citations"
-      - unless has_usage?(metrics)
+      -# %a.usage-counts.citations{:href => "#{works_action(item,{})+'#citations-tab'}"}
+      -#   .fa.fa-thumbs-o-up.usage-citations
+      -#   = "#{citations} Citations"
+      - unless (has_usage?(metrics) || @work.present?)
         %span.usage-info{:title => "This data center is not currently reporting usage information."}
           .fa.fa-info-circle 
+        %a
+          = "This data center is not currently reporting usage information."
 
   - if @work.present? && @work.fetch(:data, {}).fetch("attributes", {}).fetch("related-identifiers", nil).present? && @work.fetch(:data, {}).fetch("id", "work") != item["id"]
     .panel-footer
