@@ -51,9 +51,9 @@
       -# %span.usage-counts
       -#   .fa.fa-bolt
       -#   = "#{resolutions} Resolutions"
-      -# %a.usage-counts.citations{:href => "#{works_action(item,{})+'#citations-tab'}"}
-      -#   .fa.fa-thumbs-o-up.usage-citations
-      -#   = "#{citations} Citations"
+      %a.usage-counts.citations{:href => "#{works_action(item,{})+'#citations-tab'}"}
+        .fa.fa-thumbs-o-up.usage-citations
+        = "#{citations} Citations"
       - unless (has_usage?(metrics) || @work.present?)
         %span.usage-info{:title => "This data center is not currently reporting usage information."}
           .fa.fa-info-circle 
