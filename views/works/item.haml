@@ -42,16 +42,15 @@
 
   - if ENV['RACK_ENV'] != "production"
     .panel-footer
-      - if type == "dataset"
-        %a.usage-counts.usage-views{:href => "#{works_action(item,{})+'#views-tab'}"}
-          .fa.fa-eye
-          = "#{views} Views"
-        %a.usage-counts.usage-downloads{:href => "#{works_action(item,{})+'#downloads-tab'}"}
-          .fa.fa-download            
-          = "#{downloads} Downloads"  
-        -# %span.usage-counts
-        -#   .fa.fa-bolt
-        -#   = "#{resolutions} Resolutions"
+      %a.usage-counts.usage-views{:href => "#{works_action(item,{})+'#views-tab'}"}
+        .fa.fa-eye
+        = "#{views} Views"
+      %a.usage-counts.usage-downloads{:href => "#{works_action(item,{})+'#downloads-tab'}"}
+        .fa.fa-download            
+        = "#{downloads} Downloads"  
+      -# %span.usage-counts
+      -#   .fa.fa-bolt
+      -#   = "#{resolutions} Resolutions"
       %a.usage-counts.citations{:href => "#{works_action(item,{})+'#citations-tab'}"}
         .fa.fa-thumbs-o-up.usage-citations
         = "#{citations} Citations"
