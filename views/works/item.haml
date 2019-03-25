@@ -20,7 +20,8 @@
 -# - if @work.present? && citations > 0 && ENV['RACK_ENV'] != "production"
 -#   - gon.chart_citations = process_chart_data chart, INCLUDED_RELATION_TYPES
 -#   - gon.yop = attributes.fetch("published", "").to_i
-
+- puts "sjsdjksdjkds"
+- puts metrics
 
 .panel.panel-default
   .panel-body
@@ -76,9 +77,7 @@
 
 - if @work.present? && ENV['RACK_ENV'] != "production"
   - if (has_usage?(metrics) || citations > 0 )&& ENV['RACK_ENV'] != "production"
-    .panel.panel-default
-      .panel-body.usage-charts
-        = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads, citations: citations, total_views: total_views, total_downloads: total_downloads}
+    = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads, citations: citations, total_views: total_views, total_downloads: total_downloads}
   - else
     .panel.panel-default
       .panel-body
