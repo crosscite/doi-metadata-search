@@ -22,9 +22,6 @@
       - id = @work.fetch(:data, {}).fetch("id", nil)
       - attributes = @work.fetch(:data, {}).fetch("attributes", {})
       = work_as_meta_tag(id: id, attributes: attributes)
-      %script{:src => "https://cdn.jsdelivr.net/npm/vega@4.4.0"}
-      %script{:src => "https://cdn.jsdelivr.net/npm/vega-lite@2.6.0"}
-      %script{:src => "https://cdn.jsdelivr.net/npm/vega-embed@3.24.2"}
   
     %script{:type => 'text/javascript'}
       :plain
@@ -45,7 +42,6 @@
     %script{:type => 'text/javascript', :src => '/javascripts/citebox.js'}
     = include_gon()
     %script{:type => 'text/javascript', :src => '/javascripts/usage_bar_chart.js'}
-    %script{:type => 'text/javascript', :src => '/javascripts/vega_bar_chart.js'}
     %script{:type => 'text/javascript', :src => '/javascripts/ga.js'}
     %script{:type => 'text/javascript', :src => '/javascripts/usersnap.js'}
     %script{:type => 'text/javascript', :src => '//cdn.statuspage.io/se-v2.js'}
