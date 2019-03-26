@@ -41,7 +41,7 @@ module Sinatra
       items.map do |item|
         doi = normalize_doi(item.fetch('attributes', {}).fetch('doi', "item"))
         metric = Array(metrics).find { |c| c.fetch('id', {}) == doi } || {}
-        item["metrics"] = trasnform_metrics_array(metric.fetch("relationTypes",[]))
+        item["metrics"] = transform_metrics_array(metric.fetch("relationTypes",[]))
         item
       end
     end

@@ -41,6 +41,19 @@ module Sinatra
       "Reviews" => "isReviewedBy",
     }
 
+    INCLUDED_RELATION_TYPES = [
+      "cites", "is-cited-by",
+      "compiles", "is-compiled-by",
+      "documents", "is-documented-by",
+      "hasmetadata", "is-metadata-for",
+      "is-supplement-to", "is-supplemented-by",
+      "is-derived-from", "is-source-of",
+      "references", "is-referenced-by",
+      "reviews", "is-reviewed-by",
+      "requires", "is-required-by",
+      "describes", "is-described-by"
+    ]
+
     def author_format(author)
       authors = Array(author).map do |a|
         name = a.fetch("literal", nil).presence || a.fetch("given", nil).to_s + " " + a.fetch("family", nil).to_s
@@ -135,13 +148,17 @@ module Sinatra
       relation_types = meta.fetch("relationTypes",[])
       metrics = {}
       relation_types.each do |type|
-        qty = type["yearMonths"].map { |period| period.dig("sum")}.sum.to_i
-        metrics[type.dig("id")] = qty
+        qty = type["yearMonths"].map do |period| 
+          year = Date.strptime(period.dig("id")+"-01", '%Y-%m-%d').year
+          quantity = (options[:yop]..Date.today.year) === year ? period.dig("sum") : 0
+          quantity
+        end
+        metrics[type.dig("id")] = qty.sum.to_i
       end
       metrics
     end
 
-    def trasnform_metrics_array relationTypes, options={}
+    def transform_metrics_array relationTypes, options={}
       return {} if relationTypes.empty?
       instance = {}
       relationTypes.each do |type|
@@ -490,9 +507,23 @@ module Sinatra
       type_data.any?
     end
 
-    def process_chart_data data, type
-      type_data = data.select{|hash| hash["id"] == type }
-      type_data[0].fetch("yearMonths",[]) if type_data.any?
+    def process_chart_data data, types, yop
+      type_data = []
+      types.each do |tpy|
+        type_data = data.select{|hash| hash["id"] == tpy }
+      end
+      if type_data.any?
+        # if more than 10 years are to be shown
+        if type_data[0]["yearMonths"].size > 100 
+          type_data[0]["yearMonths"].last!(100)
+        end
+        x = type_data[0]["yearMonths"].map do |period|
+          year = Date.strptime(period.dig("id")+"-01", '%Y-%m-%d').year
+          month = (yop..Date.today.year) === year ? period : nil
+          month
+        end
+      end
+      x - [nil]
     end
 
     def has_usage? metrics
@@ -500,6 +531,15 @@ module Sinatra
       downloads = metrics.to_h.fetch("total-dataset-requests-regular",0)
       return true if ((views + downloads) > 0)  
       false
+    end
+
+    def filter_relation_types metrics
+      hsh_metrics = metrics.to_h
+      citations = 0
+      INCLUDED_RELATION_TYPES.each do |type|
+        citations += hsh_metrics.fetch(type,0).to_i
+      end
+      citations
     end
   end
 end

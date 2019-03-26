@@ -2,22 +2,24 @@
 
     /*global d3, startDate, endDate, startTime, endTime, formatWeek, formatHour, numberToHumanSize, formatFixed, formatDate, formatTime, numberWithDelimiter */
 
-    function bar2Viz(data, div, count, format, displayMode, yop) {
+    function barWidth(width,length){
+      let calc_width = (width/(length)) - 2;
+      let bar_width = calc_width;
+      if (calc_width > 17){
+        bar_width = 17;
+      }else if(calc_width < 6){
+        bar_width = 6;
+      }
+      return bar_width
+    }
 
-      var width = 340,
-        height = 200
-        margin = { top: 7, right: 10, bottom: 5, left: 5 },
-        colors = ["#1abc9c","#2ecc71","#3498db","#9b59b6","#34495e","#95a6a6"],
-        l = 250, // left margin
-        r = 150, // right margin
-        w = 400, // width of drawing area
-        h = 24,  // bar height
-        s = 2;   // spacing between bars
+
+    function bar2Viz(data, div, count, format, displayMode, yop) {
 
       if(Number.isInteger(displayMode) == false){
         var startDate = new Date(data[0].id);
-        var lastDataPoint = new Date(data[data.length - 1].id);
-        var endDate = new Date(lastDataPoint.setMonth( lastDataPoint.getMonth() + 1 )); // creates a bit of space at the end
+        var today = new Date();
+        var endDate = new Date(today.setMonth( today.getMonth())); // creates a bit of space at the end
       }
       else {
         var lastDataPoint = new Date(data[data.length - 1].id);
@@ -35,7 +37,7 @@
       let formatMonthYear = d3.time.format.utc("%b %Y");
       let formatFixed = d3.format(",.0f");
       let formatTime = d3.time.format.utc("%H:%M:%S");
-
+      let height = 200
       var margin = { top: 10, right: 20, bottom: 20, left: 20 };
 
       if (format === "days") {
@@ -44,7 +46,7 @@
       } else if (format === "months") {
         var domain = [startDate, endDate];
         var length = d3.time.months(startDate, endDate).length;
-        width = 400;
+        width = 840;
       } else {
         var domain = [startTime, endTime];
         var length = 24;
@@ -52,7 +54,8 @@
       
       var x = d3.time.scale.utc()
         .domain(domain)
-        .rangeRound([0, width]);
+        .nice(d3.time.month)
+        .rangeRound([0, width],0.5);
 
       var y = d3.scale.linear()
         .domain([0, d3.max(data, function(d) { return d.sum; })])
@@ -62,7 +65,7 @@
         .scale(x)
         .tickSize(0)
         .ticks(0);
-
+      
       var chart = d3.select(div).append("svg")
         .data([data])
         .attr("width", margin.left + width + margin.right)
@@ -97,9 +100,10 @@
           } else {
             return x(new Date(Date.parse(d.id + ':00:00Z')));
           }})
-        .attr("width", width/length - 1)
+        .attr("width", barWidth(width,length))
         .attr("y", function(d) { return y(d.sum); })
         .attr("height", function(d) { return height - y(d.sum); });
+
 
       chart.append("g")
         .attr("class", "x axis")
@@ -117,7 +121,7 @@
         .attr("class", "label")
         .attr("text-anchor", "middle")
         .attr("transform", "translate(" + (width - 11) + "," + (height + 18) + ")")
-        .text(formatMonthYear(new Date(data[data.length - 1].id)))
+        .text(formatMonthYear(endDate))
         .style("font-size", "13px");
 
       chart.selectAll("rect").each(
@@ -146,6 +150,13 @@
           }
 
           $(this).tooltip({ title: title + dateString, container: "body"});
+
+          $(this).on("mouseover", function() {
+            d3.select(this).attr("class", "bar relations-high");
+          })
+          .on("mouseout", function() {
+            d3.select(this).attr("class", "bar relations-alt");
+          });
         }
       );
 
@@ -154,7 +165,6 @@
       // return chart object
       return chart;
     }
-
 
     function tabs_interaction(){
       var tab = window.location.hash.substring(1)
@@ -177,16 +187,21 @@
       })
     }
 
+
 $(document).ready(function(e) {
   if (typeof gon !== 'undefined'){
     var views = gon.chart_views;
     var downloads = gon.chart_downloads;
+    // var citations = gon.chart_citations;
     var yop = gon.yop;
 
+    console.log(views)
+    
     tabs_interaction()
 
     bar2Viz(views,"#views-chart","sum","months","full",yop);
     bar2Viz(downloads,"#downloads-chart","sum","months","full",yop);
+    // bar2Viz(citations,"#citations-chart","sum","months","full",yop);
   }
 });
 
