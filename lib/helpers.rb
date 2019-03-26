@@ -514,8 +514,8 @@ module Sinatra
       end
       if type_data.any?
         # if more than 10 years are to be shown
-        if type_data[0]["yearMonths"].size > 120 
-          type_data[0]["yearMonths"].last!(120)
+        if type_data[0]["yearMonths"].size > 100 
+          type_data[0]["yearMonths"].last!(100)
         end
         x = type_data[0]["yearMonths"].map do |period|
           year = Date.strptime(period.dig("id")+"-01", '%Y-%m-%d').year

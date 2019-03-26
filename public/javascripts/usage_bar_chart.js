@@ -3,10 +3,10 @@
     /*global d3, startDate, endDate, startTime, endTime, formatWeek, formatHour, numberToHumanSize, formatFixed, formatDate, formatTime, numberWithDelimiter */
 
     function barWidth(width,length){
-      let calc_width = Math.floor(width/length - 1);
+      let calc_width = (width/(length)) - 2;
       let bar_width = calc_width;
-      if (calc_width > 50){
-        bar_width = 25;
+      if (calc_width > 17){
+        bar_width = 17;
       }else if(calc_width < 6){
         bar_width = 6;
       }
@@ -54,7 +54,8 @@
       
       var x = d3.time.scale.utc()
         .domain(domain)
-        .rangeRound([0, width]);
+        .nice(d3.time.month)
+        .rangeRound([0, width],0.5);
 
       var y = d3.scale.linear()
         .domain([0, d3.max(data, function(d) { return d.sum; })])
@@ -64,7 +65,7 @@
         .scale(x)
         .tickSize(0)
         .ticks(0);
-
+      
       var chart = d3.select(div).append("svg")
         .data([data])
         .attr("width", margin.left + width + margin.right)
