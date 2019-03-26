@@ -45,7 +45,7 @@ module Sinatra
       "cites", "is-cited-by",
       "compiles", "is-compiled-by",
       "documents", "is-documented-by",
-      "hasmetadata", "is-metadata-for",
+      "has-metadata", "is-metadata-for",
       "is-supplement-to", "is-supplemented-by",
       "is-derived-from", "is-source-of",
       "references", "is-referenced-by",
