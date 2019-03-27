@@ -2,19 +2,25 @@
 
     /*global d3, startDate, endDate, startTime, endTime, formatWeek, formatHour, numberToHumanSize, formatFixed, formatDate, formatTime, numberWithDelimiter */
 
-    function barWidth(width,length){
-      let calc_width = (width/(length)) - 2;
-      let bar_width = calc_width;
-      if (calc_width > 17){
-        bar_width = 17;
-      }else if(calc_width < 6){
-        bar_width = 6;
-      }
-      return bar_width
-    }
+    // function barWidth(width,length){
+    //   let calc_width = (width/(length)) - 2;
+    //   let bar_width = calc_width;
+    //   if (calc_width > 17){
+    //     bar_width = 17;
+    //   }else if(calc_width < 6){
+    //     bar_width = 6;
+    //   }
+    //   return bar_width
+    // }
 
 
     function bar2Viz(data, div, count, format, displayMode, yop) {
+
+      let barWidth = 6; // commit 4c301b2fc14e9447e60496d4c9be1e152ab268f8
+      var lastDataPoint = new Date(data[data.length - 1].id);
+      var today = new Date();
+
+
 
       if(Number.isInteger(displayMode) == false){
         var startDate = new Date(data[0].id);
@@ -22,7 +28,6 @@
         var endDate = new Date(today.setMonth( today.getMonth())); // creates a bit of space at the end
       }
       else {
-        var lastDataPoint = new Date(data[data.length - 1].id);
         var endDate = new Date(lastDataPoint.setMonth( lastDataPoint.getMonth() + 2 ));
         var startDate = new Date(lastDataPoint.setMonth( lastDataPoint.getMonth() - displayMode ));
       }
@@ -45,12 +50,15 @@
         var length = 30;
       } else if (format === "months") {
         var domain = [startDate, endDate];
-        var length = d3.time.months(startDate, endDate).length;
-        width = 840;
+        var length = 120 //d3.time.months(startDate, endDate).length;
+
+        // width = 840;
+        width = barWidth*length;
       } else {
         var domain = [startTime, endTime];
         var length = 24;
       }
+
       
       var x = d3.time.scale.utc()
         .domain(domain)
@@ -100,7 +108,7 @@
           } else {
             return x(new Date(Date.parse(d.id + ':00:00Z')));
           }})
-        .attr("width", barWidth(width,length))
+        .attr("width", barWidth+1)
         .attr("y", function(d) { return y(d.sum); })
         .attr("height", function(d) { return height - y(d.sum); });
 
@@ -110,6 +118,11 @@
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis);
 
+      var last_tick = width
+      if(lastDataPoint.getMonth() == today.getMonth()){
+          last_tick = chart.selectAll("rect").pop().pop().x.animVal.value
+      }
+ 
       chart.append("text")
         .attr("class", "label")
         .attr("text-anchor", "middle")
@@ -120,7 +133,7 @@
       chart.append("text")
         .attr("class", "label")
         .attr("text-anchor", "middle")
-        .attr("transform", "translate(" + (width - 11) + "," + (height + 18) + ")")
+        .attr("transform", "translate(" + (last_tick - 11) + "," + (height + 18) + ")")
         .text(formatMonthYear(endDate))
         .style("font-size", "13px");
 

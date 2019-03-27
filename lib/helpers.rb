@@ -54,6 +54,11 @@ module Sinatra
       "describes", "is-described-by"
     ]
 
+    USAGE_RELATION_TYPES = [
+      "unique-dataset-investigations-regular",
+      "total-dataset-investigations-regular"
+    ]
+
     def author_format(author)
       authors = Array(author).map do |a|
         name = a.fetch("literal", nil).presence || a.fetch("given", nil).to_s + " " + a.fetch("family", nil).to_s
@@ -514,8 +519,8 @@ module Sinatra
       end
       if type_data.any?
         # if more than 10 years are to be shown
-        if type_data[0]["yearMonths"].size > 100 
-          type_data[0]["yearMonths"].last!(100)
+        if type_data[0]["yearMonths"].size > 120
+          type_data[0]["yearMonths"].last!(120) # commit 4c301b2fc14e9447e60496d4c9be1e152ab268f8
         end
         x = type_data[0]["yearMonths"].map do |period|
           year = Date.strptime(period.dig("id")+"-01", '%Y-%m-%d').year
