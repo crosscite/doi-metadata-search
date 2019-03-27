@@ -155,7 +155,11 @@ module Sinatra
       relation_types.each do |type|
         qty = type["yearMonths"].map do |period| 
           year = Date.strptime(period.dig("id")+"-01", '%Y-%m-%d').year
-          quantity = (options[:yop]..Date.today.year) === year ? period.dig("sum") : 0
+          if USAGE_RELATION_TYPES === period.dig("title")   ## a work can be citated before publication but not have usage
+            quantity = (options[:yop]..Date.today.year) === year ? period.dig("sum") : 0  
+          else
+            quantity = period.dig("sum")
+          end
           quantity
         end
         metrics[type.dig("id")] = qty.sum.to_i
