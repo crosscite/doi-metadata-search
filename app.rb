@@ -220,6 +220,8 @@ get '/people/:id' do
 
     # check for existing claims if user is logged in
     @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
+    @works[:data] = get_metrics(@works.fetch(:data, []))
+
   end
 
   # pagination for works
@@ -246,6 +248,7 @@ get '/data-centers/:id' do
 
   # check for existing claims if user is logged in
   @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
+  @works[:data] = get_metrics(@works.fetch(:data, []))
 
   # pagination for works
   @works[:data] = pagination_helper(@works[:data], @page, @works.fetch(:meta, {}).fetch("total", 0))
@@ -267,6 +270,7 @@ get '/members/:id' do
 
   # check for existing claims if user is logged in
   @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
+  @works[:data] = get_metrics(@works.fetch(:data, []))
 
   # pagination for works
   @works[:data] = pagination_helper(@works[:data], @page, @works.fetch(:meta, {}).fetch("total", 0))
