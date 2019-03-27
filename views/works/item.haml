@@ -51,7 +51,7 @@
       -# %span.usage-counts
       -#   .fa.fa-bolt
       -#   = "#{resolutions} Resolutions"
-      %a.usage-counts.citations{:href => "#{works_action(item,{})+'#citations-tab'}"}
+      %a.usage-counts.citations
         .fa.fa-thumbs-o-up.usage-citations
         = "#{citations} Citations"
       - unless (has_usage?(metrics) || @work.present?)
@@ -77,7 +77,7 @@
       = haml :'works/claim', locals: { item: item }
 
 - if @work.present? && ENV['RACK_ENV'] != "production"
-  - if (has_usage?(metrics) || citations > 0 )&& ENV['RACK_ENV'] != "production"
+  - if (has_usage?(metrics))&& ENV['RACK_ENV'] != "production"
     = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads, citations: citations, total_views: total_views, total_downloads: total_downloads}
   - else
     .panel.panel-default
