@@ -55,7 +55,7 @@
         .fa.fa-thumbs-o-up.usage-citations
         = "#{citations} Citations"
       - unless (has_usage?(metrics) || @work.present?)
-        %span.usage-info{:title => "This data center is not currently reporting usage information."}
+        %span.usage-info
           .fa.fa-info-circle 
         %a
           = "This data center is not currently reporting usage information."
