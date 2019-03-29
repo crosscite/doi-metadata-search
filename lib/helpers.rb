@@ -56,7 +56,9 @@ module Sinatra
 
     USAGE_RELATION_TYPES = [
       "unique-dataset-investigations-regular",
-      "total-dataset-investigations-regular"
+      "total-dataset-investigations-regular",
+      "unique-dataset-requests-regular",
+      "total-dataset-requests-regular"
     ]
 
     def author_format(author)
@@ -155,7 +157,7 @@ module Sinatra
       relation_types.each do |type|
         qty = type["yearMonths"].map do |period| 
           year = Date.strptime(period.dig("id")+"-01", '%Y-%m-%d').year
-          if USAGE_RELATION_TYPES === period.dig("title")   ## a work can be citated before publication but not have usage
+          if USAGE_RELATION_TYPES.include?(type.dig("id"))   ## a work can be citated before publication but not have usage
             quantity = (options[:yop]..Date.today.year) === year ? period.dig("sum") : 0  
           else
             quantity = period.dig("sum")
