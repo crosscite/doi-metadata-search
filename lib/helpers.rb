@@ -537,6 +537,11 @@ module Sinatra
       x - [nil]
     end
 
+
+    def filter_period yop
+      "#{params.fetch('publication-year', nil)}-#{Date.today.year}"
+    end
+
     def has_usage? metrics
       views = metrics.to_h.fetch("total-dataset-investigations-regular",0)
       downloads = metrics.to_h.fetch("total-dataset-requests-regular",0)
