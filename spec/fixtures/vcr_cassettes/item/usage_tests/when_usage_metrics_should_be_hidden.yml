@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/works/10.21956/aasopenres.13896.r26067?include=data-center,resource-type,member
+    uri: https://api.datacite.org/works/10.21956/aasopenres.13896.r26067?include=data-center,resource-type,member
     body:
       encoding: US-ASCII
       string: ''
@@ -13,86 +13,33 @@ http_interactions:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
     status:
-      code: 200
-      message: OK
+      code: 404
+      message: Not Found
     headers:
       Date:
-      - Wed, 20 Feb 2019 10:47:53 GMT
+      - Mon, 25 Mar 2019 09:56:20 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
       - keep-alive
       Status:
-      - 200 OK
-      X-Anonymous-Consumer:
-      - 'true'
+      - 404 Not Found
       Cache-Control:
-      - max-age=0, private, must-revalidate
-      Vary:
-      - Accept-Encoding, Origin
-      Etag:
-      - W/"ebb692329f84bfb2431ef348449b97c7"
-      X-Runtime:
-      - '0.018446'
-      X-Request-Id:
-      - 7efbf5f7-2b36-43c2-8a49-99a53a186753
-      X-Powered-By:
-      - Phusion Passenger 6.0.1
-      Server:
-      - nginx/1.15.8 + Phusion Passenger 6.0.1
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":{"id":"https://handle.test.datacite.org/10.21956/aasopenres.13896.r26067","type":"works","attributes":{"doi":"10.21956/aasopenres.13896.r26067","identifier":"https://handle.test.datacite.org/10.21956/aasopenres.13896.r26067","url":"https://dev1aas.f1000internal.com/articles/1-7/v1#referee-response-26067","author":[{"given":"Lina","family":"Patel"}],"title":"Referee
-        report. For: AAS Email colours test. Pellentesque in ipsum id orci porta dapibus.
-        Donec sollicitudin molestie malesuada. [version 1; referees: 1 approved with
-        reservations]","container-title":"F1000 Research Limited","description":null,"resource-type-subtype":null,"data-center-id":"bl.f1000r","member-id":"bl","resource-type-id":"text","version":null,"license":null,"schema-version":"3","results":[],"related-identifiers":[],"published":"2018","registered":"2018-05-25T11:00:06.000Z","checked":null,"updated":"2019-02-20T02:31:33.000Z","media":[],"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxyZXNvdXJjZSB4c2k6c2NoZW1hTG9jYXRpb249Imh0dHA6Ly9kYXRhY2l0ZS5vcmcvc2NoZW1hL2tlcm5lbC0zIGh0dHA6Ly9zY2hlbWEuZGF0YWNpdGUub3JnL21ldGEva2VybmVsLTMvbWV0YWRhdGEueHNkIiB4bWxucz0iaHR0cDovL2RhdGFjaXRlLm9yZy9zY2hlbWEva2VybmVsLTMiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiPjxpZGVudGlmaWVyIGlkZW50aWZpZXJUeXBlPSJET0kiPjEwLjIxOTU2L2Fhc29wZW5yZXMuMTM4OTYucjI2MDY3PC9pZGVudGlmaWVyPjxjcmVhdG9ycz48Y3JlYXRvcj48Y3JlYXRvck5hbWU+TGluYSBQYXRlbDwvY3JlYXRvck5hbWU+PC9jcmVhdG9yPjwvY3JlYXRvcnM+PHRpdGxlcz48dGl0bGU+UmVmZXJlZSByZXBvcnQuIEZvcjogQUFTIEVtYWlsIGNvbG91cnMgdGVzdC7CoFBlbGxlbnRlc3F1ZSBpbiBpcHN1bSBpZCBvcmNpIHBvcnRhIGRhcGlidXMuIERvbmVjIHNvbGxpY2l0dWRpbiBtb2xlc3RpZSBtYWxlc3VhZGEuIFt2ZXJzaW9uIDE7IHJlZmVyZWVzOiAxIGFwcHJvdmVkIHdpdGggcmVzZXJ2YXRpb25zXTwvdGl0bGU+PC90aXRsZXM+PHB1Ymxpc2hlcj5GMTAwMCBSZXNlYXJjaCBMaW1pdGVkPC9wdWJsaXNoZXI+PHB1YmxpY2F0aW9uWWVhcj4yMDE4PC9wdWJsaWNhdGlvblllYXI+PHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJUZXh0Ii8+PHJlbGF0ZWRJZGVudGlmaWVycz48cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmV2aWV3cyI+MTAuMTI2ODgvYWFzb3BlbnJlcy4xMjgyNi4xPC9yZWxhdGVkSWRlbnRpZmllcj48L3JlbGF0ZWRJZGVudGlmaWVycz48L3Jlc291cmNlPg=="},"relationships":{"data-center":{"data":{"id":"bl.f1000r","type":"data-centers"}},"member":{"data":{"id":"bl","type":"members"}},"resource-type":{"data":{"id":"text","type":"resource-types"}}}},"included":[{"id":"bl.f1000r","type":"data-centers","attributes":{"title":"Faculty
-        of 1000 Research","other-names":[],"prefixes":[],"member-id":"bl","year":2013,"created":"2013-11-07T13:41:36.000Z","updated":"2018-10-14T22:56:51.000Z"},"relationships":{"member":{"data":{"id":"bl","type":"members"}}}},{"id":"bl","type":"members","attributes":{"title":"The
-        British Library","description":null,"member-type":"provider","organization-type":"nationalLibrary","focus-area":"general","region":"EMEA","country":"GB","year":null,"logo-url":null,"email":"datasets@bl.uk","website":null,"phone":null,"joined":null,"created":"2010-01-01T00:00:00.000Z","updated":"2018-11-24T16:46:25.000Z"}},{"id":"text","type":"resource-types","attributes":{"title":"Text","updated":"2016-09-21T00:00:00Z"},"relationships":{}}]}'
-    http_version: 
-  recorded_at: Wed, 20 Feb 2019 10:47:53 GMT
-- request:
-    method: get
-    uri: https://api.test.datacite.org/events?obj-id=https://doi.org/10.21956/aasopenres.13896.r26067
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.1; +https://github.com/datacite/maremma)
-      Accept:
-      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Wed, 20 Feb 2019 10:47:53 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Connection:
-      - keep-alive
-      Status:
-      - 200 OK
-      X-Anonymous-Consumer:
-      - 'true'
-      Cache-Control:
-      - max-age=0, private, must-revalidate
+      - no-cache
       Vary:
       - Accept-Encoding, Origin
       X-Request-Id:
-      - b13fb9ec-09c8-440e-a2c0-19025bf930ed
-      Etag:
-      - W/"590278d5da173e40399deec2aaf14b8e"
+      - e8dac127-8b0a-4211-9bb5-af9fa6740725
       X-Runtime:
-      - '0.014183'
+      - '0.005186'
       X-Powered-By:
-      - Phusion Passenger 6.0.0
+      - Phusion Passenger 6.0.2
       Server:
-      - nginx/1.15.7 + Phusion Passenger 6.0.0
+      - nginx/1.15.8 + Phusion Passenger 6.0.2
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[],"meta":{"total":0,"totalPages":0},"links":{"self":"https://api.test.datacite.org/events?obj-id=https%3A%2F%2Fdoi.org%2F10.21956%2Faasopenres.13896.r26067"}}'
+      string: '{"errors":[{"status":"404","title":"The resource you are looking for
+        doesn''t exist."}]}'
     http_version: 
-  recorded_at: Wed, 20 Feb 2019 10:47:53 GMT
+  recorded_at: Mon, 25 Mar 2019 09:56:20 GMT
 recorded_with: VCR 2.9.3
