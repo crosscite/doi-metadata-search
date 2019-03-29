@@ -18,5 +18,9 @@ describe 'item', type: :feature, js: true, vcr: true do
       expect(page).not_to have_css 'a.usage-counts.usage-downloads'
     end
 
+    it 'when having citations' do
+      visit '/works/10.91819/71718'
+      expect(page).to have_css 'a.usage-counts.citations'
+    end
   end
 end
