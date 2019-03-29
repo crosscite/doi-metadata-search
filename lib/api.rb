@@ -102,8 +102,8 @@ module Sinatra
                    'subj-id'   => params.fetch('subj-id', nil),
                    'relation-type-id'   => params.fetch(relations.join(', '), nil),
                    'page[size]'=> params.fetch('page[size]', nil),
-                   'publication-year'=> params.fetch('publication-year', nil),
                    'obj-id'    => params.fetch('obj-id', nil),
+                   'occured_at'=> "[#{params.fetch('publication-year', nil)} TO #{Date.today.year}]",
                    query: params.fetch(:query, nil) }.compact
         url = "#{ENV['API_URL']}/events?" + URI.encode_www_form(params)
       end
