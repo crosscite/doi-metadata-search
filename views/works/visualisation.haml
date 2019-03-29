@@ -1,10 +1,10 @@
-%ul.nav.nav-tabs{:role => "tablist"}
+%ul.nav.nav-tabs.usage{:role => "tablist"}
   - if views > 0
-    %li.nav-item
+    %li.nav-item.usage
       %a#views-tab.nav-link.active{"aria-controls" => "views", "aria-selected" => "true","data-toggle" => "tab", :href => "#views", :role => "tab"} Views
 
   - if downloads > 0
-    %li.nav-item
+    %li.nav-item.usage
       %a#downloads-tab.nav-link{"aria-controls" => "downloads", "aria-selected" => "false",  "data-toggle" => "tab", :href => "#downloads", :role => "tab"} Downloads
   
   -# - if citations > 0

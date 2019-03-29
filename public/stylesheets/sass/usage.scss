@@ -2,27 +2,27 @@ a.usage-counts{
   margin-right: 1.5em;
 }
 
-.nav-tabs {
+.nav-tabs.usage {
   border-bottom: 1px solid #dddddd;
 }
-.nav-tabs > li {
+.nav-tabs.usage > li {
   float: left;
   margin-bottom: -1px;
 }
-.nav-tabs > li > a {
+.nav-tabs.usage > li > a {
   margin-right: 2px;
   line-height: 1.42857143;
   border: 1px solid #dddddd;
   border-radius: 4px 4px 0 0;
   border-bottom-color: #dddddd;
 }
-.nav-tabs > li > a:hover {
+.nav-tabs.usage > li > a:hover {
   background-color: #dddddd;
   border-color: #dddddd #dddddd #dddddd;
 }
-.nav-tabs > li.active > a,
-.nav-tabs > li.active > a:hover,
-.nav-tabs > li.active > a:focus {
+.nav-tabs.usage > li.active > a,
+.nav-tabs.usage > li.active > a:hover,
+.nav-tabs.usage > li.active > a:focus {
   color: #555555;
   cursor: default;
   background-color: #ffffffff;
@@ -30,7 +30,7 @@ a.usage-counts{
   border-bottom-color: #ffffffff;
 }
 
-.nav-tabs>li.active :before {
+.nav-tabs.usage>li.active :before {
   border-bottom: 11px solid #ffffffff;
 }
 
