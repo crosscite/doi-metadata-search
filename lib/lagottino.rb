@@ -4,7 +4,7 @@ require 'rack-flash'
 
 module Sinatra
   module Lagottino
- 
+
 
     def get_metrics(items)
       return [] if items.empty?
@@ -17,7 +17,7 @@ module Sinatra
         end
       end.compact
       metrics = call_metrics(dois)
-      merge_metrics(items, metrics.dig(:meta,"doisRelationTypes"))
+      merge_metrics(items, metrics.dig(:meta,"doisUsageTypes"))
     end
 
     def normalize_doi(doi)
