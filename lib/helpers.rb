@@ -539,7 +539,7 @@ module Sinatra
 
 
     def filter_period yop
-      "#{params.fetch('publication-year', nil)}-#{Date.today.year}"
+      "#{yop}-#{Date.today.year}"
     end
 
     def has_usage? metrics
