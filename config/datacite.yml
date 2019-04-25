@@ -103,8 +103,8 @@ production_links:
 about_links:
  - name: What we do
    url: https://www.datacite.org/mission.html
- - name: Board
-   url: https://www.datacite.org/board.html
+ - name: Governance
+   url: https://www.datacite.org/governance.html
  - name: Steering groups
    url: https://www.datacite.org/steering.html
  - name: Staff
