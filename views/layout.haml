@@ -22,6 +22,10 @@
       - id = @work.fetch(:data, {}).fetch("id", nil)
       - attributes = @work.fetch(:data, {}).fetch("attributes", {})
       = work_as_meta_tag(id: id, attributes: attributes)
+    
+    - if @work.present? && @work[:schema_org].present?
+      %script{:type => 'application/ld+json'}
+        = @work[:schema_org]
   
     %script{:type => 'text/javascript'}
       :plain
@@ -55,7 +59,6 @@
     %script{:type => 'text/javascript', :src => 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML'}
     %script{:type => 'text/javascript', :src => 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js'}
     %script{:type => 'text/javascript', :src => '/javascripts/itemlist.js'}
-    %script{:type => 'text/javascript', :src => "#{ENV['CDN_URL']}/javascripts/schemaorg.js"}
     - if ENV['CDN_URL']
       %script{:type => 'text/javascript', :src => "#{ENV['CDN_URL']}/javascripts/default.js"}
     - if ENV['BUGSNAG_JS_KEY']

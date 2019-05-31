@@ -173,6 +173,10 @@ get %r{/works/(.+)} do
     @work[:data] = get_claimed_items(current_user, [@work[:data]]).first
   end
 
+  # embed schema.org
+  response = Maremma.get("#{ENV['API_URL']}/dois/#{params[:id]}", headers: {"Accept"=> "application/vnd.schemaorg.ld+json"}, raw: true, timeout: TIMEOUT)
+  @work[:schema_org] = response.body.fetch("data", nil)
+
   # Removing related works to avoid crawlers nested repetive crawling when there are a lot.
   #@works = get_works("work-id" => params[:id], query: params[:query], 'page[number]' => @page, 'data-center-id' => params['data-center-id'], 'relation-type-id' => params['relation-type-id'], 'resource-type-id' => params['resource-type-id'], 'year' => params['year'])
   # check for existing claims if user is logged in
