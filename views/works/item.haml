@@ -40,17 +40,18 @@
           = license_img(attributes["license"])
 
   .panel-footer
-    - if metrics?(metrics)
+    - if views.positive?
       %a.usage-counts.usage-views{:href => "#{works_action(item,{})+'#views-tab'}"}
         .fa.fa-eye
         = "#{views} Views"
+    - if downloads.positive?
       %a.usage-counts.usage-downloads{:href => "#{works_action(item,{})+'#downloads-tab'}"}
         .fa.fa-download            
         = "#{downloads} Downloads"
         -# %span.usage-counts
         -#   .fa.fa-bolt
         -#   = "#{resolutions} Resolutions"
-
+    - if citations.positive?
       %a.usage-counts.citations{:href => "#{works_action(item,{})+'#citations-tab'}"}
         .fa.fa-quote-right
         = "#{citations} Citations"
