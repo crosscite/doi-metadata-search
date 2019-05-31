@@ -55,7 +55,7 @@
       %a.usage-counts.citations{:href => "#{works_action(item,{})+'#citations-tab'}"}
         .fa.fa-quote-right
         = "#{citations} Citations"
-    - unless (metrics?(metrics) || @work.present?)
+    - unless (views.positive? || downloads.positive? || @work.present?)
       %span.usage-info
         .fa.fa-info-circle 
       %a
