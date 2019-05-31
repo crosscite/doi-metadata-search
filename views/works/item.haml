@@ -12,16 +12,13 @@
 - resolutions =  metrics.to_h.fetch("unique-resolutions-regular",0).to_i + metrics.to_h.fetch("unique-resolutions-machine","--").to_i
 - citations =  filter_relation_types metrics
 - if @work.present? && chart_data?(chart, "unique-dataset-investigations-regular") 
-  - puts chart
   - gon.chart_views = process_chart_data chart, ["unique-dataset-investigations-regular"], attributes.fetch("published", "").to_i
   - gon.yop = attributes.fetch("published", "").to_i
 - if @work.present? && chart_data?(chart, "unique-dataset-requests-regular") 
   - gon.chart_downloads = process_chart_data chart, ["unique-dataset-requests-regular"], attributes.fetch("published", "").to_i
   - gon.yop = attributes.fetch("published", "").to_i
 - if @work.present? 
-  - puts citation_chart
-  - gon.chart_citations = process_chart_data citation_chart, [], attributes.fetch("published", "").to_i
-  - puts gon.chart_citations
+  - gon.chart_citations = citation_chart["years"]
   - gon.yop = attributes.fetch("published", "").to_i
 
 

@@ -50,14 +50,18 @@
       } else if (format === "months") {
         var domain = [startDate, endDate];
         var length = 120 //d3.time.months(startDate, endDate).length;
-
+        var firstLabel = formatMonthYear(startDate)
+        var lastLabel = formatMonthYear(endDate)
         // width = 840;
         width = barWidth*length;
       } else {
         var startTime = new Date(yop+"-01-01");
-        var endTime = new Date(2019+"-01-01");
+        var endTime = today;
         var domain = [startTime, endTime];
-        var length = 24;
+        var length = 120;
+        var firstLabel = formatYear(startDate)
+        var lastLabel = formatYear(endDate)
+        width = barWidth*length;
       }
 
       
@@ -96,6 +100,10 @@
             timeStamp = Date.parse(d.key + '-01T12:00:00Z');
             var year = formatYear(new Date(timeStamp));
             return (year % 2 === 0) ? "bar relations" : "bar relations-alt";
+          } else if (format === "years") {
+            timeStamp = Date.parse(d.key + '-01-01T12:00:00Z');
+            var year = formatYear(new Date(timeStamp));
+            return (year % 2 === 0) ? "bar relations" : "bar relations-alt";
           } else {
             timeStamp = Date.parse(d.key + ':00:01Z');
             var hour = formatHour(new Date(timeStamp));
@@ -106,6 +114,8 @@
             return x(new Date(Date.parse(d.id + 'T12:00:00Z')));
           } else if (format === "months") {
             return x(new Date(Date.parse(d.id + '-01T12:00:00Z')));
+          } else if (format === "years") {
+            return x(new Date(Date.parse(d.id + '-01-01T12:00:00Z')));
           } else {
             return x(new Date(Date.parse(d.id + ':00:00Z')));
           }})
@@ -123,19 +133,22 @@
       if(lastDataPoint.getMonth() == today.getMonth()){
           last_tick = chart.selectAll("rect").pop().pop().x.animVal.value
       }
+
+
+ 
  
       chart.append("text")
         .attr("class", "label")
         .attr("text-anchor", "middle")
         .attr("transform", "translate(11," + (height + 18) + ")")
-        .text(formatMonthYear(startDate))
+        .text(firstLabel)
         .style("font-size", "13px");
   
       chart.append("text")
         .attr("class", "label")
         .attr("text-anchor", "middle")
         .attr("transform", "translate(" + (last_tick - 11) + "," + (height + 18) + ")")
-        .text(formatMonthYear(endDate))
+        .text(lastLabel)
         .style("font-size", "13px");
 
       chart.selectAll("rect").each(
@@ -158,6 +171,9 @@
           } else if (format === "months") {
             dateStamp = Date.parse(d.id + '-01T12:00:00Z');
             dateString = " in " + formatMonthYear(new Date(dateStamp));
+          } else if (format === "years") {
+            dateStamp = Date.parse(d.id + '-01-01T12:00:00Z');
+            dateString = " in " + formatYear(new Date(dateStamp));
           } else {
             dateStamp = Date.parse(d.id + ':00:00Z');
             dateString = " at " + formatTime(new Date(dateStamp));
@@ -227,7 +243,7 @@ $(document).ready(function(e) {
 
     if(views){bar2Viz(views,"#views-chart","sum","months","full",yop); }
     if(downloads){bar2Viz(downloads,"#downloads-chart","sum","months","full",yop); }
-    if(citations){bar2Viz(citations,"#citations-chart","sum","months","full",yop); }
+    if(citations){bar2Viz(citations,"#citations-chart","sum","years","full",yop); }
   }
 });
 
