@@ -12,14 +12,17 @@
 - resolutions =  metrics.to_h.fetch("unique-resolutions-regular",0).to_i + metrics.to_h.fetch("unique-resolutions-machine","--").to_i
 - citations =  filter_relation_types metrics
 - if @work.present? && chart_data?(chart, "unique-dataset-investigations-regular") 
+  - puts chart
   - gon.chart_views = process_chart_data chart, ["unique-dataset-investigations-regular"], attributes.fetch("published", "").to_i
   - gon.yop = attributes.fetch("published", "").to_i
 - if @work.present? && chart_data?(chart, "unique-dataset-requests-regular") 
   - gon.chart_downloads = process_chart_data chart, ["unique-dataset-requests-regular"], attributes.fetch("published", "").to_i
   - gon.yop = attributes.fetch("published", "").to_i
--# - if @work.present? && citations > 0 
--#   - gon.chart_citations = process_chart_data chart, INCLUDED_RELATION_TYPES
--#   - gon.yop = attributes.fetch("published", "").to_i
+- if @work.present? 
+  - puts citation_chart
+  - gon.chart_citations = process_chart_data citation_chart, [], attributes.fetch("published", "").to_i
+  - puts gon.chart_citations
+  - gon.yop = attributes.fetch("published", "").to_i
 
 
 .panel.panel-default
@@ -40,21 +43,21 @@
           = license_img(attributes["license"])
 
   .panel-footer
-    - if has_usage?(metrics)
+    - if metrics?(metrics)
       %a.usage-counts.usage-views{:href => "#{works_action(item,{})+'#views-tab'}"}
         .fa.fa-eye
         = "#{views} Views"
       %a.usage-counts.usage-downloads{:href => "#{works_action(item,{})+'#downloads-tab'}"}
         .fa.fa-download            
         = "#{downloads} Downloads"
-    -# %span.usage-counts
-    -#   .fa.fa-bolt
-    -#   = "#{resolutions} Resolutions"
-    - if ENV['RACK_ENV'] != "production"
-      %a.usage-counts.citations
-        .fa.fa-quote-right.usage-citations
+        -# %span.usage-counts
+        -#   .fa.fa-bolt
+        -#   = "#{resolutions} Resolutions"
+
+      %a.usage-counts.citations{:href => "#{works_action(item,{})+'#citations-tab'}"}
+        .fa.fa-quote-right
         = "#{citations} Citations"
-    - unless (has_usage?(metrics) || @work.present?)
+    - unless (metrics?(metrics) || @work.present?)
       %span.usage-info
         .fa.fa-info-circle 
       %a
@@ -77,7 +80,7 @@
       = haml :'works/claim', locals: { item: item }
 
 - if @work.present? 
-  - if (has_usage?(metrics))
+  - if (metrics?(metrics))
     = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads, citations: citations, total_views: total_views, total_downloads: total_downloads}
   - else
     .panel.panel-default
