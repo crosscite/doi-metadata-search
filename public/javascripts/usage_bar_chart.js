@@ -21,7 +21,6 @@
       var today = new Date();
 
 
-
       if(Number.isInteger(displayMode) == false){
         var startDate = new Date(data[0].id);
         var today = new Date();
@@ -44,7 +43,7 @@
       let formatTime = d3.time.format.utc("%H:%M:%S");
       let height = 200
       var margin = { top: 10, right: 20, bottom: 20, left: 20 };
-
+ 
       if (format === "days") {
         var domain = [startDate, endDate];
         var length = 30;
@@ -55,6 +54,8 @@
         // width = 840;
         width = barWidth*length;
       } else {
+        var startTime = new Date(yop+"-01-01");
+        var endTime = new Date(2019+"-01-01");
         var domain = [startTime, endTime];
         var length = 24;
       }
@@ -185,9 +186,12 @@
 
       if(tab){
         $('#'+tab).tab("show")
-      }else{
+      }else if(gon.chart_views){
         $('#views-tab').tab("show")
+      }else if(gon.chart_citations){
+        $('#citations-tab').tab("show")
       }
+  
   
       $('.usage-counts.usage-views').on('click', function (e) {
         e.preventDefault()
@@ -198,6 +202,16 @@
         e.preventDefault()
         $("#downloads-tab").tab('show')
       })
+
+      $('.usage-counts.usage-downloads').on('click', function (e) {
+        e.preventDefault()
+        $("#downloads-tab").tab('show')
+      })
+
+      $('.usage-counts.citations').on('click', function (e) {
+        e.preventDefault()
+        $("#citations-tab").tab('show')
+      })
     }
 
 
@@ -205,16 +219,15 @@ $(document).ready(function(e) {
   if (typeof gon !== 'undefined'){
     var views = gon.chart_views;
     var downloads = gon.chart_downloads;
-    // var citations = gon.chart_citations;
+    var citations = gon.chart_citations;
     var yop = gon.yop;
 
-    console.log(views)
     
     tabs_interaction()
 
-    bar2Viz(views,"#views-chart","sum","months","full",yop);
-    bar2Viz(downloads,"#downloads-chart","sum","months","full",yop);
-    // bar2Viz(citations,"#citations-chart","sum","months","full",yop);
+    if(views){bar2Viz(views,"#views-chart","sum","months","full",yop); }
+    if(downloads){bar2Viz(downloads,"#downloads-chart","sum","months","full",yop); }
+    if(citations){bar2Viz(citations,"#citations-chart","sum","months","full",yop); }
   }
 });
 
