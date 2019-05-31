@@ -166,7 +166,8 @@ get %r{/works/(.+)} do
   events  = get_events('page[number]' => 0, "obj-id" => link)
   @work[:metrics] = reduce_aggs(events[:meta], {yop: @work.dig(:data, "attributes","published").to_i})
 
-  @work[:chart] = events[:meta].fetch("relationTypes", [])
+  @work[:chart] = events[:meta].fetch('relationTypes', [])
+  @work[:citation_chart] = events[:meta].fetch('doisCitations', [])
 
   # check for existing claims if user is logged in and work is registered with DataCite
   if current_user
@@ -174,13 +175,13 @@ get %r{/works/(.+)} do
   end
 
   # Removing related works to avoid crawlers nested repetive crawling when there are a lot.
-  #@works = get_works("work-id" => params[:id], query: params[:query], 'page[number]' => @page, 'data-center-id' => params['data-center-id'], 'relation-type-id' => params['relation-type-id'], 'resource-type-id' => params['resource-type-id'], 'year' => params['year'])
+  ## @works = get_works("work-id" => params[:id], query: params[:query], 'page[number]' => @page, 'data-center-id' => params['data-center-id'], 'relation-type-id' => params['relation-type-id'], 'resource-type-id' => params['resource-type-id'], 'year' => params['year'])
   # check for existing claims if user is logged in
-  #@works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
+  ## @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
   @works = {} # Temporarily make sure we get something to work with
 
   # pagination
-  #@works[:data] = pagination_helper(@works[:data], @page, @works.fetch(:meta, {}).fetch("total", 0))
+  ## @works[:data] = pagination_helper(@works[:data], @page, @works.fetch(:meta, {}).fetch("total", 0))
 
   params[:model] = "works"
 

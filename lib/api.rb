@@ -104,6 +104,7 @@ module Sinatra
                    'page[size]'=> params.fetch('page[size]', nil),
                    'obj-id'    => params.fetch('obj-id', nil),
                    'occurredAt'=> params.fetch('occurred_in', nil), 
+                   'extra' => true,
                    query: params.fetch(:query, nil) }.compact
         url = "#{ENV['API_URL']}/events?" + URI.encode_www_form(params)
       end

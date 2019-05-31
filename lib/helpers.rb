@@ -453,7 +453,7 @@ module Sinatra
     end
 
     def format_date(attributes)
-      published = attributes.fetch("published", nil)
+      published = attributes.fetch('published', nil)
       return "" unless published.present?
 
       date = get_datetime_from_iso8601(published)
@@ -518,11 +518,16 @@ module Sinatra
       type_data.any?
     end
 
-    def process_chart_data data, types, yop
+    def process_chart_data(data, types, yop)
       type_data = []
-      types.each do |tpy|
-        type_data = data.select{|hash| hash["id"] == tpy }
+      if types.any? 
+        types.each do |tpy|
+          type_data = data.select{|hash| hash['id'] == tpy }
+        end
+      else
+        type_data[0] = data
       end
+
       if type_data.any?
         # if more than 10 years are to be shown
         if type_data[0]["yearMonths"].size > 120
@@ -538,18 +543,22 @@ module Sinatra
     end
 
 
-    def filter_period yop
-      "#{yop}-#{Date.today.year}"
-    end
+    # def filter_period yop
+    #   "#{yop}-#{Date.today.year}"
+    # end
 
-    def has_usage? metrics
-      views = metrics.to_h.fetch("total-dataset-investigations-regular",0)
-      downloads = metrics.to_h.fetch("total-dataset-requests-regular",0)
-      return true if ((views + downloads) > 0)  
+    def metrics?(metrics)
+      # views = metrics.to_h.fetch("total-dataset-investigations-regular",0)
+      # downloads = metrics.to_h.fetch("total-dataset-requests-regular",0)
+      types = INCLUDED_RELATION_TYPES + ['total-dataset-investigations-regular', 'total-dataset-requests-regular']
+      m = metrics.to_h.values_at(*types)
+      m.map! {|e| e ? e : 0}
+      m=m.inject(0, :+)
+      return true if m.positive?
       false
     end
 
-    def filter_relation_types metrics
+    def filter_relation_types(metrics)
       hsh_metrics = metrics.to_h
       citations = 0
       INCLUDED_RELATION_TYPES.each do |type|
