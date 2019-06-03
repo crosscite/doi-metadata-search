@@ -61,17 +61,17 @@
               .p{:style => "padding-left:20px;"}
                 = "<strong>#{citations} citations</strong> <small> reported since #{gon.chart_citations[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
             .row#citations-chart{:style => "padding-left:10px;"}
-            %br
-            .row
-              .col-md-8
-                .p
-                  These counts follow the 
-                  %a{href: 'https://www.projectcounter.org/'}
-                    COUNTER Code of Practice,
-                  = "meaning that Internet robots and repeats within a certain time frame are excluded.</br> "
-                  -# "</br>There were <strong>#{total_views} </strong> total views including repeats and robots."
-                  %a{href: 'https://support.datacite.org/docs/usage-stats'}
-                    What does this mean?
+            -# %br
+            -# .row
+            -#   .col-md-8
+            -#     .p
+            -#       These counts follow the 
+            -#       %a{href: 'https://www.projectcounter.org/'}
+            -#         COUNTER Code of Practice,
+            -#       = "meaning that Internet robots and repeats within a certain time frame are excluded.</br> "
+            -#       -# "</br>There were <strong>#{total_views} </strong> total views including repeats and robots."
+            -#       %a{href: 'https://support.datacite.org/docs/usage-stats'}
+            -#         What does this mean?
 
 
        

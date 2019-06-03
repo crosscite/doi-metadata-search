@@ -17,7 +17,8 @@ module Sinatra
         end
       end.compact
       metrics = call_metrics(dois)
-      merge_metrics(items, metrics.dig(:meta,"doisUsageTypes"))
+      usage_metrics = merge_metrics(items, metrics.dig(:meta,'doisUsageTypes'))
+      merge_metrics(usage_metrics, metrics.dig(:meta,'doisRelationTypes'))
     end
 
     def normalize_doi(doi)
