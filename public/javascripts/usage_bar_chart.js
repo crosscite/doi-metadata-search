@@ -35,6 +35,17 @@
         var startDate = new Date(yop+"-01-01");
       }
 
+      if(displayMode == "citations"){
+        var today = new Date();
+        var endDate = new Date(today.setMonth( today.getMonth())); // c
+        var fistDataPoint = new Date(data[0].id+"-01-01");
+        var yopDate = new Date(yop+"-01-01");
+        var startDate = (fistDataPoint > yopDate) ? yopDate : fistDataPoint
+        console.log(fistDataPoint)
+        console.log(yopDate)
+        console.log(data[0].id)
+      }
+
       var timeStamp = null;
       let formatYear = d3.time.format.utc("%Y");
       let formatHour = d3.time.format.utc("%h");
@@ -54,7 +65,7 @@
         var lastLabel = formatMonthYear(endDate)
         // width = 840;
         width = barWidth*length;
-      } else {
+      } else if (format === "years"){
         var startTime = new Date(yop+"-01-01");
         var endTime = today;
         var domain = [startTime, endTime];
@@ -243,7 +254,7 @@ $(document).ready(function(e) {
 
     if(views){bar2Viz(views,"#views-chart","sum","months","full",yop); }
     if(downloads){bar2Viz(downloads,"#downloads-chart","sum","months","full",yop); }
-    if(citations){bar2Viz(citations,"#citations-chart","sum","years","full",yop); }
+    if(citations){bar2Viz(citations,"#citations-chart","sum","years","citations",yop); }
   }
 });
 
