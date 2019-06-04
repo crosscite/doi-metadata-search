@@ -1,0 +1,20 @@
+- attributes = item.fetch("attributes", {})
+
+.panel.panel-default
+  .panel-body
+    %h3.work
+    - if attributes["author"].present?
+      = "#{attributes["subtype"]}. #{author_format(attributes["author"])} , #{attributes["datePublished"]}, #{attributes["name"]}, #{attributes["publisher"]["name"]}, #{item["id"]}" 
+
+  -# - if @work.present? && @work.fetch(:data, {}).fetch("attributes", {}).fetch("related-identifiers", nil).present? && @work.fetch(:data, {}).fetch("id", "work") != item["id"]
+  -#   .panel-footer
+  -#     = relation_type_title(@work.fetch(:data, {}).fetch("attributes", {}).fetch("related-identifiers"), item["id"]) + " " + @work.fetch(:data, {}).fetch("id", nil)
+
+  .panel-footer.item-links
+    %a{:id => "doi-link", :href => item["id"], :title => "Go to landing page"}
+      %i.fa.fa-external-link
+      = item["id"]
+
+
+
+

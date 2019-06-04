@@ -1,0 +1,18 @@
+- if @citations.length > 0
+  - if @citations.length > 1
+    %h3.results
+      -# = "#{number_with_delimiter(@works[:meta]["total"])} Works"
+
+  - @citations.each do |item|
+    = haml :'citations/item', locals: { item: item}
+
+  .text-center
+    -# = will_paginate @citations[:data], renderer: BootstrapPagination::Sinatra, inner_window: 1
+
+- else
+  - if @citations[:errors].present?
+    .alert.alert-warning
+      = @citations[:errors].first.fetch("title", "An error occured.")
+  - else
+    .alert.alert-simple-info
+      Nothing found.

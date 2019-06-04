@@ -4,6 +4,7 @@
       = "#{number_with_delimiter(@works[:meta]["total"])} Works"
 
   - @works[:data].each do |item|
+    - puts item["metrics"]
     = haml :'works/item', locals: { item: item, metrics: item["metrics"] || [], chart: [], citation_chart:[]}
 
   .text-center

@@ -86,3 +86,7 @@
         = "This data center is not currently reporting usage information. For information on how your repository can submit usage information, please see"
         %a{href: 'https://support.datacite.org/docs/usage-reports-api-guide'}
           our Documentation.
+
+- if @work.present? 
+  - if citations.positive?
+    = haml :'citations/list', locals: { attributes: attributes, citations: citations}
