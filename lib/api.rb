@@ -108,6 +108,7 @@ module Sinatra
           'doi'              => params.fetch('doi', nil),
           'occurredAt'       => params.fetch('occurred_in', nil), 
           'include'          => params.fetch('include', nil), 
+          'sourceId'         => params.fetch('sourceId', INCLUDED_SOURCES.join(',')), 
           'extra'            => true,
           query: params.fetch(:query, nil)
         }.compact
@@ -117,6 +118,7 @@ module Sinatra
       { data: response.body.fetch("data", []),
         included: response.body.fetch("included", []),
         errors: Array(response.body.fetch("errors", [])),
+        links: Array(response.body.fetch("links", [])),
         meta: response.body.fetch("meta", {}) }
     end
 

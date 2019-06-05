@@ -61,9 +61,17 @@ module Sinatra
       "total-dataset-requests-regular"
     ]
 
+    INCLUDED_SOURCES = [
+      "datacite-related",
+      "crossref",
+      "datacite-usage"
+    ]
+
+
     def author_format(author)
       authors = Array(author).map do |a|
-        name = a.fetch("literal", nil).presence || a.fetch("given", nil).to_s + " " + a.fetch("family", nil).to_s
+        name = a.fetch("literal", nil).presence || a.fetch("given", nil).to_s + " " + a.fetch("family", nil).to_s 
+        name = name.present? ? name : a.fetch("given_name", nil).to_s + " " + a.fetch("family_name", nil).to_s
         a["orcid"].present? ? "<a href=\"/people/#{orcid_from_url(a["orcid"])}\">#{name}</a>" : name
       end
 
@@ -143,6 +151,7 @@ module Sinatra
     def description_format(description)
       sanitize(description.to_s.strip).truncate_words(75)
     end
+
 
     def pagination_helper(items, page, total)
       WillPaginate::Collection.create(page, DEFAULT_ROWS, [total, 1000].min) do |pager|
