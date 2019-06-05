@@ -38,7 +38,7 @@ MIN_MATCH_SCORE = 2
 MIN_MATCH_TERMS = 3
 MAX_MATCH_TEXTS = 1000
 TYPICAL_ROWS = [10, 20, 50, 100, 500]
-DEFAULT_ROWS = 25
+DEFAULT_ROWS = 10
 MONTH_SHORT_NAMES = %w(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec)
 ORCID_VERSION = '1.2'
 TIMEOUT = 30
@@ -163,8 +163,9 @@ get %r{/works/(.+)} do
 
   doi = validate_doi(params[:id])
   link = doi ? "https://doi.org/#{doi}" : params[:id]
-  events  = get_events('page[number]' => 0, 'doi' => doi, 'include' => 'subj,obj')
-  @citations = (events.fetch(:included,[]).delete_if { |h| h["id"] == link }).sort_by { |hsh| hsh["subtype"] }
+  events  = get_events('page[size]' => 50, 'page[number]' => @page, 'doi' => doi, 'include' => 'subj,obj')
+  @citations = citations_response(events, link, @page)
+
   @work[:metrics] = reduce_aggs(events[:meta], {yop: @work.dig(:data, "attributes","published").to_i})
 
   @work[:chart] = events[:meta].fetch('relationTypes', [])

@@ -1,17 +1,17 @@
-- if @citations.length > 0
-  - if @citations.length > 1
+- if @citations[:citations].length > 0
+  - if @citations[:citations].length > 1
     %h3.results
-      -# = "#{number_with_delimiter(@works[:meta]["total"])} Works"
+      = "#{number_with_delimiter(@citations[:meta]["total"])} Citations"
 
-  - @citations.each do |item|
+  - @citations[:citations].each do |item|
     = haml :'citations/item', locals: { item: item}
 
   .text-center
-    -# = will_paginate @citations[:data], renderer: BootstrapPagination::Sinatra, inner_window: 1
+    = will_paginate @citations[:citations], renderer: BootstrapPagination::Sinatra, inner_window: 1
 
 - else
   - if @citations[:errors].present?
-    .alert.alert-warning
+    .alert.alert-BootstrapPagination
       = @citations[:errors].first.fetch("title", "An error occured.")
   - else
     .alert.alert-simple-info

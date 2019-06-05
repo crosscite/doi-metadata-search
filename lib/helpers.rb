@@ -153,8 +153,8 @@ module Sinatra
     end
 
 
-    def pagination_helper(items, page, total)
-      WillPaginate::Collection.create(page, DEFAULT_ROWS, [total, 1000].min) do |pager|
+    def pagination_helper(items, page, total, rows = DEFAULT_ROWS)
+      WillPaginate::Collection.create(page, rows, [total, 1000].min) do |pager|
         pager.replace items
       end
     end
@@ -368,6 +368,17 @@ module Sinatra
 
     def validate_doi(doi)
       Array(/\A(?:(http|https):\/\/doi\.org\/)?(10\.\d{4,5}\/.+)\z/.match(doi)).last
+    end
+
+
+    def citations_response(hash, doi, page)
+      citations = (hash.fetch(:included,[]).delete_if { |h| h["id"] == doi }).sort_by { |hsh| hsh["subtype"] }
+      citations = pagination_helper(citations, page, hash.fetch(:meta, {}).fetch("total", 0), 50)
+
+      { citations: citations,
+        meta:   hash.fetch(:meta, nil), 
+        errors: hash.fetch(:errors, nil), 
+        links:  hash.fetch(:links, nil)}
     end
 
     def github_from_url(url)
