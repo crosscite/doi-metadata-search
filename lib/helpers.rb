@@ -372,7 +372,15 @@ module Sinatra
 
 
     def citations_response(hash, doi, page)
-      citations = (hash.fetch(:included,[]).delete_if { |h| h["id"] == doi }).sort_by { |hsh| hsh["subtype"] }
+
+      includes = (hash.fetch(:included,[]).delete_if { |h| h["id"] == doi }).sort_by { |hsh| hsh["subtype"] }
+
+      citations = hash[:data].map do |event|
+        identifier = event.dig("attributes","subjId") == doi ? event.dig("attributes","objId") : event.dig("attributes","subjId")
+        event[:metadata] = Array(includes).find { |c| c.fetch('id', {}) == identifier } || {}
+        event
+      end
+
       citations = pagination_helper(citations, page, hash.fetch(:meta, {}).fetch("total", 0), 50)
 
       { citations: citations,
