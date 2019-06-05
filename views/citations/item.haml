@@ -4,7 +4,7 @@
   .panel-body
     %h3.work
     - if attributes["author"].present?
-      = "#{attributes["subtype"]}. #{author_format(attributes["author"])} , #{attributes["datePublished"]}, #{attributes["name"]}, #{attributes["publisher"]["name"]}, #{item["id"]}" 
+      = "<strong>#{attributes["subtype"]}</strong>. <small>#{author_format(attributes["author"])} , #{attributes["datePublished"]}, #{attributes["name"]}, #{attributes["publisher"]["name"]}</small> #{item["id"]}" 
 
   -# - if @work.present? && @work.fetch(:data, {}).fetch("attributes", {}).fetch("related-identifiers", nil).present? && @work.fetch(:data, {}).fetch("id", "work") != item["id"]
   -#   .panel-footer
