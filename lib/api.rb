@@ -110,6 +110,7 @@ module Sinatra
           'include'          => params.fetch('include', nil), 
           'page[number]'     => params.fetch('page[number]', nil), 
           'page[size]'       => params.fetch('page[size]', nil), 
+          'sort'             => params.fetch('sort', nil), 
           'sourceId'         => params.fetch('sourceId', INCLUDED_SOURCES.join(',')), 
           'extra'            => true,
           query: params.fetch(:query, nil)

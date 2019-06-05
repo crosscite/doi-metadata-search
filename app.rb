@@ -163,7 +163,7 @@ get %r{/works/(.+)} do
 
   doi = validate_doi(params[:id])
   link = doi ? "https://doi.org/#{doi}" : params[:id]
-  events  = get_events('page[size]' => 50, 'page[number]' => @page, 'doi' => doi, 'include' => 'subj,obj')
+  events  = get_events('page[size]' => 50, 'page[number]' => @page, 'doi' => doi, 'include' => 'subj,obj', 'sort' => 'relation_type_id')
   @citations = citations_response(events, link, @page)
 
   @work[:metrics] = reduce_aggs(events[:meta], {yop: @work.dig(:data, "attributes","published").to_i})
