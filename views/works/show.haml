@@ -17,17 +17,23 @@
         .col-md-3
           .panel.facets
             .panel-body.metadata
-              %h5
-                Data Center
-              .data-center
-                %a{href: "/data-centers/#{data_center.fetch('id')}"}
-                  = data_center.fetch("attributes", {}).fetch("title", nil)
-              - if member.present?
+              - if member.fetch('id') == "crossref"
                 %h5
-                  Member
+                  DOI Registration Agency
                 .registration_agency
-                  %a{href: "/members/#{member.fetch('id')}"}
-                    = member.fetch("attributes", {}).fetch("title", nil)
+                  Crossref
+              - else
+                %h5
+                  Data Center
+                .data-center
+                  %a{href: "/data-centers/#{data_center.fetch('id')}"}
+                    = data_center.fetch("attributes", {}).fetch("title", nil)
+                - if member.present?
+                  %h5
+                    Member
+                  .registration_agency
+                    %a{href: "/members/#{member.fetch('id')}"}
+                      = member.fetch("attributes", {}).fetch("title", nil)
               %h5
                 Download
 
