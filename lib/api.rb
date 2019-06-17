@@ -102,7 +102,7 @@ module Sinatra
           id: params.fetch(:id, nil),
           'source-id'        => params.fetch('source-id', nil),
           'subj-id'          => params.fetch('subj-id', nil),
-          'relationTypeId'   => params.fetch(relations.join(', '), nil),
+          'relation-type-id' => relations.join(','),
           'page[size]'       => params.fetch('page[size]', nil),
           'obj-id'           => params.fetch('obj-id', nil),
           'doi'              => params.fetch('doi', nil),
@@ -111,7 +111,7 @@ module Sinatra
           'page[number]'     => params.fetch('page[number]', nil), 
           'page[size]'       => params.fetch('page[size]', nil), 
           'sort'             => params.fetch('sort', nil), 
-          'sourceId'         => params.fetch('sourceId', INCLUDED_SOURCES.join(',')), 
+          'source-id'         => params.fetch('sourceId', INCLUDED_SOURCES.join(',')), 
           'extra'            => true,
           query: params.fetch(:query, nil)
         }.compact
