@@ -1,19 +1,35 @@
-- attributes = item.fetch("attributes", {})
+- attributes = item.dig(:metadata,"attributes")
+- event      = item.dig("attributes")
 
 .panel.panel-default
   .panel-body
     %h3.work
-    - if attributes["author"].present?
-      = "<strong>#{attributes["subtype"]}</strong>. <small>#{author_format(attributes["author"])} , #{attributes["datePublished"]}, #{attributes["name"]}, #{attributes["publisher"]["name"]}</small> #{item["id"]}" 
+    - if item["id"].present?
+      -# #citation-text
+      = format_pseudo_citation(item)
+      -# = "According to #{event["sourceId"]} this item #{event["relationTypeId"]} the " 
+      -# - if attributes["name"].present?
+      -#   = "#{attributes["subtype"]} : <small>#{author_format(attributes["author"])}. (#{attributes["datePublished"]}) #{attributes["name"]}. #{attributes["publisher"]["name"]}</small>" 
+      %a{:id => "citation-link", :href => item["id"] , :title => "Go to landing page" } 
+        = item.dig(:metadata, "id")
+      -# - if attributes["name"].present?
+      -#   = "According to #{attributes["subtype"]}  <small>#{author_format(attributes["author"])}. (#{attributes["datePublished"]}) #{attributes["name"]}. #{attributes["publisher"]["name"]}</small>" 
+      -# %a{:id => "citation-link", :href => item["id"] , :title => "Go to landing page" } 
+      -#   = item["id"]
 
   -# - if @work.present? && @work.fetch(:data, {}).fetch("attributes", {}).fetch("related-identifiers", nil).present? && @work.fetch(:data, {}).fetch("id", "work") != item["id"]
   -#   .panel-footer
   -#     = relation_type_title(@work.fetch(:data, {}).fetch("attributes", {}).fetch("related-identifiers"), item["id"]) + " " + @work.fetch(:data, {}).fetch("id", nil)
 
-  .panel-footer.item-links
-    %a{:id => "doi-link", :href => item["id"], :title => "Go to landing page"}
-      %i.fa.fa-external-link
-      = item["id"]
+  -# .panel-footer.item-links
+  -#   %a{:id => "doi-link", :href => item["id"], :title => "Go to landing page"}
+  -#     %i.fa.fa-external-link
+  -#     = item["id"]
+    -# .pull-right
+    -#   %button.btn.btn-fill.btn-sm.btn-neutral{id: "clipboard-btn", title: "Copy to Clipboard", data: { "clipboard-target" => "#citation-text" }}
+    -#     %i.fa.fa-clipboard
+    -# .clearfix
+
 
 
 

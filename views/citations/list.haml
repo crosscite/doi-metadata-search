@@ -1,10 +1,15 @@
 - if @citations[:citations].length > 0
-  - if @citations[:citations].length > 1
-    %h3.results
-      = "#{number_with_delimiter(@citations[:meta]["total"])} Citations"
+  -# - if @citations[:citations].length > 1
+  -#   %h3.results
+  -#     = "#{number_with_delimiter(@citations[:meta]["total"])} Citations"
 
+  - lastRelationtypeId = ""
   - @citations[:citations].each do |item|
+    - if lastRelationtypeId != item.dig("attributes","relationTypeId")
+      %h3.results
+        = "#{item.dig("attributes","relationTypeId").underscore.humanize.upcase}"
     = haml :'citations/item', locals: { item: item}
+    - lastRelationtypeId = item.dig("attributes","relationTypeId")
 
   .text-center
     = will_paginate @citations[:citations], renderer: BootstrapPagination::Sinatra, inner_window: 1

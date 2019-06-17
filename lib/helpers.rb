@@ -41,17 +41,28 @@ module Sinatra
       "Reviews" => "isReviewedBy",
     }
 
+
     INCLUDED_RELATION_TYPES = [
-      "cites", "is-cited-by",
-      "compiles", "is-compiled-by",
-      "documents", "is-documented-by",
-      "has-metadata", "is-metadata-for",
-      "is-supplement-to", "is-supplemented-by",
-      "is-derived-from", "is-source-of",
-      "references", "is-referenced-by",
-      "reviews", "is-reviewed-by",
-      "requires", "is-required-by",
-      "describes", "is-described-by"
+      "cites", 
+      "is-cited-by",
+      "compiles", 
+      "is-compiled-by",
+      "documents", 
+      "is-documented-by",
+      "has-metadata", 
+      "is-metadata-for",
+      "is-supplement-to", 
+      "is-supplemented-by",
+      "is-derived-from", 
+      "is-source-of",
+      "references", 
+      "is-referenced-by",
+      "reviews", 
+      "is-reviewed-by",
+      "requires", 
+      "is-required-by",
+      "describes", 
+      "is-described-by"
     ]
 
     USAGE_RELATION_TYPES = [
@@ -63,8 +74,10 @@ module Sinatra
 
     INCLUDED_SOURCES = [
       "datacite-related",
+      "datacite-crossref",
       "crossref",
-      "datacite-usage"
+      "datacite-usage",
+      "datacite-funder"
     ]
 
 
@@ -590,6 +603,32 @@ module Sinatra
         citations += hsh_metrics.fetch(type,0).to_i
       end
       citations
+    end
+
+    def format_pseudo_citation(item)
+      attributes = item.dig(:metadata,"attributes")
+      event      = item.dig("attributes")
+      published  = attributes.fetch('datePublished', '')
+      repository = attributes.fetch('registrantId', 'DataCite').present?  ? attributes["registrantId"] : 'DataCite'
+      yop        = published.blank? ? '' : Date.parse(published).to_date.year.to_s 
+      publisher  = attributes.dig("publisher").present?  ? attributes["publisher"]["name"] : ''
+      authors    = author_format(attributes["author"])
+
+
+      source_label =  case event["sourceId"] 
+                      when 'crossref'
+                        "Accoding to  <strong>Crossref </strong> this item is in the <strong>#{event.dig('relationTypeId').underscore.humanize} </strong> of"
+                      when /^datacite/
+                        "Accoding to  <strong>#{repository} </strong> this item <strong> #{event.dig('relationTypeId').underscore.humanize} </strong>"
+                      end
+
+      citation = if attributes.dig('name').present?
+         " : <cite>#{authors}. (#{yop}) #{attributes.fetch("name",'')}. #{publisher}</cite>"
+      else
+        " : "
+      end
+
+      source_label + citation
     end
   end
 end
