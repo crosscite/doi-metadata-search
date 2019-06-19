@@ -7,9 +7,9 @@
     %li.nav-item.usage
       %a#downloads-tab.nav-link{"aria-controls" => "downloads", "aria-selected" => "false",  "data-toggle" => "tab", :href => "#downloads", :role => "tab"} Downloads
   
-  -# - if citations > 0
-  -#   %li.nav-item
-  -#     %a#citations-tab.nav-link{"aria-controls" => "citations", "aria-selected" => "false",  "data-toggle" => "tab", :href => "#citations", :role => "tab"} Citations
+  - if citations > 0
+    %li.nav-item
+      %a#citations-tab.nav-link{"aria-controls" => "citations", "aria-selected" => "false",  "data-toggle" => "tab", :href => "#citations", :role => "tab"} Citations
 
 -# %br
 .panel.panel-default
@@ -22,7 +22,8 @@
             .row
               .p{:style => "padding-left:20px;"}
                 = "<strong>#{views} views</strong> <small> reported since #{gon.chart_views[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
-            .row#views-chart{:style => "padding-left:10px;"}
+            - if gon.chart_views.size > 1
+              .row#views-chart{:style => "padding-left:10px;"}              
             %br
             .row
               .col-md-8
@@ -41,7 +42,8 @@
             .row
               .p{:style => "padding-left:20px;"}
                 = "<strong>#{downloads} downloads</strong> <small> reported since #{gon.chart_downloads[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
-            .row#downloads-chart{:style => "padding-left:10px;"}
+            - if gon.chart_downloads.size > 1
+              .row#downloads-chart{:style => "padding-left:10px;"}
             %br
             .row
               .col-md-8
@@ -54,19 +56,30 @@
                   %a{href: 'https://support.datacite.org/docs/usage-stats'}
                     What does this mean?
 
-      -# - if citations > 0
-      -#   .row#citations.tab-pane.fade{"aria-labelledby" => "citations-tab", :role => "tabpanel", :style => "position: absolute;"} 
-      -#     .col-md-4
-      -#       .p
-      -#         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id enim tristique dui commodo venenatis eu ac purus.  
-      -#         %a{href: 'https://doi.org/10.7287/peerj.preprints.26505v1'}
-      -#         Nulla finibus ligula ac ligula venenatis dapibus
-      -#     .col-md-8
-      -#       .row
-      -#         .p
-      -#           -# = "<strong>#{citations} citations</strong> <small> reported since #{gon.chart_citations[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
-      -#       .row#citations-chart
-  
+      - if citations > 0
+        .row#citations.tab-pane.fade{"aria-labelledby" => "citations-tab", :role => "tabpanel", :style => "position: absolute;"} 
+          .col-lg-12
+            - if gon.chart_citations.size > 1
+              .row
+                .p{:style => "padding-left:20px;"}
+                  = "<strong>#{citations} citations</strong> <small> reported since #{gon.chart_citations[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
+                .row#citations-chart{:style => "padding-left:10px;"}
+            - else
+              .row
+                .p{:style => "padding-left:20px;"}
+                  = "All <strong> #{citations} citations</strong> were reported in #{gon.chart_citations[0].fetch("title", "NA")} "
+
+            -# %br
+            -# .row
+            -#   .col-md-8
+            -#     .p
+            -#       These counts follow the 
+            -#       %a{href: 'https://www.projectcounter.org/'}
+            -#         COUNTER Code of Practice,
+            -#       = "meaning that Internet robots and repeats within a certain time frame are excluded.</br> "
+            -#       -# "</br>There were <strong>#{total_views} </strong> total views including repeats and robots."
+            -#       %a{href: 'https://support.datacite.org/docs/usage-stats'}
+            -#         What does this mean?
 
 
-       
+        

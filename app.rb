@@ -38,7 +38,7 @@ MIN_MATCH_SCORE = 2
 MIN_MATCH_TERMS = 3
 MAX_MATCH_TEXTS = 1000
 TYPICAL_ROWS = [10, 20, 50, 100, 500]
-DEFAULT_ROWS = 25
+DEFAULT_ROWS = 10
 MONTH_SHORT_NAMES = %w(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec)
 ORCID_VERSION = '1.2'
 TIMEOUT = 30
@@ -158,15 +158,27 @@ get %r{/works/(.+)} do
   # workaround, as nginx swallows double backslashes
   params["id"] = params["id"].gsub(/(http|https):\/+(\w+)/, '\1://\2')
 
-  @work = get_works(id: params["id"])
-  halt 404 if @work[:errors].present?
-
   doi = validate_doi(params[:id])
   link = doi ? "https://doi.org/#{doi}" : params[:id]
-  events  = get_events('page[number]' => 0, "obj-id" => link)
+
+  events  = get_events('page[size]' => 25, 'page[number]' => @page, 'doi' => doi, 'sort' => 'relation_type_id')
+  events_ids = get_events_ids(events, link) 
+
+  works = get_works(ids: ([params["id"]]+events_ids).join(','))
+  halt 404 if works[:errors].present?
+  @citations = merge_citations_metadata(works,events,link, @page)
+
+  @work = { 
+    data: (works[:data].select{ |item|  item.dig("attributes","doi") == params["id"]}).first,
+    included: works[:included],
+    meta: works[:meta]}
+ 
+  halt 404 if @work.blank?
+
   @work[:metrics] = reduce_aggs(events[:meta], {yop: @work.dig(:data, "attributes","published").to_i})
 
-  @work[:chart] = events[:meta].fetch("relationTypes", [])
+  @work[:chart] = events[:meta].fetch('relationTypes', [])
+  @work[:citation_chart] = events[:meta].fetch('doisCitations', [])
 
   # check for existing claims if user is logged in and work is registered with DataCite
   if current_user
@@ -178,13 +190,13 @@ get %r{/works/(.+)} do
   @work[:schema_org] = response.body.fetch("data", nil)
 
   # Removing related works to avoid crawlers nested repetive crawling when there are a lot.
-  #@works = get_works("work-id" => params[:id], query: params[:query], 'page[number]' => @page, 'data-center-id' => params['data-center-id'], 'relation-type-id' => params['relation-type-id'], 'resource-type-id' => params['resource-type-id'], 'year' => params['year'])
+  ## @works = get_works("work-id" => params[:id], query: params[:query], 'page[number]' => @page, 'data-center-id' => params['data-center-id'], 'relation-type-id' => params['relation-type-id'], 'resource-type-id' => params['resource-type-id'], 'year' => params['year'])
   # check for existing claims if user is logged in
-  #@works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
+  ## @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
   @works = {} # Temporarily make sure we get something to work with
 
   # pagination
-  #@works[:data] = pagination_helper(@works[:data], @page, @works.fetch(:meta, {}).fetch("total", 0))
+  ## @works[:data] = pagination_helper(@works[:data], @page, @works.fetch(:meta, {}).fetch("total", 0))
 
   params[:model] = "works"
 

@@ -8,6 +8,7 @@ module Sinatra
 
     def get_metrics(items)
       return [] if items.empty?
+
       dois = items.reduce([]) do |sum, item|
         # if item.is_a?(Hash) && item.fetch("attributes", {}).fetch("registration-agency-id", nil) == ENV['RA']
         if item.is_a?(Hash)
@@ -17,7 +18,8 @@ module Sinatra
         end
       end.compact
       metrics = call_metrics(dois)
-      merge_metrics(items, metrics.dig(:meta,"doisUsageTypes"))
+      usage_metrics = merge_metrics(items, metrics.dig(:meta, 'doisUsageTypes'))
+      merge_metrics(usage_metrics, metrics.dig(:meta, 'doisRelationTypes'))
     end
 
     def normalize_doi(doi)
@@ -28,13 +30,15 @@ module Sinatra
 
     def call_metrics dois, options={}
 
-      url = "#{ENV['API_URL']}/events?ids=#{dois.join(",")}&" + URI.encode_www_form({"extra"=> true, "page[size]"=> 50})
+      url = "#{ENV['API_URL']}/events?doi=#{dois.join(",")}&" + URI.encode_www_form({"extra"=> true, "page[size]"=> 25})
+      puts url
       # dependency injection
       response = options[:response].present? ? options[:response] : Maremma.get(url, headers: {"Accept"=> "application/vnd.api+json; version=2"}, timeout: 20)
-
-     { data: Array(response.body.fetch("data", [])),
+     {
+        data: Array(response.body.fetch("data", [])),
         errors: Array(response.body.fetch("errors", [])),
-        meta: response.body.fetch("meta", {}) }
+        meta: response.body.fetch("meta", {}) 
+      }
     end
 
     def merge_metrics(items, metrics)

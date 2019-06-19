@@ -1,0 +1,10 @@
+-# - attributes = item.dig(:metadata,"attributes")
+-# - event      = item.dig("attributes")
+
+.panel.panel-default
+  .panel-body
+    %h3.work
+    - if item["id"].present?
+      = format_pseudo_citation(item)
+      %a{:id => "citation-link", :href => item.dig(:metadata,"id"), :target=>"_blank", :title => "Go to landing page" } 
+        = item.dig(:metadata, "id")

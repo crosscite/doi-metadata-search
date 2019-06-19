@@ -13,6 +13,7 @@ module Sinatra
         params = { id: params.fetch(:id, nil),
                    'page[number]': params.fetch('page[number]', 1),
                    'page[size]': params.fetch('page[size]', 25),
+                   ids: params.fetch(:ids, nil),
                    sort: params.fetch(:sort, nil),
                    query: params.fetch(:query, nil),
                    year: params.fetch('year', nil),
@@ -97,21 +98,53 @@ module Sinatra
       if params.fetch(:id, nil).present?
         url = "#{ENV['API_URL']}/events/#{params.fetch(:id)}"
       else
-        params = { id: params.fetch(:id, nil),
-                   'source-id' => params.fetch('source-id', nil),
-                   'subj-id'   => params.fetch('subj-id', nil),
-                   'relationTypeId'   => params.fetch(relations.join(', '), nil),
-                   'page[size]'=> params.fetch('page[size]', nil),
-                   'obj-id'    => params.fetch('obj-id', nil),
-                   'occurredAt'=> params.fetch('occurred_in', nil), 
-                   query: params.fetch(:query, nil) }.compact
+        params =
+        {
+          id: params.fetch(:id, nil),
+          'source-id'        => params.fetch('source-id', nil),
+          'subj-id'          => params.fetch('subj-id', nil),
+          'relation-type-id' => relations.join(','),
+          'page[size]'       => params.fetch('page[size]', nil),
+          'obj-id'           => params.fetch('obj-id', nil),
+          'doi'              => params.fetch('doi', nil),
+          'occurredAt'       => params.fetch('occurred_in', nil), 
+          'include'          => params.fetch('include', nil), 
+          'page[number]'     => params.fetch('page[number]', nil), 
+          'page[size]'       => params.fetch('page[size]', nil), 
+          'sort'             => params.fetch('sort', nil), 
+          'source-id'         => params.fetch('sourceId', INCLUDED_SOURCES.join(',')), 
+          'extra'            => true,
+          query: params.fetch(:query, nil)
+        }.compact
         url = "#{ENV['API_URL']}/events?" + URI.encode_www_form(params)
       end
-  
       response = params[:response].present? ? params[:response] : Maremma.get(url, headers: {"Accept"=> "application/vnd.api+json; version=2"}, timeout: TIMEOUT)
       { data: response.body.fetch("data", []),
+        included: response.body.fetch("included", []),
         errors: Array(response.body.fetch("errors", [])),
+        links: Array(response.body.fetch("links", [])),
         meta: response.body.fetch("meta", {}) }
+    end
+
+    def get_citations_metadata(events, params = {})
+
+      dois = events.fetch(:included,[]).map do |citation| 
+        doi = citation.fetch('id',nil)
+        doi = Array(/\A(?:(http|https):\/(\/)?(dx\.)?(doi.org|handle.test.datacite.org)\/)?(doi:)?(10\.\d{4,5}\/.+)\z/.match(doi)).last
+        doi = doi.delete("\u200B").downcase if doi.present?
+        doi if doi.present?
+      end
+  
+      url = "#{ENV['API_URL']}/dois?ids=#{dois.join(",")}&" + URI.encode_www_form({"page[size]"=> 50})
+      # dependency injection
+      response = params[:response].present? ? params[:response] : Maremma.get(url, timeout: 20)
+
+      {
+        data: Array(response.body.fetch("data", [])),
+        included: Array(response.body.fetch("included", [])),
+        errors: Array(response.body.fetch("errors", [])),
+        meta: response.body.fetch("meta", {}) 
+      }
     end
   
   end

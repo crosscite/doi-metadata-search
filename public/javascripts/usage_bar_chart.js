@@ -21,7 +21,6 @@
       var today = new Date();
 
 
-
       if(Number.isInteger(displayMode) == false){
         var startDate = new Date(data[0].id);
         var today = new Date();
@@ -36,6 +35,17 @@
         var startDate = new Date(yop+"-01-01");
       }
 
+      if(displayMode == "citations"){
+        var today = new Date();
+        var endDate = new Date(today.setMonth( today.getMonth())); // c
+        var fistDataPoint = new Date(data[0].id+"-01-01");
+        var yopDate = new Date(yop+"-01-01");
+        var startDate = (fistDataPoint > yopDate) ? yopDate : fistDataPoint
+        console.log(fistDataPoint)
+        console.log(yopDate)
+        console.log(data[0].id)
+      }
+
       var timeStamp = null;
       let formatYear = d3.time.format.utc("%Y");
       let formatHour = d3.time.format.utc("%h");
@@ -44,19 +54,25 @@
       let formatTime = d3.time.format.utc("%H:%M:%S");
       let height = 200
       var margin = { top: 10, right: 20, bottom: 20, left: 20 };
-
+ 
       if (format === "days") {
         var domain = [startDate, endDate];
         var length = 30;
       } else if (format === "months") {
         var domain = [startDate, endDate];
         var length = 120 //d3.time.months(startDate, endDate).length;
-
+        var firstLabel = formatMonthYear(startDate)
+        var lastLabel = formatMonthYear(endDate)
         // width = 840;
         width = barWidth*length;
-      } else {
+      } else if (format === "years"){
+        var startTime = new Date(yop+"-01-01");
+        var endTime = today;
         var domain = [startTime, endTime];
-        var length = 24;
+        var length = 120;
+        var firstLabel = formatYear(startDate)
+        var lastLabel = formatYear(endDate)
+        width = barWidth*length;
       }
 
       
@@ -95,6 +111,10 @@
             timeStamp = Date.parse(d.key + '-01T12:00:00Z');
             var year = formatYear(new Date(timeStamp));
             return (year % 2 === 0) ? "bar relations" : "bar relations-alt";
+          } else if (format === "years") {
+            timeStamp = Date.parse(d.key + '-01-01T12:00:00Z');
+            var year = formatYear(new Date(timeStamp));
+            return (year % 2 === 0) ? "bar relations" : "bar relations-alt";
           } else {
             timeStamp = Date.parse(d.key + ':00:01Z');
             var hour = formatHour(new Date(timeStamp));
@@ -105,6 +125,8 @@
             return x(new Date(Date.parse(d.id + 'T12:00:00Z')));
           } else if (format === "months") {
             return x(new Date(Date.parse(d.id + '-01T12:00:00Z')));
+          } else if (format === "years") {
+            return x(new Date(Date.parse(d.id + '-01-01T12:00:00Z')));
           } else {
             return x(new Date(Date.parse(d.id + ':00:00Z')));
           }})
@@ -122,19 +144,22 @@
       if(lastDataPoint.getMonth() == today.getMonth()){
           last_tick = chart.selectAll("rect").pop().pop().x.animVal.value
       }
+
+
+ 
  
       chart.append("text")
         .attr("class", "label")
         .attr("text-anchor", "middle")
         .attr("transform", "translate(11," + (height + 18) + ")")
-        .text(formatMonthYear(startDate))
+        .text(firstLabel)
         .style("font-size", "13px");
   
       chart.append("text")
         .attr("class", "label")
         .attr("text-anchor", "middle")
         .attr("transform", "translate(" + (last_tick - 11) + "," + (height + 18) + ")")
-        .text(formatMonthYear(endDate))
+        .text(lastLabel)
         .style("font-size", "13px");
 
       chart.selectAll("rect").each(
@@ -157,6 +182,9 @@
           } else if (format === "months") {
             dateStamp = Date.parse(d.id + '-01T12:00:00Z');
             dateString = " in " + formatMonthYear(new Date(dateStamp));
+          } else if (format === "years") {
+            dateStamp = Date.parse(d.id + '-01-01T12:00:00Z');
+            dateString = " in " + formatYear(new Date(dateStamp));
           } else {
             dateStamp = Date.parse(d.id + ':00:00Z');
             dateString = " at " + formatTime(new Date(dateStamp));
@@ -185,9 +213,12 @@
 
       if(tab){
         $('#'+tab).tab("show")
-      }else{
+      }else if(gon.chart_views){
         $('#views-tab').tab("show")
+      }else if(gon.chart_citations){
+        $('#citations-tab').tab("show")
       }
+  
   
       $('.usage-counts.usage-views').on('click', function (e) {
         e.preventDefault()
@@ -198,6 +229,16 @@
         e.preventDefault()
         $("#downloads-tab").tab('show')
       })
+
+      $('.usage-counts.usage-downloads').on('click', function (e) {
+        e.preventDefault()
+        $("#downloads-tab").tab('show')
+      })
+
+      $('.usage-counts.citations').on('click', function (e) {
+        e.preventDefault()
+        $("#citations-tab").tab('show')
+      })
     }
 
 
@@ -205,16 +246,15 @@ $(document).ready(function(e) {
   if (typeof gon !== 'undefined'){
     var views = gon.chart_views;
     var downloads = gon.chart_downloads;
-    // var citations = gon.chart_citations;
+    var citations = gon.chart_citations;
     var yop = gon.yop;
 
-    console.log(views)
     
     tabs_interaction()
 
-    bar2Viz(views,"#views-chart","sum","months","full",yop);
-    bar2Viz(downloads,"#downloads-chart","sum","months","full",yop);
-    // bar2Viz(citations,"#citations-chart","sum","months","full",yop);
+    if(views){bar2Viz(views,"#views-chart","sum","months","full",yop); }
+    if(downloads){bar2Viz(downloads,"#downloads-chart","sum","months","full",yop); }
+    if(citations){bar2Viz(citations,"#citations-chart","sum","years","citations",yop); }
   }
 });
 
