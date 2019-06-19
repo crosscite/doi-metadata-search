@@ -13,6 +13,7 @@ module Sinatra
         params = { id: params.fetch(:id, nil),
                    'page[number]': params.fetch('page[number]', 1),
                    'page[size]': params.fetch('page[size]', 25),
+                   ids: params.fetch(:ids, nil),
                    sort: params.fetch(:sort, nil),
                    query: params.fetch(:query, nil),
                    year: params.fetch('year', nil),
@@ -140,6 +141,7 @@ module Sinatra
 
       {
         data: Array(response.body.fetch("data", [])),
+        included: Array(response.body.fetch("included", [])),
         errors: Array(response.body.fetch("errors", [])),
         meta: response.body.fetch("meta", {}) 
       }
