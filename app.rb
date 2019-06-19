@@ -162,7 +162,7 @@ get %r{/works/(.+)} do
   link = doi ? "https://doi.org/#{doi}" : params[:id]
 
   events  = get_events('page[size]' => 25, 'page[number]' => @page, 'doi' => doi, 'sort' => 'relation_type_id')
-  events_ids = get_events_ids(events) 
+  events_ids = get_events_ids(events, link) 
 
   works = get_works(ids: ([params["id"]]+events_ids).join(','))
   halt 404 if works[:errors].present?

@@ -403,11 +403,11 @@ module Sinatra
     # end
 
 
-    def get_events_ids(events) 
+    def get_events_ids(events, doi) 
       events.fetch(:data).map  do |event|
         next unless INCLUDED_RELATION_TYPES.include? event.dig("attributes","relationTypeId")
   
-        event.dig("attributes","subjId") == link ? event.dig("attributes","objId").gsub("https://doi.org/","") : event.dig("attributes","subjId").gsub("https://doi.org/","")
+        event.dig("attributes","subjId") == doi ? event.dig("attributes","objId").gsub("https://doi.org/","") : event.dig("attributes","subjId").gsub("https://doi.org/","")
       end.compact
     end
 
