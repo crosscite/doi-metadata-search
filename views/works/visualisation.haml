@@ -22,7 +22,8 @@
             .row
               .p{:style => "padding-left:20px;"}
                 = "<strong>#{views} views</strong> <small> reported since #{gon.chart_views[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
-            .row#views-chart{:style => "padding-left:10px;"}
+            - if gon.chart_views.size > 1
+              .row#views-chart{:style => "padding-left:10px;"}              
             %br
             .row
               .col-md-8
@@ -41,7 +42,8 @@
             .row
               .p{:style => "padding-left:20px;"}
                 = "<strong>#{downloads} downloads</strong> <small> reported since #{gon.chart_downloads[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
-            .row#downloads-chart{:style => "padding-left:10px;"}
+            - if gon.chart_downloads.size > 1
+              .row#downloads-chart{:style => "padding-left:10px;"}
             %br
             .row
               .col-md-8
@@ -57,10 +59,16 @@
       - if citations > 0
         .row#citations.tab-pane.fade{"aria-labelledby" => "citations-tab", :role => "tabpanel", :style => "position: absolute;"} 
           .col-lg-12
-            .row
-              .p{:style => "padding-left:20px;"}
-                = "<strong>#{citations} citations</strong> <small> reported since #{gon.chart_citations[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
-            .row#citations-chart{:style => "padding-left:10px;"}
+            - if gon.chart_citations.size > 1
+              .row
+                .p{:style => "padding-left:20px;"}
+                  = "<strong>#{citations} citations</strong> <small> reported since #{gon.chart_citations[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
+                .row#citations-chart{:style => "padding-left:10px;"}
+            - else
+              .row
+                .p{:style => "padding-left:20px;"}
+                  = "All <strong> #{citations} citations</strong> were reported in #{gon.chart_citations[0].fetch("title", "NA")} "
+
             -# %br
             -# .row
             -#   .col-md-8
@@ -74,4 +82,4 @@
             -#         What does this mean?
 
 
-       
+        

@@ -10,14 +10,14 @@
 - downloads =   metrics.to_h.fetch("unique-dataset-requests-regular",0) 
 - total_downloads =  metrics.to_h.fetch("total-dataset-requests-regular",0) 
 - resolutions =  metrics.to_h.fetch("unique-resolutions-regular",0).to_i + metrics.to_h.fetch("unique-resolutions-machine","--").to_i
-- citations =  filter_relation_types metrics
+- citations = filter_relation_types metrics
 - if @work.present? && chart_data?(chart, "unique-dataset-investigations-regular") 
   - gon.chart_views = process_chart_data chart, ["unique-dataset-investigations-regular"], attributes.fetch("published", "").to_i
   - gon.yop = attributes.fetch("published", "").to_i
 - if @work.present? && chart_data?(chart, "unique-dataset-requests-regular") 
   - gon.chart_downloads = process_chart_data chart, ["unique-dataset-requests-regular"], attributes.fetch("published", "").to_i
   - gon.yop = attributes.fetch("published", "").to_i
-- if @work.present? 
+- if @work.present? && citations.positive?
   - gon.chart_citations = citation_chart["years"]
   - gon.yop = attributes.fetch("published", "").to_i
 
