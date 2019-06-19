@@ -384,22 +384,51 @@ module Sinatra
     end
 
 
-    def citations_response(hash, doi, page)
+    # def citations_response(hash, doi, page)
 
-      includes = (hash.fetch(:included,[]).delete_if { |h| h["id"] == doi }).sort_by { |hsh| hsh["subtype"] }
+    #   includes = (hash.fetch(:included,[]).delete_if { |h| h["id"] == doi }).sort_by { |hsh| hsh["subtype"] }
 
-      citations = hash[:data].map do |event|
+    #   citations = hash[:data].map do |event|
+    #     identifier = event.dig("attributes","subjId") == doi ? event.dig("attributes","objId") : event.dig("attributes","subjId")
+    #     event[:metadata] = Array(includes).find { |c| c.fetch('id', {}) == identifier } || {}
+    #     event
+    #   end
+
+    #   citations = pagination_helper(citations, page, hash.fetch(:meta, {}).fetch("total", 0), 50)
+
+    #   { citations: citations,
+    #     meta:   hash.fetch(:meta, nil), 
+    #     errors: hash.fetch(:errors, nil), 
+    #     links:  hash.fetch(:links, nil)}
+    # end
+
+
+    def get_events_ids(events) 
+      events.fetch(:data).map  do |event|
+        next unless INCLUDED_RELATION_TYPES.include? event.dig("attributes","relationTypeId")
+  
+        event.dig("attributes","subjId") == link ? event.dig("attributes","objId").gsub("https://doi.org/","") : event.dig("attributes","subjId").gsub("https://doi.org/","")
+      end.compact
+    end
+
+    def merge_citations_metadata(works, events, doi, page)
+
+      # relations = works[:data].reject{ |item|  item.dig("id") == doi}
+
+
+
+      relations = events[:data].map do |event|
         identifier = event.dig("attributes","subjId") == doi ? event.dig("attributes","objId") : event.dig("attributes","subjId")
-        event[:metadata] = Array(includes).find { |c| c.fetch('id', {}) == identifier } || {}
+        event[:metadata] = works[:data].find { |c| c.fetch('id', {}) == identifier } || {"id"=> identifier}
         event
       end
 
-      citations = pagination_helper(citations, page, hash.fetch(:meta, {}).fetch("total", 0), 50)
-
+      citations = pagination_helper(relations, page, events.fetch(:meta, {}).fetch("total", 0), 25)
+ 
       { citations: citations,
-        meta:   hash.fetch(:meta, nil), 
-        errors: hash.fetch(:errors, nil), 
-        links:  hash.fetch(:links, nil)}
+        meta:   events.fetch(:meta, nil), 
+        errors: events.fetch(:errors, nil), 
+        links:  events.fetch(:links, nil)}
     end
 
     def github_from_url(url)
@@ -606,12 +635,16 @@ module Sinatra
     end
 
     def format_pseudo_citation(item)
-      attributes = item.dig(:metadata,"attributes")
       event      = item.dig("attributes")
-      published  = attributes.fetch('datePublished', '')
-      repository = attributes.fetch('registrantId', 'DataCite').present?  ? attributes["registrantId"] : 'DataCite'
-      yop        = published.blank? ? '' : Date.parse(published).to_date.year.to_s 
-      publisher  = attributes.dig("publisher").present?  ? attributes["publisher"]["name"] : ''
+      meta       = item.fetch(:metadata,{})
+
+      return "Accoding to  <strong>Crossref </strong> this item is in the <strong>#{event.dig('relationTypeId').underscore.humanize} </strong> of:" if meta.fetch("attributes", {}).blank?
+
+      attributes = item.dig(:metadata,"attributes")
+      published  = attributes.fetch('published', '')
+      repository = attributes.fetch('data-center-id', 'DataCite')  #? attributes["data-center-id"] : 'DataCite'
+      # yop        = published.blank? ? '()' : "(#{format_date({published: published})})"   
+      publisher  = attributes.fetch("container-title","")  #? attributes["container-title"] : ''
       authors    = author_format(attributes["author"])
 
 
@@ -622,8 +655,8 @@ module Sinatra
                         "Accoding to  <strong>#{repository} </strong> this item <strong> #{event.dig('relationTypeId').underscore.humanize} </strong>"
                       end
 
-      citation = if attributes.dig('name').present?
-         " : <cite>#{authors}. (#{yop}) #{attributes.fetch("name",'')}. #{publisher}</cite>"
+      citation = if attributes.dig('title').present?
+         " : <cite>#{authors}. (#{published}) #{attributes.fetch("title",'')}. #{publisher}</cite>"
       else
         " : "
       end
