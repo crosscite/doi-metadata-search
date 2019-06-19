@@ -2,7 +2,52 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datacite.org/works/10.21956/aasopenres.13896.r26067?include=data-center,resource-type,member
+    uri: https://api.datacite.org/events?doi=10.21956/aasopenres.13896.r26067&extra=true&page%5Bnumber%5D=1&page%5Bsize%5D=25&relation-type-id=cites,is-cited-by,compiles,is-compiled-by,documents,is-documented-by,has-metadata,is-metadata-for,is-supplement-to,is-supplemented-by,is-derived-from,is-source-of,references,is-referenced-by,reviews,is-reviewed-by,requires,is-required-by,describes,is-described-by,unique-dataset-investigations-regular,total-dataset-investigations-regular,unique-dataset-requests-regular,total-dataset-requests-regular&sort=relation_type_id&source-id=datacite-related,datacite-crossref,crossref,datacite-usage,datacite-funder
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.2.1; +https://github.com/datacite/maremma)
+      Accept:
+      - application/vnd.api+json; version=2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 19 Jun 2019 08:31:00 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding, Origin
+      X-Request-Id:
+      - 8a64a3de-2684-4e1e-aff7-75c4ff5fb7de
+      Etag:
+      - W/"5da3e394968abfce424b2adceadd7db0"
+      X-Runtime:
+      - '0.035298'
+      X-Powered-By:
+      - Phusion Passenger 6.0.2
+      Server:
+      - nginx/1.15.8 + Phusion Passenger 6.0.2
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[],"meta":{"total":0,"totalPages":0,"page":1},"links":{"self":"https://api.datacite.org/events?doi=10.21956%2Faasopenres.13896.r26067&extra=true&page%5Bnumber%5D=1&page%5Bsize%5D=25&relation-type-id=cites%2Cis-cited-by%2Ccompiles%2Cis-compiled-by%2Cdocuments%2Cis-documented-by%2Chas-metadata%2Cis-metadata-for%2Cis-supplement-to%2Cis-supplemented-by%2Cis-derived-from%2Cis-source-of%2Creferences%2Cis-referenced-by%2Creviews%2Cis-reviewed-by%2Crequires%2Cis-required-by%2Cdescribes%2Cis-described-by%2Cunique-dataset-investigations-regular%2Ctotal-dataset-investigations-regular%2Cunique-dataset-requests-regular%2Ctotal-dataset-requests-regular&sort=relation_type_id&source-id=datacite-related%2Cdatacite-crossref%2Ccrossref%2Cdatacite-usage%2Cdatacite-funder"}}'
+    http_version: 
+  recorded_at: Wed, 19 Jun 2019 08:31:00 GMT
+- request:
+    method: get
+    uri: https://api.datacite.org/works?ids=10.21956/aasopenres.13896.r26067&include=data-center,resource-type,member&page%5Bnumber%5D=1&page%5Bsize%5D=25
     body:
       encoding: US-ASCII
       string: ''
@@ -13,33 +58,36 @@ http_interactions:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
     status:
-      code: 404
-      message: Not Found
+      code: 200
+      message: OK
     headers:
       Date:
-      - Mon, 25 Mar 2019 09:56:20 GMT
+      - Wed, 19 Jun 2019 08:31:01 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
       - keep-alive
       Status:
-      - 404 Not Found
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
       Cache-Control:
-      - no-cache
+      - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
       X-Request-Id:
-      - e8dac127-8b0a-4211-9bb5-af9fa6740725
+      - 71aef97b-34f5-46b4-8bc0-53823ae0d538
+      Etag:
+      - W/"df6f4ef889ed84e1fa064d5ec950cddb"
       X-Runtime:
-      - '0.005186'
+      - '0.606376'
       X-Powered-By:
       - Phusion Passenger 6.0.2
       Server:
       - nginx/1.15.8 + Phusion Passenger 6.0.2
     body:
       encoding: ASCII-8BIT
-      string: '{"errors":[{"status":"404","title":"The resource you are looking for
-        doesn''t exist."}]}'
+      string: '{"data":[],"included":[],"meta":{"total":0,"total-pages":0,"page":1}}'
     http_version: 
-  recorded_at: Mon, 25 Mar 2019 09:56:20 GMT
+  recorded_at: Wed, 19 Jun 2019 08:31:01 GMT
 recorded_with: VCR 2.9.3

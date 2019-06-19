@@ -19,7 +19,7 @@ describe 'item', type: :feature, js: true, vcr: true do
     end
 
     it 'when having citations' do
-      visit '/works/10.91819/71718'
+      visit '/works/10.3886/icpsr29961.v1'
       expect(page).to have_css 'a.usage-counts.citations'
     end
   end
