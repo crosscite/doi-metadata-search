@@ -6,5 +6,5 @@
     %h3.work
     - if item["id"].present?
       = format_pseudo_citation(item)
-      %a{:id => "citation-link", :href => item.dig(:metadata,"id"), :target=>"_blank", :title => "Go to landing page" } 
-        = item.dig(:metadata, "id")
+      %a{:id => "citation-link", :href =>  "https://doi.org/#{item.dig(:metadata,'id')}" , :target=>"_blank", :title => "Go to landing page" } 
+        = "https://doi.org/#{item.dig(:metadata,'id')}"

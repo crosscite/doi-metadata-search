@@ -158,22 +158,18 @@ get %r{/works/(.+)} do
   # workaround, as nginx swallows double backslashes
   params["id"] = params["id"].gsub(/(http|https):\/+(\w+)/, '\1://\2')
 
+
+  @work = get_works(id: params["id"])
+  halt 404 if @work[:errors].present?
+
+
   doi = validate_doi(params[:id])
   link = doi ? "https://doi.org/#{doi}" : params[:id]
 
-  events  = get_events('page[size]' => 25, 'page[number]' => @page, 'doi' => doi, 'sort' => 'relation_type_id')
-  events_ids = get_events_ids(events, link) 
 
-  works = get_works(ids: ([params["id"]]+events_ids).join(','))
-  halt 404 if works[:errors].present?
-  @citations = merge_citations_metadata(works,events,link, @page)
+  events  = get_events('page[size]' => 25, 'page[number]' => @page, 'doi' => doi, 'include' => 'dois', 'sort' => 'relation_type_id')
+  @citations = citations_response(events, link, @page)
 
-  @work = { 
-    data: (works[:data].select{ |item|  item.dig("attributes","doi") == params["id"]}).first,
-    included: works[:included],
-    meta: works[:meta]}
- 
-  halt 404 if @work.blank?
 
   @work[:metrics] = reduce_aggs(events[:meta], {yop: @work.dig(:data, "attributes","published").to_i})
 
