@@ -609,6 +609,10 @@ module Sinatra
     end
 
 
+    def is_subj?(doi, subj)
+      doi == subj 
+    end
+
     def format_pseudo_citation(item)
       event      = item.dig("attributes")
       meta       = item.fetch(:metadata,{})
@@ -617,17 +621,21 @@ module Sinatra
 
       attributes = item.dig(:metadata,"attributes")
       published  = attributes.fetch('publicationYear', '')
-      repository = attributes.fetch('data-center-id', 'DataCite')  #? attributes["data-center-id"] : 'DataCite'
-      publisher  = attributes.fetch("publisher","")  #? attributes["container-title"] : ''
+      repository = attributes.fetch('data-center-id', 'DataCite')  
+      publisher  = attributes.fetch("publisher","") 
       publisher  = attributes.dig("container","title") if publisher.blank? || publisher == "(:unav)"
       authors    = author_format(attributes["creators"])
 
 
       source_label =  case event["sourceId"] 
                       when 'crossref'
-                        "Accoding to  <strong>Crossref </strong> this item is in the <strong>#{event.dig('relationTypeId').underscore.humanize} </strong> of"
+                        "Accoding to  <strong>Crossref </strong> this item is in the <strong>#{event.dig('relationTypeId').underscore.humanize} </strong> of the  #{attributes.dig('types','resourceTypeGeneral')}"
                       when /^datacite/
-                        "Accoding to  <strong>#{repository} </strong> this item <strong> #{event.dig('relationTypeId').underscore.humanize} </strong>"
+                        if is_subj?(attributes.dig("doi"), event.dig("subjId").gsub("https://doi.org/",""))
+                          "Accoding to  <strong>#{repository} </strong> this item <strong> #{event.dig('relationTypeId').underscore.humanize} </strong> the  #{attributes.dig('types','resourceTypeGeneral')} "
+                        else
+                          "Accoding to  <strong>#{repository} </strong> the following #{attributes.dig('types','resourceTypeGeneral')}  <strong> #{event.dig('relationTypeId').underscore.humanize} </strong> this item "
+                        end
                       end
 
       citation = if attributes.dig('titles').present?
