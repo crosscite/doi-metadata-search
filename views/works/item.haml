@@ -10,7 +10,7 @@
 - downloads =   metrics.to_h.fetch("unique-dataset-requests-regular",0) 
 - total_downloads =  metrics.to_h.fetch("total-dataset-requests-regular",0) 
 - resolutions =  metrics.to_h.fetch("unique-resolutions-regular",0).to_i + metrics.to_h.fetch("unique-resolutions-machine","--").to_i
-- citations = filter_relation_types metrics
+- citations = filter_relation_types metrics ###metrics.fetch("uniqueCitations",0).to_i
 - if @work.present? && chart_data?(chart, "unique-dataset-investigations-regular") 
   - gon.chart_views = process_chart_data chart, ["unique-dataset-investigations-regular"], attributes.fetch("published", "").to_i
   - gon.yop = attributes.fetch("published", "").to_i
@@ -39,27 +39,35 @@
         %a{:href => attributes["license"]}
           = license_img(attributes["license"])
 
-  .panel-footer
-    - if views.positive?
-      %a.usage-counts.usage-views{:href => "#{works_action(item,{})+'#views-tab'}"}
-        .fa.fa-eye
-        = "#{views} Views"
-    - if downloads.positive?
-      %a.usage-counts.usage-downloads{:href => "#{works_action(item,{})+'#downloads-tab'}"}
-        .fa.fa-download            
-        = "#{downloads} Downloads"
-        -# %span.usage-counts
-        -#   .fa.fa-bolt
-        -#   = "#{resolutions} Resolutions"
-    - if citations.positive?
-      %a.usage-counts.citations{:href => "#{works_action(item,{})+'#citations-tab'}"}
-        .fa.fa-quote-right
-        = "#{citations} Citations"
-    - unless (views.positive? || downloads.positive? || @work.present?)
-      %span.usage-info
-        .fa.fa-info-circle 
-      %a
-        = "This data center is not currently reporting usage information."
+  - if ((views+downloads+citations).positive?)
+    .panel-footer
+      - if views.positive?
+        %a.usage-counts.usage-views{:href => "#{works_action(item,{})+'#views-tab'}"}
+          .fa.fa-eye
+          = "#{views} Views"
+      - if downloads.positive?
+        %a.usage-counts.usage-downloads{:href => "#{works_action(item,{})+'#downloads-tab'}"}
+          .fa.fa-download            
+          = "#{downloads} Downloads"
+          -# %span.usage-counts
+          -#   .fa.fa-bolt
+          -#   = "#{resolutions} Resolutions"
+      - if citations.positive?
+        %a.usage-counts.citations{:href => "#{works_action(item,{})+'#citations-tab'}"}
+          .fa.fa-quote-right
+          = "#{citations} Citations"
+      - if ((views+downloads).zero? && @work.blank?)
+        %span.usage-info
+          .fa.fa-info-circle 
+        %a
+          = "This data center is not currently reporting usage information."
+  - else
+    - unless (@work.present?)
+      .panel-footer
+        %span.usage-info
+          .fa.fa-info-circle 
+        %a
+          = "This data center is not currently reporting usage information." 
 
   - if @work.present? && @work.fetch(:data, {}).fetch("attributes", {}).fetch("related-identifiers", nil).present? && @work.fetch(:data, {}).fetch("id", "work") != item["id"]
     .panel-footer
@@ -80,7 +88,7 @@
 - if @work.present? 
   - if (metrics?(metrics))
     = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads, citations: citations, total_views: total_views, total_downloads: total_downloads}
-  - else
+  - if ((views+downloads).zero?)
     .panel.panel-default
       .panel-body
         = "This data center is not currently reporting usage information. For information on how your repository can submit usage information, please see"
