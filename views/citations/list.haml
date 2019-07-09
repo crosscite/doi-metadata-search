@@ -2,7 +2,9 @@
   -# - if @citations[:citations].length > 1
   -#   %h3.results
   -#     = "#{number_with_delimiter(@citations[:meta]["total"])} Citations"
-
+  %ul
+  - summary.each do |i|
+    %li= i
   - lastRelationtypeId = ""
   - @citations[:citations].each do |item|
     - if lastRelationtypeId != item.dig("attributes","relationTypeId")
