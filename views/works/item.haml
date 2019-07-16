@@ -20,6 +20,7 @@
 - if @work.present? && citations.positive?
   - gon.chart_citations = citation_chart["years"]
   - gon.yop = attributes.fetch("published", "").to_i
+  - citations = 0 ### TODO: set temporaly to send to production 
 
 
 .panel.panel-default
@@ -86,7 +87,7 @@
       = haml :'works/claim', locals: { item: item }
 
 - if @work.present? 
-  - if (metrics?(metrics))
+  - if ((views+downloads+citations).positive?)
     = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads, citations: citations, total_views: total_views, total_downloads: total_downloads}
   - if ((views+downloads).zero?)
     .panel.panel-default
