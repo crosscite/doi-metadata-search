@@ -20,7 +20,8 @@
 - if @work.present? && citations.positive?
   - gon.chart_citations = citation_chart["years"]
   - gon.yop = attributes.fetch("published", "").to_i
-  - citations = 0 ### TODO: set temporaly to send to production 
+- if ENV['RACK_ENV'] == 'production' ### TODO: Remove soon. set temporaly to send to production 
+  - citations = 0 ### TODO: Remove soon. set temporaly to send to production 
 
 
 .panel.panel-default
