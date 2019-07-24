@@ -14,14 +14,10 @@
     // }
 
 
-    function bar2Viz(data, div, count, format, displayMode, yop) {
-
-      let barWidth = 6; // commit 4c301b2fc14e9447e60496d4c9be1e152ab268f8
-      var lastDataPoint = new Date(data[data.length - 1].id);
-      var today = new Date();
 
 
-      if(Number.isInteger(displayMode) == false){
+    function setupUsage(data, yop, barWidth){
+      if(Number.isInteger("full") == false){
         var startDate = new Date(data[0].id);
         var today = new Date();
         var endDate = new Date(today.setMonth( today.getMonth())); // creates a bit of space at the end
@@ -35,16 +31,86 @@
         var startDate = new Date(yop+"-01-01");
       }
 
-      if(displayMode == "citations"){
-        var today = new Date();
-        var endDate = new Date(today.setMonth( today.getMonth())); // c
-        var fistDataPoint = new Date(data[0].id+"-01-01");
-        var yopDate = new Date(yop+"-01-01");
-        var startDate = (fistDataPoint > yopDate) ? yopDate : fistDataPoint
-        console.log(fistDataPoint)
-        console.log(yopDate)
-        console.log(data[0].id)
+      let formatMonthYear = d3.time.format.utc("%b %Y");
+
+
+      var domain = [startDate, endDate];
+      var length = 120 //d3.time.months(startDate, endDate).length;
+      var firstLabel = formatMonthYear(startDate)
+      var lastLabel = formatMonthYear(endDate)
+      width = 840
+
+      return {
+        width: width,
+        firstLabel: firstLabel,
+        lastLabel: lastLabel,
+        length: length,
+        domain: domain
       }
+      
+    }
+
+    function setupCitations(data, yop, barWidth ){
+      var today = new Date();
+      var endDate = new Date(today.setMonth( today.getMonth())); // c
+      var fistDataPoint = new Date(data[0].id+"-01-01");
+      var yopDate = new Date(yop+"-01-01");
+      var startDate = (fistDataPoint > yopDate) ? yopDate : fistDataPoint
+      console.log(fistDataPoint)
+      console.log(yopDate)
+      console.log(data[0].id)
+
+      var startTime = startDate
+      var endTime = today;
+      var domain = [startTime, endTime];
+      var length = 120;
+      var firstLabel = formatYear(startDate)
+      var lastLabel = formatYear(endDate)
+      width = barWidth*length;
+
+      return {
+        width: width,
+        firstLabel: firstLabel,
+        lastLabel: lastLabel,
+        length: length,
+        domain: domain
+      }
+    }
+
+    function bar2Viz(data, div, count, format, displayMode, yop) {
+
+      let barWidth = 6; // commit 4c301b2fc14e9447e60496d4c9be1e152ab268f8
+      var lastDataPoint = new Date(data[data.length - 1].id);
+      var today = new Date();
+      let setup;
+
+
+  
+
+      // if(Number.isInteger(displayMode) == false){
+      //   var startDate = new Date(data[0].id);
+      //   var today = new Date();
+      //   var endDate = new Date(today.setMonth( today.getMonth())); // creates a bit of space at the end
+      // }
+      // else {
+      //   var endDate = new Date(lastDataPoint.setMonth( lastDataPoint.getMonth() + 2 ));
+      //   var startDate = new Date(lastDataPoint.setMonth( lastDataPoint.getMonth() - displayMode ));
+      // }
+
+      // if(yop){
+      //   var startDate = new Date(yop+"-01-01");
+      // }
+
+      // if(displayMode == "citations"){
+      //   var today = new Date();
+      //   var endDate = new Date(today.setMonth( today.getMonth())); // c
+      //   var fistDataPoint = new Date(data[0].id+"-01-01");
+      //   var yopDate = new Date(yop+"-01-01");
+      //   var startDate = (fistDataPoint > yopDate) ? yopDate : fistDataPoint
+      //   console.log(fistDataPoint)
+      //   console.log(yopDate)
+      //   console.log(data[0].id)
+      // }
 
       var timeStamp = null;
       let formatYear = d3.time.format.utc("%Y");
@@ -55,31 +121,39 @@
       let height = 200
       var margin = { top: 10, right: 20, bottom: 20, left: 20 };
  
-      if (format === "days") {
-        var domain = [startDate, endDate];
-        var length = 30;
-      } else if (format === "months") {
-        var domain = [startDate, endDate];
-        var length = 120 //d3.time.months(startDate, endDate).length;
-        var firstLabel = formatMonthYear(startDate)
-        var lastLabel = formatMonthYear(endDate)
-        // width = 840;
-        width = barWidth*length;
-      } else if (format === "years"){
-        var startTime = new Date(yop+"-01-01");
-        var endTime = today;
-        var domain = [startTime, endTime];
-        var length = 120;
-        var firstLabel = formatYear(startDate)
-        var lastLabel = formatYear(endDate)
-        width = barWidth*length;
+      // if (format === "days") {
+      //   var domain = [startDate, endDate];
+      //   var length = 30;
+      // } else if (format === "months") {
+      //   var domain = [startDate, endDate];
+      //   var length = 120 //d3.time.months(startDate, endDate).length;
+      //   var firstLabel = formatMonthYear(startDate)
+      //   var lastLabel = formatMonthYear(endDate)
+      //   // width = 840;
+      //   width = barWidth*length;
+      // } else if (format === "years"){
+      //   var startTime = startDate
+      //   var endTime = today;
+      //   var domain = [startTime, endTime];
+      //   var length = 120;
+      //   var firstLabel = formatYear(startDate)
+      //   var lastLabel = formatYear(endDate)
+      //   width = barWidth*length;
+      // }
+
+      if(displayMode == "citations"){
+        setup = setupCitations(data, yop, barWidth )
       }
+      else{
+        setup = setupUsage(data, yop)
+      }
+
 
       
       var x = d3.time.scale.utc()
-        .domain(domain)
+        .domain(setup.domain)
         .nice(d3.time.month)
-        .rangeRound([0, width],0.5);
+        .rangeRound([0, setup.width],0.5);
 
       var y = d3.scale.linear()
         .domain([0, d3.max(data, function(d) { return d.sum; })])
@@ -92,7 +166,7 @@
       
       var chart = d3.select(div).append("svg")
         .data([data])
-        .attr("width", margin.left + width + margin.right)
+        .attr("width", margin.left + setup.width + margin.right)
         .attr("height", margin.top + height + margin.bottom)
         .attr("style","position:relative")
         .attr("class", "chart barchart")
@@ -152,14 +226,14 @@
         .attr("class", "label")
         .attr("text-anchor", "middle")
         .attr("transform", "translate(11," + (height + 18) + ")")
-        .text(firstLabel)
+        .text(setup.firstLabel)
         .style("font-size", "13px");
   
       chart.append("text")
         .attr("class", "label")
         .attr("text-anchor", "middle")
         .attr("transform", "translate(" + (last_tick - 11) + "," + (height + 18) + ")")
-        .text(lastLabel)
+        .text(setup.lastLabel)
         .style("font-size", "13px");
 
       chart.selectAll("rect").each(

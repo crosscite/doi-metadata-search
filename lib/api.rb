@@ -94,7 +94,8 @@ module Sinatra
     end
 
     def get_events(params = {})
-      relations = INCLUDED_RELATION_TYPES + USAGE_RELATION_TYPES     
+      relations = INCLUDED_RELATION_TYPES + USAGE_RELATION_TYPES 
+      aggregations = "query_aggregations,metrics_aggregations"    
       if params.fetch(:id, nil).present?
         url = "#{ENV['API_URL']}/events/#{params.fetch(:id)}"
       else
@@ -112,7 +113,8 @@ module Sinatra
           'page[number]'     => params.fetch('page[number]', nil), 
           'page[size]'       => params.fetch('page[size]', nil), 
           'sort'             => params.fetch('sort', nil), 
-          'source-id'         => params.fetch('sourceId', INCLUDED_SOURCES.join(',')), 
+          'aggregations'     => aggregations, 
+          'source-id'        => params.fetch('sourceId', INCLUDED_SOURCES.join(',')), 
           'extra'            => true,
           query: params.fetch(:query, nil)
         }.compact

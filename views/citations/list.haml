@@ -3,6 +3,17 @@
   -#   %h3.results
   -#     = "#{number_with_delimiter(@citations[:meta]["total"])} Citations"
 
+  .panel-body
+    -# %h3
+    -#   Citation Types
+    -# %ul
+    -#   - @work[:chart].each do |f|
+    -#     %li
+    -#       .facet-title
+    -#         = f.fetch("title", nil).underscore.humanize
+    -#       %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
+    -#       .clearfix
+
   - lastRelationtypeId = ""
   - @citations[:citations].each do |item|
     - if lastRelationtypeId != item.dig("attributes","relationTypeId")
