@@ -15,6 +15,7 @@ end
 
 require 'securerandom'
 require 'active_support/all'
+require "benchmark"
 
 # required ENV variables, can be set in .env file
 ENV['APPLICATION'] ||= "doi-metadata-search"
@@ -38,7 +39,7 @@ MIN_MATCH_SCORE = 2
 MIN_MATCH_TERMS = 3
 MAX_MATCH_TEXTS = 1000
 TYPICAL_ROWS = [10, 20, 50, 100, 500]
-DEFAULT_ROWS = 10
+DEFAULT_ROWS = 25
 MONTH_SHORT_NAMES = %w(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec)
 ORCID_VERSION = '1.2'
 TIMEOUT = 30
@@ -172,6 +173,7 @@ get %r{/works/(.+)} do
 
 
   @work[:metrics] = reduce_aggs(events[:meta], {yop: @work.dig(:data, "attributes","published").to_i})
+  @work[:metrics][:citaition_counts] = events[:meta].fetch('uniqueCitations', [])
 
   @work[:chart] = events[:meta].fetch('relationTypes', [])
   @work[:citation_chart] = events[:meta].fetch('doisCitations', [])

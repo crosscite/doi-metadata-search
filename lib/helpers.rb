@@ -395,7 +395,7 @@ module Sinatra
         event
       end
 
-      citations = pagination_helper(citations, page, hash.fetch(:meta, {}).fetch("total", 0), 50)
+      citations = pagination_helper(citations, page, hash.fetch(:meta, {}).fetch("total", 0), 25)
 
       { citations: citations,
         meta:   hash.fetch(:meta, nil), 
@@ -613,6 +613,24 @@ module Sinatra
       doi == subj 
     end
 
+    def duplicated_citations?(unique_citations, chart_data)
+      return true if chart_data.dig('count') > unique_citations
+
+      false
+    end
+
+    def remove_duplicated_counts(unique_citations, chart_data, yop)
+      diff = chart_data.dig('count') - unique_citations
+      return nil unless diff.positive?
+
+      ### the criteria to remove duplicated is to remove those from the same year of publication.
+      years = chart_data.dig("years").map do |year|  
+        year["sum"] =- diff  if year["id"] == yop 
+        year
+      end
+      {"count" => unique_citations, "years" => years}
+    end
+
     def format_pseudo_citation(item)
       event      = item.dig("attributes")
       meta       = item.fetch(:metadata,{})
@@ -625,16 +643,19 @@ module Sinatra
       publisher  = attributes.fetch("publisher","") 
       publisher  = attributes.dig("container","title") if publisher.blank? || publisher == "(:unav)"
       authors    = author_format(attributes["creators"])
+      types = attributes.fetch('types',{})
+      resource_type = types.fetch('resourceType',types.fetch('resourceTypeGeneral',"DOI")).underscore.humanize
+      relation_type = event.dig('relationTypeId').underscore.humanize
 
 
       source_label =  case event["sourceId"] 
                       when 'crossref'
-                        "Accoding to  <strong>Crossref </strong> this item is in the <strong>#{event.dig('relationTypeId').underscore.humanize} </strong> of the  #{attributes.dig('types','resourceTypeGeneral')}"
+                        "Accoding to  <strong>Crossref </strong> this item is in the <strong>#{relation_type} </strong> of the  #{resource_type}"
                       when /^datacite/
-                        if is_subj?(attributes.dig("doi"), event.dig("subjId").gsub("https://doi.org/",""))
-                          "Accoding to  <strong>#{repository} </strong> this item <strong> #{event.dig('relationTypeId').underscore.humanize} </strong> the  #{attributes.dig('types','resourceTypeGeneral')} "
+                        if is_subj?(attributes.dig("doi"), event.dig("objId").gsub("https://doi.org/",""))
+                          "Accoding to  <strong>#{repository} </strong> this item <strong> #{relation_type} </strong> the  #{resource_type} "
                         else
-                          "Accoding to  <strong>#{repository} </strong> the following #{attributes.dig('types','resourceTypeGeneral')}  <strong> #{event.dig('relationTypeId').underscore.humanize} </strong> this item "
+                          "Accoding to  <strong>#{repository} </strong> the following #{resource_type}  <strong> #{relation_type} </strong> the item on this page "
                         end
                       end
 
@@ -644,7 +665,7 @@ module Sinatra
         " : "
       end
 
-      source_label + citation
+      source_label + citation + " These #{event.dig("subjId")} and #{event.dig("objId")}" 
     end
   end
 end
