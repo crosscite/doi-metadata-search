@@ -30,7 +30,7 @@ module Sinatra
 
     def call_metrics dois, options={}
 
-      url = "#{ENV['API_URL']}/events?doi=#{dois.join(",")}&" + URI.encode_www_form({"extra"=> true, "page[size]"=> 25})
+      url = "#{ENV['API_URL']}/events?doi=#{dois.join(",")}&" + URI.encode_www_form({"extra"=> true,"aggregations"=>"query_aggregations,metrics_aggregations", "page[size]"=> 25})
       puts url
       # dependency injection
       response = options[:response].present? ? options[:response] : Maremma.get(url, headers: {"Accept"=> "application/vnd.api+json; version=2"}, timeout: 20)
