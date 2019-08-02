@@ -173,7 +173,7 @@ get %r{/works/(.+)} do
 
 
   @work[:metrics] = reduce_aggs(events[:meta], {yop: @work.dig(:data, "attributes","published").to_i})
-  @work[:metrics][:citaition_counts] = events[:meta].fetch('uniqueCitations', [])
+  # @work[:metrics].merge(citaition_counts: events[:meta].fetch('uniqueCitations', []))
 
   @work[:chart] = events[:meta].fetch('relationTypes', [])
   @work[:citation_chart] = events[:meta].fetch('doisCitations', [])
