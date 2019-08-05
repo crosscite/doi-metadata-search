@@ -4,7 +4,10 @@
 .panel.panel-default
   .panel-body
     %h3.work
+    - puts "dfglhfdgjhkfdg"
+    - puts item
     - if item["id"].present?
+      = doi = @params["id"] == item.dig("attributes","subjId").gsub("https://doi.org/", "")? item.dig("attributes","objId") : item.dig("attributes","subjId")
       = format_pseudo_citation(item)
-      %a{:id => "citation-link", :href =>  "https://doi.org/#{item.dig(:metadata,'id')}" , :target=>"_blank", :title => "Go to landing page" } 
-        = "https://doi.org/#{item.dig(:metadata,'id')}"
+      %a{:id => "citation-link", :href =>  "#{doi}" , :target=>"_blank", :title => "Go to landing page" } 
+        = "#{doi}"
