@@ -6,23 +6,32 @@
 - new_params = params[:model] == "works" && params["id"] == attributes.fetch("doi", nil) ? params.merge(external_link: true) : params
 - title = attributes["title"].to_s.gsub(/"/, '\"')
 - views =  metrics.to_h.fetch("unique-dataset-investigations-regular",0) 
+-# - views =  metrics.fetch(:views_histogram,{}).fetch("count",0).to_i 
 - total_views =  metrics.to_h.fetch("total-dataset-investigations-regular",0) 
 - downloads =   metrics.to_h.fetch("unique-dataset-requests-regular",0) 
+-# - downloads =  metrics.fetch(:downloads_histogram,{}).fetch("count",0).to_i 
 - total_downloads =  metrics.to_h.fetch("total-dataset-requests-regular",0) 
 - resolutions =  metrics.to_h.fetch("unique-resolutions-regular",0).to_i + metrics.to_h.fetch("unique-resolutions-machine","--").to_i
-- citations = filter_relation_types metrics ###metrics.fetch("uniqueCitations",0).to_i
-- if @work.present? && chart_data?(chart, "unique-dataset-investigations-regular") 
-  - gon.chart_views = process_chart_data chart, ["unique-dataset-investigations-regular"], attributes.fetch("published", "").to_i
+-# - citations = filter_relation_types metrics ###metrics.fetch("uniqueCitations",0).to_i
+-# - citations =  metrics.fetch(:citations,{}).fetch("citations",0).to_i 
+- citations =  metrics.fetch(:citations,0).to_i 
+-# - if @work.present? && chart_data?(chart, "unique-dataset-investigations-regular") 
+-#   - gon.chart_views = process_chart_data chart, ["unique-dataset-investigations-regular"], attributes.fetch("published", "").to_i
+- if @work.present? && metrics.fetch(:views_histogram,{}).fetch("yearMonths",[]).any?
+  - gon.chart_views = metrics.fetch(:views_histogram,{}).fetch("yearMonths",[])
   - gon.yop = attributes.fetch("published", "").to_i
-- if @work.present? && chart_data?(chart, "unique-dataset-requests-regular") 
-  - gon.chart_downloads = process_chart_data chart, ["unique-dataset-requests-regular"], attributes.fetch("published", "").to_i
+- if @work.present? && metrics.fetch(:downloads_histogram,{}).fetch("yearMonths",[]).any?
+  - gon.chart_downloads = metrics.fetch(:downloads_histogram,{}).fetch("yearMonths",[])
   - gon.yop = attributes.fetch("published", "").to_i
+
+-# - if @work.present? && chart_data?(chart, "unique-dataset-requests-regular") 
+  -# - gon.chart_downloads = process_chart_data chart, ["unique-dataset-requests-regular"], attributes.fetch("published", "").to_i
+  -# - gon.yop = attributes.fetch("published", "").to_i
 - if @work.present? && citations.positive?
-  - gon.chart_citations = citation_chart["years"]
+  - gon.chart_citations = metrics.fetch(:citations_histogram,{}).fetch("years",[])
   - gon.yop = attributes.fetch("published", "").to_i
 - if ENV['RACK_ENV'] == 'production' ### TODO: Remove soon. set temporaly to send to production 
   - citations = 0 ### TODO: Remove soon. set temporaly to send to production 
-
 
 .panel.panel-default
   .panel-body
