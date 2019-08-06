@@ -665,7 +665,7 @@ module Sinatra
         " : "
       end
 
-      source_label + citation + " These #{event.dig("subjId")} and #{event.dig("objId")}" 
+      source_label + citation 
     end
   end
 end
