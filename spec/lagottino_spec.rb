@@ -19,9 +19,9 @@ describe "Lagottino", type: :model, vcr: true, match_requests_on: [:method, :pat
     it "with works" do
       items = subject.get_works(query: "10.7272/q6g15xs4")[:data]
       metrics = JSON.parse(File.read(fixture_path+"metrics_events.json"))
-      merged_metrics = subject.merge_metrics(items, metrics.dig("meta","doisRelationTypes"))
-      expect(merged_metrics.length).to eq(1)
-      expect(merged_metrics.first.dig("metrics")).to be_a(Hash)
+      merged_metrics = subject.merge_metrics(items.first, metrics.dig("meta","doisRelationTypes"))
+      expect(merged_metrics.length).to eq(6)
+      expect(merged_metrics).to be_a(Hash)
     end
   end
   
