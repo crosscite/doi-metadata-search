@@ -15,20 +15,15 @@
 -# - citations = filter_relation_types metrics ###metrics.fetch("uniqueCitations",0).to_i
 -# - citations =  metrics.fetch(:citations,{}).fetch("citations",0).to_i 
 - citations =  metrics.fetch(:citations,0).to_i 
--# - if @work.present? && chart_data?(chart, "unique-dataset-investigations-regular") 
--#   - gon.chart_views = process_chart_data chart, ["unique-dataset-investigations-regular"], attributes.fetch("published", "").to_i
 - if @work.present? && metrics.fetch(:views_histogram,{}).fetch("yearMonths",[]).any?
   - gon.chart_views = metrics.fetch(:views_histogram,{}).fetch("yearMonths",[])
   - gon.yop = attributes.fetch("published", "").to_i
 - if @work.present? && metrics.fetch(:downloads_histogram,{}).fetch("yearMonths",[]).any?
   - gon.chart_downloads = metrics.fetch(:downloads_histogram,{}).fetch("yearMonths",[])
   - gon.yop = attributes.fetch("published", "").to_i
-
--# - if @work.present? && chart_data?(chart, "unique-dataset-requests-regular") 
-  -# - gon.chart_downloads = process_chart_data chart, ["unique-dataset-requests-regular"], attributes.fetch("published", "").to_i
-  -# - gon.yop = attributes.fetch("published", "").to_i
 - if @work.present? && citations.positive?
-  - gon.chart_citations = metrics.fetch(:citations_histogram,{}).fetch("years",[])
+  - citations_chart = remove_duplicated_counts(citations,metrics.fetch(:citations_histogram,{}), attributes.fetch("published", "").to_i )
+  - gon.chart_citations = citations_chart.fetch("years",[])
   - gon.yop = attributes.fetch("published", "").to_i
 - if ENV['RACK_ENV'] == 'production' ### TODO: Remove soon. set temporaly to send to production 
   - citations = 0 ### TODO: Remove soon. set temporaly to send to production 

@@ -18,8 +18,13 @@ module Sinatra
         end
       end.compact
       metrics = call_metrics(dois)
-      usage_metrics = merge_metrics(items, metrics.dig(:meta, 'doisUsageTypes'))
-      merge_metrics(usage_metrics, metrics.dig(:meta, 'doisRelationTypes'))
+ 
+      items.map! do |item|
+        item.merge!({"metrics"=>{}})
+        item["metrics"].merge!(merge_metrics(item, metrics.dig(:meta, 'doisUsageTypes')))
+        item["metrics"].merge!(merge_citations(item, metrics.dig(:meta, 'uniqueCitations')))
+        item
+      end
     end
 
     def normalize_doi(doi)
@@ -41,13 +46,16 @@ module Sinatra
       }
     end
 
-    def merge_metrics(items, metrics)
-      items.map do |item|
-        doi = normalize_doi(item.fetch('attributes', {}).fetch('doi', "item"))
-        metric = Array(metrics).find { |c| c.fetch('id', {}) == doi } || {}
-        item["metrics"] = transform_metrics_array(metric.fetch("relationTypes",[]))
-        item
-      end
+    def merge_metrics(item, metrics)
+      doi = normalize_doi(item.fetch('attributes', {}).fetch('doi', "item"))
+      metric_hash = Array(metrics).find { |c| c.fetch('id', {}) == doi } || {}
+      transform_metrics_array(metric_hash.fetch("relationTypes",[]))
+    end
+
+    def merge_citations(item, metrics)
+      doi = (item.fetch('attributes', {}).fetch('doi', "item"))
+      metric_hash = Array(metrics).find { |c| c.fetch('id', {}) == doi } || {}
+      {citations: metric_hash["citations"]}
     end
   end
   helpers Lagottino

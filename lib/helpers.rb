@@ -621,7 +621,7 @@ module Sinatra
 
     def remove_duplicated_counts(unique_citations, chart_data, yop)
       diff = chart_data.dig('count') - unique_citations
-      return nil unless diff.positive?
+      return chart_data unless diff.positive?
 
       ### the criteria to remove duplicated is to remove those from the same year of publication.
       years = chart_data.dig("years").map do |year|  
