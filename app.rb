@@ -173,8 +173,8 @@ get %r{/works/(.+)} do
 
 
   @work[:metrics] = reduce_aggs(events[:meta], {yop: @work.dig(:data, "attributes","published").to_i})
-  # @work[:metrics].merge!(citations: events[:meta].fetch('uniqueCitations', []).find {|x| x['id'] == link } || {})
-  @work[:metrics].merge!(citations: events[:meta].fetch('doisCitations', {}).fetch("count",0))
+  @work[:metrics].merge!(citations: (events[:meta].fetch('uniqueCitations', []).find {|x| x['id'] == doi } || {}))
+  # @work[:metrics].merge!(citations: events[:meta].fetch('doisCitations', {}).fetch("count",0))
   @work[:metrics].merge!(citations_histogram: events[:meta].fetch('citationsHistogram', {}))
   @work[:metrics].merge!(views_histogram: events[:meta].fetch('viewsHistogram', {}))
   @work[:metrics].merge!(downloads_histogram: events[:meta].fetch('downloadsHistogram', {}))

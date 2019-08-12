@@ -625,9 +625,13 @@ module Sinatra
 
       ### the criteria to remove duplicated is to remove those from the same year of publication.
       years = chart_data.dig("years").map do |year|  
-        year["sum"] =- diff  if year["id"] == yop 
+        unless diff == 0
+          year["sum"] = year["sum"] - 1.0  if year["sum"] > 1.0 
+          diff =- 1
+        end
         year
       end
+
       {"count" => unique_citations, "years" => years}
     end
 
