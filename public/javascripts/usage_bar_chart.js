@@ -38,7 +38,7 @@
       var length = 120 //d3.time.months(startDate, endDate).length;
       var firstLabel = formatMonthYear(startDate)
       var lastLabel = formatMonthYear(endDate)
-      width = 840
+      width = barWidth*length;
 
       return {
         width: width,
@@ -79,7 +79,8 @@
 
     function bar2Viz(data, div, count, format, displayMode, yop) {
 
-      let barWidth = 6; // commit 4c301b2fc14e9447e60496d4c9be1e152ab268f8
+      let barWidth = (document.getElementById("myTabContent").offsetWidth*0.95)/120; 
+      // let barWidth = 6; // commit 4c301b2fc14e9447e60496d4c9be1e152ab268f8
       var lastDataPoint = new Date(data[data.length - 1].id);
       var today = new Date();
       let setup;
@@ -145,7 +146,7 @@
         setup = setupCitations(data, yop, barWidth )
       }
       else{
-        setup = setupUsage(data, yop)
+        setup = setupUsage(data, yop, barWidth)
       }
 
 
