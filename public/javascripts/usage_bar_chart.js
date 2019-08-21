@@ -16,7 +16,7 @@
 
 
 
-    function setupUsage(data, yop, barWidth){
+    function setupUsage(data, yop, chartWidth){
       if(Number.isInteger("full") == false){
         var startDate = new Date(data[0].id);
         var today = new Date();
@@ -35,13 +35,13 @@
 
 
       var domain = [startDate, endDate];
-      var length = 120 //d3.time.months(startDate, endDate).length;
+      var length = bins(yop,120) //d3.time.months(startDate, endDate).length;
       var firstLabel = formatMonthYear(startDate)
       var lastLabel = formatMonthYear(endDate)
-      width = barWidth*length;
 
       return {
-        width: width,
+        width: chartWidth,
+        barWidth: chartWidth/length,
         firstLabel: firstLabel,
         lastLabel: lastLabel,
         length: length,
@@ -50,7 +50,8 @@
       
     }
 
-    function setupCitations(data, yop, barWidth ){
+    function setupCitations(data, yop, chartWidth ){
+
       var today = new Date();
       var endDate = new Date(today.setMonth( today.getMonth())); // c
       var fistDataPoint = new Date(data[0].id+"-01-01");
@@ -63,13 +64,13 @@
       var startTime = startDate
       var endTime = today;
       var domain = [startTime, endTime];
-      var length = 120;
+      var length = bins(yop,10);
       var firstLabel = formatYear(startDate)
       var lastLabel = formatYear(endDate)
-      width = barWidth*length;
 
       return {
-        width: width,
+        width: chartWidth,
+        barWidth: chartWidth/10,
         firstLabel: firstLabel,
         lastLabel: lastLabel,
         length: length,
@@ -77,41 +78,36 @@
       }
     }
 
+    function monthDiff(d1, d2) {
+      var months;
+      months = (d2.getFullYear() - d1.getFullYear()) * 12;
+      months -= d1.getMonth() + 1;
+      months += d2.getMonth();
+      return months <= 0 ? 0 : months;
+    }
+  
+
+    function bins(yop, maxBin) {
+      var today = new Date();
+      var yopDate = new Date(yop+"-01-01");
+      
+      if(monthDiff(yopDate, today) > 0){
+        if(monthDiff(yopDate, today) < maxBin){
+          return monthDiff(yopDate, today)
+        }
+      }else{
+        return maxBin*.90;
+      }
+      return maxBin;
+    }
+
     function bar2Viz(data, div, count, format, displayMode, yop) {
 
-      let barWidth = (document.getElementById("myTabContent").offsetWidth*0.95)/120; 
-      // let barWidth = 6; // commit 4c301b2fc14e9447e60496d4c9be1e152ab268f8
       var lastDataPoint = new Date(data[data.length - 1].id);
       var today = new Date();
       let setup;
 
 
-  
-
-      // if(Number.isInteger(displayMode) == false){
-      //   var startDate = new Date(data[0].id);
-      //   var today = new Date();
-      //   var endDate = new Date(today.setMonth( today.getMonth())); // creates a bit of space at the end
-      // }
-      // else {
-      //   var endDate = new Date(lastDataPoint.setMonth( lastDataPoint.getMonth() + 2 ));
-      //   var startDate = new Date(lastDataPoint.setMonth( lastDataPoint.getMonth() - displayMode ));
-      // }
-
-      // if(yop){
-      //   var startDate = new Date(yop+"-01-01");
-      // }
-
-      // if(displayMode == "citations"){
-      //   var today = new Date();
-      //   var endDate = new Date(today.setMonth( today.getMonth())); // c
-      //   var fistDataPoint = new Date(data[0].id+"-01-01");
-      //   var yopDate = new Date(yop+"-01-01");
-      //   var startDate = (fistDataPoint > yopDate) ? yopDate : fistDataPoint
-      //   console.log(fistDataPoint)
-      //   console.log(yopDate)
-      //   console.log(data[0].id)
-      // }
 
       var timeStamp = null;
       let formatYear = d3.time.format.utc("%Y");
@@ -122,31 +118,12 @@
       let height = 200
       var margin = { top: 10, right: 20, bottom: 20, left: 20 };
  
-      // if (format === "days") {
-      //   var domain = [startDate, endDate];
-      //   var length = 30;
-      // } else if (format === "months") {
-      //   var domain = [startDate, endDate];
-      //   var length = 120 //d3.time.months(startDate, endDate).length;
-      //   var firstLabel = formatMonthYear(startDate)
-      //   var lastLabel = formatMonthYear(endDate)
-      //   // width = 840;
-      //   width = barWidth*length;
-      // } else if (format === "years"){
-      //   var startTime = startDate
-      //   var endTime = today;
-      //   var domain = [startTime, endTime];
-      //   var length = 120;
-      //   var firstLabel = formatYear(startDate)
-      //   var lastLabel = formatYear(endDate)
-      //   width = barWidth*length;
-      // }
-
+      let chartWidth = document.getElementById("myTabContent").offsetWidth*0.95
       if(displayMode == "citations"){
-        setup = setupCitations(data, yop, barWidth )
+        setup = setupCitations(data, yop, chartWidth )
       }
       else{
-        setup = setupUsage(data, yop, barWidth)
+        setup = setupUsage(data, yop, chartWidth)
       }
 
 
@@ -205,7 +182,7 @@
           } else {
             return x(new Date(Date.parse(d.id + ':00:00Z')));
           }})
-        .attr("width", barWidth+1)
+        .attr("width", setup.barWidth*.92)
         .attr("y", function(d) { return y(d.sum); })
         .attr("height", function(d) { return height - y(d.sum); });
 
@@ -215,7 +192,7 @@
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis);
 
-      var last_tick = width
+      var last_tick = chartWidth
       if(lastDataPoint.getMonth() == today.getMonth()){
           last_tick = chart.selectAll("rect").pop().pop().x.animVal.value
       }
@@ -326,6 +303,55 @@ $(document).ready(function(e) {
 
     
     tabs_interaction()
+
+    console.log(views)
+
+  //   views = [
+  //     {id: "2017-01", title: "April 2018", sum: 337},
+  //     {id: "2017-02", title: "April 2018", sum: 337},
+  //     {id: "2017-03", title: "April 2018", sum: 337},
+  //     {id: "2017-05", title: "April 2018", sum: 337},
+  //     {id: "2017-06", title: "April 2018", sum: 337},
+  //     {id: "2017-07", title: "April 2018", sum: 337},
+  //     {id: "2017-08", title: "April 2018", sum: 337},
+  //     {id: "2017-09", title: "April 2018", sum: 337},
+  //     {id: "2017-10", title: "April 2018", sum: 337},
+  //     {id: "2017-11", title: "April 2018", sum: 337},
+  //     {id: "2017-12", title: "April 2018", sum: 337},
+  //     {id: "2018-01", title: "April 2018", sum: 337},
+  //     {id: "2018-04", title: "April 2018", sum: 337},
+  //     {id: "2018-05", title: "April 2018", sum: 34},
+  //     {id: "2018-06", title: "April 2018", sum: 337},
+  //     {id: "2018-07", title: "April 2018", sum: 5},
+  //     {id: "2018-08", title: "April 2018", sum: 337},
+  //     {id: "2018-09", title: "April 2018", sum: 337},
+  //     {id: "2018-10", title: "April 2018", sum: 337},
+  //     {id: "2018-11", title: "April 2018", sum: 4},
+  //     {id: "2018-12", title: "April 2018", sum: 337},
+  //     {id: "2019-01", title: "April 2018", sum: 337},
+  //     {id: "2019-02", title: "April 2018", sum: 337},
+  //     {id: "2019-03", title: "April 2018", sum: 337},
+  //     {id: "2019-05", title: "April 2018", sum: 337},
+  //     {id: "2019-06", title: "April 2018", sum: 337},
+  //     {id: "2019-07", title: "April 2018", sum: 337},
+  //     {id: "2019-08", title: "April 2018", sum: 337},
+  // ]
+
+  // // yop="2009"
+
+  //     citations = [
+  //       {id: "2009", title: "April 2018", sum: 337},
+  //       {id: "2010", title: "April 2018", sum: 337},
+  //       {id: "2011", title: "April 2018", sum: 337},
+  //       {id: "2012", title: "April 2018", sum: 337},
+  //       {id: "2013", title: "April 2018", sum: 337},
+  //       {id: "2014", title: "April 2018", sum: 337},
+  //       {id: "2015", title: "April 2018", sum: 337},
+  //     {id: "2016", title: "April 2018", sum: 337},
+  //     {id: "2017", title: "April 2018", sum: 337},
+  //     {id: "2018", title: "April 2018", sum: 337},
+  //     {id: "2019", title: "April 2018", sum: 337}
+  //   ]
 
     if(views){bar2Viz(views,"#views-chart","sum","months","full",yop); }
     if(downloads){bar2Viz(downloads,"#downloads-chart","sum","months","full",yop); }
