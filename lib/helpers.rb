@@ -639,7 +639,7 @@ module Sinatra
       event      = item.dig("attributes")
       meta       = item.fetch(:metadata,{})
 
-      return "Accoding to  <strong>Crossref </strong> this item is in the <strong>#{event.dig('relationTypeId').underscore.humanize} </strong> of:" if meta.fetch("attributes", {}).blank?
+      return "According to  <strong>Crossref </strong> this item is in the <strong>#{event.dig('relationTypeId').underscore.humanize} </strong> of:" if meta.fetch("attributes", {}).blank?
 
       attributes = item.dig(:metadata,"attributes")
       published  = attributes.fetch('publicationYear', '')
@@ -654,12 +654,12 @@ module Sinatra
 
       source_label =  case event["sourceId"] 
                       when 'crossref'
-                        "Accoding to  <strong>Crossref </strong> this item is in the <strong>#{relation_type} </strong> of the  #{resource_type}"
+                        "According to  <strong>Crossref </strong> this item is in the <strong>#{relation_type} </strong> of the  #{resource_type}"
                       when /^datacite/
                         if is_subj?(attributes.dig("doi"), event.dig("objId").gsub("https://doi.org/",""))
-                          "Accoding to  <strong>#{repository} </strong> this item <strong> #{relation_type} </strong> the  #{resource_type} "
+                          "According to  <strong>#{repository} </strong> this item <strong> #{relation_type} </strong> the  #{resource_type} "
                         else
-                          "Accoding to  <strong>#{repository} </strong> the following #{resource_type}  <strong> #{relation_type} </strong> the item on this page "
+                          "According to  <strong>#{repository} </strong> the following #{resource_type}  <strong> #{relation_type} </strong> the item on this page "
                         end
                       end
 
