@@ -639,7 +639,7 @@ module Sinatra
       event      = item.dig("attributes")
       meta       = item.fetch(:metadata,{})
 
-      return "According to  <strong>Crossref </strong> this item is in the <strong>#{event.dig('relationTypeId').underscore.humanize} </strong> of:" if meta.fetch("attributes", {}).blank?
+      return "According to  <strong>DataCite </strong> this item is in the <strong>#{event.dig('relationTypeId').underscore.humanize} </strong> of:" if meta.fetch("attributes", {}).blank?
 
       attributes = item.dig(:metadata,"attributes")
       published  = attributes.fetch('publicationYear', '')
