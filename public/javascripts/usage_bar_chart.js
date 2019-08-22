@@ -57,10 +57,8 @@
       var fistDataPoint = new Date(data[0].id+"-01-01");
       var yopDate = new Date(yop+"-01-01");
       var startDate = (fistDataPoint > yopDate) ? yopDate : fistDataPoint
-      console.log(fistDataPoint)
-      console.log(yopDate)
-      console.log(data[0].id)
-
+      var startDate = (today.getFullYear() - startDate.getFullYear()) < 10 ? startDate : new Date(startDate.setYear( today.getFullYear() - 10 ));
+  
       var startTime = startDate
       var endTime = today;
       var domain = [startTime, endTime];
@@ -106,8 +104,6 @@
       var lastDataPoint = new Date(data[data.length - 1].id);
       var today = new Date();
       let setup;
-
-
 
       var timeStamp = null;
       let formatYear = d3.time.format.utc("%Y");
