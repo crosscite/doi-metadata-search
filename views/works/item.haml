@@ -63,7 +63,7 @@
         %a.usage-counts.citations{:href => "#{works_action(item,{})+'#citations-tab'}"}
           .fa.fa-quote-right
           = "#{citations} Citations"
-      %div.col-md-4
+      -# %div.col-md-4
       -# %doi-metrics-component{"data-input": widget_data, doi:attributes["doi"],  display:"datacite"}
       - if ((views+downloads).zero? && @work.blank?)
         %div.col-md-auto
