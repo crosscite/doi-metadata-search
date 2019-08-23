@@ -27,7 +27,7 @@
   - gon.yop = attributes.fetch("published", "").to_i
 - if ENV['RACK_ENV'] == 'production' ### TODO: Remove soon. set temporaly to send to production 
   - citations = 0 ### TODO: Remove soon. set temporaly to send to production 
--# - widget_data = "{\"views\":#{views}, \"downloads\":#{downloads}, \"citations\":#{citations}}"
+- widget_data = "{\"views\":#{views}, \"downloads\":#{downloads}, \"citations\":#{citations}}"
 
 .panel.panel-default
   .panel-body
@@ -47,24 +47,24 @@
           = license_img(attributes["license"])
 
   - if ((views+downloads+citations).positive?)
-    .panel-footer
-      - if views.positive?
-        %a.usage-counts.usage-views{:href => "#{works_action(item,{})+'#views-tab'}"}
-          .fa.fa-eye
-          = "#{views} Views"
-      - if downloads.positive?
-        %a.usage-counts.usage-downloads{:href => "#{works_action(item,{})+'#downloads-tab'}"}
-          .fa.fa-download            
-          = "#{downloads} Downloads"
-          -# %span.usage-counts
-          -#   .fa.fa-bolt
-          -#   = "#{resolutions} Resolutions"
-      - if citations.positive?
-        %a.usage-counts.citations{:href => "#{works_action(item,{})+'#citations-tab'}"}
-          .fa.fa-quote-right
-          = "#{citations} Citations"
-      -# %div.col-md-4
-      -# %doi-metrics-component{"data-input": widget_data, doi:attributes["doi"],  display:"datacite"}
+    .panel-footer{:style=>"display: grid;text-align: left;grid-template-columns: 400px max-content 200px;"}
+      -# - if views.positive?
+      -#   %a.usage-counts.usage-views{:href => "#{works_action(item,{})+'#views-tab'}"}
+      -#     .fa.fa-eye
+      -#     = "#{views} Views"
+      -# - if downloads.positive?
+      -#   %a.usage-counts.usage-downloads{:href => "#{works_action(item,{})+'#downloads-tab'}"}
+      -#     .fa.fa-download            
+      -#     = "#{downloads} Downloads"
+      -#     -# %span.usage-counts
+      -#     -#   .fa.fa-bolt
+      -#     -#   = "#{resolutions} Resolutions"
+      -# - if citations.positive?
+      -#   %a.usage-counts.citations{:href => "#{works_action(item,{})+'#citations-tab'}"}
+      -#     .fa.fa-quote-right
+      -#     = "#{citations} Citations"
+      -# %div.col-md-6
+      %doi-metrics-component{"data-input": widget_data, doi:attributes["doi"],  display:"datacite"}
       - if ((views+downloads).zero? && @work.blank?)
         %div.col-md-auto
           %span.usage-info
