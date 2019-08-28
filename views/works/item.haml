@@ -48,29 +48,13 @@
 
   - if ((views+downloads+citations).positive?)
     .panel-footer{:style=>"display: grid;text-align: left;grid-template-columns: 400px max-content 200px;"}
-      -# - if views.positive?
-      -#   %a.usage-counts.usage-views{:href => "#{works_action(item,{})+'#views-tab'}"}
-      -#     .fa.fa-eye
-      -#     = "#{views} Views"
-      -# - if downloads.positive?
-      -#   %a.usage-counts.usage-downloads{:href => "#{works_action(item,{})+'#downloads-tab'}"}
-      -#     .fa.fa-download            
-      -#     = "#{downloads} Downloads"
-      -#     -# %span.usage-counts
-      -#     -#   .fa.fa-bolt
-      -#     -#   = "#{resolutions} Resolutions"
-      -# - if citations.positive?
-      -#   %a.usage-counts.citations{:href => "#{works_action(item,{})+'#citations-tab'}"}
-      -#     .fa.fa-quote-right
-      -#     = "#{citations} Citations"
-      -# %div.col-md-6
-      %doi-metrics-component{"data-input": widget_data, doi:attributes["doi"],  display:"datacite"}
+      %data-metrics-badge{"data-input": widget_data, doi:attributes["doi"],  display:"datacite"}
       - if ((views+downloads).zero? && @work.blank?)
         %div.col-md-auto
           %span.usage-info
             .fa.fa-info-circle 
           %a
-            = "This data center is not currently reporting usage information."
+            = "<small> This data center is not currently reporting usage information.</small> "
   - else
     - unless (@work.present?)
       .panel-footer
