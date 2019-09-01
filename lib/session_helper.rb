@@ -1,10 +1,11 @@
 require 'sinatra/base'
 require 'sinatra/json'
+require 'uri'
 
 module Sinatra
   module SessionHelper
     def current_user
-      @current_user ||= cookies[:_datacite].present? && ::JSON.parse(cookies[:_datacite]).dig("authenticated", "access_token").present? ? User.new(cookies[:_datacite]) : nil
+      @current_user ||= cookies[:_datacite].present? && ::JSON.parse(URI.decode(cookies[:_datacite])).dig("authenticated", "access_token") ? User.new(cookies[:_datacite]) : nil
     end
 
     def user_signed_in?
