@@ -1,12 +1,13 @@
 require 'sinatra/base'
 require 'jwt'
 require 'sinatra/json'
+require 'uri'
 
 class User
   attr_accessor :name, :uid, :email, :jwt, :role_id, :orcid, :provider_id, :client_id, :beta_tester
 
   def initialize(cookie)
-    token = ::JSON.parse(cookie).dig("authenticated", "access_token")
+    token = ::JSON.parse(URI.decode(cookie)).to_h.dig("authenticated", "access_token")
     return false unless token.present?
 
     payload = decode_token(token)
@@ -84,5 +85,24 @@ class User
     }.compact
 
     encode_token(payload)
+  end
+
+  def self.generate_cookie(attributes={})
+    jwt = generate_token(attributes)
+
+    expires_in = 30 * 24 * 3600
+    expires_at = Time.now.to_i + expires_in
+    value = '{"authenticated":{"authenticator":"authenticator:oauth2","access_token":"' + jwt + '","expires_in":' + expires_in.to_s + ',"expires_at":' + expires_at.to_s + '}}'
+    
+    domain = if ENV["RACK_ENV"] == "production"
+               ".datacite.org"
+             elsif ENV["RACK_ENV"] == "stage"
+               ".test.datacite.org"
+             else
+               ".lvh.me"
+             end
+    
+    # URI.encode optional parameter needed to encode colon
+    URI.encode(value, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))
   end
 end

@@ -102,10 +102,10 @@ module Sinatra
         params =
         {
           id: params.fetch(:id, nil),
-          'source-id'        => params.fetch('source-id', nil),
+          # key source-id is duplicated
+          # 'source-id'        => params.fetch('source-id', nil),
           'subj-id'          => params.fetch('subj-id', nil),
           'relation-type-id' => relations.join(','),
-          'page[size]'       => params.fetch('page[size]', nil),
           'obj-id'           => params.fetch('obj-id', nil),
           'doi'              => params.fetch('doi', nil),
           'occurredAt'       => params.fetch('occurred_in', nil), 

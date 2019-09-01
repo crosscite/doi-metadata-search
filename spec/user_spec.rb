@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe User, vcr: true do
-  let(:jwt) { User.generate_token(role_id: "staff_admin") }
-  let(:user) { User.new(jwt) }
+  let(:cookie) { User.generate_cookie(role_id: "staff_admin") }
+  let(:user) { User.new(cookie) }
 
   subject { user }
 
