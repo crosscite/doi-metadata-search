@@ -1,10 +1,12 @@
 require 'sinatra/base'
 require 'jwt'
+require 'sinatra/json'
 
 class User
   attr_accessor :name, :uid, :email, :jwt, :role_id, :orcid, :provider_id, :client_id, :beta_tester
 
-  def initialize(token)
+  def initialize(cookie)
+    token = ::JSON.parse(cookie).dig("authenticated", "access_token")
     return false unless token.present?
 
     payload = decode_token(token)
@@ -29,6 +31,11 @@ class User
   # Helper method to check for admin or staff user
   def is_admin_or_staff?
     ["admin", "staff"].include?(role)
+  end
+
+  # Helper method to check for personal account
+  def is_person?
+    uid.start_with?("0")
   end
 
   # encode token using SHA-256 hash algorithm

@@ -141,7 +141,8 @@ $(document).ready(function() {
   };
 
   var performClaim = function($popover) {
-    var jwt = getCookieValue('_datacite_jwt');
+    var cookie = getCookieValue('_datacite');
+    var jwt = JSON.parse(cookie).authenticated.access_token
 
     $.ajax({
         url: $popover.attr('data-url'),

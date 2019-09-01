@@ -34,24 +34,36 @@
                   = current_user.name
                   %span.caret
                 %ul.dropdown-menu{role: 'menu'}
-                  %li
-                    %a{:href => "#{ENV['JWT_HOST']}/users/me"}
-                      %i.fa.fa-user
-                      Settings
-                  %li
-                    %a{:href => "/people/#{current_user.orcid}"}
-                      %i.fa.fa-files-o
-                      Works
-                  %li.divider
-                  %li
-                    %a{:href => "#{ENV['ORCID_URL']}/#{current_user.orcid}"}
-                      %i.fa.fa-external-link
-                      ORCID Record
-                  %li.divider
+                  - if is_person?
                     %li
-                      %a{:href => "#{ENV['JWT_HOST']}/sign_out"}
+                      %a{:href => "#{ENV['JWT_HOST']}/users/me"}
+                        %i.fa.fa-user
+                        Settings
+                    %li
+                      %a{:href => "/people/#{current_user.orcid}"}
+                        %i.fa.fa-files-o
+                        Works
+                    %li.divider
+                    %li
+                      %a{:href => "#{ENV['ORCID_URL']}/#{current_user.orcid}"}
+                        %i.fa.fa-external-link
+                        ORCID Record
+                    %li.divider
+                      %li
+                        %a{:href => "#{ENV['JWT_HOST']}/sign_out"}
+                          %i.fa.fa-sign-out
+                          Sign out
+                  - else
+                    %li
+                      %a{:href => "#{ENV['FABRICA_URL']}/settings"}
+                        %i.fa.fa-user
+                        Settings
+                    %li.divider
+                    %li
+                      %a{:href => "#{ENV['FABRICA_URL']}/sign-out"}
                         %i.fa.fa-sign-out
                         Sign out
+            
             - else
               %li
                 %a.btn.btn-sm{:href => "#{ENV['JWT_HOST']}/sign_in", id: 'sign-in'}
