@@ -33,18 +33,18 @@ module Sinatra
       "https://doi.org/#{doi}" if doi.present?
     end
 
-    def call_metrics dois, options={}
+    def call_metrics(dois, options={})
       relations = INCLUDED_RELATION_TYPES + USAGE_RELATION_TYPES 
       params = {
         "extra"            => true,
-        'source-id'        => INCLUDED_SOURCES.join(','), 
-        'relation-type-id' => relations.join(','),
+        "doi"              => dois.join(","),
+        "source-id"        => INCLUDED_SOURCES.join(','), 
+        "relation-type-id" => relations.join(','),
         "aggregations"     => "query_aggregations,metrics_aggregations", 
         "page[size]"       => 25
       }
 
-      url = "#{ENV['API_URL']}/events?doi=#{dois.join(",")}&" + URI.encode_www_form(params)
-      puts url
+      url = "#{ENV['API_URL']}/events?" + URI.encode_www_form(params)
       # dependency injection
       response = options[:response].present? ? options[:response] : Maremma.get(url, headers: {"Accept"=> "application/vnd.api+json; version=2"}, timeout: 20)
      {
