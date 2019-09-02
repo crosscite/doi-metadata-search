@@ -76,7 +76,7 @@
         %i.fa.fa-quote-left
         Cite
 
-    - if user_signed_in? && attributes["member-id"].to_i == 0
+    - if user_signed_in? && is_person?
       = haml :'works/claim', locals: { item: item }
 
 - if @work.present? 
