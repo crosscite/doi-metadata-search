@@ -37,7 +37,7 @@
                   - if is_person?
                     %li
                       %a{:href => "#{ENV['JWT_HOST']}/users/me"}
-                        %i.fa.fa-user
+                        %i.fa.fa-cog
                         Settings
                     %li
                       %a{:href => "/people/#{current_user.orcid}"}
@@ -54,9 +54,11 @@
                           %i.fa.fa-sign-out
                           Sign out
                   - else
+                    %li.dropdown-header
+                      = "Role: " + current_user.role_id 
                     %li
                       %a{:href => "#{ENV['FABRICA_URL']}/settings"}
-                        %i.fa.fa-user
+                        %i.fa.fa-cog
                         Settings
                     %li.divider
                     %li
