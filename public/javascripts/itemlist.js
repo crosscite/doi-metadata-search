@@ -142,7 +142,7 @@ $(document).ready(function() {
 
   var performClaim = function($popover) {
     var cookie = getCookieValue('_datacite');
-    var jwt = JSON.parse(cookie).authenticated.access_token
+    var jwt = JSON.parse(decodeURIComponent(cookie)).authenticated.access_token
 
     $.ajax({
         url: $popover.attr('data-url'),
