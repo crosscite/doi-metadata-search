@@ -4,7 +4,7 @@ require 'sinatra/json'
 require 'uri'
 
 class User
-  attr_accessor :name, :uid, :email, :jwt, :role_id, :orcid, :provider_id, :client_id, :beta_tester
+  attr_accessor :name, :uid, :email, :jwt, :role_id, :role_name, :orcid, :provider_id, :client_id, :beta_tester
 
   def initialize(cookie)
     token = ::JSON.parse(URI.decode(cookie)).to_h.dig("authenticated", "access_token")
@@ -37,6 +37,18 @@ class User
   # Helper method to check for personal account
   def is_person?
     uid.start_with?("0")
+  end
+
+  def role_name
+    if role_id == "user"
+      "User"
+    elsif role_id == "client_admin"
+      "Client"
+    elsif role_id == "provider_admin"
+      "Member"
+    elsif role_id == "staff_admin"
+      "Staff"
+    end
   end
 
   # encode token using SHA-256 hash algorithm

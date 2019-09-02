@@ -55,7 +55,7 @@
                           Sign out
                   - else
                     %li.dropdown-header
-                      = "Role: " + current_user.role_id 
+                      = "Role: " + current_user.role_name 
                     %li
                       %a{:href => "#{ENV['FABRICA_URL']}/settings"}
                         %i.fa.fa-cog
