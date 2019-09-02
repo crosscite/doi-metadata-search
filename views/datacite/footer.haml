@@ -1,57 +1,55 @@
-<datacite-footer title="DataCite Search"></datacite-footer>
+.row.footer
+  .container-fluid
+    .col-sm-3
+      %h4
+        About DataCite
+      %ul
+        - settings.about_links.each do |item|
+          %li
+            %a{:href => item['url']}
+              = item['name']
+    .col-sm-3
+      %h4
+        Services
+      %ul
+        - settings.services_links.each do |item|
+          %li
+            %a{:href => item['url']}
+              = item['name']
+    .col-sm-3
+      %h4
+        Resources
+      %ul
+        - settings.resources_links.each do |item|
+          %li
+            %a{:href => item['url']}
+              = item['name']
+      %h4
+        Community
+      %ul
+        - settings.community_links.each do |item|
+          %li
+            %a{:href => item['url']}
+              = item['name']
 
--# .row.footer
--#   .container-fluid
--#     .col-sm-3
--#       %h4
--#         About DataCite
--#       %ul
--#         - settings.about_links.each do |item|
--#           %li
--#             %a{:href => item['url']}
--#               = item['name']
--#     .col-sm-3
--#       %h4
--#         Services
--#       %ul
--#         - settings.services_links.each do |item|
--#           %li
--#             %a{:href => item['url']}
--#               = item['name']
--#     .col-sm-3
--#       %h4
--#         Resources
--#       %ul
--#         - settings.resources_links.each do |item|
--#           %li
--#             %a{:href => item['url']}
--#               = item['name']
--#       %h4
--#         Community
--#       %ul
--#         - settings.community_links.each do |item|
--#           %li
--#             %a{:href => item['url']}
--#               = item['name']
-
--#     .col-sm-3
--#       %h4.share Contact us
--#       %a{href: "mailto:support@datacite.org", class: "share"}
--#         %i.fa.fa-at
--#       %a{href: "https://blog.datacite.org", class: "share"}
--#         %i.fa.fa-rss
--#       %a{href: "https://twitter.com/datacite", class: "share"}
--#         %i.fa.fa-twitter
--#       %a{href: "https://github.com/datacite/datacite", class: "share"}
--#         %i.fa.fa-github
--#       %a{href: "https://www.linkedin.com/company/datacite", class: "share"}
--#         %i.fa.fa-linkedin
+    .col-sm-3
+      %h4.share Contact us
+      %a{href: "mailto:support@datacite.org", class: "share"}
+        %i.fa.fa-at
+      %a{href: "https://blog.datacite.org", class: "share"}
+        %i.fa.fa-rss
+      %a{href: "https://twitter.com/datacite", class: "share"}
+        %i.fa.fa-twitter
+      %a{href: "https://github.com/datacite/datacite", class: "share"}
+        %i.fa.fa-github
+      %a{href: "https://www.linkedin.com/company/datacite", class: "share"}
+        %i.fa.fa-linkedin
         
--#       %ul.share
--#         - settings.contact_links.each do |item|
--#           %li
--#             %a{:href => item['url']}
--#               = item['name']
--#       %a{href: "http://status.datacite.org", target: "_blank"}
--#         %span.color-dot
--#         %span.color-description
+      %ul.share
+        - settings.contact_links.each do |item|
+          %li
+            %a{:href => item['url']}
+              = item['name']
+      %a{href: "http://status.datacite.org", target: "_blank"}
+        %span.color-dot
+        %span.color-description
