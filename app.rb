@@ -234,10 +234,10 @@ get '/people/:id' do
     link = "https://orcid.org/#{params[:id]}"
     headers['Link'] = "<#{link}> ; rel=\"identifier\""
 
-    @works = get_works(query: params[:query], "person-id" => params[:id], 'page[number]' => @page, 'resource-type-id' => params['resource-type-id'], 'relation-type-id' => params['relation-type-id'], 'year' => params['year'], 'registered' => params['registered'], sort: params[:sort])
+    @works = get_works(query: params[:query], "person-id" => params[:id], 'page[number]' => @page, 'data-center-id' => params['data-center-id'], 'resource-type-id' => params['resource-type-id'], 'relation-type-id' => params['relation-type-id'], 'year' => params['year'], 'registered' => params['registered'], sort: params[:sort])
 
-    # check for existing claims if user is logged in
-    @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
+    # check for existing claims if user is logged in and has personal account
+    @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user && is_person?
     @works[:data] = get_metrics(@works.fetch(:data, []))
 
   end

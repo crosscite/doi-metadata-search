@@ -5,7 +5,9 @@ require 'uri'
 module Sinatra
   module SessionHelper
     def current_user
-      @current_user ||= cookies[:_datacite].present? && ::JSON.parse(URI.decode(cookies[:_datacite])).dig("authenticated", "access_token") ? User.new(cookies[:_datacite]) : nil
+      @current_user ||= cookies[:_datacite].present? && ::JSON.parse(URI.decode(cookies[:_datacite])).to_h.dig("authenticated", "access_token") ? User.new(cookies[:_datacite]) : nil
+    rescue JSON::ParserError
+      nil
     end
 
     def user_signed_in?
@@ -14,6 +16,10 @@ module Sinatra
 
     def is_person?
       current_user && current_user.is_person?
+    end
+
+    def has_orcid_token?
+      current_user && current_user.has_orcid_token
     end
 
     def is_admin_or_staff?

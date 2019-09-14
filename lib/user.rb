@@ -4,7 +4,7 @@ require 'sinatra/json'
 require 'uri'
 
 class User
-  attr_accessor :name, :uid, :email, :jwt, :role_id, :role_name, :orcid, :provider_id, :client_id, :beta_tester
+  attr_accessor :name, :uid, :email, :jwt, :role_id, :role_name, :orcid, :provider_id, :client_id, :beta_tester, :has_orcid_token
 
   def initialize(cookie)
     token = ::JSON.parse(URI.decode(cookie)).to_h.dig("authenticated", "access_token")
@@ -20,6 +20,7 @@ class User
     @provider_id = payload.fetch("provider_id", nil)
     @client_id = payload.fetch("client_id", nil)
     @beta_tester = payload.fetch("beta_tester", false)
+    @has_orcid_token = payload.fetch("has_orcid_token", false)
   end
 
   alias_method :orcid, :uid
