@@ -75,7 +75,7 @@
             %h4
               Relation Types
             %ul
-              - relation_types.each do |f|
+              - relation_types.compact.each do |f|
                 %li
                   .facet-title
                     = f.fetch("title", nil).underscore.humanize
