@@ -11,8 +11,8 @@ module Sinatra
         url = "#{ENV['API_URL']}/works/#{params[:id]}?include=data-center,resource-type,member"
       else
         params = { id: params.fetch(:id, nil),
-                   'page[number]': params.fetch('page[number]', 1),
-                   'page[size]': params.fetch('page[size]', 25),
+                   'page[number]' => params.fetch('page[number]', 1),
+                   'page[size]' => params.fetch('page[size]', 25),
                    ids: params.fetch(:ids, nil),
                    sort: params.fetch(:sort, nil),
                    query: params.fetch(:query, nil),
@@ -40,8 +40,8 @@ module Sinatra
         url = "#{ENV['VOLPINO_URL']}/users/" + params.fetch(:id)
       else
         params = { id: params.fetch(:id, nil),
-                   'page[number]': params.fetch('page[number]', 1),
-                   'page[size]': params.fetch('page[size]', 25),
+                   'page[number]' => params.fetch('page[number]', 1),
+                   'page[size]' => params.fetch('page[size]', 25),
                    query: params.fetch(:query, nil) }.compact
         url = "#{ENV['VOLPINO_URL']}/users?" + URI.encode_www_form(params)
       end
@@ -58,8 +58,8 @@ module Sinatra
       else
         params = { id: params.fetch(:id, nil),
                    ids: params.fetch(:ids, nil),
-                   'page[number]': params.fetch('page[number]', 1),
-                   'page[size]': params.fetch('page[size]', 25),
+                   'page[number]' => params.fetch('page[number]', 1),
+                   'page[size]' => params.fetch('page[size]', 25),
                    query: params.fetch(:query, nil),
                    year: params.fetch(:year, nil),
                    registered: params.fetch(:registered, nil),
