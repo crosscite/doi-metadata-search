@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.datacite.org/users/0000-0001-5674-8163
+    uri: https://api.test.datacite.org/users/0000-0002-2220-6072
     body:
       encoding: US-ASCII
       string: ''
@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 06 Oct 2019 13:27:04 GMT
+      - Sun, 06 Oct 2019 16:37:23 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,15 +37,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 42f17ecd-fcc7-44a9-a469-83e44b504784
+      - 2869368c-08a5-4bb6-b2d4-35b53a496235
       X-Download-Options:
       - noopen
       Etag:
-      - W/"8659cd2586da73feab6943c077f6083e"
+      - W/"7921428fda65515e920d89109c19e275"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.005817'
+      - '0.005326'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -54,8 +54,8 @@ http_interactions:
       - nginx/1.17.3 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"0000-0001-5674-8163","type":"users","attributes":{"givenNames":"Hoolo","familyName":"''Nyane","name":"Hoolo
-        ''Nyane","orcid":"https://orcid.org/0000-0001-5674-8163","github":null,"roleId":"user","isActive":false,"created":"2019-05-27T15:27:42.000Z","updated":"2019-06-03T14:37:21.000Z"},"relationships":{}}}'
+      string: '{"data":{"id":"0000-0002-2220-6072","type":"users","attributes":{"givenNames":"Michael","familyName":"''t
+        Sas-Rolfes","name":"Michael ''t Sas-Rolfes","orcid":"https://orcid.org/0000-0002-2220-6072","github":null,"roleId":"user","isActive":false,"created":"2017-12-15T16:50:05.000Z","updated":"2017-12-15T16:50:05.000Z"},"relationships":{}}}'
     http_version: 
-  recorded_at: Sun, 06 Oct 2019 13:27:04 GMT
+  recorded_at: Sun, 06 Oct 2019 16:37:23 GMT
 recorded_with: VCR 2.9.3

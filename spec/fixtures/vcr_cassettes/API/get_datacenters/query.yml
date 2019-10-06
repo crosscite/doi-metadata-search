@@ -2,22 +2,22 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/data-centers?include=member&page%5Bnumber%5D=1&page%5Bsize%5D=25&query=zeno
+    uri: https://api.test.datacite.org/data-centers?include=member&page%5Bnumber%5D=1&page%5Bsize%5D=25&query=zenodo
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Maremma - http://search.local
+      - Mozilla/5.0 (compatible; Maremma/4.2.6; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
     status:
       code: 200
-      message: ''
+      message: OK
     headers:
       Date:
-      - Sun, 09 Sep 2018 10:33:02 GMT
+      - Sun, 06 Oct 2019 16:50:30 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -29,33 +29,23 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       Vary:
-      - Accept-Encoding
+      - Accept-Encoding, Origin
       Etag:
-      - W/"d245f788d20b88da60a7523aecc3d1c9"
+      - W/"bd960aa572498692ae6517523c8f3c60"
       X-Runtime:
-      - '0.514504'
+      - '0.025079'
       X-Request-Id:
-      - 88cf9b3e-35a4-4f3c-bdff-96c12eea1dae
+      - 56d6e053-e6ec-4fd4-ab6e-bb5c9521f071
       X-Powered-By:
-      - Phusion Passenger 5.3.2
+      - Phusion Passenger 6.0.4
       Server:
-      - nginx/1.14.0 + Phusion Passenger 5.3.2
-      Access-Control-Allow-Origin:
-      - "*"
-      Access-Control-Allow-Methods:
-      - GET, POST, PUT, DELETE, OPTIONS
-      Access-Control-Allow-Headers:
-      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
-      Access-Control-Expose-Headers:
-      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
+      - nginx/1.17.3 + Phusion Passenger 6.0.4
     body:
-      encoding: UTF-8
-      string: '{"data":[{"id":"dk.openaire","type":"data-centers","attributes":{"title":"Open
-        Aire Project","member-id":"dk","year":2013,"created":"2013-01-28T12:07:48.000Z","updated":"2018-08-26T01:30:33.000Z"},"relationships":{"member":{"data":{"id":"dk","type":"members"}}}},{"id":"cern.zenodo","type":"data-centers","attributes":{"title":"Zenodo","member-id":"cern","year":2014,"created":"2014-09-24T14:54:20.000Z","updated":"2018-08-26T01:30:41.000Z"},"relationships":{"member":{"data":{"id":"cern","type":"members"}}}}],"included":[{"id":"dk","type":"members","attributes":{"title":"Technical
-        Information Center of Denmark","description":null,"member-type":"provider","region":null,"country":null,"year":null,"logo-url":null,"email":"bikr@dtic.dtu.dk","website":null,"phone":null,"created":"2010-01-01T00:00:00.000Z","updated":"2018-08-26T01:25:40.000Z"},"relationships":{}},{"id":"cern","type":"members","attributes":{"title":"CERN
-        - European Organization for Nuclear Research","description":null,"member-type":"provider","region":null,"country":null,"year":null,"logo-url":null,"email":"sunje.dallmeier-tiessen@cern.ch","website":null,"phone":null,"created":"2014-04-10T13:42:48.000Z","updated":"2018-08-26T01:25:40.000Z"},"relationships":{}}],"meta":{"total":2,"total-pages":1,"page":1,"years":[{"id":"2013","title":"2013","count":1},{"id":"2014","title":"2014","count":1}],"members":[{"id":"cern","title":"CERN
-        - European Organization for Nuclear Research","count":1},{"id":"dk","title":"Technical
-        Information Center of Denmark","count":1}]}}'
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"cern.zenodo","type":"data-centers","attributes":{"title":"Zenodo","other-names":[],"prefixes":[],"member-id":"cern","year":2014,"created":"2014-09-24T14:54:20.000Z","updated":"2019-08-03T05:29:30.000Z"},"relationships":{"member":{"data":{"id":"cern","type":"members"}}}}],"included":[{"id":"cern","type":"members","attributes":{"title":"CERN
+        - European Organization for Nuclear Research","display-title":"CERN - European
+        Organization for Nuclear Research","description":null,"member-type":"direct_member","organization-type":"researchInstitution","focus-area":"naturalSciences","region":"EMEA","country":"CH","year":null,"logo-url":null,"email":null,"website":"https://www.cern.ch","joined":null,"created":"2014-04-10T13:42:48.000Z","updated":"2019-06-23T15:47:07.000Z"}}],"meta":{"total":1,"total-pages":1,"page":1,"years":[{"id":"2014","title":"2014","count":1}],"members":[{"id":"cern","title":"CERN
+        - European Organization for Nuclear Research","count":1}]}}'
     http_version: 
-  recorded_at: Sun, 09 Sep 2018 10:33:02 GMT
+  recorded_at: Sun, 06 Oct 2019 16:50:30 GMT
 recorded_with: VCR 2.9.3

@@ -2,22 +2,22 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/works/10.4124/test94485?include=data-center,resource-type,member
+    uri: https://api.test.datacite.org/works/10.70001/12334296?include=data-center,resource-type,member
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Maremma - http://search.local
+      - Mozilla/5.0 (compatible; Maremma/4.2.6; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
     status:
       code: 200
-      message: ''
+      message: OK
     headers:
       Date:
-      - Sun, 09 Sep 2018 10:33:01 GMT
+      - Sun, 06 Oct 2019 16:52:50 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -29,31 +29,24 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       Vary:
-      - Accept-Encoding
+      - Accept-Encoding, Origin
       Etag:
-      - W/"54964f40af778172e1bfd4c094cdb8f2"
+      - W/"6a36e465fe9e2a3f761115c47cf11ef9"
       X-Runtime:
-      - '0.498393'
+      - '0.035935'
       X-Request-Id:
-      - 0401b84e-5d52-4117-9374-07acee1067d9
+      - cc988bef-4790-4dfc-9e17-6be82d6bc26d
       X-Powered-By:
-      - Phusion Passenger 5.3.2
+      - Phusion Passenger 6.0.4
       Server:
-      - nginx/1.14.0 + Phusion Passenger 5.3.2
-      Access-Control-Allow-Origin:
-      - "*"
-      Access-Control-Allow-Methods:
-      - GET, POST, PUT, DELETE, OPTIONS
-      Access-Control-Allow-Headers:
-      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
-      Access-Control-Expose-Headers:
-      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
+      - nginx/1.17.3 + Phusion Passenger 6.0.4
     body:
-      encoding: UTF-8
-      string: '{"data":{"id":"https://handle.test.datacite.org/10.4124/test94485","type":"works","attributes":{"doi":"10.4124/test94485","identifier":"https://handle.test.datacite.org/10.4124/test94485","url":"http://gtexportal.org/home/","author":[{"literal":"Person_1"}],"title":"Test","container-title":"SevenBridges","description":"Test
-        Catalog1","resource-type-subtype":"Dataset","data-center-id":"bl.mendeley","member-id":"bl","resource-type-id":"dataset","version":null,"license":null,"schema-version":"3","results":[],"related-identifiers":[],"published":"2018","registered":"2018-08-20T15:40:22Z","checked":null,"updated":"2018-08-20T15:40:22Z","media":null,"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMyIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtMyBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC0zL21ldGFkYXRhLnhzZCI+CiAgPGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuNDEyNC9URVNUOTQ0ODU8L2lkZW50aWZpZXI+CiAgPHRpdGxlcz4KICAgIDx0aXRsZT5UZXN0PC90aXRsZT4KICA8L3RpdGxlcz4KICA8ZGVzY3JpcHRpb25zPgogICAgPGRlc2NyaXB0aW9uIGRlc2NyaXB0aW9uVHlwZT0iQWJzdHJhY3QiPlRlc3QgQ2F0YWxvZzE8L2Rlc2NyaXB0aW9uPgogIDwvZGVzY3JpcHRpb25zPgogIDxyZXNvdXJjZVR5cGUgcmVzb3VyY2VUeXBlR2VuZXJhbD0iRGF0YXNldCI+RGF0YXNldDwvcmVzb3VyY2VUeXBlPgogIDxzdWJqZWN0cz4KICAgIDxzdWJqZWN0PnRlc3Q8L3N1YmplY3Q+CiAgPC9zdWJqZWN0cz4KICA8Y3JlYXRvcnM+CiAgICA8Y3JlYXRvcj4KICAgICAgPGNyZWF0b3JOYW1lPlBlcnNvbl8xPC9jcmVhdG9yTmFtZT4KICAgIDwvY3JlYXRvcj4KICA8L2NyZWF0b3JzPgogIDxkYXRlcz4KICAgIDxkYXRlIGRhdGVUeXBlPSJDcmVhdGVkIj4yMDE4LTAxLTAxPC9kYXRlPgogICAgPGRhdGUgZGF0ZVR5cGU9IkF2YWlsYWJsZSI+MjAxOC0wMi0wMjwvZGF0ZT4KICA8L2RhdGVzPgogIDxwdWJsaWNhdGlvblllYXI+MjAxODwvcHVibGljYXRpb25ZZWFyPgogIDxwdWJsaXNoZXI+U2V2ZW5CcmlkZ2VzPC9wdWJsaXNoZXI+CiAgPHJpZ2h0c0xpc3Q+CiAgICA8cmlnaHRzIHJpZ2h0c1VSST0iaW5mbzpldS1yZXBvL3NlbWFudGljcy9lbWJhcmdvZWRBY2Nlc3MiPkFwYWNoZSBMaWNlbnNlIDIuMCAoRW1iYXJnbzogMjAyNi0wMy0zMCk8L3JpZ2h0cz4KICA8L3JpZ2h0c0xpc3Q+CjwvcmVzb3VyY2U+"},"relationships":{"data-center":{"data":{"id":"bl.mendeley","type":"data-centers"}},"member":{"data":{"id":"bl","type":"members"}},"resource-type":{"data":{"id":"dataset","type":"resource-types"}}}},"included":[{"id":"bl.mendeley","type":"data-centers","attributes":{"title":"Mendeley
-        Data","member-id":"bl","year":2014,"created":"2014-10-03T15:53:41.000Z","updated":"2018-08-26T01:30:43.000Z"},"relationships":{"member":{"data":{"id":"bl","type":"members"}}}},{"id":"bl","type":"members","attributes":{"title":"The
-        British Library","description":null,"member-type":"provider","region":null,"country":null,"year":null,"logo-url":null,"email":"datasets@bl.uk","website":null,"phone":null,"created":"2010-01-01T00:00:00.000Z","updated":"2018-08-26T01:25:40.000Z"},"relationships":{}},{"id":"dataset","type":"resource-types","attributes":{"title":"Dataset","updated":"2016-09-21T00:00:00Z"},"relationships":{}}]}'
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"https://handle.test.datacite.org/10.70001/12334296","type":"works","attributes":{"doi":"10.70001/12334296","identifier":"https://handle.test.datacite.org/10.70001/12334296","url":"https://digitalscholarship.unlv.edu/rtds/1","author":[{"literal":"Joyce
+        Mott Anderson"}],"title":"The effects of early intervention on young handicapped
+        children who are nonverbal or have limited expressive language skills","container-title":"University
+        of Nevada, Las Vegas","description":null,"resource-type-subtype":null,"data-center-id":"datacite.datacite","member-id":"datacite","resource-type-id":"text","version":null,"license":null,"schema-version":null,"results":[],"related-identifiers":[],"published":"1988","registered":"2019-04-08T08:20:11.000Z","checked":null,"updated":"2019-10-03T00:32:04.000Z","media":[],"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC00L21ldGFkYXRhLnhzZCI+CiAgPGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuNzAwMDEvMTIzMzQyOTY8L2lkZW50aWZpZXI+CiAgPGNyZWF0b3JzPgogICAgPGNyZWF0b3I+CiAgICAgIDxjcmVhdG9yTmFtZT5Kb3ljZSBNb3R0IEFuZGVyc29uPC9jcmVhdG9yTmFtZT4KICAgIDwvY3JlYXRvcj4KICA8L2NyZWF0b3JzPgogIDx0aXRsZXM+CiAgICA8dGl0bGU+VGhlIGVmZmVjdHMgb2YgZWFybHkgaW50ZXJ2ZW50aW9uIG9uIHlvdW5nIGhhbmRpY2FwcGVkIGNoaWxkcmVuIHdobyBhcmUgbm9udmVyYmFsIG9yIGhhdmUgbGltaXRlZCBleHByZXNzaXZlIGxhbmd1YWdlIHNraWxsczwvdGl0bGU+CiAgPC90aXRsZXM+CiAgPHB1Ymxpc2hlcj5Vbml2ZXJzaXR5IG9mIE5ldmFkYSwgTGFzIFZlZ2FzPC9wdWJsaXNoZXI+CiAgPHB1YmxpY2F0aW9uWWVhcj4xOTg4PC9wdWJsaWNhdGlvblllYXI+CiAgPHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJUZXh0Ii8+CiAgPHZlcnNpb24vPgo8L3Jlc291cmNlPgo="},"relationships":{"data-center":{"data":{"id":"datacite.datacite","type":"data-centers"}},"member":{"data":{"id":"datacite","type":"members"}},"resource-type":{"data":{"id":"text","type":"resource-types"}}}},"included":[{"id":"datacite.datacite","type":"data-centers","attributes":{"title":"DataCite
+        Repository","other-names":[],"prefixes":[],"member-id":"datacite","year":2011,"created":"2011-12-07T13:43:39.000Z","updated":"2019-08-24T06:22:34.000Z"},"relationships":{"member":{"data":{"id":"datacite","type":"members"}}}},{"id":"datacite","type":"members","attributes":{"title":"DataCite","display-title":"DataCite","description":null,"member-type":"consortium_organization","organization-type":null,"focus-area":null,"region":"EMEA","country":"DE","year":null,"logo-url":null,"email":null,"website":"https://datacite.org","joined":null,"created":"2011-12-07T13:41:07.000Z","updated":"2019-08-24T06:18:06.000Z"}},{"id":"text","type":"resource-types","attributes":{"title":"Text","updated":"2016-09-21T00:00:00Z"},"relationships":{}}]}'
     http_version: 
-  recorded_at: Sun, 09 Sep 2018 10:33:01 GMT
+  recorded_at: Sun, 06 Oct 2019 16:52:50 GMT
 recorded_with: VCR 2.9.3

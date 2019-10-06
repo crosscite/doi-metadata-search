@@ -8,16 +8,16 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Maremma - http://search.local
+      - Mozilla/5.0 (compatible; Maremma/4.2.6; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
     status:
       code: 200
-      message: ''
+      message: OK
     headers:
       Date:
-      - Sun, 09 Sep 2018 10:32:58 GMT
+      - Sun, 06 Oct 2019 16:30:37 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -29,34 +29,26 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       Vary:
-      - Accept-Encoding
+      - Accept-Encoding, Origin
       Etag:
-      - W/"e535a5c017eafcc25b74bc6120e35a4a"
+      - W/"c225b4ccdf9aae6c758f179ebee6fcc3"
       X-Runtime:
-      - '0.105000'
+      - '0.018666'
       X-Request-Id:
-      - c0107a19-46ad-4ca1-87e7-a93be8c5c26a
+      - 8dc67db8-9bc2-414b-beba-662f91937a97
       X-Powered-By:
-      - Phusion Passenger 5.3.2
+      - Phusion Passenger 6.0.4
       Server:
-      - nginx/1.14.0 + Phusion Passenger 5.3.2
-      Access-Control-Allow-Origin:
-      - "*"
-      Access-Control-Allow-Methods:
-      - GET, POST, PUT, DELETE, OPTIONS
-      Access-Control-Allow-Headers:
-      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
-      Access-Control-Expose-Headers:
-      - DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Authorization
+      - nginx/1.17.3 + Phusion Passenger 6.0.4
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: '{"data":[{"id":"ands","type":"members","attributes":{"title":"Australian
-        National Data Service","description":"The Australian National Data Service
-        (ANDS) makes Australia''s research data assets more valuable for researchers,
-        research institutions and the nation.\n\nWe do this through working in trusted
-        partnerships on research data projects, delivering reliable national services
-        and enhancing the capability of Australia''s research data system.\n \nA key
-        ANDS service is the [Research Data Australia](http://researchdata.ands.org.au/)
+        Research Data Commons","display-title":"Australian Research Data Commons","description":"The
+        Australian National Data Service (ANDS) makes Australia''s research data assets
+        more valuable for researchers, research institutions and the nation.\n\nWe
+        do this through working in trusted partnerships on research data projects,
+        delivering reliable national services and enhancing the capability of Australia''s
+        research data system.\n \nA key ANDS service is the [Research Data Australia](http://researchdata.ands.org.au/)
         discovery portal where you can find, access and reuse Australian research
         data.\n\nANDS is a partnership led by Monash University, in collaboration
         with the Australian National University and CSIRO. It is funded by the Australian
@@ -69,8 +61,8 @@ http_interactions:
         own research collections. This, in turn, provides researchers with a means
         of citing their published data and achieving recognition for their research
         data output.\n \nSubscribe to our discussion list: [ANDS Google Group](https://groups.google.com/forum/?hl=en#!forum/ands-general).\n
-        \nSubscribe to our e-newsletter: [andsUP](http://us7.campaign-archive2.com/home/?u=b542ef52e49302569068046d9&amp;id=22b849a4ee).","member-type":"provider","region":"APAC","country":"AU","year":null,"logo-url":"https://assets.datacite.org/images/members/ands.png","email":"services@ands.org.au","website":"http://www.ands.org.au","phone":null,"created":"2010-01-01T00:00:00.000Z","updated":"2018-08-26T01:25:40.000Z"},"relationships":{}}],"meta":{"total":1,"total-pages":1,"page":1,"years":[{"id":"2010","title":"2010","count":1}],"regions":[{"id":"apac","title":"Asia
-        Pacific","count":1}]}}'
+        \nSubscribe to our e-newsletter: [andsUP](http://us7.campaign-archive2.com/home/?u=b542ef52e49302569068046d9&id=22b849a4ee).","member-type":"direct_member","organization-type":null,"focus-area":null,"region":"APAC","country":"AU","year":null,"logo-url":"https://assets.datacite.org/images/members/ands.png","email":null,"website":"https://ardc.edu.au","joined":null,"created":"2010-01-01T00:00:00.000Z","updated":"2019-08-07T18:47:52.000Z"}}],"meta":{"total":1,"total-pages":1,"page":1,"years":[{"id":"2010","title":"2010","count":1}],"regions":[{"id":"apac","title":"Asia
+        Pacific","count":1}],"organization-types":[],"focus-areas":[]}}'
     http_version: 
-  recorded_at: Sun, 09 Sep 2018 10:32:58 GMT
+  recorded_at: Sun, 06 Oct 2019 16:30:37 GMT
 recorded_with: VCR 2.9.3

@@ -8,16 +8,16 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Maremma - http://search.local
+      - Mozilla/5.0 (compatible; Maremma/4.2.6; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
     status:
       code: 404
-      message: ''
+      message: Not Found
     headers:
       Date:
-      - Sun, 09 Sep 2018 10:33:00 GMT
+      - Sun, 06 Oct 2019 16:30:39 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -27,19 +27,19 @@ http_interactions:
       Cache-Control:
       - no-cache
       Vary:
-      - Accept-Encoding
+      - Accept-Encoding, Origin
       X-Runtime:
-      - '0.176950'
+      - '0.022491'
       X-Request-Id:
-      - f9bf6fd0-3061-42d0-bd00-af916009dfc0
+      - 6917a8fe-9e79-4c02-8435-cc1ab08fdbe9
       X-Powered-By:
-      - Phusion Passenger 5.3.2
+      - Phusion Passenger 6.0.4
       Server:
-      - nginx/1.14.0 + Phusion Passenger 5.3.2
+      - nginx/1.17.3 + Phusion Passenger 6.0.4
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: '{"errors":[{"status":"404","title":"The resource you are looking for
         doesn''t exist."}]}'
     http_version: 
-  recorded_at: Sun, 09 Sep 2018 10:33:01 GMT
+  recorded_at: Sun, 06 Oct 2019 16:30:39 GMT
 recorded_with: VCR 2.9.3

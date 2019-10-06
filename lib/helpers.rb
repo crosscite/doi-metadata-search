@@ -223,8 +223,8 @@ module Sinatra
     end
 
     def credit_name(attributes)
-      [attributes["given"], attributes["family"]].join(" ").presence ||
-      attributes["literal"].presence ||
+      [attributes["givenNames"], attributes["familyName"]].join(" ").presence ||
+      attributes["name"].presence ||
       attributes["github"].presence ||
       attributes["orcid"]
     end
