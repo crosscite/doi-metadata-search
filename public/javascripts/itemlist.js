@@ -147,10 +147,10 @@ $(document).ready(function() {
     $.ajax({
         url: $popover.attr('data-url'),
         method: "POST",
-        data: JSON.stringify({ "doi": $popover.attr('data-doi'),
-                               "orcid": $popover.attr('data-orcid'),
-                               "claim_action": $popover.attr('data-action'),
-                               "source_id": "orcid_search" }),
+        data: JSON.stringify({ "claim": { "doi": $popover.attr('data-doi'),
+                                          "orcid": $popover.attr('data-orcid'),
+                                          "claim_action": $popover.attr('data-action'),
+                                          "source_id": "orcid_search" }}),
         beforeSend: function (xhr) {
             xhr.setRequestHeader("Content-Type","application/json");
             xhr.setRequestHeader("Authorization", "Bearer " + jwt);
