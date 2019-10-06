@@ -49,22 +49,28 @@ describe "API", type: :model, vcr: true do
   context "get_people" do
     it "all" do
       response = subject.get_people
-      expect(response[:meta]).to eq("total"=>61824, "total-pages"=>2473, "page"=>1)
+      expect(response[:meta]).to eq("total"=>89222, "totalPages"=>400, "page"=>1)
       contributor = response[:data].first
-      expect(contributor["id"]).to eq("0000-0003-1564-2260")
+      expect(contributor["id"]).to eq("0000-0001-5674-8163")
     end
 
     it "one" do
-      response = subject.get_people(id: "0000-0001-6528-2027")
+      response = subject.get_people(id: "0000-0001-5674-8163")
       contributor = response[:data]
-      expect(contributor).to eq("id" => "0000-0001-6528-2027", "type"=>"people", "attributes" => {"family"=>"Fenner", "github"=>nil, "given"=>"Martin", "literal"=>"Martin Fenner", "orcid"=>"https://orcid.org/0000-0001-6528-2027", "updated"=>"2018-08-20T16:40:54.000Z"})
+      expect(contributor).to eq("attributes" => {"created"=>"2019-05-27T15:27:42.000Z", "familyName"=>"'Nyane", "github"=>nil, "givenNames"=>"Hoolo", "isActive"=>false, "name"=>"Hoolo 'Nyane", "orcid"=>"https://orcid.org/0000-0001-5674-8163", "roleId"=>"user", "updated"=>"2019-06-03T14:37:21.000Z"},
+        "id" => "0000-0001-5674-8163",
+        "relationships" => {},
+        "type" => "users")
     end
 
     it "query" do
       response = subject.get_people(query: "garza")
-      expect(response[:meta]).to eq("total"=>9, "total-pages"=>1, "page"=>1)
+      expect(response[:meta]).to eq("total"=>7, "totalPages"=>1, "page"=>1)
       contributor = response[:data][1]
-      expect(contributor).to eq("id" => "0000-0002-5099-0079", "type"=>"people", "attributes" => {"family"=>"Cardenas-de la Garza", "github"=>nil, "given"=>"Jesus Alberto", "literal"=>"Jesus Alberto Cardenas-de la Garza", "orcid"=>"https://orcid.org/0000-0002-5099-0079", "updated"=>"2018-05-14T20:22:20.000Z"})
+      expect(contributor).to eq(+"attributes" => {"created"=>"2016-08-01T16:25:38.000Z", "familyName"=>"Garza", "github"=>"https://github.com/kjgarza", "givenNames"=>"Kristian", "isActive"=>true, "name"=>"K. J. Garza", "orcid"=>"https://orcid.org/0000-0003-3484-6875", "roleId"=>"staff_admin", "updated"=>"2018-05-30T05:00:34.000Z"},
+        "id" => "0000-0003-3484-6875",
+        "relationships" => {},
+        "type" => "users")
     end
   end
 

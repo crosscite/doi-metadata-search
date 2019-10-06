@@ -2,22 +2,22 @@
 http_interactions:
 - request:
     method: get
-    uri: https://profiles.test.datacite.org/people?page%5Bnumber%5D=1&page%5Bsize%5D=25&query=garza
+    uri: https://api.datacite.org/users?page%5Bnumber%5D=1&page%5Bsize%5D=25&query=garza
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Maremma - http://search.local
+      - Mozilla/5.0 (compatible; Maremma/4.2.6; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
     status:
       code: 200
-      message: ''
+      message: OK
     headers:
       Date:
-      - Sun, 09 Sep 2018 10:33:04 GMT
+      - Sun, 06 Oct 2019 13:27:04 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -30,35 +30,32 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
-      Etag:
-      - W/"009f3ecc178f332101a9961741223416"
-      X-Frame-Options:
-      - SAMEORIGIN
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
       X-Xss-Protection:
       - 1; mode=block
+      X-Request-Id:
+      - fdba0796-54f7-4101-9b80-1a75627328ce
+      X-Download-Options:
+      - noopen
+      Etag:
+      - W/"15886df226d3b02d9e5fe5407297c8e8"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.064852'
       X-Content-Type-Options:
       - nosniff
-      X-Runtime:
-      - '0.269105'
-      X-Request-Id:
-      - 9701a16e-71e7-4e3b-a124-23c581303486
       X-Powered-By:
-      - Phusion Passenger 5.3.4
+      - Phusion Passenger 6.0.4
       Server:
-      - nginx/1.14.0 + Phusion Passenger 5.3.4
+      - nginx/1.17.3 + Phusion Passenger 6.0.4
     body:
-      encoding: UTF-8
-      string: '{"data":[{"id":"0000-0002-1243-2594","type":"people","attributes":{"given":"Agarza","family":"Agarza","literal":"Agarza
-        Agarza","orcid":"https://orcid.org/0000-0002-1243-2594","github":null,"updated":"2017-06-23T16:53:30.000Z"}},{"id":"0000-0002-5099-0079","type":"people","attributes":{"given":"Jesus
-        Alberto","family":"Cardenas-de la Garza","literal":"Jesus Alberto Cardenas-de
-        la Garza","orcid":"https://orcid.org/0000-0002-5099-0079","github":null,"updated":"2018-05-14T20:22:20.000Z"}},{"id":"0000-0003-3484-6875","type":"people","attributes":{"given":"Kristian","family":"Garza","literal":"Kristian
-        Garza","orcid":"https://orcid.org/0000-0003-3484-6875","github":"kjgarza","updated":"2018-05-30T05:00:34.000Z"}},{"id":"0000-0002-5493-877X","type":"people","attributes":{"given":"Jose
-        Arturo","family":"Garza-Reyes","literal":"Jose Arturo Garza-Reyes","orcid":"https://orcid.org/0000-0002-5493-877X","github":null,"updated":"2016-10-14T11:38:01.000Z"}},{"id":"0000-0003-3493-3709","type":"people","attributes":{"given":"JUAN
-        JOSE","family":"IGARZA UGALDEA","literal":"JUAN JOSE IGARZA UGALDEA","orcid":"https://orcid.org/0000-0003-3493-3709","github":null,"updated":"2015-11-27T13:50:58.000Z"}},{"id":"0000-0002-4286-8102","type":"people","attributes":{"given":"Tammy","family":"Oberg
-        De La Garza","literal":"Tammy Oberg De La Garza","orcid":"https://orcid.org/0000-0002-4286-8102","github":null,"updated":"2017-06-01T13:58:09.000Z"}},{"id":"0000-0002-5231-2925","type":"people","attributes":{"given":"Miguel
-        Angel","family":"Platas-Garza","literal":"Miguel Angel Platas-Garza","orcid":"https://orcid.org/0000-0002-5231-2925","github":null,"updated":"2017-02-27T15:04:28.000Z"}},{"id":"0000-0002-4740-9538","type":"people","attributes":{"given":"Mehrzad","family":"Zargarzadeh","literal":"Mehrzad
-        Zargarzadeh","orcid":"https://orcid.org/0000-0002-4740-9538","github":null,"updated":"2018-02-05T16:36:05.000Z"}},{"id":"0000-0003-0332-808X","type":"people","attributes":{"given":"Hassan","family":"Zargarzadeh","literal":"Hassan
-        Zargarzadeh","orcid":"https://orcid.org/0000-0003-0332-808X","github":null,"updated":"2016-11-04T19:59:59.000Z"}}],"links":{"self":"https://profiles.test.datacite.org/people?page%5Bnumber%5D=1\u0026page%5Bsize%5D=25\u0026query=garza","first":"https://profiles.test.datacite.org/people?page%5Bnumber%5D=1\u0026page%5Bsize%5D=25\u0026query=garza","prev":null,"next":null,"last":"https://profiles.test.datacite.org/people?page%5Bnumber%5D=1\u0026page%5Bsize%5D=25\u0026query=garza"},"meta":{"total":9,"total-pages":1,"page":1}}'
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJkYXRhIjpbeyJpZCI6IjAwMDAtMDAwMi01MDk5LTAwNzkiLCJ0eXBlIjoidXNlcnMiLCJhdHRyaWJ1dGVzIjp7ImdpdmVuTmFtZXMiOiJKZXN1cyBBbGJlcnRvIiwiZmFtaWx5TmFtZSI6IkNhcmRlbmFzLWRlIGxhIEdhcnphIiwibmFtZSI6Ikplc3VzIEFsYmVydG8gQ2FyZGVuYXMtZGUgbGEgR2FyemEiLCJvcmNpZCI6Imh0dHBzOi8vb3JjaWQub3JnLzAwMDAtMDAwMi01MDk5LTAwNzkiLCJnaXRodWIiOm51bGwsInJvbGVJZCI6InVzZXIiLCJpc0FjdGl2ZSI6dHJ1ZSwiY3JlYXRlZCI6IjIwMTgtMDUtMTRUMjA6MjI6MjAuMDAwWiIsInVwZGF0ZWQiOiIyMDE4LTA1LTE0VDIwOjIyOjIwLjAwMFoifSwicmVsYXRpb25zaGlwcyI6e319LHsiaWQiOiIwMDAwLTAwMDMtMzQ4NC02ODc1IiwidHlwZSI6InVzZXJzIiwiYXR0cmlidXRlcyI6eyJnaXZlbk5hbWVzIjoiS3Jpc3RpYW4iLCJmYW1pbHlOYW1lIjoiR2FyemEiLCJuYW1lIjoiSy4gSi4gR2FyemEiLCJvcmNpZCI6Imh0dHBzOi8vb3JjaWQub3JnLzAwMDAtMDAwMy0zNDg0LTY4NzUiLCJnaXRodWIiOiJodHRwczovL2dpdGh1Yi5jb20va2pnYXJ6YSIsInJvbGVJZCI6InN0YWZmX2FkbWluIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWQiOiIyMDE2LTA4LTAxVDE2OjI1OjM4LjAwMFoiLCJ1cGRhdGVkIjoiMjAxOC0wNS0zMFQwNTowMDozNC4wMDBaIn0sInJlbGF0aW9uc2hpcHMiOnt9fSx7ImlkIjoiMDAwMC0wMDAzLTIxMzMtNjE2MyIsInR5cGUiOiJ1c2VycyIsImF0dHJpYnV0ZXMiOnsiZ2l2ZW5OYW1lcyI6Ikp1YW4gQW5nZWwiLCJmYW1pbHlOYW1lIjoiR2FyemEiLCJuYW1lIjoiSnVhbiBBbmdlbCBHYXJ6YSIsIm9yY2lkIjoiaHR0cHM6Ly9vcmNpZC5vcmcvMDAwMC0wMDAzLTIxMzMtNjE2MyIsImdpdGh1YiI6bnVsbCwicm9sZUlkIjoidXNlciIsImlzQWN0aXZlIjp0cnVlLCJjcmVhdGVkIjoiMjAxOC0xMS0xMFQxNzoxNDo1MS4wMDBaIiwidXBkYXRlZCI6IjIwMTgtMTEtMTFUMTg6MDA6MzIuMDAwWiJ9LCJyZWxhdGlvbnNoaXBzIjp7fX0seyJpZCI6IjAwMDAtMDAwMi01NDkzLTg3N1giLCJ0eXBlIjoidXNlcnMiLCJhdHRyaWJ1dGVzIjp7ImdpdmVuTmFtZXMiOiJKb3NlIEFydHVybyIsImZhbWlseU5hbWUiOiJHYXJ6YS1SZXllcyIsIm5hbWUiOiJKb3NlIEFydHVybyBHYXJ6YS1SZXllcyIsIm9yY2lkIjoiaHR0cHM6Ly9vcmNpZC5vcmcvMDAwMC0wMDAyLTU0OTMtODc3WCIsImdpdGh1YiI6bnVsbCwicm9sZUlkIjoidXNlciIsImlzQWN0aXZlIjp0cnVlLCJjcmVhdGVkIjoiMjAxNi0xMC0xNFQxMTozNzo0NC4wMDBaIiwidXBkYXRlZCI6IjIwMTYtMTAtMTRUMTE6Mzg6MDEuMDAwWiJ9LCJyZWxhdGlvbnNoaXBzIjp7fX0seyJpZCI6IjAwMDAtMDAwMi00Mjg2LTgxMDIiLCJ0eXBlIjoidXNlcnMiLCJhdHRyaWJ1dGVzIjp7ImdpdmVuTmFtZXMiOiJUYW1teSIsImZhbWlseU5hbWUiOiJPYmVyZyBEZSBMYSBHYXJ6YSIsIm5hbWUiOiJUYW1teSBPYmVyZyBEZSBMYSBHYXJ6YSIsIm9yY2lkIjoiaHR0cHM6Ly9vcmNpZC5vcmcvMDAwMC0wMDAyLTQyODYtODEwMiIsImdpdGh1YiI6bnVsbCwicm9sZUlkIjoidXNlciIsImlzQWN0aXZlIjp0cnVlLCJjcmVhdGVkIjoiMjAxNy0wNi0wMVQxMzo1ODowOS4wMDBaIiwidXBkYXRlZCI6IjIwMTctMDYtMDFUMTM6NTg6MDkuMDAwWiJ9LCJyZWxhdGlvbnNoaXBzIjp7fX0seyJpZCI6IjAwMDAtMDAwMi01MjMxLTI5MjUiLCJ0eXBlIjoidXNlcnMiLCJhdHRyaWJ1dGVzIjp7ImdpdmVuTmFtZXMiOiJNaWd1ZWwgQW5nZWwiLCJmYW1pbHlOYW1lIjoiUGxhdGFzLUdhcnphIiwibmFtZSI6Ik1pZ3VlbCBBbmdlbCBQbGF0YXMtR2FyemEiLCJvcmNpZCI6Imh0dHBzOi8vb3JjaWQub3JnLzAwMDAtMDAwMi01MjMxLTI5MjUiLCJnaXRodWIiOm51bGwsInJvbGVJZCI6InVzZXIiLCJpc0FjdGl2ZSI6dHJ1ZSwiY3JlYXRlZCI6IjIwMTctMDItMjdUMTU6MDQ6MjguMDAwWiIsInVwZGF0ZWQiOiIyMDE3LTAyLTI3VDE1OjA0OjI4LjAwMFoifSwicmVsYXRpb25zaGlwcyI6e319LHsiaWQiOiIwMDAwLTAwMDItODkyMS04NTdYIiwidHlwZSI6InVzZXJzIiwiYXR0cmlidXRlcyI6eyJnaXZlbk5hbWVzIjoiRWR1YXJkbyIsImZhbWlseU5hbWUiOiJUcmV2acOxby1HYXJ6YSIsIm5hbWUiOiJFZHVhcmRvIFRyZXZpw7FvLUdhcnphIiwib3JjaWQiOiJodHRwczovL29yY2lkLm9yZy8wMDAwLTAwMDItODkyMS04NTdYIiwiZ2l0aHViIjpudWxsLCJyb2xlSWQiOiJ1c2VyIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWQiOiIyMDE4LTExLTI4VDE4OjAxOjQ3LjAwMFoiLCJ1cGRhdGVkIjoiMjAxOC0xMS0yOFQxODowMTo0Ny4wMDBaIn0sInJlbGF0aW9uc2hpcHMiOnt9fV0sIm1ldGEiOnsidG90YWwiOjcsInRvdGFsUGFnZXMiOjEsInBhZ2UiOjF9LCJsaW5rcyI6eyJzZWxmIjoiaHR0cHM6Ly9hcGkuZGF0YWNpdGUub3JnL3VzZXJzP3BhZ2UlNUJudW1iZXIlNUQ9MVx1MDAyNnBhZ2UlNUJzaXplJTVEPTI1XHUwMDI2cXVlcnk9Z2FyemEiLCJuZXh0IjoiaHR0cHM6Ly9hcGkuZGF0YWNpdGUub3JnL3VzZXJzP3BhZ2UlNUJudW1iZXIlNUQ9Mlx1MDAyNnBhZ2UlNUJzaXplJTVEPTI1XHUwMDI2cXVlcnk9Z2FyemEifX0=
     http_version: 
-  recorded_at: Sun, 09 Sep 2018 10:33:04 GMT
+  recorded_at: Sun, 06 Oct 2019 13:27:04 GMT
 recorded_with: VCR 2.9.3

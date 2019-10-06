@@ -37,13 +37,13 @@ module Sinatra
 
     def get_people(params = {})
       if params.fetch(:id, nil).present?
-        url = "#{ENV['VOLPINO_URL']}/people/" + params.fetch(:id)
+        url = "#{ENV['VOLPINO_URL']}/users/" + params.fetch(:id)
       else
         params = { id: params.fetch(:id, nil),
                    'page[number]': params.fetch('page[number]', 1),
                    'page[size]': params.fetch('page[size]', 25),
                    query: params.fetch(:query, nil) }.compact
-        url = "#{ENV['VOLPINO_URL']}/people?" + URI.encode_www_form(params)
+        url = "#{ENV['VOLPINO_URL']}/users?" + URI.encode_www_form(params)
       end
 
       response = Maremma.get url, timeout: TIMEOUT

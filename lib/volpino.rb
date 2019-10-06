@@ -8,7 +8,7 @@ module Sinatra
     def get_claims(current_user, dois)
       return {} unless current_user.present? && current_user.orcid.present? && dois.present?
 
-      url = "#{ENV['ORCID_UPDATE_URL']}/api/users/#{current_user.orcid}/claims?dois=#{dois.join(",")}"
+      url = "#{ENV['ORCID_UPDATE_URL']}/claims?user-id=#{current_user.orcid}&dois=#{dois.join(",")}"
       response = Maremma.get url, bearer: current_user.jwt, timeout: 20
 
       { data: Array(response.body.fetch("data", [])),

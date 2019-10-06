@@ -2,22 +2,22 @@
 http_interactions:
 - request:
     method: get
-    uri: https://profiles.test.datacite.org/people/0000-0001-6528-2027
+    uri: https://api.datacite.org/users/0000-0001-5674-8163
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Maremma - http://search.local
+      - Mozilla/5.0 (compatible; Maremma/4.2.6; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
     status:
       code: 200
-      message: ''
+      message: OK
     headers:
       Date:
-      - Sun, 09 Sep 2018 10:33:05 GMT
+      - Sun, 06 Oct 2019 13:27:04 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -30,26 +30,32 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
-      Etag:
-      - W/"7ea05081e9c6b9515d686019975af66c"
-      X-Frame-Options:
-      - SAMEORIGIN
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
       X-Xss-Protection:
       - 1; mode=block
+      X-Request-Id:
+      - 42f17ecd-fcc7-44a9-a469-83e44b504784
+      X-Download-Options:
+      - noopen
+      Etag:
+      - W/"8659cd2586da73feab6943c077f6083e"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.005817'
       X-Content-Type-Options:
       - nosniff
-      X-Runtime:
-      - '0.006430'
-      X-Request-Id:
-      - 65761f7a-94b2-43ed-93c3-8ff21b1db177
       X-Powered-By:
-      - Phusion Passenger 5.3.4
+      - Phusion Passenger 6.0.4
       Server:
-      - nginx/1.14.0 + Phusion Passenger 5.3.4
+      - nginx/1.17.3 + Phusion Passenger 6.0.4
     body:
-      encoding: UTF-8
-      string: '{"data":{"id":"0000-0001-6528-2027","type":"people","attributes":{"given":"Martin","family":"Fenner","literal":"Martin
-        Fenner","orcid":"https://orcid.org/0000-0001-6528-2027","github":null,"updated":"2018-08-20T16:40:54.000Z"}}}'
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"0000-0001-5674-8163","type":"users","attributes":{"givenNames":"Hoolo","familyName":"''Nyane","name":"Hoolo
+        ''Nyane","orcid":"https://orcid.org/0000-0001-5674-8163","github":null,"roleId":"user","isActive":false,"created":"2019-05-27T15:27:42.000Z","updated":"2019-06-03T14:37:21.000Z"},"relationships":{}}}'
     http_version: 
-  recorded_at: Sun, 09 Sep 2018 10:33:05 GMT
+  recorded_at: Sun, 06 Oct 2019 13:27:04 GMT
 recorded_with: VCR 2.9.3
