@@ -1,23 +1,23 @@
 - attributes = item.fetch("attributes", {})
 
 - if attributes["claim-status"] == "none" && has_orcid_token?
-  %span.well-transparent.claim-none{id: attributes["doi"], data: { url: "#{ENV['JWT_HOST']}/claims", doi: attributes["doi"], orcid: current_user.orcid, action: "create" }}
+  %span.well-transparent.claim-none{id: attributes["doi"], data: { url: "#{ENV['VOLPINO_URL']}/claims", doi: attributes["doi"], orcid: current_user.orcid, action: "create" }}
     %img{src: "#{ENV['CDN_URL']}/images/orcid_16x16.gif" }
     %span Add to ORCID record
 - elsif attributes["claim-status"] == "deleted"
-  %span.well-transparent.claim-none{id: attributes["doi"], data: { url: "#{ENV['JWT_HOST']}/claims", doi: attributes["doi"], orcid: current_user.orcid, action: "create" }}
+  %span.well-transparent.claim-none{id: attributes["doi"], data: { url: "#{ENV['VOLPINO_URL']}/claims", doi: attributes["doi"], orcid: current_user.orcid, action: "create" }}
     %img{src: "#{ENV['CDN_URL']}/images/orcid_16x16.gif" }
     %span Deleted from your ORCID record
 - elsif attributes["claim-status"] == "ignored" && has_orcid_token?
-  %span.well-transparent.claim-none{id: attributes["doi"], data: { url: "#{ENV['JWT_HOST']}/claims", doi: attributes["doi"], orcid: current_user.orcid, action: "create" }}
+  %span.well-transparent.claim-none{id: attributes["doi"], data: { url: "#{ENV['VOLPINO_URL']}/claims", doi: attributes["doi"], orcid: current_user.orcid, action: "create" }}
     %img{src: "#{ENV['CDN_URL']}/images/orcid_16x16.gif" }
     %span Contains your ORCID ID, add to ORCID record
 - elsif attributes["claim-status"] == "failed"
-  %span.well-transparent.claim-warn{id: attributes["doi"], data: { url: "#{ENV['JWT_HOST']}/claims", doi: attributes["doi"], orcid: current_user.orcid, action: "create" }}
+  %span.well-transparent.claim-warn{id: attributes["doi"], data: { url: "#{ENV['VOLPINO_URL']}/claims", doi: attributes["doi"], orcid: current_user.orcid, action: "create" }}
     %img{src: "#{ENV['CDN_URL']}/images/orcid_16x16.gif" }
     %span An error occured while adding to ORCID record
 - elsif attributes["claim-status"] == "done"
-  %span.well-transparent.claim-ok{id: attributes["doi"], data: { url: "#{ENV['JWT_HOST']}/claims", doi: attributes["doi"], orcid: current_user.orcid, action: "delete" }}
+  %span.well-transparent.claim-ok{id: attributes["doi"], data: { url: "#{ENV['VOLPINO_URL']}/claims", doi: attributes["doi"], orcid: current_user.orcid, action: "delete" }}
     %img{src: "#{ENV['CDN_URL']}/images/orcid_16x16.gif" }
     %span In your ORCID record
 - elsif !(%w(none deleted ignored failed done).include?(attributes["claim-status"]))
