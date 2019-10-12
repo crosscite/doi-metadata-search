@@ -286,6 +286,7 @@ module Sinatra
                  "resource-type-id" => options.fetch("resource-type-id", nil),
                  "relation-type-id" => options.fetch("relation-type-id", nil),
                  "data-center-id" => options.fetch("data-center-id", nil),
+                 "affiliation-id" => options.fetch("affiliation-id", nil),
                  "source-id" => options.fetch("source-id", nil),
                  "person-id" => options.fetch("person-id", nil),
                  "year" => options.fetch("year", nil),

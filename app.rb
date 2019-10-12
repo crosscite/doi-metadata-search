@@ -125,7 +125,6 @@ configure :development do
 end
 
 before do
-
   page = params[:page].is_a?(String) ? params[:page].to_i : 1
   @page = page < 1 ? 1 : page
   @meta = {}
@@ -142,7 +141,7 @@ get '/' do
 end
 
 get '/works' do
-  @works = get_works(query: params[:query], 'page[number]' => @page, 'data-center-id' => params['data-center-id'], 'resource-type-id' => params['resource-type-id'], 'year' => params['year'], 'registered' => params['registered'])
+  @works = get_works(query: params[:query], 'page[number]' => @page, 'data-center-id' => params['data-center-id'], 'resource-type-id' => params['resource-type-id'], 'year' => params['year'], 'registered' => params['registered'], 'affiliation-id' => params['affiliation-id'])
 
   # check for existing claims if user is logged in
   @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
@@ -235,7 +234,7 @@ get '/people/:id' do
     link = "https://orcid.org/#{params[:id]}"
     headers['Link'] = "<#{link}> ; rel=\"identifier\""
 
-    @works = get_works(query: params[:query], "person-id" => params[:id], 'page[number]' => @page, 'data-center-id' => params['data-center-id'], 'resource-type-id' => params['resource-type-id'], 'relation-type-id' => params['relation-type-id'], 'year' => params['year'], 'registered' => params['registered'], sort: params[:sort])
+    @works = get_works(query: params[:query], "person-id" => params[:id], 'page[number]' => @page, 'data-center-id' => params['data-center-id'], 'resource-type-id' => params['resource-type-id'], 'relation-type-id' => params['relation-type-id'], 'year' => params['year'], 'registered' => params['registered'], 'affiliation-id' => params['affiliation-id'], sort: params[:sort])
 
     # check for existing claims if user is logged in and has personal account
     @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user && is_person?
@@ -263,7 +262,7 @@ end
 get '/data-centers/:id' do
   @datacenter = get_datacenters(id: params[:id])
 
-  @works = get_works(query: params[:query], "data-center-id" => params[:id], 'page[number]' => @page, 'resource-type-id' => params['resource-type-id'], 'relation-type-id' => params['relation-type-id'], 'year' => params['year'], 'registered' => params['registered'], sort: params[:sort])
+  @works = get_works(query: params[:query], "data-center-id" => params[:id], 'page[number]' => @page, 'resource-type-id' => params['resource-type-id'], 'relation-type-id' => params['relation-type-id'], 'year' => params['year'], 'registered' => params['registered'], 'affiliation-id' => params['affiliation-id'], sort: params[:sort])
 
   # check for existing claims if user is logged in
   @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
@@ -285,7 +284,7 @@ end
 get '/members/:id' do
   @member = get_members(id: params[:id])
 
-  @works = get_works(query: params[:query], "member-id" => params[:id], 'page[number]' => @page, 'resource-type-id' => params['resource-type-id'], 'data-center-id' => params['data-center-id'], 'relation-type-id' => params['relation-type-id'], 'year' => params['year'], 'registered' => params['registered'])
+  @works = get_works(query: params[:query], "member-id" => params[:id], 'page[number]' => @page, 'resource-type-id' => params['resource-type-id'], 'data-center-id' => params['data-center-id'], 'relation-type-id' => params['relation-type-id'], 'year' => params['year'], 'registered' => params['registered'], 'affiliation-id' => params['affiliation-id'])
 
   # check for existing claims if user is logged in
   @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user

@@ -22,6 +22,7 @@ module Sinatra
                    'resource-type-id' => params.fetch('resource-type-id', nil),
                    'data-center-id' => params.fetch('data-center-id', nil),
                    'member-id' => params.fetch('member-id', nil),
+                   'affiliation-id' => params.fetch('affiliation-id', nil),
                    'work-id' => params.fetch('work-id', nil),
                    'person-id' => params.fetch('person-id', nil) }.compact
 
