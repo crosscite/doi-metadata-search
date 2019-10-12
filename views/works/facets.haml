@@ -73,19 +73,20 @@
         Affiliations
       %ul
         - @works[:meta]["affiliations"].each do |f|
-          - if params['affiliation-id'] == f.fetch("id", nil)
-            %li.active
-              %a{:href => works_query(params.except('affiliation-id'))}
-                %i.fa.fa-check-square-o
-              .facet-title
-                = f.fetch("title", nil)
-              %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
-              .clearfix
-          - else
-            %li
-              %a{:href => works_query(params.merge('affiliation-id' => f.fetch("id", nil)))}
-                %i.fa.fa-square-o
-              .facet-title
-                = f.fetch("title", nil)
-              %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
-              .clearfix
+          - if f.fetch("title", nil) != f.fetch("id", nil)
+            - if params['affiliation-id'] == f.fetch("id", nil)
+              %li.active
+                %a{:href => works_query(params.except('affiliation-id'))}
+                  %i.fa.fa-check-square-o
+                .facet-title
+                  = f.fetch("title", nil)
+                %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
+                .clearfix
+            - else
+              %li
+                %a{:href => works_query(params.merge('affiliation-id' => f.fetch("id", nil)))}
+                  %i.fa.fa-square-o
+                .facet-title
+                  = f.fetch("title", nil)
+                %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
+                .clearfix
