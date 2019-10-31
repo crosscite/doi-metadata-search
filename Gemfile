@@ -14,7 +14,7 @@ gem 'oj', '~> 2.18', '>= 2.18.1'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap', git: "https://github.com/HeyPublisher/will_paginate-bootstrap"
 gem 'iso8601', '~> 0.9.0'
-gem 'maremma', '~> 4.0'
+gem 'maremma', '~> 4.4'
 gem 'gabba'
 gem 'jwt'
 gem 'rack-flash3'
