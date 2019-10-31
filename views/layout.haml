@@ -10,7 +10,8 @@
     %link{:rel => 'stylesheet', :href => "//fonts.googleapis.com/css?family=Raleway:400,600,400italic,600italic", :type => 'text/css'}
     %link{:rel => 'stylesheet', :href => "//cdnjs.cloudflare.com/ajax/libs/cc-icons/1.2.1/css/cc-icons.min.css", :type => 'text/css'}
     %script{:src=>"https://unpkg.com/vue/dist/vue.min.js"}
-    %script{:type => 'text/javascript', :src=>"https://unpkg.com/data-metrics-badge@0.1.6/dist/data-metrics-badge.min.js"}
+    -# %script{:type => 'text/javascript', :src=>"https://unpkg.com/data-metrics-badge/dist/data-metrics-badge.min.js"}
+    %script{:type => 'text/javascript', :src=>"/javascripts/data-metrics.min.js"}
 
     - if ENV['CDN_URL']
       %link{:rel => 'stylesheet', :href => "#{ENV['CDN_URL']}/stylesheets/datacite.css", :type => 'text/css'}

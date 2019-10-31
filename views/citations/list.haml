@@ -1,27 +1,10 @@
 - if @citations[:citations].length > 0
+
+  -# - if duplicated == true
+  -#   .panel-body.alert.alert-warning
+  -#     = "There are a few duplicated items on this list. For information on duplicated items, please see"
+  -#     %a{href: 'https://support.datacite.org/docs/contributing-data-citations'}
+  -#       our documentation. 
+
+  %data-metrics-links-tabs{ doi:attributes["doi"]}
   
-  - if duplicated == true
-    .panel-body.alert.alert-warning
-      = "There are a few duplicated items on this list. For information on duplicated items, please see"
-      %a{href: 'https://support.datacite.org/docs/contributing-data-citations'}
-        our documentation. 
-
-  .panel-body
-  - lastRelationtypeId = ""
-  - @citations[:citations].each do |item|
-    - if lastRelationtypeId != item.dig("attributes","relationTypeId")
-      %h3.results
-        = "#{item.dig("attributes","relationTypeId").underscore.humanize.upcase}"
-    = haml :'citations/item', locals: { item: item}
-    - lastRelationtypeId = item.dig("attributes","relationTypeId")
-
-  .text-center
-    = will_paginate @citations[:citations], renderer: BootstrapPagination::Sinatra, inner_window: 1
-
-- else
-  - if @citations[:errors].present?
-    .alert.alert-BootstrapPagination
-      = @citations[:errors].first.fetch("title", "An error occured.")
-  - else
-    .alert.alert-simple-info
-      Nothing found.

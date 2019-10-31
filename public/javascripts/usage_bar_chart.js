@@ -265,6 +265,7 @@
         $('#views-tab').tab("show")
       }else if(gon.chart_citations){
         $('#citations-tab').tab("show")
+        $("#citationsList-tab").tab('show')
       }
   
   
@@ -286,6 +287,21 @@
       $('.usage-counts.citations').on('click', function (e) {
         e.preventDefault()
         $("#citations-tab").tab('show')
+      })
+
+      $('.usage-counts.citationsList').on('click', function (e) {
+        e.preventDefault()
+        $("#citationsList-tab").tab('show')
+      })
+
+      $('.usage-counts.references').on('click', function (e) {
+        e.preventDefault()
+        $("#references-tab").tab('show')
+      })
+
+      $('.usage-counts.relations').on('click', function (e) {
+        e.preventDefault()
+        $("#relations-tab").tab('show')
       })
     }
 
