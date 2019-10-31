@@ -48,7 +48,10 @@
 
   - if ((views+downloads+citations).positive?)
     .panel-footer{:style=>"display: grid;text-align: left;grid-template-columns: 400px max-content 200px;"}
-      %data-metrics-badge{"data-input": widget_data, doi:attributes["doi"],  display:"datacite"}
+      - if ENV['RACK_ENV'] == 'production' ### TODO: Remove soon. set temporaly to send to production 
+        %data-metrics-badge{"data-input": widget_data, doi:attributes["doi"],  display:"datacite"}
+      -else
+        %data-metrics-badge{doi:attributes["doi"],  display:"datacite"}
       - if ((views+downloads).zero? && @work.blank?)
         %div.col-md-auto
           %span.usage-info
@@ -87,12 +90,12 @@
       = "This data center is not currently reporting usage information. For information on how your repository can submit usage information, please see"
       %a{href: 'https://support.datacite.org/docs/views-and-downloads'}
         our documentation.
-
-- if @work.present? 
-  - if citations.positive?
-    = haml :'citations/list', locals: { attributes: attributes, citations: citations, duplicated: has_duplicated ,summary: metrics}
-  - else
-    .panel-body.alert.alert-warning
-      = "We found no citations for this #{type}. For information on how to provide citation information, please see"
-      %a{href: 'https://support.datacite.org/docs/contributing-data-citations'}
-        our documentation. 
+- if ENV['RACK_ENV'] != 'production'
+  - if @work.present? 
+    - if citations.positive?
+      = haml :'citations/list', locals: { attributes: attributes, citations: citations, duplicated: has_duplicated ,summary: metrics}
+    - else
+      .panel-body.alert.alert-warning
+        = "We found no citations for this #{type}. For information on how to provide citation information, please see"
+        %a{href: 'https://support.datacite.org/docs/contributing-data-citations'}
+          our documentation. 
