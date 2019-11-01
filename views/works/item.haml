@@ -46,25 +46,26 @@
         %a{:href => attributes["license"]}
           = license_img(attributes["license"])
 
-  - if ((views+downloads+citations).positive?)
-    .panel-footer{:style=>"display: grid;text-align: left;grid-template-columns: 400px max-content 200px;"}
-      - if ENV['RACK_ENV'] == 'production' ### TODO: Remove soon. set temporaly to send to production 
+  - if ENV['RACK_ENV'] == 'production'
+    - if ((views+downloads+citations).positive?) 
+      .panel-footer{:style=>"display: grid;text-align: left;grid-template-columns: 400px max-content 200px;"}
         %data-metrics-badge{"data-input": widget_data, doi:attributes["doi"],  display:"datacite"}
-      -else
-        %data-metrics-badge{doi:attributes["doi"],  display:"datacite"}
-      - if ((views+downloads).zero? && @work.blank?)
-        %div.col-md-auto
+        - if ((views+downloads).zero? && @work.blank?)
+          %div.col-md-auto
+            %span.usage-info
+              .fa.fa-info-circle 
+            %a
+              = "<small> This data center is not currently reporting usage information.</small> "
+    - else
+      - unless (@work.present?)
+        .panel-footer
           %span.usage-info
             .fa.fa-info-circle 
           %a
-            = "<small> This data center is not currently reporting usage information.</small> "
-  - else
-    - unless (@work.present?)
-      .panel-footer
-        %span.usage-info
-          .fa.fa-info-circle 
-        %a
-          = "This data center is not currently reporting usage information." 
+            = "This data center is not currently reporting usage information." 
+  - else 
+    .panel-footer{:style=>"display: grid;text-align: left;"}
+      %data-metrics-badge{doi:attributes["doi"],  display:"datacite"}
 
   - if @work.present? && @work.fetch(:data, {}).fetch("attributes", {}).fetch("related-identifiers", nil).present? && @work.fetch(:data, {}).fetch("id", "work") != item["id"]
     .panel-footer
@@ -92,10 +93,5 @@
         our documentation.
 - if ENV['RACK_ENV'] != 'production'
   - if @work.present? 
-    - if citations.positive?
-      = haml :'citations/list', locals: { attributes: attributes, citations: citations, duplicated: has_duplicated ,summary: metrics}
-    - else
-      .panel-body.alert.alert-warning
-        = "We found no citations for this #{type}. For information on how to provide citation information, please see"
-        %a{href: 'https://support.datacite.org/docs/contributing-data-citations'}
-          our documentation. 
+    = haml :'citations/list', locals: { attributes: attributes, citations: citations, duplicated: has_duplicated ,summary: metrics}
+
