@@ -87,7 +87,7 @@
   - if ((views+downloads+citations).positive?)
     = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads, citations: citations, total_views: total_views, total_downloads: total_downloads}
   - if ((views+downloads).zero?)
-    .panel-body.alert.alert-warning
+    .panel-body.alert.alert-info
       = "This data center is not currently reporting usage information. For information on how your repository can submit usage information, please see"
       %a{href: 'https://support.datacite.org/docs/views-and-downloads'}
         our documentation.
