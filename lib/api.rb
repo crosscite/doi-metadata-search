@@ -96,7 +96,7 @@ module Sinatra
 
     def get_events(params = {})
       relations = INCLUDED_RELATION_TYPES + USAGE_RELATION_TYPES 
-      aggregations = "query_aggregations,metrics_aggregations"    
+      aggregations = "query_aggregations,metrics_aggregations,citations_aggregations"    
       if params.fetch(:id, nil).present?
         url = "#{ENV['API_URL']}/events/#{params.fetch(:id)}"
       else
