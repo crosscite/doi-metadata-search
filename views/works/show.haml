@@ -67,21 +67,6 @@
                       %i.fa{class: "fa-#{social['icon']}"}
                       %span.hidden
                         = social['icon']
-      - relation_types = @work[:relation_types].map { |type| type if INCLUDED_RELATION_TYPES.include?(type["id"])  }
-      - if relation_types.any? &&  @citations[:citations].length > 0
-        .col-md-3{style:"position: sticky;  top: 0;"}
-          .facets
-            .panel-body
-            %h4
-              Relation Types
-            %ul
-              - relation_types.compact.each do |f|
-                %li
-                  .facet-title
-                    = f.fetch("title", nil).underscore.humanize
-                  %span.number.pull-right= "#{(f.fetch("count", 0).to_i)}"
-                  .clearfix
-
 -#
       - if @works[:data].length > 0
         / - if @works[:data].length > 1
