@@ -21,8 +21,7 @@
           .col-lg-12
             .row
               .p{:style => "padding-left:20px;"}
-                - views_label =  views > 1 ? "#{views} views" : "#{views} view"
-                = "<strong>#{views_label}</strong> <small> reported since #{gon.chart_views[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
+                = "<strong>#{pluralize(views, "citation") }</strong> <small> reported since #{gon.chart_views[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
             .row#views-chart{:style => "padding-left:10px;"}              
             %br
             .row
@@ -41,8 +40,7 @@
           .col-lg-12
             .row
               .p{:style => "padding-left:20px;"}
-                - downloads_label =  downloads > 1 ? "#{downloads} downloads" : "#{downloads} download"
-                = "<strong>#{downloads_label}</strong> <small> reported since #{gon.chart_downloads[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
+                = "<strong>#{pluralize(downloads, "citation") }</strong> <small> reported since #{gon.chart_downloads[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
             .row#downloads-chart{:style => "padding-left:10px;"}
             %br
             .row
@@ -61,8 +59,7 @@
           .col-lg-12
             .row
               .p{:style => "padding-left:20px;"}
-                - citations_label =  citations > 1 ? "#{citations} citations" : "#{citations} citation"
-                = "<strong>#{citations_label}</strong> <small> reported since #{gon.chart_citations[0].to_h.fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
+                = "<strong>#{pluralize(citations, "citation")}</strong> <small> reported since #{gon.chart_citations[0].to_h.fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
               .row#citations-chart{:style => "padding-left:10px;"}
             -# - else
             -#   .row

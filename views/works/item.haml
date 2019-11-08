@@ -55,14 +55,14 @@
             %span.usage-info
               .fa.fa-info-circle 
             %a
-              = "<small> This data center is not currently reporting usage information.</small> "
+              = "<small> This data repository is not currently reporting usage information.</small> "
     - else
       - unless (@work.present?)
         .panel-footer
           %span.usage-info
             .fa.fa-info-circle 
           %a
-            = "This data center is not currently reporting usage information." 
+            = "This data repository is not currently reporting usage information." 
   - else 
     .panel-footer{:style=>"display: grid;text-align: left;"}
       %data-metrics-badge{doi:attributes["doi"],  display:"datacite"}
@@ -93,6 +93,6 @@
   - if ((views+downloads).zero?)
     %br
     .panel-body.alert.alert-secondary
-      = "This data center is not currently reporting usage information. For information on how your repository can submit usage information, please see"
+      = "This data repository is not currently reporting usage information. For information on how your repository can submit usage information, please see"
       %a{href: 'https://support.datacite.org/docs/views-and-downloads'}
         our documentation.

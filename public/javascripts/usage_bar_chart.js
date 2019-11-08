@@ -57,18 +57,18 @@
       var fistDataPoint = new Date(data[0].id+"-01-01");
       var yopDate = new Date(yop+"-01-01");
       var startDate = (fistDataPoint > yopDate) ? yopDate : fistDataPoint
-      var startDate = (today.getFullYear() - startDate.getFullYear()) < 10 ? startDate : new Date(startDate.setYear( today.getFullYear() - 10 ));
+      var startDate = (today.getFullYear() - startDate.getFullYear()) < 20 ? startDate : new Date(startDate.setYear( today.getFullYear() - 20 ));
   
       var startTime = startDate
       var endTime = today;
       var domain = [startTime, endTime];
-      var length = bins(yop,10);
+      var length = bins(yop,20);
       var firstLabel = formatYear(startDate)
       var lastLabel = formatYear(endDate)
 
       return {
         width: chartWidth,
-        barWidth: chartWidth/10,
+        barWidth: chartWidth/20,
         firstLabel: firstLabel,
         lastLabel: lastLabel,
         length: length,
