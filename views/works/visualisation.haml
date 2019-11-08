@@ -21,7 +21,8 @@
           .col-lg-12
             .row
               .p{:style => "padding-left:20px;"}
-                = "<strong>#{views} views</strong> <small> reported since #{gon.chart_views[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
+                - views_label =  views > 1 ? "#{views} views" : "#{views} view"
+                = "<strong>#{views_label}</strong> <small> reported since #{gon.chart_views[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
             .row#views-chart{:style => "padding-left:10px;"}              
             %br
             .row
@@ -40,7 +41,8 @@
           .col-lg-12
             .row
               .p{:style => "padding-left:20px;"}
-                = "<strong>#{downloads} downloads</strong> <small> reported since #{gon.chart_downloads[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
+                - downloads_label =  downloads > 1 ? "#{downloads} downloads" : "#{downloads} download"
+                = "<strong>#{downloads_label}</strong> <small> reported since #{gon.chart_downloads[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
             .row#downloads-chart{:style => "padding-left:10px;"}
             %br
             .row
@@ -59,7 +61,8 @@
           .col-lg-12
             .row
               .p{:style => "padding-left:20px;"}
-                = "<strong>#{citations} citations</strong> <small> reported since #{gon.chart_citations[0].to_h.fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
+                - citations_label =  citations > 1 ? "#{citations} citations" : "#{citations} citation"
+                = "<strong>#{citations_label}</strong> <small> reported since #{gon.chart_citations[0].to_h.fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
               .row#citations-chart{:style => "padding-left:10px;"}
             -# - else
             -#   .row
