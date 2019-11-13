@@ -54,21 +54,25 @@
 
       var today = new Date();
       var endDate = new Date(today.setMonth( today.getMonth())); // c
-      var fistDataPoint = new Date(data[0].id+"-01-01");
+      var firstDataPoint = new Date(data[0].id+"-01-01");
       var yopDate = new Date(yop+"-01-01");
-      var startDate = (fistDataPoint > yopDate) ? yopDate : fistDataPoint
-      var startDate = (today.getFullYear() - startDate.getFullYear()) < 20 ? startDate : new Date(startDate.setYear( today.getFullYear() - 20 ));
+      var startDate = (firstDataPoint > yopDate) ? yopDate : firstDataPoint
+      var maxStart = new Date((today.getFullYear()-20)+"-01-01");
+      var diff = today.getFullYear() - yopDate.getFullYear()
+      var startDate = diff <= 20 ? yopDate : maxStart;
+
   
       var startTime = startDate
       var endTime = today;
       var domain = [startTime, endTime];
-      var length = bins(yop,20);
+      var length = (diff > 20? 20 : diff) + 0.5 
       var firstLabel = formatYear(startDate)
       var lastLabel = formatYear(endDate)
+      var barWidth = 21
 
       return {
-        width: chartWidth,
-        barWidth: chartWidth/20,
+        width: (barWidth+2)*length,
+        barWidth: barWidth,
         firstLabel: firstLabel,
         lastLabel: lastLabel,
         length: length,
@@ -116,7 +120,8 @@
  
       let chartWidth = document.getElementById("myTabContent").offsetWidth*0.95
       if(displayMode == "citations"){
-        setup = setupCitations(data, yop, chartWidth )
+        setup = setupCitations(data, yop, 0 )
+        chartWidth = setup.width
       }
       else{
         setup = setupUsage(data, yop, chartWidth)
@@ -178,7 +183,7 @@
           } else {
             return x(new Date(Date.parse(d.id + ':00:00Z')));
           }})
-        .attr("width", setup.barWidth*.92)
+        .attr("width", setup.barWidth-2)
         .attr("y", function(d) { return y(d.sum); })
         .attr("height", function(d) { return height - y(d.sum); });
 
@@ -316,7 +321,7 @@ $(document).ready(function(e) {
     
     tabs_interaction()
 
-    console.log(views)
+  //   console.log(views)
 
   //   views = [
   //     {id: "2017-01", title: "April 2018", sum: 337},
@@ -349,18 +354,18 @@ $(document).ready(function(e) {
   //     {id: "2019-08", title: "April 2018", sum: 337},
   // ]
 
-  // // yop="2009"
+  // yop="1980"
 
   //     citations = [
   //       {id: "2009", title: "April 2018", sum: 337},
   //       {id: "2010", title: "April 2018", sum: 337},
   //       {id: "2011", title: "April 2018", sum: 337},
-  //       {id: "2012", title: "April 2018", sum: 337},
+  //       {id: "2012", title: "April 2018", sum: 12},
   //       {id: "2013", title: "April 2018", sum: 337},
   //       {id: "2014", title: "April 2018", sum: 337},
-  //       {id: "2015", title: "April 2018", sum: 337},
+  //       {id: "2015", title: "April 2018", sum: 1000},
   //     {id: "2016", title: "April 2018", sum: 337},
-  //     {id: "2017", title: "April 2018", sum: 337},
+  //     {id: "2017", title: "April 2018", sum: 23},
   //     {id: "2018", title: "April 2018", sum: 337},
   //     {id: "2019", title: "April 2018", sum: 337}
   //   ]
