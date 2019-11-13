@@ -14,17 +14,17 @@
 -# %br
 .panel.panel-default
   .panel-body.usage-charts
-    #myTabContent.tab-content{:style => "height: 400px;"}
+    %div#myTabContent.tab-content
 
       - if views > 0
-        .row#views.tab-pane.active{"aria-labelledby" => "views-tab", :role => "tabpanel",:style => "position: absolute;"} 
+        .row#views.tab-pane.active{"aria-labelledby" => "views-tab", :role => "tabpanel",:style => "position: relative;"} 
           .col-lg-12
             .row
               .p{:style => "padding-left:20px;"}
-                = "<strong>#{pluralize(views, "citation") }</strong> <small> reported since #{gon.chart_views[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
+                = "<strong>#{pluralize(views, "view") }</strong> <small> reported since #{gon.chart_views[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
             .row#views-chart{:style => "padding-left:10px;"}              
             %br
-            .row
+            .row{:style => "position: relative;"}
               .col-md-8
                 .p
                   These counts follow the 
@@ -36,11 +36,11 @@
                     What does this mean?
 
       - if downloads > 0
-        .row#downloads.tab-pane.fade{"aria-labelledby" => "downloads-tab", :role => "tabpanel", :style => "position: absolute;"} 
+        .row#downloads.tab-pane.fade{"aria-labelledby" => "downloads-tab", :role => "tabpanel", :style => "position: relative;"} 
           .col-lg-12
             .row
               .p{:style => "padding-left:20px;"}
-                = "<strong>#{pluralize(downloads, "citation") }</strong> <small> reported since #{gon.chart_downloads[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
+                = "<strong>#{pluralize(downloads, "download") }</strong> <small> reported since #{gon.chart_downloads[0].fetch("title", "NA")} </br>  published in #{attributes.fetch("published", "")} </small>"
             .row#downloads-chart{:style => "padding-left:10px;"}
             %br
             .row
@@ -55,7 +55,7 @@
                     What does this mean?
 
       - if citations > 0
-        .row#citations.tab-pane.fade{"aria-labelledby" => "citations-tab", :role => "tabpanel", :style => "position: absolute;"} 
+        .row#citations.tab-pane.fade{"aria-labelledby" => "citations-tab", :role => "tabpanel", :style => "position: relative;"} 
           .col-lg-12
             .row
               .p{:style => "padding-left:20px;"}
