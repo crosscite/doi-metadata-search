@@ -120,39 +120,17 @@ describe "Helpers", type: :model, vcr: true do
     end
 
     it "reduce when there is no meta" do
-      relation_types = subject.reduce_aggs(empty_meta,{yop: 2015})
+      relation_types = subject.reduce_aggs(empty_meta, { yop: 2015 })
       expect(relation_types.size).to eq(0)
     end
 
     it "reduce with out of bounds data" do
-      relation_types = subject.reduce_aggs(meta,{yop: 2017})
+      relation_types = subject.reduce_aggs(meta, { yop: 2017 })
       expect(relation_types.size).to eq(6)
       expect(relation_types.dig("unique-dataset-investigations-regular")).to be(31)
-      expect(relation_types.dig("total-dataset-requests-regular")).to be(0)
-      expect(relation_types.dig("total-dataset-investigations-regular")).to be(0)
-      expect(relation_types.dig("total-dataset-requests-regular")).to be(0)
       expect(relation_types.dig("unique-dataset-requests-regular")).to be(0)
-      # expect(relation_types.dig("total-dataset-investigations-machine")).to be(0)
-      # expect(relation_types.dig("unique-dataset-investigations-machine")).to be(0)
     end
   end
-
-  context "filter_relation_types" do
-    let(:metrics) {{"references"=>"2165", "has-part"=>"1", "is-cited-by"=>"2", "total-dataset-investigations-regular"=>"40"}}
-    let(:usage) {{ "has-part"=>"1",  "total-dataset-investigations-regular"=>"40"}}
-
-    it "filter for citations" do
-      citations = subject.filter_relation_types(metrics)
-      expect(citations).to eq(2167)
-    end
-
-    it "no citations" do
-      citations = subject.filter_relation_types(usage)
-      expect(citations).to eq(0)
-    end
-  end
-
-
 
   context "helpers" do
     it "relation_type_title" do

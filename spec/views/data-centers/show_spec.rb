@@ -1,11 +1,9 @@
-require 'spec_helper'
+# require 'spec_helper'
 
-  describe "works/show.haml"  do
+#   describe "works/show.haml"  do
+#     context "works/facets" do
+#       it "meta" do
 
-    context "works/facets" do
-      it "meta" do
-
-
-        end
-      end
-  end
+#       end
+#     end
+#   end

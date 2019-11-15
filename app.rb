@@ -167,7 +167,6 @@ get %r{/works/(.+)} do
   link = doi ? "https://doi.org/#{doi}" : params[:id]
 
   events  = get_events('page[size]' => 25, 'page[number]' => @page, 'doi' => doi, 'include' => 'dois', 'sort' => 'relation_type_id')
-  @citations = citations_response(events, link, @page)
 
   @work[:metrics] = reduce_aggs(events[:meta], {yop: @work.dig(:data, "attributes","published").to_i})
   @work[:metrics].merge!(citations: (events[:meta].fetch('uniqueCitations', []).find {|x| x['id'] == doi } || {}))

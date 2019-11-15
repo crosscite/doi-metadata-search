@@ -273,7 +273,6 @@
         $("#citationsList-tab").tab('show')
       }
   
-  
       $('.usage-counts.usage-views').on('click', function (e) {
         e.preventDefault()
         $("#views-tab").tab('show')

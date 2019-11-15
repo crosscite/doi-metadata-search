@@ -38,39 +38,8 @@ module Sinatra
       "IsVariantFormOf" => "IsOriginalFromOf",
       "Recommends" => "isRecommendedBy",
       "References" => "isReferencedBy",
-      "Reviews" => "isReviewedBy",
+      "Reviews" => "isReviewedBy"
     }
-
-
-    INCLUDED_RELATION_TYPES = [
-      "cites", 
-      "is-cited-by",
-      "compiles", 
-      "is-compiled-by",
-      "documents", 
-      "is-documented-by",
-      "has-metadata", 
-      "is-metadata-for",
-      "is-supplement-to", 
-      "is-supplemented-by",
-      "is-derived-from", 
-      "is-source-of",
-      "references", 
-      "is-referenced-by",
-      "reviews", 
-      "is-reviewed-by",
-      "requires", 
-      "is-required-by",
-      "describes", 
-      "is-described-by"
-    ]
-
-    USAGE_RELATION_TYPES = [
-      "unique-dataset-investigations-regular",
-      "total-dataset-investigations-regular",
-      "unique-dataset-requests-regular",
-      "total-dataset-requests-regular"
-    ]
 
     INCLUDED_SOURCES = [
       "datacite-related",
@@ -179,7 +148,7 @@ module Sinatra
       relation_types.each do |type|
         qty = type["yearMonths"].map do |period| 
           year = Date.strptime(period.dig("id")+"-01", '%Y-%m-%d').year
-          if USAGE_RELATION_TYPES.include?(type.dig("id"))   ## a work can be citated before publication but not have usage
+          if %w(unique-dataset-investigations-regular unique-dataset-requests-regular).include?(type.dig("id"))   ## a work can't have usage before publication
             quantity = (options[:yop]..Date.today.year) === year ? period.dig("sum") : 0  
           else
             quantity = period.dig("sum")
@@ -384,9 +353,7 @@ module Sinatra
       Array(/\A(?:(http|https):\/\/doi\.org\/)?(10\.\d{4,5}\/.+)\z/.match(doi)).last
     end
 
-
     def citations_response(hash, doi, page)
-
       # includes = (hash.fetch(:included,[]).delete_if { |h| h["id"] == doi }).sort_by { |hsh| hsh["subtype"] }
       includes = (hash.fetch(:included,[])).sort_by { |hsh| hsh["subtype"] }
 
@@ -584,31 +551,6 @@ module Sinatra
       end
       x - [nil]
     end
-
-
-    # def filter_period yop
-    #   "#{yop}-#{Date.today.year}"
-    # end
-
-    def metrics?(metrics)
-      types = INCLUDED_RELATION_TYPES + ['total-dataset-investigations-regular', 'total-dataset-requests-regular']
-      m = metrics.to_h.values_at(*types)
-      m.map! {|e| e ? e : 0}
-      m=m.inject(0, :+)
-      return true if m.positive?
-
-      false
-    end
-
-    def filter_relation_types(metrics)
-      hsh_metrics = metrics.to_h
-      citations = 0
-      INCLUDED_RELATION_TYPES.each do |type|
-        citations += hsh_metrics.fetch(type,0).to_i
-      end
-      citations
-    end
-
 
     def is_subj?(doi, subj)
       doi == subj 

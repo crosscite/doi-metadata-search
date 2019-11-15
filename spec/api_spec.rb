@@ -117,7 +117,6 @@ describe "API", type: :model, vcr: true do
     end
   end
 
-
   context "get_events" do
     it "all" do
       response = subject.get_events

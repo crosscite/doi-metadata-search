@@ -6,13 +6,7 @@
 - new_params = params[:model] == "works" && params["id"] == attributes.fetch("doi", nil) ? params.merge(external_link: true) : params
 - title = attributes["title"].to_s.gsub(/"/, '\"')
 - views = metrics.to_h.fetch("unique-dataset-investigations-regular",0) 
--# - views =  metrics.fetch(:views_histogram,{}).fetch("count",0).to_i 
-- total_views = metrics.to_h.fetch("total-dataset-investigations-regular",0) 
 - downloads = metrics.to_h.fetch("unique-dataset-requests-regular",0) 
--# - downloads =  metrics.fetch(:downloads_histogram,{}).fetch("count",0).to_i 
-- total_downloads = metrics.to_h.fetch("total-dataset-requests-regular",0) 
-- resolutions = metrics.to_h.fetch("unique-resolutions-regular",0).to_i + metrics.to_h.fetch("unique-resolutions-machine","--").to_i
--# - citations = filter_relation_types metrics ###metrics.fetch("uniqueCitations",0).to_i
 - citations = metrics.fetch(:citations,{}).fetch("count",0).to_i 
 - if @work.present? && metrics.fetch(:views_histogram,{}).fetch("yearMonths",[]).any?
   - gon.chart_views = metrics.fetch(:views_histogram,{}).fetch("yearMonths",[])
@@ -85,7 +79,7 @@
 
 - if @work.present? 
   - if ((views+downloads+citations).positive?)
-    = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads, citations: citations, total_views: total_views, total_downloads: total_downloads}
+    = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads, citations: citations }
 - if ENV['RACK_ENV'] != 'production'
   - if @work.present? 
     = haml :'citations/list', locals: { attributes: attributes, citations: citations, duplicated: has_duplicated ,summary: metrics}

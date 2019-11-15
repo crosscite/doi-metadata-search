@@ -95,13 +95,11 @@ module Sinatra
     end
 
     def get_events(params = {})
-      relations = INCLUDED_RELATION_TYPES + USAGE_RELATION_TYPES 
       aggregations = "query_aggregations,metrics_aggregations,citations_aggregations"    
       params =
       {
         id:                   params.fetch(:id, nil),
         'subj-id'          => params.fetch('subj-id', nil),
-        'relation-type-id' => relations.join(','),
         'obj-id'           => params.fetch('obj-id', nil),
         'doi'              => params.fetch('doi', nil),
         'occurredAt'       => params.fetch('occurred_in', nil), 
@@ -122,29 +120,7 @@ module Sinatra
         errors: Array(response.body.fetch("errors", [])),
         links: Array(response.body.fetch("links", [])),
         meta: response.body.fetch("meta", {}) }
-    end
-
-    def get_citations_metadata(events, params = {})
-
-      dois = events.fetch(:included,[]).map do |citation| 
-        doi = citation.fetch('id',nil)
-        doi = Array(/\A(?:(http|https):\/(\/)?(dx\.)?(doi.org|handle.test.datacite.org)\/)?(doi:)?(10\.\d{4,5}\/.+)\z/.match(doi)).last
-        doi = doi.delete("\u200B").downcase if doi.present?
-        doi if doi.present?
-      end
-  
-      url = "#{ENV['API_URL']}/dois?ids=#{dois.join(",")}&" + URI.encode_www_form({"page[size]"=> 50})
-      # dependency injection
-      response = params[:response].present? ? params[:response] : Maremma.get(url, timeout: 20)
-
-      {
-        data: Array(response.body.fetch("data", [])),
-        included: Array(response.body.fetch("included", [])),
-        errors: Array(response.body.fetch("errors", [])),
-        meta: response.body.fetch("meta", {}) 
-      }
-    end
-  
+    end  
   end
 
   helpers Api
