@@ -12,13 +12,13 @@ DOI Metadata Search combines these activities into a single codebase that works 
 
 ## Installation
 
-Using Docker.
+Using Docker. There is no required configuration file.
 
 ```
-docker run -p 8000:80 crosscite/doi-metadata-search
+docker run -p 8095:80 crosscite/doi-metadata-search
 ```
 
-You can now point your browser to `http://localhost:8000` and use the application.
+You can now point your browser to `http://localhost:8095` and use the application.
 
 ![Screenshot](https://raw.githubusercontent.com/crosscite/doi-metadata-search/master/public/images/start.png)
 
