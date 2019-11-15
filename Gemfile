@@ -35,7 +35,6 @@ group :test do
   gem 'rspec'
   gem 'capybara'
   gem 'capybara-screenshot'
-  gem 'puma'
   gem 'factory_girl'
   gem 'cuprite'
   gem 'webmock', '~> 3.5.1'
@@ -45,5 +44,6 @@ group :test do
 end
 
 group :test, :development do
-  gem 'rubocop', '~> 0.49.1', require: false
+  gem 'rubocop', '~> 0.68.1', require: false
+  gem 'rubocop-performance', '~> 1.2', require: false
 end

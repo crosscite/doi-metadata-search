@@ -97,30 +97,25 @@ module Sinatra
     def get_events(params = {})
       relations = INCLUDED_RELATION_TYPES + USAGE_RELATION_TYPES 
       aggregations = "query_aggregations,metrics_aggregations,citations_aggregations"    
-      if params.fetch(:id, nil).present?
-        url = "#{ENV['API_URL']}/events/#{params.fetch(:id)}"
-      else
-        params =
-        {
-          id: params.fetch(:id, nil),
-          # key source-id is duplicated
-          # 'source-id'        => params.fetch('source-id', nil),
-          'subj-id'          => params.fetch('subj-id', nil),
-          'relation-type-id' => relations.join(','),
-          'obj-id'           => params.fetch('obj-id', nil),
-          'doi'              => params.fetch('doi', nil),
-          'occurredAt'       => params.fetch('occurred_in', nil), 
-          'include'          => params.fetch('include', nil), 
-          'page[number]'     => params.fetch('page[number]', nil), 
-          'page[size]'       => params.fetch('page[size]', nil), 
-          'sort'             => params.fetch('sort', nil), 
-          'aggregations'     => aggregations, 
-          'source-id'        => params.fetch('sourceId', INCLUDED_SOURCES.join(',')), 
-          'extra'            => true,
-          query: params.fetch(:query, nil)
-        }.compact
-        url = "#{ENV['API_URL']}/events?" + URI.encode_www_form(params)
-      end
+      params =
+      {
+        id:                   params.fetch(:id, nil),
+        'subj-id'          => params.fetch('subj-id', nil),
+        'relation-type-id' => relations.join(','),
+        'obj-id'           => params.fetch('obj-id', nil),
+        'doi'              => params.fetch('doi', nil),
+        'occurredAt'       => params.fetch('occurred_in', nil), 
+        'include'          => params.fetch('include', nil), 
+        'page[number]'     => params.fetch('page[number]', nil), 
+        'page[size]'       => params.fetch('page[size]', nil), 
+        'sort'             => params.fetch('sort', nil), 
+        'aggregations'     => aggregations, 
+        'source-id'        => params.fetch('sourceId', INCLUDED_SOURCES.join(',')), 
+        'extra'            => true,
+        query: params.fetch(:query, nil)
+      }.compact
+      url = "#{ENV['API_URL']}/events?" + URI.encode_www_form(params)
+
       response = params[:response].present? ? params[:response] : Maremma.get(url, headers: {"Accept"=> "application/vnd.api+json; version=2"}, timeout: TIMEOUT)
       { data: response.body.fetch("data", []),
         included: response.body.fetch("included", []),
