@@ -458,9 +458,9 @@ module Sinatra
       if n.to_s == "1"
           "1 #{singular}"
       elsif plural
-          "#{n} #{plural}"
+          "#{number_to_delimited(n)} #{plural}"
       else
-          "#{n} #{singular}s"
+          "#{number_to_delimited(n)} #{singular}s"
       end
     end
 
