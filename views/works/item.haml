@@ -107,8 +107,8 @@
   - if @work.present? && (views + downloads + citations).positive?
     = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads, citations: citations }
   - if @work.present? && citations.positive?
-    = haml :'works/citations', locals: { attributes: attributes, citations: citations, duplicated: has_duplicated ,summary: metrics}
-  - else
+    = haml :'works/citations', locals: { attributes: attributes, citations: citations, duplicated: has_duplicated, summary: metrics}
+  - elsif @work.present?
     .panel-body.alert.alert-secondary
       = "This data repository is not currently reporting citations. For information on how your repository can report citations, please see"
       %a{href: 'https://support.datacite.org/docs/contributing-data-citations'}
