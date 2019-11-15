@@ -96,16 +96,13 @@
     - if user_signed_in? && is_person?
       = haml :'works/claim', locals: { item: item }
 
-- if @work.present? 
-  - if ((views+downloads+citations).positive?)
-    = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads, citations: citations }
-- if ENV['RACK_ENV'] != 'production'
-  - if @work.present? 
-    = haml :'citations/list', locals: { attributes: attributes, citations: citations, duplicated: has_duplicated ,summary: metrics}
-- if @work.present? 
-  - if ((views+downloads).zero?)
-    %br
-    .panel-body.alert.alert-secondary
-      = "This data repository is not currently reporting usage information. For information on how your repository can submit usage information, please see"
-      %a{href: 'https://support.datacite.org/docs/views-and-downloads'}
-        our documentation.
+- if @work.present? && (views + downloads + citations).positive?
+  = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads, citations: citations }
+- if @work.present? && ENV['RACK_ENV'] != 'production'
+  = haml :'works/citations', locals: { attributes: attributes, citations: citations, duplicated: has_duplicated ,summary: metrics}
+- if @work.present? && (views + downloads).zero?
+  %br
+  .panel-body.alert.alert-secondary
+    = "This data repository is not currently reporting usage information. For information on how your repository can submit usage information, please see"
+    %a{href: 'https://support.datacite.org/docs/views-and-downloads'}
+      our documentation.
