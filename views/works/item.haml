@@ -41,25 +41,44 @@
           = license_img(attributes["license"])
 
   - if ENV['RACK_ENV'] == 'production'
-    - if ((views+downloads+citations).positive?) 
-      .panel-footer{:style=>"display: grid;text-align: left;grid-template-columns: 400px max-content 200px;"}
-        %data-metrics-badge{"data-input": widget_data, doi:attributes["doi"],  display:"datacite"}
-        - if ((views+downloads).zero? && @work.blank?)
-          %div.col-md-auto
-            %span.usage-info
-              .fa.fa-info-circle 
-            %a
-              = "<small> This data repository is not currently reporting usage information.</small> "
-    - else
-      - unless (@work.present?)
-        .panel-footer
-          %span.usage-info
-            .fa.fa-info-circle 
-          %a
-            = "This data repository is not currently reporting usage information." 
+    .panel-footer
+      - if (views + downloads).positive?
+        %span.metrics
+          .fa.fa-eye
+          = pluralize(views, "view")
+        %span.metrics
+          .fa.fa-download
+          = pluralize(downloads, "download")
+      - else
+        %span.metrics
+          .fa.fa-info-circle 
+          No usage information was reported.
   - else 
-    .panel-footer{:style=>"display: grid;text-align: left;"}
-      %data-metrics-badge{doi:attributes["doi"],  display:"datacite"}
+    .panel-footer
+      - if (views + downloads + citations).zero?
+        %span.metrics
+          .fa.fa-info-circle 
+          No citations were reported. No usage information was reported.
+      - else
+        - if citations.positive?
+          %span.metrics
+            .fa.fa-quote-left
+            = pluralize(citations, "citation")
+        - else
+          %span.metrics
+            .fa.fa-info-circle 
+            No citations were reported. 
+        - if (views + downloads).positive?
+          %span.metrics
+            .fa.fa-eye
+            = pluralize(views, "view")
+          %span.metrics
+            .fa.fa-download
+            = pluralize(downloads, "download")
+        - else
+          %span.metrics
+            .fa.fa-info-circle 
+            No usage information was reported.
 
   - if @work.present? && @work.fetch(:data, {}).fetch("attributes", {}).fetch("related-identifiers", nil).present? && @work.fetch(:data, {}).fetch("id", "work") != item["id"]
     .panel-footer
