@@ -7,7 +7,7 @@
     .row
       .col-md-9#content-data-center
         - if @datacenter[:data].present?
-          = haml :'data-centers/item', locals: { item: @datacenter[:data] }
+          = haml :'repositories/item', locals: { item: @datacenter[:data] }
         - elsif @datacenter[:errors].present?
           %div.alert.alert-warning
             = @datacenter[:errors].first.fetch("title", "")

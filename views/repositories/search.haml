@@ -5,7 +5,7 @@
         %input{type: "hidden", name: "registration-agency-id", value: params['registration-agency-id']}
       - if params['member-id'].present?
         %input{type: "hidden", name: "member-id", value: params['member-id']}
-      %input.form-control{type: "text", name: 'query', id: 'query', value: params[:query], placeholder: "Search for data center"}
+      %input.form-control{type: "text", name: 'query', id: 'query', value: params[:query], placeholder: "Search for repository"}
       .input-group-btn
         %button.btn.btn-primary{type: "submit"}
           Search

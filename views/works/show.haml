@@ -24,9 +24,9 @@
                   Crossref
               - else
                 %h5
-                  Data Center
+                  Repository
                 .data-center
-                  %a{href: "/data-centers/#{data_center.fetch('id')}"}
+                  %a{href: "/repositories/#{data_center.fetch('id')}"}
                     = data_center.fetch("attributes", {}).fetch("title", nil)
                 - if member.present?
                   %h5

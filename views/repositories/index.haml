@@ -4,17 +4,17 @@
   .content
     .row
       .col-md-9
-        = haml :'data-centers/search'
+        = haml :'repositories/search'
 
     .row
       .col-md-9.panel-list#content
         - if @datacenters[:data].length > 0
           - if @datacenters[:data].length > 1
             %h3.results
-              = "#{number_with_delimiter(@datacenters[:meta]["total"])} Data Centers"
+              = "#{number_with_delimiter(@datacenters[:meta]["total"])} Repositories"
 
           - @datacenters[:data].each do |item|
-            = haml :'data-centers/item', locals: { item: item }
+            = haml :'repositories/item', locals: { item: item }
 
           .text-center
             = will_paginate @datacenters[:data], renderer: BootstrapPagination::Sinatra, inner_window: 1
@@ -27,7 +27,7 @@
             Nothing found.
 
       .col-md-3
-        = haml :'data-centers/facets'
+        = haml :'repositories/facets'
 
 = haml :cite_box
 

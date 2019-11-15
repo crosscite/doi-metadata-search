@@ -160,18 +160,14 @@ get %r{/works/(.+)} do
   # workaround, as nginx swallows double backslashes
   params["id"] = params["id"].gsub(/(http|https):\/+(\w+)/, '\1://\2')
 
-
   @work = get_works(id: params["id"])
   halt 404 if @work[:errors].present?
-
 
   doi = validate_doi(params[:id])
   link = doi ? "https://doi.org/#{doi}" : params[:id]
 
-
   events  = get_events('page[size]' => 25, 'page[number]' => @page, 'doi' => doi, 'include' => 'dois', 'sort' => 'relation_type_id')
   @citations = citations_response(events, link, @page)
-
 
   @work[:metrics] = reduce_aggs(events[:meta], {yop: @work.dig(:data, "attributes","published").to_i})
   @work[:metrics].merge!(citations: (events[:meta].fetch('uniqueCitations', []).find {|x| x['id'] == doi } || {}))
@@ -180,7 +176,6 @@ get %r{/works/(.+)} do
   @work[:metrics].merge!(views_histogram: events[:meta].fetch('viewsHistogram', {}))
   @work[:metrics].merge!(downloads_histogram: events[:meta].fetch('downloadsHistogram', {}))
   @work[:relation_types] = events[:meta].fetch('relationTypes', [])
-
 
   # check for existing claims if user is logged in and work is registered with DataCite
   if current_user
@@ -250,16 +245,16 @@ get '/people/:id' do
   haml :'people/show'
 end
 
-get '/data-centers' do
+get '/repositories' do
   @datacenters  = get_datacenters(query: params[:query], 'page[number]' => @page, "registration-agency-id" => params["registration-agency-id"], "member-id" => params["member-id"], year: params["year"])
 
   # pagination
   @datacenters[:data] = pagination_helper(@datacenters[:data], @page, @datacenters.fetch(:meta, {}).fetch("total", 0))
 
-  haml :'data-centers/index'
+  haml :'repositories/index'
 end
 
-get '/data-centers/:id' do
+get '/repositories/:id' do
   @datacenter = get_datacenters(id: params[:id])
 
   @works = get_works(query: params[:query], "data-center-id" => params[:id], 'page[number]' => @page, 'resource-type-id' => params['resource-type-id'], 'relation-type-id' => params['relation-type-id'], 'year' => params['year'], 'registered' => params['registered'], 'affiliation-id' => params['affiliation-id'], sort: params[:sort])
@@ -271,8 +266,8 @@ get '/data-centers/:id' do
   # pagination for works
   @works[:data] = pagination_helper(@works[:data], @page, @works.fetch(:meta, {}).fetch("total", 0))
 
-  params[:model] = "data-centers"
-  haml :'data-centers/show'
+  params[:model] = "repositories"
+  haml :'repositories/show'
 end
 
 get '/members' do

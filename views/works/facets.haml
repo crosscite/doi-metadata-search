@@ -45,12 +45,12 @@
               %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
               .clearfix
 
-  - if @datacenter.blank? && @works[:meta]["data-centers"].present?
+  - if @datacenter.blank? && @works[:meta]["repositories"].present?
     .panel-body
       %h4
-        Data Centers
+        Repositories
       %ul
-        - @works[:meta]["data-centers"].each do |f|
+        - @works[:meta]["repositories"].each do |f|
           - if params['data-center-id'] == f.fetch("id", nil)
             %li.active
               %a{:href => works_query(params.except('data-center-id'))}

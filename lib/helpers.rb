@@ -293,8 +293,8 @@ module Sinatra
                  "registered" => options.fetch("registered", nil),
                  "sort" => options.fetch("sort", nil) }.compact
 
-      if options[:model] == "data-centers"
-        "/data-centers/#{params['id']}?" + URI.encode_www_form(params.except('id'))
+      if options[:model] == "repositories"
+        "/repositories/#{params['id']}?" + URI.encode_www_form(params.except('id'))
       elsif options[:model] == "members"
         "/members/#{params['id']}?" + URI.encode_www_form(params.except('id'))
       elsif options[:model] == "sources"
@@ -315,7 +315,7 @@ module Sinatra
                  "year" => options.fetch("year", nil),
                  "registration-agency-id" => options.fetch("registration-agency-id", nil) }.compact
 
-      "/data-centers?" + URI.encode_www_form(params)
+      "/repositories?" + URI.encode_www_form(params)
     end
 
     def contributions_query(options)
@@ -328,7 +328,7 @@ module Sinatra
                  "year" => options.fetch("year", nil),
                  "sort" => options.fetch("sort", nil) }.compact
 
-      if options[:model] == "data-centers"
+      if options[:model] == "repositories"
          "/contributions?data-center-id=#{params['id']}&" + URI.encode_www_form(params.except('id'))
         elsif options[:model] == "sources"
          "/contributions?source-id=#{params['id']}&" + URI.encode_www_form(params.except('id'))
@@ -457,7 +457,7 @@ module Sinatra
 
     def facet_text(name)
       if name == "datacentre_facet"
-        "Data center"
+        "Repository"
       else
         name.gsub(/(_facet|URI)/, '_id').underscore.humanize
       end

@@ -1,7 +1,7 @@
 .panel.panel-default
   .panel-body
     %h3.work
-      %a{:href => '/data-centers/' + item["id"]}
+      %a{:href => '/repositories/' + item["id"]}
         = item.fetch("attributes", {}).fetch("title", nil)
     %div
       = prefix_format(item["attributes"])
