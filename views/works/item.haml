@@ -21,7 +21,6 @@
   - gon.yop = attributes.fetch("published", "").to_i
 - if ENV['RACK_ENV'] == 'production' ### TODO: Remove soon. set temporaly to send to production 
   - citations = 0 ### TODO: Remove soon. set temporaly to send to production 
-- widget_data = "{\"views\":#{views}, \"downloads\":#{downloads}, \"citations\":#{citations}}"
 
 .panel.panel-default
   .panel-body
@@ -96,13 +95,26 @@
     - if user_signed_in? && is_person?
       = haml :'works/claim', locals: { item: item }
 
-- if @work.present? && (views + downloads + citations).positive?
-  = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads, citations: citations }
-- if @work.present? && ENV['RACK_ENV'] != 'production'
-  = haml :'works/citations', locals: { attributes: attributes, citations: citations, duplicated: has_duplicated ,summary: metrics}
-- if @work.present? && (views + downloads).zero?
-  %br
-  .panel-body.alert.alert-secondary
-    = "This data repository is not currently reporting usage information. For information on how your repository can submit usage information, please see"
-    %a{href: 'https://support.datacite.org/docs/views-and-downloads'}
-      our documentation.
+- if ENV['RACK_ENV'] == 'production'
+  - if @work.present? && (views + downloads).positive?
+    = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads }
+  - else
+    .panel-body.alert.alert-secondary
+      = "This data repository is not currently reporting usage information. For information on how your repository can submit usage information, please see"
+      %a{href: 'https://support.datacite.org/docs/views-and-downloads'}
+        our documentation.
+- else
+  - if @work.present? && (views + downloads + citations).positive?
+    = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads, citations: citations }
+  - if @work.present? && citations.positive?
+    = haml :'works/citations', locals: { attributes: attributes, citations: citations, duplicated: has_duplicated ,summary: metrics}
+  - else
+    .panel-body.alert.alert-secondary
+      = "This data repository is not currently reporting citations. For information on how your repository can report citations, please see"
+      %a{href: 'https://support.datacite.org/docs/contributing-data-citations'}
+        our documentation.
+  - if @work.present? && (views + downloads).zero?
+    .panel-body.alert.alert-secondary
+      = "This data repository is not currently reporting usage information. For information on how your repository can submit usage information, please see"
+      %a{href: 'https://support.datacite.org/docs/views-and-downloads'}
+        our documentation.
