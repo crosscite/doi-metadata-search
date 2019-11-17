@@ -145,6 +145,7 @@ get '/works' do
 
   # check for existing claims if user is logged in
   @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
+  
   @works[:data] = get_metrics(@works.fetch(:data, []))
 
   # pagination
@@ -168,9 +169,8 @@ get %r{/works/(.+)} do
 
   events  = get_events('page[size]' => 25, 'page[number]' => @page, 'doi' => doi, 'include' => 'dois', 'sort' => 'relation_type_id')
 
-  @work[:metrics] = reduce_aggs(events[:meta], {yop: @work.dig(:data, "attributes","published").to_i})
-  @work[:metrics].merge!(citations: (events[:meta].fetch('uniqueCitations', []).find {|x| x['id'] == doi } || {}))
-  # @work[:metrics].merge!(citations: events[:meta].fetch('doisCitations', {}).fetch("count",0))
+  @work[:metrics] = reduce_aggs(events[:meta], { yop: @work.dig(:data, "attributes","published").to_i })
+  @work[:metrics].merge!(citations: (events[:meta].fetch('uniqueCitations', []).find { |x| x['id'] == doi } || {}))
   @work[:metrics].merge!(citations_histogram: events[:meta].fetch('citationsHistogram', {}))
   @work[:metrics].merge!(views_histogram: events[:meta].fetch('viewsHistogram', {}))
   @work[:metrics].merge!(downloads_histogram: events[:meta].fetch('downloadsHistogram', {}))

@@ -9,8 +9,11 @@
   },
   "repository": "",
   "engines": {
-    "node": ">= 0.12.0"
+    "node": ">= 10.*"
   },
   "author": "Martin Fenner",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "datacite-components": "datacite/datacite-components#master"
+  }
 }

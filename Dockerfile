@@ -16,12 +16,20 @@ RUN groupmod -g 1000 app
 # Use baseimage-docker's init process.
 CMD ["/sbin/my_init"]
 
+# fetch node10 and yarn sources
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash && \
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+
 # Install Ruby 2.4.4
 RUN bash -lc 'rvm --default use ruby-2.4.4'
 
+# Set debconf to run non-interactively
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+
 # Update installed APT packages
 RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold" && \
-    apt-get install ntp wget -y && \
+    apt-get install wget git ntp yarn python-dev pkg-config fontconfig libpng-dev libjpeg-dev libcairo2-dev libfreetype6-dev -y && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Enable Passenger and Nginx and remove the default site
@@ -49,8 +57,12 @@ RUN mkdir -p /home/app/webapp/vendor/bundle && \
     chmod -R 755 /home/app/webapp
 
 # Install npm packages
-WORKDIR /home/app/webapp/vendor
-RUN /sbin/setuser app npm install
+WORKDIR /home/app/webapp
+RUN /sbin/setuser app yarn install --frozen-lockfile && \
+    cd node_modules/datacite-components && \
+    yarn install --frozen-lockfile && \
+    yarn build --target wc --name datacite-components 'src/components/*.vue' && \
+    cp dist/datacite-components.min.js /home/app/webapp/public/javascripts/datacite-components.min.js 
 
 # Install Ruby gems
 WORKDIR /home/app/webapp

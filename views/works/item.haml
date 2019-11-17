@@ -7,7 +7,9 @@
 - title = attributes["title"].to_s.gsub(/"/, '\"')
 - views = metrics.to_h.fetch("unique-dataset-investigations-regular",0) 
 - downloads = metrics.to_h.fetch("unique-dataset-requests-regular",0) 
-- citations = metrics.fetch(:citations,{}).fetch("count",0).to_i 
+- citations = metrics.dig(:citations, "count").to_i 
+- references = metrics.dig(:references, "count").to_i 
+- relations = metrics.dig(:relations, "count").to_i 
 - if @work.present? && metrics.fetch(:views_histogram,{}).fetch("yearMonths",[]).any?
   - gon.chart_views = metrics.fetch(:views_histogram,{}).fetch("yearMonths",[])
   - gon.yop = attributes.fetch("published", "").to_i
@@ -17,10 +19,12 @@
 - if @work.present? && citations.positive?
   - has_duplicated = citations != metrics.fetch(:citations_histogram,{}).fetch("count",0) ? true : false
   - citations_chart = remove_duplicated_counts(citations,metrics.fetch(:citations_histogram,{}), attributes.fetch("published", "").to_i )
-  - gon.chart_citations = citations_chart.fetch("years",[])
-  - gon.yop = attributes.fetch("published", "").to_i
+  - gon.chart_citations = citations_chart.fetch("years", [])
+  - gon.yop = attributes.fetch("published", nil).to_i
 - if ENV['RACK_ENV'] == 'production' ### TODO: Remove soon. set temporaly to send to production 
   - citations = 0 ### TODO: Remove soon. set temporaly to send to production 
+
+= metrics
 
 .panel.panel-default
   .panel-body
