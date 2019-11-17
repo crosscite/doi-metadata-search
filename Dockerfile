@@ -27,9 +27,14 @@ RUN bash -lc 'rvm --default use ruby-2.4.4'
 # Set debconf to run non-interactively
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
+# Install Chrome for headless testing
+RUN apt-get install wget && \
+    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
+    sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+
 # Update installed APT packages
 RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold" && \
-    apt-get install wget git ntp yarn python-dev pkg-config fontconfig libpng-dev libjpeg-dev libcairo2-dev libfreetype6-dev -y && \
+    apt-get install wget git ntp yarn google-chrome-stable python-dev pkg-config fontconfig libpng-dev libjpeg-dev libcairo2-dev libfreetype6-dev -y && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Enable Passenger and Nginx and remove the default site
@@ -62,17 +67,12 @@ WORKDIR /home/app/webapp
 RUN /sbin/setuser app yarn install --frozen-lockfile && \
     cd node_modules/datacite-components && \
     yarn install --frozen-lockfile && \
-    yarn build --dest /home/app/webapp/public/javascripts --target wc --name datacite-components 'src/components/*.vue'
+    yarn build --dest /home/app/webapp/public/javascripts/dist --target wc --name datacite-components 'src/components/*.vue'
 
 # Install Ruby gems
 WORKDIR /home/app/webapp
 RUN gem install bundler && \
     /sbin/setuser app bundle install --path vendor/bundle
-
-# Install Chrome for headless testing
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-RUN apt-get update && apt-get install -y google-chrome-stable
 
 # Run additional scripts during container startup (i.e. not at build time)
 RUN mkdir -p /etc/my_init.d
