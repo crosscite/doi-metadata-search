@@ -1,11 +1,11 @@
 %ul.nav.nav-tabs.usage{:role => "tablist"}
   - if citations > 0
     %li.nav-item
-      %a#citations-tab.nav-link{"aria-controls" => "citations", "aria-selected" => "true",  "data-toggle" => "tab", :href => "#citations", :role => "tab"} #{pluralize(citations, "Citation")}
+      %a#citations-tab.nav-link.active{"aria-controls" => "citations", "aria-selected" => "true",  "data-toggle" => "tab", :href => "#citations", :role => "tab"} #{pluralize(citations, "Citation")}
 
   - if views > 0
     %li.nav-item.usage
-      %a#views-tab.nav-link.active{"aria-controls" => "views", "aria-selected" => "false","data-toggle" => "tab", :href => "#views", :role => "tab"} #{pluralize(views, "Views")}
+      %a#views-tab.nav-link{"aria-controls" => "views", "aria-selected" => "false","data-toggle" => "tab", :href => "#views", :role => "tab"} #{pluralize(views, "Views")}
 
   - if downloads > 0
     %li.nav-item.usage
