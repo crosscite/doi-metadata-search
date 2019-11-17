@@ -1,16 +1,17 @@
 %ul.nav.nav-tabs.usage{:role => "tablist"}
+  - if citations > 0
+    %li.nav-item
+      %a#citations-tab.nav-link{"aria-controls" => "citations", "aria-selected" => "true",  "data-toggle" => "tab", :href => "#citations", :role => "tab"} #{pluralize(citations, "Citation")}
+
   - if views > 0
     %li.nav-item.usage
-      %a#views-tab.nav-link.active{"aria-controls" => "views", "aria-selected" => "true","data-toggle" => "tab", :href => "#views", :role => "tab"} Views
+      %a#views-tab.nav-link.active{"aria-controls" => "views", "aria-selected" => "false","data-toggle" => "tab", :href => "#views", :role => "tab"} #{pluralize(views, "Views")}
 
   - if downloads > 0
     %li.nav-item.usage
-      %a#downloads-tab.nav-link{"aria-controls" => "downloads", "aria-selected" => "false",  "data-toggle" => "tab", :href => "#downloads", :role => "tab"} Downloads
+      %a#downloads-tab.nav-link{"aria-controls" => "downloads", "aria-selected" => "false",  "data-toggle" => "tab", :href => "#downloads", :role => "tab"} #{pluralize(downloads, "Downloads")}
   
-  - if citations > 0
-    %li.nav-item
-      %a#citations-tab.nav-link{"aria-controls" => "citations", "aria-selected" => "false",  "data-toggle" => "tab", :href => "#citations", :role => "tab"} Citations
-
+  
 .panel.panel-default
   .panel-body.usage-charts
     %div#myTabContent.tab-content
@@ -20,7 +21,7 @@
           .col-lg-12
             .row
               .p{:style => "padding-left:20px;"}
-                = "<strong>#{pluralize(views, "view") }</strong> <small>reported since #{gon.chart_views[0].fetch("title", "NA")} (published in #{attributes.fetch("published", "")})</small>"
+                = "<small>#{pluralize(views, "view") } reported since publication in #{attributes.fetch("published", "")}</small>"
             .row#views-chart{:style => "padding-left:10px;"}              
             %br
             .row{:style => "position: relative;"}
@@ -38,7 +39,7 @@
           .col-lg-12
             .row
               .p{:style => "padding-left:20px;"}
-                = "<strong>#{pluralize(downloads, "download") }</strong> <small>reported since #{gon.chart_downloads[0].fetch("title", "NA")} (published in #{attributes.fetch("published", "")})</small>"
+                = "<small>#{pluralize(downloads, "download") } reported since publication in #{attributes.fetch("published", "")}</small>"
             .row#downloads-chart{:style => "padding-left:10px;"}
             %br
             .row
@@ -56,6 +57,6 @@
           .col-lg-12
             .row
               .p{:style => "padding-left:20px;"}
-                = "<strong>#{pluralize(citations, "citation")}</strong> <small>reported since #{gon.chart_citations[0].to_h.fetch("title", "NA")} (published in #{attributes.fetch("published", "")})</small>"
+                = "<small>#{pluralize(citations, "citation")} reported since publication in #{attributes.fetch("published", "")}</small>"
               .row#citations-chart{:style => "padding-left:10px;"}
         

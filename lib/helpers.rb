@@ -456,11 +456,11 @@ module Sinatra
 
     def pluralize(n, singular, plural=nil)
       if n.to_s == "1"
-          "1 #{singular}"
+        "1 #{singular}"
       elsif plural
-          "#{number_with_delimiter(n)} #{plural}"
+        "#{number_with_delimiter(n)} #{plural}"
       else
-          "#{number_with_delimiter(n)} #{singular}s"
+        "#{number_with_delimiter(n)} #{singular}s"
       end
     end
 
