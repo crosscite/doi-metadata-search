@@ -368,10 +368,8 @@ module Sinatra
       { citations: citations,
         meta:   hash.fetch(:meta, nil), 
         errors: hash.fetch(:errors, nil), 
-        links:  hash.fetch(:links, nil)}
+        links:  hash.fetch(:links, nil) }
     end
-
-
 
     def github_from_url(url)
       return {} unless /\Ahttps:\/\/github\.com\/(.+)(?:\/)?(.+)?(?:\/tree\/)?(.*)\z/.match(url)
@@ -525,7 +523,7 @@ module Sinatra
         'applicationxr' => 'R' }
     end
 
-    def chart_data? data, type
+    def chart_data?(data, type)
       type_data = data.select{|hash| hash["id"] == type }
       type_data.any?
     end
@@ -534,7 +532,7 @@ module Sinatra
       type_data = []
       if types.any? 
         types.each do |tpy|
-          type_data = data.select{|hash| hash['id'] == tpy }
+          type_data = data.select{ |hash| hash['id'] == tpy }
         end
       end
 
@@ -553,13 +551,11 @@ module Sinatra
     end
 
     def is_subj?(doi, subj)
-      doi == subj 
+      doi == subj
     end
 
     def duplicated_citations?(unique_citations, chart_data)
-      return true if chart_data.dig('count') > unique_citations
-
-      false
+      chart_data.dig('count') > unique_citations
     end
 
     def remove_duplicated_counts(unique_citations, chart_data, yop)
@@ -567,52 +563,15 @@ module Sinatra
       return chart_data unless diff.positive?
 
       ### the criteria to remove duplicated is to remove those from the same year of publication.
-      years = chart_data.dig("years").map do |year|  
+      years = chart_data.dig("years").map do |year|
         unless diff == 0
-          year["sum"] = year["sum"] - 1.0  if year["sum"] > 1.0 
+          year["sum"] = year["sum"] - 1.0 if year["sum"] > 1.0 
           diff =- 1
         end
         year
       end
 
-      {"count" => unique_citations, "years" => years}
-    end
-
-    def format_pseudo_citation(item)
-      event      = item.dig("attributes")
-      meta       = item.fetch(:metadata,{})
-
-      return "According to  <strong>DataCite </strong> this item is in the <strong>#{event.dig('relationTypeId').underscore.humanize} </strong> of:" if meta.fetch("attributes", {}).blank?
-
-      attributes = item.dig(:metadata,"attributes")
-      published  = attributes.fetch('publicationYear', '')
-      repository = attributes.fetch('data-center-id', 'DataCite')  
-      publisher  = attributes.fetch("publisher","") 
-      publisher  = attributes.dig("container","title") if publisher.blank? || publisher == "(:unav)"
-      authors    = author_format(attributes["creators"])
-      types = attributes.fetch('types',{})
-      resource_type = types.fetch('resourceType',types.fetch('resourceTypeGeneral',"DOI")).underscore.humanize
-      relation_type = event.dig('relationTypeId').underscore.humanize
-
-
-      source_label =  case event["sourceId"] 
-                      when 'crossref'
-                        "According to  <strong>Crossref </strong> this item is in the <strong>#{relation_type} </strong> of the  #{resource_type}"
-                      when /^datacite/
-                        if is_subj?(attributes.dig("doi"), event.dig("objId").gsub("https://doi.org/",""))
-                          "According to  <strong>#{repository} </strong> this item <strong> #{relation_type} </strong> the  #{resource_type} "
-                        else
-                          "According to  <strong>#{repository} </strong> the following #{resource_type}  <strong> #{relation_type} </strong> the item on this page "
-                        end
-                      end
-
-      citation = if attributes.dig('titles').present?
-         " : <cite>#{authors}. (#{published}) #{attributes.fetch("titles",[]).first.fetch("title","")}. #{publisher}</cite>"
-      else
-        " : "
-      end
-
-      source_label + citation 
+      { "count" => unique_citations, "years" => years }
     end
   end
 end
