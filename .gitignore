@@ -25,4 +25,4 @@ output-*
 /.idea
 .ruby-version
 /coverage
-screenshot*
+/spec/screenshots

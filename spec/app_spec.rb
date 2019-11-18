@@ -6,7 +6,7 @@ describe 'app', vcr: true do
 
     expect(last_response.status).to eq(200)
     expect(last_response.headers["Content-Type"]).to eq("text/html;charset=utf-8")
-    expect(last_response.headers["Content-Length"]).to eq("6837")
+    expect(last_response.headers["Content-Length"].to_i).to be > 1000
   end
 
   it '/works' do
@@ -14,7 +14,7 @@ describe 'app', vcr: true do
 
     expect(last_response.status).to eq(200)
     expect(last_response.headers["Content-Type"]).to eq("text/html;charset=utf-8")
-    expect(last_response.headers["Content-Length"]).to eq("47613")
+    expect(last_response.headers["Content-Length"].to_i).to be > 1000
 
     doc = Nokogiri::HTML(last_response.body)
     expect(doc.at_css("h3.results").text.strip).to eq("246,576 Works")
@@ -25,7 +25,7 @@ describe 'app', vcr: true do
 
     expect(last_response.status).to eq(200)
     expect(last_response.headers["Content-Type"]).to eq("text/html;charset=utf-8")
-    expect(last_response.headers["Content-Length"]).to eq("48630")
+    expect(last_response.headers["Content-Length"].to_i).to be > 1000
 
     doc = Nokogiri::HTML(last_response.body)
     expect(doc.at_css("h3.results").text.strip).to eq("3,538 Works")
@@ -36,7 +36,7 @@ describe 'app', vcr: true do
     
     expect(last_response.status).to eq(200)
     expect(last_response.headers["Content-Type"]).to eq("text/html;charset=utf-8")
-    expect(last_response.headers["Content-Length"]).to eq("27526")
+    expect(last_response.headers["Content-Length"].to_i).to be > 1000
     expect(last_response.headers["Link"]).to eq("<https://doi.org/10.1594/ieda/100037> ; rel=\"identifier\", <https://doi.org/10.1594/ieda/100037> ; rel=\"describedby\" ; type=\"application/vnd.datacite.datacite+xml\", <https://doi.org/10.1594/ieda/100037> ; rel=\"describedby\" ; type=\"application/vnd.citationstyles.csl+json\", <https://doi.org/10.1594/ieda/100037> ; rel=\"describedby\" ; type=\"application/x-bibtex\"")
   
     doc = Nokogiri::HTML(last_response.body)
@@ -48,7 +48,7 @@ describe 'app', vcr: true do
 
     expect(last_response.status).to eq(200)
     expect(last_response.headers["Content-Type"]).to eq("text/html;charset=utf-8")
-    expect(last_response.headers["Content-Length"]).to eq("15583")
+    expect(last_response.headers["Content-Length"].to_i).to be > 1000
 
     doc = Nokogiri::HTML(last_response.body)
     expect(doc.at_css("h3.results").text.strip).to eq("62,429 People")
@@ -59,7 +59,7 @@ describe 'app', vcr: true do
 
     expect(last_response.status).to eq(200)
     expect(last_response.headers["Content-Type"]).to eq("text/html;charset=utf-8")
-    expect(last_response.headers["Content-Length"]).to eq("8529")
+    expect(last_response.headers["Content-Length"].to_i).to be > 1000
 
     doc = Nokogiri::HTML(last_response.body)
     expect(doc.at_css("h3.results").text.strip).to eq("5 People")
@@ -70,7 +70,7 @@ describe 'app', vcr: true do
 
     expect(last_response.status).to eq(200)
     expect(last_response.headers["Content-Type"]).to eq("text/html;charset=utf-8")
-    expect(last_response.headers["Content-Length"]).to eq("7012")
+    expect(last_response.headers["Content-Length"].to_i).to be > 1000
     expect(last_response.headers["Link"]).to eq("<https://orcid.org/0000-0001-6528-2027> ; rel=\"identifier\"")
   
     doc = Nokogiri::HTML(last_response.body)
@@ -82,7 +82,7 @@ describe 'app', vcr: true do
 
     expect(last_response.status).to eq(200)
     expect(last_response.headers["Content-Type"]).to eq("text/html;charset=utf-8")
-    expect(last_response.headers["Content-Length"]).to eq("21223")
+    expect(last_response.headers["Content-Length"].to_i).to be > 1000
 
     doc = Nokogiri::HTML(last_response.body)
     expect(doc.at_css("h3.results").text.strip).to eq("1,868 Repositories")
@@ -93,7 +93,7 @@ describe 'app', vcr: true do
 
     expect(last_response.status).to eq(200)
     expect(last_response.headers["Content-Type"]).to eq("text/html;charset=utf-8")
-    expect(last_response.headers["Content-Length"]).to eq("10102")
+    expect(last_response.headers["Content-Length"].to_i).to be > 1000
 
     doc = Nokogiri::HTML(last_response.body)
     expect(doc.at_css("h3.results").text.strip).to eq("2 Repositories")
@@ -104,7 +104,7 @@ describe 'app', vcr: true do
 
     expect(last_response.status).to eq(200)
     expect(last_response.headers["Content-Type"]).to eq("text/html;charset=utf-8")
-    expect(last_response.headers["Content-Length"]).to eq("39919")
+    expect(last_response.headers["Content-Length"].to_i).to be > 1000
 
     doc = Nokogiri::HTML(last_response.body)
     expect(doc.at_css("h3.work a").text.strip).to eq("DRYAD")
@@ -115,7 +115,7 @@ describe 'app', vcr: true do
 
     expect(last_response.status).to eq(200)
     expect(last_response.headers["Content-Type"]).to eq("text/html;charset=utf-8")
-    expect(last_response.headers["Content-Length"]).to eq("17852")
+    expect(last_response.headers["Content-Length"].to_i).to be > 1000
 
     doc = Nokogiri::HTML(last_response.body)
     expect(doc.at_css("h3.results").text.strip).to eq("237 Members")
@@ -126,7 +126,7 @@ describe 'app', vcr: true do
 
     expect(last_response.status).to eq(200)
     expect(last_response.headers["Content-Type"]).to eq("text/html;charset=utf-8")
-    expect(last_response.headers["Content-Length"]).to eq("17075")
+    expect(last_response.headers["Content-Length"].to_i).to be > 1000
 
     doc = Nokogiri::HTML(last_response.body)
     expect(doc.at_css("h3.results").text.strip).to eq("49 Members")
@@ -137,7 +137,7 @@ describe 'app', vcr: true do
 
     expect(last_response.status).to eq(200)
     expect(last_response.headers["Content-Type"]).to eq("text/html;charset=utf-8")
-    expect(last_response.headers["Content-Length"]).to eq("8322")
+    expect(last_response.headers["Content-Length"].to_i).to be > 1000
 
     doc = Nokogiri::HTML(last_response.body)
     expect(doc.at_css("h3.work a").text.strip).to eq("Dryad")

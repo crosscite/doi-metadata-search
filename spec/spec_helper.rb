@@ -13,6 +13,7 @@ require 'capybara/rspec'
 require "capybara/cuprite"
 require 'capybara-screenshot/rspec'
 require 'tilt/haml'
+require 'rack/handler/webrick'
 
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
 
@@ -48,18 +49,20 @@ end
 Capybara.register_driver :cuprite do |app|
   Capybara::Cuprite::Driver.new(app, {
     timeout: 60,
-    window_size: [1024, 768],
+    window_size: [1440, 1024],
     host: "127.0.0.1",
     port: 33689,
-    browser_options: {'no-sandbox' => nil}
+    browser_options: { "no-sandbox" => nil }
   })
 end
 
 Capybara.javascript_driver = :cuprite
 Capybara.default_selector = :css
 Capybara::Screenshot.prune_strategy = :keep_last_run
+Capybara.save_path = "spec/screenshots"
 
 Capybara.configure do |config|
+  config.server = :webrick
   config.match = :prefer_exact
   config.ignore_hidden_elements = true
 end

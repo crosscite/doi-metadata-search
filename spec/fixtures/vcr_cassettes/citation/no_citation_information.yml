@@ -1,0 +1,197 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.test.datacite.org/works/10.0311/fk2/e11643a99d903d0ccfc2d523b344d9ff?include=data-center,resource-type,member
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.4; +https://github.com/datacite/maremma)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 18 Nov 2019 10:07:34 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding, Origin
+      X-Request-Id:
+      - 38e772a3-2198-48db-88a8-9662f6c65c47
+      Etag:
+      - W/"07d5ce2e4174c1068aca7e15b087e2a2"
+      X-Runtime:
+      - '0.043886'
+      X-Powered-By:
+      - Phusion Passenger 6.0.4
+      Server:
+      - nginx/1.17.3 + Phusion Passenger 6.0.4
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"https://handle.test.datacite.org/10.0311/fk2/e11643a99d903d0ccfc2d523b344d9ff","type":"works","attributes":{"doi":"10.0311/fk2/e11643a99d903d0ccfc2d523b344d9ff","identifier":"https://handle.test.datacite.org/10.0311/fk2/e11643a99d903d0ccfc2d523b344d9ff","url":"https://portal-s.lternet.edu/nis/mapbrowse?packageid=knb-lter-jrn.100.4","author":[{"given":"Wenjie","family":"Ji"},{"given":"Niall
+        P.","family":"Hanan"}],"title":"High resolution shrub cover raster maps of
+        the Jornada Basin LTER, including JER and CDRRC (2011)","container-title":"Environmental
+        Data Initiative","description":"This data package contains two raster shrub
+        cover maps of the Jornada Experimental Range and Chihuahuan Desert Rangeland
+        Research Center (CDRRC) created using 1m resolution National Agriculture Imagery
+        Program (NAIP) aerial photo acquired in 2011. A one-meter resolution raster
+        file lists cover as non-shrub, shrub, or no data available. A hectare resolution
+        raster file contains fractional shrub cover values (0-1) calculed from the
+        1 meter raster. NOTE: There is currently a hole in the coverage of the hectare
+        raster (no-data values) in the \"scarplet\" region in the southeastern portion
+        of the Jornada Basin. The creators of the dataset plan to fill this missing
+        area of coverage in a future update to the data package once suitable imagery
+        of the area is acquired.","resource-type-subtype":"dataPackage","data-center-id":"datacite.edi","member-id":"datacite","resource-type-id":"dataset","version":null,"license":null,"schema-version":null,"results":[],"related-identifiers":[],"published":"2019","registered":"2019-11-18T06:10:00.000Z","checked":null,"updated":"2019-11-18T06:10:00.000Z","media":[],"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC00LjEvbWV0YWRhdGEueHNkIj4KICA8aWRlbnRpZmllciBpZGVudGlmaWVyVHlwZT0iRE9JIj4xMC4wMzExL0ZLMi9FMTE2NDNBOTlEOTAzRDBDQ0ZDMkQ1MjNCMzQ0RDlGRjwvaWRlbnRpZmllcj4KICA8Y3JlYXRvcnM+CiAgICA8Y3JlYXRvcj4KICAgICAgPGNyZWF0b3JOYW1lPkppLCBXZW5qaWU8L2NyZWF0b3JOYW1lPgogICAgPC9jcmVhdG9yPgogICAgPGNyZWF0b3I+CiAgICAgIDxjcmVhdG9yTmFtZT5IYW5hbiwgTmlhbGwgUC48L2NyZWF0b3JOYW1lPgogICAgPC9jcmVhdG9yPgogIDwvY3JlYXRvcnM+CiAgPHRpdGxlcz4KICAgIDx0aXRsZT5IaWdoIHJlc29sdXRpb24gc2hydWIgY292ZXIgcmFzdGVyIG1hcHMgb2YgdGhlIEpvcm5hZGEgQmFzaW4gTFRFUiwgaW5jbHVkaW5nIEpFUiBhbmQgQ0RSUkMgKDIwMTEpPC90aXRsZT4KICA8L3RpdGxlcz4KICA8cHVibGlzaGVyPkVudmlyb25tZW50YWwgRGF0YSBJbml0aWF0aXZlPC9wdWJsaXNoZXI+CiAgPHB1YmxpY2F0aW9uWWVhcj4yMDE5PC9wdWJsaWNhdGlvblllYXI+CiAgPHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJEYXRhc2V0Ij5kYXRhUGFja2FnZTwvcmVzb3VyY2VUeXBlPgogIDxsYW5ndWFnZT5lbmc8L2xhbmd1YWdlPgogIDxhbHRlcm5hdGVJZGVudGlmaWVycz4KICAgIDxhbHRlcm5hdGVJZGVudGlmaWVyIGFsdGVybmF0ZUlkZW50aWZpZXJUeXBlPSJVUkwiPmh0dHBzOi8vcGFzdGEtcy5sdGVybmV0LmVkdS9wYWNrYWdlL2VtbC9rbmItbHRlci1qcm4vMTAwLzQ8L2FsdGVybmF0ZUlkZW50aWZpZXI+CiAgPC9hbHRlcm5hdGVJZGVudGlmaWVycz4KICA8ZGVzY3JpcHRpb25zPgogICAgPGRlc2NyaXB0aW9uIHhtbDpsYW5nPSJlbi1VUyIgZGVzY3JpcHRpb25UeXBlPSJBYnN0cmFjdCI+VGhpcyBkYXRhIHBhY2thZ2UgY29udGFpbnMgdHdvIHJhc3RlciBzaHJ1YiBjb3ZlciBtYXBzIG9mIHRoZSBKb3JuYWRhCiAgRXhwZXJpbWVudGFsIFJhbmdlIGFuZCBDaGlodWFodWFuIERlc2VydCBSYW5nZWxhbmQgUmVzZWFyY2ggQ2VudGVyCiAgKENEUlJDKSBjcmVhdGVkIHVzaW5nIDFtIHJlc29sdXRpb24gTmF0aW9uYWwgQWdyaWN1bHR1cmUgSW1hZ2VyeQogIFByb2dyYW0gKE5BSVApIGFlcmlhbCBwaG90byBhY3F1aXJlZCBpbiAyMDExLiBBIG9uZS1tZXRlciByZXNvbHV0aW9uCiAgcmFzdGVyIGZpbGUgbGlzdHMgY292ZXIgYXMgbm9uLXNocnViLCBzaHJ1Yiwgb3Igbm8gZGF0YSBhdmFpbGFibGUuIEEKICBoZWN0YXJlIHJlc29sdXRpb24gcmFzdGVyIGZpbGUgY29udGFpbnMgZnJhY3Rpb25hbCBzaHJ1YiBjb3ZlciB2YWx1ZXMKICAoMC0xKSBjYWxjdWxlZCBmcm9tIHRoZSAxIG1ldGVyIHJhc3Rlci4KCiAgICAgIAogICAgICAgIE5PVEU6IFRoZXJlIGlzIGN1cnJlbnRseSBhIGhvbGUgaW4gdGhlIGNvdmVyYWdlIG9mIHRoZQogIGhlY3RhcmUgcmFzdGVyIChuby1kYXRhIHZhbHVlcykgaW4gdGhlICJzY2FycGxldCIgcmVnaW9uIGluCiAgdGhlIHNvdXRoZWFzdGVybiBwb3J0aW9uIG9mIHRoZSBKb3JuYWRhIEJhc2luLiBUaGUgY3JlYXRvcnMgb2YgdGhlCiAgZGF0YXNldCBwbGFuIHRvIGZpbGwgdGhpcyBtaXNzaW5nIGFyZWEgb2YgY292ZXJhZ2UgaW4gYSBmdXR1cmUgdXBkYXRlCiAgdG8gdGhlIGRhdGEgcGFja2FnZSBvbmNlIHN1aXRhYmxlIGltYWdlcnkgb2YgdGhlIGFyZWEgaXMKICBhY3F1aXJlZC48L2Rlc2NyaXB0aW9uPgogIDwvZGVzY3JpcHRpb25zPgo8L3Jlc291cmNlPg=="},"relationships":{"data-center":{"data":{"id":"datacite.edi","type":"data-centers"}},"member":{"data":{"id":"datacite","type":"members"}},"resource-type":{"data":{"id":"dataset","type":"resource-types"}}}},"included":[{"id":"datacite.edi","type":"data-centers","attributes":{"title":"Environmental
+        Data Initiative","other-names":[],"prefixes":[],"member-id":"datacite","year":2017,"created":"2017-05-10T10:07:37.000Z","updated":"2018-08-26T01:31:05.000Z"},"relationships":{"member":{"data":{"id":"datacite","type":"members"}}}},{"id":"datacite","type":"members","attributes":{"title":"DataCite","display-title":"DataCite","description":null,"member-type":"consortium_organization","organization-type":null,"focus-area":null,"region":"EMEA","country":"DE","year":null,"logo-url":null,"email":null,"website":"https://datacite.org","joined":null,"created":"2011-12-07T13:41:07.000Z","updated":"2019-10-31T16:58:09.000Z"}},{"id":"dataset","type":"resource-types","attributes":{"title":"Dataset","updated":"2016-09-21T00:00:00Z"},"relationships":{}}]}'
+    http_version: 
+  recorded_at: Mon, 18 Nov 2019 10:07:34 GMT
+- request:
+    method: get
+    uri: https://api.test.datacite.org/events?aggregations=query_aggregations,metrics_aggregations,citations_aggregations&doi=10.0311/fk2/e11643a99d903d0ccfc2d523b344d9ff&extra=true&include=dois&page%5Bnumber%5D=1&page%5Bsize%5D=25&sort=relation_type_id&source-id=datacite-related,datacite-crossref,crossref,datacite-usage,datacite-funder
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.4; +https://github.com/datacite/maremma)
+      Accept:
+      - application/vnd.api+json; version=2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 18 Nov 2019 10:07:34 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding, Origin
+      X-Request-Id:
+      - b6b44019-f567-4ac0-a91f-85dfc5fc407f
+      Etag:
+      - W/"efb972c0be5a2d599c64ddb0d11cbeef"
+      X-Runtime:
+      - '0.144108'
+      X-Powered-By:
+      - Phusion Passenger 6.0.4
+      Server:
+      - nginx/1.17.3 + Phusion Passenger 6.0.4
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[],"meta":{"total":0,"totalPages":0,"page":1,"sources":[],"prefixes":[],"citationTypes":[],"relationTypes":[],"pairings":[],"registrants":[],"doisRelationTypes":[],"doisUsageTypes":[],"doisCitations":{"count":0.0,"years":[]},"uniqueNodes":{"objCount":null,"subjCount":null}},"links":{"self":"https://api.test.datacite.org/events?aggregations=query_aggregations%2Cmetrics_aggregations%2Ccitations_aggregations&doi=10.0311%2Ffk2%2Fe11643a99d903d0ccfc2d523b344d9ff&extra=true&include=dois&page%5Bnumber%5D=1&page%5Bsize%5D=25&sort=relation_type_id&source-id=datacite-related%2Cdatacite-crossref%2Ccrossref%2Cdatacite-usage%2Cdatacite-funder"},"included":[]}'
+    http_version: 
+  recorded_at: Mon, 18 Nov 2019 10:07:34 GMT
+- request:
+    method: get
+    uri: https://api.test.datacite.org/dois/10.0311/fk2/e11643a99d903d0ccfc2d523b344d9ff
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.4; +https://github.com/datacite/maremma)
+      Accept:
+      - application/vnd.schemaorg.ld+json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 18 Nov 2019 10:07:34 GMT
+      Content-Type:
+      - application/vnd.schemaorg.ld+json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding, Origin
+      X-Request-Id:
+      - 2084d887-cae6-43e1-b440-a7f28ec6fe97
+      Etag:
+      - W/"5f8015bff101dabbec61d70f8188a732"
+      X-Runtime:
+      - '0.013044'
+      X-Powered-By:
+      - Phusion Passenger 6.0.4
+      Server:
+      - nginx/1.17.3 + Phusion Passenger 6.0.4
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "@context": "http://schema.org",
+          "@type": "Dataset",
+          "@id": "https://doi.org/10.0311/fk2/e11643a99d903d0ccfc2d523b344d9ff",
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "DOI",
+              "value": "https://handle.test.datacite.org/10.0311/fk2/e11643a99d903d0ccfc2d523b344d9ff"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "URL",
+              "value": "https://pasta-s.lternet.edu/package/eml/knb-lter-jrn/100/4"
+            }
+          ],
+          "url": "https://portal-s.lternet.edu/nis/mapbrowse?packageid=knb-lter-jrn.100.4",
+          "additionalType": "dataPackage",
+          "name": "High resolution shrub cover raster maps of the Jornada Basin LTER, including JER and CDRRC (2011)",
+          "author": [
+            {
+              "name": "Wenjie Ji",
+              "givenName": "Wenjie",
+              "familyName": "Ji",
+              "@type": "Person"
+            },
+            {
+              "name": "Niall P. Hanan",
+              "givenName": "Niall P.",
+              "familyName": "Hanan",
+              "@type": "Person"
+            }
+          ],
+          "description": "This data package contains two raster shrub cover maps of the Jornada Experimental Range and Chihuahuan Desert Rangeland Research Center (CDRRC) created using 1m resolution National Agriculture Imagery Program (NAIP) aerial photo acquired in 2011. A one-meter resolution raster file lists cover as non-shrub, shrub, or no data available. A hectare resolution raster file contains fractional shrub cover values (0-1) calculed from the 1 meter raster. NOTE: There is currently a hole in the coverage of the hectare raster (no-data values) in the \"scarplet\" region in the southeastern portion of the Jornada Basin. The creators of the dataset plan to fill this missing area of coverage in a future update to the data package once suitable imagery of the area is acquired.",
+          "inLanguage": "eng",
+          "datePublished": "2019",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Environmental Data Initiative"
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "DataCite"
+          }
+        }
+    http_version: 
+  recorded_at: Mon, 18 Nov 2019 10:07:34 GMT
+recorded_with: VCR 2.9.3

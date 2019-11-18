@@ -44,25 +44,25 @@
   - if ENV['RACK_ENV'] == 'production'
     .panel-footer
       - if (views + downloads).positive?
-        %span.metrics
+        %span.metrics{id: "summary-views"}
           .fa.fa-eye
           = pluralize(views, "view")
-        %span.metrics
+        %span.metrics{id: "summary-downloads"}
           .fa.fa-download
           = pluralize(downloads, "download")
       - else
-        %span.metrics
+        %span.metrics{id: "summary-views"}
           .fa.fa-info-circle 
           No usage information was reported.
   - else 
     .panel-footer
       - if (views + downloads + citations).zero?
-        %span.metrics
+        %span.metrics{id: "summary-citations"}
           .fa.fa-info-circle 
           No citations were reported. No usage information was reported.
       - else
         - if citations.positive?
-          %span.metrics
+          %span.metrics{id: "summary-citations"}
             .fa.fa-quote-left
             = pluralize(citations, "citation")
         - else
@@ -70,14 +70,14 @@
             .fa.fa-info-circle 
             No citations were reported. 
         - if (views + downloads).positive?
-          %span.metrics
+          %span.metrics{id: "summary-views"}
             .fa.fa-eye
             = pluralize(views, "view")
-          %span.metrics
+          %span.metrics{id: "summary-downloads"}
             .fa.fa-download
             = pluralize(downloads, "download")
         - else
-          %span.metrics
+          %span.metrics{id: "summary-views"}
             .fa.fa-info-circle 
             No usage information was reported.
 

@@ -1,0 +1,314 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.test.datacite.org/works/10.7272/q6g15xs4?include=data-center,resource-type,member
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.4; +https://github.com/datacite/maremma)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 18 Nov 2019 09:32:55 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding, Origin
+      X-Request-Id:
+      - 9ff20993-1592-4eb5-973b-46209bff28a9
+      Etag:
+      - W/"3f9839dcc3c33b777e6da296939e20eb"
+      X-Runtime:
+      - '0.055214'
+      X-Powered-By:
+      - Phusion Passenger 6.0.4
+      Server:
+      - nginx/1.17.3 + Phusion Passenger 6.0.4
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJkYXRhIjp7ImlkIjoiaHR0cHM6Ly9oYW5kbGUudGVzdC5kYXRhY2l0ZS5vcmcvMTAuNzI3Mi9xNmcxNXhzNCIsInR5cGUiOiJ3b3JrcyIsImF0dHJpYnV0ZXMiOnsiZG9pIjoiMTAuNzI3Mi9xNmcxNXhzNCIsImlkZW50aWZpZXIiOiJodHRwczovL2hhbmRsZS50ZXN0LmRhdGFjaXRlLm9yZy8xMC43MjcyL3E2ZzE1eHM0IiwidXJsIjoiaHR0cHM6Ly9kYXRhc2hhcmUudWNzZi5lZHUvc3Rhc2gvZGF0YXNldC9kb2k6MTAuNzI3Mi9RNkcxNVhTNCIsImF1dGhvciI6W3siZ2l2ZW4iOiJSb2JlcnQiLCJmYW1pbHkiOiJSb2RyaWd1ZXoifSx7ImdpdmVuIjoiV2lsbGlhbSIsImZhbWlseSI6Ik1vd2VyIn1dLCJ0aXRsZSI6Ik5FWFVTIEhlYWQgQ1QiLCJjb250YWluZXItdGl0bGUiOiJVQyBTYW4gRnJhbmNpc2NvIiwiZGVzY3JpcHRpb24iOiJCYWNrZ3JvdW5kIENsaW5pY2lhbnMsIGFmcmFpZCBvZiBtaXNzaW5nIGludHJhY3JhbmlhbCBpbmp1cmllcywgbGliZXJhbGx5XG4gICAgICBvYnRhaW4gY29tcHV0ZWQgdG9tb2dyYXBoaWMgKENUKSBoZWFkIGltYWdpbmcgaW4gYmx1bnQgdHJhdW1hIHBhdGllbnRzLlxuICAgICAgUHJpb3Igd29yayBzdWdnZXN0cyB0aGF0IGNsaW5pY2FsIGNyaXRlcmlhIChORVhVUyBIZWFkIENUIGRlY2lzaW9uXG4gICAgICBpbnN0cnVtZW50KSBjYW4gcmVsaWFibHkgaWRlbnRpZnkgcGF0aWVudHMgd2l0aCBpbXBvcnRhbnQgaW5qdXJpZXMsIHdoaWxlXG4gICAgICBleGNsdWRpbmcgaW5qdXJ5LCBhbmQgdGhlIG5lZWQgZm9yIGltYWdpbmcgaW4gbWFueSBwYXRpZW50cy4gTWV0aG9kcyBXZVxuICAgICAgY29uZHVjdGVkIGEgcHJvc3BlY3RpdmUgb2JzZXJ2YXRpb25hbCBzdHVkeSBvZiB0aGUgTkVYVVMgSGVhZCBDVCBkZWNpc2lvblxuICAgICAgaW5zdHJ1bWVudCAoREkpIHRoYXQgcmVxdWlyZXMgcGF0aWVudHMgdG8gbWVldCBlaWdodCBjcml0ZXJpYSB0byBhY2hpZXZlXG4gICAgICDigJxsb3ctcmlza+KAnSBjbGFzc2lmaWNhdGlvbi4gV2UgZXhhbWluZWQgdGhlIGluc3RydW1lbnTigJlzIHBlcmZvcm1hbmNlIGluXG4gICAgICBpZGVudGlmeWluZyBwYXRpZW50cyByZXF1aXJpbmcgbmV1cm9sb2dpY2FsIGludGVydmVudGlvbiBmcm9tIGFtb25nIGFcbiAgICAgIGNvaG9ydCBvZiAxMSw3NzAgYmx1bnQgaGVhZCBpbmp1cnkgcGF0aWVudHMuIFJlc3VsdHMgVGhlIE5FWFVTIEhlYWQgQ1QgRElcbiAgICAgIGFzc2lnbmVkIGhpZ2gtcmlzayBzdGF0dXMgdG8gNDIwIG9mIDQyMCBwYXRpZW50cyByZXF1aXJpbmcgbmV1cm9sb2dpY2FsXG4gICAgICBpbnRlcnZlbnRpb24gKHNlbnNpdGl2aXR5LCAxMDAuMCUgWzk1JSBjb25maWRlbmNlIGludGVydmFsIFtDSV06IDk5LjElIOKAk1xuICAgICAgMTAwLjAlXSkuIFRoZSBpbnN0cnVtZW50IGFzc2lnbmVkIGxvdy1yaXNrIHN0YXR1cyB0byAyLDgyMyBvZiAxMSwzNTBcbiAgICAgIHBhdGllbnRzIHdobyBkaWQgbm90IHJlcXVpcmUgbmV1cm9sb2dpY2FsIGludGVydmVudGlvbiAoc3BlY2lmaWNpdHksIDI0LjklXG4gICAgICBbOTUlIENJOiAyNC4xJSAtIDI1LjclXSkuIE5vbmUgb2YgdGhlIDIsODIzIGxvdy1yaXNrIHBhdGllbnRzIHJlcXVpcmVkXG4gICAgICBuZXVyb2xvZ2ljYWwgaW50ZXJ2ZW50aW9uIChOUFYsIDEwMC4wJSBbOTUlIENJOiA5OS45JSAtIDEwMC4wJV0pLiBUaGUgRElcbiAgICAgIGFzc2lnbmVkIGhpZ2gtcmlzayBzdGF0dXMgdG8gNzU5IG9mIDc2NyBwYXRpZW50cyB3aXRoIHNpZ25pZmljYW50XG4gICAgICBpbnRyYWNyYW5pYWwgaW5qdXJpZXMgKHNlbnNpdGl2aXR5LCA5OS4wJSBbOTUlIENJOiA5OC4wJSAtIDk5LjYlXSkuIFRoZVxuICAgICAgaW5zdHJ1bWVudCBhc3NpZ25lZCBsb3ctcmlzayBzdGF0dXMgdG8gMiw4MTUgb2YgMTEsMDAzIHBhdGllbnRzIHdobyBkaWRcbiAgICAgIG5vdCBoYXZlIHNpZ25pZmljYW50IGluanVyaWVzIChzcGVjaWZpY2l0eSwgMjUuNiUgWzk1JSBDSTogMjQuOCUgLVxuICAgICAgMjYuNCVdKS4gU2lnbmlmaWNhbnQgaW5qdXJpZXMgd2VyZSBhYnNlbnQgaW4gMiw4MTUgb2YgdGhlIDIsODIzIHBhdGllbnRzXG4gICAgICBhc3NpZ25lZCBsb3ctcmlzayBzdGF0dXMgKE5QViwgOTkuNyUgWzk1JSBDSTogOTkuNCUgLSA5OS45JV0pLiBDb25jbHVzaW9uc1xuICAgICAgVGhlIE5FWFVTIEhlYWQgQ1QgREkgcmVsaWFibHkgaWRlbnRpZmllcyBibHVudCB0cmF1bWEgcGF0aWVudHMgd2hvIHJlcXVpcmVcbiAgICAgIGhlYWQgQ1QgaW1hZ2luZywgYW5kIGNvdWxkIHNpZ25pZmljYW50bHkgcmVkdWNpbmcgdGhlIHVzZSBvZiBDVCBpbWFnaW5nLiIsInJlc291cmNlLXR5cGUtc3VidHlwZSI6bnVsbCwiZGF0YS1jZW50ZXItaWQiOiJjZGwudWNzZmN0c2kiLCJtZW1iZXItaWQiOiJjZGwiLCJyZXNvdXJjZS10eXBlLWlkIjoiZGF0YXNldCIsInZlcnNpb24iOm51bGwsImxpY2Vuc2UiOiJodHRwczovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5zZXMvYnkvNC4wIiwic2NoZW1hLXZlcnNpb24iOm51bGwsInJlc3VsdHMiOltdLCJyZWxhdGVkLWlkZW50aWZpZXJzIjpbXSwicHVibGlzaGVkIjoiMjAxNyIsInJlZ2lzdGVyZWQiOiIyMDE4LTEyLTA3VDA5OjQ4OjIwLjAwMFoiLCJjaGVja2VkIjpudWxsLCJ1cGRhdGVkIjoiMjAxOS0xMS0xM1QxMjowMTozMS4wMDBaIiwibWVkaWEiOltdLCJ4bWwiOiJQRDk0Yld3Z2RtVnljMmx2YmowaU1TNHdJaUJsYm1OdlpHbHVaejBpVlZSR0xUZ2lQejRLUEhKbGMyOTFjbU5sSUhodGJHNXpPbmh6YVQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0V0YVc1emRHRnVZMlVpSUhodGJHNXpQU0pvZEhSd09pOHZaR0YwWVdOcGRHVXViM0puTDNOamFHVnRZUzlyWlhKdVpXd3RNeUlnZUhOcE9uTmphR1Z0WVV4dlkyRjBhVzl1UFNKb2RIUndPaTh2WkdGMFlXTnBkR1V1YjNKbkwzTmphR1Z0WVM5clpYSnVaV3d0TXlCb2RIUndPaTh2YzJOb1pXMWhMbVJoZEdGamFYUmxMbTl5Wnk5dFpYUmhMMnRsY201bGJDMHpMMjFsZEdGa1lYUmhMbmh6WkNJK0NpQWdQR2xrWlc1MGFXWnBaWElnYVdSbGJuUnBabWxsY2xSNWNHVTlJa1JQU1NJK01UQXVOekkzTWk5Uk5rY3hOVmhUTkR3dmFXUmxiblJwWm1sbGNqNEtJQ0E4WTNKbFlYUnZjbk0rQ2lBZ0lDQThZM0psWVhSdmNqNEtJQ0FnSUNBZ1BHTnlaV0YwYjNKT1lXMWxQbEp2WkhKcFozVmxlaXdnVW05aVpYSjBQQzlqY21WaGRHOXlUbUZ0WlQ0S0lDQWdJQ0FnUEdGbVptbHNhV0YwYVc5dVBsVkRJRk5oYmlCR2NtRnVZMmx6WTI4OEwyRm1abWxzYVdGMGFXOXVQZ29nSUNBZ1BDOWpjbVZoZEc5eVBnb2dJQ0FnUEdOeVpXRjBiM0krQ2lBZ0lDQWdJRHhqY21WaGRHOXlUbUZ0WlQ1TmIzZGxjaXdnVjJsc2JHbGhiVHd2WTNKbFlYUnZjazVoYldVK0NpQWdJQ0FnSUR4aFptWnBiR2xoZEdsdmJqNVZRMHhCUEM5aFptWnBiR2xoZEdsdmJqNEtJQ0FnSUR3dlkzSmxZWFJ2Y2o0S0lDQThMMk55WldGMGIzSnpQZ29nSUR4MGFYUnNaWE0rQ2lBZ0lDQThkR2wwYkdVK1RrVllWVk1nU0dWaFpDQkRWRHd2ZEdsMGJHVStDaUFnUEM5MGFYUnNaWE0rQ2lBZ1BIQjFZbXhwYzJobGNqNVZReUJUWVc0Z1JuSmhibU5wYzJOdlBDOXdkV0pzYVhOb1pYSStDaUFnUEhCMVlteHBZMkYwYVc5dVdXVmhjajR5TURFM1BDOXdkV0pzYVdOaGRHbHZibGxsWVhJK0NpQWdQR3hoYm1kMVlXZGxQbVZ1UEM5c1lXNW5kV0ZuWlQ0S0lDQThjbVZ6YjNWeVkyVlVlWEJsSUhKbGMyOTFjbU5sVkhsd1pVZGxibVZ5WVd3OUlrUmhkR0Z6WlhRaUx6NEtJQ0E4YzJsNlpYTStDaUFnSUNBOGMybDZaVDR4TkRrMU1qQTBJR0o1ZEdWelBDOXphWHBsUGdvZ0lEd3ZjMmw2WlhNK0NpQWdQSFpsY25OcGIyNCtNVHd2ZG1WeWMybHZiajRLSUNBOGNtbG5hSFJ6VEdsemRENEtJQ0FnSUR4eWFXZG9kSE1nY21sbmFIUnpWVkpKUFNKb2RIUndjem92TDJOeVpXRjBhWFpsWTI5dGJXOXVjeTV2Y21jdmJHbGpaVzV6WlhNdllua3ZOQzR3THlJK1EzSmxZWFJwZG1VZ1EyOXRiVzl1Y3lCQmRIUnlhV0oxZEdsdmJpQTBMakFnU1c1MFpYSnVZWFJwYjI1aGJDQW9RME1nUWxrZ05DNHdLVHd2Y21sbmFIUnpQZ29nSUR3dmNtbG5hSFJ6VEdsemRENEtJQ0E4WkdWelkzSnBjSFJwYjI1elBnb2dJQ0FnUEdSbGMyTnlhWEIwYVc5dUlHUmxjMk55YVhCMGFXOXVWSGx3WlQwaVFXSnpkSEpoWTNRaVBnb2dJQ0FnSUNCQ1lXTnJaM0p2ZFc1a0lFTnNhVzVwWTJsaGJuTXNJR0ZtY21GcFpDQnZaaUJ0YVhOemFXNW5JR2x1ZEhKaFkzSmhibWxoYkNCcGJtcDFjbWxsY3l3Z2JHbGlaWEpoYkd4NUNpQWdJQ0FnSUc5aWRHRnBiaUJqYjIxd2RYUmxaQ0IwYjIxdlozSmhjR2hwWXlBb1ExUXBJR2hsWVdRZ2FXMWhaMmx1WnlCcGJpQmliSFZ1ZENCMGNtRjFiV0VnY0dGMGFXVnVkSE11Q2lBZ0lDQWdJRkJ5YVc5eUlIZHZjbXNnYzNWbloyVnpkSE1nZEdoaGRDQmpiR2x1YVdOaGJDQmpjbWwwWlhKcFlTQW9Ua1ZZVlZNZ1NHVmhaQ0JEVkNCa1pXTnBjMmx2YmdvZ0lDQWdJQ0JwYm5OMGNuVnRaVzUwS1NCallXNGdjbVZzYVdGaWJIa2dhV1JsYm5ScFpua2djR0YwYVdWdWRITWdkMmwwYUNCcGJYQnZjblJoYm5RZ2FXNXFkWEpwWlhNc0lIZG9hV3hsQ2lBZ0lDQWdJR1Y0WTJ4MVpHbHVaeUJwYm1wMWNua3NJR0Z1WkNCMGFHVWdibVZsWkNCbWIzSWdhVzFoWjJsdVp5QnBiaUJ0WVc1NUlIQmhkR2xsYm5SekxpQk5aWFJvYjJSeklGZGxDaUFnSUNBZ0lHTnZibVIxWTNSbFpDQmhJSEJ5YjNOd1pXTjBhWFpsSUc5aWMyVnlkbUYwYVc5dVlXd2djM1IxWkhrZ2IyWWdkR2hsSUU1RldGVlRJRWhsWVdRZ1ExUWdaR1ZqYVhOcGIyNEtJQ0FnSUNBZ2FXNXpkSEoxYldWdWRDQW9SRWtwSUhSb1lYUWdjbVZ4ZFdseVpYTWdjR0YwYVdWdWRITWdkRzhnYldWbGRDQmxhV2RvZENCamNtbDBaWEpwWVNCMGJ5QmhZMmhwWlhabENpQWdJQ0FnSU9LQW5HeHZkeTF5YVhOcjRvQ2RJR05zWVhOemFXWnBZMkYwYVc5dUxpQlhaU0JsZUdGdGFXNWxaQ0IwYUdVZ2FXNXpkSEoxYldWdWRPS0FtWE1nY0dWeVptOXliV0Z1WTJVZ2FXNEtJQ0FnSUNBZ2FXUmxiblJwWm5scGJtY2djR0YwYVdWdWRITWdjbVZ4ZFdseWFXNW5JRzVsZFhKdmJHOW5hV05oYkNCcGJuUmxjblpsYm5ScGIyNGdabkp2YlNCaGJXOXVaeUJoQ2lBZ0lDQWdJR052YUc5eWRDQnZaaUF4TVN3M056QWdZbXgxYm5RZ2FHVmhaQ0JwYm1wMWNua2djR0YwYVdWdWRITXVJRkpsYzNWc2RITWdWR2hsSUU1RldGVlRJRWhsWVdRZ1ExUWdSRWtLSUNBZ0lDQWdZWE56YVdkdVpXUWdhR2xuYUMxeWFYTnJJSE4wWVhSMWN5QjBieUEwTWpBZ2IyWWdOREl3SUhCaGRHbGxiblJ6SUhKbGNYVnBjbWx1WnlCdVpYVnliMnh2WjJsallXd0tJQ0FnSUNBZ2FXNTBaWEoyWlc1MGFXOXVJQ2h6Wlc1emFYUnBkbWwwZVN3Z01UQXdMakFsSUZzNU5TVWdZMjl1Wm1sa1pXNWpaU0JwYm5SbGNuWmhiQ0JiUTBsZE9pQTVPUzR4SlNEaWdKTUtJQ0FnSUNBZ01UQXdMakFsWFNrdUlGUm9aU0JwYm5OMGNuVnRaVzUwSUdGemMybG5ibVZrSUd4dmR5MXlhWE5ySUhOMFlYUjFjeUIwYnlBeUxEZ3lNeUJ2WmlBeE1Td3pOVEFLSUNBZ0lDQWdjR0YwYVdWdWRITWdkMmh2SUdScFpDQnViM1FnY21WeGRXbHlaU0J1WlhWeWIyeHZaMmxqWVd3Z2FXNTBaWEoyWlc1MGFXOXVJQ2h6Y0dWamFXWnBZMmwwZVN3Z01qUXVPU1VLSUNBZ0lDQWdXemsxSlNCRFNUb2dNalF1TVNVZ0xTQXlOUzQzSlYwcExpQk9iMjVsSUc5bUlIUm9aU0F5TERneU15QnNiM2N0Y21semF5QndZWFJwWlc1MGN5QnlaWEYxYVhKbFpBb2dJQ0FnSUNCdVpYVnliMnh2WjJsallXd2dhVzUwWlhKMlpXNTBhVzl1SUNoT1VGWXNJREV3TUM0d0pTQmJPVFVsSUVOSk9pQTVPUzQ1SlNBdElERXdNQzR3SlYwcExpQlVhR1VnUkVrS0lDQWdJQ0FnWVhOemFXZHVaV1FnYUdsbmFDMXlhWE5ySUhOMFlYUjFjeUIwYnlBM05Ua2diMllnTnpZM0lIQmhkR2xsYm5SeklIZHBkR2dnYzJsbmJtbG1hV05oYm5RS0lDQWdJQ0FnYVc1MGNtRmpjbUZ1YVdGc0lHbHVhblZ5YVdWeklDaHpaVzV6YVhScGRtbDBlU3dnT1RrdU1DVWdXemsxSlNCRFNUb2dPVGd1TUNVZ0xTQTVPUzQySlYwcExpQlVhR1VLSUNBZ0lDQWdhVzV6ZEhKMWJXVnVkQ0JoYzNOcFoyNWxaQ0JzYjNjdGNtbHpheUJ6ZEdGMGRYTWdkRzhnTWl3NE1UVWdiMllnTVRFc01EQXpJSEJoZEdsbGJuUnpJSGRvYnlCa2FXUUtJQ0FnSUNBZ2JtOTBJR2hoZG1VZ2MybG5ibWxtYVdOaGJuUWdhVzVxZFhKcFpYTWdLSE53WldOcFptbGphWFI1TENBeU5TNDJKU0JiT1RVbElFTkpPaUF5TkM0NEpTQXRDaUFnSUNBZ0lESTJMalFsWFNrdUlGTnBaMjVwWm1sallXNTBJR2x1YW5WeWFXVnpJSGRsY21VZ1lXSnpaVzUwSUdsdUlESXNPREUxSUc5bUlIUm9aU0F5TERneU15QndZWFJwWlc1MGN3b2dJQ0FnSUNCaGMzTnBaMjVsWkNCc2IzY3RjbWx6YXlCemRHRjBkWE1nS0U1UVZpd2dPVGt1TnlVZ1d6azFKU0JEU1RvZ09Ua3VOQ1VnTFNBNU9TNDVKVjBwTGlCRGIyNWpiSFZ6YVc5dWN3b2dJQ0FnSUNCVWFHVWdUa1ZZVlZNZ1NHVmhaQ0JEVkNCRVNTQnlaV3hwWVdKc2VTQnBaR1Z1ZEdsbWFXVnpJR0pzZFc1MElIUnlZWFZ0WVNCd1lYUnBaVzUwY3lCM2FHOGdjbVZ4ZFdseVpRb2dJQ0FnSUNCb1pXRmtJRU5VSUdsdFlXZHBibWNzSUdGdVpDQmpiM1ZzWkNCemFXZHVhV1pwWTJGdWRHeDVJSEpsWkhWamFXNW5JSFJvWlNCMWMyVWdiMllnUTFRZ2FXMWhaMmx1Wnk0S0lDQWdJRHd2WkdWelkzSnBjSFJwYjI0K0NpQWdJQ0E4WkdWelkzSnBjSFJwYjI0Z1pHVnpZM0pwY0hScGIyNVVlWEJsUFNKTlpYUm9iMlJ6SWo1UWNtOXpjR1ZqZEdsMlpTQnRkV3gwYVdObGJuUmxjand2WkdWelkzSnBjSFJwYjI0K0NpQWdQQzlrWlhOamNtbHdkR2x2Ym5NK0NpQWdQR2RsYjB4dlkyRjBhVzl1Y3o0S0lDQWdJRHhuWlc5TWIyTmhkR2x2Ymo0S0lDQWdJQ0FnUEdkbGIweHZZMkYwYVc5dVVHOXBiblErTXpjdU1qVXdNaklnTFRFeE9TNDNOVEV5Tmp3dloyVnZURzlqWVhScGIyNVFiMmx1ZEQ0S0lDQWdJQ0FnUEdkbGIweHZZMkYwYVc5dVVHeGhZMlUrUTJGc2FXWnZjbTVwWVN3Z1ZWTkJQQzluWlc5TWIyTmhkR2x2YmxCc1lXTmxQZ29nSUNBZ1BDOW5aVzlNYjJOaGRHbHZiajRLSUNBOEwyZGxiMHh2WTJGMGFXOXVjejRLUEM5eVpYTnZkWEpqWlQ0SyJ9LCJyZWxhdGlvbnNoaXBzIjp7ImRhdGEtY2VudGVyIjp7ImRhdGEiOnsiaWQiOiJjZGwudWNzZmN0c2kiLCJ0eXBlIjoiZGF0YS1jZW50ZXJzIn19LCJtZW1iZXIiOnsiZGF0YSI6eyJpZCI6ImNkbCIsInR5cGUiOiJtZW1iZXJzIn19LCJyZXNvdXJjZS10eXBlIjp7ImRhdGEiOnsiaWQiOiJkYXRhc2V0IiwidHlwZSI6InJlc291cmNlLXR5cGVzIn19fX0sImluY2x1ZGVkIjpbeyJpZCI6ImNkbC51Y3NmY3RzaSIsInR5cGUiOiJkYXRhLWNlbnRlcnMiLCJhdHRyaWJ1dGVzIjp7InRpdGxlIjoiVUNTRiBDbGluaWNhbCAmIFRyYW5zbGF0aW9uYWwgU2NpZW5jZSBJbnN0aXR1dGUgKENUU0kpIiwib3RoZXItbmFtZXMiOltdLCJwcmVmaXhlcyI6W10sIm1lbWJlci1pZCI6ImNkbCIsInllYXIiOjIwMTIsImNyZWF0ZWQiOiIyMDEyLTA3LTEwVDIwOjU5OjUzLjAwMFoiLCJ1cGRhdGVkIjoiMjAxOC0wOC0yNlQwMTozMDozMS4wMDBaIn0sInJlbGF0aW9uc2hpcHMiOnsibWVtYmVyIjp7ImRhdGEiOnsiaWQiOiJjZGwiLCJ0eXBlIjoibWVtYmVycyJ9fX19LHsiaWQiOiJjZGwiLCJ0eXBlIjoibWVtYmVycyIsImF0dHJpYnV0ZXMiOnsidGl0bGUiOiJDYWxpZm9ybmlhIERpZ2l0YWwgTGlicmFyeSIsImRpc3BsYXktdGl0bGUiOiJDYWxpZm9ybmlhIERpZ2l0YWwgTGlicmFyeSIsImRlc2NyaXB0aW9uIjpudWxsLCJtZW1iZXItdHlwZSI6ImRpcmVjdF9tZW1iZXIiLCJvcmdhbml6YXRpb24tdHlwZSI6ImFjYWRlbWljSW5zdGl0dXRpb24iLCJmb2N1cy1hcmVhIjoiZ2VuZXJhbCIsInJlZ2lvbiI6IkFNRVIiLCJjb3VudHJ5IjoiVVMiLCJ5ZWFyIjpudWxsLCJsb2dvLXVybCI6bnVsbCwiZW1haWwiOm51bGwsIndlYnNpdGUiOm51bGwsImpvaW5lZCI6bnVsbCwiY3JlYXRlZCI6IjIwMTAtMDEtMDFUMDA6MDA6MDAuMDAwWiIsInVwZGF0ZWQiOiIyMDE4LTExLTI0VDE2OjIxOjI2LjAwMFoifX0seyJpZCI6ImRhdGFzZXQiLCJ0eXBlIjoicmVzb3VyY2UtdHlwZXMiLCJhdHRyaWJ1dGVzIjp7InRpdGxlIjoiRGF0YXNldCIsInVwZGF0ZWQiOiIyMDE2LTA5LTIxVDAwOjAwOjAwWiJ9LCJyZWxhdGlvbnNoaXBzIjp7fX1dfQ==
+    http_version: 
+  recorded_at: Mon, 18 Nov 2019 09:32:55 GMT
+- request:
+    method: get
+    uri: https://api.test.datacite.org/events?aggregations=query_aggregations,metrics_aggregations,citations_aggregations&doi=10.7272/q6g15xs4&extra=true&include=dois&page%5Bnumber%5D=1&page%5Bsize%5D=25&sort=relation_type_id&source-id=datacite-related,datacite-crossref,crossref,datacite-usage,datacite-funder
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.4; +https://github.com/datacite/maremma)
+      Accept:
+      - application/vnd.api+json; version=2
+  response:
+    status:
+      code: 500
+      message: Internal Server Error
+    headers:
+      Date:
+      - Mon, 18 Nov 2019 09:32:55 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '22164'
+      Connection:
+      - keep-alive
+      Status:
+      - 500 Internal Server Error
+      Vary:
+      - Origin
+      X-Request-Id:
+      - 38187fd5-91ec-479b-b875-5eff639b37d3
+      X-Runtime:
+      - '0.092285'
+      X-Powered-By:
+      - Phusion Passenger 6.0.4
+      Server:
+      - nginx/1.17.3 + Phusion Passenger 6.0.4
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":500,"error":"Internal Server Error","exception":"#<Elasticsearch::Transport::Transport::Errors::BadRequest:
+        [400] {\"error\":{\"root_cause\":[{\"type\":\"script_exception\",\"reason\":\"runtime
+        error\",\"script_stack\":[\"org.elasticsearch.index.fielddata.ScriptDocValues$Dates.get(ScriptDocValues.java:160)\",\"org.elasticsearch.index.fielddata.ScriptDocValues$Dates.getValue(ScriptDocValues.java:154)\",\"doc[''source_id''].value
+        == ''datacite-usage'' && doc[''occurred_at''].value.getMillis() >= doc[''obj.datePublished''].value.getMillis()
+        && doc[''occurred_at''].value.getMillis() < new Date().getTime()\",\"                                                                                                              ^----
+        HERE\"],\"script\":\"doc[''source_id''].value == ''datacite-usage'' && doc[''occurred_at''].value.getMillis()
+        >= doc[''obj.datePublished''].value.getMillis() && doc[''occurred_at''].value.getMillis()
+        < new Date().getTime()\",\"lang\":\"painless\"}],\"type\":\"search_phase_execution_exception\",\"reason\":\"all
+        shards failed\",\"phase\":\"query\",\"grouped\":true,\"failed_shards\":[{\"shard\":0,\"index\":\"events_v2\",\"node\":\"pKbNDYClRwScKwbg6YVluQ\",\"reason\":{\"type\":\"script_exception\",\"reason\":\"runtime
+        error\",\"script_stack\":[\"org.elasticsearch.index.fielddata.ScriptDocValues$Dates.get(ScriptDocValues.java:160)\",\"org.elasticsearch.index.fielddata.ScriptDocValues$Dates.getValue(ScriptDocValues.java:154)\",\"doc[''source_id''].value
+        == ''datacite-usage'' && doc[''occurred_at''].value.getMillis() >= doc[''obj.datePublished''].value.getMillis()
+        && doc[''occurred_at''].value.getMillis() < new Date().getTime()\",\"                                                                                                              ^----
+        HERE\"],\"script\":\"doc[''source_id''].value == ''datacite-usage'' && doc[''occurred_at''].value.getMillis()
+        >= doc[''obj.datePublished''].value.getMillis() && doc[''occurred_at''].value.getMillis()
+        < new Date().getTime()\",\"lang\":\"painless\",\"caused_by\":{\"type\":\"illegal_state_exception\",\"reason\":\"A
+        document doesn''t have a value for a field! Use doc[<field>].size()==0 to
+        check if a document is missing a field!\"}}}]},\"status\":400}>","traces":{"Application
+        Trace":[{"id":8,"trace":"app/controllers/events_controller.rb:113:in `index''"}],"Framework
+        Trace":[{"id":0,"trace":"vendor/bundle/ruby/2.4.0/gems/elasticsearch-transport-7.1.0/lib/elasticsearch/transport/transport/base.rb:218:in
+        `__raise_transport_error''"},{"id":1,"trace":"vendor/bundle/ruby/2.4.0/gems/elasticsearch-transport-7.1.0/lib/elasticsearch/transport/transport/base.rb:338:in
+        `perform_request''"},{"id":2,"trace":"vendor/bundle/ruby/2.4.0/gems/elasticsearch-transport-7.1.0/lib/elasticsearch/transport/transport/http/faraday.rb:37:in
+        `perform_request''"},{"id":3,"trace":"vendor/bundle/ruby/2.4.0/gems/elasticsearch-transport-7.1.0/lib/elasticsearch/transport/client.rb:160:in
+        `perform_request''"},{"id":4,"trace":"vendor/bundle/ruby/2.4.0/gems/elasticsearch-api-7.1.0/lib/elasticsearch/api/actions/search.rb:160:in
+        `search''"},{"id":5,"trace":"vendor/bundle/ruby/2.4.0/gems/elasticsearch-model-7.0.0/lib/elasticsearch/model/searching.rb:68:in
+        `execute!''"},{"id":6,"trace":"vendor/bundle/ruby/2.4.0/gems/elasticsearch-model-7.0.0/lib/elasticsearch/model/response.rb:46:in
+        `response''"},{"id":7,"trace":"vendor/bundle/ruby/2.4.0/gems/elasticsearch-model-7.0.0/lib/elasticsearch/model/response/base.rb:51:in
+        `total''"},{"id":9,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_controller/metal/basic_implicit_render.rb:6:in
+        `send_action''"},{"id":10,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/abstract_controller/base.rb:194:in
+        `process_action''"},{"id":11,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_controller/metal/rendering.rb:30:in
+        `process_action''"},{"id":12,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/abstract_controller/callbacks.rb:42:in
+        `block in process_action''"},{"id":13,"trace":"vendor/bundle/ruby/2.4.0/gems/activesupport-5.2.3/lib/active_support/callbacks.rb:109:in
+        `block in run_callbacks''"},{"id":14,"trace":"vendor/bundle/ruby/2.4.0/gems/audited-4.9.0/lib/audited/sweeper.rb:14:in
+        `around''"},{"id":15,"trace":"vendor/bundle/ruby/2.4.0/gems/activesupport-5.2.3/lib/active_support/callbacks.rb:118:in
+        `block in run_callbacks''"},{"id":16,"trace":"vendor/bundle/ruby/2.4.0/gems/audited-4.9.0/lib/audited/sweeper.rb:14:in
+        `around''"},{"id":17,"trace":"vendor/bundle/ruby/2.4.0/gems/activesupport-5.2.3/lib/active_support/callbacks.rb:118:in
+        `block in run_callbacks''"},{"id":18,"trace":"vendor/bundle/ruby/2.4.0/gems/sentry-raven-2.12.2/lib/raven/integrations/rails/controller_transaction.rb:7:in
+        `block in included''"},{"id":19,"trace":"vendor/bundle/ruby/2.4.0/gems/activesupport-5.2.3/lib/active_support/callbacks.rb:118:in
+        `instance_exec''"},{"id":20,"trace":"vendor/bundle/ruby/2.4.0/gems/activesupport-5.2.3/lib/active_support/callbacks.rb:118:in
+        `block in run_callbacks''"},{"id":21,"trace":"vendor/bundle/ruby/2.4.0/gems/activesupport-5.2.3/lib/active_support/callbacks.rb:136:in
+        `run_callbacks''"},{"id":22,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/abstract_controller/callbacks.rb:41:in
+        `process_action''"},{"id":23,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_controller/metal/rescue.rb:22:in
+        `process_action''"},{"id":24,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_controller/metal/instrumentation.rb:34:in
+        `block in process_action''"},{"id":25,"trace":"vendor/bundle/ruby/2.4.0/gems/activesupport-5.2.3/lib/active_support/notifications.rb:168:in
+        `block in instrument''"},{"id":26,"trace":"vendor/bundle/ruby/2.4.0/gems/activesupport-5.2.3/lib/active_support/notifications/instrumenter.rb:23:in
+        `instrument''"},{"id":27,"trace":"vendor/bundle/ruby/2.4.0/gems/activesupport-5.2.3/lib/active_support/notifications.rb:168:in
+        `instrument''"},{"id":28,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_controller/metal/instrumentation.rb:32:in
+        `process_action''"},{"id":29,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_controller/metal/params_wrapper.rb:256:in
+        `process_action''"},{"id":30,"trace":"vendor/bundle/ruby/2.4.0/gems/activerecord-5.2.3/lib/active_record/railties/controller_runtime.rb:24:in
+        `process_action''"},{"id":31,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/abstract_controller/base.rb:134:in
+        `process''"},{"id":32,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_controller/metal.rb:191:in
+        `dispatch''"},{"id":33,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_controller/metal.rb:252:in
+        `dispatch''"},{"id":34,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/routing/route_set.rb:52:in
+        `dispatch''"},{"id":35,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/routing/route_set.rb:34:in
+        `serve''"},{"id":36,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/routing/mapper.rb:18:in
+        `block in <class:Constraints>''"},{"id":37,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/routing/mapper.rb:48:in
+        `serve''"},{"id":38,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/journey/router.rb:52:in
+        `block in serve''"},{"id":39,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/journey/router.rb:35:in
+        `each''"},{"id":40,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/journey/router.rb:35:in
+        `serve''"},{"id":41,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/routing/route_set.rb:840:in
+        `call''"},{"id":42,"trace":"vendor/bundle/ruby/2.4.0/gems/turnout-2.5.0/lib/rack/turnout.rb:25:in
+        `call''"},{"id":43,"trace":"vendor/bundle/ruby/2.4.0/gems/flipper-0.16.2/lib/flipper/middleware/memoizer.rb:62:in
+        `memoized_call''"},{"id":44,"trace":"vendor/bundle/ruby/2.4.0/gems/flipper-0.16.2/lib/flipper/middleware/memoizer.rb:40:in
+        `call''"},{"id":45,"trace":"vendor/bundle/ruby/2.4.0/gems/batch-loader-1.4.1/lib/batch_loader/middleware.rb:11:in
+        `call''"},{"id":46,"trace":"vendor/bundle/ruby/2.4.0/gems/rack-2.0.7/lib/rack/deflater.rb:34:in
+        `call''"},{"id":47,"trace":"vendor/bundle/ruby/2.4.0/gems/rack-2.0.7/lib/rack/etag.rb:25:in
+        `call''"},{"id":48,"trace":"vendor/bundle/ruby/2.4.0/gems/rack-2.0.7/lib/rack/conditional_get.rb:25:in
+        `call''"},{"id":49,"trace":"vendor/bundle/ruby/2.4.0/gems/rack-2.0.7/lib/rack/head.rb:12:in
+        `call''"},{"id":50,"trace":"vendor/bundle/ruby/2.4.0/gems/activerecord-5.2.3/lib/active_record/migration.rb:559:in
+        `call''"},{"id":51,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/callbacks.rb:28:in
+        `block in call''"},{"id":52,"trace":"vendor/bundle/ruby/2.4.0/gems/activesupport-5.2.3/lib/active_support/callbacks.rb:98:in
+        `run_callbacks''"},{"id":53,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/callbacks.rb:26:in
+        `call''"},{"id":54,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in
+        `call''"},{"id":55,"trace":"vendor/bundle/ruby/2.4.0/gems/better_errors-2.5.1/lib/better_errors/middleware.rb:59:in
+        `call''"},{"id":56,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+        `call''"},{"id":57,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in
+        `call''"},{"id":58,"trace":"vendor/bundle/ruby/2.4.0/gems/lograge-0.10.0/lib/lograge/rails_ext/rack/logger.rb:15:in
+        `call_app''"},{"id":59,"trace":"vendor/bundle/ruby/2.4.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in
+        `block in call''"},{"id":60,"trace":"vendor/bundle/ruby/2.4.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in
+        `block in tagged''"},{"id":61,"trace":"vendor/bundle/ruby/2.4.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in
+        `tagged''"},{"id":62,"trace":"vendor/bundle/ruby/2.4.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in
+        `tagged''"},{"id":63,"trace":"vendor/bundle/ruby/2.4.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in
+        `call''"},{"id":64,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in
+        `call''"},{"id":65,"trace":"vendor/bundle/ruby/2.4.0/gems/request_store-1.4.1/lib/request_store/middleware.rb:19:in
+        `call''"},{"id":66,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in
+        `call''"},{"id":67,"trace":"vendor/bundle/ruby/2.4.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in
+        `call''"},{"id":68,"trace":"vendor/bundle/ruby/2.4.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+        `call''"},{"id":69,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in
+        `call''"},{"id":70,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in
+        `call''"},{"id":71,"trace":"vendor/bundle/ruby/2.4.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in
+        `call''"},{"id":72,"trace":"vendor/bundle/ruby/2.4.0/gems/rack-utf8_sanitizer-1.6.0/lib/rack/utf8_sanitizer.rb:22:in
+        `call''"},{"id":73,"trace":"vendor/bundle/ruby/2.4.0/gems/sentry-raven-2.12.2/lib/raven/integrations/rack.rb:51:in
+        `call''"},{"id":74,"trace":"vendor/bundle/ruby/2.4.0/gems/rack-cors-1.0.3/lib/rack/cors.rb:95:in
+        `call''"},{"id":75,"trace":"vendor/bundle/ruby/2.4.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in
+        `call''"},{"id":76,"trace":"/usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:97:in
+        `process_request''"},{"id":77,"trace":"/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:149:in
+        `accept_and_process_next_request''"},{"id":78,"trace":"/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:110:in
+        `main_loop''"},{"id":79,"trace":"/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:415:in
+        `block (3 levels) in start_threads''"},{"id":80,"trace":"/usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:113:in
+        `block in create_thread_and_abort_on_exception''"}],"Full Trace":[{"id":0,"trace":"vendor/bundle/ruby/2.4.0/gems/elasticsearch-transport-7.1.0/lib/elasticsearch/transport/transport/base.rb:218:in
+        `__raise_transport_error''"},{"id":1,"trace":"vendor/bundle/ruby/2.4.0/gems/elasticsearch-transport-7.1.0/lib/elasticsearch/transport/transport/base.rb:338:in
+        `perform_request''"},{"id":2,"trace":"vendor/bundle/ruby/2.4.0/gems/elasticsearch-transport-7.1.0/lib/elasticsearch/transport/transport/http/faraday.rb:37:in
+        `perform_request''"},{"id":3,"trace":"vendor/bundle/ruby/2.4.0/gems/elasticsearch-transport-7.1.0/lib/elasticsearch/transport/client.rb:160:in
+        `perform_request''"},{"id":4,"trace":"vendor/bundle/ruby/2.4.0/gems/elasticsearch-api-7.1.0/lib/elasticsearch/api/actions/search.rb:160:in
+        `search''"},{"id":5,"trace":"vendor/bundle/ruby/2.4.0/gems/elasticsearch-model-7.0.0/lib/elasticsearch/model/searching.rb:68:in
+        `execute!''"},{"id":6,"trace":"vendor/bundle/ruby/2.4.0/gems/elasticsearch-model-7.0.0/lib/elasticsearch/model/response.rb:46:in
+        `response''"},{"id":7,"trace":"vendor/bundle/ruby/2.4.0/gems/elasticsearch-model-7.0.0/lib/elasticsearch/model/response/base.rb:51:in
+        `total''"},{"id":8,"trace":"app/controllers/events_controller.rb:113:in `index''"},{"id":9,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_controller/metal/basic_implicit_render.rb:6:in
+        `send_action''"},{"id":10,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/abstract_controller/base.rb:194:in
+        `process_action''"},{"id":11,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_controller/metal/rendering.rb:30:in
+        `process_action''"},{"id":12,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/abstract_controller/callbacks.rb:42:in
+        `block in process_action''"},{"id":13,"trace":"vendor/bundle/ruby/2.4.0/gems/activesupport-5.2.3/lib/active_support/callbacks.rb:109:in
+        `block in run_callbacks''"},{"id":14,"trace":"vendor/bundle/ruby/2.4.0/gems/audited-4.9.0/lib/audited/sweeper.rb:14:in
+        `around''"},{"id":15,"trace":"vendor/bundle/ruby/2.4.0/gems/activesupport-5.2.3/lib/active_support/callbacks.rb:118:in
+        `block in run_callbacks''"},{"id":16,"trace":"vendor/bundle/ruby/2.4.0/gems/audited-4.9.0/lib/audited/sweeper.rb:14:in
+        `around''"},{"id":17,"trace":"vendor/bundle/ruby/2.4.0/gems/activesupport-5.2.3/lib/active_support/callbacks.rb:118:in
+        `block in run_callbacks''"},{"id":18,"trace":"vendor/bundle/ruby/2.4.0/gems/sentry-raven-2.12.2/lib/raven/integrations/rails/controller_transaction.rb:7:in
+        `block in included''"},{"id":19,"trace":"vendor/bundle/ruby/2.4.0/gems/activesupport-5.2.3/lib/active_support/callbacks.rb:118:in
+        `instance_exec''"},{"id":20,"trace":"vendor/bundle/ruby/2.4.0/gems/activesupport-5.2.3/lib/active_support/callbacks.rb:118:in
+        `block in run_callbacks''"},{"id":21,"trace":"vendor/bundle/ruby/2.4.0/gems/activesupport-5.2.3/lib/active_support/callbacks.rb:136:in
+        `run_callbacks''"},{"id":22,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/abstract_controller/callbacks.rb:41:in
+        `process_action''"},{"id":23,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_controller/metal/rescue.rb:22:in
+        `process_action''"},{"id":24,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_controller/metal/instrumentation.rb:34:in
+        `block in process_action''"},{"id":25,"trace":"vendor/bundle/ruby/2.4.0/gems/activesupport-5.2.3/lib/active_support/notifications.rb:168:in
+        `block in instrument''"},{"id":26,"trace":"vendor/bundle/ruby/2.4.0/gems/activesupport-5.2.3/lib/active_support/notifications/instrumenter.rb:23:in
+        `instrument''"},{"id":27,"trace":"vendor/bundle/ruby/2.4.0/gems/activesupport-5.2.3/lib/active_support/notifications.rb:168:in
+        `instrument''"},{"id":28,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_controller/metal/instrumentation.rb:32:in
+        `process_action''"},{"id":29,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_controller/metal/params_wrapper.rb:256:in
+        `process_action''"},{"id":30,"trace":"vendor/bundle/ruby/2.4.0/gems/activerecord-5.2.3/lib/active_record/railties/controller_runtime.rb:24:in
+        `process_action''"},{"id":31,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/abstract_controller/base.rb:134:in
+        `process''"},{"id":32,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_controller/metal.rb:191:in
+        `dispatch''"},{"id":33,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_controller/metal.rb:252:in
+        `dispatch''"},{"id":34,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/routing/route_set.rb:52:in
+        `dispatch''"},{"id":35,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/routing/route_set.rb:34:in
+        `serve''"},{"id":36,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/routing/mapper.rb:18:in
+        `block in <class:Constraints>''"},{"id":37,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/routing/mapper.rb:48:in
+        `serve''"},{"id":38,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/journey/router.rb:52:in
+        `block in serve''"},{"id":39,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/journey/router.rb:35:in
+        `each''"},{"id":40,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/journey/router.rb:35:in
+        `serve''"},{"id":41,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/routing/route_set.rb:840:in
+        `call''"},{"id":42,"trace":"vendor/bundle/ruby/2.4.0/gems/turnout-2.5.0/lib/rack/turnout.rb:25:in
+        `call''"},{"id":43,"trace":"vendor/bundle/ruby/2.4.0/gems/flipper-0.16.2/lib/flipper/middleware/memoizer.rb:62:in
+        `memoized_call''"},{"id":44,"trace":"vendor/bundle/ruby/2.4.0/gems/flipper-0.16.2/lib/flipper/middleware/memoizer.rb:40:in
+        `call''"},{"id":45,"trace":"vendor/bundle/ruby/2.4.0/gems/batch-loader-1.4.1/lib/batch_loader/middleware.rb:11:in
+        `call''"},{"id":46,"trace":"vendor/bundle/ruby/2.4.0/gems/rack-2.0.7/lib/rack/deflater.rb:34:in
+        `call''"},{"id":47,"trace":"vendor/bundle/ruby/2.4.0/gems/rack-2.0.7/lib/rack/etag.rb:25:in
+        `call''"},{"id":48,"trace":"vendor/bundle/ruby/2.4.0/gems/rack-2.0.7/lib/rack/conditional_get.rb:25:in
+        `call''"},{"id":49,"trace":"vendor/bundle/ruby/2.4.0/gems/rack-2.0.7/lib/rack/head.rb:12:in
+        `call''"},{"id":50,"trace":"vendor/bundle/ruby/2.4.0/gems/activerecord-5.2.3/lib/active_record/migration.rb:559:in
+        `call''"},{"id":51,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/callbacks.rb:28:in
+        `block in call''"},{"id":52,"trace":"vendor/bundle/ruby/2.4.0/gems/activesupport-5.2.3/lib/active_support/callbacks.rb:98:in
+        `run_callbacks''"},{"id":53,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/callbacks.rb:26:in
+        `call''"},{"id":54,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in
+        `call''"},{"id":55,"trace":"vendor/bundle/ruby/2.4.0/gems/better_errors-2.5.1/lib/better_errors/middleware.rb:59:in
+        `call''"},{"id":56,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+        `call''"},{"id":57,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/show_exceptions.rb:33:in
+        `call''"},{"id":58,"trace":"vendor/bundle/ruby/2.4.0/gems/lograge-0.10.0/lib/lograge/rails_ext/rack/logger.rb:15:in
+        `call_app''"},{"id":59,"trace":"vendor/bundle/ruby/2.4.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in
+        `block in call''"},{"id":60,"trace":"vendor/bundle/ruby/2.4.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in
+        `block in tagged''"},{"id":61,"trace":"vendor/bundle/ruby/2.4.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:28:in
+        `tagged''"},{"id":62,"trace":"vendor/bundle/ruby/2.4.0/gems/activesupport-5.2.3/lib/active_support/tagged_logging.rb:71:in
+        `tagged''"},{"id":63,"trace":"vendor/bundle/ruby/2.4.0/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in
+        `call''"},{"id":64,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/remote_ip.rb:81:in
+        `call''"},{"id":65,"trace":"vendor/bundle/ruby/2.4.0/gems/request_store-1.4.1/lib/request_store/middleware.rb:19:in
+        `call''"},{"id":66,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/request_id.rb:27:in
+        `call''"},{"id":67,"trace":"vendor/bundle/ruby/2.4.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in
+        `call''"},{"id":68,"trace":"vendor/bundle/ruby/2.4.0/gems/activesupport-5.2.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+        `call''"},{"id":69,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/executor.rb:14:in
+        `call''"},{"id":70,"trace":"vendor/bundle/ruby/2.4.0/gems/actionpack-5.2.3/lib/action_dispatch/middleware/static.rb:127:in
+        `call''"},{"id":71,"trace":"vendor/bundle/ruby/2.4.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in
+        `call''"},{"id":72,"trace":"vendor/bundle/ruby/2.4.0/gems/rack-utf8_sanitizer-1.6.0/lib/rack/utf8_sanitizer.rb:22:in
+        `call''"},{"id":73,"trace":"vendor/bundle/ruby/2.4.0/gems/sentry-raven-2.12.2/lib/raven/integrations/rack.rb:51:in
+        `call''"},{"id":74,"trace":"vendor/bundle/ruby/2.4.0/gems/rack-cors-1.0.3/lib/rack/cors.rb:95:in
+        `call''"},{"id":75,"trace":"vendor/bundle/ruby/2.4.0/gems/railties-5.2.3/lib/rails/engine.rb:524:in
+        `call''"},{"id":76,"trace":"/usr/lib/ruby/vendor_ruby/phusion_passenger/rack/thread_handler_extension.rb:97:in
+        `process_request''"},{"id":77,"trace":"/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:149:in
+        `accept_and_process_next_request''"},{"id":78,"trace":"/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler/thread_handler.rb:110:in
+        `main_loop''"},{"id":79,"trace":"/usr/lib/ruby/vendor_ruby/phusion_passenger/request_handler.rb:415:in
+        `block (3 levels) in start_threads''"},{"id":80,"trace":"/usr/lib/ruby/vendor_ruby/phusion_passenger/utils.rb:113:in
+        `block in create_thread_and_abort_on_exception''"}]}}'
+    http_version: 
+  recorded_at: Mon, 18 Nov 2019 09:32:55 GMT
+- request:
+    method: get
+    uri: https://api.test.datacite.org/dois/10.7272/q6g15xs4
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.4; +https://github.com/datacite/maremma)
+      Accept:
+      - application/vnd.schemaorg.ld+json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 18 Nov 2019 09:32:55 GMT
+      Content-Type:
+      - application/vnd.schemaorg.ld+json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding, Origin
+      X-Request-Id:
+      - 3b91d033-d2ac-453f-a4c1-e511b5cf2ece
+      Etag:
+      - W/"8d87a39d360e8322472882044e3610f8"
+      X-Runtime:
+      - '0.013317'
+      X-Powered-By:
+      - Phusion Passenger 6.0.4
+      Server:
+      - nginx/1.17.3 + Phusion Passenger 6.0.4
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJAY29udGV4dCI6ICJodHRwOi8vc2NoZW1hLm9yZyIsCiAgIkB0eXBlIjogIkRhdGFzZXQiLAogICJAaWQiOiAiaHR0cHM6Ly9kb2kub3JnLzEwLjcyNzIvcTZnMTV4czQiLAogICJpZGVudGlmaWVyIjogewogICAgIkB0eXBlIjogIlByb3BlcnR5VmFsdWUiLAogICAgInByb3BlcnR5SUQiOiAiRE9JIiwKICAgICJ2YWx1ZSI6ICJodHRwczovL2hhbmRsZS50ZXN0LmRhdGFjaXRlLm9yZy8xMC43MjcyL3E2ZzE1eHM0IgogIH0sCiAgInVybCI6ICJodHRwczovL2RhdGFzaGFyZS51Y3NmLmVkdS9zdGFzaC9kYXRhc2V0L2RvaToxMC43MjcyL1E2RzE1WFM0IiwKICAibmFtZSI6ICJORVhVUyBIZWFkIENUIiwKICAiYXV0aG9yIjogWwogICAgewogICAgICAibmFtZSI6ICJSb2JlcnQgUm9kcmlndWV6IiwKICAgICAgImdpdmVuTmFtZSI6ICJSb2JlcnQiLAogICAgICAiZmFtaWx5TmFtZSI6ICJSb2RyaWd1ZXoiLAogICAgICAiYWZmaWxpYXRpb24iOiB7CiAgICAgICAgIkB0eXBlIjogIk9yZ2FuaXphdGlvbiIsCiAgICAgICAgIm5hbWUiOiAiVUMgU2FuIEZyYW5jaXNjbyIKICAgICAgfSwKICAgICAgIkB0eXBlIjogIlBlcnNvbiIKICAgIH0sCiAgICB7CiAgICAgICJuYW1lIjogIldpbGxpYW0gTW93ZXIiLAogICAgICAiZ2l2ZW5OYW1lIjogIldpbGxpYW0iLAogICAgICAiZmFtaWx5TmFtZSI6ICJNb3dlciIsCiAgICAgICJhZmZpbGlhdGlvbiI6IHsKICAgICAgICAiQHR5cGUiOiAiT3JnYW5pemF0aW9uIiwKICAgICAgICAibmFtZSI6ICJVQ0xBIgogICAgICB9LAogICAgICAiQHR5cGUiOiAiUGVyc29uIgogICAgfQogIF0sCiAgImRlc2NyaXB0aW9uIjogIkJhY2tncm91bmQgQ2xpbmljaWFucywgYWZyYWlkIG9mIG1pc3NpbmcgaW50cmFjcmFuaWFsIGluanVyaWVzLCBsaWJlcmFsbHlcbiAgICAgIG9idGFpbiBjb21wdXRlZCB0b21vZ3JhcGhpYyAoQ1QpIGhlYWQgaW1hZ2luZyBpbiBibHVudCB0cmF1bWEgcGF0aWVudHMuXG4gICAgICBQcmlvciB3b3JrIHN1Z2dlc3RzIHRoYXQgY2xpbmljYWwgY3JpdGVyaWEgKE5FWFVTIEhlYWQgQ1QgZGVjaXNpb25cbiAgICAgIGluc3RydW1lbnQpIGNhbiByZWxpYWJseSBpZGVudGlmeSBwYXRpZW50cyB3aXRoIGltcG9ydGFudCBpbmp1cmllcywgd2hpbGVcbiAgICAgIGV4Y2x1ZGluZyBpbmp1cnksIGFuZCB0aGUgbmVlZCBmb3IgaW1hZ2luZyBpbiBtYW55IHBhdGllbnRzLiBNZXRob2RzIFdlXG4gICAgICBjb25kdWN0ZWQgYSBwcm9zcGVjdGl2ZSBvYnNlcnZhdGlvbmFsIHN0dWR5IG9mIHRoZSBORVhVUyBIZWFkIENUIGRlY2lzaW9uXG4gICAgICBpbnN0cnVtZW50IChESSkgdGhhdCByZXF1aXJlcyBwYXRpZW50cyB0byBtZWV0IGVpZ2h0IGNyaXRlcmlhIHRvIGFjaGlldmVcbiAgICAgIOKAnGxvdy1yaXNr4oCdIGNsYXNzaWZpY2F0aW9uLiBXZSBleGFtaW5lZCB0aGUgaW5zdHJ1bWVudOKAmXMgcGVyZm9ybWFuY2UgaW5cbiAgICAgIGlkZW50aWZ5aW5nIHBhdGllbnRzIHJlcXVpcmluZyBuZXVyb2xvZ2ljYWwgaW50ZXJ2ZW50aW9uIGZyb20gYW1vbmcgYVxuICAgICAgY29ob3J0IG9mIDExLDc3MCBibHVudCBoZWFkIGluanVyeSBwYXRpZW50cy4gUmVzdWx0cyBUaGUgTkVYVVMgSGVhZCBDVCBESVxuICAgICAgYXNzaWduZWQgaGlnaC1yaXNrIHN0YXR1cyB0byA0MjAgb2YgNDIwIHBhdGllbnRzIHJlcXVpcmluZyBuZXVyb2xvZ2ljYWxcbiAgICAgIGludGVydmVudGlvbiAoc2Vuc2l0aXZpdHksIDEwMC4wJSBbOTUlIGNvbmZpZGVuY2UgaW50ZXJ2YWwgW0NJXTogOTkuMSUg4oCTXG4gICAgICAxMDAuMCVdKS4gVGhlIGluc3RydW1lbnQgYXNzaWduZWQgbG93LXJpc2sgc3RhdHVzIHRvIDIsODIzIG9mIDExLDM1MFxuICAgICAgcGF0aWVudHMgd2hvIGRpZCBub3QgcmVxdWlyZSBuZXVyb2xvZ2ljYWwgaW50ZXJ2ZW50aW9uIChzcGVjaWZpY2l0eSwgMjQuOSVcbiAgICAgIFs5NSUgQ0k6IDI0LjElIC0gMjUuNyVdKS4gTm9uZSBvZiB0aGUgMiw4MjMgbG93LXJpc2sgcGF0aWVudHMgcmVxdWlyZWRcbiAgICAgIG5ldXJvbG9naWNhbCBpbnRlcnZlbnRpb24gKE5QViwgMTAwLjAlIFs5NSUgQ0k6IDk5LjklIC0gMTAwLjAlXSkuIFRoZSBESVxuICAgICAgYXNzaWduZWQgaGlnaC1yaXNrIHN0YXR1cyB0byA3NTkgb2YgNzY3IHBhdGllbnRzIHdpdGggc2lnbmlmaWNhbnRcbiAgICAgIGludHJhY3JhbmlhbCBpbmp1cmllcyAoc2Vuc2l0aXZpdHksIDk5LjAlIFs5NSUgQ0k6IDk4LjAlIC0gOTkuNiVdKS4gVGhlXG4gICAgICBpbnN0cnVtZW50IGFzc2lnbmVkIGxvdy1yaXNrIHN0YXR1cyB0byAyLDgxNSBvZiAxMSwwMDMgcGF0aWVudHMgd2hvIGRpZFxuICAgICAgbm90IGhhdmUgc2lnbmlmaWNhbnQgaW5qdXJpZXMgKHNwZWNpZmljaXR5LCAyNS42JSBbOTUlIENJOiAyNC44JSAtXG4gICAgICAyNi40JV0pLiBTaWduaWZpY2FudCBpbmp1cmllcyB3ZXJlIGFic2VudCBpbiAyLDgxNSBvZiB0aGUgMiw4MjMgcGF0aWVudHNcbiAgICAgIGFzc2lnbmVkIGxvdy1yaXNrIHN0YXR1cyAoTlBWLCA5OS43JSBbOTUlIENJOiA5OS40JSAtIDk5LjklXSkuIENvbmNsdXNpb25zXG4gICAgICBUaGUgTkVYVVMgSGVhZCBDVCBESSByZWxpYWJseSBpZGVudGlmaWVzIGJsdW50IHRyYXVtYSBwYXRpZW50cyB3aG8gcmVxdWlyZVxuICAgICAgaGVhZCBDVCBpbWFnaW5nLCBhbmQgY291bGQgc2lnbmlmaWNhbnRseSByZWR1Y2luZyB0aGUgdXNlIG9mIENUIGltYWdpbmcuIiwKICAibGljZW5zZSI6ICJodHRwczovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5zZXMvYnkvNC4wIiwKICAiaW5MYW5ndWFnZSI6ICJlbiIsCiAgImNvbnRlbnRTaXplIjogIjE0OTUyMDQgYnl0ZXMiLAogICJkYXRlUHVibGlzaGVkIjogIjIwMTciLAogICJwdWJsaXNoZXIiOiB7CiAgICAiQHR5cGUiOiAiT3JnYW5pemF0aW9uIiwKICAgICJuYW1lIjogIlVDIFNhbiBGcmFuY2lzY28iCiAgfSwKICAicHJvdmlkZXIiOiB7CiAgICAiQHR5cGUiOiAiT3JnYW5pemF0aW9uIiwKICAgICJuYW1lIjogIkRhdGFDaXRlIgogIH0KfQ==
+    http_version: 
+  recorded_at: Mon, 18 Nov 2019 09:32:56 GMT
+recorded_with: VCR 2.9.3

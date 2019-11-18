@@ -1,0 +1,84 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.test.datacite.org/users?page%5Bnumber%5D=1&page%5Bsize%5D=25&query=smith
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.4; +https://github.com/datacite/maremma)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 18 Nov 2019 09:38:11 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding, Origin
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Request-Id:
+      - a80da382-b1fd-47b8-a1a0-67e7b19a2b9f
+      X-Download-Options:
+      - noopen
+      Etag:
+      - W/"2b001fe7124136ea426ecfc2aab6862f"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Runtime:
+      - '0.076889'
+      X-Content-Type-Options:
+      - nosniff
+      X-Powered-By:
+      - Phusion Passenger 6.0.4
+      Server:
+      - nginx/1.17.3 + Phusion Passenger 6.0.4
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"0000-0002-5647-6417","type":"users","attributes":{"givenNames":"Nilza","familyName":"Aples","name":"Justiz
+        Smith","orcid":"https://orcid.org/0000-0002-5647-6417","github":null,"roleId":"user","isActive":false,"created":"2017-08-11T16:03:55.000Z","updated":"2017-08-11T16:04:35.000Z"},"relationships":{}},{"id":"0000-0003-0727-0479","type":"users","attributes":{"givenNames":"Lauren","familyName":"Charles-Smith","name":"Lauren
+        Charles-Smith","orcid":"https://orcid.org/0000-0003-0727-0479","github":null,"roleId":"user","isActive":false,"created":"2017-04-27T18:57:02.000Z","updated":"2017-04-27T18:57:03.000Z"},"relationships":{}},{"id":"0000-0003-4314-1877","type":"users","attributes":{"givenNames":"Erica","familyName":"Darian-Smith","name":"Erica
+        Darian-Smith","orcid":"https://orcid.org/0000-0003-4314-1877","github":null,"roleId":"user","isActive":false,"created":"2017-03-10T21:42:54.000Z","updated":"2017-03-10T21:42:54.000Z"},"relationships":{}},{"id":"0000-0002-2564-7359","type":"users","attributes":{"givenNames":"Yvette","familyName":"Ehlers
+        Smith","name":"Yvette Ehlers Smith","orcid":"https://orcid.org/0000-0002-2564-7359","github":null,"roleId":"user","isActive":false,"created":"2017-07-10T14:48:19.000Z","updated":"2017-07-10T14:48:19.000Z"},"relationships":{}},{"id":"0000-0002-0098-7656","type":"users","attributes":{"givenNames":"Melinda","familyName":"Franettovich
+        Smith","name":"Melinda Franettovich Smith","orcid":"https://orcid.org/0000-0002-0098-7656","github":null,"roleId":"user","isActive":false,"created":"2017-09-08T02:18:58.000Z","updated":"2017-09-08T02:18:58.000Z"},"relationships":{}},{"id":"0000-0003-1519-3661","type":"users","attributes":{"givenNames":"Peter","familyName":"Godfrey-Smith","name":"Peter
+        Godfrey-Smith","orcid":"https://orcid.org/0000-0003-1519-3661","github":null,"roleId":"user","isActive":false,"created":"2017-12-15T12:30:56.000Z","updated":"2017-12-15T12:30:56.000Z"},"relationships":{}},{"id":"0000-0001-5935-2690","type":"users","attributes":{"givenNames":"Deanna","familyName":"Grant-Smith","name":"Deanna
+        Grant-Smith","orcid":"https://orcid.org/0000-0001-5935-2690","github":null,"roleId":"user","isActive":false,"created":"2018-02-05T00:41:26.000Z","updated":"2018-02-05T00:41:26.000Z"},"relationships":{}},{"id":"0000-0001-9828-0933","type":"users","attributes":{"givenNames":"Diana","familyName":"Gregory-Smith","name":"Diana
+        Gregory-Smith","orcid":"https://orcid.org/0000-0001-9828-0933","github":null,"roleId":"user","isActive":false,"created":"2018-01-03T14:55:56.000Z","updated":"2018-01-03T14:56:05.000Z"},"relationships":{}},{"id":"0000-0002-4714-5480","type":"users","attributes":{"givenNames":"Niall","familyName":"Hamilton-Smith","name":"Niall
+        Hamilton-Smith","orcid":"https://orcid.org/0000-0002-4714-5480","github":null,"roleId":"user","isActive":false,"created":"2017-03-27T10:05:22.000Z","updated":"2017-03-27T10:05:22.000Z"},"relationships":{}},{"id":"0000-0002-5444-8623","type":"users","attributes":{"givenNames":"Shannon","familyName":"Kipphut-Smith","name":"Shannon
+        Kipphut-Smith","orcid":"https://orcid.org/0000-0002-5444-8623","github":null,"roleId":"user","isActive":false,"created":"2016-03-02T17:03:06.000Z","updated":"2016-03-02T17:03:06.000Z"},"relationships":{}},{"id":"0000-0003-0572-3980","type":"users","attributes":{"givenNames":"Leah","familyName":"Lamale-Smith","name":"Leah
+        Lamale-Smith","orcid":"https://orcid.org/0000-0003-0572-3980","github":null,"roleId":"user","isActive":false,"created":"2018-02-08T18:14:47.000Z","updated":"2018-02-08T18:14:47.000Z"},"relationships":{}},{"id":"0000-0003-1979-5520","type":"users","attributes":{"givenNames":"Stephen","familyName":"Montgomery-Smith","name":"Stephen
+        Montgomery-Smith","orcid":"https://orcid.org/0000-0003-1979-5520","github":null,"roleId":"user","isActive":false,"created":"2016-08-15T04:04:48.000Z","updated":"2016-08-15T04:05:50.000Z"},"relationships":{}},{"id":"0000-0003-4661-3024","type":"users","attributes":{"givenNames":"Emma","familyName":"Rawlings
+        Smith","name":"Emma Rawlings Smith","orcid":"https://orcid.org/0000-0003-4661-3024","github":null,"roleId":"user","isActive":false,"created":"2016-06-15T14:04:54.000Z","updated":"2016-06-15T14:04:54.000Z"},"relationships":{}},{"id":"0000-0003-0557-4225","type":"users","attributes":{"givenNames":"Smith","familyName":"Reed","name":"Smith
+        Reed","orcid":"https://orcid.org/0000-0003-0557-4225","github":null,"roleId":"user","isActive":false,"created":"2016-04-25T16:02:46.000Z","updated":"2016-04-25T16:02:46.000Z"},"relationships":{}},{"id":"0000-0003-3896-1483","type":"users","attributes":{"givenNames":"Danica","familyName":"Schaffer-Smith","name":"Danica
+        Schaffer-Smith","orcid":"https://orcid.org/0000-0003-3896-1483","github":null,"roleId":"user","isActive":false,"created":"2017-10-05T18:41:22.000Z","updated":"2017-10-05T18:41:22.000Z"},"relationships":{}},{"id":"0000-0002-5181-9521","type":"users","attributes":{"givenNames":"Irene","familyName":"Skovgaard
+        Smith","name":"Irene Skovgaard Smith","orcid":"https://orcid.org/0000-0002-5181-9521","github":null,"roleId":"user","isActive":false,"created":"2016-01-12T11:42:19.000Z","updated":"2016-01-12T11:42:19.000Z"},"relationships":{}},{"id":"0000-0002-1567-7116","type":"users","attributes":{"givenNames":"Tim","familyName":"Smith","name":"T.J.Smith","orcid":"https://orcid.org/0000-0002-1567-7116","github":null,"roleId":"user","isActive":false,"created":"2015-11-07T16:38:54.000Z","updated":"2015-11-07T16:38:54.000Z"},"relationships":{}},{"id":"0000-0002-3957-2474","type":"users","attributes":{"givenNames":"Arfon","familyName":"Smith","name":"Arfon
+        Smith","orcid":"https://orcid.org/0000-0002-3957-2474","github":"https://github.com/arfon","roleId":"user","isActive":false,"created":"2016-04-18T21:34:28.000Z","updated":"2016-04-19T23:10:52.000Z"},"relationships":{}},{"id":"0000-0003-0035-8662","type":"users","attributes":{"givenNames":"Simon","familyName":"Smith","name":"Simon
+        Smith","orcid":"https://orcid.org/0000-0003-0035-8662","github":null,"roleId":"user","isActive":false,"created":"2016-11-11T17:59:02.000Z","updated":"2016-11-11T17:59:02.000Z"},"relationships":{}},{"id":"0000-0002-7466-5254","type":"users","attributes":{"givenNames":"Harrison","familyName":"Smith","name":"Harrison
+        Smith","orcid":"https://orcid.org/0000-0002-7466-5254","github":null,"roleId":"user","isActive":false,"created":"2016-07-23T15:57:12.000Z","updated":"2016-07-23T15:57:12.000Z"},"relationships":{}},{"id":"0000-0002-5470-2142","type":"users","attributes":{"givenNames":"Evan","familyName":"Smith","name":"Evan
+        Smith","orcid":"https://orcid.org/0000-0002-5470-2142","github":null,"roleId":"user","isActive":false,"created":"2016-06-15T13:20:08.000Z","updated":"2016-06-15T13:22:52.000Z"},"relationships":{}},{"id":"0000-0001-8768-1918","type":"users","attributes":{"givenNames":"James","familyName":"Smith","name":"James
+        Smith","orcid":"https://orcid.org/0000-0001-8768-1918","github":null,"roleId":"user","isActive":false,"created":"2017-03-12T10:35:56.000Z","updated":"2017-03-12T10:35:56.000Z"},"relationships":{}},{"id":"0000-0003-3772-8647","type":"users","attributes":{"givenNames":"Christine","familyName":"Smith","name":"Christine
+        Smith","orcid":"https://orcid.org/0000-0003-3772-8647","github":null,"roleId":"user","isActive":false,"created":"2017-03-21T16:48:21.000Z","updated":"2017-03-21T16:48:21.000Z"},"relationships":{}},{"id":"0000-0001-7047-2917","type":"users","attributes":{"givenNames":"Simon","familyName":"Smith","name":"Simon
+        J. Smith","orcid":"https://orcid.org/0000-0001-7047-2917","github":null,"roleId":"user","isActive":false,"created":"2017-08-18T10:19:24.000Z","updated":"2017-08-18T10:19:24.000Z"},"relationships":{}},{"id":"0000-0002-7735-9930","type":"users","attributes":{"givenNames":"James
+        William Edward","familyName":"Smith","name":"James William Edward Smith","orcid":"https://orcid.org/0000-0002-7735-9930","github":null,"roleId":"user","isActive":false,"created":"2017-09-11T00:21:54.000Z","updated":"2017-09-11T00:21:54.000Z"},"relationships":{}}],"meta":{"total":120,"totalPages":5,"page":1},"links":{"self":"https://api.test.datacite.org/users?page%5Bnumber%5D=1\u0026page%5Bsize%5D=25\u0026query=smith","next":"https://api.test.datacite.org/users?page%5Bnumber%5D=2\u0026page%5Bsize%5D=25\u0026query=smith"}}'
+    http_version: 
+  recorded_at: Mon, 18 Nov 2019 09:38:11 GMT
+recorded_with: VCR 2.9.3

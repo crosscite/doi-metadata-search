@@ -1,0 +1,120 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.test.datacite.org/data-centers?include=member&page%5Bnumber%5D=1&page%5Bsize%5D=25&query=university
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.4; +https://github.com/datacite/maremma)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 18 Nov 2019 09:37:15 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding, Origin
+      X-Request-Id:
+      - d49899b5-4fda-4ba6-a452-60c36cdac45f
+      Etag:
+      - W/"ecfffc2a95a03d73344a4d20b14bf660"
+      X-Runtime:
+      - '0.177784'
+      X-Powered-By:
+      - Phusion Passenger 6.0.4
+      Server:
+      - nginx/1.17.3 + Phusion Passenger 6.0.4
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"dk.aau","type":"data-centers","attributes":{"title":"Aalborg
+        University Library","other-names":[],"prefixes":[],"member-id":"dk","year":2012,"created":"2012-11-28T08:22:41.000Z","updated":"2019-07-30T10:13:11.000Z"},"relationships":{"member":{"data":{"id":"dk","type":"members"}}}},{"id":"bl.abertay","type":"data-centers","attributes":{"title":"Abertay
+        University","other-names":[],"prefixes":[],"member-id":"bl","year":2017,"created":"2017-02-03T11:12:26.000Z","updated":"2019-08-27T12:59:01.000Z"},"relationships":{"member":{"data":{"id":"bl","type":"members"}}}},{"id":"au.dra","type":"data-centers","attributes":{"title":"American
+        University Digital Research Archive","other-names":[],"prefixes":[],"member-id":"au","year":2018,"created":"2018-10-26T16:48:14.000Z","updated":"2018-10-26T16:48:14.000Z"},"relationships":{"member":{"data":{"id":"au","type":"members"}}}},{"id":"cdl.aul","type":"data-centers","attributes":{"title":"American
+        University Library","other-names":[],"prefixes":[],"member-id":"cdl","year":2015,"created":"2015-07-01T11:35:36.000Z","updated":"2018-08-26T01:30:48.000Z"},"relationships":{"member":{"data":{"id":"cdl","type":"members"}}}},{"id":"nul.arch-staging","type":"data-centers","attributes":{"title":"Arch","other-names":[],"prefixes":[],"member-id":"nul","year":2019,"created":"2019-06-07T18:42:54.000Z","updated":"2019-06-07T18:45:05.000Z"},"relationships":{"member":{"data":{"id":"nul","type":"members"}}}},{"id":"heallink.auth","type":"data-centers","attributes":{"title":"Aristotle
+        University of Thessaloniki","other-names":[],"prefixes":[],"member-id":"heallink","year":2017,"created":"2017-09-08T08:33:49.000Z","updated":"2019-02-12T08:21:52.000Z"},"relationships":{"member":{"data":{"id":"heallink","type":"members"}}}},{"id":"purdue.artlas","type":"data-centers","attributes":{"title":"ARTLAS/Purdue
+        University","other-names":[],"prefixes":[],"member-id":"purdue","year":2014,"created":"2014-09-24T14:54:20.000Z","updated":"2018-08-26T01:30:41.000Z"},"relationships":{"member":{"data":{"id":"purdue","type":"members"}}}},{"id":"bl.aston","type":"data-centers","attributes":{"title":"Aston
+        University","other-names":[],"prefixes":[],"member-id":"bl","year":2015,"created":"2015-02-16T13:23:38.000Z","updated":"2018-08-26T01:30:46.000Z"},"relationships":{"member":{"data":{"id":"bl","type":"members"}}}},{"id":"ands.centre66","type":"data-centers","attributes":{"title":"Australian
+        Catholic University","other-names":[],"prefixes":[],"member-id":"ands","year":2015,"created":"2015-08-20T01:15:02.000Z","updated":"2019-08-06T00:37:42.000Z"},"relationships":{"member":{"data":{"id":"ands","type":"members"}}}},{"id":"dev.apu","type":"data-centers","attributes":{"title":"Azim
+        Premji University","other-names":[],"prefixes":[],"member-id":"dev","year":2019,"created":"2019-03-05T11:38:30.000Z","updated":"2019-03-06T05:58:05.000Z"},"relationships":{"member":{"data":{"id":"dev","type":"members"}}}},{"id":"bl.bathspa","type":"data-centers","attributes":{"title":"Bath
+        Spa University","other-names":[],"prefixes":[],"member-id":"bl","year":2015,"created":"2015-11-13T10:20:22.000Z","updated":"2018-08-26T01:30:53.000Z"},"relationships":{"member":{"data":{"id":"bl","type":"members"}}}},{"id":"blcu.test","type":"data-centers","attributes":{"title":"Beijing
+        Language And Culture University","other-names":[],"prefixes":[],"member-id":"blcu","year":2018,"created":"2018-11-08T14:42:09.000Z","updated":"2018-11-09T00:26:49.000Z"},"relationships":{"member":{"data":{"id":"blcu","type":"members"}}}},{"id":"tib.test-hse","type":"data-centers","attributes":{"title":"Bibliothek
+        der Hochschule Esslingen - University of Applied Sciences","other-names":[],"prefixes":[],"member-id":"tib","year":2019,"created":"2019-05-02T09:26:22.000Z","updated":"2019-05-02T14:20:12.000Z"},"relationships":{"member":{"data":{"id":"tib","type":"members"}}}},{"id":"bl.birkbeck","type":"data-centers","attributes":{"title":"Birkbeck,
+        University of London","other-names":[],"prefixes":[],"member-id":"bl","year":2015,"created":"2015-04-30T16:33:04.000Z","updated":"2018-08-26T01:30:47.000Z"},"relationships":{"member":{"data":{"id":"bl","type":"members"}}}},{"id":"cdl.boisesta","type":"data-centers","attributes":{"title":"Boise
+        State University","other-names":[],"prefixes":[],"member-id":"cdl","year":2015,"created":"2015-09-08T22:45:03.000Z","updated":"2018-08-26T01:30:51.000Z"},"relationships":{"member":{"data":{"id":"cdl","type":"members"}}}},{"id":"ands.centre57","type":"data-centers","attributes":{"title":"Bond
+        University","other-names":[],"prefixes":[],"member-id":"ands","year":2015,"created":"2015-07-01T11:35:36.000Z","updated":"2019-08-06T00:37:58.000Z"},"relationships":{"member":{"data":{"id":"ands","type":"members"}}}},{"id":"bl.bmouth","type":"data-centers","attributes":{"title":"Bournemouth
+        University","other-names":[],"prefixes":[],"member-id":"bl","year":2015,"created":"2015-11-05T11:22:47.000Z","updated":"2018-08-26T01:30:53.000Z"},"relationships":{"member":{"data":{"id":"bl","type":"members"}}}},{"id":"uutah.byuhbll","type":"data-centers","attributes":{"title":"Brigham
+        Young University","other-names":[],"prefixes":[],"member-id":"uutah","year":2018,"created":"2018-10-30T19:20:02.000Z","updated":"2018-12-21T00:11:58.000Z"},"relationships":{"member":{"data":{"id":"uutah","type":"members"}}}},{"id":"cdl.bul","type":"data-centers","attributes":{"title":"Brown
+        University Library","other-names":[],"prefixes":[],"member-id":"cdl","year":2013,"created":"2013-04-02T00:42:29.000Z","updated":"2018-08-26T01:30:34.000Z"},"relationships":{"member":{"data":{"id":"cdl","type":"members"}}}},{"id":"bl.brunel","type":"data-centers","attributes":{"title":"Brunel
+        University London","other-names":[],"prefixes":[],"member-id":"bl","year":2015,"created":"2015-03-20T10:54:05.000Z","updated":"2018-08-26T01:30:47.000Z"},"relationships":{"member":{"data":{"id":"bl","type":"members"}}}},{"id":"bl.cardiff","type":"data-centers","attributes":{"title":"Cardiff
+        University","other-names":[],"prefixes":[],"member-id":"bl","year":2014,"created":"2014-10-14T14:14:22.000Z","updated":"2018-08-26T01:30:43.000Z"},"relationships":{"member":{"data":{"id":"bl","type":"members"}}}},{"id":"cisti.carleton","type":"data-centers","attributes":{"title":"Carleton
+        University","other-names":[],"prefixes":[],"member-id":"cisti","year":2011,"created":"2011-03-24T13:29:12.000Z","updated":"2018-08-26T01:30:25.000Z"},"relationships":{"member":{"data":{"id":"cisti","type":"members"}}}},{"id":"carnegie.carnegie","type":"data-centers","attributes":{"title":"Carnegie
+        Mellon University Libraries","other-names":[],"prefixes":[],"member-id":"carnegie","year":2019,"created":"2019-02-27T22:40:02.000Z","updated":"2019-02-27T22:53:46.000Z"},"relationships":{"member":{"data":{"id":"carnegie","type":"members"}}}},{"id":"cdl.cmu","type":"data-centers","attributes":{"title":"Carnegie
+        Mellon University Libraries","other-names":[],"prefixes":[],"member-id":"cdl","year":2014,"created":"2014-09-24T14:54:20.000Z","updated":"2018-08-26T01:30:42.000Z"},"relationships":{"member":{"data":{"id":"cdl","type":"members"}}}},{"id":"cmu.lps-test","type":"data-centers","attributes":{"title":"Carnegie
+        Mellon University LPS Test","other-names":[],"prefixes":[],"member-id":"cmu","year":2019,"created":"2019-04-25T16:55:00.000Z","updated":"2019-04-29T09:51:08.000Z"},"relationships":{"member":{"data":{"id":"cmu","type":"members"}}}}],"included":[{"id":"dk","type":"members","attributes":{"title":"Technical
+        Information Center of Denmark","display-title":"Technical Information Center
+        of Denmark","description":null,"member-type":"direct_member","organization-type":null,"focus-area":null,"region":null,"country":null,"year":null,"logo-url":null,"email":null,"website":null,"joined":null,"created":"2010-01-01T00:00:00.000Z","updated":"2018-08-26T01:25:40.000Z"}},{"id":"bl","type":"members","attributes":{"title":"The
+        British Library","display-title":"The British Library","description":null,"member-type":"direct_member","organization-type":null,"focus-area":"general","region":"EMEA","country":"GB","year":null,"logo-url":null,"email":null,"website":"https://www.british.co.uk","joined":null,"created":"2010-01-01T00:00:00.000Z","updated":"2019-06-25T09:45:31.000Z"}},{"id":"au","type":"members","attributes":{"title":"American
+        University","display-title":"American University","description":null,"member-type":"direct_member","organization-type":"academicInstitution","focus-area":"general","region":"AMER","country":"US","year":null,"logo-url":null,"email":null,"website":"https://american.edu","joined":null,"created":"2018-10-26T16:47:09.000Z","updated":"2019-07-09T15:16:03.000Z"}},{"id":"cdl","type":"members","attributes":{"title":"California
+        Digital Library","display-title":"California Digital Library","description":null,"member-type":"direct_member","organization-type":"academicInstitution","focus-area":"general","region":"AMER","country":"US","year":null,"logo-url":null,"email":null,"website":null,"joined":null,"created":"2010-01-01T00:00:00.000Z","updated":"2018-11-24T16:21:26.000Z"}},{"id":"nul","type":"members","attributes":{"title":"Northwestern
+        University Libraries","display-title":"Northwestern University Libraries","description":null,"member-type":"direct_member","organization-type":null,"focus-area":null,"region":null,"country":null,"year":null,"logo-url":null,"email":null,"website":"https://www.library.northwestern.edu/","joined":null,"created":"2019-06-05T08:28:40.000Z","updated":"2019-06-07T17:54:01.000Z"}},{"id":"heallink","type":"members","attributes":{"title":"Aristotle
+        University HEAL-LINK Consortium","display-title":"Aristotle University HEAL-LINK
+        Consortium","description":null,"member-type":"consortium_member","organization-type":null,"focus-area":null,"region":"EMEA","country":"GR","year":null,"logo-url":null,"email":null,"website":"https://www.datacite.org","joined":null,"created":"2017-09-06T11:01:33.000Z","updated":"2019-05-24T09:53:32.000Z"}},{"id":"purdue","type":"members","attributes":{"title":"Purdue
+        University Library","display-title":"Purdue University Library","description":null,"member-type":"direct_member","organization-type":null,"focus-area":null,"region":null,"country":null,"year":null,"logo-url":null,"email":null,"website":null,"joined":null,"created":"2010-01-01T00:00:00.000Z","updated":"2018-08-26T01:25:40.000Z"}},{"id":"ands","type":"members","attributes":{"title":"Australian
+        National Data Service","display-title":"Australian National Data Service","description":"The
+        Australian National Data Service (ANDS) makes Australia''s research data assets
+        more valuable for researchers, research institutions and the nation.\n\nWe
+        do this through working in trusted partnerships on research data projects,
+        delivering reliable national services and enhancing the capability of Australia''s
+        research data system.\n \nA key ANDS service is the [Research Data Australia](http://researchdata.ands.org.au/)
+        discovery portal where you can find, access and reuse Australian research
+        data.\n\nANDS is a partnership led by Monash University, in collaboration
+        with the Australian National University and CSIRO. It is funded by the Australian
+        Government through the National Collaborative Research Infrastructure Strategy
+        (NCRIS).\n \nANDS involvement in the DataCite consortium ensures that we are
+        active in global initiatives addressing the issues surrounding research data,
+        including those of publication, citation and standards. ANDS has run its [Cite
+        My Data](http://ands.org.au/services/cite-my-data.html) service since 2011.
+        This service allows Australian research organisations to assign DOIs to their
+        own research collections. This, in turn, provides researchers with a means
+        of citing their published data and achieving recognition for their research
+        data output.\n \nSubscribe to our discussion list: [ANDS Google Group](https://groups.google.com/forum/?hl=en#!forum/ands-general).\n
+        \nSubscribe to our e-newsletter: [andsUP](http://us7.campaign-archive2.com/home/?u=b542ef52e49302569068046d9&id=22b849a4ee).","member-type":"direct_member","organization-type":null,"focus-area":null,"region":"APAC","country":"AU","year":null,"logo-url":"https://assets.datacite.org/images/members/ands.png","email":null,"website":"http://www.ands.org.au","joined":null,"created":"2010-01-01T00:00:00.000Z","updated":"2019-07-09T13:18:32.000Z"}},{"id":"dev","type":"members","attributes":{"title":"Developer
+        Provider","display-title":"Developer Provider","description":null,"member-type":"direct_member","organization-type":null,"focus-area":null,"region":null,"country":null,"year":null,"logo-url":null,"email":null,"website":null,"joined":null,"created":"2010-01-01T00:00:00.000Z","updated":"2019-01-03T17:11:13.000Z"}},{"id":"blcu","type":"members","attributes":{"title":"Beijing
+        Language And Culture University","display-title":"Beijing Language And Culture
+        University","description":null,"member-type":"direct_member","organization-type":"nationalInstitution","focus-area":"general","region":"APAC","country":"CN","year":null,"logo-url":null,"email":null,"website":"http://english.blcu.edu.cn/","joined":null,"created":"2018-11-08T14:41:14.000Z","updated":"2019-05-22T09:41:34.000Z"}},{"id":"tib","type":"members","attributes":{"title":"German
+        National Library of Science and Technology","display-title":"German National
+        Library of Science and Technology","description":null,"member-type":"direct_member","organization-type":"nationalInstitution","focus-area":"engineeringAndTechnology","region":"EMEA","country":"DE","year":null,"logo-url":null,"email":null,"website":"https://www.tib.eu","joined":null,"created":"2010-01-01T00:00:00.000Z","updated":"2019-06-22T23:32:09.000Z"}},{"id":"uutah","type":"members","attributes":{"title":"University
+        of Utah","display-title":"University of Utah","description":null,"member-type":"direct_member","organization-type":null,"focus-area":null,"region":"AMER","country":"US","year":null,"logo-url":null,"email":null,"website":null,"joined":null,"created":"2018-10-29T12:03:49.000Z","updated":"2018-10-29T17:02:12.000Z"}},{"id":"cisti","type":"members","attributes":{"title":"Canada
+        Institute for Scientific and Technical Information","display-title":"Canada
+        Institute for Scientific and Technical Information","description":null,"member-type":"direct_member","organization-type":"nationalInstitution","focus-area":"general","region":"AMER","country":"CA","year":null,"logo-url":null,"email":null,"website":null,"joined":null,"created":"2010-01-01T00:00:00.000Z","updated":"2018-11-24T16:33:43.000Z"}},{"id":"carnegie","type":"members","attributes":{"title":"Carnegie
+        Mellon University Libraries","display-title":"Carnegie Mellon University Libraries","description":null,"member-type":"direct_member","organization-type":"academicInstitution","focus-area":"general","region":"AMER","country":"US","year":null,"logo-url":null,"email":null,"website":"https://www.library.cmu.edu/","joined":null,"created":"2019-02-27T22:38:36.000Z","updated":"2019-06-22T22:10:53.000Z"}},{"id":"cmu","type":"members","attributes":{"title":"Carnegie
+        Mellon University","display-title":"Carnegie Mellon University","description":null,"member-type":"direct_member","organization-type":"academicInstitution","focus-area":"general","region":"AMER","country":"US","year":null,"logo-url":null,"email":null,"website":null,"joined":null,"created":"2019-04-25T16:53:14.000Z","updated":"2019-04-29T16:29:24.000Z"}}],"meta":{"total":315,"total-pages":13,"page":1,"years":[{"id":"2010","title":"2010","count":2},{"id":"2011","title":"2011","count":9},{"id":"2012","title":"2012","count":21},{"id":"2013","title":"2013","count":26},{"id":"2014","title":"2014","count":42},{"id":"2015","title":"2015","count":71},{"id":"2016","title":"2016","count":40},{"id":"2017","title":"2017","count":18},{"id":"2018","title":"2018","count":42},{"id":"2019","title":"2019","count":44}],"members":[{"id":"bl","title":"The
+        British Library","count":74},{"id":"cdl","title":"California Digital Library","count":49},{"id":"ands","title":"Australian
+        Research Data Commons","count":39},{"id":"purdue","title":"Purdue University
+        Library","count":19},{"id":"cisti","title":"Canada Institute for Scientific
+        and Technical Information","count":14},{"id":"datacite","title":"DataCite","count":11},{"id":"tib","title":"German
+        National Library of Science and Technology","count":11},{"id":"demo","title":"DataCite
+        Demo Provider","count":9},{"id":"orbis","title":"Orbis Cascade Alliance","count":7},{"id":"snd","title":"Swedish
+        National Data Service","count":6},{"id":"dk","title":"Danish e-Infrastructure
+        Cooperation","count":5},{"id":"gesis","title":"GESIS - Leibniz Institute for
+        the Social Sciences","count":5},{"id":"dev","title":"Developer Provider","count":4},{"id":"gdcc","title":"The
+        Global Dataverse Community Consortium (GDCC)","count":3},{"id":"spbpu","title":"SPbPU","count":3}]}}'
+    http_version: 
+  recorded_at: Mon, 18 Nov 2019 09:37:16 GMT
+recorded_with: VCR 2.9.3
