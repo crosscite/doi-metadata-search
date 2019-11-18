@@ -132,6 +132,40 @@ describe "Helpers", type: :model, vcr: true do
     end
   end
 
+  context "prefix_format" do
+    it "zero prefixes" do
+      attributes = { "prefixes" => [] }
+      response = subject.prefix_format(attributes)
+      expect(response).to eq("")
+    end
+
+    it "one prefix" do
+      attributes = { "prefixes" => ["10.5438"] }
+      response = subject.prefix_format(attributes)
+      expect(response).to eq("Prefix: 10.5438")
+    end
+
+    it "two prefixes" do
+      attributes = { "prefixes" => ["10.5438", "10.14454"] }
+      response = subject.prefix_format(attributes)
+      expect(response).to eq("Prefixes: 10.5438 10.14454")
+    end
+  end
+
+  context "creative_work_type" do
+    it "dataset" do
+      attributes = { "resource-type-id" => "dataset" }
+      response = subject.creative_work_type(attributes)
+      expect(response).to eq("Dataset")
+    end
+
+    it "unknown" do
+      attributes = { "resource-type-id" => "unknown" }
+      response = subject.creative_work_type(attributes)
+      expect(response).to eq("CreativeWork")
+    end
+  end
+
   context "helpers" do
     it "relation_type_title" do
       related_identifiers = [{ "relation-type-id" => "HasPart",

@@ -1,8 +1,7 @@
-require_relative 'doi'
-require_relative 'session_helper'
-require 'sanitize'
+require_relative "doi"
+require_relative "session_helper"
+require "sanitize"
 require "json"
-
 
 module Sinatra
   module Helpers
@@ -48,7 +47,6 @@ module Sinatra
       "datacite-usage",
       "datacite-funder"
     ]
-
 
     def author_format(author)
       authors = Array(author).map do |a|
