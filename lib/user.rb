@@ -27,12 +27,12 @@ class User
 
   # Helper method to check for admin user
   def is_admin?
-    role == "admin"
+    role_id == "staff_admin"
   end
 
   # Helper method to check for admin or staff user
   def is_admin_or_staff?
-    ["admin", "staff"].include?(role)
+    ["staff_admin", "staff_user"].include?(role_id)
   end
 
   # Helper method to check for personal account
@@ -69,12 +69,10 @@ class User
 
     payload
   rescue JWT::DecodeError => error
-    Rails.logger.error "JWT::DecodeError: " + error.message + " for " + token
-    return {}
+    { errors: "JWT::DecodeError: " + error.message + " for " + token }
   rescue OpenSSL::PKey::RSAError => error
     public_key = ENV['JWT_PUBLIC_KEY'].presence || "nil"
-    Rails.logger.error "OpenSSL::PKey::RSAError: " + error.message + " for " + public_key
-    return {}
+    { errors: "OpenSSL::PKey::RSAError: " + error.message + " for " + public_key }
   end
 
   # encode token using SHA-256 hash algorithm

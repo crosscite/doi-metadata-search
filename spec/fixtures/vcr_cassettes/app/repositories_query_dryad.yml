@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.test.datacite.org/data-centers?include=member&page%5Bnumber%5D=1&page%5Bsize%5D=25&query=dryad
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; Maremma/4.4; +https://github.com/datacite/maremma)
+      Accept:
+      - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 18 Nov 2019 08:27:07 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Anonymous-Consumer:
+      - 'true'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding, Origin
+      X-Request-Id:
+      - bf95e8a2-f1d1-421c-b37a-270f33a0c846
+      Etag:
+      - W/"ceb4e24f34cff5ed055da1eae4c89190"
+      X-Runtime:
+      - '0.032636'
+      X-Powered-By:
+      - Phusion Passenger 6.0.4
+      Server:
+      - nginx/1.17.3 + Phusion Passenger 6.0.4
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"cdl.dryad","type":"data-centers","attributes":{"title":"DRYAD","other-names":[],"prefixes":[],"member-id":"cdl","year":2013,"created":"2013-02-19T17:42:03.000Z","updated":"2018-11-24T16:58:38.000Z"},"relationships":{"member":{"data":{"id":"cdl","type":"members"}}}},{"id":"dryad.dryad","type":"data-centers","attributes":{"title":"DRYAD","other-names":[],"prefixes":[],"member-id":"dryad","year":2018,"created":"2018-04-24T17:32:32.000Z","updated":"2018-11-24T14:48:28.000Z"},"relationships":{"member":{"data":{"id":"dryad","type":"members"}}}}],"included":[{"id":"cdl","type":"members","attributes":{"title":"California
+        Digital Library","display-title":"California Digital Library","description":null,"member-type":"direct_member","organization-type":"academicInstitution","focus-area":"general","region":"AMER","country":"US","year":null,"logo-url":null,"email":null,"website":null,"joined":null,"created":"2010-01-01T00:00:00.000Z","updated":"2018-11-24T16:21:26.000Z"}},{"id":"dryad","type":"members","attributes":{"title":"Dryad","display-title":"Dryad","description":null,"member-type":"direct_member","organization-type":null,"focus-area":null,"region":null,"country":null,"year":null,"logo-url":null,"email":null,"website":"https://datadryad.org","joined":null,"created":"2018-04-11T18:18:05.000Z","updated":"2018-08-26T01:25:42.000Z"}}],"meta":{"total":2,"total-pages":1,"page":1,"years":[{"id":"2013","title":"2013","count":1},{"id":"2018","title":"2018","count":1}],"members":[{"id":"cdl","title":"California
+        Digital Library","count":1},{"id":"dryad","title":"Dryad","count":1}]}}'
+    http_version: 
+  recorded_at: Mon, 18 Nov 2019 08:27:07 GMT
+recorded_with: VCR 2.9.3

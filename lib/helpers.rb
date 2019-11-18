@@ -1,11 +1,9 @@
-require_relative "doi"
 require_relative "session_helper"
 require "sanitize"
 require "json"
 
 module Sinatra
   module Helpers
-    include Sinatra::Doi
     include Sinatra::SessionHelper
 
     INVERSE_RELATION_TYPES = {
