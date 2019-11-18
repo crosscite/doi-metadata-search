@@ -1,5 +1,5 @@
 FROM phusion/passenger-full:0.9.30
-MAINTAINER Martin Fenner "mfenner@datacite.org"
+LABEL maintainer="mfenner@datacite.org"
 
 # Set correct environment variables.
 ENV HOME /home/app

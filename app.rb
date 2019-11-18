@@ -143,8 +143,8 @@ end
 get '/works' do
   @works = get_works(query: params[:query], 'page[number]' => @page, 'data-center-id' => params['data-center-id'], 'resource-type-id' => params['resource-type-id'], 'year' => params['year'], 'registered' => params['registered'], 'affiliation-id' => params['affiliation-id'])
 
-  # check for existing claims if user is logged in
-  @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
+  # check for existing claims if user is logged in and is person
+  @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user && is_person?
   
   @works[:data] = get_metrics(@works.fetch(:data, []))
 
@@ -258,8 +258,8 @@ get '/repositories/:id' do
 
   @works = get_works(query: params[:query], "data-center-id" => params[:id], 'page[number]' => @page, 'resource-type-id' => params['resource-type-id'], 'relation-type-id' => params['relation-type-id'], 'year' => params['year'], 'registered' => params['registered'], 'affiliation-id' => params['affiliation-id'], sort: params[:sort])
 
-  # check for existing claims if user is logged in
-  @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
+  # check for existing claims if user is logged in and has personal account
+  @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user && is_person?
   @works[:data] = get_metrics(@works.fetch(:data, []))
 
   # pagination for works
