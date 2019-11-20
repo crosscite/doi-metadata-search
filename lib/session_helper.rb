@@ -18,6 +18,10 @@ module Sinatra
       current_user && current_user.is_person?
     end
 
+    def is_beta_tester?
+      current_user && current_user.beta_tester
+    end
+
     def has_orcid_token?
       current_user && current_user.has_orcid_token
     end

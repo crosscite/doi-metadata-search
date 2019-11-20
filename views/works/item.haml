@@ -41,20 +41,7 @@
         %a{:href => attributes["license"]}
           = license_img(attributes["license"])
 
-  - if ENV['RACK_ENV'] == 'production'
-    .panel-footer
-      - if (views + downloads).positive?
-        %span.metrics{id: "summary-views"}
-          .fa.fa-eye
-          = pluralize(views, "view")
-        %span.metrics{id: "summary-downloads"}
-          .fa.fa-download
-          = pluralize(downloads, "download")
-      - else
-        %span.metrics{id: "summary-views"}
-          .fa.fa-info-circle 
-          No usage information was reported.
-  - else 
+  - if ENV['RACK_ENV'] != 'production' || is_admin_or_staff? || is_beta_tester?
     .panel-footer
       - if (views + downloads + citations).zero?
         %span.metrics{id: "summary-citations"}
@@ -80,6 +67,19 @@
           %span.metrics{id: "summary-views"}
             .fa.fa-info-circle 
             No usage information was reported.
+  - else    
+    .panel-footer
+      - if (views + downloads).positive?
+        %span.metrics{id: "summary-views"}
+          .fa.fa-eye
+          = pluralize(views, "view")
+        %span.metrics{id: "summary-downloads"}
+          .fa.fa-download
+          = pluralize(downloads, "download")
+      - else
+        %span.metrics{id: "summary-views"}
+          .fa.fa-info-circle 
+          No usage information was reported.
 
   - if @work.present? && @work.fetch(:data, {}).fetch("attributes", {}).fetch("related-identifiers", nil).present? && @work.fetch(:data, {}).fetch("id", "work") != item["id"]
     .panel-footer
@@ -97,20 +97,20 @@
     - if user_signed_in? && is_person?
       = haml :'works/claim', locals: { item: item }
 
-- if ENV['RACK_ENV'] == 'production'
-  - if @work.present? && (views + downloads).positive?
-    = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads }
-  - else
-    .panel-body.alert.alert-simple-info
-      = "This data repository is not currently reporting usage information. For information on how your repository can submit usage information, please see"
-      %a{href: 'https://support.datacite.org/docs/views-and-downloads'}
-        our documentation.
-- else
+- if ENV['RACK_ENV'] != 'production' || is_admin_or_staff? || is_beta_tester?
   - if @work.present? && (views + downloads + citations).positive?
     = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads, citations: citations }
   - if @work.present?
     = haml :'works/citations', locals: { attributes: attributes, citations: citations, duplicated: has_duplicated, summary: metrics}
   - if @work.present? && (views + downloads).zero?
+    .panel-body.alert.alert-simple-info
+      = "This data repository is not currently reporting usage information. For information on how your repository can submit usage information, please see"
+      %a{href: 'https://support.datacite.org/docs/views-and-downloads'}
+        our documentation.
+- else
+  - if @work.present? && (views + downloads).positive?
+    = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads }
+  - else
     .panel-body.alert.alert-simple-info
       = "This data repository is not currently reporting usage information. For information on how your repository can submit usage information, please see"
       %a{href: 'https://support.datacite.org/docs/views-and-downloads'}
