@@ -21,7 +21,7 @@
   - citations_chart = remove_duplicated_counts(citations,metrics.fetch(:citations_histogram,{}), attributes.fetch("published", "").to_i )
   - gon.chart_citations = citations_chart.fetch("years", [])
   - gon.yop = attributes.fetch("published", nil).to_i
-- if ENV['RACK_ENV'] == 'production' ### TODO: Remove soon. set temporaly to send to production 
+- if ENV['RACK_ENV'] == 'production' && !is_admin_or_staff? && !is_beta_tester? ### TODO: Remove soon. set temporaly to send to production 
   - citations = 0 ### TODO: Remove soon. set temporaly to send to production 
 
 .panel.panel-default
