@@ -64,10 +64,6 @@ RUN mkdir -p /home/app/webapp/vendor/bundle && \
 # Install npm packages
 # build vue component
 WORKDIR /home/app/webapp
-RUN /sbin/setuser app yarn install --frozen-lockfile && \
-    cd node_modules/datacite-components && \
-    yarn install --frozen-lockfile && \
-    yarn build --dest /home/app/webapp/public/javascripts/dist --target wc --name datacite-components 'src/components/*.vue'
 
 # Install Ruby gems
 WORKDIR /home/app/webapp
