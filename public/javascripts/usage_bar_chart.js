@@ -132,7 +132,7 @@
       var x = d3.time.scale.utc()
         .domain(setup.domain)
         .nice(d3.time.month)
-        .rangeRound([0, setup.width],0.5);
+        .rangeRound([0, setup.width+10],0.5);
 
       var y = d3.scale.linear()
         .domain([0, d3.max(data, function(d) { return d.sum; })])
@@ -210,12 +210,14 @@
         .text(setup.firstLabel)
         .style("font-size", "13px");
   
-      chart.append("text")
-        .attr("class", "label")
-        .attr("text-anchor", "middle")
-        .attr("transform", "translate(" + (last_tick - 11) + "," + (height + 18) + "), rotate("+rotate+")")
-        .text(setup.lastLabel)
-        .style("font-size", "13px");
+      if(setup.length > 1){
+        chart.append("text")
+          .attr("class", "label")
+          .attr("text-anchor", "middle")
+          .attr("transform", "translate(" + (last_tick - 11) + "," + (height + 18) + "), rotate("+rotate+")")
+          .text(setup.lastLabel)
+          .style("font-size", "13px");
+      }
 
       chart.selectAll("rect").each(
         function(d) {
@@ -360,15 +362,15 @@ $(document).ready(function(e) {
   //     citations = [
   //     //   {id: "2009", title: "April 2018", sum: 337},
   //     //   {id: "2010", title: "April 2018", sum: 337},
-  //       // {id: "2011", title: "April 2018", sum: 337},
-  //       // {id: "2012", title: "April 2018", sum: 12},
-  //       // {id: "2013", title: "April 2018", sum: 337},
-  //       // {id: "2014", title: "April 2018", sum: 337},
-  //     //   {id: "2015", title: "April 2018", sum: 1000},
-  //     // {id: "2016", title: "April 2018", sum: 337},
-  //     // {id: "2017", title: "April 2018", sum: 23},
-  //     // {id: "2018", title: "April 2018", sum: 337},
-  //     // {id: "2019", title: "April 2018", sum: 337}
+  //       {id: "2011", title: "April 2018", sum: 337},
+  //       {id: "2012", title: "April 2018", sum: 12},
+  //       {id: "2013", title: "April 2018", sum: 337},
+  //       {id: "2014", title: "April 2018", sum: 337},
+  //       {id: "2015", title: "April 2018", sum: 1000},
+  //     {id: "2016", title: "April 2018", sum: 337},
+  //     {id: "2017", title: "April 2018", sum: 23},
+  //     {id: "2018", title: "April 2018", sum: 337},
+  //     {id: "2019", title: "April 2018", sum: 337}
   //   ]
 
     if(views){bar2Viz(views,"#views-chart","sum","months","full",yop); }
