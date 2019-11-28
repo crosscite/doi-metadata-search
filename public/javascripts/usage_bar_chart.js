@@ -116,7 +116,7 @@
       let formatFixed = d3.format(",.0f");
       let formatTime = d3.time.format.utc("%H:%M:%S");
       let height = 200
-      var margin = { top: 10, right: 20, bottom: 20, left: 20 };
+      var margin = { top: 10, right: 20, bottom: 30, left: 20 };
  
       let chartWidth = document.getElementById("myTabContent").offsetWidth*0.95
       if(displayMode == "citations"){
@@ -147,7 +147,7 @@
         .data([data])
         .attr("width", margin.left + setup.width + margin.right)
         .attr("height", margin.top + height + margin.bottom)
-        .attr("style","position:relative")
+        .attr("style","position:relative;")
         .attr("class", "chart barchart")
         .append("svg:g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -198,20 +198,22 @@
           last_tick = chart.selectAll("rect").pop().pop().x.animVal.value
       }
 
-
- 
+      var rotate = "0"
+      if(setup.length < 4){
+        rotate = "-65"
+      }
  
       chart.append("text")
         .attr("class", "label")
         .attr("text-anchor", "middle")
-        .attr("transform", "translate(11," + (height + 18) + ")")
+        .attr("transform", "translate(11," + (height + 18) + "), rotate("+rotate+")")
         .text(setup.firstLabel)
         .style("font-size", "13px");
   
       chart.append("text")
         .attr("class", "label")
         .attr("text-anchor", "middle")
-        .attr("transform", "translate(" + (last_tick - 11) + "," + (height + 18) + ")")
+        .attr("transform", "translate(" + (last_tick - 11) + "," + (height + 18) + "), rotate("+rotate+")")
         .text(setup.lastLabel)
         .style("font-size", "13px");
 
@@ -353,20 +355,20 @@ $(document).ready(function(e) {
   //     {id: "2019-08", title: "April 2018", sum: 337},
   // ]
 
-  // yop="1980"
+  // yop="2000"
 
   //     citations = [
-  //       {id: "2009", title: "April 2018", sum: 337},
-  //       {id: "2010", title: "April 2018", sum: 337},
-  //       {id: "2011", title: "April 2018", sum: 337},
-  //       {id: "2012", title: "April 2018", sum: 12},
-  //       {id: "2013", title: "April 2018", sum: 337},
-  //       {id: "2014", title: "April 2018", sum: 337},
-  //       {id: "2015", title: "April 2018", sum: 1000},
-  //     {id: "2016", title: "April 2018", sum: 337},
-  //     {id: "2017", title: "April 2018", sum: 23},
-  //     {id: "2018", title: "April 2018", sum: 337},
-  //     {id: "2019", title: "April 2018", sum: 337}
+  //     //   {id: "2009", title: "April 2018", sum: 337},
+  //     //   {id: "2010", title: "April 2018", sum: 337},
+  //       // {id: "2011", title: "April 2018", sum: 337},
+  //       // {id: "2012", title: "April 2018", sum: 12},
+  //       // {id: "2013", title: "April 2018", sum: 337},
+  //       // {id: "2014", title: "April 2018", sum: 337},
+  //     //   {id: "2015", title: "April 2018", sum: 1000},
+  //     // {id: "2016", title: "April 2018", sum: 337},
+  //     // {id: "2017", title: "April 2018", sum: 23},
+  //     // {id: "2018", title: "April 2018", sum: 337},
+  //     // {id: "2019", title: "April 2018", sum: 337}
   //   ]
 
     if(views){bar2Viz(views,"#views-chart","sum","months","full",yop); }
