@@ -199,7 +199,7 @@
       }
 
       var rotate = "0"
-      if(setup.length < 4 && setup.length != 1){
+      if(setup.length < 3 && setup.length > 1 ){
         rotate = "-65"
       }
  
@@ -357,19 +357,19 @@ $(document).ready(function(e) {
   //     {id: "2019-08", title: "April 2018", sum: 337},
   // ]
 
-  // yop="2000"
+  // yop="2019"
 
   //     citations = [
   //     //   {id: "2009", title: "April 2018", sum: 337},
   //     //   {id: "2010", title: "April 2018", sum: 337},
-  //       {id: "2011", title: "April 2018", sum: 337},
-  //       {id: "2012", title: "April 2018", sum: 12},
-  //       {id: "2013", title: "April 2018", sum: 337},
-  //       {id: "2014", title: "April 2018", sum: 337},
-  //       {id: "2015", title: "April 2018", sum: 1000},
-  //     {id: "2016", title: "April 2018", sum: 337},
-  //     {id: "2017", title: "April 2018", sum: 23},
-  //     {id: "2018", title: "April 2018", sum: 337},
+  //     //   {id: "2011", title: "April 2018", sum: 337},
+  //     //   {id: "2012", title: "April 2018", sum: 12},
+  //     //   {id: "2013", title: "April 2018", sum: 337},
+  //     //   {id: "2014", title: "April 2018", sum: 337},
+  //     //   {id: "2015", title: "April 2018", sum: 1000},
+  //     // {id: "2016", title: "April 2018", sum: 337},
+  //     // {id: "2017", title: "April 2018", sum: 23},
+  //     // {id: "2018", title: "April 2018", sum: 337},
   //     {id: "2019", title: "April 2018", sum: 337}
   //   ]
 
