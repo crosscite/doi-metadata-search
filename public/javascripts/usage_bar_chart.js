@@ -199,7 +199,7 @@
       }
 
       var rotate = "0"
-      if(setup.length < 4){
+      if(setup.length < 4 && setup.length != 1){
         rotate = "-65"
       }
  
