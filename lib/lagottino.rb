@@ -18,6 +18,8 @@ module Sinatra
         end
       end.compact
       metrics = call_metrics(dois)
+      puts metrics
+      puts "tim"
  
       items.map! do |item|
         item.merge!({"metrics"=>{}})
@@ -38,7 +40,7 @@ module Sinatra
         "extra"            => true,
         "doi"              => dois.join(","),
         "source-id"        => INCLUDED_SOURCES.join(','), 
-        "aggregations"     => "query_aggregations,metrics_aggregations,citations_aggregations", 
+        "aggregations"     => "query_aggregations", 
         "page[size]"       => 25
       }
 

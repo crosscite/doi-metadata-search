@@ -95,7 +95,7 @@ module Sinatra
     end
 
     def get_events(params = {})
-      aggregations = "query_aggregations,metrics_aggregations,citations_aggregations"    
+      aggregations = "query_aggregations"    
       params =
       {
         id:                   params.fetch(:id, nil),
