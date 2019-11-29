@@ -18,8 +18,7 @@ module Sinatra
         end
       end.compact
       metrics = call_metrics(dois)
-      puts metrics
-      puts "tim"
+    
  
       items.map! do |item|
         item.merge!({"metrics"=>{}})
