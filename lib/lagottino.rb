@@ -38,7 +38,7 @@ module Sinatra
       params = {
         "extra"            => true,
         "doi"              => dois.join(","),
-        "source-id"        => INCLUDED_SOURCES.join(','), 
+        # "source-id"        => INCLUDED_SOURCES.join(','), 
         "aggregations"     => "query_aggregations", 
         "page[size]"       => 1
       }
