@@ -1,4 +1,6 @@
 - attributes = item.fetch("attributes", {})
+- data_center = @work[:included].find { |i| i.fetch("type", nil) == "data-centers" }
+- client_name = data_center.fetch("attributes", {}).fetch("title", nil)
 - type = attributes.fetch("resource-type-id", nil)
 - includes = @works.present? ? @works[:included] : @work[:included]
 - work_types = includes.select { |item| item["type"] == "work-types" }
@@ -41,6 +43,7 @@
         %a{:href => attributes["license"]}
           = license_img(attributes["license"])
 
+    -# %data-metrics-badge{doi: attributes["doi"], display:"datacite"}
   - if ENV['RACK_ENV'] != 'production' || is_admin_or_staff? || is_beta_tester?
     .panel-footer
       - if (views + downloads + citations).zero?
@@ -101,7 +104,7 @@
   - if @work.present? && (views + downloads + citations).positive?
     = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads, citations: citations }
   - if @work.present?
-    = haml :'works/citations', locals: { attributes: attributes, citations: citations, duplicated: has_duplicated, summary: metrics}
+    = haml :'works/citations', locals: { attributes: attributes, client_name: client_name, citations: citations, duplicated: has_duplicated, summary: metrics}
   - if @work.present? && (views + downloads).zero?
     .panel-body.alert.alert-simple-info
       = "This data repository is not currently reporting usage information. For information on how your repository can submit usage information, please see"
