@@ -267,15 +267,15 @@
     function tabs_interaction(){
       var tab = window.location.hash.substring(1)
 
-
       if(tab){
         $('#'+tab).tab("show")
-      }else if(gon.chart_views){
-        $('#views-tab').tab("show")
       }else if(gon.chart_citations){
         $('#citations-tab').tab("show")
         $("#citationsList-tab").tab('show')
+      }else if(gon.chart_views){
+        $('#views-tab').tab("show")
       }
+  
   
       $('.usage-counts.usage-views').on('click', function (e) {
         e.preventDefault()
