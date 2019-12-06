@@ -112,7 +112,7 @@
         our documentation.
 - else
   - if @work.present? && (views + downloads).positive?
-    = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads }
+    = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads, citations: citations }
   - else
     .panel-body.alert.alert-simple-info
       = "This data repository is not currently reporting usage information. For information on how your repository can submit usage information, please see"
