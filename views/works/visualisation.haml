@@ -21,13 +21,30 @@
   .panel-body.usage-charts
     %div#myTabContent.tab-content
       - if citations > 0
-        .row#citations.tab-pane.fade{"aria-labelledby" => "citations-tab", :role => "tabpanel", :style => "position: relative;"} 
+        .row#citations.tab-pane.active{"aria-labelledby" => "citations-tab", :role => "tabpanel", :style => "position: relative;"} 
           .col-lg-12
             .row
               .p{:style => "padding-left:20px;"}
                 = "<small>#{pluralize(citations, "citation")} reported since publication in #{attributes.fetch("published", "")}.</small>"
               .row#citations-chart{:style => "padding-left:10px;"}
-      - if views > 0
+      - if views > 0 && citations > 0
+        .row#views.tab-pane.fade{"aria-labelledby" => "views-tab", :role => "tabpanel",:style => "position: relative;"} 
+          .col-lg-12
+            .row
+              .p{:style => "padding-left:20px;"}
+                = "<small>#{pluralize(views, "view") } reported since publication in #{attributes.fetch("published", "")}.</small>"
+            .row#views-chart{:style => "padding-left:10px;"}              
+            %br
+            .row{:style => "position: relative;"}
+              .col-md-8
+                .p
+                  These counts follow the 
+                  %a{href: 'https://www.projectcounter.org/'}
+                    COUNTER Code of Practice,
+                  = "meaning that Internet robots and repeats within a certain time frame are excluded.</br> "
+                  %a{href: 'https://support.datacite.org/docs/usage-stats'}
+                    What does this mean?
+      - elsif views > 0
         .row#views.tab-pane.active{"aria-labelledby" => "views-tab", :role => "tabpanel",:style => "position: relative;"} 
           .col-lg-12
             .row
@@ -45,8 +62,25 @@
                   %a{href: 'https://support.datacite.org/docs/usage-stats'}
                     What does this mean?
 
-      - if downloads > 0
+      - if downloads > 0 && views > 0
         .row#downloads.tab-pane.fade{"aria-labelledby" => "downloads-tab", :role => "tabpanel", :style => "position: relative;"} 
+          .col-lg-12
+            .row
+              .p{:style => "padding-left:20px;"}
+                = "<small>#{pluralize(downloads, "download") } reported since publication in #{attributes.fetch("published", "")}.</small>"
+            .row#downloads-chart{:style => "padding-left:10px;"}
+            %br
+            .row
+              .col-md-8
+                .p
+                  These counts follow the 
+                  %a{href: 'https://www.projectcounter.org/'}
+                    COUNTER Code of Practice,
+                  = "meaning that Internet robots and repeats within a certain time frame are excluded.</br> "
+                  %a{href: 'https://support.datacite.org/docs/usage-stats'}
+                    What does this mean?
+      - elsif downloads > 0
+        .row#downloads.tab-pane.active{"aria-labelledby" => "downloads-tab", :role => "tabpanel", :style => "position: relative;"} 
           .col-lg-12
             .row
               .p{:style => "padding-left:20px;"}
