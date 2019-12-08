@@ -1,20 +1,20 @@
 %ul.nav.nav-tabs.usage{:role => "tablist"}
   - if citations > 0
-    %li.nav-item
+    %li.nav-item.active
       %a#citations-tab.nav-link.active{"aria-controls" => "citations", "aria-selected" => "true", "data-toggle" => "tab", :href => "#citations", :role => "tab"} #{pluralize(citations, "Citation")}
 
   - if views > 0 && citations > 0
     %li.nav-item.usage
       %a#views-tab.nav-link{"aria-controls" => "views", "aria-selected" => "false", "data-toggle" => "tab", :href => "#views", :role => "tab"} #{pluralize(views, "View")}
   - elsif views > 0
-    %li.nav-item.usage
+    %li.nav-item.usage.active
       %a#views-tab.nav-link.active{"aria-controls" => "views", "aria-selected" => "true", "data-toggle" => "tab", :href => "#views", :role => "tab"} #{pluralize(views, "View")}
 
   - if downloads > 0 && views > 0
     %li.nav-item.usage
       %a#downloads-tab.nav-link{"aria-controls" => "downloads", "aria-selected" => "false", "data-toggle" => "tab", :href => "#downloads", :role => "tab"} #{pluralize(downloads, "Download")}
   - elsif downloads > 0
-    %li.nav-item.usage
+    %li.nav-item.usage.active
       %a#downloads-tab.nav-link.active{"aria-controls" => "downloads", "aria-selected" => "true", "data-toggle" => "tab", :href => "#downloads", :role => "tab"} #{pluralize(downloads, "Download")}
 
 .panel.panel-default
