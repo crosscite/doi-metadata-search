@@ -95,7 +95,7 @@ module Sinatra
     end
 
     def get_events(params = {})
-      aggregations = "query_aggregations,metrics_aggregations,citations_aggregations"    
+      aggregations = "query_aggregations"    
       params =
       {
         id:                   params.fetch(:id, nil),
@@ -108,7 +108,7 @@ module Sinatra
         'page[size]'       => params.fetch('page[size]', nil), 
         'sort'             => params.fetch('sort', nil), 
         'aggregations'     => aggregations, 
-        'source-id'        => params.fetch('sourceId', INCLUDED_SOURCES.join(',')), 
+        # 'source-id'        => params.fetch('sourceId', INCLUDED_SOURCES.join(',')), 
         'extra'            => true,
         query: params.fetch(:query, nil)
       }.compact

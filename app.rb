@@ -183,7 +183,7 @@ get %r{/works/(.+)} do
 
   events = {}
   result = Benchmark.measure do
-    events  = get_events('page[size]' => 25, 'page[number]' => @page, 'doi' => doi, 'include' => 'dois', 'sort' => 'relation_type_id')
+    events  = get_events('page[size]' => 1, 'page[number]' => @page, 'doi' => doi, 'include' => 'dois', 'sort' => 'relation_type_id')
   end
   logger.info "[GetEvents] for /works/#{params["id"]} took #{(result.total * 1000).to_i} ms"
 

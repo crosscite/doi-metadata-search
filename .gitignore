@@ -26,3 +26,4 @@ output-*
 .ruby-version
 /coverage
 /spec/screenshots
+.solargraph

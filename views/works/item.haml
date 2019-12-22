@@ -101,7 +101,9 @@
   - if @work.present? && (views + downloads + citations).positive?
     = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads, citations: citations }
   - if @work.present?
-    = haml :'works/citations', locals: { attributes: attributes, citations: citations, duplicated: has_duplicated, summary: metrics}
+    - data_center = @work[:included].find { |i| i.fetch("type", nil) == "data-centers" }
+    - client_name = data_center.fetch("attributes", {}).fetch("title", nil)
+    = haml :'works/citations', locals: { attributes: attributes, client_name: client_name, citations: citations, duplicated: has_duplicated, summary: metrics}
   - if @work.present? && (views + downloads).zero?
     .panel-body.alert.alert-simple-info
       = "This data repository is not currently reporting usage information. For information on how your repository can submit usage information, please see"
@@ -109,7 +111,7 @@
         our documentation.
 - else
   - if @work.present? && (views + downloads).positive?
-    = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads }
+    = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads, citations: citations }
   - else
     .panel-body.alert.alert-simple-info
       = "This data repository is not currently reporting usage information. For information on how your repository can submit usage information, please see"
