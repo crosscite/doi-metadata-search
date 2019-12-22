@@ -1,4 +1,4 @@
-FROM phusion/passenger-full:0.9.30
+FROM phusion/passenger-full:1.0.9
 LABEL maintainer="mfenner@datacite.org"
 
 # Set correct environment variables.
@@ -21,8 +21,8 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash && \
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
-# Install Ruby 2.4.4
-RUN bash -lc 'rvm --default use ruby-2.4.4'
+# Use Ruby 2.6.5
+RUN bash -lc 'rvm --default use ruby-2.6.5'
 
 # Set debconf to run non-interactively
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
@@ -42,11 +42,6 @@ RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold" &&
 RUN rm -f /etc/service/nginx/down && \
     rm /etc/nginx/sites-enabled/default
 COPY vendor/docker/00_app_env.conf /etc/nginx/conf.d/00_app_env.conf
-COPY vendor/docker/cors.conf /etc/nginx/conf.d/cors.conf
-
-# send logs to STDOUT and STDERR
-# RUN ln -sf /dev/stdout /var/log/nginx/access.log && \
-#     ln -sf /dev/stderr /var/log/nginx/error.log
 
 # Install dockerize
 RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \

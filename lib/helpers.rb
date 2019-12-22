@@ -137,7 +137,7 @@ module Sinatra
       end
     end
 
-    def reduce_aggs meta, options={}
+    def reduce_aggs(meta, options = {})
       meta = ::JSON.parse(meta) if meta.respond_to?("downcase")
       relation_types = meta.fetch("relationTypes",[])
       metrics = {}

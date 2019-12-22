@@ -28,8 +28,8 @@ module Sinatra
 
         url = "#{ENV['API_URL']}/works?" + URI.encode_www_form(params)
       end
+      response = Maremma.get(url, timeout: TIMEOUT)
 
-      response = Maremma.get url, timeout: TIMEOUT
       { data: response.body.fetch("data", []),
         included: response.body.fetch("included", []),
         errors: Array(response.body.fetch("errors", [])),
@@ -47,7 +47,7 @@ module Sinatra
         url = "#{ENV['VOLPINO_URL']}/users?" + URI.encode_www_form(params)
       end
 
-      response = Maremma.get url, timeout: TIMEOUT
+      response = Maremma.get(url, timeout: TIMEOUT)
       { data: response.body.fetch("data", []),
         errors: Array(response.body.fetch("errors", [])),
         meta: response.body.fetch("meta", {}) }
@@ -69,7 +69,7 @@ module Sinatra
         url = "#{ENV['API_URL']}/data-centers?" + URI.encode_www_form(params)
       end
 
-      response = Maremma.get url, timeout: TIMEOUT
+      response = Maremma.get(url, timeout: TIMEOUT)
       { data: response.body.fetch("data", []),
         included: response.body.fetch("included", []),
         errors: Array(response.body.fetch("errors", [])),
@@ -88,7 +88,7 @@ module Sinatra
         url = "#{ENV['API_URL']}/members?" + URI.encode_www_form(params)
       end
 
-      response = Maremma.get url, timeout: TIMEOUT
+      response = Maremma.get(url, timeout: TIMEOUT)
       { data: response.body.fetch("data", []),
         errors: Array(response.body.fetch("errors", [])),
         meta: response.body.fetch("meta", {}) }

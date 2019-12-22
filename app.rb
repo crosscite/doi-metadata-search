@@ -50,6 +50,8 @@ require 'sinatra'
 require 'sinatra/json'
 require 'sinatra/config_file'
 require 'sinatra/cookies'
+require 'logger'
+require 'logstash-logger'
 require 'tilt/haml'
 require 'haml'
 require 'will_paginate'
@@ -85,6 +87,7 @@ configure do
 
   # Enable logging
   enable :logging
+  # use Rack::CommonLogger, LogStashLogger.new(type: :stdout)
 
   # Set facet fields
   set :facet_fields, %w(resourceType_facet publicationYear datacentre_facet rightsURI)
@@ -141,12 +144,19 @@ get '/' do
 end
 
 get '/works' do
-  @works = get_works(query: params[:query], 'page[number]' => @page, 'data-center-id' => params['data-center-id'], 'resource-type-id' => params['resource-type-id'], 'year' => params['year'], 'registered' => params['registered'], 'affiliation-id' => params['affiliation-id'])
+  works = {}
+  result = Benchmark.measure do
+    @works = get_works(query: params[:query], 'page[number]' => @page, 'data-center-id' => params['data-center-id'], 'resource-type-id' => params['resource-type-id'], 'year' => params['year'], 'registered' => params['registered'], 'affiliation-id' => params['affiliation-id'])
+  end
+  logger.info "[GetWorks] for /works took #{(result.total * 1000).to_i} ms"
 
   # check for existing claims if user is logged in and is person
   @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user && is_person?
   
-  @works[:data] = get_metrics(@works.fetch(:data, []))
+  result = Benchmark.measure do
+    @works[:data] = get_metrics(@works.fetch(:data, []))
+  end
+  logger.info "[GetMetrics] for /works took #{(result.total * 1000).to_i} ms"
 
   # pagination
   @works[:data] = pagination_helper(@works[:data], @page, @works.fetch(:meta, {}).fetch("total", 0))
@@ -161,13 +171,21 @@ get %r{/works/(.+)} do
   # workaround, as nginx swallows double backslashes
   params["id"] = params["id"].gsub(/(http|https):\/+(\w+)/, '\1://\2')
 
-  @work = get_works(id: params["id"])
-  halt 404 if @work[:errors].present?
+  work = {}
+  result = Benchmark.measure do
+    @work = get_works(id: params["id"])
+    halt 404 if @work[:errors].present?
+  end
+  logger.info "[GetWorks] for /works/#{params["id"]} took #{(result.total * 1000).to_i} ms"
 
   doi = validate_doi(params[:id])
   link = doi ? "https://doi.org/#{doi}" : params[:id]
 
-  events  = get_events('page[size]' => 25, 'page[number]' => @page, 'doi' => doi, 'include' => 'dois', 'sort' => 'relation_type_id')
+  events = {}
+  result = Benchmark.measure do
+    events  = get_events('page[size]' => 25, 'page[number]' => @page, 'doi' => doi, 'include' => 'dois', 'sort' => 'relation_type_id')
+  end
+  logger.info "[GetEvents] for /works/#{params["id"]} took #{(result.total * 1000).to_i} ms"
 
   @work[:metrics] = reduce_aggs(events[:meta], { yop: @work.dig(:data, "attributes","published").to_i })
   @work[:metrics].merge!(citations: (events[:meta].fetch('uniqueCitations', []).find { |x| x['id'] == doi } || {}))
@@ -182,8 +200,11 @@ get %r{/works/(.+)} do
   end
 
   # embed schema.org
-  response = Maremma.get("#{ENV['API_URL']}/dois/#{params[:id]}", headers: {"Accept"=> "application/vnd.schemaorg.ld+json"}, raw: true, timeout: TIMEOUT)
-  @work[:schema_org] = response.body.fetch("data", nil)
+  result = Benchmark.measure do
+    response = Maremma.get("#{ENV['API_URL']}/dois/#{params[:id]}", headers: {"Accept"=> "application/vnd.schemaorg.ld+json"}, raw: true, timeout: TIMEOUT)
+    @work[:schema_org] = response.body.fetch("data", nil)
+  end
+  logger.info "[SchemaOrg] for /works/#{params["id"]} took #{(result.total * 1000).to_i} ms"
 
   # Removing related works to avoid crawlers nested repetive crawling when there are a lot.
   ## @works = get_works("work-id" => params[:id], query: params[:query], 'page[number]' => @page, 'data-center-id' => params['data-center-id'], 'relation-type-id' => params['relation-type-id'], 'resource-type-id' => params['resource-type-id'], 'year' => params['year'])
