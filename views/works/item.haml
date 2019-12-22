@@ -5,20 +5,20 @@
 - sources = @works.present? ? @works[:meta].fetch("sources", []) : []
 - new_params = params[:model] == "works" && params["id"] == attributes.fetch("doi", nil) ? params.merge(external_link: true) : params
 - title = attributes["title"].to_s.gsub(/"/, '\"')
-- views = metrics.to_h.fetch("unique-dataset-investigations-regular",0) 
-- downloads = metrics.to_h.fetch("unique-dataset-requests-regular",0) 
-- citations = metrics.dig(:citations, "count").to_i 
-- references = metrics.dig(:references, "count").to_i 
-- relations = metrics.dig(:relations, "count").to_i 
-- if @work.present? && metrics.fetch(:views_histogram,{}).fetch("yearMonths",[]).any?
-  - gon.chart_views = metrics.fetch(:views_histogram,{}).fetch("yearMonths",[])
+- views = metrics.to_h.fetch("unique-dataset-investigations-regular", 0) 
+- downloads = metrics.to_h.fetch("unique-dataset-requests-regular", 0) 
+- citations = metrics.to_h.dig(:citations, "count").to_i 
+- references = metrics.to_h.dig(:references, "count").to_i 
+- relations = metrics.to_h.dig(:relations, "count").to_i 
+- if @work.present? && Array.wrap(metrics.to_h.dig(:views_histogram, "yearMonths")).any?
+  - gon.chart_views = Array.wrap(metrics.to_h.dig(:views_histogram, "yearMonths"))
   - gon.yop = attributes.fetch("published", "").to_i
-- if @work.present? && metrics.fetch(:downloads_histogram,{}).fetch("yearMonths",[]).any?
-  - gon.chart_downloads = metrics.fetch(:downloads_histogram,{}).fetch("yearMonths",[])
+- if @work.present? && Array.wrap(metrics.to_h.dig(:downloads_histogram, "yearMonths")).any?
+  - gon.chart_downloads = Array.wrap(metrics.to_h.dig(:downloads_histogram, "yearMonths"))
   - gon.yop = attributes.fetch("published", "").to_i
 - if @work.present? && citations.positive?
-  - has_duplicated = citations != metrics.fetch(:citations_histogram,{}).fetch("count",0) ? true : false
-  - citations_chart = remove_duplicated_counts(citations,metrics.fetch(:citations_histogram,{}), attributes.fetch("published", "").to_i )
+  - has_duplicated = citations != Array.wrap(metrics.t_h.dig(:citations_histogram, "count")) ? true : false
+  - citations_chart = remove_duplicated_counts(citations,metrics.fetch(:citations_histogram, {}), attributes.fetch("published", nil).to_i )
   - gon.chart_citations = citations_chart.fetch("years", [])
   - gon.yop = attributes.fetch("published", nil).to_i
 - if ENV['RACK_ENV'] == 'production' && !is_admin_or_staff? && !is_beta_tester? ### TODO: Remove soon. set temporaly to send to production 
