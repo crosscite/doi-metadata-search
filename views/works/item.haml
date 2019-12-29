@@ -1,8 +1,8 @@
 - attributes = item.fetch("attributes", {})
 - type = attributes.fetch("resource-type-id", nil)
 - includes = @works.present? ? @works[:included] : @work[:included]
-- work_types = includes.select { |item| item["type"] == "work-types" }
-- sources = @works.present? ? @works[:meta].fetch("sources", []) : []
+- work_types = Array.wrap(includes).select { |item| item["type"] == "work-types" }
+- sources = Array.wrap(@works[:meta].to_h.fetch("sources", nil))
 - new_params = params[:model] == "works" && params["id"] == attributes.fetch("doi", nil) ? params.merge(external_link: true) : params
 - title = attributes["title"].to_s.gsub(/"/, '\"')
 - views = metrics.to_h.fetch("unique-dataset-investigations-regular", 0) 
@@ -17,7 +17,7 @@
   - gon.chart_downloads = Array.wrap(metrics.to_h.dig(:downloads_histogram, "yearMonths"))
   - gon.yop = attributes.fetch("published", "").to_i
 - if @work.present? && citations.positive?
-  - has_duplicated = citations != Array.wrap(metrics.t_h.dig(:citations_histogram, "count")) ? true : false
+  - has_duplicated = citations != Array.wrap(metrics.to_h.dig(:citations_histogram, "count")) ? true : false
   - citations_chart = remove_duplicated_counts(citations,metrics.fetch(:citations_histogram, {}), attributes.fetch("published", nil).to_i )
   - gon.chart_citations = citations_chart.fetch("years", [])
   - gon.yop = attributes.fetch("published", nil).to_i

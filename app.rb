@@ -146,12 +146,6 @@ end
 get '/works' do
   @works = get_works(query: params[:query], 'page[number]' => @page, 'data-center-id' => params['data-center-id'], 'resource-type-id' => params['resource-type-id'], 'year' => params['year'], 'registered' => params['registered'], 'affiliation-id' => params['affiliation-id'])
 
-  # works = {}
-  # result = Benchmark.measure do
-  #  @works = get_works(query: params[:query], 'page[number]' => @page, 'data-center-id' => params['data-center-id'], 'resource-type-id' => params['resource-type-id'], 'year' => params['year'], 'registered' => params['registered'], 'affiliation-id' => params['affiliation-id'])
-  # end
-  # logger.info "[GetWorks] for /works took #{(result.total * 1000).to_i} ms"
-
   # check for existing claims if user is logged in and is person
   @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user && is_person?
   
@@ -215,7 +209,7 @@ get %r{/works/(.+)} do
   @works = {} # Temporarily make sure we get something to work with
 
   # pagination
-  @works[:data] = pagination_helper(@works[:data], @page, @works.fetch(:meta, {}).fetch("total", 0))
+  @works[:data] = pagination_helper(Array.wrap(@works[:data]), @page, @works.fetch(:meta, {}).fetch("total", 0))
 
   params[:model] = "works"
 
