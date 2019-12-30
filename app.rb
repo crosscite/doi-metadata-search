@@ -150,7 +150,7 @@ get '/works' do
   @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user && is_person?
   
   # result = Benchmark.measure do
-    @works[:data] = get_metrics(@works.fetch(:data, []))
+  # @works[:data] = get_metrics(@works.fetch(:data, []))
   # end
   # logger.info "[GetMetrics] for /works took #{(result.total * 1000).to_i} ms"
 
