@@ -172,8 +172,8 @@ get %r{/works/(.+)} do
 
   # work = {}
   # result = Benchmark.measure do
-    @work = get_works(id: params["id"])
-    halt 404 if @work[:errors].present?
+    # @work = get_works(id: params["id"])
+    # halt 404 if @work[:errors].present?
   # end
   # logger.info "[GetWorks] for /works/#{params["id"]} took #{(result.total * 1000).to_i} ms"
 
@@ -182,7 +182,7 @@ get %r{/works/(.+)} do
 
   # events = {}
   # result = Benchmark.measure do
-    events  = get_events('page[size]' => 1, 'page[number]' => @page, 'doi' => doi, 'include' => 'dois', 'sort' => 'relation_type_id')
+    events  = get_events('page[size]' => 1, 'page[number]' => @page, 'doi' => doi, 'sort' => 'relation_type_id')
   # end
   # logger.info "[GetEvents] for /works/#{params["id"]} took #{(result.total * 1000).to_i} ms"
 
@@ -191,7 +191,7 @@ get %r{/works/(.+)} do
   @work[:metrics].merge!(citations_histogram: events[:meta].fetch('citationsHistogram', {}))
   @work[:metrics].merge!(views_histogram: events[:meta].fetch('viewsHistogram', {}))
   @work[:metrics].merge!(downloads_histogram: events[:meta].fetch('downloadsHistogram', {}))
-  @work[:relation_types] = events[:meta].fetch('relationTypes', [])
+  # @work[:relation_types] = events[:meta].fetch('relationTypes', [])
 
   # check for existing claims if user is logged in and work is registered with DataCite
   if current_user
