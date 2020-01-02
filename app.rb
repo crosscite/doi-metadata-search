@@ -180,17 +180,17 @@ get %r{/works/(.+)} do
   doi = validate_doi(params[:id])
   link = doi ? "https://doi.org/#{doi}" : params[:id]
 
-  # events = {}
-  # result = Benchmark.measure do
-    events  = get_events('page[size]' => 1, 'page[number]' => @page, 'doi' => doi, 'sort' => 'relation_type_id')
-  # end
-  # logger.info "[GetEvents] for /works/#{params["id"]} took #{(result.total * 1000).to_i} ms"
+  # # events = {}
+  # # result = Benchmark.measure do
+  #   events  = get_events('page[size]' => 1, 'page[number]' => @page, 'doi' => doi, 'sort' => 'relation_type_id')
+  # # end
+  # # logger.info "[GetEvents] for /works/#{params["id"]} took #{(result.total * 1000).to_i} ms"
 
-  @work[:metrics] = reduce_aggs(events[:meta], { yop: @work.dig(:data, "attributes","published").to_i })
-  @work[:metrics].merge!(citations: (events[:meta].fetch('uniqueCitations', []).find { |x| x['id'] == doi } || {}))
-  @work[:metrics].merge!(citations_histogram: events[:meta].fetch('citationsHistogram', {}))
-  @work[:metrics].merge!(views_histogram: events[:meta].fetch('viewsHistogram', {}))
-  @work[:metrics].merge!(downloads_histogram: events[:meta].fetch('downloadsHistogram', {}))
+  # @work[:metrics] = reduce_aggs(events[:meta], { yop: @work.dig(:data, "attributes","published").to_i })
+  # @work[:metrics].merge!(citations: (events[:meta].fetch('uniqueCitations', []).find { |x| x['id'] == doi } || {}))
+  # @work[:metrics].merge!(citations_histogram: events[:meta].fetch('citationsHistogram', {}))
+  # @work[:metrics].merge!(views_histogram: events[:meta].fetch('viewsHistogram', {}))
+  # @work[:metrics].merge!(downloads_histogram: events[:meta].fetch('downloadsHistogram', {}))
   # @work[:relation_types] = events[:meta].fetch('relationTypes', [])
 
   # check for existing claims if user is logged in and work is registered with DataCite
