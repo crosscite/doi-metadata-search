@@ -14,6 +14,8 @@ require "capybara/cuprite"
 require 'capybara-screenshot/rspec'
 require 'tilt/haml'
 require 'rack/handler/webrick'
+require "crawler_detect"
+
 
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
 
@@ -46,6 +48,7 @@ RSpec.configure do |config|
   config.order = :random
 end
 
+
 Capybara.register_driver :cuprite do |app|
   Capybara::Cuprite::Driver.new(app, {
     timeout: 60,
@@ -66,6 +69,7 @@ Capybara.configure do |config|
   config.match = :prefer_exact
   config.ignore_hidden_elements = true
 end
+
 
 WebMock.disable_net_connect!(
   allow: ['codeclimate.com:443', ENV['PRIVATE_IP'], ENV['HOSTNAME']],

@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe 'app', vcr: true do
+  
   it '/' do
     get '/'
 
@@ -41,6 +42,15 @@ describe 'app', vcr: true do
   
     doc = Nokogiri::HTML(last_response.body)
     expect(doc.at_css("h3.work a").text.strip).to eq("LauBasin_TUIM05MV_Mottl")
+  end
+
+  let!(:user_agent) { {'HTTP_USER_AGENT'=>'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)' } }
+
+  it '/works/10.7272/q6g15xs4 as Googlebot' do
+    get '/works/10.7272/q6g15xs4', nil, user_agent
+    
+    doc = Nokogiri::HTML(last_response.body)
+    expect(doc.at("#myTabContent")).to be_nil
   end
 
   it '/people' do
