@@ -39,7 +39,7 @@ module Sinatra
         "extra"            => true,
         "doi"              => dois.join(","),
         # "source-id"        => INCLUDED_SOURCES.join(','), 
-        "aggregations"     => "query_aggregations", 
+        "aggregations"     => "metrics_aggregations", 
         "page[size]"       => 1
       }
 
