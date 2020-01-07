@@ -21,8 +21,7 @@
   - citations_chart = remove_duplicated_counts(citations,metrics.fetch(:citations_histogram, {}), attributes.fetch("published", nil).to_i )
   - gon.chart_citations = citations_chart.fetch("years", [])
   - gon.yop = attributes.fetch("published", nil).to_i
-- if ENV['RACK_ENV'] == 'production' && !is_admin_or_staff? && !is_beta_tester? ### TODO: Remove soon. set temporaly to send to production 
-  - citations = 0 ### TODO: Remove soon. set temporaly to send to production 
+
 
 .panel.panel-default
   .panel-body
@@ -41,34 +40,20 @@
         %a{:href => attributes["license"]}
           = license_img(attributes["license"])
 
-  - if ENV['RACK_ENV'] != 'production' || is_admin_or_staff? || is_beta_tester?
-    .panel-footer
-      - if (views + downloads + citations).zero?
+  .panel-footer
+    - if (views + downloads + citations).zero?
+      %span.metrics{id: "summary-citations"}
+        .fa.fa-info-circle 
+        No citations were reported. No usage information was reported.
+    - else
+      - if citations.positive?
         %span.metrics{id: "summary-citations"}
-          .fa.fa-info-circle 
-          No citations were reported. No usage information was reported.
+          .fa.fa-quote-left
+          = pluralize(citations, "citation")
       - else
-        - if citations.positive?
-          %span.metrics{id: "summary-citations"}
-            .fa.fa-quote-left
-            = pluralize(citations, "citation")
-        - else
-          %span.metrics
-            .fa.fa-info-circle 
-            No citations were reported. 
-        - if (views + downloads).positive?
-          %span.metrics{id: "summary-views"}
-            .fa.fa-eye
-            = pluralize(views, "view")
-          %span.metrics{id: "summary-downloads"}
-            .fa.fa-download
-            = pluralize(downloads, "download")
-        - else
-          %span.metrics{id: "summary-views"}
-            .fa.fa-info-circle 
-            No usage information was reported.
-  - else    
-    .panel-footer
+        %span.metrics
+          .fa.fa-info-circle 
+          No citations were reported. 
       - if (views + downloads).positive?
         %span.metrics{id: "summary-views"}
           .fa.fa-eye
@@ -97,23 +82,14 @@
     - if user_signed_in? && is_person?
       = haml :'works/claim', locals: { item: item }
 
-- if ENV['RACK_ENV'] != 'production' || is_admin_or_staff? || is_beta_tester?
-  - if @work.present? && (views + downloads + citations).positive?
-    = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads, citations: citations }
-  - if @work.present?
-    - data_center = @work[:included].find { |i| i.fetch("type", nil) == "data-centers" }
-    - client_name = data_center.fetch("attributes", {}).fetch("title", nil)
-    = haml :'works/citations', locals: { attributes: attributes, client_name: client_name, citations: citations, duplicated: has_duplicated, summary: metrics}
-  - if @work.present? && (views + downloads).zero?
-    .panel-body.alert.alert-simple-info
-      = "This data repository is not currently reporting usage information. For information on how your repository can submit usage information, please see"
-      %a{href: 'https://support.datacite.org/docs/views-and-downloads'}
-        our documentation.
-- else
-  - if @work.present? && (views + downloads).positive?
-    = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads, citations: citations }
-  - else
-    .panel-body.alert.alert-simple-info
-      = "This data repository is not currently reporting usage information. For information on how your repository can submit usage information, please see"
-      %a{href: 'https://support.datacite.org/docs/views-and-downloads'}
-        our documentation.
+- if @work.present? && (views + downloads + citations).positive?
+  = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads, citations: citations }
+- if @work.present?
+  - data_center = @work[:included].find { |i| i.fetch("type", nil) == "data-centers" }
+  - client_name = data_center.fetch("attributes", {}).fetch("title", nil)
+  = haml :'works/citations', locals: { attributes: attributes, client_name: client_name, citations: citations, duplicated: has_duplicated, summary: metrics}
+- if @work.present? && (views + downloads).zero?
+  .panel-body.alert.alert-simple-info
+    = "This data repository is not currently reporting usage information. For information on how your repository can submit usage information, please see"
+    %a{href: 'https://support.datacite.org/docs/views-and-downloads'}
+      our documentation.
