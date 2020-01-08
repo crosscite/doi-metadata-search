@@ -5,8 +5,8 @@
 - sources = Array.wrap(@works[:meta].to_h.fetch("sources", nil))
 - new_params = params[:model] == "works" && params["id"] == attributes.fetch("doi", nil) ? params.merge(external_link: true) : params
 - title = attributes["title"].to_s.gsub(/"/, '\"')
-- views = metrics.to_h.fetch("unique-dataset-investigations-regular", 0) 
-- downloads = metrics.to_h.fetch("unique-dataset-requests-regular", 0) 
+- views = metrics.to_h.fetch("unique-dataset-investigations-regular", 0).to_i  
+- downloads = metrics.to_h.fetch("unique-dataset-requests-regular", 0).to_i 
 - citations = metrics.to_h.dig(:citations, "count").to_i 
 - references = metrics.to_h.dig(:references, "count").to_i 
 - relations = metrics.to_h.dig(:relations, "count").to_i 
