@@ -180,8 +180,8 @@ get %r{/works/(.+)} do
   unless request.is_crawler?
     events  = get_events('page[size]' => 1, 'page[number]' => @page, 'doi' => doi, 'sort' => 'relation_type_id')
     @work[:metrics] = reduce_aggs(events[:meta], { yop: @work.dig(:data, "attributes","published").to_i })
-    @work[:metrics].merge!("unique-dataset-investigations-regular" => (events[:meta].fetch('doisUsageTypes', []).first.fetch("relationTypes",[]).find { |x| x['id'] == "unique-dataset-investigations-regular" }.fetch("sum",0))) 
-    @work[:metrics].merge!("unique-dataset-requests-regular" => (events[:meta].fetch('doisUsageTypes', []).first.fetch("relationTypes",[]).find { |x| x['id'] == "unique-dataset-requests-regular" }.fetch("sum",0)))
+    @work[:metrics].merge!(views_hash(events[:meta].fetch('doisUsageTypes', [])))
+    @work[:metrics].merge!(downlaods_hash(events[:meta].fetch('doisUsageTypes', [])))
     @work[:metrics].merge!(citations: (events[:meta].fetch('uniqueCitations', []).find { |x| x['id'] == doi } || {}))
     @work[:metrics].merge!(citations_histogram: events[:meta].fetch('citationsHistogram', {}))
     @work[:metrics].merge!(views_histogram: events[:meta].fetch('viewsHistogram', {}))

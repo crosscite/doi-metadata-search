@@ -137,6 +137,18 @@ module Sinatra
       end
     end
 
+    def views_hash(array)
+      return {} unless array.any?
+      
+      {"unique-dataset-investigations-regular" => array.first.fetch("relationTypes",[]).find { |x| x['id'] == "unique-dataset-investigations-regular" }.fetch("sum",0)}
+    end
+
+    def downlaods_hash(array)
+      return {} unless array.any?
+
+      {"unique-dataset-requests-regular" => array.first.fetch("relationTypes",[]).find { |x| x['id'] == "unique-dataset-requests-regular" }.fetch("sum",0)}
+    end
+
     def reduce_aggs(meta, options = {})
       meta = ::JSON.parse(meta) if meta.respond_to?("downcase")
       relation_types = meta.fetch("relationTypes",[])
