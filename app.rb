@@ -179,7 +179,8 @@ get %r{/works/(.+)} do
 
   unless request.is_crawler?
     events  = get_events('page[size]' => 1, 'page[number]' => @page, 'doi' => doi, 'sort' => 'relation_type_id')
-    @work[:metrics] = reduce_aggs(events[:meta], { yop: @work.dig(:data, "attributes","published").to_i })
+    # @work[:metrics] = reduce_aggs(events[:meta], { yop: @work.dig(:data, "attributes","published").to_i })
+    @work[:metrics] = {}
     @work[:metrics].merge!(views_hash(events[:meta].fetch('doisUsageTypes', [])))
     @work[:metrics].merge!(downlaods_hash(events[:meta].fetch('doisUsageTypes', [])))
     @work[:metrics].merge!(citations: (events[:meta].fetch('uniqueCitations', []).find { |x| x['id'] == doi } || {}))
