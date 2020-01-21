@@ -37,7 +37,7 @@ class User
 
   # Helper method to check for personal account
   def is_person?
-    uid.start_with?("0")
+    uid.to_s.start_with?("0")
   end
 
   def role_name
