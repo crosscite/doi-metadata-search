@@ -5,23 +5,17 @@
 - sources = Array.wrap(@works[:meta].to_h.fetch("sources", nil))
 - new_params = params[:model] == "works" && params["id"] == attributes.fetch("doi", nil) ? params.merge(external_link: true) : params
 - title = attributes["title"].to_s.gsub(/"/, '\"')
-- views = metrics.to_h.fetch("unique-dataset-investigations-regular", 0).to_i  
-- downloads = metrics.to_h.fetch("unique-dataset-requests-regular", 0).to_i 
-- citations = metrics.to_h.dig(:citations, "count").to_i 
-- references = metrics.to_h.dig(:references, "count").to_i 
-- relations = metrics.to_h.dig(:relations, "count").to_i 
-- if @work.present? && Array.wrap(metrics.to_h.dig(:views_histogram, "yearMonths")).any?
-  - gon.chart_views = Array.wrap(metrics.to_h.dig(:views_histogram, "yearMonths"))
+- if @work.present? && attributes["views-over-time"].present?
+  - gon.chart_views = attributes["views-over-time"]
   - gon.yop = attributes.fetch("published", "").to_i
-- if @work.present? && Array.wrap(metrics.to_h.dig(:downloads_histogram, "yearMonths")).any?
-  - gon.chart_downloads = Array.wrap(metrics.to_h.dig(:downloads_histogram, "yearMonths"))
+- if @work.present? && attributes["downloads-over-time"]
+  - gon.chart_downloads = attributes["downloads-over-time"]
   - gon.yop = attributes.fetch("published", "").to_i
-- if @work.present? && citations.positive?
-  - has_duplicated = citations != Array.wrap(metrics.to_h.dig(:citations_histogram, "count")) ? true : false
-  - citations_chart = remove_duplicated_counts(citations,metrics.fetch(:citations_histogram, {}), attributes.fetch("published", nil).to_i )
-  - gon.chart_citations = citations_chart.fetch("years", [])
-  - gon.yop = attributes.fetch("published", nil).to_i
-
+-# - if @work.present? && citations.positive?
+-#   - has_duplicated = citations != Array.wrap(metrics.to_h.dig(:citations_histogram, "count")) ? true : false
+-#   - citations_chart = remove_duplicated_counts(citations,metrics.fetch(:citations_histogram, {}), attributes.fetch("published", nil).to_i )
+-#   - gon.chart_citations = citations_chart.fetch("years", [])
+-#   - gon.yop = attributes.fetch("published", nil).to_i
 
 .panel.panel-default
   .panel-body
@@ -41,26 +35,26 @@
           = license_img(attributes["license"])
 
   .panel-footer
-    - if (views + downloads + citations).zero?
+    - if (attributes["citation-count"].to_i + attributes["view-count"].to_i + attributes["download-count"].to_i).zero?
       %span.metrics{id: "summary-citations"}
         .fa.fa-info-circle 
         No citations were reported. No usage information was reported.
     - else
-      - if citations.positive?
+      - if attributes["citation-count"].to_i.positive?
         %span.metrics{id: "summary-citations"}
           .fa.fa-quote-left
-          = pluralize(citations, "citation")
+          = pluralize(attributes["citation-count"].to_i, "citation")
       - else
         %span.metrics
           .fa.fa-info-circle 
           No citations were reported. 
-      - if (views + downloads).positive?
+      - if (attributes["view-count"].to_i + attributes["download-count"].to_i).positive?
         %span.metrics{id: "summary-views"}
           .fa.fa-eye
-          = pluralize(views, "view")
+          = pluralize(attributes["view-count"].to_i, "view")
         %span.metrics{id: "summary-downloads"}
           .fa.fa-download
-          = pluralize(downloads, "download")
+          = pluralize(attributes["download-count"].to_i, "download")
       - else
         %span.metrics{id: "summary-views"}
           .fa.fa-info-circle 
@@ -82,13 +76,13 @@
     - if user_signed_in? && is_person?
       = haml :'works/claim', locals: { item: item }
 
-- if @work.present? && (views + downloads + citations).positive?
-  = haml :'works/visualisation', locals: { attributes: attributes, views: views, downloads: downloads, citations: citations }
+- if @work.present? && (attributes["citation-count"].to_i + attributes["view-count"].to_i + attributes["download-count"].to_i).positive?
+  = haml :'works/visualisation', locals: { attributes: attributes }
 - if @work.present?
   - data_center = @work[:included].find { |i| i.fetch("type", nil) == "data-centers" }
   - client_name = data_center.fetch("attributes", {}).fetch("title", nil)
-  = haml :'works/citations', locals: { attributes: attributes, client_name: client_name, citations: citations, duplicated: has_duplicated, summary: metrics}
-- if @work.present? && (views + downloads).zero?
+  = haml :'works/citations', locals: { attributes: attributes, client_name: client_name }
+- if @work.present? && (attributes["view-count"].to_i + attributes["download-count"].to_i).zero?
   .panel-body.alert.alert-simple-info
     = "This data repository is not currently reporting usage information. For information on how your repository can submit usage information, please see"
     %a{href: 'https://support.datacite.org/docs/views-and-downloads'}
