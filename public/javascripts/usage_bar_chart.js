@@ -102,6 +102,7 @@ function bins(yop, maxBin) {
 }
 
 function bar2Viz(data, div, count, format, displayMode, yop) {
+  console.log(data)
   var lastDataPoint = new Date(data[data.length - 1].id);
   var today = new Date();
   let setup;
@@ -330,8 +331,8 @@ $(document).ready(function(e) {
     var yop = gon.yop;
 
     tabs_interaction();
-
-    //   console.log(views)
+    console.log(views)
+    console.log(citations)
 
     //   views = [
     //     {id: "2017-01", title: "April 2018", sum: 337},

@@ -149,7 +149,7 @@ get '/' do
 end
 
 get '/works' do
-  @works = get_works(query: params[:query], 'page[number]' => @page, 'data-center-id' => params['data-center-id'], 'resource-type-id' => params['resource-type-id'], 'year' => params['year'], 'registered' => params['registered'], 'affiliation-id' => params['affiliation-id'])
+  @works = get_works(query: params[:query], 'page[number]' => @page, 'data-center-id' => params['data-center-id'], 'resource-type-id' => params['resource-type-id'], 'year' => params['year'], 'registered' => params['registered'], 'affiliation-id' => params['affiliation-id'], 'has-views' => params['has-views'], 'has-downloads' => params['has-downloads'], 'has-citations' => params['has-citations'])
   
   # check for existing claims if user is logged in and is person
   @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user && is_person?

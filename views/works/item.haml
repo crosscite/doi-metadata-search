@@ -11,11 +11,9 @@
 - if @work.present? && attributes["downloads-over-time"]
   - gon.chart_downloads = attributes["downloads-over-time"]
   - gon.yop = attributes.fetch("published", "").to_i
--# - if @work.present? && citations.positive?
--#   - has_duplicated = citations != Array.wrap(metrics.to_h.dig(:citations_histogram, "count")) ? true : false
--#   - citations_chart = remove_duplicated_counts(citations,metrics.fetch(:citations_histogram, {}), attributes.fetch("published", nil).to_i )
--#   - gon.chart_citations = citations_chart.fetch("years", [])
--#   - gon.yop = attributes.fetch("published", nil).to_i
+- if @work.present? && attributes["citations-over-time"]
+  - gon.chart_citations = attributes["citations-over-time"]
+  - gon.yop = attributes.fetch("published", nil).to_i
 
 .panel.panel-default
   .panel-body
@@ -77,11 +75,11 @@
       = haml :'works/claim', locals: { item: item }
 
 - if @work.present? && (attributes["citation-count"].to_i + attributes["view-count"].to_i + attributes["download-count"].to_i).positive?
-  = haml :'works/visualisation', locals: { attributes: attributes }
+  = haml :'works/visualisation', locals: { attributes: attributes, views: attributes["views-over-time"], downloads: attributes["downloads-over-time"], citations: attributes["citations-over-time"] }
 - if @work.present?
   - data_center = @work[:included].find { |i| i.fetch("type", nil) == "data-centers" }
   - client_name = data_center.fetch("attributes", {}).fetch("title", nil)
-  = haml :'works/citations', locals: { attributes: attributes, client_name: client_name }
+  -# = haml :'works/citations', locals: { attributes: attributes, client_name: client_name }
 - if @work.present? && (attributes["view-count"].to_i + attributes["download-count"].to_i).zero?
   .panel-body.alert.alert-simple-info
     = "This data repository is not currently reporting usage information. For information on how your repository can submit usage information, please see"
