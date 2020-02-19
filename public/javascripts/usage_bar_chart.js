@@ -331,8 +331,6 @@ $(document).ready(function(e) {
     var yop = gon.yop;
 
     tabs_interaction();
-    console.log(views)
-    console.log(citations)
 
     //   views = [
     //     {id: "2017-01", title: "April 2018", sum: 337},

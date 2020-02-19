@@ -6,13 +6,13 @@
 - new_params = params[:model] == "works" && params["id"] == attributes.fetch("doi", nil) ? params.merge(external_link: true) : params
 - title = attributes["title"].to_s.gsub(/"/, '\"')
 - if @work.present? && attributes["views-over-time"].present?
-  - gon.chart_views = attributes["views-over-time"]
+  - gon.chart_views = attributes["views-over-time"].map { |d| { "id" => d["yearMonth"], "title" => d["yearMonth"], "sum" => d["total"] } }
   - gon.yop = attributes.fetch("published", "").to_i
 - if @work.present? && attributes["downloads-over-time"]
-  - gon.chart_downloads = attributes["downloads-over-time"]
+  - gon.chart_downloads = attributes["downloads-over-time"].map { |d| { "id" => d["yearMonth"], "title" => d["yearMonth"], "sum" => d["total"] } }
   - gon.yop = attributes.fetch("published", "").to_i
 - if @work.present? && attributes["citations-over-time"]
-  - gon.chart_citations = attributes["citations-over-time"]
+  - gon.chart_citations = attributes["citations-over-time"].map { |d| { "id" => d["year"], "title" => d["year"], "sum" => d["total"] } }
   - gon.yop = attributes.fetch("published", nil).to_i
 
 .panel.panel-default
