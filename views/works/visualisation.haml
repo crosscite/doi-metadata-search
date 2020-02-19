@@ -6,7 +6,7 @@
   - if attributes["view-count"].to_i > 0 && attributes["citation-count"].to_i > 0
     %li.nav-item.usage
       %a#views-tab.nav-link{"aria-controls" => "views", "aria-selected" => "false", "data-toggle" => "tab", :href => "#views", :role => "tab"} #{pluralize(attributes["view-count"], "View")}
-  - if attributes["view-count"].to_i > 0
+  - elsif attributes["view-count"].to_i > 0
     %li.nav-item.usage.active
       %a#views-tab.nav-link.active{"aria-controls" => "views", "aria-selected" => "true", "data-toggle" => "tab", :href => "#views", :role => "tab"} #{pluralize(attributes["view-count"], "View")}
 
