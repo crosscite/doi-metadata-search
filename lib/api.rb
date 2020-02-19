@@ -24,7 +24,10 @@ module Sinatra
                    'member-id' => params.fetch('member-id', nil),
                    'affiliation-id' => params.fetch('affiliation-id', nil),
                    'work-id' => params.fetch('work-id', nil),
-                   'person-id' => params.fetch('person-id', nil) }.compact
+                   'person-id' => params.fetch('person-id', nil),
+                   'has-views' => params.fetch('has-views', nil),
+                   'has-downloads' => params.fetch('has-downloads', nil),
+                   'has-citations' => params.fetch('has-citations', nil) }.compact
 
         url = "#{ENV['API_URL']}/works?" + URI.encode_www_form(params)
       end
