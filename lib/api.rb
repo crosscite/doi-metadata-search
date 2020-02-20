@@ -8,7 +8,7 @@ module Sinatra
 
     def get_works(params = {})
       if params.fetch(:id, nil).present?
-        url = "#{ENV['API_URL']}/works/#{params[:id]}?include=data-center,resource-type,member"
+        url = "#{ENV['API_URL']}/works/#{params[:id]}?include=data-center,resource-type,member,citation-events,reference-events"
       else
         params = { id: params.fetch(:id, nil),
                    'page[number]' => params.fetch('page[number]', 1),

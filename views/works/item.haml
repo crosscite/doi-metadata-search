@@ -2,7 +2,6 @@
 - type = attributes.fetch("resource-type-id", nil)
 - includes = @works.present? ? @works[:included] : @work[:included]
 - work_types = Array.wrap(includes).select { |item| item["type"] == "work-types" }
-- sources = Array.wrap(@works[:meta].to_h.fetch("sources", nil))
 - new_params = params[:model] == "works" && params["id"] == attributes.fetch("doi", nil) ? params.merge(external_link: true) : params
 - title = attributes["title"].to_s.gsub(/"/, '\"')
 - if @work.present? && attributes["views-over-time"].present?
@@ -14,6 +13,8 @@
 - if @work.present? && attributes["citations-over-time"].present?
   - gon.chart_citations = attributes["citations-over-time"].map { |d| { "id" => d["year"], "title" => d["year"], "sum" => d["total"] } }
   - gon.yop = attributes.fetch("published", nil).to_i
+- gon.citation_events = includes.select { |e| e.dig("relationships", "doiForTarget", "data", "id") == attributes["doi"] }
+- gon.reference_events = includes.select { |e| e.dig("relationships", "doiForSource", "data", "id") == attributes["doi"] }
 
 .panel.panel-default
   .panel-body

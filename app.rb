@@ -173,19 +173,6 @@ get %r{/works/(.+)} do
   doi = validate_doi(params[:id])
   link = doi ? "https://doi.org/#{doi}" : params[:id]
 
-  unless request.is_crawler?
-    events  = get_events('page[size]' => 1, 'page[number]' => @page, 'doi' => doi, 'sort' => 'relation_type_id')
-    # @work[:metrics] = reduce_aggs(events[:meta], { yop: @work.dig(:data, "attributes","published").to_i })
-    @work[:metrics] = {}
-    @work[:metrics].merge!(views_hash(events[:meta].fetch('doisUsageTypes', [])))
-    @work[:metrics].merge!(downlaods_hash(events[:meta].fetch('doisUsageTypes', [])))
-    @work[:metrics].merge!(citations: (events[:meta].fetch('uniqueCitations', []).find { |x| x['id'] == doi } || {}))
-    @work[:metrics].merge!(citations_histogram: events[:meta].fetch('citationsHistogram', {}))
-    @work[:metrics].merge!(views_histogram: events[:meta].fetch('viewsHistogram', {}))
-    @work[:metrics].merge!(downloads_histogram: events[:meta].fetch('downloadsHistogram', {}))
-    @work[:relation_types] = events[:meta].fetch('relationTypes', [])
-  end
-
   # check for existing claims if user is logged in and work is registered with DataCite
   if current_user
     @work[:data] = get_claimed_items(current_user, [@work[:data]]).first
@@ -194,15 +181,6 @@ get %r{/works/(.+)} do
   # embed schema.org
   response = Maremma.get("#{ENV['API_URL']}/dois/#{params[:id]}", headers: {"Accept"=> "application/vnd.schemaorg.ld+json"}, raw: true, timeout: TIMEOUT)
   @work[:schema_org] = response.body.fetch("data", nil)
-
-  # Removing related works to avoid crawlers nested repetive crawling when there are a lot.
-  ## @works = get_works("work-id" => params[:id], query: params[:query], 'page[number]' => @page, 'data-center-id' => params['data-center-id'], 'relation-type-id' => params['relation-type-id'], 'resource-type-id' => params['resource-type-id'], 'year' => params['year'])
-  # check for existing claims if user is logged in
-  ## @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user
-  @works = {} # Temporarily make sure we get something to work with
-
-  # pagination
-  @works[:data] = pagination_helper(Array.wrap(@works[:data]), @page, @works.fetch(:meta, {}).fetch("total", 0))
 
   params[:model] = "works"
 
