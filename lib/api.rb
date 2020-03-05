@@ -31,8 +31,8 @@ module Sinatra
 
         url = "#{ENV['API_URL']}/works?" + URI.encode_www_form(params)
       end
-      response = Maremma.get(url, timeout: TIMEOUT)
-
+      response = Maremma.get(url, headers: { "Accept-Encoding"=> "gzip" }, timeout: TIMEOUT)
+      
       { data: response.body.fetch("data", []),
         included: response.body.fetch("included", []),
         errors: Array(response.body.fetch("errors", [])),
