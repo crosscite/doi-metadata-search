@@ -229,7 +229,7 @@ module Sinatra
     end
 
     def works_action(item, params)
-      return item["id"] if params[:external_link].present?
+      return doi_as_url(item["id"]) if params[:external_link].present?
 
       if item.fetch("type", nil) == "contributions"
         id = item.fetch('attributes', {}).fetch("obj-id", nil)
