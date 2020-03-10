@@ -103,8 +103,8 @@ GEM
     loofah (2.4.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    maremma (4.5)
-      activesupport (>= 4.2.5, < 6)
+    maremma (4.6.1)
+      activesupport (>= 4.2.5)
       addressable (>= 2.3.6)
       builder (~> 3.2, >= 3.2.2)
       excon (~> 0.71.0)
@@ -267,4 +267,4 @@ DEPENDENCIES
   will_paginate-bootstrap!
 
 BUNDLED WITH
-   2.1.2
+   2.1.4

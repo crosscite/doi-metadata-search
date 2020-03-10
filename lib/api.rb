@@ -14,7 +14,7 @@ module Sinatra
                    'page[number]' => params.fetch('page[number]', 1),
                    'page[size]' => params.fetch('page[size]', 25),
                    ids: params.fetch(:ids, nil),
-                   sort: params.fetch(:sort, nil),
+                   sort: 'relevance',
                    query: params.fetch(:query, nil),
                    year: params.fetch('year', nil),
                    registered: params.fetch('registered', nil),
@@ -29,8 +29,8 @@ module Sinatra
 
         url = "#{ENV['API_URL']}/dois?" + URI.encode_www_form(params)
       end
-      response = Maremma.get(url, timeout: TIMEOUT)
-
+      response = Maremma.get(url, headers: { "Accept-Encoding"=> "gzip" }, timeout: TIMEOUT)
+      
       { data: response.body.fetch("data", []),
         included: response.body.fetch("included", []),
         errors: Array(response.body.fetch("errors", [])),
