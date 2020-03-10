@@ -2,7 +2,7 @@
   .panel-body
     %h3.work
       %a{:href => '/repositories/' + item["id"]}
-        = item.fetch("attributes", {}).fetch("title", nil)
+        = item.fetch("attributes", {}).fetch("name", nil)
     %div
       = prefix_format(item["attributes"])
   .panel-footer

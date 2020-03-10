@@ -10,13 +10,9 @@
         - elsif @member.present?
           = haml :'members/item', locals: { item: @member[:data] }
 
-      - if @member[:data].present? && @member[:data].fetch("attributes", {}).fetch("member-type", nil) == "provider"
+      - if @member[:data].present? && @member[:data].fetch("attributes", {}).fetch("memberType", nil) != "member_only"
         .col-md-9
-          - if params['source-id'].present? || params['relation-type-id'].present?
-            %div.alert.alert-info
-              Search is not available when the <strong>Sources</strong> and/or <strong>Relation Types</strong> facet are selected.
-          - else
-            = haml :'works/search'
+          = haml :'works/search'
 
         .col-md-9.panel-list#content-works
           = haml :'works/list'

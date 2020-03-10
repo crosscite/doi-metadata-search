@@ -8,18 +8,18 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.4; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.5; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
       Authorization:
-      - Bearer eyJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDEtNTQ4OS0zNTk0IiwibmFtZSI6Ikpvc2lhaCBDYXJiZXJyeSIsInJvbGVfaWQiOiJzdGFmZl9hZG1pbiIsImlhdCI6MTU3NDA2NDUxOCwiZXhwIjoxNTc0MDY0NTQ4fQ.V8QzylwinclWfOP_7p459v6cV8Y-87wuvev9S748FDq8QnTPRwSNqRkoYNqbDJYPQwhblbQr74eihnZTMMFs1aynEndmaOQnqpjRPIHV5jtN_p2ENrFJQE_weaT8GzrjFn8ayEBMtmqbm9JdI7RcDLCfimYJD7Nh7lHakimmttNaxId7B_IF276i988WGGFAh6xqxW26YSlGnMBi0JNR-1JE6Wj019TIbwCmmqLjGExRFA4ZEXOPoHjts-mA-MKFDJ1lG2pjLWRod3CDV9TNwMe0J2zqebyWASNV-nnuRTRyCmK1-cZbgnmGc9IDM-VBKCo_0jXPugRiZ63t9DPTnA
+      - Bearer eyJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDEtNTQ4OS0zNTk0IiwibmFtZSI6Ikpvc2lhaCBDYXJiZXJyeSIsInJvbGVfaWQiOiJzdGFmZl9hZG1pbiIsImlhdCI6MTU4Mzg1MTg5MywiZXhwIjoxNTgzODUxOTIzfQ.oftZbHRhB32pKZMUwG3ohNNEmLl_VuylY660pagQQyc38rr3f_33IRLuZLpRnY6KEYtPGU-tdrO3zVeDB8yVgKXxqfePrEtNNaZUeYkhJ3bNa42D_0y6j7TiPZqt-1whK4JkOWv4t5iX7NCYV3-0wj8Hg792fYMzeKuYMZdWt7nZ3kPX4LX2iuNKCJ3ln3gyaaMDeceqz5kp5wT5y3UBHbEL0GhnEohikst5au01tPEvhZl8-rslmi5SNA1ajCRGK4kRc-geVDsRM7qoN6vmyMBNtCE65DHUboY8qMv7QMO6cdqCn1_5gMT8mx1Hi62DCL0Bx6xOa_SxGZ_LoS2ZFw
   response:
     status:
       code: 401
       message: Unauthorized
     headers:
       Date:
-      - Mon, 18 Nov 2019 08:08:38 GMT
+      - Tue, 10 Mar 2020 14:51:33 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,11 +37,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 38aa543f-e027-4540-9c61-f9ad9b0d2f66
+      - dd1ec4f1-7856-4a2d-8c9c-6328530b0a77
       X-Download-Options:
       - noopen
       X-Runtime:
-      - '0.006340'
+      - '0.005786'
       X-Frame-Options:
       - SAMEORIGIN
       X-Content-Type-Options:
@@ -49,10 +49,10 @@ http_interactions:
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
-      - nginx/1.17.3 + Phusion Passenger 6.0.4
+      - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
       string: '{"errors":[{"status":"401","title":"Bad credentials."}]}'
     http_version: 
-  recorded_at: Mon, 18 Nov 2019 08:08:38 GMT
+  recorded_at: Tue, 10 Mar 2020 14:51:34 GMT
 recorded_with: VCR 2.9.3

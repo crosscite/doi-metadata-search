@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/data-centers/CERN.ZENODO?include=member
+    uri: https://api.test.datacite.org/repositories/CERN.ZENODO?include=member
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.6; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.5; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 06 Oct 2019 16:30:37 GMT
+      - Tue, 10 Mar 2020 14:51:29 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -30,21 +30,30 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
-      Etag:
-      - W/"099da26a3712b2060262029846a64e02"
-      X-Runtime:
-      - '0.005587'
       X-Request-Id:
-      - 20932112-516d-4e78-8502-f9ace4f25064
+      - 1d57d80c-e36d-471f-8ff5-2e6dc50f96f0
+      Etag:
+      - W/"7e981e58e6c9e10447a7af9bf5bcb1eb"
+      X-Runtime:
+      - '0.127637'
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
-      - nginx/1.17.3 + Phusion Passenger 6.0.4
+      - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"cern.zenodo","type":"data-centers","attributes":{"title":"Zenodo","other-names":[],"prefixes":[],"member-id":"cern","year":2014,"created":"2014-09-24T14:54:20.000Z","updated":"2019-08-03T05:29:30.000Z"},"relationships":{"member":{"data":{"id":"cern","type":"members"}}}},"included":[{"id":"cern","type":"members","attributes":{"title":"CERN
-        - European Organization for Nuclear Research","display-title":"CERN - European
-        Organization for Nuclear Research","description":null,"member-type":"direct_member","organization-type":"researchInstitution","focus-area":"naturalSciences","region":"EMEA","country":"CH","year":null,"logo-url":null,"email":null,"website":"https://www.cern.ch","joined":null,"created":"2014-04-10T13:42:48.000Z","updated":"2019-06-23T15:47:07.000Z"}}]}'
+      string: '{"data":{"id":"cern.zenodo","type":"repositories","attributes":{"name":"Zenodo","symbol":"CERN.ZENODO","re3data":"https://doi.org/10.17616/R3QP53","opendoar":null,"year":2014,"systemEmail":"lars.holm.nielsen@cern.ch","alternateName":"Research.
+        Shared","description":"ZENODO builds and operates a simple and innovative
+        service that enables researchers, scientists, EU projects and institutions
+        to share and showcase multidisciplinary research results (data and publications)
+        that are not part of the existing institutional or subject-based repositories
+        of the research communities.\r\nZENODO enables researchers, scientists, EU
+        projects and institutions to:\r\neasily share the long tail of small research
+        results in a wide variety of formats including text, spreadsheets, audio,
+        video, and images across all fields of science.\r\ndisplay their research
+        results and get credited by making the research results citable and integrate
+        them into existing reporting lines to funding agencies like the European Commission.\r\neasily
+        access and reuse shared research results.","clientType":"repository","repositoryType":["other"],"language":["en"],"certificate":[],"domains":"openaire.cern.ch,zenodo.org","issn":[],"url":"https://zenodo.org/","created":"2014-09-24T14:54:20.000Z","updated":"2019-08-03T05:29:30.000Z","isActive":true,"hasPassword":true,"serviceContact":{}},"relationships":{"provider":{"data":{"id":"cern","type":"providers"}},"prefixes":{"data":[{"id":"10.5281","type":"prefixes"}]}}},"meta":{"dois":[],"resourceTypes":[],"citations":[],"views":[],"downloads":[]}}'
     http_version: 
-  recorded_at: Sun, 06 Oct 2019 16:30:37 GMT
+  recorded_at: Tue, 10 Mar 2020 14:51:30 GMT
 recorded_with: VCR 2.9.3

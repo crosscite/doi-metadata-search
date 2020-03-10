@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.6; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.5; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 06 Oct 2019 16:30:41 GMT
+      - Tue, 10 Mar 2020 14:51:27 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,21 +37,21 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - d2a6d6ab-cc3a-4189-95e6-e0f7cf18741a
+      - 28c9de06-7042-4a1e-8898-c812f3744014
       X-Download-Options:
       - noopen
       Etag:
-      - W/"b35964d6f375570cdc1e8b5b249ebc70"
+      - W/"59f5d356e30e3ef5ec7db5a3dcdeb162"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.085573'
+      - '0.030617'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
-      - nginx/1.17.3 + Phusion Passenger 6.0.4
+      - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
       string: '{"data":[{"id":"0000-0002-5099-0079","type":"users","attributes":{"givenNames":"Jesus
@@ -61,7 +61,7 @@ http_interactions:
         Arturo","familyName":"Garza-Reyes","name":"Jose Arturo Garza-Reyes","orcid":"https://orcid.org/0000-0002-5493-877X","github":null,"roleId":"user","isActive":false,"created":"2016-10-14T11:37:44.000Z","updated":"2016-10-14T11:38:01.000Z"},"relationships":{}},{"id":"0000-0002-4286-8102","type":"users","attributes":{"givenNames":"Tammy","familyName":"Oberg
         De La Garza","name":"Tammy Oberg De La Garza","orcid":"https://orcid.org/0000-0002-4286-8102","github":null,"roleId":"user","isActive":false,"created":"2017-06-01T13:58:09.000Z","updated":"2017-06-01T13:58:09.000Z"},"relationships":{}},{"id":"0000-0002-5231-2925","type":"users","attributes":{"givenNames":"Miguel
         Angel","familyName":"Platas-Garza","name":"Miguel Angel Platas-Garza","orcid":"https://orcid.org/0000-0002-5231-2925","github":null,"roleId":"user","isActive":false,"created":"2017-02-27T15:04:28.000Z","updated":"2017-02-27T15:04:28.000Z"},"relationships":{}},{"id":"0000-0003-3484-6875","type":"users","attributes":{"givenNames":null,"familyName":null,"name":"K.
-        J. Garza","orcid":"https://orcid.org/0000-0003-3484-6875","github":null,"roleId":"user","isActive":true,"created":"2019-09-12T14:13:49.000Z","updated":"2019-09-12T14:13:49.000Z"},"relationships":{}}],"meta":{"total":6,"totalPages":1,"page":1},"links":{"self":"https://api.test.datacite.org/users?page%5Bnumber%5D=1\u0026page%5Bsize%5D=25\u0026query=garza","next":"https://api.test.datacite.org/users?page%5Bnumber%5D=2\u0026page%5Bsize%5D=25\u0026query=garza"}}'
+        J. Garza","orcid":"https://orcid.org/0000-0003-3484-6875","github":null,"roleId":"user","isActive":true,"created":"2019-09-12T14:13:49.000Z","updated":"2020-02-14T11:07:05.000Z"},"relationships":{}}],"meta":{"total":6,"totalPages":1,"page":1},"links":{"self":"https://api.test.datacite.org/users?page%5Bnumber%5D=1&page%5Bsize%5D=25&query=garza","next":"https://api.test.datacite.org/users?page%5Bnumber%5D=2&page%5Bsize%5D=25&query=garza"}}'
     http_version: 
-  recorded_at: Sun, 06 Oct 2019 16:30:41 GMT
+  recorded_at: Tue, 10 Mar 2020 14:51:27 GMT
 recorded_with: VCR 2.9.3

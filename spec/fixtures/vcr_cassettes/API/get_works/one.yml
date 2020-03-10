@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/works/10.70001/12334296?include=data-center,resource-type,member
+    uri: https://api.test.datacite.org/dois/10.70001/12334296?include=client,citation-events,reference-events
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.6; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.5; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 06 Oct 2019 16:52:50 GMT
+      - Tue, 10 Mar 2020 14:51:23 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -30,23 +30,23 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
-      Etag:
-      - W/"6a36e465fe9e2a3f761115c47cf11ef9"
-      X-Runtime:
-      - '0.035935'
       X-Request-Id:
-      - cc988bef-4790-4dfc-9e17-6be82d6bc26d
+      - 989bbe3f-6f5e-4f1a-ac1f-970e082618bd
+      Etag:
+      - W/"56da9d9b6d0dab1e84b20ef32a2528fc"
+      X-Runtime:
+      - '0.054670'
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
-      - nginx/1.17.3 + Phusion Passenger 6.0.4
+      - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"https://handle.test.datacite.org/10.70001/12334296","type":"works","attributes":{"doi":"10.70001/12334296","identifier":"https://handle.test.datacite.org/10.70001/12334296","url":"https://digitalscholarship.unlv.edu/rtds/1","author":[{"literal":"Joyce
-        Mott Anderson"}],"title":"The effects of early intervention on young handicapped
-        children who are nonverbal or have limited expressive language skills","container-title":"University
-        of Nevada, Las Vegas","description":null,"resource-type-subtype":null,"data-center-id":"datacite.datacite","member-id":"datacite","resource-type-id":"text","version":null,"license":null,"schema-version":null,"results":[],"related-identifiers":[],"published":"1988","registered":"2019-04-08T08:20:11.000Z","checked":null,"updated":"2019-10-03T00:32:04.000Z","media":[],"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC00L21ldGFkYXRhLnhzZCI+CiAgPGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuNzAwMDEvMTIzMzQyOTY8L2lkZW50aWZpZXI+CiAgPGNyZWF0b3JzPgogICAgPGNyZWF0b3I+CiAgICAgIDxjcmVhdG9yTmFtZT5Kb3ljZSBNb3R0IEFuZGVyc29uPC9jcmVhdG9yTmFtZT4KICAgIDwvY3JlYXRvcj4KICA8L2NyZWF0b3JzPgogIDx0aXRsZXM+CiAgICA8dGl0bGU+VGhlIGVmZmVjdHMgb2YgZWFybHkgaW50ZXJ2ZW50aW9uIG9uIHlvdW5nIGhhbmRpY2FwcGVkIGNoaWxkcmVuIHdobyBhcmUgbm9udmVyYmFsIG9yIGhhdmUgbGltaXRlZCBleHByZXNzaXZlIGxhbmd1YWdlIHNraWxsczwvdGl0bGU+CiAgPC90aXRsZXM+CiAgPHB1Ymxpc2hlcj5Vbml2ZXJzaXR5IG9mIE5ldmFkYSwgTGFzIFZlZ2FzPC9wdWJsaXNoZXI+CiAgPHB1YmxpY2F0aW9uWWVhcj4xOTg4PC9wdWJsaWNhdGlvblllYXI+CiAgPHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJUZXh0Ii8+CiAgPHZlcnNpb24vPgo8L3Jlc291cmNlPgo="},"relationships":{"data-center":{"data":{"id":"datacite.datacite","type":"data-centers"}},"member":{"data":{"id":"datacite","type":"members"}},"resource-type":{"data":{"id":"text","type":"resource-types"}}}},"included":[{"id":"datacite.datacite","type":"data-centers","attributes":{"title":"DataCite
-        Repository","other-names":[],"prefixes":[],"member-id":"datacite","year":2011,"created":"2011-12-07T13:43:39.000Z","updated":"2019-08-24T06:22:34.000Z"},"relationships":{"member":{"data":{"id":"datacite","type":"members"}}}},{"id":"datacite","type":"members","attributes":{"title":"DataCite","display-title":"DataCite","description":null,"member-type":"consortium_organization","organization-type":null,"focus-area":null,"region":"EMEA","country":"DE","year":null,"logo-url":null,"email":null,"website":"https://datacite.org","joined":null,"created":"2011-12-07T13:41:07.000Z","updated":"2019-08-24T06:18:06.000Z"}},{"id":"text","type":"resource-types","attributes":{"title":"Text","updated":"2016-09-21T00:00:00Z"},"relationships":{}}]}'
+      string: '{"data":{"id":"10.70001/12334296","type":"dois","attributes":{"doi":"10.70001/12334296","prefix":"10.70001","suffix":"12334296","identifiers":null,"creators":[{"name":"Joyce
+        Mott Anderson","affiliation":[]}],"titles":[{"title":"The effects of early
+        intervention on young handicapped children who are nonverbal or have limited
+        expressive language skills"}],"publisher":"University of Nevada, Las Vegas","container":{},"publicationYear":1988,"subjects":null,"contributors":[],"dates":null,"language":null,"types":{"resourceTypeGeneral":"Text"},"relatedIdentifiers":null,"sizes":null,"formats":null,"version":null,"rightsList":[],"descriptions":null,"geoLocations":null,"fundingReferences":null,"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC00L21ldGFkYXRhLnhzZCI+CiAgPGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuNzAwMDEvMTIzMzQyOTY8L2lkZW50aWZpZXI+CiAgPGNyZWF0b3JzPgogICAgPGNyZWF0b3I+CiAgICAgIDxjcmVhdG9yTmFtZT5Kb3ljZSBNb3R0IEFuZGVyc29uPC9jcmVhdG9yTmFtZT4KICAgIDwvY3JlYXRvcj4KICA8L2NyZWF0b3JzPgogIDx0aXRsZXM+CiAgICA8dGl0bGU+VGhlIGVmZmVjdHMgb2YgZWFybHkgaW50ZXJ2ZW50aW9uIG9uIHlvdW5nIGhhbmRpY2FwcGVkIGNoaWxkcmVuIHdobyBhcmUgbm9udmVyYmFsIG9yIGhhdmUgbGltaXRlZCBleHByZXNzaXZlIGxhbmd1YWdlIHNraWxsczwvdGl0bGU+CiAgPC90aXRsZXM+CiAgPHB1Ymxpc2hlcj5Vbml2ZXJzaXR5IG9mIE5ldmFkYSwgTGFzIFZlZ2FzPC9wdWJsaXNoZXI+CiAgPHB1YmxpY2F0aW9uWWVhcj4xOTg4PC9wdWJsaWNhdGlvblllYXI+CiAgPHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJUZXh0Ii8+CiAgPHZlcnNpb24vPgo8L3Jlc291cmNlPgo=","url":"https://digitalscholarship.unlv.edu/rtds/1","contentUrl":null,"metadataVersion":0,"schemaVersion":null,"source":null,"isActive":true,"state":"findable","reason":null,"viewCount":0,"viewsOverTime":[],"downloadCount":0,"downloadsOverTime":[],"referenceCount":0,"citationCount":0,"citationsOverTime":[],"created":"2019-04-08T08:20:10.000Z","registered":"2019-04-08T08:20:11.000Z","published":"1988","updated":"2020-03-01T16:02:40.000Z"},"relationships":{"client":{"data":{"id":"datacite.datacite","type":"clients"}},"media":{"data":{"id":"10.70001/12334296","type":"media"}},"referenceEvents":{"data":[]},"citationEvents":{"data":[]}}},"included":[{"id":"datacite.datacite","type":"clients","attributes":{"name":"DataCite
+        Repository","symbol":"DATACITE.DATACITE","year":2011,"contactEmail":"support@datacite.org","alternateName":null,"description":null,"language":["en","fr"],"clientType":"periodical","domains":"datacite.org","re3data":null,"opendoar":null,"issn":{"issnl":null,"print":"1545-7885","electronic":"1544-9173"},"url":null,"created":"2011-12-07T13:43:39.000Z","updated":"2019-08-24T06:22:34.000Z","isActive":true,"hasPassword":true},"relationships":{"provider":{"data":{"id":"datacite","type":"providers"}},"consortium":{"data":{"id":"dc","type":"providers"}},"prefixes":{"data":[{"id":"10.5438","type":"prefixes"},{"id":"10.14454","type":"prefixes"},{"id":"10.70002","type":"prefixes"},{"id":"10.70001","type":"prefixes"}]}}}]}'
     http_version: 
-  recorded_at: Sun, 06 Oct 2019 16:52:50 GMT
+  recorded_at: Tue, 10 Mar 2020 14:51:23 GMT
 recorded_with: VCR 2.9.3

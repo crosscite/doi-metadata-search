@@ -86,7 +86,6 @@ configure do
 
   use Rack::CrawlerDetect
 
-
   # Work around rack protection referrer bug
   set :protection, except: :json_csrf
 

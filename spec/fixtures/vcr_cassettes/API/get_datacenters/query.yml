@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/data-centers?include=member&page%5Bnumber%5D=1&page%5Bsize%5D=25&query=zenodo
+    uri: https://api.test.datacite.org/repositories?include=provider&page%5Bnumber%5D=1&page%5Bsize%5D=25&query=zenodo
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.6; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.5; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 06 Oct 2019 16:50:30 GMT
+      - Tue, 10 Mar 2020 14:51:29 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -30,22 +30,33 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
-      Etag:
-      - W/"bd960aa572498692ae6517523c8f3c60"
-      X-Runtime:
-      - '0.025079'
       X-Request-Id:
-      - 56d6e053-e6ec-4fd4-ab6e-bb5c9521f071
+      - 4d564b5e-9ad9-4b42-8116-75e58a86fa08
+      Etag:
+      - W/"ad7b0ceb3a2625a3153a6d693b9380b1"
+      X-Runtime:
+      - '0.034349'
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
-      - nginx/1.17.3 + Phusion Passenger 6.0.4
+      - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"id":"cern.zenodo","type":"data-centers","attributes":{"title":"Zenodo","other-names":[],"prefixes":[],"member-id":"cern","year":2014,"created":"2014-09-24T14:54:20.000Z","updated":"2019-08-03T05:29:30.000Z"},"relationships":{"member":{"data":{"id":"cern","type":"members"}}}}],"included":[{"id":"cern","type":"members","attributes":{"title":"CERN
-        - European Organization for Nuclear Research","display-title":"CERN - European
-        Organization for Nuclear Research","description":null,"member-type":"direct_member","organization-type":"researchInstitution","focus-area":"naturalSciences","region":"EMEA","country":"CH","year":null,"logo-url":null,"email":null,"website":"https://www.cern.ch","joined":null,"created":"2014-04-10T13:42:48.000Z","updated":"2019-06-23T15:47:07.000Z"}}],"meta":{"total":1,"total-pages":1,"page":1,"years":[{"id":"2014","title":"2014","count":1}],"members":[{"id":"cern","title":"CERN
-        - European Organization for Nuclear Research","count":1}]}}'
+      string: '{"data":[{"id":"cern.zenodo","type":"repositories","attributes":{"name":"Zenodo","symbol":"CERN.ZENODO","re3data":"https://doi.org/10.17616/R3QP53","opendoar":null,"year":2014,"systemEmail":"lars.holm.nielsen@cern.ch","alternateName":"Research.
+        Shared","description":"ZENODO builds and operates a simple and innovative
+        service that enables researchers, scientists, EU projects and institutions
+        to share and showcase multidisciplinary research results (data and publications)
+        that are not part of the existing institutional or subject-based repositories
+        of the research communities.\r\nZENODO enables researchers, scientists, EU
+        projects and institutions to:\r\neasily share the long tail of small research
+        results in a wide variety of formats including text, spreadsheets, audio,
+        video, and images across all fields of science.\r\ndisplay their research
+        results and get credited by making the research results citable and integrate
+        them into existing reporting lines to funding agencies like the European Commission.\r\neasily
+        access and reuse shared research results.","clientType":"repository","repositoryType":["other"],"language":["en"],"certificate":[],"domains":"openaire.cern.ch,zenodo.org","issn":[],"url":"https://zenodo.org/","created":"2014-09-24T14:54:20.000Z","updated":"2019-08-03T05:29:30.000Z","isActive":true,"hasPassword":true,"serviceContact":{}},"relationships":{"provider":{"data":{"id":"cern","type":"providers"}},"prefixes":{"data":[{"id":"10.5281","type":"prefixes"}]}}}],"included":[{"id":"cern","type":"providers","attributes":{"name":"CERN
+        - European Organization for Nuclear Research","displayName":"CERN - European
+        Organization for Nuclear Research","symbol":"CERN","website":"https://www.cern.ch","systemEmail":"artemis.lavasa@cern.ch","groupEmail":null,"description":null,"region":"EMEA","country":"CH","logoUrl":null,"memberType":"direct_member","organizationType":"researchInstitution","focusArea":"naturalSciences","nonProfitStatus":"non-profit","isActive":true,"hasPassword":true,"joined":null,"rorId":null,"technicalContact":{},"secondaryTechnicalContact":{},"billingContact":{},"secondaryBillingContact":{},"serviceContact":{},"secondaryServiceContact":{},"votingContact":{},"created":"2014-04-10T13:42:48.000Z","updated":"2019-06-23T15:47:07.000Z"},"relationships":{"clients":{"data":[{"id":"cern.inspire","type":"clients"},{"id":"cern.zenodo","type":"clients"},{"id":"cern.opendata","type":"clients"},{"id":"cern.yellow","type":"clients"},{"id":"cern.cds","type":"clients"},{"id":"cern.hepdata","type":"clients"},{"id":"cern.jacow","type":"clients"},{"id":"cern.yrschool","type":"clients"},{"id":"cern.yrmono","type":"clients"},{"id":"cern.yrconf","type":"clients"},{"id":"cern.cij","type":"clients"},{"id":"cern.proc","type":"clients"},{"id":"cern.ojs","type":"clients"}]},"prefixes":{"data":[{"id":"10.2314","type":"prefixes"},{"id":"10.5281","type":"prefixes"},{"id":"10.5170","type":"prefixes"},{"id":"10.7483","type":"prefixes"},{"id":"10.7484","type":"prefixes"},{"id":"10.14454","type":"prefixes"},{"id":"10.17181","type":"prefixes"},{"id":"10.17182","type":"prefixes"},{"id":"10.18423","type":"prefixes"},{"id":"10.18429","type":"prefixes"},{"id":"10.23732","type":"prefixes"},{"id":"10.23730","type":"prefixes"},{"id":"10.23731","type":"prefixes"},{"id":"10.23726","type":"prefixes"},{"id":"10.23727","type":"prefixes"},{"id":"10.70111","type":"prefixes"}]}}}],"meta":{"total":1,"totalPages":1,"page":1,"years":[{"id":"2014","title":"2014","count":1}],"providers":[{"id":"cern","title":"CERN
+        - European Organization for Nuclear Research","count":1}],"clientTypes":[{"id":"repository","title":"Repository","count":1}],"repositoryTypes":[{"id":"other","title":"Other","count":1}],"certificates":[],"software":[{"id":"other","title":"Other","count":1}]},"links":{"self":"https://api.test.datacite.org/repositories?include=provider&page%5Bnumber%5D=1&page%5Bsize%5D=25&query=zenodo","next":"https://api.test.datacite.org/repositories?page%5Bnumber%5D=2&page%5Bsize%5D=25&query=zenodo"}}'
     http_version: 
-  recorded_at: Sun, 06 Oct 2019 16:50:30 GMT
+  recorded_at: Tue, 10 Mar 2020 14:51:29 GMT
 recorded_with: VCR 2.9.3
