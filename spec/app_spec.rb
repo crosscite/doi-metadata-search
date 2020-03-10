@@ -18,7 +18,7 @@ describe 'app', vcr: true do
     expect(last_response.headers["Content-Length"].to_i).to be > 1000
 
     doc = Nokogiri::HTML(last_response.body)
-    expect(doc.at_css("h3.results").text.strip).to eq("896,211 Works")
+    expect(doc.at_css("h3.results").text.strip).to eq("896,265 Works")
   end
 
   it '/works?query=climate' do
@@ -29,7 +29,7 @@ describe 'app', vcr: true do
     expect(last_response.headers["Content-Length"].to_i).to be > 1000
 
     doc = Nokogiri::HTML(last_response.body)
-    expect(doc.at_css("h3.results").text.strip).to eq("11,714 Works")
+    expect(doc.at_css("h3.results").text.strip).to eq("11,717 Works")
   end
 
   it '/works/10.1594/ieda/100037' do

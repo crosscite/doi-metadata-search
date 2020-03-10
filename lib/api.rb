@@ -19,6 +19,7 @@ module Sinatra
                    year: params.fetch('year', nil),
                    registered: params.fetch('registered', nil),
                    include: 'client',
+                   'fields[dois]' => 'doi,creators,titles,descriptions,publisher,publicationYear,types,rightsList',
                    'resource-type-id' => params.fetch('resource-type-id', nil),
                    'client-id' => params.fetch('data-center-id', nil),
                    'provider-id' => params.fetch('member-id', nil),
@@ -29,7 +30,7 @@ module Sinatra
 
         url = "#{ENV['API_URL']}/dois?" + URI.encode_www_form(params)
       end
-      response = Maremma.get(url, headers: { "Accept-Encoding"=> "gzip" }, timeout: TIMEOUT)
+      response = Maremma.get(url, headers: { "Content-Type" => "application/json;charset=UTF-8" }, timeout: TIMEOUT)
       
       { data: response.body.fetch("data", []),
         included: response.body.fetch("included", []),

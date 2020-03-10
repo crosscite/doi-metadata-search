@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/dois?include=client&page%5Bnumber%5D=1&page%5Bsize%5D=25&query=dufek%20AND%20intrusion
+    uri: https://api.test.datacite.org/dois?fields%5Bdois%5D=doi,creators,titles,descriptions,publisher,publicationYear,types,rightsList&include=client&page%5Bnumber%5D=1&page%5Bsize%5D=25&query=dufek%20AND%20intrusion&sort=relevance
     body:
       encoding: US-ASCII
       string: ''
@@ -11,13 +11,15 @@ http_interactions:
       - Mozilla/5.0 (compatible; Maremma/4.5; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Content-Type:
+      - application/json;charset=UTF-8
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Tue, 10 Mar 2020 14:52:02 GMT
+      - Tue, 10 Mar 2020 19:28:26 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -31,36 +33,27 @@ http_interactions:
       Vary:
       - Accept-Encoding, Origin
       X-Request-Id:
-      - 9290b168-0256-44f7-a13c-7ef77b445751
+      - 747231aa-6722-4849-b671-506cbb98f60c
       Etag:
-      - W/"27b8b39598dd5942e954dd5f1767439a"
+      - W/"cb3e202d0d05ca87e420b7741de97acd"
       X-Runtime:
-      - '0.376926'
+      - '0.123970'
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
       - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"id":"10.91819/71718","type":"dois","attributes":{"doi":"10.91819/71718","identifiers":[{"identifier":"https://handle.test.datacite.org/10.1594/ieda/100036","identifierType":"DOI"},{"identifier":"http://www.earthchem.org/library/browse/view?id=242","identifierType":"URL"}],"creators":[{"name":"Grimes,
+      string: '{"data":[{"id":"10.91819/71718","type":"dois","attributes":{"doi":"10.91819/71718","creators":[{"name":"Grimes,
         Craig","nameType":"Personal","givenName":"Craig","familyName":"Grimes","affiliation":[],"nameIdentifiers":[{"nameIdentifier":"8982108400","nameIdentifierScheme":"SCOPUS"}]},{"name":"Cheadle,
         Michael ","nameType":"Personal","givenName":"Michael ","familyName":"Cheadle","affiliation":[],"nameIdentifiers":[{"nameIdentifier":"7003914970","nameIdentifierScheme":"SCOPUS"}]}],"titles":[{"title":"Major
         element analyses of plagioclase and pyroxene from gabbros of the layered mafic
-        Dufek Intrusion"}],"publisher":"EarthChem","container":{},"publicationYear":2011,"subjects":[{"subject":"Regional
-        (Continents, Oceans)","subjectScheme":"coverage scope"},{"subject":"Antarctica","subjectScheme":"IEDA
-        Feature of Interest"},{"subject":"Chemistry:Rock","subjectScheme":"IEDA Data
-        Type"},{"subject":"Mineralogy","subjectScheme":"IEDA Data Type"},{"subject":"Sample/Collection
-        Description","subjectScheme":"IEDA Data Type"},{"subject":"Geochemistry","subjectScheme":"IEDA
-        Topic"},{"subject":"Marine Geoscience","subjectScheme":"IEDA Topic"},{"subject":"Solid
-        Earth","subjectScheme":"IEDA Topic"},{"subject":"Dufek Massif","subjectScheme":"place"},{"subject":"gabbro","subjectScheme":"material"},{"subject":"plagioclase","subjectScheme":"material"},{"subject":"pyroxene","subjectScheme":"material"},{"subject":"Antarctica","subjectScheme":"place"},{"subject":"Forrestal
-        Range","subjectScheme":"place"},{"subject":"Pensacola mountains","subjectScheme":"place"}],"contributors":[],"dates":[{"date":"2011-12-29","dateType":"Available"},{"date":"2011-12-28","dateType":"Created"},{"date":"2011","dateType":"Issued"}],"language":"en","types":{"ris":"DATA","bibtex":"misc","citeproc":"dataset","schemaOrg":"Dataset","resourceType":"Dataset","resourceTypeGeneral":"Dataset"},"relatedIdentifiers":[{"relationType":"References","relatedIdentifier":"GEE00002F","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE000043","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE00004H","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE00005Z","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE00006F","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE00006K","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE00006Y","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE00007B","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE00007E","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE00007F","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE00007I","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE00007O","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE000082","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE00009J","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000AN","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000B5","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000BZ","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000CD","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000CF","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000CH","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000CI","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000CM","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000CP","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000CU","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000D2","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000DL","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000EN","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000EY","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000F0","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000F8","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000FG","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000FM","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000G0","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000GK","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000H0","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000HU","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000I4","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000I6","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000IB","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000IR","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000JE","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000K0","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000KH","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000KX","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE00005M","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE00007D","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE00008K","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000BN","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000BP","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000CL","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000E4","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000FA","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000HC","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000J5","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000L4","relatedIdentifierType":"IGSN"}],"sizes":[],"formats":["application/vnd.ms-excel"],"version":null,"rightsList":[{"rights":"Creative
+        Dufek Intrusion"}],"descriptions":[{"description":"EMP analyses of plagioclase
+        and pyroxene from gabbros sampled from the layered mafic Dufek Intrusion.
+        The samples were collected in the austral summer 2006/2007 from the Dufek
+        Massif, Forrestal Range, Pensacola mountains, Antarctica.","descriptionType":"Abstract"}],"publisher":"EarthChem","publicationYear":2011,"types":{"ris":"DATA","bibtex":"misc","citeproc":"dataset","schemaOrg":"Dataset","resourceType":"Dataset","resourceTypeGeneral":"Dataset"},"rightsList":[{"rights":"Creative
         Commons Attribution-NonCommercial-Share Alike 3.0 United States [CC BY-NC-SA
-        3.0]","rightsUri":"https://creativecommons.org/licenses/by-nc-sa/3.0/us"}],"descriptions":[{"description":"EMP
-        analyses of plagioclase and pyroxene from gabbros sampled from the layered
-        mafic Dufek Intrusion. The samples were collected in the austral summer 2006/2007
-        from the Dufek Massif, Forrestal Range, Pensacola mountains, Antarctica.","descriptionType":"Abstract"}],"geoLocations":[{"geoLocationPlace":"Antarctica,
-        Pensacola mountains, Forrestal Range"},{"geoLocationBox":{"eastBoundLongitude":"-52.95623","northBoundLatitude":"-82.59935","southBoundLatitude":"-82.63343","westBoundLongitude":"-53.26808"}},{"geoLocationPoint":{"pointLatitude":"-82.63343","pointLongitude":"-53.26808"}},{"geoLocationPoint":{"pointLatitude":"-82.63332","pointLongitude":"-53.26058"}},{"geoLocationPoint":{"pointLatitude":"-82.63274","pointLongitude":"-53.2514"}},{"geoLocationPoint":{"pointLatitude":"-82.63248","pointLongitude":"-53.24556"}},{"geoLocationPoint":{"pointLatitude":"-82.62007","pointLongitude":"-52.96522"}},{"geoLocationPoint":{"pointLatitude":"-82.61978","pointLongitude":"-52.9688"}},{"geoLocationPoint":{"pointLatitude":"-82.61949","pointLongitude":"-52.96329"}},{"geoLocationPoint":{"pointLatitude":"-82.6192","pointLongitude":"-52.96476"}},{"geoLocationPoint":{"pointLatitude":"-82.61919","pointLongitude":"-52.96497"}},{"geoLocationPoint":{"pointLatitude":"-82.61882","pointLongitude":"-52.96234"}},{"geoLocationPoint":{"pointLatitude":"-82.61855","pointLongitude":"-52.96028"}},{"geoLocationPoint":{"pointLatitude":"-82.618","pointLongitude":"-52.96023"}},{"geoLocationPoint":{"pointLatitude":"-82.61791","pointLongitude":"-52.95935"}},{"geoLocationPoint":{"pointLatitude":"-82.61758","pointLongitude":"-52.95623"}},{"geoLocationPoint":{"pointLatitude":"-82.61728","pointLongitude":"-52.95669"}},{"geoLocationPoint":{"pointLatitude":"-82.61715","pointLongitude":"-52.95764"}},{"geoLocationPoint":{"pointLatitude":"-82.6162","pointLongitude":"-52.98582"}},{"geoLocationPoint":{"pointLatitude":"-82.61464","pointLongitude":"-52.99432"}},{"geoLocationPoint":{"pointLatitude":"-82.60044","pointLongitude":"-53.00653"}},{"geoLocationPoint":{"pointLatitude":"-82.59963","pointLongitude":"-53.00099"}},{"geoLocationPoint":{"pointLatitude":"-82.59935","pointLongitude":"-52.99865"}}],"fundingReferences":[{"awardUri":"http://www.nsf.gov/awardsearch/showAward.do?AwardNumber=0752558","funderName":"National
-        Science Foundation","awardNumber":"0752558"}],"url":"http://doi.iedadata.org/100036","contentUrl":null,"metadataVersion":9,"schemaVersion":null,"source":"mds","isActive":true,"state":"findable","reason":null,"viewCount":0,"downloadCount":0,"referenceCount":0,"citationCount":4,"created":"2012-01-13T04:16:58.000Z","registered":"2012-01-13T04:16:58.000Z","published":"2011","updated":"2020-03-10T09:02:55.000Z"},"relationships":{"client":{"data":{"id":"tib.ldeo","type":"clients"}}}}],"included":[{"id":"tib.ldeo","type":"clients","attributes":{"name":"LDEO
+        3.0]","rightsUri":"https://creativecommons.org/licenses/by-nc-sa/3.0/us"}]},"relationships":{}}],"included":[{"id":"tib.ldeo","type":"clients","attributes":{"name":"LDEO
         - Lamont-Doherty Earth Observatory, Columbia University","symbol":"TIB.LDEO","year":2011,"contactEmail":"arko@ldeo.columbia.edu","alternateName":null,"description":null,"language":[],"clientType":"repository","domains":"ieda-services.org,iedadata.org,oceandrilling.org","re3data":null,"opendoar":null,"issn":null,"url":null,"created":"2011-03-30T08:02:42.000Z","updated":"2018-08-26T01:30:25.000Z","isActive":true,"hasPassword":true},"relationships":{"provider":{"data":{"id":"tib","type":"providers"}},"prefixes":{"data":[{"id":"10.1594","type":"prefixes"}]}}}],"meta":{"total":1,"totalPages":1,"page":1,"states":[{"id":"findable","title":"Findable","count":1}],"resourceTypes":[{"id":"dataset","title":"Dataset","count":1}],"created":[{"id":"2012","title":"2012","count":1}],"published":[{"id":"2011","title":"2011","count":1}],"registered":[{"id":"2012","title":"2012","count":1}],"providers":[{"id":"tib","title":"German
         National Library of Science and Technology","count":1}],"clients":[{"id":"tib.ldeo","title":"LDEO
         - Lamont-Doherty Earth Observatory, Columbia University","count":1}],"affiliations":[],"prefixes":[{"id":"10.91819","title":"10.91819","count":1}],"certificates":[],"schemaVersions":[],"sources":[{"id":"mds","title":"Mds","count":1}],"linkChecksStatus":[{"id":"200","title":"200","count":1}],"linksChecked":0,"linksWithSchemaOrg":[{"id":"1","title":"1","count":1}],"linkChecksSchemaOrgId":1,"linkChecksDcIdentifier":0,"linkChecksCitationDoi":0,"subjects":[{"id":"Antarctica","title":"Antarctica","count":1},{"id":"Chemistry:Rock","title":"Chemistry:Rock","count":1},{"id":"Dufek
@@ -70,7 +63,7 @@ http_interactions:
         mountains","title":"Pensacola Mountains","count":1},{"id":"Regional (Continents,
         Oceans)","title":"Regional (Continents, Oceans)","count":1},{"id":"Sample/Collection
         Description","title":"Sample/Collection Description","count":1},{"id":"Solid
-        Earth","title":"Solid Earth","count":1},{"id":"gabbro","title":"Gabbro","count":1},{"id":"plagioclase","title":"Plagioclase","count":1},{"id":"pyroxene","title":"Pyroxene","count":1}],"citations":[{"id":"2011","title":"2011","count":4}],"views":[],"downloads":[]},"links":{"self":"https://api.test.datacite.org/dois?include=client&page%5Bnumber%5D=1&page%5Bsize%5D=25&query=dufek+AND+intrusion"}}'
+        Earth","title":"Solid Earth","count":1},{"id":"gabbro","title":"Gabbro","count":1},{"id":"plagioclase","title":"Plagioclase","count":1},{"id":"pyroxene","title":"Pyroxene","count":1}],"citations":[{"id":"2011","title":"2011","count":4}],"views":[],"downloads":[]},"links":{"self":"https://api.test.datacite.org/dois?fields%5Bdois%5D=doi%2Ccreators%2Ctitles%2Cdescriptions%2Cpublisher%2CpublicationYear%2Ctypes%2CrightsList&include=client&page%5Bnumber%5D=1&page%5Bsize%5D=25&query=dufek+AND+intrusion&sort=relevance"}}'
     http_version: 
-  recorded_at: Tue, 10 Mar 2020 14:52:02 GMT
+  recorded_at: Tue, 10 Mar 2020 19:28:26 GMT
 recorded_with: VCR 2.9.3

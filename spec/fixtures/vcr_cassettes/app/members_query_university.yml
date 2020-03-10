@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 10 Mar 2020 14:49:35 GMT
+      - Tue, 10 Mar 2020 19:28:47 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -31,11 +31,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Origin
       X-Request-Id:
-      - fd2dcf7c-5591-4961-a0ae-a734ef4c7749
+      - 0a6c478f-7e0f-48e2-a3a5-a854ffa5a7ff
       Etag:
       - W/"7fc0879187408ef0c127244276413e26"
       X-Runtime:
-      - '0.093073'
+      - '0.086799'
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
@@ -82,5 +82,5 @@ http_interactions:
         Sciences","count":1}],"nonProfitStatuses":[{"id":"non-profit","title":"Non
         Profit","count":104}]},"links":{"self":"https://api.test.datacite.org/providers?query=university","next":"https://api.test.datacite.org/providers?page%5Bnumber%5D=2&page%5Bsize%5D=25&query=university&sort%5Bname.raw%5D%5Border%5D=asc"}}'
     http_version: 
-  recorded_at: Tue, 10 Mar 2020 14:49:35 GMT
+  recorded_at: Tue, 10 Mar 2020 19:28:47 GMT
 recorded_with: VCR 2.9.3

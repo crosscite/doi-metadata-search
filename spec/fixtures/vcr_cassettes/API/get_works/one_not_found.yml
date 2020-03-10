@@ -11,13 +11,15 @@ http_interactions:
       - Mozilla/5.0 (compatible; Maremma/4.5; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Content-Type:
+      - application/json;charset=UTF-8
   response:
     status:
       code: 404
       message: Not Found
     headers:
       Date:
-      - Tue, 10 Mar 2020 14:51:25 GMT
+      - Tue, 10 Mar 2020 19:28:00 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -29,9 +31,9 @@ http_interactions:
       Vary:
       - Accept-Encoding, Origin
       X-Request-Id:
-      - b1ceb4c7-f554-4591-8923-6b272ff8a39b
+      - 93faa3d5-c184-4ad8-84b1-8a0bf2eb1c20
       X-Runtime:
-      - '0.012814'
+      - '0.011253'
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
@@ -41,5 +43,5 @@ http_interactions:
       string: '{"errors":[{"status":"404","title":"The resource you are looking for
         doesn''t exist."}]}'
     http_version: 
-  recorded_at: Tue, 10 Mar 2020 14:51:25 GMT
+  recorded_at: Tue, 10 Mar 2020 19:28:00 GMT
 recorded_with: VCR 2.9.3

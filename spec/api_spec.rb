@@ -8,9 +8,9 @@ describe "API", type: :model, vcr: true do
   context "get_works" do
     it "all" do
       response = subject.get_works
-      expect(response[:meta]["resourceTypes"].first).to eq("count"=>679314, "id"=>"text", "title"=>"Text")
+      expect(response[:meta]["resourceTypes"].first).to eq("count"=>679317, "id"=>"text", "title"=>"Text")
       work = response[:data].first
-      expect(work["id"]).to eq("10.0143/ipk/gbis/test/1")
+      expect(work["id"]).to eq("10.1007/978-1-4757-9930-9_8")
     end
 
     it "one" do
@@ -32,14 +32,14 @@ describe "API", type: :model, vcr: true do
       response = subject.get_works("work-id" => "10.5438/0004")
       #expect(response[:meta]["resource-types"].first).to eq("id"=>"text", "title"=>"Text", "count"=>3)
       work = response[:data].first
-      expect(work["id"]).to eq("10.0143/ipk/gbis/test/1")
+      expect(work["id"]).to eq("10.1007/978-1-4757-9930-9_8")
     end
 
     it "query" do
       response = subject.get_works(query: "california")
       expect(response[:meta]["resourceTypes"].first).to eq("count"=>2189, "id"=>"text", "title"=>"Text")
       work = response[:data].first
-      expect(work["id"]).to eq("10.21977/zmhc-mz86")
+      expect(work["id"]).to eq("10.23721/109/17765")
     end
   end
 

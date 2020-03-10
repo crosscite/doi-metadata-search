@@ -46,7 +46,7 @@ describe "Volpino", type: :model, vcr: true do
       expect(works.length).to eq(25)
       expect(works_with_claims.length).to eq(25)
       work = works_with_claims[3]
-      expect(work["id"]).to eq("10.0309/rwstg1k34w")
+      expect(work["id"]).to eq("10.14454/j6gr-cf48")
       expect(work["attributes"]["claim-status"]).to eq("none")
     end
   
