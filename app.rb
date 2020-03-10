@@ -215,7 +215,7 @@ get '/people/:id' do
     link = "https://orcid.org/#{params[:id]}"
     headers['Link'] = "<#{link}> ; rel=\"identifier\""
 
-    @works = get_works(query: params[:query], "person-id" => params[:id], 'page[number]' => @page, 'data-center-id' => params['data-center-id'], 'resource-type-id' => params['resource-type-id'], 'relation-type-id' => params['relation-type-id'], 'year' => params['year'], 'registered' => params['registered'], 'affiliation-id' => params['affiliation-id'], sort: params[:sort])
+    @works = get_works(query: params[:query], "user-id" => params[:id], 'page[number]' => @page, 'data-center-id' => params['data-center-id'], 'resource-type-id' => params['resource-type-id'], 'relation-type-id' => params['relation-type-id'], 'year' => params['year'], 'registered' => params['registered'], 'affiliation-id' => params['affiliation-id'], sort: params[:sort])
 
     # check for existing claims if user is logged in and has personal account
     @works[:data] = get_claimed_items(current_user, @works.fetch(:data, [])) if current_user && is_person?

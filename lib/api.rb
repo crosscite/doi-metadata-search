@@ -24,6 +24,7 @@ module Sinatra
                    'client-id' => params.fetch('data-center-id', nil),
                    'provider-id' => params.fetch('member-id', nil),
                    'affiliation-id' => params.fetch('affiliation-id', nil),
+                   'user-id' => params.fetch('user-id', nil),
                    'has-views' => params.fetch('has-views', nil),
                    'has-downloads' => params.fetch('has-downloads', nil),
                    'has-citations' => params.fetch('has-citations', nil) }.compact
