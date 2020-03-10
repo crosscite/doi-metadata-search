@@ -16,7 +16,6 @@ require 'tilt/haml'
 require 'rack/handler/webrick'
 require "crawler_detect"
 
-
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
 
 def file_fixture(name)

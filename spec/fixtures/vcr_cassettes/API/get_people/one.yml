@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.2.6; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.5; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 06 Oct 2019 16:37:23 GMT
+      - Tue, 10 Mar 2020 14:51:28 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,25 +37,25 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 2869368c-08a5-4bb6-b2d4-35b53a496235
+      - f7b12bf5-d20b-4ed3-a7d5-1d51e7a18a43
       X-Download-Options:
       - noopen
       Etag:
-      - W/"7921428fda65515e920d89109c19e275"
+      - W/"ad15b1f01a22befaa3cf1c54f600a674"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.005326'
+      - '0.062705'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
-      - nginx/1.17.3 + Phusion Passenger 6.0.4
+      - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
       string: '{"data":{"id":"0000-0002-2220-6072","type":"users","attributes":{"givenNames":"Michael","familyName":"''t
-        Sas-Rolfes","name":"Michael ''t Sas-Rolfes","orcid":"https://orcid.org/0000-0002-2220-6072","github":null,"roleId":"user","isActive":false,"created":"2017-12-15T16:50:05.000Z","updated":"2017-12-15T16:50:05.000Z"},"relationships":{}}}'
+        Sas-Rolfes","name":"Michael ''t Sas-Rolfes","orcid":"https://orcid.org/0000-0002-2220-6072","github":null,"roleId":"user","isActive":false,"created":"2017-12-15T16:50:05.000Z","updated":"2017-12-15T16:50:05.000Z"},"relationships":{}},"meta":{"dois":[],"published":[],"resourceTypes":[],"views":[],"downloads":[],"citations":[]}}'
     http_version: 
-  recorded_at: Sun, 06 Oct 2019 16:37:23 GMT
+  recorded_at: Tue, 10 Mar 2020 14:51:28 GMT
 recorded_with: VCR 2.9.3

@@ -2,7 +2,7 @@
   .panel-body
     %h3.work
       %a{:href => '/members/' + item["id"]}
-        = item.fetch("attributes", {}).fetch("title", nil)
+        = item.fetch("attributes", {}).fetch("name", nil)
     .country
       = item.fetch("attributes", {}).fetch("country", nil)
 
@@ -10,5 +10,5 @@
     %i.fa.fa-info-circle
     = item["id"].upcase
     %span.pull-right
-      = item.fetch("attributes", {}).fetch("member-type", nil).to_s.humanize
+      = item.fetch("attributes", {}).fetch("memberType", nil).to_s.humanize
 

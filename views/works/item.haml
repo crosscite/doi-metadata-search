@@ -3,7 +3,7 @@
 - includes = @works.present? ? @works[:included] : @work[:included]
 - work_types = Array.wrap(includes).select { |item| item["type"] == "work-types" }
 - new_params = params[:model] == "works" && params["id"] == attributes.fetch("doi", nil) ? params.merge(external_link: true) : params
-- title = attributes["title"].to_s.gsub(/"/, '\"')
+- title = Array.wrap(attributes["titles"]).first.fetch("title", nil).gsub(/"/, '\"')
 - if @work.present? && attributes["views-over-time"].present?
   - gon.chart_views = attributes["views-over-time"].map { |d| { "id" => d["yearMonth"], "title" => Date.strptime(d["yearMonth"], '%Y-%m').strftime('%B %Y'), "sum" => d["total"] } }
   - gon.yop = attributes.fetch("published", "").to_i
@@ -21,14 +21,14 @@
   .panel-body
     %h3.work
       %a{:id => "title-link", :href => works_action(item, new_params), :title => "Go to landing page"}
-        = attributes["title"]
-    - if attributes["author"].present?
-      = author_format(attributes["author"])
+        = title
+    - if attributes["creators"].present?
+      = author_format(attributes["creators"])
     .metadata
       = metadata_format(attributes, work_types: work_types)
     - if attributes["description"].present?
       .description
-        = description_format(attributes["description"])
+        = description_format(attributes["descriptions"])
     - if attributes["license"].present?
       .license
         %a{:href => attributes["license"]}
@@ -67,7 +67,7 @@
   .panel-footer.item-links
     %a{:id => "doi-link", :href => item["id"], :title => "Go to landing page"}
       %i.fa.fa-external-link
-      = item["id"]
+      = doi_as_url(item["id"])
     - if attributes["doi"].present?
       %a.cite-link.nowrap{href: '#', onclick: "showCiteBox(\"#{attributes["doi"]}\", \"#{title}\"); return false;"}
         %i.fa.fa-quote-left
@@ -79,9 +79,9 @@
 - if @work.present? && (attributes["citation-count"].to_i + attributes["view-count"].to_i + attributes["download-count"].to_i).positive?
   = haml :'works/visualisation', locals: { attributes: attributes, views: attributes["views-over-time"], downloads: attributes["downloads-over-time"], citations: attributes["citations-over-time"] }
 - if @work.present?
-  - data_center = @work[:included].find { |i| i.fetch("type", nil) == "data-centers" }
-  - client_name = data_center.fetch("attributes", {}).fetch("title", nil)
-  = haml :'works/citations', locals: { attributes: attributes, client_name: client_name, list: list }
+  - data_center = @work[:included].find { |i| i.fetch("type", nil) == "clients" }
+  - client_name = data_center.fetch("attributes", {}).fetch("name", nil)
+  -# = haml :'works/citations', locals: { attributes: attributes, client_name: client_name }
 - if @work.present? && (attributes["view-count"].to_i + attributes["download-count"].to_i).zero?
   .panel-body.alert.alert-simple-info
     = "This data repository is not currently reporting usage information. For information on how your repository can submit usage information, please see"

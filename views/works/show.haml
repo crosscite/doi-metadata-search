@@ -1,14 +1,13 @@
 = haml :"#{ENV['RA']}/header", locals: { page: {} }
 
-- data_center = @work[:included].find { |i| i.fetch("type", nil) == "data-centers" }
-- member = @work[:included].find { |i| i.fetch("type", nil) == "members" }
+- data_center = @work[:included].find { |i| i.fetch("type", nil) == "clients" }
 
 .container-fluid
   .content
     .row
       .col-md-9#content-work
         - if @work[:data].present?
-          = haml :'works/item', locals: { item: @work[:data], metrics: @work[:metrics] || [] }
+          = haml :'works/item', locals: { item: @work[:data] }
         - elsif @work[:errors].present?
           %div.alert.alert-warning
             = @work[:errors].first.fetch("title", "")
@@ -17,7 +16,7 @@
         .col-md-3
           .panel.facets
             .panel-body.metadata
-              - if member.fetch('id') == "crossref"
+              - if ["crossref.citations", "op.citations", "medra.citations", "jalc.citations", "kisti.citations"].include?(data_center.fetch('id', nil)) 
                 %h5
                   DOI Registration Agency
                 .registration_agency
@@ -27,13 +26,8 @@
                   Repository
                 .data-center
                   %a{href: "/repositories/#{data_center.fetch('id')}"}
-                    = data_center.fetch("attributes", {}).fetch("title", nil)
-                - if member.present?
-                  %h5
-                    Member
-                  .registration_agency
-                    %a{href: "/members/#{member.fetch('id')}"}
-                      = member.fetch("attributes", {}).fetch("title", nil)
+                    = data_center.fetch("attributes", {}).fetch("name", nil)
+                  
               %h5
                 Download
 

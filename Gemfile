@@ -28,8 +28,6 @@ gem "git", "~> 1.5"
 gem "logstash-logger", "~> 0.26.1"
 gem 'crawler_detect'
 
-
-
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
@@ -45,7 +43,6 @@ group :test do
   gem "vcr", "~> 2.9.3"
   gem "codeclimate-test-reporter", "~> 1.0.0"
   gem "simplecov"
-  gem 'crawler_detect'
 end
 
 group :test, :development do

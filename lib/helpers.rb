@@ -6,46 +6,6 @@ module Sinatra
   module Helpers
     include Sinatra::SessionHelper
 
-    INVERSE_RELATION_TYPES = {
-      "Cites" => "IsCitedBy",
-      "Compiles" => "IsCompiledBy",
-      "Continues" => "IsContinueddBy",
-      "Corrects" => "IsCorrectedBy",
-      "Documents" => "IsDocumentedBy",
-      "HasMetadata" => "IsMetadataFor",
-      "HasPart" => "IsPartOf",
-      "IsCitedBy" => "Cites",
-      "IsCompiledBy" => "Compiles",
-      "IsContinuedBy" => "Continues",
-      "IsCorrectedBy" => "Corrects",
-      "IsDerivedFrom" => "IsSourceOf",
-      "IsDocumenteddBy" => "Documents",
-      "IsIdenticalTo" => "IsIdenticalTo",
-      "IsMetadataFor" => "HasMetadata",
-      "IsNewVersionOf" => "IsPreviousVersionOf",
-      "IsOriginalFormOf" => "IsVariantFormOf",
-      "IsPartOf" => "HasPart",
-      "IsPreviousVersionOf" => "IsNewVersionOf",
-      "IsRecommendedBy" => "Recommends",
-      "IsReferencedBy" => "References",
-      "IsReviewedBy" => "Reviews",
-      "IsSourceOf" => "IsDerivedFrom",
-      "IsSupplementTo" => "IsSupplementedBy",
-      "IsSupplementedBy" => "IsSupplementTo",
-      "IsVariantFormOf" => "IsOriginalFromOf",
-      "Recommends" => "isRecommendedBy",
-      "References" => "isReferencedBy",
-      "Reviews" => "isReviewedBy"
-    }
-
-    INCLUDED_SOURCES = [
-      "datacite-related",
-      "datacite-crossref",
-      "crossref",
-      "datacite-usage",
-      "datacite-funder"
-    ]
-
     def author_format(author)
       authors = Array(author).map do |a|
         name = a.fetch("literal", nil).presence || a.fetch("given", nil).to_s + " " + a.fetch("family", nil).to_s 
@@ -96,12 +56,6 @@ module Sinatra
       source.fetch("attributes", {}).fetch("title", "")
     end
 
-    def relation_type_title(related_identifiers, id)
-      related_identifier = Array(related_identifiers).find { |r| r["related-identifier"] == id } || {}
-      id = related_identifier.fetch("relation-type-id", nil)
-      INVERSE_RELATION_TYPES.fetch(id, "").underscore.humanize
-    end
-
     def work_type_title(work_types, id)
       work_type = Array(work_types).find { |s| s["id"] == id }
       return id unless work_type.present?
@@ -110,7 +64,7 @@ module Sinatra
     end
 
     def metadata_format(attributes, options={})
-      if attributes.fetch("work-type", nil).present?
+      if attributes.fetch("resourceTypeGeneral", nil).present?
         work_types = Array(options[:work_types])
         type = work_type_title(work_types, attributes.fetch("work-type"))
         type = type.underscore.humanize
@@ -126,8 +80,8 @@ module Sinatra
       [type.titlecase, "published", published, container_title].join(" ")
     end
 
-    def description_format(description)
-      sanitize(description.to_s.strip).truncate_words(75)
+    def description_format(descriptions)
+      sanitize(Array.wrap(descriptions).fetch("description", nil).to_s.strip).truncate_words(75)
     end
 
 
@@ -135,46 +89,6 @@ module Sinatra
       WillPaginate::Collection.create(page, rows, [total, 1000].min) do |pager|
         pager.replace items
       end
-    end
-
-    def views_hash(array)
-      return {} unless array.any?
-      
-      {"unique-dataset-investigations-regular" => array.first.fetch("relationTypes",[]).find { |x| x['id'] == "unique-dataset-investigations-regular" }.fetch("sum",0)}
-    end
-
-    def downlaods_hash(array)
-      return {} unless array.any?
-
-      {"unique-dataset-requests-regular" => array.first.fetch("relationTypes",[]).find { |x| x['id'] == "unique-dataset-requests-regular" }.fetch("sum",0)}
-    end
-
-    def reduce_aggs(meta, options = {})
-      meta = ::JSON.parse(meta) if meta.respond_to?("downcase")
-      relation_types = meta.fetch("relationTypes",[])
-      metrics = {}
-      relation_types.each do |type|
-        qty = type["yearMonths"].map do |period| 
-          year = Date.strptime(period.dig("id")+"-01", '%Y-%m-%d').year
-          if %w(unique-dataset-investigations-regular unique-dataset-requests-regular).include?(type.dig("id"))   ## a work can't have usage before publication
-            quantity = (options[:yop]..Date.today.year) === year ? period.dig("sum") : 0  
-          else
-            quantity = period.dig("sum")
-          end
-          quantity
-        end
-        metrics[type.dig("id")] = qty.sum.to_i
-      end
-      metrics
-    end
-
-    def transform_metrics_array relationTypes, options={}
-      return {} if relationTypes.empty?
-      instance = {}
-      relationTypes.each do |type|
-        instance[type.dig("id")] = type.dig("sum").to_i
-      end
-      instance
     end
 
     def license_img(license)
@@ -529,6 +443,14 @@ module Sinatra
         'applicationxspsssav' => 'SPSS SAV',
         'applicationxstata' => 'Stata',
         'applicationxr' => 'R' }
+    end
+
+    def doi_as_url(doi)
+      if ENV["RACK_ENV"] == "production"
+        "https://doi.org/#{doi}"
+      else
+        "https://handle.test.datacite.org/#{doi}"
+      end
     end
 
     def chart_data?(data, type)

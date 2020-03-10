@@ -103,35 +103,6 @@ describe "Helpers", type: :model, vcr: true do
     end
   end
 
-  context "reduce_aggs" do
-    let(:meta) {file_fixture('usage_metrics_meta.json').read}
-    let(:empty_meta) {{}}
-
-    it "reduce for usage" do
-      relation_types = subject.reduce_aggs(meta,{yop: 2015})
-      expect(relation_types).to have_key("total-dataset-requests-regular")
-      expect(relation_types.size).to eq(6)
-      expect(relation_types.dig("total-dataset-investigations-regular")).to be(635)
-      expect(relation_types.dig("unique-dataset-investigations-regular")).to be(371)
-      expect(relation_types.dig("total-dataset-requests-regular")).to be(34)
-      expect(relation_types.dig("unique-dataset-requests-regular")).to be(27)
-      # expect(relation_types.dig("total-dataset-investigations-machine")).to be(1)
-      # expect(relation_types.dig("unique-dataset-investigations-machine")).to be(1)
-    end
-
-    it "reduce when there is no meta" do
-      relation_types = subject.reduce_aggs(empty_meta, { yop: 2015 })
-      expect(relation_types.size).to eq(0)
-    end
-
-    it "reduce with out of bounds data" do
-      relation_types = subject.reduce_aggs(meta, { yop: 2017 })
-      expect(relation_types.size).to eq(6)
-      expect(relation_types.dig("unique-dataset-investigations-regular")).to be(31)
-      expect(relation_types.dig("unique-dataset-requests-regular")).to be(0)
-    end
-  end
-
   context "prefix_format" do
     it "zero prefixes" do
       attributes = { "prefixes" => [] }
@@ -163,31 +134,6 @@ describe "Helpers", type: :model, vcr: true do
       attributes = { "resource-type-id" => "unknown" }
       response = subject.creative_work_type(attributes)
       expect(response).to eq("CreativeWork")
-    end
-  end
-
-  context "helpers" do
-    it "relation_type_title" do
-      related_identifiers = [{ "relation-type-id" => "HasPart",
-                               "related-identifier" => "https://doi.org/10.5061/DRYAD.T748P/1" }]
-      id = "https://doi.org/10.5061/DRYAD.T748P/1"
-      response = subject.relation_type_title(related_identifiers, id)
-      expect(response).to eq("Is part of")
-    end
-
-    it "missing" do
-      related_identifiers = [{ "relation-type-id" => "HasPart",
-                               "related-identifier" => "https://doi.org/10.5061/DRYAD.T748P/2" }]
-      id = "https://doi.org/10.5061/DRYAD.T748P/1"
-      response = subject.relation_type_title(related_identifiers, id)
-      expect(response).to eq("")
-    end
-
-    it "is identical" do
-      related_identifiers = [{"relation-type-id"=>"IsIdenticalTo", "related-identifier"=>"https://doi.org/10.6084/M9.FIGSHARE.4621336"}]
-      id = "https://doi.org/10.6084/M9.FIGSHARE.4621336"
-      response = subject.relation_type_title(related_identifiers, id)
-      expect(response).to eq("Is identical to")
     end
   end
 end

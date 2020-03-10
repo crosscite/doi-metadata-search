@@ -18,7 +18,7 @@ describe 'app', vcr: true do
     expect(last_response.headers["Content-Length"].to_i).to be > 1000
 
     doc = Nokogiri::HTML(last_response.body)
-    expect(doc.at_css("h3.results").text.strip).to eq("246,576 Works")
+    expect(doc.at_css("h3.results").text.strip).to eq("896,211 Works")
   end
 
   it '/works?query=climate' do
@@ -29,7 +29,7 @@ describe 'app', vcr: true do
     expect(last_response.headers["Content-Length"].to_i).to be > 1000
 
     doc = Nokogiri::HTML(last_response.body)
-    expect(doc.at_css("h3.results").text.strip).to eq("3,538 Works")
+    expect(doc.at_css("h3.results").text.strip).to eq("11,714 Works")
   end
 
   it '/works/10.1594/ieda/100037' do
@@ -61,7 +61,7 @@ describe 'app', vcr: true do
     expect(last_response.headers["Content-Length"].to_i).to be > 1000
 
     doc = Nokogiri::HTML(last_response.body)
-    expect(doc.at_css("h3.results").text.strip).to eq("62,429 People")
+    expect(doc.at_css("h3.results").text.strip).to eq("66,357 People")
   end
 
   it '/people?query=fenner' do
@@ -95,7 +95,7 @@ describe 'app', vcr: true do
     expect(last_response.headers["Content-Length"].to_i).to be > 1000
 
     doc = Nokogiri::HTML(last_response.body)
-    expect(doc.at_css("h3.results").text.strip).to eq("1,868 Repositories")
+    expect(doc.at_css("h3.results").text.strip).to eq("2,051 Repositories")
   end
 
   it '/repositories?query=dryad' do
@@ -128,7 +128,7 @@ describe 'app', vcr: true do
     expect(last_response.headers["Content-Length"].to_i).to be > 1000
 
     doc = Nokogiri::HTML(last_response.body)
-    expect(doc.at_css("h3.results").text.strip).to eq("237 Members")
+    expect(doc.at_css("h3.results").text.strip).to eq("388 Members")
   end
 
   it '/members?query=university' do
@@ -139,7 +139,7 @@ describe 'app', vcr: true do
     expect(last_response.headers["Content-Length"].to_i).to be > 1000
 
     doc = Nokogiri::HTML(last_response.body)
-    expect(doc.at_css("h3.results").text.strip).to eq("49 Members")
+    expect(doc.at_css("h3.results").text.strip).to eq("104 Members")
   end
 
   it '/members/dryad' do
