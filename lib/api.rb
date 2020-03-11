@@ -8,7 +8,7 @@ module Sinatra
 
     def get_works(params = {})
       if params.fetch(:id, nil).present?
-        url = "#{ENV['API_URL']}/dois/#{params[:id]}?include=client,citation-events,reference-events"
+        url = "#{ENV['API_URL']}/dois/#{params[:id]}?include=client"
       else
         params = { id: params.fetch(:id, nil),
                    'page[number]' => params.fetch('page[number]', 1),

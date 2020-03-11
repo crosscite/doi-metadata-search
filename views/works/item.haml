@@ -13,9 +13,9 @@
 - if @work.present? && attributes["citations-over-time"].present?
   - gon.chart_citations = attributes["citations-over-time"].map { |d| { "id" => d["year"], "title" => d["year"], "sum" => d["total"] } }
   - gon.yop = attributes.fetch("published", nil).to_i
-- citation_events = includes.select { |e| e.dig("relationships", "doiForTarget", "data", "id") == attributes["doi"] }
-- reference_events = includes.select { |e| e.dig("relationships", "doiForSource", "data", "id") == attributes["doi"] }
-- list = JSON.generate({:citations => citation_events, :references => reference_events }, quirks_mode: true)
+-# - citation_events = includes.select { |e| e.dig("relationships", "doiForTarget", "data", "id") == attributes["doi"] }
+-# - reference_events = includes.select { |e| e.dig("relationships", "doiForSource", "data", "id") == attributes["doi"] }
+-# - list = JSON.generate({:citations => citation_events, :references => reference_events }, quirks_mode: true)
 
 .panel.panel-default
   .panel-body
