@@ -65,7 +65,7 @@
       = relation_type_title(@work.fetch(:data, {}).fetch("attributes", {}).fetch("related-identifiers"), item["id"]) + " " + @work.fetch(:data, {}).fetch("id", nil)
 
   .panel-footer.item-links
-    %a{:id => "doi-link", :href => item["id"], :title => "Go to landing page"}
+    %a{:id => "doi-link", :href => doi_as_url(item["id"]), :title => "Go to landing page"}
       %i.fa.fa-external-link
       = doi_as_url(item["id"])
     - if attributes["doi"].present?
