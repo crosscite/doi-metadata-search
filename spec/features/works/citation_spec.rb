@@ -18,14 +18,13 @@ describe 'citation', type: :feature, js: true, vcr: true do
   it 'show summary information' do
     visit '/works/10.91819/71718'
 
-    expect(page).not_to have_css("#citations-tab")
+    expect(page).to have_css("#citations-tab")
     # expect(page).to have_css("#summary-citations", text: "4 citations")
     # expect(page).to have_css("#summary-views", text: "No usage information was reported.")
   end
 
   it 'show citation chart' do
-    visit '/works/10.91819/71718'
-
+    visit '/works/10.1007/978-1-4757-9930-9_8'
     expect(page).not_to have_css("#citations-tab")
     # expect(page).to have_css("#citations-tab", text: "4 Citations")
     # expect(page).to have_css("small", text: "4 citations reported since publication in 2011.")
