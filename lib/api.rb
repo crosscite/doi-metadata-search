@@ -31,7 +31,7 @@ module Sinatra
 
         url = "#{ENV['API_URL']}/dois?" + URI.encode_www_form(params)
       end
-      response = Maremma.get(url, headers: { "Content-Type" => "application/json;charset=UTF-8" }, timeout: TIMEOUT)
+      response = Maremma.get(url, headers: { "Content-Type" => "application/json;charset=UTF-8", "Accept-Encoding"=> "gzip" }, timeout: TIMEOUT)
 
       { data: response.body.fetch("data", []),
         included: response.body.fetch("included", []),
