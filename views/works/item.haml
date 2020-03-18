@@ -1,17 +1,18 @@
 - attributes = item.fetch("attributes", {})
+- puts attributes
 - type = attributes.fetch("resource-type-id", nil)
 - includes = @works.present? ? @works[:included] : @work[:included]
 - work_types = Array.wrap(includes).select { |item| item["type"] == "work-types" }
 - new_params = params[:model] == "works" && params["id"] == attributes.fetch("doi", nil) ? params.merge(external_link: true) : params
 - title = Array.wrap(attributes["titles"]).first.to_h.fetch("title", nil).to_s.gsub(/"/, '\"')
-- if @work.present? && attributes["views-over-time"].present?
-  - gon.chart_views = attributes["views-over-time"].map { |d| { "id" => d["yearMonth"], "title" => Date.strptime(d["yearMonth"], '%Y-%m').strftime('%B %Y'), "sum" => d["total"] } }
+- if @work.present? && attributes["viewsOverTime"].present?
+  - gon.chart_views = attributes["viewsOverTime"].map { |d| { "id" => d["yearMonth"], "title" => Date.strptime(d["yearMonth"], '%Y-%m').strftime('%B %Y'), "sum" => d["total"] } }
   - gon.yop = attributes.fetch("published", "").to_i
-- if @work.present? && attributes["downloads-over-time"].present?
-  - gon.chart_downloads = attributes["downloads-over-time"].map { |d| { "id" => d["yearMonth"], "title" => Date.strptime(d["yearMonth"], '%Y-%m').strftime('%B %Y'), "sum" => d["total"] } }
+- if @work.present? && attributes["downloadsOverTime"].present?
+  - gon.chart_downloads = attributes["downloadsOverTime"].map { |d| { "id" => d["yearMonth"], "title" => Date.strptime(d["yearMonth"], '%Y-%m').strftime('%B %Y'), "sum" => d["total"] } }
   - gon.yop = attributes.fetch("published", "").to_i
-- if @work.present? && attributes["citations-over-time"].present?
-  - gon.chart_citations = attributes["citations-over-time"].map { |d| { "id" => d["year"], "title" => d["year"], "sum" => d["total"] } }
+- if @work.present? && attributes["citationsOverTime"].present?
+  - gon.chart_citations = attributes["citationsOverTime"].map { |d| { "id" => d["year"], "title" => d["year"], "sum" => d["total"] } }
   - gon.yop = attributes.fetch("published", nil).to_i
 -# - citation_events = includes.select { |e| e.dig("relationships", "doiForTarget", "data", "id") == attributes["doi"] }
 -# - reference_events = includes.select { |e| e.dig("relationships", "doiForSource", "data", "id") == attributes["doi"] }
@@ -35,26 +36,26 @@
           = license_img(attributes["license"])
 
   .panel-footer
-    - if (attributes["citation-count"].to_i + attributes["view-count"].to_i + attributes["download-count"].to_i).zero?
+    - if (attributes["citationCount"].to_i + attributes["viewCount"].to_i + attributes["downloadCount"].to_i).zero?
       %span.metrics{id: "summary-citations"}
         .fa.fa-info-circle 
         No citations were reported. No usage information was reported.
     - else
-      - if attributes["citation-count"].to_i.positive?
+      - if attributes["citationCount"].to_i.positive?
         %span.metrics{id: "summary-citations"}
           .fa.fa-quote-left
-          = pluralize(attributes["citation-count"].to_i, "citation")
+          = pluralize(attributes["citationCount"].to_i, "citation")
       - else
         %span.metrics
           .fa.fa-info-circle 
           No citations were reported. 
-      - if (attributes["view-count"].to_i + attributes["download-count"].to_i).positive?
+      - if (attributes["viewCount"].to_i + attributes["download-count"].to_i).positive?
         %span.metrics{id: "summary-views"}
           .fa.fa-eye
-          = pluralize(attributes["view-count"].to_i, "view")
+          = pluralize(attributes["viewCount"].to_i, "view")
         %span.metrics{id: "summary-downloads"}
           .fa.fa-download
-          = pluralize(attributes["download-count"].to_i, "download")
+          = pluralize(attributes["downloadCount"].to_i, "download")
       - else
         %span.metrics{id: "summary-views"}
           .fa.fa-info-circle 
@@ -76,13 +77,13 @@
     - if user_signed_in? && is_person?
       = haml :'works/claim', locals: { item: item }
 
-- if @work.present? && (attributes["citation-count"].to_i + attributes["view-count"].to_i + attributes["download-count"].to_i).positive?
-  = haml :'works/visualisation', locals: { attributes: attributes, views: attributes["views-over-time"], downloads: attributes["downloads-over-time"], citations: attributes["citations-over-time"] }
+- if @work.present? && (attributes["citationCount"].to_i + attributes["viewCount"].to_i + attributes["downloadCount"].to_i).positive?
+  = haml :'works/visualisation', locals: { attributes: attributes, views: attributes["viewsOverTime"], downloads: attributes["downloadsOverTime"], citations: attributes["citationsOverTime"] }
 - if @work.present?
   - data_center = @work[:included].find { |i| i.fetch("type", nil) == "clients" }
   - client_name = data_center.fetch("attributes", {}).fetch("name", nil)
   -# = haml :'works/citations', locals: { attributes: attributes, client_name: client_name }
-- if @work.present? && (attributes["view-count"].to_i + attributes["download-count"].to_i).zero?
+- if @work.present? && (attributes["viewCount"].to_i + attributes["downloadCount"].to_i).zero?
   .panel-body.alert.alert-simple-info
     = "This data repository is not currently reporting usage information. For information on how your repository can submit usage information, please see"
     %a{href: 'https://support.datacite.org/docs/views-and-downloads'}
