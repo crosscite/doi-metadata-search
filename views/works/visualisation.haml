@@ -1,38 +1,38 @@
 %ul.nav.nav-tabs.usage{:role => "tablist"}
-  - if attributes["citation-count"].to_i > 0
+  - if attributes["citationCount"].to_i > 0
     %li.nav-item.active
-      %a#citations-tab.nav-link.active{"aria-controls" => "citations", "aria-selected" => "true", "data-toggle" => "tab", :href => "#citations", :role => "tab"} #{pluralize(attributes["citation-count"], "Citation")}
+      %a#citations-tab.nav-link.active{"aria-controls" => "citations", "aria-selected" => "true", "data-toggle" => "tab", :href => "#citations", :role => "tab"} #{pluralize(attributes["citationCount"], "Citation")}
 
-  - if attributes["view-count"].to_i > 0 && attributes["citation-count"].to_i > 0
+  - if attributes["viewCount"].to_i > 0 && attributes["citationCount"].to_i > 0
     %li.nav-item.usage
-      %a#views-tab.nav-link{"aria-controls" => "views", "aria-selected" => "false", "data-toggle" => "tab", :href => "#views", :role => "tab"} #{pluralize(attributes["view-count"], "View")}
-  - elsif attributes["view-count"].to_i > 0
+      %a#views-tab.nav-link{"aria-controls" => "views", "aria-selected" => "false", "data-toggle" => "tab", :href => "#views", :role => "tab"} #{pluralize(attributes["viewCount"], "View")}
+  - elsif attributes["viewCount"].to_i > 0
     %li.nav-item.usage.active
-      %a#views-tab.nav-link.active{"aria-controls" => "views", "aria-selected" => "true", "data-toggle" => "tab", :href => "#views", :role => "tab"} #{pluralize(attributes["view-count"], "View")}
+      %a#views-tab.nav-link.active{"aria-controls" => "views", "aria-selected" => "true", "data-toggle" => "tab", :href => "#views", :role => "tab"} #{pluralize(attributes["viewCount"], "View")}
 
-  - if attributes["download-count"].to_i > 0 && attributes["view-count"].to_i > 0
+  - if attributes["downloadCount"].to_i > 0 && attributes["viewCount"].to_i > 0
     %li.nav-item.usage
-      %a#downloads-tab.nav-link{"aria-controls" => "downloads", "aria-selected" => "false", "data-toggle" => "tab", :href => "#downloads", :role => "tab"} #{pluralize(attributes["download-count"], "Download")}
-  - elsif attributes["download-count"].to_i > 0
+      %a#downloads-tab.nav-link{"aria-controls" => "downloads", "aria-selected" => "false", "data-toggle" => "tab", :href => "#downloads", :role => "tab"} #{pluralize(attributes["downloadCount"], "Download")}
+  - elsif attributes["downloadCount"].to_i > 0
     %li.nav-item.usage.active
-      %a#downloads-tab.nav-link.active{"aria-controls" => "downloads", "aria-selected" => "true", "data-toggle" => "tab", :href => "#downloads", :role => "tab"} #{pluralize(attributes["download-count"], "Download")}
+      %a#downloads-tab.nav-link.active{"aria-controls" => "downloads", "aria-selected" => "true", "data-toggle" => "tab", :href => "#downloads", :role => "tab"} #{pluralize(attributes["downloadCount"], "Download")}
 
 .panel.panel-default
   .panel-body.usage-charts
     %div#myTabContent.tab-content
-      - if attributes["citation-count"].to_i > 0
+      - if attributes["citationCount"].to_i > 0
         .row#citations.tab-pane.active{"aria-labelledby" => "citations-tab", :role => "tabpanel", :style => "position: relative;"} 
           .col-lg-12
             .row
               .p{:style => "padding-left:20px;"}
-                = "<small>#{pluralize(attributes["citation-count"], "citation")} reported since publication in #{attributes.fetch("published", "")}.</small>"
+                = "<small>#{pluralize(attributes["citationCount"], "citation")} reported since publication in #{attributes.fetch("published", "")}.</small>"
               .row#citations-chart{:style => "padding-left:10px;"}
-      - if attributes["view-count"].to_i > 0 && attributes["citation-count"].to_i > 0
+      - if attributes["viewCount"].to_i > 0 && attributes["citationCount"].to_i > 0
         .row#views.tab-pane.fade{"aria-labelledby" => "views-tab", :role => "tabpanel",:style => "position: relative;"} 
           .col-lg-12
             .row
               .p{:style => "padding-left:20px;"}
-                = "<small>#{pluralize(attributes["view-count"], "view") } reported since publication in #{attributes.fetch("published", "")}.</small>"
+                = "<small>#{pluralize(attributes["viewCount"], "view") } reported since publication in #{attributes.fetch("published", "")}.</small>"
             .row#views-chart{:style => "padding-left:10px;"}              
             %br
             .row{:style => "position: relative;"}
@@ -44,12 +44,12 @@
                   = "meaning that Internet robots and repeats within a certain time frame are excluded.</br> "
                   %a{href: 'https://support.datacite.org/docs/usage-stats'}
                     What does this mean?
-      - elsif attributes["view-count"].to_i > 0
+      - elsif attributes["viewCount"].to_i > 0
         .row#views.tab-pane.active{"aria-labelledby" => "views-tab", :role => "tabpanel",:style => "position: relative;"} 
           .col-lg-12
             .row
               .p{:style => "padding-left:20px;"}
-                = "<small>#{pluralize(attributes["view-count"].to_i, "view") } reported since publication in #{attributes.fetch("published", "")}.</small>"
+                = "<small>#{pluralize(attributes["viewCount"].to_i, "view") } reported since publication in #{attributes.fetch("published", "")}.</small>"
             .row#views-chart{:style => "padding-left:10px;"}              
             %br
             .row{:style => "position: relative;"}
@@ -62,12 +62,12 @@
                   %a{href: 'https://support.datacite.org/docs/usage-stats'}
                     What does this mean?
 
-      - if attributes["download-count"].to_i > 0 && attributes["view-count"].to_i > 0
+      - if attributes["downloadCount"].to_i > 0 && attributes["viewCount"].to_i > 0
         .row#downloads.tab-pane.fade{"aria-labelledby" => "downloads-tab", :role => "tabpanel", :style => "position: relative;"} 
           .col-lg-12
             .row
               .p{:style => "padding-left:20px;"}
-                = "<small>#{pluralize(attributes["download-count"], "download") } reported since publication in #{attributes.fetch("published", "")}.</small>"
+                = "<small>#{pluralize(attributes["downloadCount"], "download") } reported since publication in #{attributes.fetch("published", "")}.</small>"
             .row#downloads-chart{:style => "padding-left:10px;"}
             %br
             .row
@@ -79,12 +79,12 @@
                   = "meaning that Internet robots and repeats within a certain time frame are excluded.</br> "
                   %a{href: 'https://support.datacite.org/docs/usage-stats'}
                     What does this mean?
-      - elsif attributes["download-count"].to_i > 0
+      - elsif attributes["downloadCount"].to_i > 0
         .row#downloads.tab-pane.active{"aria-labelledby" => "downloads-tab", :role => "tabpanel", :style => "position: relative;"} 
           .col-lg-12
             .row
               .p{:style => "padding-left:20px;"}
-                = "<small>#{pluralize(attributes["download-count"], "download") } reported since publication in #{attributes.fetch("published", "")}.</small>"
+                = "<small>#{pluralize(attributes["downloadCount"], "download") } reported since publication in #{attributes.fetch("published", "")}.</small>"
             .row#downloads-chart{:style => "padding-left:10px;"}
             %br
             .row
