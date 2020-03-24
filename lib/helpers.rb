@@ -64,20 +64,15 @@ module Sinatra
     end
 
     def metadata_format(attributes, options={})
-      if attributes.fetch("resourceTypeGeneral", nil).present?
-        work_types = Array(options[:work_types])
-        type = work_type_title(work_types, attributes.fetch("work-type"))
-        type = type.underscore.humanize
-      else
-        type = attributes.fetch("resource-type-subtype", nil).presence ||
-               attributes.fetch("resource-type-id", nil).presence || "Work"
-      end
+      type = attributes.dig("types", "resourceType").presence ||
+             attributes.dig("types", "resourceTypeGeneral").presence || 
+             "Work"
 
       published = format_date(attributes)
-      container_title = attributes.fetch("container-title", nil)
-      container_title = " via " + container_title if container_title.present?
+      publisher = attributes.fetch("publisher", nil)
+      publisher = " via " + publisher if publisher.present?
 
-      [type.titlecase, "published", published, container_title].join(" ")
+      [type.titlecase, "published", published, publisher].join(" ")
     end
 
     def description_format(descriptions)
