@@ -26,7 +26,7 @@
       = author_format(attributes["creators"])
     .metadata
       = metadata_format(attributes, work_types: work_types)
-    - if attributes["description"].present?
+    - if attributes["descriptions"].present?
       .description
         = description_format(attributes["descriptions"])
     - if attributes["license"].present?

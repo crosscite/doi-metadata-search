@@ -81,9 +81,23 @@ module Sinatra
     end
 
     def description_format(descriptions)
-      sanitize(Array.wrap(descriptions).fetch("description", nil).to_s.strip).truncate_words(75)
+      sanitize(parse_attributes(descriptions, content: "description", first: true).to_s.strip.truncate_words(75))
     end
 
+    def parse_attributes(element, options={})
+      content = options[:content] || "__content__"
+
+      if element.is_a?(String) && options[:content].nil?
+        CGI.unescapeHTML(element)
+      elsif element.is_a?(Hash)
+        element.fetch( CGI.unescapeHTML(content), nil)
+      elsif element.is_a?(Array)
+        a = element.map { |e| e.is_a?(Hash) ? e.fetch(CGI.unescapeHTML(content), nil) : e }.uniq
+        a = options[:first] ? a.first : a.unwrap
+      else
+        nil
+      end
+    end
 
     def pagination_helper(items, page, total, rows = DEFAULT_ROWS)
       WillPaginate::Collection.create(page, rows, [total, 1000].min) do |pager|
