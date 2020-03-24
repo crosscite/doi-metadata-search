@@ -8,20 +8,18 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.6.1; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.7; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
       Content-Type:
       - application/json;charset=UTF-8
-      Accept-Encoding:
-      - gzip
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Wed, 18 Mar 2020 13:05:14 GMT
+      - Tue, 24 Mar 2020 11:28:12 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -34,24 +32,26 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
-      Content-Encoding:
-      - gzip
       X-Request-Id:
-      - 16c20e73-21b0-4bfa-8a56-16c6d3c17a84
+      - b89d59a9-97fb-4dce-9be0-fd34a2ba32cc
       Etag:
-      - W/"df4af32db6e7cde87c86d1560f1d03c3"
+      - W/"625da66f92b9d7621589eb392baaf386"
       X-Runtime:
-      - '0.070537'
+      - '0.055055'
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
       - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        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
+      string: '{"data":{"id":"10.1007/978-1-4757-9930-9_8","type":"dois","attributes":{"doi":"10.1007/978-1-4757-9930-9_8","prefix":"10.1007","suffix":"978-1-4757-9930-9_8","identifiers":[{"identifier":"https://doi.org/10.1007/978-1-4757-9930-9_8","identifierType":"DOI"}],"creators":[{"name":"Hohmann,
+        Gottfried","nameType":"Personal","givenName":"Gottfried","familyName":"Hohmann","affiliation":[]},{"name":"Fruth,
+        Barbara","nameType":"Personal","givenName":"Barbara","familyName":"Fruth","affiliation":[]}],"titles":[{"title":"Loud
+        Calls in Great Apes: Sex Differences and Social Correlates"}],"publisher":"Springer
+        US","container":{"type":"Journal","lastPage":"184","firstPage":"161"},"publicationYear":1995,"subjects":null,"contributors":[],"dates":[{"date":"1995","dateType":"Issued"},{"date":"2019-05-13T05:28:00Z","dateType":"Updated"}],"language":null,"types":{"ris":"CHAP","bibtex":"inbook","citeproc":"chapter","schemaOrg":"Chapter","resourceType":"BookChapter","resourceTypeGeneral":"Text"},"relatedIdentifiers":[{"relationType":"References","relatedIdentifier":"10.1159/000155733","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1007/bf02737402","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1163/156853968x00054","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1007/bf02435610","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1002/ajp.1350200409","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1002/ajp.1350310203","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1037/12294-000","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.5479/si.00810282.213","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1159/000155704","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1016/s0003-3472(72)80171-4","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1007/bf02381982","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1007/bf02692281","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1007/bf02382595","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1086/285553","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1006/anbe.1993.1096","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1111/j.1439-0310.1978.tb00267.x","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1163/156853993x00524","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1159/000156380","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1007/bf02381258","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1159/000156518","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1007/bf02547636","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1007/bf02382905","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1007/bf02381093","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1007/bf02382268","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1159/000156359","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1007/bf02381013","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1007/bf02373371","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1016/s0003-3472(74)80054-0","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1007/bf02381161","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1159/000156081","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1007/bf02692271","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1007/bf00299429","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1007/bf00292979","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1006/anbe.1993.1088","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1002/ajp.1350270402","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1016/s0003-3472(84)80328-0","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1007/bf02381682","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1159/000156092","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1002/ajp.1350210206","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1163/156853990x00581","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1016/s0003-3472(85)80071-3","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1159/000155537","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1007/bf02381980","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1016/s0047-2484(78)80074-8","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1163/156853982x00517","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1159/000156058","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1007/bf02735551","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1007/bf02692317","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.7208/chicago/9780226220468.001.0001","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1007/bf02735778","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1007/bf02215445","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1163/156853988x00476","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1007/bf02193695","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1111/j.1439-0310.1976.tb00924.x","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1007/bf02381304","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1002/ajp.1350140102","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.2307/1379577","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1038/263320a0","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1163/156853988x00269","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1017/cbo9780511611858","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1007/bf00310219","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1007/bf02382606","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1016/s0003-3472(85)80121-4","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1002/ajp.1350320103","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1007/bf02737400","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1016/s0003-3472(87)80054-4","relatedIdentifierType":"DOI"},{"relationType":"References","relatedIdentifier":"10.1111/j.1748-1090.1967.tb00329.x","relatedIdentifierType":"DOI"}],"sizes":null,"formats":null,"version":null,"rightsList":[],"descriptions":[],"geoLocations":null,"fundingReferences":[],"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC00L21ldGFkYXRhLnhzZCI+CiAgPGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuMTAwNy85NzgtMS00NzU3LTk5MzAtOV84PC9pZGVudGlmaWVyPgogIDxjcmVhdG9ycz4KICAgIDxjcmVhdG9yPgogICAgICA8Y3JlYXRvck5hbWUgbmFtZVR5cGU9IlBlcnNvbmFsIj5Ib2htYW5uLCBHb3R0ZnJpZWQ8L2NyZWF0b3JOYW1lPgogICAgICA8Z2l2ZW5OYW1lPkdvdHRmcmllZDwvZ2l2ZW5OYW1lPgogICAgICA8ZmFtaWx5TmFtZT5Ib2htYW5uPC9mYW1pbHlOYW1lPgogICAgPC9jcmVhdG9yPgogICAgPGNyZWF0b3I+CiAgICAgIDxjcmVhdG9yTmFtZSBuYW1lVHlwZT0iUGVyc29uYWwiPkZydXRoLCBCYXJiYXJhPC9jcmVhdG9yTmFtZT4KICAgICAgPGdpdmVuTmFtZT5CYXJiYXJhPC9naXZlbk5hbWU+CiAgICAgIDxmYW1pbHlOYW1lPkZydXRoPC9mYW1pbHlOYW1lPgogICAgPC9jcmVhdG9yPgogIDwvY3JlYXRvcnM+CiAgPHRpdGxlcz4KICAgIDx0aXRsZT5Mb3VkIENhbGxzIGluIEdyZWF0IEFwZXM6IFNleCBEaWZmZXJlbmNlcyBhbmQgU29jaWFsIENvcnJlbGF0ZXM8L3RpdGxlPgogIDwvdGl0bGVzPgogIDxwdWJsaXNoZXI+U3ByaW5nZXIgVVM8L3B1Ymxpc2hlcj4KICA8cHVibGljYXRpb25ZZWFyPjE5OTU8L3B1YmxpY2F0aW9uWWVhcj4KICA8cmVzb3VyY2VUeXBlIHJlc291cmNlVHlwZUdlbmVyYWw9IlRleHQiPkJvb2tDaGFwdGVyPC9yZXNvdXJjZVR5cGU+CiAgPGRhdGVzPgogICAgPGRhdGUgZGF0ZVR5cGU9Iklzc3VlZCI+MTk5NTwvZGF0ZT4KICAgIDxkYXRlIGRhdGVUeXBlPSJVcGRhdGVkIj4yMDE5LTA1LTEzVDA1OjI4OjAwWjwvZGF0ZT4KICA8L2RhdGVzPgogIDxyZWxhdGVkSWRlbnRpZmllcnM+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmVmZXJlbmNlcyI+MTAuMTE1OS8wMDAxNTU3MzM8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPjEwLjEwMDcvYmYwMjczNzQwMjwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmVmZXJlbmNlcyI+MTAuMTE2My8xNTY4NTM5Njh4MDAwNTQ8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPjEwLjEwMDcvYmYwMjQzNTYxMDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmVmZXJlbmNlcyI+MTAuMTAwMi9hanAuMTM1MDIwMDQwOTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmVmZXJlbmNlcyI+MTAuMTAwMi9hanAuMTM1MDMxMDIwMzwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmVmZXJlbmNlcyI+MTAuMTAzNy8xMjI5NC0wMDA8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPjEwLjU0Nzkvc2kuMDA4MTAyODIuMjEzPC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJSZWZlcmVuY2VzIj4xMC4xMTU5LzAwMDE1NTcwNDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmVmZXJlbmNlcyI+MTAuMTAxNi9zMDAwMy0zNDcyKDcyKTgwMTcxLTQ8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPjEwLjEwMDcvYmYwMjM4MTk4MjwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmVmZXJlbmNlcyI+MTAuMTAwNy9iZjAyNjkyMjgxPC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJSZWZlcmVuY2VzIj4xMC4xMDA3L2JmMDIzODI1OTU8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPjEwLjEwODYvMjg1NTUzPC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJSZWZlcmVuY2VzIj4xMC4xMDA2L2FuYmUuMTk5My4xMDk2PC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJSZWZlcmVuY2VzIj4xMC4xMTExL2ouMTQzOS0wMzEwLjE5NzgudGIwMDI2Ny54PC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJSZWZlcmVuY2VzIj4xMC4xMTYzLzE1Njg1Mzk5M3gwMDUyNDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmVmZXJlbmNlcyI+MTAuMTE1OS8wMDAxNTYzODA8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPjEwLjEwMDcvYmYwMjM4MTI1ODwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmVmZXJlbmNlcyI+MTAuMTE1OS8wMDAxNTY1MTg8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPjEwLjEwMDcvYmYwMjU0NzYzNjwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmVmZXJlbmNlcyI+MTAuMTAwNy9iZjAyMzgyOTA1PC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJSZWZlcmVuY2VzIj4xMC4xMDA3L2JmMDIzODEwOTM8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPjEwLjEwMDcvYmYwMjM4MjI2ODwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmVmZXJlbmNlcyI+MTAuMTE1OS8wMDAxNTYzNTk8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPjEwLjEwMDcvYmYwMjM4MTAxMzwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmVmZXJlbmNlcyI+MTAuMTAwNy9iZjAyMzczMzcxPC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJSZWZlcmVuY2VzIj4xMC4xMDE2L3MwMDAzLTM0NzIoNzQpODAwNTQtMDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmVmZXJlbmNlcyI+MTAuMTAwNy9iZjAyMzgxMTYxPC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJSZWZlcmVuY2VzIj4xMC4xMTU5LzAwMDE1NjA4MTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmVmZXJlbmNlcyI+MTAuMTAwNy9iZjAyNjkyMjcxPC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJSZWZlcmVuY2VzIj4xMC4xMDA3L2JmMDAyOTk0Mjk8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPjEwLjEwMDcvYmYwMDI5Mjk3OTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmVmZXJlbmNlcyI+MTAuMTAwNi9hbmJlLjE5OTMuMTA4ODwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmVmZXJlbmNlcyI+MTAuMTAwMi9hanAuMTM1MDI3MDQwMjwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmVmZXJlbmNlcyI+MTAuMTAxNi9zMDAwMy0zNDcyKDg0KTgwMzI4LTA8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPjEwLjEwMDcvYmYwMjM4MTY4MjwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmVmZXJlbmNlcyI+MTAuMTE1OS8wMDAxNTYwOTI8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPjEwLjEwMDIvYWpwLjEzNTAyMTAyMDY8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPjEwLjExNjMvMTU2ODUzOTkweDAwNTgxPC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJSZWZlcmVuY2VzIj4xMC4xMDE2L3MwMDAzLTM0NzIoODUpODAwNzEtMzwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmVmZXJlbmNlcyI+MTAuMTE1OS8wMDAxNTU1Mzc8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPjEwLjEwMDcvYmYwMjM4MTk4MDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmVmZXJlbmNlcyI+MTAuMTAxNi9zMDA0Ny0yNDg0KDc4KTgwMDc0LTg8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPjEwLjExNjMvMTU2ODUzOTgyeDAwNTE3PC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJSZWZlcmVuY2VzIj4xMC4xMTU5LzAwMDE1NjA1ODwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmVmZXJlbmNlcyI+MTAuMTAwNy9iZjAyNzM1NTUxPC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJSZWZlcmVuY2VzIj4xMC4xMDA3L2JmMDI2OTIzMTc8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPjEwLjcyMDgvY2hpY2Fnby85NzgwMjI2MjIwNDY4LjAwMS4wMDAxPC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJSZWZlcmVuY2VzIj4xMC4xMDA3L2JmMDI3MzU3Nzg8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPjEwLjEwMDcvYmYwMjIxNTQ0NTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmVmZXJlbmNlcyI+MTAuMTE2My8xNTY4NTM5ODh4MDA0NzY8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPjEwLjEwMDcvYmYwMjE5MzY5NTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmVmZXJlbmNlcyI+MTAuMTExMS9qLjE0MzktMDMxMC4xOTc2LnRiMDA5MjQueDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmVmZXJlbmNlcyI+MTAuMTAwNy9iZjAyMzgxMzA0PC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJSZWZlcmVuY2VzIj4xMC4xMDAyL2FqcC4xMzUwMTQwMTAyPC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJSZWZlcmVuY2VzIj4xMC4yMzA3LzEzNzk1Nzc8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPjEwLjEwMzgvMjYzMzIwYTA8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPjEwLjExNjMvMTU2ODUzOTg4eDAwMjY5PC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJSZWZlcmVuY2VzIj4xMC4xMDE3L2Nibzk3ODA1MTE2MTE4NTg8L3JlbGF0ZWRJZGVudGlmaWVyPgogICAgPHJlbGF0ZWRJZGVudGlmaWVyIHJlbGF0ZWRJZGVudGlmaWVyVHlwZT0iRE9JIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPjEwLjEwMDcvYmYwMDMxMDIxOTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmVmZXJlbmNlcyI+MTAuMTAwNy9iZjAyMzgyNjA2PC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJSZWZlcmVuY2VzIj4xMC4xMDE2L3MwMDAzLTM0NzIoODUpODAxMjEtNDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmVmZXJlbmNlcyI+MTAuMTAwMi9hanAuMTM1MDMyMDEwMzwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmVmZXJlbmNlcyI+MTAuMTAwNy9iZjAyNzM3NDAwPC9yZWxhdGVkSWRlbnRpZmllcj4KICAgIDxyZWxhdGVkSWRlbnRpZmllciByZWxhdGVkSWRlbnRpZmllclR5cGU9IkRPSSIgcmVsYXRpb25UeXBlPSJSZWZlcmVuY2VzIj4xMC4xMDE2L3MwMDAzLTM0NzIoODcpODAwNTQtNDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJET0kiIHJlbGF0aW9uVHlwZT0iUmVmZXJlbmNlcyI+MTAuMTExMS9qLjE3NDgtMTA5MC4xOTY3LnRiMDAzMjkueDwvcmVsYXRlZElkZW50aWZpZXI+CiAgPC9yZWxhdGVkSWRlbnRpZmllcnM+CiAgPHZlcnNpb24vPgo8L3Jlc291cmNlPgo=","url":"http://link.springer.com/10.1007/978-1-4757-9930-9_8","contentUrl":null,"metadataVersion":0,"schemaVersion":"http://datacite.org/schema/kernel-4","source":"levriero","isActive":true,"state":"findable","reason":null,"viewCount":0,"viewsOverTime":[],"downloadCount":0,"downloadsOverTime":[],"referenceCount":0,"citationCount":0,"citationsOverTime":[],"created":"2019-09-30T11:23:27.000Z","registered":null,"published":"1995","updated":"2019-09-30T11:23:27.000Z"},"relationships":{"client":{"data":{"id":"crossref.citations","type":"clients"}},"media":{"data":{"id":"10.1007/978-1-4757-9930-9_8","type":"media"}},"referenceEvents":{"data":[]},"citationEvents":{"data":[]}}},"included":[{"id":"crossref.citations","type":"clients","attributes":{"name":"Crossref
+        Citations","symbol":"CROSSREF.CITATIONS","year":2019,"contactEmail":"info@datacite.org","alternateName":null,"description":null,"language":null,"clientType":"repository","domains":"*","re3data":null,"opendoar":null,"issn":null,"url":null,"created":"2019-06-09T13:07:47.000Z","updated":"2019-06-09T13:07:47.000Z","isActive":true,"hasPassword":false},"relationships":{"provider":{"data":{"id":"crossref","type":"providers"}},"prefixes":{"data":[]}}}]}'
     http_version: 
-  recorded_at: Wed, 18 Mar 2020 13:05:14 GMT
+  recorded_at: Tue, 24 Mar 2020 11:28:13 GMT
 - request:
     method: get
     uri: https://api.test.datacite.org/dois/10.1007/978-1-4757-9930-9_8
@@ -60,18 +60,16 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.6.1; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.7; +https://github.com/datacite/maremma)
       Accept:
       - application/vnd.schemaorg.ld+json
-      Accept-Encoding:
-      - gzip,deflate
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Wed, 18 Mar 2020 13:05:15 GMT
+      - Tue, 24 Mar 2020 11:28:13 GMT
       Content-Type:
       - application/vnd.schemaorg.ld+json; charset=utf-8
       Connection:
@@ -84,22 +82,334 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
-      Content-Encoding:
-      - gzip
       X-Request-Id:
-      - 22e9c735-ba74-4511-b341-77fc05abc3d3
+      - 94e4aa2e-38e4-4278-aa5d-3663a0c38c43
       Etag:
-      - W/"5351bbd016575a80f547be2ba668fe67"
+      - W/"ac95fd86da1251590926d53683fd7566"
       X-Runtime:
-      - '0.014877'
+      - '0.015599'
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
       - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAIsccl4AA7RZW2/bNhR+z68Q/NQBlcT7xU9bk63rsK0B3HbAhmGgLdpmo4gCJQfJivz3UrdYdd11BcgXAyapw8Nz/c45Hy6SZPH9xlatvm8Xy2Sxb9t6mefNZq9vVWbdbvG8P9I+1Lrbv9yrutVuXDXF9E3jPyqs6b7IIcggADyXXKQwJZzyVEoMUvmPGL4zha5aszWezjL54FfmN1w7W2vXPrxT5UH35/1uPS6+uuqOXL1+NW3c9ae+kQn/6WPPyMGVs0eXprrJmtqZaqddtrG3X3+JKgrTGlup8s3I/gtrbz4RUqVu+41f7aFILlVZNompkpdOqzb5odbNMlnp++TKbLfa6Wqjm0RVRbKyG6PK5NI6p0vV6ma879DubSe1v/rnD7KbXfLStu3WGV0kP9v9raqqUU7+yM7c6er303PH/a26NeXDdOCzz4/60a6x1aJff3x+no0Xyq2VU8lPzvP7BRbGM19i4OTT89f73797uRReRNeHdWmave5tEkpJF09bv9miM7d+BwEoU0BTiN8AukRiCcCfw8la7fSqVa53BMjgcfXHaiAqyLC2Ma3q1P65Iv7DJSCVOQAAUsoxPvOyy84kvIT+sO7mvHi/4m/rLUAccwJQaOqQ4RxSJiiWTNz7R1AS6wEEUwZBeOooV+/rDGIKEAAEyJg3YOgvCa9izHOIkCSpV0Bg4pRwmTcmA0B43gXKEAzO/8z+QXjzgSxvPHWcYsLRM46+EwByH7Nj2SkWUIrgjjZRZxIhAePxjugYHkNSFyxHglIaIbixXFVrnfmojv1fyYLbJoT5+wwS7FMD7hZ8xs/atXdqxrP7iOFUYh9OKQpupk/OxrCIEE2ffABREY91CoMTn1j3AY/h4GY0czAJwjvYUexARkMQnnfEIioV0wi59yiY8HnribqHbTx8TD5JXMQnLg+v0phOO2HbKPoF8fJWlxUjaGCgDpCUBMWyTU8dSR6B+qeZUUQImDPk7IFb+OLixANE5wEYiagewMJDt5kHyAi4cKaFrroIj4BmmAR0mCSCG58omnahzmP0iJUGxTxqARDeRgcZEZ4iIsgzLnoZkTR8Qj7qW6BO3zC4pGYeER4lHhseXssxMw4OLhiOgMg3e7NRO9u1FoEHXAgBwoSvv2HWiSyitDiPpgsEKSHBYe/cUrvmk0fusR4AJWbhC+MzxSXri0uJSPjichafcIQ+yywRQQJgcDiAsOcfYi69oYbvoIkcMYwRUMED96mV+tARPjfwfLO2XcSgHYaHIlpY7VuYMGKhhlh4CHMOX0AUpQc46/Ui7wRx2/mxQMaToPhYc4bvQg2RjxORQiC7yMd4H/kwkv838l1MM55hJvlOu2aYvExju0K1amNa3d86HMpvtKt0OT5oUWtnbOHzbTftO503/mIPrvI7AzOLUjXttdr1W9O8xy9vjZut+/r5Ypoh1uPY6dws87Xbqcr8O8yKRkrTjGw1DhqTt6sZMWfvTPHNtC6dbRqntz2hi8ePAAAA//8DAB/E+w3WHQAA
+      string: |-
+        {
+          "@context": "http://schema.org",
+          "@type": "Chapter",
+          "@id": "https://doi.org/10.1007/978-1-4757-9930-9_8",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "DOI",
+            "value": "https://doi.org/10.1007/978-1-4757-9930-9_8"
+          },
+          "url": "http://link.springer.com/10.1007/978-1-4757-9930-9_8",
+          "additionalType": "BookChapter",
+          "name": "Loud Calls in Great Apes: Sex Differences and Social Correlates",
+          "author": [
+            {
+              "name": "Gottfried Hohmann",
+              "givenName": "Gottfried",
+              "familyName": "Hohmann",
+              "@type": "Person"
+            },
+            {
+              "name": "Barbara Fruth",
+              "givenName": "Barbara",
+              "familyName": "Fruth",
+              "@type": "Person"
+            }
+          ],
+          "datePublished": "1995",
+          "dateModified": "2019-05-13T05:28:00Z",
+          "pageStart": "161",
+          "pageEnd": "184",
+          "citation": [
+            {
+              "@id": "https://doi.org/10.1159/000155733",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1007/bf02737402",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1163/156853968x00054",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1007/bf02435610",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1002/ajp.1350200409",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1002/ajp.1350310203",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1037/12294-000",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.5479/si.00810282.213",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1159/000155704",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1016/s0003-3472(72)80171-4",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1007/bf02381982",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1007/bf02692281",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1007/bf02382595",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1086/285553",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1006/anbe.1993.1096",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1111/j.1439-0310.1978.tb00267.x",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1163/156853993x00524",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1159/000156380",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1007/bf02381258",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1159/000156518",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1007/bf02547636",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1007/bf02382905",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1007/bf02381093",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1007/bf02382268",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1159/000156359",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1007/bf02381013",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1007/bf02373371",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1016/s0003-3472(74)80054-0",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1007/bf02381161",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1159/000156081",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1007/bf02692271",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1007/bf00299429",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1007/bf00292979",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1006/anbe.1993.1088",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1002/ajp.1350270402",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1016/s0003-3472(84)80328-0",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1007/bf02381682",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1159/000156092",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1002/ajp.1350210206",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1163/156853990x00581",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1016/s0003-3472(85)80071-3",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1159/000155537",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1007/bf02381980",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1016/s0047-2484(78)80074-8",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1163/156853982x00517",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1159/000156058",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1007/bf02735551",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1007/bf02692317",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.7208/chicago/9780226220468.001.0001",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1007/bf02735778",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1007/bf02215445",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1163/156853988x00476",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1007/bf02193695",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1111/j.1439-0310.1976.tb00924.x",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1007/bf02381304",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1002/ajp.1350140102",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.2307/1379577",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1038/263320a0",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1163/156853988x00269",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1017/cbo9780511611858",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1007/bf00310219",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1007/bf02382606",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1016/s0003-3472(85)80121-4",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1002/ajp.1350320103",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1007/bf02737400",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1016/s0003-3472(87)80054-4",
+              "@type": "CreativeWork"
+            },
+            {
+              "@id": "https://doi.org/10.1111/j.1748-1090.1967.tb00329.x",
+              "@type": "CreativeWork"
+            }
+          ],
+          "schemaVersion": "http://datacite.org/schema/kernel-4",
+          "periodical": {
+            "@type": "Journal",
+            "lastPage": "184",
+            "firstPage": "161"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Springer US"
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "Crossref"
+          }
+        }
     http_version: 
-  recorded_at: Wed, 18 Mar 2020 13:05:15 GMT
+  recorded_at: Tue, 24 Mar 2020 11:28:13 GMT
 recorded_with: VCR 2.9.3

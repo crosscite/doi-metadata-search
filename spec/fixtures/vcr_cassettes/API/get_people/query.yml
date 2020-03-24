@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.5; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.7; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 10 Mar 2020 19:28:05 GMT
+      - Tue, 24 Mar 2020 14:15:54 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,15 +37,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 9ad3c236-8b31-4031-99d2-511138fcc958
+      - dabd57f2-86bf-4ceb-bc8a-ee814d91047a
       X-Download-Options:
       - noopen
       Etag:
-      - W/"59f5d356e30e3ef5ec7db5a3dcdeb162"
+      - W/"04f67204f6a5c194e296b45b5c883669"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.012595'
+      - '0.043351'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -54,14 +54,14 @@ http_interactions:
       - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"id":"0000-0002-5099-0079","type":"users","attributes":{"givenNames":"Jesus
+      string: '{"data":[{"id":"0000-0002-5099-0079","type":"users","attributes":{"givenName":"Jesus
         Alberto","familyName":"Cardenas-de la Garza","name":"Jesus Alberto Cardenas-de
-        la Garza","orcid":"https://orcid.org/0000-0002-5099-0079","github":null,"roleId":"user","isActive":false,"created":"2018-05-14T20:22:20.000Z","updated":"2018-05-14T20:22:20.000Z"},"relationships":{}},{"id":"0000-0003-3484-6876","type":"users","attributes":{"givenNames":"Kristian","familyName":"Garza","name":"K.
-        J. Garza","orcid":"https://orcid.org/0000-0003-3484-6876","github":"https://github.com/kjgarza","roleId":"staff_admin","isActive":false,"created":"2016-08-01T16:25:38.000Z","updated":"2018-05-30T05:00:34.000Z"},"relationships":{}},{"id":"0000-0002-5493-877X","type":"users","attributes":{"givenNames":"Jose
-        Arturo","familyName":"Garza-Reyes","name":"Jose Arturo Garza-Reyes","orcid":"https://orcid.org/0000-0002-5493-877X","github":null,"roleId":"user","isActive":false,"created":"2016-10-14T11:37:44.000Z","updated":"2016-10-14T11:38:01.000Z"},"relationships":{}},{"id":"0000-0002-4286-8102","type":"users","attributes":{"givenNames":"Tammy","familyName":"Oberg
-        De La Garza","name":"Tammy Oberg De La Garza","orcid":"https://orcid.org/0000-0002-4286-8102","github":null,"roleId":"user","isActive":false,"created":"2017-06-01T13:58:09.000Z","updated":"2017-06-01T13:58:09.000Z"},"relationships":{}},{"id":"0000-0002-5231-2925","type":"users","attributes":{"givenNames":"Miguel
-        Angel","familyName":"Platas-Garza","name":"Miguel Angel Platas-Garza","orcid":"https://orcid.org/0000-0002-5231-2925","github":null,"roleId":"user","isActive":false,"created":"2017-02-27T15:04:28.000Z","updated":"2017-02-27T15:04:28.000Z"},"relationships":{}},{"id":"0000-0003-3484-6875","type":"users","attributes":{"givenNames":null,"familyName":null,"name":"K.
+        la Garza","orcid":"https://orcid.org/0000-0002-5099-0079","github":null,"roleId":"user","isActive":false,"created":"2018-05-14T20:22:20.000Z","updated":"2018-05-14T20:22:20.000Z"},"relationships":{}},{"id":"0000-0003-3484-6876","type":"users","attributes":{"givenName":"Kristian","familyName":"Garza","name":"K.
+        J. Garza","orcid":"https://orcid.org/0000-0003-3484-6876","github":"https://github.com/kjgarza","roleId":"staff_admin","isActive":false,"created":"2016-08-01T16:25:38.000Z","updated":"2018-05-30T05:00:34.000Z"},"relationships":{}},{"id":"0000-0002-5493-877X","type":"users","attributes":{"givenName":"Jose
+        Arturo","familyName":"Garza-Reyes","name":"Jose Arturo Garza-Reyes","orcid":"https://orcid.org/0000-0002-5493-877X","github":null,"roleId":"user","isActive":false,"created":"2016-10-14T11:37:44.000Z","updated":"2016-10-14T11:38:01.000Z"},"relationships":{}},{"id":"0000-0002-4286-8102","type":"users","attributes":{"givenName":"Tammy","familyName":"Oberg
+        De La Garza","name":"Tammy Oberg De La Garza","orcid":"https://orcid.org/0000-0002-4286-8102","github":null,"roleId":"user","isActive":false,"created":"2017-06-01T13:58:09.000Z","updated":"2017-06-01T13:58:09.000Z"},"relationships":{}},{"id":"0000-0002-5231-2925","type":"users","attributes":{"givenName":"Miguel
+        Angel","familyName":"Platas-Garza","name":"Miguel Angel Platas-Garza","orcid":"https://orcid.org/0000-0002-5231-2925","github":null,"roleId":"user","isActive":false,"created":"2017-02-27T15:04:28.000Z","updated":"2017-02-27T15:04:28.000Z"},"relationships":{}},{"id":"0000-0003-3484-6875","type":"users","attributes":{"givenName":null,"familyName":null,"name":"K.
         J. Garza","orcid":"https://orcid.org/0000-0003-3484-6875","github":null,"roleId":"user","isActive":true,"created":"2019-09-12T14:13:49.000Z","updated":"2020-02-14T11:07:05.000Z"},"relationships":{}}],"meta":{"total":6,"totalPages":1,"page":1},"links":{"self":"https://api.test.datacite.org/users?page%5Bnumber%5D=1&page%5Bsize%5D=25&query=garza","next":"https://api.test.datacite.org/users?page%5Bnumber%5D=2&page%5Bsize%5D=25&query=garza"}}'
     http_version: 
-  recorded_at: Tue, 10 Mar 2020 19:28:05 GMT
+  recorded_at: Tue, 24 Mar 2020 14:15:54 GMT
 recorded_with: VCR 2.9.3

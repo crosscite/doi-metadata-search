@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/dois/10.0311/fk2/e11643a99d903d0ccfc2d523b344d9ff?include=client,citation-events,reference-events
+    uri: https://api.test.datacite.org/dois/10.0311/fk2/e11643a99d903d0ccfc2d523b344d9ff?include=client
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.5; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.7; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
       Content-Type:
@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 10 Mar 2020 19:28:50 GMT
+      - Tue, 24 Mar 2020 11:28:18 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -33,11 +33,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Origin
       X-Request-Id:
-      - 920dea71-3f73-460c-8720-266ee32f5f52
+      - ef462654-d8ed-43cf-ad11-5b92a25901cc
       Etag:
       - W/"f419c0bf69d13d703dcf80839ed41a69"
       X-Runtime:
-      - '0.056797'
+      - '0.054394'
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
@@ -61,7 +61,7 @@ http_interactions:
         a future update to the data package once suitable imagery of the area is acquired.","descriptionType":"Abstract"}],"geoLocations":[],"fundingReferences":[],"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC00LjEvbWV0YWRhdGEueHNkIj4KICA8aWRlbnRpZmllciBpZGVudGlmaWVyVHlwZT0iRE9JIj4xMC4wMzExL0ZLMi9FMTE2NDNBOTlEOTAzRDBDQ0ZDMkQ1MjNCMzQ0RDlGRjwvaWRlbnRpZmllcj4KICA8Y3JlYXRvcnM+CiAgICA8Y3JlYXRvcj4KICAgICAgPGNyZWF0b3JOYW1lPkppLCBXZW5qaWU8L2NyZWF0b3JOYW1lPgogICAgPC9jcmVhdG9yPgogICAgPGNyZWF0b3I+CiAgICAgIDxjcmVhdG9yTmFtZT5IYW5hbiwgTmlhbGwgUC48L2NyZWF0b3JOYW1lPgogICAgPC9jcmVhdG9yPgogIDwvY3JlYXRvcnM+CiAgPHRpdGxlcz4KICAgIDx0aXRsZT5IaWdoIHJlc29sdXRpb24gc2hydWIgY292ZXIgcmFzdGVyIG1hcHMgb2YgdGhlIEpvcm5hZGEgQmFzaW4gTFRFUiwgaW5jbHVkaW5nIEpFUiBhbmQgQ0RSUkMgKDIwMTEpPC90aXRsZT4KICA8L3RpdGxlcz4KICA8cHVibGlzaGVyPkVudmlyb25tZW50YWwgRGF0YSBJbml0aWF0aXZlPC9wdWJsaXNoZXI+CiAgPHB1YmxpY2F0aW9uWWVhcj4yMDE5PC9wdWJsaWNhdGlvblllYXI+CiAgPHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJEYXRhc2V0Ij5kYXRhUGFja2FnZTwvcmVzb3VyY2VUeXBlPgogIDxsYW5ndWFnZT5lbmc8L2xhbmd1YWdlPgogIDxhbHRlcm5hdGVJZGVudGlmaWVycz4KICAgIDxhbHRlcm5hdGVJZGVudGlmaWVyIGFsdGVybmF0ZUlkZW50aWZpZXJUeXBlPSJVUkwiPmh0dHBzOi8vcGFzdGEtcy5sdGVybmV0LmVkdS9wYWNrYWdlL2VtbC9rbmItbHRlci1qcm4vMTAwLzQ8L2FsdGVybmF0ZUlkZW50aWZpZXI+CiAgPC9hbHRlcm5hdGVJZGVudGlmaWVycz4KICA8ZGVzY3JpcHRpb25zPgogICAgPGRlc2NyaXB0aW9uIHhtbDpsYW5nPSJlbi1VUyIgZGVzY3JpcHRpb25UeXBlPSJBYnN0cmFjdCI+VGhpcyBkYXRhIHBhY2thZ2UgY29udGFpbnMgdHdvIHJhc3RlciBzaHJ1YiBjb3ZlciBtYXBzIG9mIHRoZSBKb3JuYWRhCiAgRXhwZXJpbWVudGFsIFJhbmdlIGFuZCBDaGlodWFodWFuIERlc2VydCBSYW5nZWxhbmQgUmVzZWFyY2ggQ2VudGVyCiAgKENEUlJDKSBjcmVhdGVkIHVzaW5nIDFtIHJlc29sdXRpb24gTmF0aW9uYWwgQWdyaWN1bHR1cmUgSW1hZ2VyeQogIFByb2dyYW0gKE5BSVApIGFlcmlhbCBwaG90byBhY3F1aXJlZCBpbiAyMDExLiBBIG9uZS1tZXRlciByZXNvbHV0aW9uCiAgcmFzdGVyIGZpbGUgbGlzdHMgY292ZXIgYXMgbm9uLXNocnViLCBzaHJ1Yiwgb3Igbm8gZGF0YSBhdmFpbGFibGUuIEEKICBoZWN0YXJlIHJlc29sdXRpb24gcmFzdGVyIGZpbGUgY29udGFpbnMgZnJhY3Rpb25hbCBzaHJ1YiBjb3ZlciB2YWx1ZXMKICAoMC0xKSBjYWxjdWxlZCBmcm9tIHRoZSAxIG1ldGVyIHJhc3Rlci4KCiAgICAgIAogICAgICAgIE5PVEU6IFRoZXJlIGlzIGN1cnJlbnRseSBhIGhvbGUgaW4gdGhlIGNvdmVyYWdlIG9mIHRoZQogIGhlY3RhcmUgcmFzdGVyIChuby1kYXRhIHZhbHVlcykgaW4gdGhlICJzY2FycGxldCIgcmVnaW9uIGluCiAgdGhlIHNvdXRoZWFzdGVybiBwb3J0aW9uIG9mIHRoZSBKb3JuYWRhIEJhc2luLiBUaGUgY3JlYXRvcnMgb2YgdGhlCiAgZGF0YXNldCBwbGFuIHRvIGZpbGwgdGhpcyBtaXNzaW5nIGFyZWEgb2YgY292ZXJhZ2UgaW4gYSBmdXR1cmUgdXBkYXRlCiAgdG8gdGhlIGRhdGEgcGFja2FnZSBvbmNlIHN1aXRhYmxlIGltYWdlcnkgb2YgdGhlIGFyZWEgaXMKICBhY3F1aXJlZC48L2Rlc2NyaXB0aW9uPgogIDwvZGVzY3JpcHRpb25zPgo8L3Jlc291cmNlPg==","url":"https://portal-s.lternet.edu/nis/mapbrowse?packageid=knb-lter-jrn.100.4","contentUrl":null,"metadataVersion":0,"schemaVersion":null,"source":"mds","isActive":true,"state":"findable","reason":null,"viewCount":0,"viewsOverTime":[],"downloadCount":0,"downloadsOverTime":[],"referenceCount":0,"citationCount":0,"citationsOverTime":[],"created":"2019-11-18T06:09:59.000Z","registered":"2019-11-18T06:10:00.000Z","published":"2019","updated":"2019-11-18T06:10:00.000Z"},"relationships":{"client":{"data":{"id":"datacite.edi","type":"clients"}},"media":{"data":{"id":"10.0311/fk2/e11643a99d903d0ccfc2d523b344d9ff","type":"media"}},"referenceEvents":{"data":[]},"citationEvents":{"data":[]}}},"included":[{"id":"datacite.edi","type":"clients","attributes":{"name":"Environmental
         Data Initiative","symbol":"DATACITE.EDI","year":2017,"contactEmail":"mark.servilla@gmail.com","alternateName":null,"description":null,"language":null,"clientType":"repository","domains":"*","re3data":null,"opendoar":null,"issn":null,"url":null,"created":"2017-05-10T10:07:37.000Z","updated":"2018-08-26T01:31:05.000Z","isActive":true,"hasPassword":true},"relationships":{"provider":{"data":{"id":"datacite","type":"providers"}},"consortium":{"data":{"id":"dc","type":"providers"}},"prefixes":{"data":[{"id":"10.0311","type":"prefixes"}]}}}]}'
     http_version: 
-  recorded_at: Tue, 10 Mar 2020 19:28:50 GMT
+  recorded_at: Tue, 24 Mar 2020 11:28:18 GMT
 - request:
     method: get
     uri: https://api.test.datacite.org/dois/10.0311/fk2/e11643a99d903d0ccfc2d523b344d9ff
@@ -70,7 +70,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.5; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.7; +https://github.com/datacite/maremma)
       Accept:
       - application/vnd.schemaorg.ld+json
   response:
@@ -79,7 +79,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 10 Mar 2020 19:28:50 GMT
+      - Tue, 24 Mar 2020 11:28:18 GMT
       Content-Type:
       - application/vnd.schemaorg.ld+json; charset=utf-8
       Connection:
@@ -93,11 +93,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Origin
       X-Request-Id:
-      - ccce010b-09e7-4f7e-83c0-0dfa00f347aa
+      - 9359e0d3-bdc9-4989-9c32-2d8e1bf02293
       Etag:
       - W/"5f8015bff101dabbec61d70f8188a732"
       X-Runtime:
-      - '0.012261'
+      - '0.012398'
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
@@ -151,5 +151,5 @@ http_interactions:
           }
         }
     http_version: 
-  recorded_at: Tue, 10 Mar 2020 19:28:50 GMT
+  recorded_at: Tue, 24 Mar 2020 11:28:18 GMT
 recorded_with: VCR 2.9.3

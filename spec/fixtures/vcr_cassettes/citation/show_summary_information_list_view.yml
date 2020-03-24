@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/dois?fields%5Bdois%5D=doi,creators,titles,descriptions,publisher,publicationYear,types,rightsList&include=client&page%5Bnumber%5D=1&page%5Bsize%5D=25&query=dufek%20AND%20intrusion&sort=relevance
+    uri: https://api.test.datacite.org/dois?fields%5Bdois%5D=doi,creators,titles,descriptions,publisher,publicationYear,types,rightsList,citationCount,viewCount,downloadCount&include=client&page%5Bnumber%5D=1&page%5Bsize%5D=25&query=dufek%20AND%20intrusion&sort=relevance
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.5; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.7; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
       Content-Type:
@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 10 Mar 2020 19:28:26 GMT
+      - Tue, 24 Mar 2020 11:28:15 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -33,11 +33,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Origin
       X-Request-Id:
-      - 747231aa-6722-4849-b671-506cbb98f60c
+      - 9fd7a968-4758-4380-b150-ac340daf1421
       Etag:
-      - W/"cb3e202d0d05ca87e420b7741de97acd"
+      - W/"76d4d3103a14ab1205abde64d1079d3f"
       X-Runtime:
-      - '0.123970'
+      - '0.139118'
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
@@ -53,8 +53,8 @@ http_interactions:
         The samples were collected in the austral summer 2006/2007 from the Dufek
         Massif, Forrestal Range, Pensacola mountains, Antarctica.","descriptionType":"Abstract"}],"publisher":"EarthChem","publicationYear":2011,"types":{"ris":"DATA","bibtex":"misc","citeproc":"dataset","schemaOrg":"Dataset","resourceType":"Dataset","resourceTypeGeneral":"Dataset"},"rightsList":[{"rights":"Creative
         Commons Attribution-NonCommercial-Share Alike 3.0 United States [CC BY-NC-SA
-        3.0]","rightsUri":"https://creativecommons.org/licenses/by-nc-sa/3.0/us"}]},"relationships":{}}],"included":[{"id":"tib.ldeo","type":"clients","attributes":{"name":"LDEO
-        - Lamont-Doherty Earth Observatory, Columbia University","symbol":"TIB.LDEO","year":2011,"contactEmail":"arko@ldeo.columbia.edu","alternateName":null,"description":null,"language":[],"clientType":"repository","domains":"ieda-services.org,iedadata.org,oceandrilling.org","re3data":null,"opendoar":null,"issn":null,"url":null,"created":"2011-03-30T08:02:42.000Z","updated":"2018-08-26T01:30:25.000Z","isActive":true,"hasPassword":true},"relationships":{"provider":{"data":{"id":"tib","type":"providers"}},"prefixes":{"data":[{"id":"10.1594","type":"prefixes"}]}}}],"meta":{"total":1,"totalPages":1,"page":1,"states":[{"id":"findable","title":"Findable","count":1}],"resourceTypes":[{"id":"dataset","title":"Dataset","count":1}],"created":[{"id":"2012","title":"2012","count":1}],"published":[{"id":"2011","title":"2011","count":1}],"registered":[{"id":"2012","title":"2012","count":1}],"providers":[{"id":"tib","title":"German
+        3.0]","rightsUri":"https://creativecommons.org/licenses/by-nc-sa/3.0/us"}],"citationCount":4,"viewCount":0,"downloadCount":0},"relationships":{}}],"included":[{"id":"tib.ldeo","type":"clients","attributes":{"name":"LDEO
+        - Lamont-Doherty Earth Observatory, Columbia University","symbol":"TIB.LDEO","year":2011,"contactEmail":"arko@ldeo.columbia.edu","alternateName":null,"description":null,"language":[],"clientType":"repository","domains":"ieda-services.org,iedadata.org,oceandrilling.org","re3data":null,"opendoar":null,"issn":null,"url":null,"created":"2011-03-30T08:02:42.000Z","updated":"2018-08-26T01:30:25.000Z","isActive":true,"hasPassword":true},"relationships":{"provider":{"data":{"id":"tib","type":"providers"}},"prefixes":{"data":[]}}}],"meta":{"total":1,"totalPages":1,"page":1,"states":[{"id":"findable","title":"Findable","count":1}],"resourceTypes":[{"id":"dataset","title":"Dataset","count":1}],"created":[{"id":"2012","title":"2012","count":1}],"published":[{"id":"2011","title":"2011","count":1}],"registered":[{"id":"2012","title":"2012","count":1}],"providers":[{"id":"tib","title":"German
         National Library of Science and Technology","count":1}],"clients":[{"id":"tib.ldeo","title":"LDEO
         - Lamont-Doherty Earth Observatory, Columbia University","count":1}],"affiliations":[],"prefixes":[{"id":"10.91819","title":"10.91819","count":1}],"certificates":[],"schemaVersions":[],"sources":[{"id":"mds","title":"Mds","count":1}],"linkChecksStatus":[{"id":"200","title":"200","count":1}],"linksChecked":0,"linksWithSchemaOrg":[{"id":"1","title":"1","count":1}],"linkChecksSchemaOrgId":1,"linkChecksDcIdentifier":0,"linkChecksCitationDoi":0,"subjects":[{"id":"Antarctica","title":"Antarctica","count":1},{"id":"Chemistry:Rock","title":"Chemistry:Rock","count":1},{"id":"Dufek
         Massif","title":"Dufek Massif","count":1},{"id":"Forrestal Range","title":"Forrestal
@@ -63,7 +63,7 @@ http_interactions:
         mountains","title":"Pensacola Mountains","count":1},{"id":"Regional (Continents,
         Oceans)","title":"Regional (Continents, Oceans)","count":1},{"id":"Sample/Collection
         Description","title":"Sample/Collection Description","count":1},{"id":"Solid
-        Earth","title":"Solid Earth","count":1},{"id":"gabbro","title":"Gabbro","count":1},{"id":"plagioclase","title":"Plagioclase","count":1},{"id":"pyroxene","title":"Pyroxene","count":1}],"citations":[{"id":"2011","title":"2011","count":4}],"views":[],"downloads":[]},"links":{"self":"https://api.test.datacite.org/dois?fields%5Bdois%5D=doi%2Ccreators%2Ctitles%2Cdescriptions%2Cpublisher%2CpublicationYear%2Ctypes%2CrightsList&include=client&page%5Bnumber%5D=1&page%5Bsize%5D=25&query=dufek+AND+intrusion&sort=relevance"}}'
+        Earth","title":"Solid Earth","count":1},{"id":"gabbro","title":"Gabbro","count":1},{"id":"plagioclase","title":"Plagioclase","count":1},{"id":"pyroxene","title":"Pyroxene","count":1}],"citations":[{"id":"2011","title":"2011","count":4}],"views":[],"downloads":[]},"links":{"self":"https://api.test.datacite.org/dois?fields%5Bdois%5D=doi%2Ccreators%2Ctitles%2Cdescriptions%2Cpublisher%2CpublicationYear%2Ctypes%2CrightsList%2CcitationCount%2CviewCount%2CdownloadCount&include=client&page%5Bnumber%5D=1&page%5Bsize%5D=25&query=dufek+AND+intrusion&sort=relevance"}}'
     http_version: 
-  recorded_at: Tue, 10 Mar 2020 19:28:26 GMT
+  recorded_at: Tue, 24 Mar 2020 11:28:15 GMT
 recorded_with: VCR 2.9.3

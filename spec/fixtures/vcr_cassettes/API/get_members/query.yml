@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.5; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.7; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 10 Mar 2020 19:28:06 GMT
+      - Tue, 24 Mar 2020 11:28:05 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -31,11 +31,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Origin
       X-Request-Id:
-      - 3915f0af-e037-4695-b001-a31d238f51ca
+      - 359178f4-2e68-4263-9f5e-f3502cf079a4
       Etag:
       - W/"dd8581d2d9413198c3467c9d1ee94ce9"
       X-Runtime:
-      - '0.043189'
+      - '0.025538'
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
@@ -66,5 +66,5 @@ http_interactions:
         Member","count":1}],"organizationTypes":[],"focusAreas":[],"nonProfitStatuses":[{"id":"non-profit","title":"Non
         Profit","count":1}]},"links":{"self":"https://api.test.datacite.org/providers?query=ands","next":"https://api.test.datacite.org/providers?page%5Bnumber%5D=2&page%5Bsize%5D=25&query=ands&sort%5Bname.raw%5D%5Border%5D=asc"}}'
     http_version: 
-  recorded_at: Tue, 10 Mar 2020 19:28:06 GMT
+  recorded_at: Tue, 24 Mar 2020 11:28:05 GMT
 recorded_with: VCR 2.9.3

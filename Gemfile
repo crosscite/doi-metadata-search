@@ -3,8 +3,8 @@ source "http://rubygems.org"
 gem "dotenv"
 gem "sentry-raven", "~> 2.9"
 gem "awesome_print"
-gem "activesupport"
-gem "actionpack"
+gem "activesupport", "~> 5.2"
+gem "actionpack", "~> 5.2"
 gem "sinatra"
 gem "sinatra-contrib"
 gem "haml"
@@ -41,7 +41,6 @@ group :test do
   gem "cuprite"
   gem "webmock", "~> 3.5.1"
   gem "vcr", "~> 2.9.3"
-  gem "codeclimate-test-reporter", "~> 1.0.0"
   gem "simplecov"
 end
 

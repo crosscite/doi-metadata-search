@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.5; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.7; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 10 Mar 2020 19:28:04 GMT
+      - Tue, 24 Mar 2020 14:15:54 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,15 +37,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 7bd80c2c-e8d9-4f0a-864e-e817cc0ef011
+      - 0534b08a-2a9a-457e-adc7-d44c11135c13
       X-Download-Options:
       - noopen
       Etag:
-      - W/"ad15b1f01a22befaa3cf1c54f600a674"
+      - W/"81c22b71d8e7d4455ad35a674c3fed3a"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.030989'
+      - '0.126249'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -54,8 +54,8 @@ http_interactions:
       - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"0000-0002-2220-6072","type":"users","attributes":{"givenNames":"Michael","familyName":"''t
+      string: '{"data":{"id":"0000-0002-2220-6072","type":"users","attributes":{"givenName":"Michael","familyName":"''t
         Sas-Rolfes","name":"Michael ''t Sas-Rolfes","orcid":"https://orcid.org/0000-0002-2220-6072","github":null,"roleId":"user","isActive":false,"created":"2017-12-15T16:50:05.000Z","updated":"2017-12-15T16:50:05.000Z"},"relationships":{}},"meta":{"dois":[],"published":[],"resourceTypes":[],"views":[],"downloads":[],"citations":[]}}'
     http_version: 
-  recorded_at: Tue, 10 Mar 2020 19:28:05 GMT
+  recorded_at: Tue, 24 Mar 2020 14:15:54 GMT
 recorded_with: VCR 2.9.3

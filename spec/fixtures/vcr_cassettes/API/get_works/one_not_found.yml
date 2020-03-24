@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/dois/10.4226/xxxx?include=client,citation-events,reference-events
+    uri: https://api.test.datacite.org/dois/10.4226/xxxx?include=client
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.5; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.7; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
       Content-Type:
@@ -19,7 +19,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Tue, 10 Mar 2020 19:28:00 GMT
+      - Tue, 24 Mar 2020 11:28:05 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -31,9 +31,9 @@ http_interactions:
       Vary:
       - Accept-Encoding, Origin
       X-Request-Id:
-      - 93faa3d5-c184-4ad8-84b1-8a0bf2eb1c20
+      - 2f6880d4-2423-4d0d-a92a-d895621c4076
       X-Runtime:
-      - '0.011253'
+      - '0.011816'
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
@@ -43,5 +43,5 @@ http_interactions:
       string: '{"errors":[{"status":"404","title":"The resource you are looking for
         doesn''t exist."}]}'
     http_version: 
-  recorded_at: Tue, 10 Mar 2020 19:28:00 GMT
+  recorded_at: Tue, 24 Mar 2020 11:28:05 GMT
 recorded_with: VCR 2.9.3

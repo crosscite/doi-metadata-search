@@ -8,7 +8,7 @@ describe "API", type: :model, vcr: true do
   context "get_works" do
     it "all" do
       response = subject.get_works
-      expect(response[:meta]["resourceTypes"].first).to eq("count"=>679317, "id"=>"text", "title"=>"Text")
+      expect(response[:meta]["resourceTypes"].first).to eq("count"=>679616, "id"=>"text", "title"=>"Text")
       work = response[:data].first
       expect(work["id"]).to eq("10.1007/978-1-4757-9930-9_8")
     end
@@ -39,14 +39,14 @@ describe "API", type: :model, vcr: true do
       response = subject.get_works(query: "california")
       expect(response[:meta]["resourceTypes"].first).to eq("count"=>2189, "id"=>"text", "title"=>"Text")
       work = response[:data].first
-      expect(work["id"]).to eq("10.23721/109/17765")
+      expect(work["id"]).to eq("10.21949/109/19559")
     end
   end
 
   context "get_people" do
     it "all" do
       response = subject.get_people
-      expect(response[:meta]).to eq("total"=>66357, "totalPages"=>400, "page"=>1)
+      expect(response[:meta]).to eq("total"=>66528, "totalPages"=>400, "page"=>1)
       contributor = response[:data].first
       expect(contributor["id"]).to eq("0000-0001-9354-2586")
     end
@@ -54,7 +54,7 @@ describe "API", type: :model, vcr: true do
     it "one" do
       response = subject.get_people(id: "0000-0002-2220-6072")
       contributor = response[:data]
-      expect(contributor).to eq("attributes" => {"created"=>"2017-12-15T16:50:05.000Z", "familyName"=>"'t Sas-Rolfes", "github"=>nil, "givenNames"=>"Michael", "isActive"=>false, "name"=>"Michael 't Sas-Rolfes", "orcid"=>"https://orcid.org/0000-0002-2220-6072", "roleId"=>"user", "updated"=>"2017-12-15T16:50:05.000Z"},
+      expect(contributor).to eq("attributes" => {"created"=>"2017-12-15T16:50:05.000Z", "familyName"=>"'t Sas-Rolfes", "github"=>nil, "givenName"=>"Michael", "isActive"=>false, "name"=>"Michael 't Sas-Rolfes", "orcid"=>"https://orcid.org/0000-0002-2220-6072", "roleId"=>"user", "updated"=>"2017-12-15T16:50:05.000Z"},
         "id" => "0000-0002-2220-6072",
         "relationships" => {},
         "type" => "users")
@@ -64,7 +64,7 @@ describe "API", type: :model, vcr: true do
       response = subject.get_people(query: "garza")
       expect(response[:meta]).to eq("total"=>6, "totalPages"=>1, "page"=>1)
       contributor = response[:data][1]
-      expect(contributor).to eq("attributes" => {"created"=>"2016-08-01T16:25:38.000Z", "familyName"=>"Garza", "github"=>"https://github.com/kjgarza", "givenNames"=>"Kristian", "isActive"=>false, "name"=>"K. J. Garza", "orcid"=>"https://orcid.org/0000-0003-3484-6876", "roleId"=>"staff_admin", "updated"=>"2018-05-30T05:00:34.000Z"},
+      expect(contributor).to eq("attributes" => {"created"=>"2016-08-01T16:25:38.000Z", "familyName"=>"Garza", "github"=>"https://github.com/kjgarza", "givenName"=>"Kristian", "isActive"=>false, "name"=>"K. J. Garza", "orcid"=>"https://orcid.org/0000-0003-3484-6876", "roleId"=>"staff_admin", "updated"=>"2018-05-30T05:00:34.000Z"},
         "id" => "0000-0003-3484-6876",
         "relationships" => {},
         "type" => "users")
@@ -95,7 +95,7 @@ describe "API", type: :model, vcr: true do
   context "get_members" do
     it "all" do
       response = subject.get_members
-      expect(response[:meta]["regions"].first).to eq("id"=>"amer", "title"=>"Americas", "count"=>118)
+      expect(response[:meta]["regions"].first).to eq("id"=>"amer", "title"=>"Americas", "count"=>117)
       member = response[:data].first
       expect(member["id"]).to eq("akristia")
     end

@@ -1,5 +1,4 @@
 - attributes = item.fetch("attributes", {})
-- puts attributes
 - type = attributes.fetch("resource-type-id", nil)
 - includes = @works.present? ? @works[:included] : @work[:included]
 - work_types = Array.wrap(includes).select { |item| item["type"] == "work-types" }

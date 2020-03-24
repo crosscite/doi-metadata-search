@@ -17,6 +17,6 @@ describe 'search', type: :feature, js: true, vcr: true do
   it 'search' do
     visit "/works?query=climate"
     expect(page).to have_field "query", with: "climate"
-    expect(page).to have_css("h3.results", text: "11,717 Works")
+    expect(page).to have_css("h3.results", text: "12,018 Works")
   end
 end

@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.5; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.7; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
   response:
@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 10 Mar 2020 19:28:45 GMT
+      - Tue, 24 Mar 2020 14:15:58 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,15 +37,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - a0d3629b-fd58-4000-8bd6-0c8c224cd0d8
+      - ef8d9d83-4310-4e5d-99f4-b4b3da8b62ec
       X-Download-Options:
       - noopen
       Etag:
-      - W/"36f5ad5ad481f45fe57d977e2760bea2"
+      - W/"327b5d5d1986f653fa45f20feaa4e084"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.012399'
+      - '0.012819'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -54,12 +54,12 @@ http_interactions:
       - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"id":"0000-0003-0967-8697","type":"users","attributes":{"givenNames":"Daniel","familyName":"Fenner","name":"Daniel
-        Fenner","orcid":"https://orcid.org/0000-0003-0967-8697","github":null,"roleId":"user","isActive":false,"created":"2018-01-17T09:25:59.000Z","updated":"2018-01-17T09:25:59.000Z"},"relationships":{}},{"id":"0000-0001-6528-2027","type":"users","attributes":{"givenNames":"Martin","familyName":"Fenner","name":"Martin
-        Fenner","orcid":"https://orcid.org/0000-0001-6528-2027","github":null,"roleId":"staff_admin","isActive":false,"created":"2018-08-20T16:40:54.000Z","updated":"2019-08-31T07:28:05.000Z"},"relationships":{}},{"id":"0000-0001-5508-9039","type":"users","attributes":{"givenNames":"Andriel
-        Evandro","familyName":"Fenner","name":"Andriel Evandro Fenner","orcid":"https://orcid.org/0000-0001-5508-9039","github":null,"roleId":"user","isActive":false,"created":"2018-07-04T15:04:06.000Z","updated":"2018-07-05T02:31:49.000Z"},"relationships":{}},{"id":"0000-0002-3783-6130","type":"users","attributes":{"givenNames":"Irene","familyName":"Weipert-Fenner","name":"Irene
-        Weipert-Fenner","orcid":"https://orcid.org/0000-0002-3783-6130","github":null,"roleId":"user","isActive":false,"created":"2017-06-02T14:20:05.000Z","updated":"2017-06-02T14:20:05.000Z"},"relationships":{}},{"id":"0000-0003-1419-2405","type":"users","attributes":{"givenNames":null,"familyName":null,"name":"Martin
+      string: '{"data":[{"id":"0000-0001-5508-9039","type":"users","attributes":{"givenName":"Andriel
+        Evandro","familyName":"Fenner","name":"Andriel Evandro Fenner","orcid":"https://orcid.org/0000-0001-5508-9039","github":null,"roleId":"user","isActive":false,"created":"2018-07-04T15:04:06.000Z","updated":"2018-07-05T02:31:49.000Z"},"relationships":{}},{"id":"0000-0001-6528-2027","type":"users","attributes":{"givenName":"Martin","familyName":"Fenner","name":"Martin
+        Fenner","orcid":"https://orcid.org/0000-0001-6528-2027","github":null,"roleId":"staff_admin","isActive":false,"created":"2018-08-20T16:40:54.000Z","updated":"2019-08-31T07:28:05.000Z"},"relationships":{}},{"id":"0000-0003-0967-8697","type":"users","attributes":{"givenName":"Daniel","familyName":"Fenner","name":"Daniel
+        Fenner","orcid":"https://orcid.org/0000-0003-0967-8697","github":null,"roleId":"user","isActive":false,"created":"2018-01-17T09:25:59.000Z","updated":"2018-01-17T09:25:59.000Z"},"relationships":{}},{"id":"0000-0002-3783-6130","type":"users","attributes":{"givenName":"Irene","familyName":"Weipert-Fenner","name":"Irene
+        Weipert-Fenner","orcid":"https://orcid.org/0000-0002-3783-6130","github":null,"roleId":"user","isActive":false,"created":"2017-06-02T14:20:05.000Z","updated":"2017-06-02T14:20:05.000Z"},"relationships":{}},{"id":"0000-0003-1419-2405","type":"users","attributes":{"givenName":null,"familyName":null,"name":"Martin
         Fenner","orcid":"https://orcid.org/0000-0003-1419-2405","github":null,"roleId":"staff_admin","isActive":true,"created":"2019-09-10T07:56:46.000Z","updated":"2019-11-19T16:55:30.000Z"},"relationships":{}}],"meta":{"total":5,"totalPages":1,"page":1},"links":{"self":"https://api.test.datacite.org/users?page%5Bnumber%5D=1&page%5Bsize%5D=25&query=fenner","next":"https://api.test.datacite.org/users?page%5Bnumber%5D=2&page%5Bsize%5D=25&query=fenner"}}'
     http_version: 
-  recorded_at: Tue, 10 Mar 2020 19:28:45 GMT
+  recorded_at: Tue, 24 Mar 2020 14:15:58 GMT
 recorded_with: VCR 2.9.3
