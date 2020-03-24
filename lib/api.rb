@@ -27,7 +27,8 @@ module Sinatra
                    'user-id' => params.fetch('user-id', nil),
                    'has-views' => params.fetch('has-views', nil),
                    'has-downloads' => params.fetch('has-downloads', nil),
-                   'has-citations' => params.fetch('has-citations', nil) }.compact
+                   'has-citations' => params.fetch('has-citations', nil),
+                   exclude_registration_agencies: true }.compact
 
         url = "#{ENV['API_URL']}/dois?" + URI.encode_www_form(params)
       end

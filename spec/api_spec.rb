@@ -8,9 +8,9 @@ describe "API", type: :model, vcr: true do
   context "get_works" do
     it "all" do
       response = subject.get_works
-      expect(response[:meta]["resourceTypes"].first).to eq("count"=>679616, "id"=>"text", "title"=>"Text")
+      expect(response[:meta]["resourceTypes"].first).to eq("count"=>111428, "id"=>"dataset", "title"=>"Dataset")
       work = response[:data].first
-      expect(work["id"]).to eq("10.1007/978-1-4757-9930-9_8")
+      expect(work["id"]).to eq("10.21373/gbif.4066766673316484")
     end
 
     it "one" do
@@ -32,12 +32,12 @@ describe "API", type: :model, vcr: true do
       response = subject.get_works("work-id" => "10.5438/0004")
       #expect(response[:meta]["resource-types"].first).to eq("id"=>"text", "title"=>"Text", "count"=>3)
       work = response[:data].first
-      expect(work["id"]).to eq("10.1007/978-1-4757-9930-9_8")
+      expect(work["id"]).to eq("10.21373/gbif.4066766673316484")
     end
 
     it "query" do
       response = subject.get_works(query: "california")
-      expect(response[:meta]["resourceTypes"].first).to eq("count"=>2189, "id"=>"text", "title"=>"Text")
+      expect(response[:meta]["resourceTypes"].first).to eq("count"=>400, "id"=>"dataset", "title"=>"Dataset")
       work = response[:data].first
       expect(work["id"]).to eq("10.21949/109/19559")
     end
@@ -95,7 +95,7 @@ describe "API", type: :model, vcr: true do
   context "get_members" do
     it "all" do
       response = subject.get_members
-      expect(response[:meta]["regions"].first).to eq("id"=>"amer", "title"=>"Americas", "count"=>117)
+      expect(response[:meta]["regions"].first).to eq("id"=>"amer", "title"=>"Americas", "count"=>115)
       member = response[:data].first
       expect(member["id"]).to eq("akristia")
     end
