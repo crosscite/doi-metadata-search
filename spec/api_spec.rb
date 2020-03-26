@@ -8,7 +8,7 @@ describe "API", type: :model, vcr: true do
   context "get_works" do
     it "all" do
       response = subject.get_works
-      expect(response[:meta]["resourceTypes"].first).to eq("count"=>111428, "id"=>"dataset", "title"=>"Dataset")
+      expect(response[:meta]["resourceTypes"].first).to eq("count"=>111611, "id"=>"dataset", "title"=>"Dataset")
       work = response[:data].first
       expect(work["id"]).to eq("10.21373/gbif.4066766673316484")
     end
@@ -37,7 +37,7 @@ describe "API", type: :model, vcr: true do
 
     it "query" do
       response = subject.get_works(query: "california")
-      expect(response[:meta]["resourceTypes"].first).to eq("count"=>400, "id"=>"dataset", "title"=>"Dataset")
+      expect(response[:meta]["resourceTypes"].first).to eq("count"=>403, "id"=>"dataset", "title"=>"Dataset")
       work = response[:data].first
       expect(work["id"]).to eq("10.21949/109/19559")
     end
@@ -46,7 +46,7 @@ describe "API", type: :model, vcr: true do
   context "get_people" do
     it "all" do
       response = subject.get_people
-      expect(response[:meta]).to eq("total"=>66528, "totalPages"=>400, "page"=>1)
+      expect(response[:meta]).to eq("total"=>66557, "totalPages"=>400, "page"=>1)
       contributor = response[:data].first
       expect(contributor["id"]).to eq("0000-0001-9354-2586")
     end

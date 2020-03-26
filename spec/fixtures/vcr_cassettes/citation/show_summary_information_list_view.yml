@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 24 Mar 2020 19:59:01 GMT
+      - Thu, 26 Mar 2020 08:53:16 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -33,11 +33,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Origin
       X-Request-Id:
-      - 479f3530-b8ff-4c9e-af1d-ef6294473976
+      - 663928b2-c563-49d6-821b-e10c15d98eb3
       Etag:
       - W/"6a31e77cdc6a7a0db2bc7bce2832e389"
       X-Runtime:
-      - '0.287590'
+      - '0.230717'
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
@@ -65,5 +65,5 @@ http_interactions:
         Description","title":"Sample/Collection Description","count":1},{"id":"Solid
         Earth","title":"Solid Earth","count":1},{"id":"gabbro","title":"Gabbro","count":1},{"id":"plagioclase","title":"Plagioclase","count":1},{"id":"pyroxene","title":"Pyroxene","count":1}],"citations":[{"id":"2011","title":"2011","count":4}],"views":[],"downloads":[]},"links":{"self":"https://api.test.datacite.org/dois?exclude_registration_agencies=true&fields%5Bdois%5D=doi%2Ccreators%2Ctitles%2Cdescriptions%2Cpublisher%2CpublicationYear%2Ctypes%2CrightsList%2CcitationCount%2CviewCount%2CdownloadCount&include=client&page%5Bnumber%5D=1&page%5Bsize%5D=25&query=dufek+AND+intrusion&sort=relevance"}}'
     http_version: 
-  recorded_at: Tue, 24 Mar 2020 19:59:01 GMT
+  recorded_at: Thu, 26 Mar 2020 08:53:16 GMT
 recorded_with: VCR 2.9.3

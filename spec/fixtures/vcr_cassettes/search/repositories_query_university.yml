@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 24 Mar 2020 19:59:13 GMT
+      - Thu, 26 Mar 2020 08:52:52 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -31,11 +31,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Origin
       X-Request-Id:
-      - 8ac0fc48-c6c9-43ef-af69-30e5a2f15184
+      - d8db95bd-db1e-4ece-91f8-931a27d84af1
       Etag:
       - W/"e8cd47968132c7e41d98d9ccd11536f8"
       X-Runtime:
-      - '0.115986'
+      - '0.104578'
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
@@ -123,5 +123,5 @@ http_interactions:
         Related","count":1}],"certificates":[{"id":"CoreTrustSeal","title":"Core Trust
         Seal","count":3}],"software":[{"id":"dataverse","title":"Dataverse","count":4},{"id":"dspace","title":"DSpace","count":2},{"id":"eprints","title":"EPrints","count":2},{"id":"other","title":"Other","count":2},{"id":"invenio","title":"Invenio","count":1}]},"links":{"self":"https://api.test.datacite.org/repositories?include=provider&page%5Bnumber%5D=1&page%5Bsize%5D=25&query=university","next":"https://api.test.datacite.org/repositories?page%5Bnumber%5D=2&page%5Bsize%5D=25&query=university"}}'
     http_version: 
-  recorded_at: Tue, 24 Mar 2020 19:59:13 GMT
+  recorded_at: Thu, 26 Mar 2020 08:52:52 GMT
 recorded_with: VCR 2.9.3

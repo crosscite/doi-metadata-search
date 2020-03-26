@@ -12,14 +12,14 @@ http_interactions:
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
       Authorization:
-      - Bearer eyJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDEtNTQ4OS0zNTk0IiwibmFtZSI6Ikpvc2lhaCBDYXJiZXJyeSIsInJvbGVfaWQiOiJzdGFmZl9hZG1pbiIsImlhdCI6MTU4NTA3OTk2OCwiZXhwIjoxNTg1MDc5OTk4fQ.S9JI6cAm4RqBIVDMAEIznt90ittgDt70HG-LJkqIKNBQwPf-PQl4JBJ0HIKJKjudKxV8EzLshleLWDuzyNBWZyHcA3GIF6T1sk_Bp3tBm_DYQgjzG8IWOoyUqPWDVxEqr2Ffogahk-ZocGyOmc5D2wcPZrqFHEuG7AH6TudF8NPOiE5gPsWr1rM8bCXhy06XgzK43npz_mkhfuT6zlFigPDOB3z2p-w3VJcwQ5YNayjtfyXukbeXlXAQqxlMbW56j7QV1ECfBoJoNUrABHnfFh_Hsto4UOvG4ZPHCDUGyDahaFxaXMPbHx8Hlc0cUg6lf3rDHLQUQ3iztZ7Trbx_bQ
+      - Bearer eyJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDEtNTQ4OS0zNTk0IiwibmFtZSI6Ikpvc2lhaCBDYXJiZXJyeSIsInJvbGVfaWQiOiJzdGFmZl9hZG1pbiIsImlhdCI6MTU4NTIxMjUxNCwiZXhwIjoxNTg1MjEyNTQ0fQ.Hm9TBHHYyxV1nlmAxVXm8uHfIAf8VdB5Eqi8vLJo1MzMB4rGNnprIv2EJLRR_HcnLngKXTHPTjkMN8iYZxpX-DvxAqc9BNgR__Bd6RtmwOet-Ro-bUOjuaDh4Z9EVqerIcWzN6Ut3c6FlWMr64PQMBEY9qgdFGHkQ6xT7b-mhnC0uiY5MXWeOUXJggUhSNig_KhlHuyQIv-wVlw0-bnCGyK4dkdRlYOTxDUZY_g3K_QfXTKBZU-QQ6HnJZeDUZWW_KXrKx3XaE2sQrAKtwtlZ3gGxYKcxGBXzCLSZ8r1mZVur7Okeib1RQtaunZVAk7IrvyaVjXKJVwY7TZ4dhYEtg
   response:
     status:
       code: 401
       message: Unauthorized
     headers:
       Date:
-      - Tue, 24 Mar 2020 19:59:28 GMT
+      - Thu, 26 Mar 2020 08:48:34 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,11 +37,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - fab61070-f560-4e01-9424-99a34fb4d64d
+      - fec4ffa7-9c3c-4fc6-a99f-70b455853fd8
       X-Download-Options:
       - noopen
       X-Runtime:
-      - '0.006969'
+      - '0.006759'
       X-Frame-Options:
       - SAMEORIGIN
       X-Content-Type-Options:
@@ -54,5 +54,5 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"errors":[{"status":"401","title":"Bad credentials."}]}'
     http_version: 
-  recorded_at: Tue, 24 Mar 2020 19:59:28 GMT
+  recorded_at: Thu, 26 Mar 2020 08:48:34 GMT
 recorded_with: VCR 2.9.3

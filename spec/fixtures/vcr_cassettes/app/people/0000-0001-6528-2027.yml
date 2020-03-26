@@ -17,7 +17,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 24 Mar 2020 19:59:24 GMT
+      - Thu, 26 Mar 2020 08:48:31 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -37,7 +37,7 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - 28a396a9-6485-4a66-a825-a5ac3e5fa672
+      - ed67f616-c5b1-4a48-9f9f-9c9db9e7a77b
       X-Download-Options:
       - noopen
       Etag:
@@ -45,7 +45,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.149233'
+      - '0.148819'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -57,7 +57,7 @@ http_interactions:
       string: '{"data":{"id":"0000-0001-6528-2027","type":"users","attributes":{"givenName":"Martin","familyName":"Fenner","name":"Martin
         Fenner","orcid":"https://orcid.org/0000-0001-6528-2027","github":null,"roleId":"staff_admin","isActive":false,"created":"2018-08-20T16:40:54.000Z","updated":"2019-08-31T07:28:05.000Z"},"relationships":{}},"meta":{"dois":[],"published":[],"resourceTypes":[],"views":[],"downloads":[],"citations":[]}}'
     http_version: 
-  recorded_at: Tue, 24 Mar 2020 19:59:24 GMT
+  recorded_at: Thu, 26 Mar 2020 08:48:31 GMT
 - request:
     method: get
     uri: https://api.test.datacite.org/dois?exclude_registration_agencies=true&fields%5Bdois%5D=doi,creators,titles,descriptions,publisher,publicationYear,types,rightsList,citationCount,viewCount,downloadCount&include=client&page%5Bnumber%5D=1&page%5Bsize%5D=25&sort=relevance&user-id=0000-0001-6528-2027
@@ -77,7 +77,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 24 Mar 2020 19:59:24 GMT
+      - Thu, 26 Mar 2020 08:48:31 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -91,11 +91,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Origin
       X-Request-Id:
-      - 92030fcb-b4b9-40e0-9722-1c410e41469c
+      - be3a4c85-caaf-4293-80b2-ef32b508c6ad
       Etag:
       - W/"a76ea23eced8ccf8073a9b6e45cf4797"
       X-Runtime:
-      - '0.043260'
+      - '0.071535'
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
@@ -104,5 +104,5 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"data":[],"included":[],"meta":{"total":0,"totalPages":0,"page":1},"links":{"self":"https://api.test.datacite.org/dois?exclude_registration_agencies=true&fields%5Bdois%5D=doi%2Ccreators%2Ctitles%2Cdescriptions%2Cpublisher%2CpublicationYear%2Ctypes%2CrightsList%2CcitationCount%2CviewCount%2CdownloadCount&include=client&page%5Bnumber%5D=1&page%5Bsize%5D=25&sort=relevance&user-id=0000-0001-6528-2027"}}'
     http_version: 
-  recorded_at: Tue, 24 Mar 2020 19:59:24 GMT
+  recorded_at: Thu, 26 Mar 2020 08:48:31 GMT
 recorded_with: VCR 2.9.3

@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 24 Mar 2020 19:59:38 GMT
+      - Thu, 26 Mar 2020 08:49:43 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -33,11 +33,11 @@ http_interactions:
       Vary:
       - Accept-Encoding, Origin
       X-Request-Id:
-      - c7344ccd-e43f-4944-8c3c-d493312f0c67
+      - 91944c1a-8af4-4e76-840d-608eeccd3e46
       Etag:
       - W/"cee98a5980ef59cc0b4ac78bb003056c"
       X-Runtime:
-      - '0.080199'
+      - '0.069580'
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
@@ -50,5 +50,5 @@ http_interactions:
         expressive language skills"}],"publisher":"University of Nevada, Las Vegas","container":{},"publicationYear":1988,"subjects":null,"contributors":[],"dates":null,"language":null,"types":{"resourceTypeGeneral":"Text"},"relatedIdentifiers":null,"sizes":null,"formats":null,"version":null,"rightsList":[],"descriptions":null,"geoLocations":null,"fundingReferences":null,"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC00L21ldGFkYXRhLnhzZCI+CiAgPGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuNzAwMDEvMTIzMzQyOTY8L2lkZW50aWZpZXI+CiAgPGNyZWF0b3JzPgogICAgPGNyZWF0b3I+CiAgICAgIDxjcmVhdG9yTmFtZT5Kb3ljZSBNb3R0IEFuZGVyc29uPC9jcmVhdG9yTmFtZT4KICAgIDwvY3JlYXRvcj4KICA8L2NyZWF0b3JzPgogIDx0aXRsZXM+CiAgICA8dGl0bGU+VGhlIGVmZmVjdHMgb2YgZWFybHkgaW50ZXJ2ZW50aW9uIG9uIHlvdW5nIGhhbmRpY2FwcGVkIGNoaWxkcmVuIHdobyBhcmUgbm9udmVyYmFsIG9yIGhhdmUgbGltaXRlZCBleHByZXNzaXZlIGxhbmd1YWdlIHNraWxsczwvdGl0bGU+CiAgPC90aXRsZXM+CiAgPHB1Ymxpc2hlcj5Vbml2ZXJzaXR5IG9mIE5ldmFkYSwgTGFzIFZlZ2FzPC9wdWJsaXNoZXI+CiAgPHB1YmxpY2F0aW9uWWVhcj4xOTg4PC9wdWJsaWNhdGlvblllYXI+CiAgPHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJUZXh0Ii8+CiAgPHZlcnNpb24vPgo8L3Jlc291cmNlPgo=","url":"https://digitalscholarship.unlv.edu/rtds/1","contentUrl":null,"metadataVersion":0,"schemaVersion":null,"source":null,"isActive":true,"state":"findable","reason":null,"viewCount":0,"viewsOverTime":[],"downloadCount":0,"downloadsOverTime":[],"referenceCount":0,"citationCount":0,"citationsOverTime":[],"created":"2019-04-08T08:20:10.000Z","registered":"2019-04-08T08:20:11.000Z","published":"1988","updated":"2020-03-22T20:31:53.000Z"},"relationships":{"client":{"data":{"id":"datacite.datacite","type":"clients"}},"media":{"data":{"id":"10.70001/12334296","type":"media"}},"referenceEvents":{"data":[]},"citationEvents":{"data":[]}}},"included":[{"id":"datacite.datacite","type":"clients","attributes":{"name":"DataCite
         Repository","symbol":"DATACITE.DATACITE","year":2011,"contactEmail":"support@datacite.org","alternateName":null,"description":null,"language":["en","fr"],"clientType":"periodical","domains":"datacite.org","re3data":null,"opendoar":null,"issn":{"issnl":null,"print":"1545-7885","electronic":"1544-9173"},"url":null,"created":"2011-12-07T13:43:39.000Z","updated":"2019-08-24T06:22:34.000Z","isActive":true,"hasPassword":true},"relationships":{"provider":{"data":{"id":"datacite","type":"providers"}},"consortium":{"data":{"id":"dc","type":"providers"}},"prefixes":{"data":[{"id":"10.5438","type":"prefixes"},{"id":"10.70002","type":"prefixes"},{"id":"10.70001","type":"prefixes"}]}}}]}'
     http_version: 
-  recorded_at: Tue, 24 Mar 2020 19:59:39 GMT
+  recorded_at: Thu, 26 Mar 2020 08:49:44 GMT
 recorded_with: VCR 2.9.3
