@@ -57,7 +57,7 @@ function setupCitations(data, yop, chartWidth) {
   var startDate = diff <= 20 ? yopDate : maxStart;
 
   var startTime = startDate;
-  var endTime = today;
+  var endTime =  new Date(today.getFullYear(), 12, 0);
   var domain = [startTime, endTime];
   var length = (diff > 20 ? 20 : diff) + 0.5;
   var firstLabel = formatYear(startDate);
@@ -123,7 +123,6 @@ function bar2Viz(data, div, count, format, displayMode, yop) {
   } else {
     setup = setupUsage(data, yop, chartWidth);
   }
-
   var x = d3.time.scale
     .utc()
     .domain(setup.domain)
