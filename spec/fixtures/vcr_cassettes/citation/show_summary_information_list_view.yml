@@ -2,24 +2,26 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.test.datacite.org/dois?exclude_registration_agencies=true&fields%5Bdois%5D=doi,creators,titles,descriptions,publisher,publicationYear,types,rightsList,citationCount,viewCount,downloadCount&include=client&page%5Bnumber%5D=1&page%5Bsize%5D=25&query=dufek%20AND%20intrusion&sort=relevance
+    uri: https://api.test.datacite.org/dois?composite=true&exclude_registration_agencies=true&fields%5Bdois%5D=doi,creators,titles,descriptions,publisher,publicationYear,types,rightsList,citationCount,viewCount,downloadCount&include=client&page%5Bnumber%5D=1&page%5Bsize%5D=25&query=dufek%20AND%20intrusion&sort=relevance
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.7; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
       Content-Type:
       - application/json;charset=UTF-8
+      Accept-Encoding:
+      - gzip
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Thu, 26 Mar 2020 08:53:16 GMT
+      - Sat, 25 Apr 2020 01:33:52 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -32,38 +34,22 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
+      Content-Encoding:
+      - gzip
       X-Request-Id:
-      - 663928b2-c563-49d6-821b-e10c15d98eb3
+      - be88b7aa-a1b9-40e4-9224-7b12e046bdb8
       Etag:
-      - W/"6a31e77cdc6a7a0db2bc7bce2832e389"
+      - W/"abafd4582ab43b01d260c014ac20dd12"
       X-Runtime:
-      - '0.230717'
+      - '0.069590'
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
       - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"id":"10.91819/71718","type":"dois","attributes":{"doi":"10.91819/71718","creators":[{"name":"Grimes,
-        Craig","nameType":"Personal","givenName":"Craig","familyName":"Grimes","affiliation":[],"nameIdentifiers":[{"nameIdentifier":"8982108400","nameIdentifierScheme":"SCOPUS"}]},{"name":"Cheadle,
-        Michael ","nameType":"Personal","givenName":"Michael ","familyName":"Cheadle","affiliation":[],"nameIdentifiers":[{"nameIdentifier":"7003914970","nameIdentifierScheme":"SCOPUS"}]}],"titles":[{"title":"Major
-        element analyses of plagioclase and pyroxene from gabbros of the layered mafic
-        Dufek Intrusion"}],"descriptions":[{"description":"EMP analyses of plagioclase
-        and pyroxene from gabbros sampled from the layered mafic Dufek Intrusion.
-        The samples were collected in the austral summer 2006/2007 from the Dufek
-        Massif, Forrestal Range, Pensacola mountains, Antarctica.","descriptionType":"Abstract"}],"publisher":"EarthChem","publicationYear":2011,"types":{"ris":"DATA","bibtex":"misc","citeproc":"dataset","schemaOrg":"Dataset","resourceType":"Dataset","resourceTypeGeneral":"Dataset"},"rightsList":[{"rights":"Creative
-        Commons Attribution-NonCommercial-Share Alike 3.0 United States [CC BY-NC-SA
-        3.0]","rightsUri":"https://creativecommons.org/licenses/by-nc-sa/3.0/us"}],"citationCount":4,"viewCount":0,"downloadCount":0},"relationships":{}}],"included":[{"id":"tib.ldeo","type":"clients","attributes":{"name":"LDEO
-        - Lamont-Doherty Earth Observatory, Columbia University","symbol":"TIB.LDEO","year":2011,"contactEmail":"arko@ldeo.columbia.edu","alternateName":null,"description":null,"language":[],"clientType":"repository","domains":"ieda-services.org,iedadata.org,oceandrilling.org","re3data":null,"opendoar":null,"issn":null,"url":null,"created":"2011-03-30T08:02:42.000Z","updated":"2018-08-26T01:30:25.000Z","isActive":true,"hasPassword":true},"relationships":{"provider":{"data":{"id":"tib","type":"providers"}},"prefixes":{"data":[]}}}],"meta":{"total":1,"totalPages":1,"page":1,"states":[{"id":"findable","title":"Findable","count":1}],"resourceTypes":[{"id":"dataset","title":"Dataset","count":1}],"created":[{"id":"2012","title":"2012","count":1}],"published":[{"id":"2011","title":"2011","count":1}],"registered":[{"id":"2012","title":"2012","count":1}],"providers":[{"id":"tib","title":"German
-        National Library of Science and Technology","count":1}],"clients":[{"id":"tib.ldeo","title":"LDEO
-        - Lamont-Doherty Earth Observatory, Columbia University","count":1}],"affiliations":[],"prefixes":[{"id":"10.91819","title":"10.91819","count":1}],"certificates":[],"schemaVersions":[],"sources":[{"id":"mds","title":"Mds","count":1}],"linkChecksStatus":[{"id":"200","title":"200","count":1}],"linksChecked":0,"linksWithSchemaOrg":[{"id":"1","title":"1","count":1}],"linkChecksSchemaOrgId":1,"linkChecksDcIdentifier":0,"linkChecksCitationDoi":0,"subjects":[{"id":"Antarctica","title":"Antarctica","count":1},{"id":"Chemistry:Rock","title":"Chemistry:Rock","count":1},{"id":"Dufek
-        Massif","title":"Dufek Massif","count":1},{"id":"Forrestal Range","title":"Forrestal
-        Range","count":1},{"id":"Geochemistry","title":"Geochemistry","count":1},{"id":"Marine
-        Geoscience","title":"Marine Geoscience","count":1},{"id":"Mineralogy","title":"Mineralogy","count":1},{"id":"Pensacola
-        mountains","title":"Pensacola Mountains","count":1},{"id":"Regional (Continents,
-        Oceans)","title":"Regional (Continents, Oceans)","count":1},{"id":"Sample/Collection
-        Description","title":"Sample/Collection Description","count":1},{"id":"Solid
-        Earth","title":"Solid Earth","count":1},{"id":"gabbro","title":"Gabbro","count":1},{"id":"plagioclase","title":"Plagioclase","count":1},{"id":"pyroxene","title":"Pyroxene","count":1}],"citations":[{"id":"2011","title":"2011","count":4}],"views":[],"downloads":[]},"links":{"self":"https://api.test.datacite.org/dois?exclude_registration_agencies=true&fields%5Bdois%5D=doi%2Ccreators%2Ctitles%2Cdescriptions%2Cpublisher%2CpublicationYear%2Ctypes%2CrightsList%2CcitationCount%2CviewCount%2CdownloadCount&include=client&page%5Bnumber%5D=1&page%5Bsize%5D=25&query=dufek+AND+intrusion&sort=relevance"}}'
+      string: !binary |-
+        H4sIAICTo14AA6RWbW/bNhD+K4SA5kv9IjlJ4xgINtdJiwJ5w+wO6IqgoKizzYUSNZJKogX577sjJUtJA6zrvtjkiffCu+ee42OUccej2dfHSGbRLEri0XEyTY7HR8lRMo0GkatLQHmmpcUdd87ItHJgo9kjCV9TEQa408Z6qwXPSf+jkTnYAVsYLjd4hsSrYPoajNUFVyjdyDsoLoNGe3LNc6nqy74ZCmS9lkpyJ3WBbm6CwU8ZFE6uJfR8dzJUnx5PJ0k8PYjj6KXGUmzBu1gurq4/L6Onm6fBLvrFFnimYMAupNhyUOyHbtA7/OwSjbWfvsVRHO8fJwfHRz90C7TqpFMQjPklxcb/1IaBwtOFYxyDry1YptesVHwjtVDcAsozVtZGP0ABbG10zjY8TY32B90WmOI1GMhYztdSsNNqDbfsU+FMZelK5DsDK4ws6Yohgp4A4zi7uP4J75bnpUK3XvivcYzYCo8EHcvu8SATWikQDjVk4Q3wyjrDFbNVnoNhkzh+N8afo85FMHrBrZXrAfugjQHrUOM3XmwQGddQWI5mOct1VTguC0T7HBdGOCn4KHqWigY485S8CuczVVapknbrS3zGjdsiTvKokQsPki/A8eskTpLQmL4LDXbmLDqdr+Z4OJWpgwfc59IK6kXpoDRaUAtjo1twKLSEEn5lNqS3k+J9dGVEC+rXP3zEWmCeet+f8IDcbJ09l9b5Coetb2EkAmwIttB5jvVn84Y+8CrDS12QGIyQXA2XW45lmSt5C2x/FLPPhaTqLB1HrmFfFwv2/svwcjFczunzTdQ6/WyIgrbOlXY2HovGoQj+Rtpsxpg7LA3YcVoPCzG0fIwGxpX1Ocf0+MQuqGbR7GAQ3Um4b3YxlkzfF0rzrJXQZUF5FbuVJeX/iezIQqgqg6wjUifTkcpAdxQqlMRe+55FG445Pz27YkN2zjFyNzzVCARXMw8EdpVaMHdEqjVSqFZVnkpOObpDkpCupprWeaqpLqtP70dkC2V1Dy4CrSLSznIu6RQ3t/pXim8kGnMjyCqKTTkwBWY9kFVRKTV43rNBpBD2Fd9A4K1wtwY5BkqNUWGwBHqdUy+gWELGh3QPLIgvzYAkhEq/0QKw4Y1UShYbknjk7YfxFHzqEopM053CXlq7i6cyql16FFAtIrr6MN4f7sereDqLJ7ODySiO4z/QdFVm3aHpMJ4OJ+9WcTLbj2eTw/aQtHNBeIpmSCUwiLbcXiMB3GuTBdEreIiw3e5kRm382AzXDhIdGtpTiEM0UhpYy4dmqoaBfPPkkZVDsOC0o7ajxqfVNabe+m3pi4AL63ulQ+BaFhlP/ZxpWf9DJxIB0Qn56Dd4z0BHGK1+xwl99V2+W0XM6KSn1Wz7Ki3XPVdKnisl34W5QYohnv9PrnaJ7vdmT+cjmJwX7NJXEQn9XKaGm5qm0VIgrEWYRCsQ20IrvalfXr/p61dbv/HxP5u77673ZrCh+TrwvHzF9SLoiZ4Fj4Hgy0E00Llph8Pv5HvnAVvyFqeRuLVEyJXt5z9+lv74pf2GYO0PFvqAlIiDG88tAfvtU4jEd4kFte4xPy/lCK/gRgRaGnqe++nV+gsOA89HcEIduwcPnqq/BTQZH9037KECa23DEXxJqcy+OXxP+m8OT0/w/81k0b5rcRleVLjoP29wu5vh7bqb26RF/YX/3bwkq/0RhPvdACLr/fGz1wyZkwC4PWp8jLFAvKA/jDJpRVb+DSSYHO79VYGpTzJ6u7ydX56+le2jaM9q406QvOCOI8SRhf4BAAD//wMAIVadMgsMAAA=
     http_version: 
-  recorded_at: Thu, 26 Mar 2020 08:53:16 GMT
+  recorded_at: Sat, 25 Apr 2020 01:33:52 GMT
 recorded_with: VCR 2.9.3

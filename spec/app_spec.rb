@@ -18,7 +18,7 @@ describe 'app', vcr: true do
     expect(last_response.headers["Content-Length"].to_i).to be > 1000
 
     doc = Nokogiri::HTML(last_response.body)
-    expect(doc.at_css("h3.results").text.strip).to eq("270,636 Works")
+    expect(doc.at_css("h3.results").text.strip).to eq("342,237 Works")
   end
 
   it '/works?query=climate' do
@@ -29,7 +29,7 @@ describe 'app', vcr: true do
     expect(last_response.headers["Content-Length"].to_i).to be > 1000
 
     doc = Nokogiri::HTML(last_response.body)
-    expect(doc.at_css("h3.results").text.strip).to eq("6,066 Works")
+    expect(doc.at_css("h3.results").text.strip).to eq("8,145 Works")
   end
 
   it '/works/10.1594/ieda/100037' do
@@ -50,7 +50,7 @@ describe 'app', vcr: true do
     get '/works/10.7272/q6g15xs4', nil, user_agent
     
     doc = Nokogiri::HTML(last_response.body)
-    expect(doc.at("#myTabContent")).to be_nil
+    expect(doc.at("#myTabContent").text.strip).to start_with("486 views reported since publication in 2017.")
   end
 
   it '/people' do
@@ -61,7 +61,7 @@ describe 'app', vcr: true do
     expect(last_response.headers["Content-Length"].to_i).to be > 1000
 
     doc = Nokogiri::HTML(last_response.body)
-    expect(doc.at_css("h3.results").text.strip).to eq("66,557 People")
+    expect(doc.at_css("h3.results").text.strip).to eq("66,898 People")
   end
 
   it '/people?query=fenner' do
@@ -95,7 +95,7 @@ describe 'app', vcr: true do
     expect(last_response.headers["Content-Length"].to_i).to be > 1000
 
     doc = Nokogiri::HTML(last_response.body)
-    expect(doc.at_css("h3.results").text.strip).to eq("2,068 Repositories")
+    expect(doc.at_css("h3.results").text.strip).to eq("2,100 Repositories")
   end
 
   it '/repositories?query=dryad' do
@@ -128,7 +128,7 @@ describe 'app', vcr: true do
     expect(last_response.headers["Content-Length"].to_i).to be > 1000
 
     doc = Nokogiri::HTML(last_response.body)
-    expect(doc.at_css("h3.results").text.strip).to eq("393 Members")
+    expect(doc.at_css("h3.results").text.strip).to eq("409 Members")
   end
 
   it '/members?query=university' do
@@ -139,7 +139,7 @@ describe 'app', vcr: true do
     expect(last_response.headers["Content-Length"].to_i).to be > 1000
 
     doc = Nokogiri::HTML(last_response.body)
-    expect(doc.at_css("h3.results").text.strip).to eq("106 Members")
+    expect(doc.at_css("h3.results").text.strip).to eq("108 Members")
   end
 
   it '/members/dryad' do

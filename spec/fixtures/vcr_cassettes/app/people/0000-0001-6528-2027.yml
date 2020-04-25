@@ -8,16 +8,18 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.7; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Thu, 26 Mar 2020 08:48:31 GMT
+      - Sat, 25 Apr 2020 01:34:12 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -30,6 +32,8 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
+      Content-Encoding:
+      - gzip
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Permitted-Cross-Domain-Policies:
@@ -37,15 +41,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - ed67f616-c5b1-4a48-9f9f-9c9db9e7a77b
+      - c49b0ba6-0810-466a-9804-e76135a8f75d
       X-Download-Options:
       - noopen
       Etag:
-      - W/"a93eef971f9ef01817f0c505a291e876"
+      - W/"0ff5c30401a15a1e54894c99e8682485"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.148819'
+      - '0.072970'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -54,30 +58,32 @@ http_interactions:
       - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"0000-0001-6528-2027","type":"users","attributes":{"givenName":"Martin","familyName":"Fenner","name":"Martin
-        Fenner","orcid":"https://orcid.org/0000-0001-6528-2027","github":null,"roleId":"staff_admin","isActive":false,"created":"2018-08-20T16:40:54.000Z","updated":"2019-08-31T07:28:05.000Z"},"relationships":{}},"meta":{"dois":[],"published":[],"resourceTypes":[],"views":[],"downloads":[],"citations":[]}}'
+      string: !binary |-
+        H4sIAJSTo14AA2yQT2vDMAzFv8rwOWmdrH9922Www3bqaWMMN1YSgWMHW24pJd99chu2HWYw+D3/pCd0FUaTFuoq0AglJJ+Sb1Vu1vWurGW9FYWgywj8mSKEyFITBTwmgpjrOjyBe9NDJl51IHSMtHpAe5ndZ3AOArvuL/XwY/vQ3MJ7ojGq5fKmFz50y//H6ZD6dBTKJWsLEbyFl1weSbftlzbDbQKMTw3xaEK12kYoRBNAE2SwltWulLndodqolVTr1YJD3rkqjeYX2mfosTrIrap3Sq7v0MSRYDWhd7HHMe9gYm+A+xqNR7Y+PgsxpqPF2OduWQaIPoUGDrzMmTghnOen8WdnvTazbJDuCVlO0zcAAAD//wMA29PwpaYBAAA=
     http_version: 
-  recorded_at: Thu, 26 Mar 2020 08:48:31 GMT
+  recorded_at: Sat, 25 Apr 2020 01:34:12 GMT
 - request:
     method: get
-    uri: https://api.test.datacite.org/dois?exclude_registration_agencies=true&fields%5Bdois%5D=doi,creators,titles,descriptions,publisher,publicationYear,types,rightsList,citationCount,viewCount,downloadCount&include=client&page%5Bnumber%5D=1&page%5Bsize%5D=25&sort=relevance&user-id=0000-0001-6528-2027
+    uri: https://api.test.datacite.org/dois?composite=true&exclude_registration_agencies=true&fields%5Bdois%5D=doi,creators,titles,descriptions,publisher,publicationYear,types,rightsList,citationCount,viewCount,downloadCount&include=client&page%5Bnumber%5D=1&page%5Bsize%5D=25&sort=relevance&user-id=0000-0001-6528-2027
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.7; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
       Content-Type:
       - application/json;charset=UTF-8
+      Accept-Encoding:
+      - gzip
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Thu, 26 Mar 2020 08:48:31 GMT
+      - Sat, 25 Apr 2020 01:34:12 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -90,19 +96,22 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
+      Content-Encoding:
+      - gzip
       X-Request-Id:
-      - be3a4c85-caaf-4293-80b2-ef32b508c6ad
+      - 3db74430-25a3-47cc-9b86-c7a572c49baf
       Etag:
-      - W/"a76ea23eced8ccf8073a9b6e45cf4797"
+      - W/"d87db19eda63b1acb543d808f9f94d39"
       X-Runtime:
-      - '0.071535'
+      - '0.033430'
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
       - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[],"included":[],"meta":{"total":0,"totalPages":0,"page":1},"links":{"self":"https://api.test.datacite.org/dois?exclude_registration_agencies=true&fields%5Bdois%5D=doi%2Ccreators%2Ctitles%2Cdescriptions%2Cpublisher%2CpublicationYear%2Ctypes%2CrightsList%2CcitationCount%2CviewCount%2CdownloadCount&include=client&page%5Bnumber%5D=1&page%5Bsize%5D=25&sort=relevance&user-id=0000-0001-6528-2027"}}'
+      string: !binary |-
+        H4sIAJSTo14AAzRQXWvDMAz8L4bmKWk+INsIhMK6xz3sdYxRXFtNxBzbWEq7rfS/z04Xg/DdId0JXYWWLEX38ZkLtMrMGvSdTZD0q2DH0oiuyu/oTQ5AC/URia6+5cKg/aLUS2BOohMjs6euLKXHLQPxNmUoZNi6MJTaIe2Um7yjKPUcZsjge4k+BBiQOEhGZw/R3yoEurecEIymTfuc5jftSx//TbNXASS7QBEysoEENJAK6JNJon4+GqQRworV4v8OMin845ehgMPI9Brjkyvy0rN3s038jHBZsXYXa5zUC8/+j9YrgxBpOkrc0c7TMebFLetVIvyFJDRtRi5wH8DAWVoF2UwQCtR9FV8Rqy4e2uapaKrmUdxufwAAAP//AwC7Ot6RogEAAA==
     http_version: 
-  recorded_at: Thu, 26 Mar 2020 08:48:31 GMT
+  recorded_at: Sat, 25 Apr 2020 01:34:12 GMT
 recorded_with: VCR 2.9.3

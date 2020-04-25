@@ -9,7 +9,7 @@ describe "Volpino", type: :model, vcr: true do
   context "found_dois" do
     it "with works" do
       works = subject.get_works(query: "martin fenner")[:data]
-      expect(subject.found_dois(works).length).to eq(25)
+      expect(subject.found_dois(works).length).to eq(7)
     end
   
     it "without works" do
@@ -33,9 +33,9 @@ describe "Volpino", type: :model, vcr: true do
       claims = subject.get_claims(user, dois)[:data]
       merged_claims = subject.merge_claims(works, claims)
       statuses = merged_claims.map { |mc| mc["attributes"]["claim-status"] }
-      expect(works.length).to eq(25)
-      expect(statuses.length).to eq(25)
-      expect(statuses.inject(Hash.new(0)) { |total, e| total[e] += 1 ; total }).to eq("none"=>25)
+      expect(works.length).to eq(7)
+      expect(statuses.length).to eq(7)
+      expect(statuses.inject(Hash.new(0)) { |total, e| total[e] += 1 ; total }).to eq("none"=>7)
     end
   end
   
@@ -43,10 +43,10 @@ describe "Volpino", type: :model, vcr: true do
     it "with works" do
       works = subject.get_works(query: "martin fenner")[:data]
       works_with_claims = subject.get_claimed_items(user, works)
-      expect(works.length).to eq(25)
-      expect(works_with_claims.length).to eq(25)
+      expect(works.length).to eq(7)
+      expect(works_with_claims.length).to eq(7)
       work = works_with_claims[3]
-      expect(work["id"]).to eq("10.14454/1x4x-9056")
+      expect(work["id"]).to eq("10.5438/mk65-3m12")
       expect(work["attributes"]["claim-status"]).to eq("none")
     end
   

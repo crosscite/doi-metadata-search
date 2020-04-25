@@ -8,16 +8,18 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.7; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Thu, 26 Mar 2020 08:49:41 GMT
+      - Sat, 25 Apr 2020 01:33:46 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -30,30 +32,22 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
+      Content-Encoding:
+      - gzip
       X-Request-Id:
-      - b5854a5c-fdd8-4dc0-a290-433bf55f37f8
+      - feb0efd9-cb57-49c3-a034-24c66f4709a1
       Etag:
-      - W/"ce9e66fd0700bc1103f2075ec3f3926c"
+      - W/"008529d964056726124b1a8fa818110a"
       X-Runtime:
-      - '0.086565'
+      - '0.053752'
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
       - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"cern.zenodo","type":"repositories","attributes":{"name":"Zenodo","symbol":"CERN.ZENODO","re3data":"https://doi.org/10.17616/R3QP53","opendoar":null,"year":2014,"systemEmail":"lars.holm.nielsen@cern.ch","alternateName":"Research.
-        Shared","description":"ZENODO builds and operates a simple and innovative
-        service that enables researchers, scientists, EU projects and institutions
-        to share and showcase multidisciplinary research results (data and publications)
-        that are not part of the existing institutional or subject-based repositories
-        of the research communities.\r\nZENODO enables researchers, scientists, EU
-        projects and institutions to:\r\neasily share the long tail of small research
-        results in a wide variety of formats including text, spreadsheets, audio,
-        video, and images across all fields of science.\r\ndisplay their research
-        results and get credited by making the research results citable and integrate
-        them into existing reporting lines to funding agencies like the European Commission.\r\neasily
-        access and reuse shared research results.","clientType":"repository","repositoryType":["other"],"language":["en"],"certificate":[],"domains":"openaire.cern.ch,zenodo.org","issn":[],"url":"https://zenodo.org/","created":"2014-09-24T14:54:20.000Z","updated":"2019-08-03T05:29:30.000Z","isActive":true,"hasPassword":true,"serviceContact":{}},"relationships":{"provider":{"data":{"id":"cern","type":"providers"}},"prefixes":{"data":[{"id":"10.5281","type":"prefixes"}]}}},"meta":{"doiCount":0,"prefixCount":1}}'
+      string: !binary |-
+        H4sIAHqTo14AA6RUTXPjNgz9Kxyd2hlbluNku9GpndTX7DZNL9ndA03CFroUqSFBJ+qO/3sBSk48zbEnUSA+Hh+A96OymnTV/qjQVm1lIPr6H/DBhmpR0TgAGyMMISGFiJDYqoki7jLxD4d53YvP0zkmjf0uOLbcbR/u66ft/affP7E5wmYqVHVEQ2pXKxuwDvGwWjf1+pcP6w+rh80fn2827BsG8DboWLU+O7eoRpDzVbO+lvSJoN/2GqWG0zHVXXB97RFcAv9reYDpBKYjPmuC+wnhAyTOY7pa/dnpCJZdLCQTcSAMXp5QsKpdRmeT0t4qBhI5Af+ohP3goFjR+3DUhEdQCeIRDSjqNCnweufYOc6FIKaFSgbBEybi8/YvNcTwNxhKc6JESFnKJ0VBJcFVblIXno1OoPrsCC1ylsGh13F8zS4HvkzqJ+G1RA1559Doku/nCZMk9IHUoCOpsGcjKHhhOOgPl/W1UyGqlHeCbrnj0lZdtv0c+1rdhL7PHonv6q/xq5/J+78ctJILdEI3znRIVRcYLXHLBUbqtXPvaUDPXXpGC+qoGTGN4rsPsdfl0rhs5c0EL8SIhgjapg5AMGm+Cgt15GD+FFS9PkjbTQyJP1xvz/NlCw3lNQbKq7kzg9OjgMT4HpOkOgApw+OGxJTuRtXr7wXHJZlnf4Mk9M3EEBxk+sS1l9/w1jlpTSwnngoow7PPvjyQgXsjHXP4fWJvmyMPsvbqjnuGKTHV9QXN2hhIE9YImWeu8G7foat5YYyTTj7+RxbGst/nn+n2SxW4dqy+LXhJ/SEzLDGCFwsvKeFeRlWMbLCBF9qznpTd1xihnhd5MYmRKAVXYfR+isjRXWjJm9NKUHJzmW2+F81YNrfLq+vH9XV7c80iUjdN88ROebBvTrfL5uOy2Tw2N+3Vbbt5dcL0m5FFr1qKGRZVp9NnndJziPZsmiXgLnjShlgRTydhw01r2OFQVJJnXsYryvmd4L4p7dktVZKFh3SPL5PMTkFf5ijWzJurj+vLwNn19O0koT1MNVhk70L2jKs555v/16fTvwAAAP//AwDpNINc/AUAAA==
     http_version: 
-  recorded_at: Thu, 26 Mar 2020 08:49:41 GMT
+  recorded_at: Sat, 25 Apr 2020 01:33:46 GMT
 recorded_with: VCR 2.9.3

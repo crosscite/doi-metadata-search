@@ -8,16 +8,18 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.7; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Thu, 26 Mar 2020 08:49:40 GMT
+      - Sat, 25 Apr 2020 01:33:45 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -30,6 +32,8 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
+      Content-Encoding:
+      - gzip
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Permitted-Cross-Domain-Policies:
@@ -37,15 +41,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - a213c023-2d68-4328-a0b8-854040fa0762
+      - b82e9790-e850-4203-9127-a67abfd10a46
       X-Download-Options:
       - noopen
       Etag:
-      - W/"04f67204f6a5c194e296b45b5c883669"
+      - W/"06f5d6640791559e811dad218bd86d52"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.052775'
+      - '0.048619'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -54,14 +58,8 @@ http_interactions:
       - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"id":"0000-0002-5099-0079","type":"users","attributes":{"givenName":"Jesus
-        Alberto","familyName":"Cardenas-de la Garza","name":"Jesus Alberto Cardenas-de
-        la Garza","orcid":"https://orcid.org/0000-0002-5099-0079","github":null,"roleId":"user","isActive":false,"created":"2018-05-14T20:22:20.000Z","updated":"2018-05-14T20:22:20.000Z"},"relationships":{}},{"id":"0000-0003-3484-6876","type":"users","attributes":{"givenName":"Kristian","familyName":"Garza","name":"K.
-        J. Garza","orcid":"https://orcid.org/0000-0003-3484-6876","github":"https://github.com/kjgarza","roleId":"staff_admin","isActive":false,"created":"2016-08-01T16:25:38.000Z","updated":"2018-05-30T05:00:34.000Z"},"relationships":{}},{"id":"0000-0002-5493-877X","type":"users","attributes":{"givenName":"Jose
-        Arturo","familyName":"Garza-Reyes","name":"Jose Arturo Garza-Reyes","orcid":"https://orcid.org/0000-0002-5493-877X","github":null,"roleId":"user","isActive":false,"created":"2016-10-14T11:37:44.000Z","updated":"2016-10-14T11:38:01.000Z"},"relationships":{}},{"id":"0000-0002-4286-8102","type":"users","attributes":{"givenName":"Tammy","familyName":"Oberg
-        De La Garza","name":"Tammy Oberg De La Garza","orcid":"https://orcid.org/0000-0002-4286-8102","github":null,"roleId":"user","isActive":false,"created":"2017-06-01T13:58:09.000Z","updated":"2017-06-01T13:58:09.000Z"},"relationships":{}},{"id":"0000-0002-5231-2925","type":"users","attributes":{"givenName":"Miguel
-        Angel","familyName":"Platas-Garza","name":"Miguel Angel Platas-Garza","orcid":"https://orcid.org/0000-0002-5231-2925","github":null,"roleId":"user","isActive":false,"created":"2017-02-27T15:04:28.000Z","updated":"2017-02-27T15:04:28.000Z"},"relationships":{}},{"id":"0000-0003-3484-6875","type":"users","attributes":{"givenName":null,"familyName":null,"name":"K.
-        J. Garza","orcid":"https://orcid.org/0000-0003-3484-6875","github":null,"roleId":"user","isActive":true,"created":"2019-09-12T14:13:49.000Z","updated":"2020-02-14T11:07:05.000Z"},"relationships":{}}],"meta":{"total":6,"totalPages":1,"page":1},"links":{"self":"https://api.test.datacite.org/users?page%5Bnumber%5D=1&page%5Bsize%5D=25&query=garza","next":"https://api.test.datacite.org/users?page%5Bnumber%5D=2&page%5Bsize%5D=25&query=garza"}}'
+      string: !binary |-
+        H4sIAHmTo14AA6SWa2vbMBSG/4oRtJ8sR5LvgjKyFcbaXcrIh7ExhhorrlbZziR5NA3575OdtHNdd4kXg0GX98hHD++RvAYZMwzQb2sgMkABsg+0L4EhSlPbilPgArNacjtZa6607TJjlLiuDdeArkEufvPyIysaxQXXtXam8porU1nlghVCrnaTb5jKeMk0zLgjmfOWqXtmNeVAqPOCtlLzNs0bY5aaTiZt36tUPhlOPBfmpr4GtKyldIGqJH+X7TZiZ4Wezo3NHtAFk5q7YK44M7xREIQTiEKIgxlBlBBKkGdX/2qj6mW2T7Sx3+KSGVGV+kYsG0ybjdtD7EM/SAIYJXE0BvGlEtoIVvbp9nBees6FN4Lb02weuD0GbAe8eVVMbn/mu1UfeWrDFosfLCtEuRdrBJGFhmc4oiSkfvIyVh/NUEgRon4wAqs1QJD6MInjL6OcW2nuTJWp1TPfthDhZ77iumPXv3rnqeAgj3ZSPMajEcSosR/G1I9pEAzC7IoSivAomAFJIphgRMbAnLGiWPUxfrKVnTvn3Hn/rPZbvTMkOARmN8VjYMYQRa0zfRpaTukgzGHRoc4kPoYkJeEYmB9EXnPpTMucyz7TK/tNe0j2cHYjnJ7kIHd20jwSKIEknmFbxQElw6U+LBp5go4But1JF+N25OiDcwwuo+o+LXtppRCTGQ6oNVcwaD+CGlrbWkYxReE/aH13QcGbu30NTGWYBDRyt60rljdUsAuWtmUbNl6K8rYlpblcdDbMlsKzDI3X/CfMheHt5lvIr5rok/B1WRe2ck/C8zN8uhvS4p43AyQ8/VVztTp7uDJKfmf+d3WyZ/XN5g8AAAD//wMAMUopg84IAAA=
     http_version: 
-  recorded_at: Thu, 26 Mar 2020 08:49:40 GMT
+  recorded_at: Sat, 25 Apr 2020 01:33:45 GMT
 recorded_with: VCR 2.9.3

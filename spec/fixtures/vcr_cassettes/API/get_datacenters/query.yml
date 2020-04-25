@@ -8,16 +8,18 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.7; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Thu, 26 Mar 2020 08:49:42 GMT
+      - Sat, 25 Apr 2020 01:33:46 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -30,33 +32,22 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
+      Content-Encoding:
+      - gzip
       X-Request-Id:
-      - 5c5020f8-1fd8-4259-8fb2-c92f2de105a6
+      - d419b142-6387-43bc-add4-a804ae1e2b77
       Etag:
-      - W/"15c521d52f822cd705427e215343ff7e"
+      - W/"4cec3a06e82dda693be626717618e44c"
       X-Runtime:
-      - '0.032885'
+      - '0.036675'
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
       - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"id":"cern.zenodo","type":"repositories","attributes":{"name":"Zenodo","symbol":"CERN.ZENODO","re3data":"https://doi.org/10.17616/R3QP53","opendoar":null,"year":2014,"systemEmail":"lars.holm.nielsen@cern.ch","alternateName":"Research.
-        Shared","description":"ZENODO builds and operates a simple and innovative
-        service that enables researchers, scientists, EU projects and institutions
-        to share and showcase multidisciplinary research results (data and publications)
-        that are not part of the existing institutional or subject-based repositories
-        of the research communities.\r\nZENODO enables researchers, scientists, EU
-        projects and institutions to:\r\neasily share the long tail of small research
-        results in a wide variety of formats including text, spreadsheets, audio,
-        video, and images across all fields of science.\r\ndisplay their research
-        results and get credited by making the research results citable and integrate
-        them into existing reporting lines to funding agencies like the European Commission.\r\neasily
-        access and reuse shared research results.","clientType":"repository","repositoryType":["other"],"language":["en"],"certificate":[],"domains":"openaire.cern.ch,zenodo.org","issn":[],"url":"https://zenodo.org/","created":"2014-09-24T14:54:20.000Z","updated":"2019-08-03T05:29:30.000Z","isActive":true,"hasPassword":true,"serviceContact":{}},"relationships":{"provider":{"data":{"id":"cern","type":"providers"}},"prefixes":{"data":[{"id":"10.5281","type":"prefixes"}]}}}],"included":[{"id":"cern","type":"providers","attributes":{"name":"CERN
-        - European Organization for Nuclear Research","displayName":"CERN - European
-        Organization for Nuclear Research","symbol":"CERN","website":"https://www.cern.ch","systemEmail":"artemis.lavasa@cern.ch","groupEmail":null,"description":null,"region":"EMEA","country":"CH","logoUrl":null,"memberType":"direct_member","organizationType":"researchInstitution","focusArea":"naturalSciences","nonProfitStatus":"non-profit","isActive":true,"hasPassword":true,"joined":null,"rorId":null,"technicalContact":{},"secondaryTechnicalContact":{},"billingContact":{},"secondaryBillingContact":{},"serviceContact":{},"secondaryServiceContact":{},"votingContact":{},"created":"2014-04-10T13:42:48.000Z","updated":"2020-02-29T10:34:02.000Z"},"relationships":{"clients":{"data":[{"id":"cern.inspire","type":"clients"},{"id":"cern.zenodo","type":"clients"},{"id":"cern.opendata","type":"clients"},{"id":"cern.yellow","type":"clients"},{"id":"cern.cds","type":"clients"},{"id":"cern.hepdata","type":"clients"},{"id":"cern.jacow","type":"clients"},{"id":"cern.yrschool","type":"clients"},{"id":"cern.yrmono","type":"clients"},{"id":"cern.yrconf","type":"clients"},{"id":"cern.cij","type":"clients"},{"id":"cern.proc","type":"clients"},{"id":"cern.ojs","type":"clients"}]},"prefixes":{"data":[{"id":"10.5281","type":"prefixes"},{"id":"10.5170","type":"prefixes"},{"id":"10.7483","type":"prefixes"},{"id":"10.7484","type":"prefixes"},{"id":"10.14454","type":"prefixes"},{"id":"10.17181","type":"prefixes"},{"id":"10.17182","type":"prefixes"},{"id":"10.18423","type":"prefixes"},{"id":"10.18429","type":"prefixes"},{"id":"10.23732","type":"prefixes"},{"id":"10.23730","type":"prefixes"},{"id":"10.23731","type":"prefixes"},{"id":"10.23726","type":"prefixes"},{"id":"10.23727","type":"prefixes"},{"id":"10.70111","type":"prefixes"}]}}}],"meta":{"total":1,"totalPages":1,"page":1,"years":[{"id":"2014","title":"2014","count":1}],"providers":[{"id":"cern","title":"CERN
-        - European Organization for Nuclear Research","count":1}],"clientTypes":[{"id":"repository","title":"Repository","count":1}],"repositoryTypes":[{"id":"other","title":"Other","count":1}],"certificates":[],"software":[{"id":"other","title":"Other","count":1}]},"links":{"self":"https://api.test.datacite.org/repositories?include=provider&page%5Bnumber%5D=1&page%5Bsize%5D=25&query=zenodo","next":"https://api.test.datacite.org/repositories?page%5Bnumber%5D=2&page%5Bsize%5D=25&query=zenodo"}}'
+      string: !binary |-
+        H4sIAHqTo14AA6RXbW/bNhD+K4SAFhtgK5JsN4mAYutLgPXDkixJv/QFA02dbaYUqZGUXbfwf98dZVty4lVt98ni8eHd8V6eo79GBfc8yt9/jWQR5ZEAq+MvoE1hokHk1xWg0EJlnPTGSnAo5d5bOa09LvKvkeYlYd7tzrh1OTUKJa8ubi7jdxeXV6+vUGxh1FiKFt5XLj85KYyMjZ2fpEmcnj5Ln53cjP66nowQayrQheE2ynWt1CBaA31nSTom9c5DeVFySTYUty5eGFXGWoJyoH8PFxALclN5/OYeLhsPb8ChHrGI2e2CWygQUoATVlZeGk1XCL6yaS1V4RjXBUNHLCrABXOyrBQEqdTaLLmXS2AO7FIKYH7BPQPNpwrBdmsIrBswJyRoL53H74u3rLLmHoR3W0XOS1+Tece8YY78CjtuYVaCO2BlrbwsJGqplNTcrvfa6QM3HfuF4hpOVfVUScGDvl8bn0ihNp5V3HpmZigEBp/RHannXftcMWOZq6fk3XCKpgvWTfvu7N66MGVZa+lxL/5gP+ht8P5vDHLSBdxJtd6Gg6wqg956TDm54Uqu1OMwSI1ZWskC2JKjx35N2JmxJQ+bQtUF3dnDZ48eVRZ44RYA5BPHLTNgSzyMP8Grks8p7cIahz9ob4b1VYQwhNsICLfGzFSKr8lJaR/7RKrm4JnAcpMeQzpds5J/Cn50g7nDC+kpfNvAeJhT9RG0pKVpM0epseELqwJC8cxqHS6IjmtBGVPyUxO9i9piIXPNXmHOpHMY6rgTZi4EuMZXCzXWXIh78ci7GBtGKMrk3QNaWIf+3i2a3feRQds2+jjAJtXzGt0iIWiSYJN6OaNSJSEKCoMNrZFPQu9zaSHeNvKgISNiCrSC3uvmRG1Vh0ta0Al5icnFaOM+ccYwOR9m47t0nE/GSCJxkiTvEFRXRQs6HyZnw2R0l0zy7Dwf7UHSvRDU6FHubQ2DaMHdNXduZWyxE20p4JXRnguPjLjZUDRU04YLWQWWxJqn8rL03fBgh3Bbpt3BXERasEhn8nNDs4c0jZw5yc7S7sEtdPNxs9lgfJqKp/u977H0H4RO9M2GbfFc2TnX8ku4FvUVu6yFwgJhO14lPm3a4fLnNRxMD1yvYIpVBZ1Ur1aruCX5w3GAJAdY4bHiS+54ZxbMramrLaqZKQfU34gszJtBcPHnxQsqI1Nrj8WNzvyBS2Xm5q3dKyihnILdtkKBFSv8342MJljnqvtuaS75piU8BM6MqN0LrFdE4KyqLVe3Db9QYrTR19bMpL/1uEftgZJhFUTfV533Bvmh2N/Q2Df7hQex0NiDqlO6VM7C6AIHzd3R7alUyDjz40deHt182B6dA7dHNpfGP9TxsJ/HwzS5S0f5OMvHZ8f6OUuGSTbMzu/SJB+N8yRrQMcas2G0Iy0Wigc5qcLUtm2zg28G33owHUeFZw3Z6MGtQSmz6kOJwvVBFlB9j717LvrNra0TC4Ot2Ysrje4NxdpiBcx6ryjv+yDYC6I37vfHIvXxZwl20IGkp0kP5HR8NuqHjHsg6Xg86cWcpr0OEybrw5yNsz6XCXPeg8lGp6M+W4TpiyBh+u6FmOzZd2BO+1KRpOm3pmoJzej2xnOcBOmg+bqm12JYVuGdkzb/WVxbT0RcpFd6Be0yTBiEk+p2ID+a2NtDPzNPuxbax1vHxsEjbmfppivsqjh85XXUNI+9VsPVdn1gv331ueYR58zMr/Cx+SN6sG1xyHwKPetAzTpPA17JGHX7mHoZ39IQHoTdvzG/bZ9Fz3fRfkoJezJ5qWua3E8mr5+nO5GTX4AE2eTpPzXY9fM9y2v8D/FjZh9ZyfqsbDb/AgAA//8DAOOOIj2bDwAA
     http_version: 
-  recorded_at: Thu, 26 Mar 2020 08:49:42 GMT
+  recorded_at: Sat, 25 Apr 2020 01:33:46 GMT
 recorded_with: VCR 2.9.3

@@ -8,18 +8,20 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.7; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
       Content-Type:
       - application/json;charset=UTF-8
+      Accept-Encoding:
+      - gzip
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Thu, 26 Mar 2020 08:53:11 GMT
+      - Sat, 25 Apr 2020 01:33:54 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -32,40 +34,24 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
+      Content-Encoding:
+      - gzip
       X-Request-Id:
-      - d586d267-3dad-4e20-9d7a-9a3500e4cef2
+      - 31803dc2-9020-4568-b530-4435644968a6
       Etag:
-      - W/"af473e907cd07074596c39b4a5359922"
+      - W/"be360964332e12f17cef8c2ac9b7e513"
       X-Runtime:
-      - '0.064823'
+      - '0.090184'
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
       - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"10.91819/71718","type":"dois","attributes":{"doi":"10.91819/71718","prefix":"10.91819","suffix":"71718","identifiers":[{"identifier":"https://handle.test.datacite.org/10.1594/ieda/100036","identifierType":"DOI"},{"identifier":"http://www.earthchem.org/library/browse/view?id=242","identifierType":"URL"}],"creators":[{"name":"Grimes,
-        Craig","nameType":"Personal","givenName":"Craig","familyName":"Grimes","affiliation":[],"nameIdentifiers":[{"nameIdentifier":"8982108400","nameIdentifierScheme":"SCOPUS"}]},{"name":"Cheadle,
-        Michael ","nameType":"Personal","givenName":"Michael ","familyName":"Cheadle","affiliation":[],"nameIdentifiers":[{"nameIdentifier":"7003914970","nameIdentifierScheme":"SCOPUS"}]}],"titles":[{"title":"Major
-        element analyses of plagioclase and pyroxene from gabbros of the layered mafic
-        Dufek Intrusion"}],"publisher":"EarthChem","container":{},"publicationYear":2011,"subjects":[{"subject":"Regional
-        (Continents, Oceans)","subjectScheme":"coverage scope"},{"subject":"Antarctica","subjectScheme":"IEDA
-        Feature of Interest"},{"subject":"Chemistry:Rock","subjectScheme":"IEDA Data
-        Type"},{"subject":"Mineralogy","subjectScheme":"IEDA Data Type"},{"subject":"Sample/Collection
-        Description","subjectScheme":"IEDA Data Type"},{"subject":"Geochemistry","subjectScheme":"IEDA
-        Topic"},{"subject":"Marine Geoscience","subjectScheme":"IEDA Topic"},{"subject":"Solid
-        Earth","subjectScheme":"IEDA Topic"},{"subject":"Dufek Massif","subjectScheme":"place"},{"subject":"gabbro","subjectScheme":"material"},{"subject":"plagioclase","subjectScheme":"material"},{"subject":"pyroxene","subjectScheme":"material"},{"subject":"Antarctica","subjectScheme":"place"},{"subject":"Forrestal
-        Range","subjectScheme":"place"},{"subject":"Pensacola mountains","subjectScheme":"place"}],"contributors":[],"dates":[{"date":"2011-12-29","dateType":"Available"},{"date":"2011-12-28","dateType":"Created"},{"date":"2011","dateType":"Issued"}],"language":"en","types":{"ris":"DATA","bibtex":"misc","citeproc":"dataset","schemaOrg":"Dataset","resourceType":"Dataset","resourceTypeGeneral":"Dataset"},"relatedIdentifiers":[{"relationType":"References","relatedIdentifier":"GEE00002F","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE000043","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE00004H","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE00005Z","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE00006F","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE00006K","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE00006Y","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE00007B","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE00007E","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE00007F","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE00007I","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE00007O","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE000082","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE00009J","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000AN","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000B5","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000BZ","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000CD","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000CF","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000CH","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000CI","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000CM","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000CP","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000CU","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000D2","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000DL","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000EN","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000EY","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000F0","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000F8","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000FG","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000FM","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000G0","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000GK","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000H0","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000HU","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000I4","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000I6","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000IB","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000IR","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000JE","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000K0","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000KH","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000KX","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE00005M","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE00007D","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE00008K","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000BN","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000BP","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000CL","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000E4","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000FA","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000HC","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000J5","relatedIdentifierType":"IGSN"},{"relationType":"References","relatedIdentifier":"GEE0000L4","relatedIdentifierType":"IGSN"}],"sizes":[],"formats":["application/vnd.ms-excel"],"version":null,"rightsList":[{"rights":"Creative
-        Commons Attribution-NonCommercial-Share Alike 3.0 United States [CC BY-NC-SA
-        3.0]","rightsUri":"https://creativecommons.org/licenses/by-nc-sa/3.0/us"}],"descriptions":[{"description":"EMP
-        analyses of plagioclase and pyroxene from gabbros sampled from the layered
-        mafic Dufek Intrusion. The samples were collected in the austral summer 2006/2007
-        from the Dufek Massif, Forrestal Range, Pensacola mountains, Antarctica.","descriptionType":"Abstract"}],"geoLocations":[{"geoLocationPlace":"Antarctica,
-        Pensacola mountains, Forrestal Range"},{"geoLocationBox":{"eastBoundLongitude":"-52.95623","northBoundLatitude":"-82.59935","southBoundLatitude":"-82.63343","westBoundLongitude":"-53.26808"}},{"geoLocationPoint":{"pointLatitude":"-82.63343","pointLongitude":"-53.26808"}},{"geoLocationPoint":{"pointLatitude":"-82.63332","pointLongitude":"-53.26058"}},{"geoLocationPoint":{"pointLatitude":"-82.63274","pointLongitude":"-53.2514"}},{"geoLocationPoint":{"pointLatitude":"-82.63248","pointLongitude":"-53.24556"}},{"geoLocationPoint":{"pointLatitude":"-82.62007","pointLongitude":"-52.96522"}},{"geoLocationPoint":{"pointLatitude":"-82.61978","pointLongitude":"-52.9688"}},{"geoLocationPoint":{"pointLatitude":"-82.61949","pointLongitude":"-52.96329"}},{"geoLocationPoint":{"pointLatitude":"-82.6192","pointLongitude":"-52.96476"}},{"geoLocationPoint":{"pointLatitude":"-82.61919","pointLongitude":"-52.96497"}},{"geoLocationPoint":{"pointLatitude":"-82.61882","pointLongitude":"-52.96234"}},{"geoLocationPoint":{"pointLatitude":"-82.61855","pointLongitude":"-52.96028"}},{"geoLocationPoint":{"pointLatitude":"-82.618","pointLongitude":"-52.96023"}},{"geoLocationPoint":{"pointLatitude":"-82.61791","pointLongitude":"-52.95935"}},{"geoLocationPoint":{"pointLatitude":"-82.61758","pointLongitude":"-52.95623"}},{"geoLocationPoint":{"pointLatitude":"-82.61728","pointLongitude":"-52.95669"}},{"geoLocationPoint":{"pointLatitude":"-82.61715","pointLongitude":"-52.95764"}},{"geoLocationPoint":{"pointLatitude":"-82.6162","pointLongitude":"-52.98582"}},{"geoLocationPoint":{"pointLatitude":"-82.61464","pointLongitude":"-52.99432"}},{"geoLocationPoint":{"pointLatitude":"-82.60044","pointLongitude":"-53.00653"}},{"geoLocationPoint":{"pointLatitude":"-82.59963","pointLongitude":"-53.00099"}},{"geoLocationPoint":{"pointLatitude":"-82.59935","pointLongitude":"-52.99865"}}],"fundingReferences":[{"awardUri":"http://www.nsf.gov/awardsearch/showAward.do?AwardNumber=0752558","funderName":"National
-        Science Foundation","awardNumber":"0752558"}],"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHJlc291cmNlIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC00L21ldGFkYXRhLnhzZCI+CiAgPGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuMTU5NC9JRURBLzEwMDAzNjwvaWRlbnRpZmllcj4KICA8Y3JlYXRvcnM+CiAgICA8Y3JlYXRvcj4KICAgICAgPGNyZWF0b3JOYW1lPkNyYWlnIEIuIEdyaW1lczwvY3JlYXRvck5hbWU+CiAgICAgIDxnaXZlbk5hbWU+Q3JhaWc8L2dpdmVuTmFtZT4KICAgICAgPGZhbWlseU5hbWU+R3JpbWVzPC9mYW1pbHlOYW1lPgogICAgICA8bmFtZUlkZW50aWZpZXIgbmFtZUlkZW50aWZpZXJTY2hlbWU9IlNDT1BVUyI+ODk4MjEwODQwMDwvbmFtZUlkZW50aWZpZXI+CiAgICA8L2NyZWF0b3I+CiAgICA8Y3JlYXRvcj4KICAgICAgPGNyZWF0b3JOYW1lPk1pY2hhZWwgQ2hlYWRsZTwvY3JlYXRvck5hbWU+CiAgICAgIDxnaXZlbk5hbWU+TWljaGFlbCA8L2dpdmVuTmFtZT4KICAgICAgPGZhbWlseU5hbWU+Q2hlYWRsZTwvZmFtaWx5TmFtZT4KICAgICAgPG5hbWVJZGVudGlmaWVyIG5hbWVJZGVudGlmaWVyU2NoZW1lPSJTQ09QVVMiPjcwMDM5MTQ5NzA8L25hbWVJZGVudGlmaWVyPgogICAgPC9jcmVhdG9yPgogIDwvY3JlYXRvcnM+CiAgPHRpdGxlcz4KICAgIDx0aXRsZT5NYWpvciBlbGVtZW50IGFuYWx5c2VzIG9mIHBsYWdpb2NsYXNlIGFuZCBweXJveGVuZSBmcm9tIGdhYmJyb3Mgb2YgdGhlIGxheWVyZWQgbWFmaWMgRHVmZWsgSW50cnVzaW9uPC90aXRsZT4KICA8L3RpdGxlcz4KICA8cHVibGlzaGVyPkVhcnRoQ2hlbTwvcHVibGlzaGVyPgogIDxwdWJsaWNhdGlvblllYXI+MjAxMTwvcHVibGljYXRpb25ZZWFyPgogIDxzdWJqZWN0cz4KICAgIDxzdWJqZWN0IHN1YmplY3RTY2hlbWU9ImNvdmVyYWdlIHNjb3BlIj5SZWdpb25hbCAoQ29udGluZW50cywgT2NlYW5zKTwvc3ViamVjdD4KICAgIDxzdWJqZWN0IHN1YmplY3RTY2hlbWU9IklFREEgRmVhdHVyZSBvZiBJbnRlcmVzdCI+QW50YXJjdGljYTwvc3ViamVjdD4KICAgIDxzdWJqZWN0IHN1YmplY3RTY2hlbWU9IklFREEgRGF0YSBUeXBlIj5DaGVtaXN0cnk6Um9jazwvc3ViamVjdD4KICAgIDxzdWJqZWN0IHN1YmplY3RTY2hlbWU9IklFREEgRGF0YSBUeXBlIj5NaW5lcmFsb2d5PC9zdWJqZWN0PgogICAgPHN1YmplY3Qgc3ViamVjdFNjaGVtZT0iSUVEQSBEYXRhIFR5cGUiPlNhbXBsZS9Db2xsZWN0aW9uIERlc2NyaXB0aW9uPC9zdWJqZWN0PgogICAgPHN1YmplY3Qgc3ViamVjdFNjaGVtZT0iSUVEQSBUb3BpYyI+R2VvY2hlbWlzdHJ5PC9zdWJqZWN0PgogICAgPHN1YmplY3Qgc3ViamVjdFNjaGVtZT0iSUVEQSBUb3BpYyI+TWFyaW5lIEdlb3NjaWVuY2U8L3N1YmplY3Q+CiAgICA8c3ViamVjdCBzdWJqZWN0U2NoZW1lPSJJRURBIFRvcGljIj5Tb2xpZCBFYXJ0aDwvc3ViamVjdD4KICAgIDxzdWJqZWN0IHN1YmplY3RTY2hlbWU9InBsYWNlIj5EdWZlayBNYXNzaWY8L3N1YmplY3Q+CiAgICA8c3ViamVjdCBzdWJqZWN0U2NoZW1lPSJtYXRlcmlhbCI+Z2FiYnJvPC9zdWJqZWN0PgogICAgPHN1YmplY3Qgc3ViamVjdFNjaGVtZT0ibWF0ZXJpYWwiPnBsYWdpb2NsYXNlPC9zdWJqZWN0PgogICAgPHN1YmplY3Qgc3ViamVjdFNjaGVtZT0ibWF0ZXJpYWwiPnB5cm94ZW5lPC9zdWJqZWN0PgogICAgPHN1YmplY3Qgc3ViamVjdFNjaGVtZT0icGxhY2UiPkFudGFyY3RpY2E8L3N1YmplY3Q+CiAgICA8c3ViamVjdCBzdWJqZWN0U2NoZW1lPSJwbGFjZSI+Rm9ycmVzdGFsIFJhbmdlPC9zdWJqZWN0PgogICAgPHN1YmplY3Qgc3ViamVjdFNjaGVtZT0icGxhY2UiPlBlbnNhY29sYSBtb3VudGFpbnM8L3N1YmplY3Q+CiAgPC9zdWJqZWN0cz4KICA8ZGF0ZXM+CiAgICA8ZGF0ZSBkYXRlVHlwZT0iQXZhaWxhYmxlIj4yMDExLTEyLTI5PC9kYXRlPgogICAgPGRhdGUgZGF0ZVR5cGU9IkNyZWF0ZWQiPjIwMTEtMTItMjg8L2RhdGU+CiAgPC9kYXRlcz4KICA8bGFuZ3VhZ2U+ZW48L2xhbmd1YWdlPgogIDxyZXNvdXJjZVR5cGUgcmVzb3VyY2VUeXBlR2VuZXJhbD0iRGF0YXNldCI+RGF0YXNldDwvcmVzb3VyY2VUeXBlPgogIDxhbHRlcm5hdGVJZGVudGlmaWVycz4KICAgIDxhbHRlcm5hdGVJZGVudGlmaWVyIGFsdGVybmF0ZUlkZW50aWZpZXJUeXBlPSJVUkwiPmh0dHA6Ly93d3cuZWFydGhjaGVtLm9yZy9saWJyYXJ5L2Jyb3dzZS92aWV3P2lkPTI0MjwvYWx0ZXJuYXRlSWRlbnRpZmllcj4KICA8L2FsdGVybmF0ZUlkZW50aWZpZXJzPgogIDxyZWxhdGVkSWRlbnRpZmllcnM+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDAyRjwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDA0MzwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDA0SDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDA1WjwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDA2RjwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDA2SzwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDA2WTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDA3QjwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDA3RTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDA3RjwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDA3STwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDA3TzwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDA4MjwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDA5SjwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBBTjwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBCNTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBCWjwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBDRDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBDRjwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBDSDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBDSTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBDTTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBDUDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBDVTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBEMjwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBETDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBFTjwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBFWTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBGMDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBGODwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBGRzwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBGTTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBHMDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBHSzwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBIMDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBIVTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBJNDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBJNjwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBJQjwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBJUjwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBKRTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBLMDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBLSDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBLWDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDA1TTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDA3RDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDA4SzwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBCTjwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBCUDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBDTDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBFNDwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBGQTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBIQzwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBKNTwvcmVsYXRlZElkZW50aWZpZXI+CiAgICA8cmVsYXRlZElkZW50aWZpZXIgcmVsYXRlZElkZW50aWZpZXJUeXBlPSJJR1NOIiByZWxhdGlvblR5cGU9IlJlZmVyZW5jZXMiPkdFRTAwMDBMNDwvcmVsYXRlZElkZW50aWZpZXI+CiAgPC9yZWxhdGVkSWRlbnRpZmllcnM+CiAgPGZvcm1hdHM+CiAgICA8Zm9ybWF0PmFwcGxpY2F0aW9uL3ZuZC5tcy1leGNlbDwvZm9ybWF0PgogIDwvZm9ybWF0cz4KICA8dmVyc2lvbj4xLjA8L3ZlcnNpb24+CiAgPHJpZ2h0c0xpc3Q+CiAgICA8cmlnaHRzIHJpZ2h0c1VSST0iaHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzMuMC91cy8iPkNyZWF0aXZlIENvbW1vbnMgQXR0cmlidXRpb24tTm9uQ29tbWVyY2lhbC1TaGFyZSBBbGlrZSAzLjAgVW5pdGVkIFN0YXRlcyBbQ0MgQlktTkMtU0EgMy4wXTwvcmlnaHRzPgogIDwvcmlnaHRzTGlzdD4KICA8ZGVzY3JpcHRpb25zPgogICAgPGRlc2NyaXB0aW9uIGRlc2NyaXB0aW9uVHlwZT0iQWJzdHJhY3QiPkVNUCBhbmFseXNlcyBvZiBwbGFnaW9jbGFzZSBhbmQgcHlyb3hlbmUgZnJvbSBnYWJicm9zIHNhbXBsZWQgZnJvbSB0aGUgbGF5ZXJlZCBtYWZpYyBEdWZlayBJbnRydXNpb24uIFRoZSBzYW1wbGVzIHdlcmUgY29sbGVjdGVkIGluIHRoZSBhdXN0cmFsIHN1bW1lciAyMDA2LzIwMDcgZnJvbSB0aGUgRHVmZWsgTWFzc2lmLCBGb3JyZXN0YWwgUmFuZ2UsIFBlbnNhY29sYSBtb3VudGFpbnMsIEFudGFyY3RpY2EuPC9kZXNjcmlwdGlvbj4KICA8L2Rlc2NyaXB0aW9ucz4KICA8ZnVuZGluZ1JlZmVyZW5jZXM+CiAgICA8ZnVuZGluZ1JlZmVyZW5jZT4KICAgICAgPGF3YXJkTnVtYmVyIGF3YXJkVVJJPSJodHRwOi8vd3d3Lm5zZi5nb3YvYXdhcmRzZWFyY2gvc2hvd0F3YXJkLmRvP0F3YXJkTnVtYmVyPTA3NTI1NTgiPjA3NTI1NTg8L2F3YXJkTnVtYmVyPgogICAgICA8ZnVuZGVyTmFtZT5OYXRpb25hbCBTY2llbmNlIEZvdW5kYXRpb248L2Z1bmRlck5hbWU+CiAgICA8L2Z1bmRpbmdSZWZlcmVuY2U+CiAgPC9mdW5kaW5nUmVmZXJlbmNlcz4KICA8Z2VvTG9jYXRpb25zPgogICAgPGdlb0xvY2F0aW9uPgogICAgICA8Z2VvTG9jYXRpb25QbGFjZT5BbnRhcmN0aWNhLCBQZW5zYWNvbGEgbW91bnRhaW5zLCBGb3JyZXN0YWwgUmFuZ2U8L2dlb0xvY2F0aW9uUGxhY2U+CiAgICA8L2dlb0xvY2F0aW9uPgogICAgPGdlb0xvY2F0aW9uPgogICAgICA8Z2VvTG9jYXRpb25Cb3g+CiAgICAgICAgPHdlc3RCb3VuZExvbmdpdHVkZT4tNTMuMjY4MDg8L3dlc3RCb3VuZExvbmdpdHVkZT4KICAgICAgICA8ZWFzdEJvdW5kTG9uZ2l0dWRlPi01Mi45NTYyMzwvZWFzdEJvdW5kTG9uZ2l0dWRlPgogICAgICAgIDxzb3V0aEJvdW5kTGF0aXR1ZGU+LTgyLjYzMzQzPC9zb3V0aEJvdW5kTGF0aXR1ZGU+CiAgICAgICAgPG5vcnRoQm91bmRMYXRpdHVkZT4tODIuNTk5MzU8L25vcnRoQm91bmRMYXRpdHVkZT4KICAgICAgPC9nZW9Mb2NhdGlvbkJveD4KICAgIDwvZ2VvTG9jYXRpb24+CiAgICA8Z2VvTG9jYXRpb24+CiAgICAgIDxnZW9Mb2NhdGlvblBvaW50PgogICAgICAgIDxwb2ludExvbmdpdHVkZT4tNTMuMjY4MDg8L3BvaW50TG9uZ2l0dWRlPgogICAgICAgIDxwb2ludExhdGl0dWRlPi04Mi42MzM0MzwvcG9pbnRMYXRpdHVkZT4KICAgICAgPC9nZW9Mb2NhdGlvblBvaW50PgogICAgPC9nZW9Mb2NhdGlvbj4KICAgIDxnZW9Mb2NhdGlvbj4KICAgICAgPGdlb0xvY2F0aW9uUG9pbnQ+CiAgICAgICAgPHBvaW50TG9uZ2l0dWRlPi01My4yNjA1ODwvcG9pbnRMb25naXR1ZGU+CiAgICAgICAgPHBvaW50TGF0aXR1ZGU+LTgyLjYzMzMyPC9wb2ludExhdGl0dWRlPgogICAgICA8L2dlb0xvY2F0aW9uUG9pbnQ+CiAgICA8L2dlb0xvY2F0aW9uPgogICAgPGdlb0xvY2F0aW9uPgogICAgICA8Z2VvTG9jYXRpb25Qb2ludD4KICAgICAgICA8cG9pbnRMb25naXR1ZGU+LTUzLjI1MTQ8L3BvaW50TG9uZ2l0dWRlPgogICAgICAgIDxwb2ludExhdGl0dWRlPi04Mi42MzI3NDwvcG9pbnRMYXRpdHVkZT4KICAgICAgPC9nZW9Mb2NhdGlvblBvaW50PgogICAgPC9nZW9Mb2NhdGlvbj4KICAgIDxnZW9Mb2NhdGlvbj4KICAgICAgPGdlb0xvY2F0aW9uUG9pbnQ+CiAgICAgICAgPHBvaW50TG9uZ2l0dWRlPi01My4yNDU1NjwvcG9pbnRMb25naXR1ZGU+CiAgICAgICAgPHBvaW50TGF0aXR1ZGU+LTgyLjYzMjQ4PC9wb2ludExhdGl0dWRlPgogICAgICA8L2dlb0xvY2F0aW9uUG9pbnQ+CiAgICA8L2dlb0xvY2F0aW9uPgogICAgPGdlb0xvY2F0aW9uPgogICAgICA8Z2VvTG9jYXRpb25Qb2ludD4KICAgICAgICA8cG9pbnRMb25naXR1ZGU+LTUyLjk2NTIyPC9wb2ludExvbmdpdHVkZT4KICAgICAgICA8cG9pbnRMYXRpdHVkZT4tODIuNjIwMDc8L3BvaW50TGF0aXR1ZGU+CiAgICAgIDwvZ2VvTG9jYXRpb25Qb2ludD4KICAgIDwvZ2VvTG9jYXRpb24+CiAgICA8Z2VvTG9jYXRpb24+CiAgICAgIDxnZW9Mb2NhdGlvblBvaW50PgogICAgICAgIDxwb2ludExvbmdpdHVkZT4tNTIuOTY4ODwvcG9pbnRMb25naXR1ZGU+CiAgICAgICAgPHBvaW50TGF0aXR1ZGU+LTgyLjYxOTc4PC9wb2ludExhdGl0dWRlPgogICAgICA8L2dlb0xvY2F0aW9uUG9pbnQ+CiAgICA8L2dlb0xvY2F0aW9uPgogICAgPGdlb0xvY2F0aW9uPgogICAgICA8Z2VvTG9jYXRpb25Qb2ludD4KICAgICAgICA8cG9pbnRMb25naXR1ZGU+LTUyLjk2MzI5PC9wb2ludExvbmdpdHVkZT4KICAgICAgICA8cG9pbnRMYXRpdHVkZT4tODIuNjE5NDk8L3BvaW50TGF0aXR1ZGU+CiAgICAgIDwvZ2VvTG9jYXRpb25Qb2ludD4KICAgIDwvZ2VvTG9jYXRpb24+CiAgICA8Z2VvTG9jYXRpb24+CiAgICAgIDxnZW9Mb2NhdGlvblBvaW50PgogICAgICAgIDxwb2ludExvbmdpdHVkZT4tNTIuOTY0NzY8L3BvaW50TG9uZ2l0dWRlPgogICAgICAgIDxwb2ludExhdGl0dWRlPi04Mi42MTkyPC9wb2ludExhdGl0dWRlPgogICAgICA8L2dlb0xvY2F0aW9uUG9pbnQ+CiAgICA8L2dlb0xvY2F0aW9uPgogICAgPGdlb0xvY2F0aW9uPgogICAgICA8Z2VvTG9jYXRpb25Qb2ludD4KICAgICAgICA8cG9pbnRMb25naXR1ZGU+LTUyLjk2NDk3PC9wb2ludExvbmdpdHVkZT4KICAgICAgICA8cG9pbnRMYXRpdHVkZT4tODIuNjE5MTk8L3BvaW50TGF0aXR1ZGU+CiAgICAgIDwvZ2VvTG9jYXRpb25Qb2ludD4KICAgIDwvZ2VvTG9jYXRpb24+CiAgICA8Z2VvTG9jYXRpb24+CiAgICAgIDxnZW9Mb2NhdGlvblBvaW50PgogICAgICAgIDxwb2ludExvbmdpdHVkZT4tNTIuOTYyMzQ8L3BvaW50TG9uZ2l0dWRlPgogICAgICAgIDxwb2ludExhdGl0dWRlPi04Mi42MTg4MjwvcG9pbnRMYXRpdHVkZT4KICAgICAgPC9nZW9Mb2NhdGlvblBvaW50PgogICAgPC9nZW9Mb2NhdGlvbj4KICAgIDxnZW9Mb2NhdGlvbj4KICAgICAgPGdlb0xvY2F0aW9uUG9pbnQ+CiAgICAgICAgPHBvaW50TG9uZ2l0dWRlPi01Mi45NjAyODwvcG9pbnRMb25naXR1ZGU+CiAgICAgICAgPHBvaW50TGF0aXR1ZGU+LTgyLjYxODU1PC9wb2ludExhdGl0dWRlPgogICAgICA8L2dlb0xvY2F0aW9uUG9pbnQ+CiAgICA8L2dlb0xvY2F0aW9uPgogICAgPGdlb0xvY2F0aW9uPgogICAgICA8Z2VvTG9jYXRpb25Qb2ludD4KICAgICAgICA8cG9pbnRMb25naXR1ZGU+LTUyLjk2MDIzPC9wb2ludExvbmdpdHVkZT4KICAgICAgICA8cG9pbnRMYXRpdHVkZT4tODIuNjE4PC9wb2ludExhdGl0dWRlPgogICAgICA8L2dlb0xvY2F0aW9uUG9pbnQ+CiAgICA8L2dlb0xvY2F0aW9uPgogICAgPGdlb0xvY2F0aW9uPgogICAgICA8Z2VvTG9jYXRpb25Qb2ludD4KICAgICAgICA8cG9pbnRMb25naXR1ZGU+LTUyLjk1OTM1PC9wb2ludExvbmdpdHVkZT4KICAgICAgICA8cG9pbnRMYXRpdHVkZT4tODIuNjE3OTE8L3BvaW50TGF0aXR1ZGU+CiAgICAgIDwvZ2VvTG9jYXRpb25Qb2ludD4KICAgIDwvZ2VvTG9jYXRpb24+CiAgICA8Z2VvTG9jYXRpb24+CiAgICAgIDxnZW9Mb2NhdGlvblBvaW50PgogICAgICAgIDxwb2ludExvbmdpdHVkZT4tNTIuOTU2MjM8L3BvaW50TG9uZ2l0dWRlPgogICAgICAgIDxwb2ludExhdGl0dWRlPi04Mi42MTc1ODwvcG9pbnRMYXRpdHVkZT4KICAgICAgPC9nZW9Mb2NhdGlvblBvaW50PgogICAgPC9nZW9Mb2NhdGlvbj4KICAgIDxnZW9Mb2NhdGlvbj4KICAgICAgPGdlb0xvY2F0aW9uUG9pbnQ+CiAgICAgICAgPHBvaW50TG9uZ2l0dWRlPi01Mi45NTY2OTwvcG9pbnRMb25naXR1ZGU+CiAgICAgICAgPHBvaW50TGF0aXR1ZGU+LTgyLjYxNzI4PC9wb2ludExhdGl0dWRlPgogICAgICA8L2dlb0xvY2F0aW9uUG9pbnQ+CiAgICA8L2dlb0xvY2F0aW9uPgogICAgPGdlb0xvY2F0aW9uPgogICAgICA8Z2VvTG9jYXRpb25Qb2ludD4KICAgICAgICA8cG9pbnRMb25naXR1ZGU+LTUyLjk1NzY0PC9wb2ludExvbmdpdHVkZT4KICAgICAgICA8cG9pbnRMYXRpdHVkZT4tODIuNjE3MTU8L3BvaW50TGF0aXR1ZGU+CiAgICAgIDwvZ2VvTG9jYXRpb25Qb2ludD4KICAgIDwvZ2VvTG9jYXRpb24+CiAgICA8Z2VvTG9jYXRpb24+CiAgICAgIDxnZW9Mb2NhdGlvblBvaW50PgogICAgICAgIDxwb2ludExvbmdpdHVkZT4tNTIuOTg1ODI8L3BvaW50TG9uZ2l0dWRlPgogICAgICAgIDxwb2ludExhdGl0dWRlPi04Mi42MTYyPC9wb2ludExhdGl0dWRlPgogICAgICA8L2dlb0xvY2F0aW9uUG9pbnQ+CiAgICA8L2dlb0xvY2F0aW9uPgogICAgPGdlb0xvY2F0aW9uPgogICAgICA8Z2VvTG9jYXRpb25Qb2ludD4KICAgICAgICA8cG9pbnRMb25naXR1ZGU+LTUyLjk5NDMyPC9wb2ludExvbmdpdHVkZT4KICAgICAgICA8cG9pbnRMYXRpdHVkZT4tODIuNjE0NjQ8L3BvaW50TGF0aXR1ZGU+CiAgICAgIDwvZ2VvTG9jYXRpb25Qb2ludD4KICAgIDwvZ2VvTG9jYXRpb24+CiAgICA8Z2VvTG9jYXRpb24+CiAgICAgIDxnZW9Mb2NhdGlvblBvaW50PgogICAgICAgIDxwb2ludExvbmdpdHVkZT4tNTMuMDA2NTM8L3BvaW50TG9uZ2l0dWRlPgogICAgICAgIDxwb2ludExhdGl0dWRlPi04Mi42MDA0NDwvcG9pbnRMYXRpdHVkZT4KICAgICAgPC9nZW9Mb2NhdGlvblBvaW50PgogICAgPC9nZW9Mb2NhdGlvbj4KICAgIDxnZW9Mb2NhdGlvbj4KICAgICAgPGdlb0xvY2F0aW9uUG9pbnQ+CiAgICAgICAgPHBvaW50TG9uZ2l0dWRlPi01My4wMDA5OTwvcG9pbnRMb25naXR1ZGU+CiAgICAgICAgPHBvaW50TGF0aXR1ZGU+LTgyLjU5OTYzPC9wb2ludExhdGl0dWRlPgogICAgICA8L2dlb0xvY2F0aW9uUG9pbnQ+CiAgICA8L2dlb0xvY2F0aW9uPgogICAgPGdlb0xvY2F0aW9uPgogICAgICA8Z2VvTG9jYXRpb25Qb2ludD4KICAgICAgICA8cG9pbnRMb25naXR1ZGU+LTUyLjk5ODY1PC9wb2ludExvbmdpdHVkZT4KICAgICAgICA8cG9pbnRMYXRpdHVkZT4tODIuNTk5MzU8L3BvaW50TGF0aXR1ZGU+CiAgICAgIDwvZ2VvTG9jYXRpb25Qb2ludD4KICAgIDwvZ2VvTG9jYXRpb24+CiAgPC9nZW9Mb2NhdGlvbnM+CjwvcmVzb3VyY2U+","url":"http://doi.iedadata.org/100036","contentUrl":null,"metadataVersion":9,"schemaVersion":null,"source":"mds","isActive":true,"state":"findable","reason":null,"viewCount":0,"viewsOverTime":[],"downloadCount":0,"downloadsOverTime":[],"referenceCount":0,"citationCount":4,"citationsOverTime":[{"year":"2018","total":4}],"created":"2012-01-13T04:16:58.000Z","registered":"2012-01-13T04:16:58.000Z","published":"2011","updated":"2020-03-26T04:02:02.000Z"},"relationships":{"client":{"data":{"id":"tib.ldeo","type":"clients"}},"media":{"data":{"id":"10.91819/71718","type":"media"}},"referenceEvents":{"data":[]},"citationEvents":{"data":[{"id":"070b01f9-1011-4954-a86b-d4ef1a8886f4","type":"events"},{"id":"b2b5c43f-71e8-495b-b119-e7e75d67ad24","type":"events"},{"id":"f92d3a14-ae0c-4c6b-a0d0-93496da44613","type":"events"},{"id":"45f24046-9fb5-4cfb-b4b9-0c384a65c722","type":"events"}]}}},"included":[{"id":"tib.ldeo","type":"clients","attributes":{"name":"LDEO
-        - Lamont-Doherty Earth Observatory, Columbia University","symbol":"TIB.LDEO","year":2011,"contactEmail":"arko@ldeo.columbia.edu","alternateName":null,"description":null,"language":null,"clientType":"repository","domains":"ieda-services.org,iedadata.org,oceandrilling.org","re3data":null,"opendoar":null,"issn":null,"url":null,"created":"2011-03-30T08:02:42.000Z","updated":"2018-08-26T01:30:25.000Z","isActive":true,"hasPassword":true},"relationships":{"provider":{"data":{"id":"tib","type":"providers"}},"prefixes":{"data":[]}}}]}'
+      string: !binary |-
+        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
     http_version: 
-  recorded_at: Thu, 26 Mar 2020 08:53:11 GMT
+  recorded_at: Sat, 25 Apr 2020 01:33:54 GMT
 - request:
     method: get
     uri: https://api.test.datacite.org/dois/10.91819/71718
@@ -74,16 +60,18 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.7; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; +https://github.com/datacite/maremma)
       Accept:
       - application/ld+json
+      Accept-Encoding:
+      - gzip,deflate
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Thu, 26 Mar 2020 08:53:12 GMT
+      - Sat, 25 Apr 2020 01:33:55 GMT
       Content-Type:
       - application/vnd.schemaorg.ld+json; charset=utf-8
       Connection:
@@ -96,446 +84,22 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
+      Content-Encoding:
+      - gzip
       X-Request-Id:
-      - f4d8b3cc-3f7f-4d64-985f-3a940e6d2f82
+      - cdc4e09c-56e4-4600-8319-32e7befe0084
       Etag:
-      - W/"ede496c9a51283e5116528d2e10e984f"
+      - W/"f98797eba7b842e28c0aa6f46eb133c3"
       X-Runtime:
-      - '0.014999'
+      - '0.015208'
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
       - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: |-
-        {
-          "@context": "http://schema.org",
-          "@type": "Dataset",
-          "@id": "https://doi.org/10.91819/71718",
-          "identifier": [
-            {
-              "@type": "PropertyValue",
-              "propertyID": "DOI",
-              "value": "https://handle.test.datacite.org/10.1594/ieda/100036"
-            },
-            {
-              "@type": "PropertyValue",
-              "propertyID": "URL",
-              "value": "http://www.earthchem.org/library/browse/view?id=242"
-            }
-          ],
-          "url": "http://doi.iedadata.org/100036",
-          "additionalType": "Dataset",
-          "name": "Major element analyses of plagioclase and pyroxene from gabbros of the layered mafic Dufek Intrusion",
-          "author": [
-            {
-              "name": "Craig Grimes",
-              "givenName": "Craig",
-              "familyName": "Grimes",
-              "@type": "Person",
-              "@id": "8982108400"
-            },
-            {
-              "name": "Michael  Cheadle",
-              "givenName": "Michael ",
-              "familyName": "Cheadle",
-              "@type": "Person",
-              "@id": "7003914970"
-            }
-          ],
-          "description": "EMP analyses of plagioclase and pyroxene from gabbros sampled from the layered mafic Dufek Intrusion. The samples were collected in the austral summer 2006/2007 from the Dufek Massif, Forrestal Range, Pensacola mountains, Antarctica.",
-          "license": "https://creativecommons.org/licenses/by-nc-sa/3.0/us",
-          "keywords": "Regional (Continents, Oceans), Antarctica, Chemistry:Rock, Mineralogy, Sample/Collection Description, Geochemistry, Marine Geoscience, Solid Earth, Dufek Massif, gabbro, plagioclase, pyroxene, Antarctica, Forrestal Range, Pensacola mountains",
-          "inLanguage": "en",
-          "encodingFormat": "application/vnd.ms-excel",
-          "dateCreated": "2011-12-28",
-          "datePublished": "2011",
-          "spatialCoverage": [
-            {
-              "@type": "Place",
-              "geo": {
-                "@type": "GeoCoordinates",
-                "address": "Antarctica, Pensacola mountains, Forrestal Range"
-              }
-            },
-            {
-              "@type": "Place",
-              "geo": {
-                "@type": "GeoShape",
-                "box": "-82.63343 -53.26808 -82.59935 -52.95623"
-              }
-            },
-            {
-              "@type": "Place",
-              "geo": {
-                "@type": "GeoCoordinates",
-                "address": null,
-                "latitude": "-82.63343",
-                "longitude": "-53.26808"
-              }
-            },
-            {
-              "@type": "Place",
-              "geo": {
-                "@type": "GeoCoordinates",
-                "address": null,
-                "latitude": "-82.63332",
-                "longitude": "-53.26058"
-              }
-            },
-            {
-              "@type": "Place",
-              "geo": {
-                "@type": "GeoCoordinates",
-                "address": null,
-                "latitude": "-82.63274",
-                "longitude": "-53.2514"
-              }
-            },
-            {
-              "@type": "Place",
-              "geo": {
-                "@type": "GeoCoordinates",
-                "address": null,
-                "latitude": "-82.63248",
-                "longitude": "-53.24556"
-              }
-            },
-            {
-              "@type": "Place",
-              "geo": {
-                "@type": "GeoCoordinates",
-                "address": null,
-                "latitude": "-82.62007",
-                "longitude": "-52.96522"
-              }
-            },
-            {
-              "@type": "Place",
-              "geo": {
-                "@type": "GeoCoordinates",
-                "address": null,
-                "latitude": "-82.61978",
-                "longitude": "-52.9688"
-              }
-            },
-            {
-              "@type": "Place",
-              "geo": {
-                "@type": "GeoCoordinates",
-                "address": null,
-                "latitude": "-82.61949",
-                "longitude": "-52.96329"
-              }
-            },
-            {
-              "@type": "Place",
-              "geo": {
-                "@type": "GeoCoordinates",
-                "address": null,
-                "latitude": "-82.6192",
-                "longitude": "-52.96476"
-              }
-            },
-            {
-              "@type": "Place",
-              "geo": {
-                "@type": "GeoCoordinates",
-                "address": null,
-                "latitude": "-82.61919",
-                "longitude": "-52.96497"
-              }
-            },
-            {
-              "@type": "Place",
-              "geo": {
-                "@type": "GeoCoordinates",
-                "address": null,
-                "latitude": "-82.61882",
-                "longitude": "-52.96234"
-              }
-            },
-            {
-              "@type": "Place",
-              "geo": {
-                "@type": "GeoCoordinates",
-                "address": null,
-                "latitude": "-82.61855",
-                "longitude": "-52.96028"
-              }
-            },
-            {
-              "@type": "Place",
-              "geo": {
-                "@type": "GeoCoordinates",
-                "address": null,
-                "latitude": "-82.618",
-                "longitude": "-52.96023"
-              }
-            },
-            {
-              "@type": "Place",
-              "geo": {
-                "@type": "GeoCoordinates",
-                "address": null,
-                "latitude": "-82.61791",
-                "longitude": "-52.95935"
-              }
-            },
-            {
-              "@type": "Place",
-              "geo": {
-                "@type": "GeoCoordinates",
-                "address": null,
-                "latitude": "-82.61758",
-                "longitude": "-52.95623"
-              }
-            },
-            {
-              "@type": "Place",
-              "geo": {
-                "@type": "GeoCoordinates",
-                "address": null,
-                "latitude": "-82.61728",
-                "longitude": "-52.95669"
-              }
-            },
-            {
-              "@type": "Place",
-              "geo": {
-                "@type": "GeoCoordinates",
-                "address": null,
-                "latitude": "-82.61715",
-                "longitude": "-52.95764"
-              }
-            },
-            {
-              "@type": "Place",
-              "geo": {
-                "@type": "GeoCoordinates",
-                "address": null,
-                "latitude": "-82.6162",
-                "longitude": "-52.98582"
-              }
-            },
-            {
-              "@type": "Place",
-              "geo": {
-                "@type": "GeoCoordinates",
-                "address": null,
-                "latitude": "-82.61464",
-                "longitude": "-52.99432"
-              }
-            },
-            {
-              "@type": "Place",
-              "geo": {
-                "@type": "GeoCoordinates",
-                "address": null,
-                "latitude": "-82.60044",
-                "longitude": "-53.00653"
-              }
-            },
-            {
-              "@type": "Place",
-              "geo": {
-                "@type": "GeoCoordinates",
-                "address": null,
-                "latitude": "-82.59963",
-                "longitude": "-53.00099"
-              }
-            },
-            {
-              "@type": "Place",
-              "geo": {
-                "@type": "GeoCoordinates",
-                "address": null,
-                "latitude": "-82.59935",
-                "longitude": "-52.99865"
-              }
-            }
-          ],
-          "citation": [
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            },
-            {
-              "@type": "CreativeWork"
-            }
-          ],
-          "publisher": {
-            "@type": "Organization",
-            "name": "EarthChem"
-          },
-          "funder": {
-            "@type": "Organization",
-            "name": "National Science Foundation"
-          },
-          "provider": {
-            "@type": "Organization",
-            "name": "DataCite"
-          }
-        }
+      string: !binary |-
+        H4sIAIOTo14AA+yZTW/jNhCG7/kVhE8tIOv7M0DRFs7uYoHNJki27aHogZZomQ1FCiRlx13kv3dEybGSJlbTooCA+mIk5DujhzOcMS1+PUNo9kMuuCb3enaOZmut63PHUfmaVNgWspxZRqJ3NWnnL7DGiuh+lBZ7GwVGhaCtheO5dualXuYkXuKlnZQWhGu6okSCxa8wgtBX8zl0fi1FTaTe/YxZQ4ydma/74Y8XhuDq42FqY5QDhjXmBSO2JkrbBbDmVJM9lBdloUNJgeEf1w3imfHyYP0bmp9uPr1CAzDb7dYmWOp1G01DwehSYrlzllJsFXE2lGy/p8V3fuj3MPD5mwlYI9nAUxvalrxdUr8cswIjxUVBNRUcsy8vZYnjygxe4t+FRISRClKBMMh3iigkVqhmuKQiZ2AD4wWqd1LcE07QSooKlXgJuEao1wQxvCOSFKjCK5qji2ZF7tBHrmWjAKEHavRavJDoPclCYlqiD5JWRB2iV9IN4Z+HksPcCleU7faTzy0PKSNS9RDdRLdB0yz1PTcNXffllD9GiOZrTBhCizXBsI1eYdvLXsP7i/UYXwK5zLwwS9znu6AgKpe0brPbCt9dXv+DxClc1QwyZgZHU2ijLyDpbBTaghDlgjGSa7Cg3DjAjdISM6SaqiIS+a4bO/CRHB7ROb3EStGVhd4LKaEiweIG85JY6JpwhcEtRpVouMaUKwv9CH/IXNMc290+YjQH3ZP6ziXBGpKRi6oSXPVFZWTKWe7mPJ8r7AS26zTdBpndkd1WyEK1Xm5IaeoEfbOAlkc5FAI89yonmKtvhwBWuwUqCqvcnd+I/M5Cl6CGJYtyZ6FbExxn0YUFPKKLQ54s9IGIfG8NhliCaTuockp4Dqu/FYwW6F3bGaxnkepyZg0zaz2m9Snh3wlq33z5J1A0uDShJH2VAosoKC/BT4VN88d1DbHE7SqcDS/sSs3JfU5Yp4feQxZt+InZtL7reXPPn/vpYfq6WTKq1gdBN6Vq8InZQmwghAbi1W8AhvNh2REBo3vZUAjhXAhIK+Xw2EMr6LohhMWkexitF3fcsxDOei8PI18Mb4C8XeOaDPGW4r6dmqe+HQdBGKB5FNh+nLopaseiLAsiGPPtLIr94D8gGg0bbxgbTDDInW4K8oR6aMkELw+K/WqmSR74I+RuNE1yPwmPk0deOE3wMD0OHkZRPEXy9vvsCDkUaBz5/hTJvSw5FvOWPJ3kLveyMBsBD/xsmuTHGksLHiaT3OVe5o2FHM6lkyRP07GY+8Eke6KXRtEIuetPs0DH+oo7zSOLl2TecfIIjl3TJI9GYj7VY6KX+KPk8TSbeeKN1GeUxNPsLPFIS0yjdJpHljA+dr4F8iwMJknuuuHxk7nrxtEUCxR+acbHf8e5rptNsUDNb+SR3ZLGz9v52f6dWk417l+ovfYaYtG/ZfpFyLuRt8Qn6Ul6kp6kJ+lJepKepP8f6dn+QFX3tz7y8ch3sLuSJeb0j+7A1Tl/vG41F2DtPVvr0Dx5tmp48WY/n3F3+41uuws29F6Am0766LmWYkPf7ru9SV9Qba6GHs4e/gQAAP//AwCkxVdXMCEAAA==
     http_version: 
-  recorded_at: Thu, 26 Mar 2020 08:53:12 GMT
+  recorded_at: Sat, 25 Apr 2020 01:33:55 GMT
 recorded_with: VCR 2.9.3

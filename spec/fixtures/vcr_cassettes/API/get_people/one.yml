@@ -8,16 +8,18 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.7; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
+      Accept-Encoding:
+      - gzip,deflate
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Thu, 26 Mar 2020 08:49:40 GMT
+      - Sat, 25 Apr 2020 01:33:46 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -30,6 +32,8 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
+      Content-Encoding:
+      - gzip
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Permitted-Cross-Domain-Policies:
@@ -37,15 +41,15 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - d1011ea9-6b7c-4b46-b83f-3a5b73b8524a
+      - 9204d324-9985-47c8-b18a-f7e64b372521
       X-Download-Options:
       - noopen
       Etag:
-      - W/"81c22b71d8e7d4455ad35a674c3fed3a"
+      - W/"b0b46476d4944e9c11a5dc5a8a11f60a"
       X-Frame-Options:
       - SAMEORIGIN
       X-Runtime:
-      - '0.111019'
+      - '0.072655'
       X-Content-Type-Options:
       - nosniff
       X-Powered-By:
@@ -54,8 +58,8 @@ http_interactions:
       - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"0000-0002-2220-6072","type":"users","attributes":{"givenName":"Michael","familyName":"''t
-        Sas-Rolfes","name":"Michael ''t Sas-Rolfes","orcid":"https://orcid.org/0000-0002-2220-6072","github":null,"roleId":"user","isActive":false,"created":"2017-12-15T16:50:05.000Z","updated":"2017-12-15T16:50:05.000Z"},"relationships":{}},"meta":{"dois":[],"published":[],"resourceTypes":[],"views":[],"downloads":[],"citations":[]}}'
+      string: !binary |-
+        H4sIAHqTo14AA4RQsWrDMBD9laCli53IAiegrWOGdmgztXSQrbN9IFtGOiWE4H/vKfHSUqjgQO/du3ePuwlryAh9E2iFFpJfyaVKpZQs9/KgRCHoOgM3U4QQGRqigE0iiHmuxzNMr2bMihdsBwOONZ0Z0V1X+ok27yaWb951kA2mH+rN77YP7T3MQDRHvdvd8daHfvd3vB5pSI3QU3KuEME7ONo1LncxPrfEGYXujItQiDaAIcgKJatDWamyqk/VXtdSy3rL7h88lWb7n2jhXeAMoZ/igHM+xsLcCI97Wo9MfX4VYk6NwzhktwwDRJ9CCye+6qo4I1zWr/WXyXljV9giPTZkuCzfAAAA//8DAAF6gYKvAQAA
     http_version: 
-  recorded_at: Thu, 26 Mar 2020 08:49:40 GMT
+  recorded_at: Sat, 25 Apr 2020 01:33:46 GMT
 recorded_with: VCR 2.9.3

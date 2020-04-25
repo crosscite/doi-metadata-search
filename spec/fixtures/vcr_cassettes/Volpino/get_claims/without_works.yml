@@ -8,18 +8,20 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.7; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
       Authorization:
-      - Bearer eyJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDEtNTQ4OS0zNTk0IiwibmFtZSI6Ikpvc2lhaCBDYXJiZXJyeSIsInJvbGVfaWQiOiJzdGFmZl9hZG1pbiIsImlhdCI6MTU4NTIxMjUxNCwiZXhwIjoxNTg1MjEyNTQ0fQ.Hm9TBHHYyxV1nlmAxVXm8uHfIAf8VdB5Eqi8vLJo1MzMB4rGNnprIv2EJLRR_HcnLngKXTHPTjkMN8iYZxpX-DvxAqc9BNgR__Bd6RtmwOet-Ro-bUOjuaDh4Z9EVqerIcWzN6Ut3c6FlWMr64PQMBEY9qgdFGHkQ6xT7b-mhnC0uiY5MXWeOUXJggUhSNig_KhlHuyQIv-wVlw0-bnCGyK4dkdRlYOTxDUZY_g3K_QfXTKBZU-QQ6HnJZeDUZWW_KXrKx3XaE2sQrAKtwtlZ3gGxYKcxGBXzCLSZ8r1mZVur7Okeib1RQtaunZVAk7IrvyaVjXKJVwY7TZ4dhYEtg
+      - Bearer eyJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiIwMDAwLTAwMDEtNTQ4OS0zNTk0IiwibmFtZSI6Ikpvc2lhaCBDYXJiZXJyeSIsInJvbGVfaWQiOiJzdGFmZl9hZG1pbiIsImlhdCI6MTU4Nzc3ODQyMiwiZXhwIjoxNTg3Nzc4NDUyfQ.nzEhxY0eaQvPPfOxg0gW0YvwNSxSKf_ioaVCmEE4878aVYp5JvNrnmFVnGoDQmFzYdfCcE-JsrEsUo79AWlnVs6SZoo7noqyvcF7wxi_qXbPUUB-u15-EOXjCxlp6Joy05_wCMUjVHh282A2u7mQ1H_cHN-iOo4bbZmrre3TVwdZzlN62SKeF938Q6uFWogiryKPX4_GC24QJYRq5RWpzPEywA1Reozk6oYQKA5aBFu8nlF0MJ35sBMQbqxwdPCplzK7WRbj049tcLsChKCaQbpTqz0GCwYma_jKKIOGZhDLqhCcVbWCwI7z2RmwlahJn2RBKkNQ0NVMn6XZUZ762A
+      Accept-Encoding:
+      - gzip,deflate
   response:
     status:
       code: 401
       message: Unauthorized
     headers:
       Date:
-      - Thu, 26 Mar 2020 08:48:34 GMT
+      - Sat, 25 Apr 2020 01:33:42 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -30,6 +32,8 @@ http_interactions:
       - no-cache
       Vary:
       - Accept-Encoding, Origin
+      Content-Encoding:
+      - gzip
       Referrer-Policy:
       - strict-origin-when-cross-origin
       X-Permitted-Cross-Domain-Policies:
@@ -37,11 +41,11 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Request-Id:
-      - fec4ffa7-9c3c-4fc6-a99f-70b455853fd8
+      - b978b3ba-8467-42a3-b8c7-71a6696f9416
       X-Download-Options:
       - noopen
       X-Runtime:
-      - '0.006759'
+      - '0.005685'
       X-Frame-Options:
       - SAMEORIGIN
       X-Content-Type-Options:
@@ -52,7 +56,8 @@ http_interactions:
       - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: '{"errors":[{"status":"401","title":"Bad credentials."}]}'
+      string: !binary |-
+        H4sIAHaTo14AA6pWSi0qyi8qVrKKrlYqLkksKQUylUwMDJV0lEoyS3JSgTynxBSF5KLUlNS8kszEnGI9pdrYWgAAAAD//wMAnbPDfTgAAAA=
     http_version: 
-  recorded_at: Thu, 26 Mar 2020 08:48:34 GMT
+  recorded_at: Sat, 25 Apr 2020 01:33:42 GMT
 recorded_with: VCR 2.9.3

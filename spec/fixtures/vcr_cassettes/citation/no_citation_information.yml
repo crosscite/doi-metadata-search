@@ -8,18 +8,20 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.7; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
       Content-Type:
       - application/json;charset=UTF-8
+      Accept-Encoding:
+      - gzip
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Thu, 26 Mar 2020 08:53:14 GMT
+      - Sat, 25 Apr 2020 01:33:48 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -32,36 +34,24 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
+      Content-Encoding:
+      - gzip
       X-Request-Id:
-      - 89580896-1fa4-4ba9-87de-a61ad0141702
+      - b8eb040a-2ffc-4861-a8a7-7f8adf8fa689
       Etag:
-      - W/"98ed06528f79c8bcedc2582b7e856d04"
+      - W/"e218ad5c5de0d1db30960f881ba10bab"
       X-Runtime:
-      - '0.048560'
+      - '0.086757'
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
       - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"10.0311/fk2/e11643a99d903d0ccfc2d523b344d9ff","type":"dois","attributes":{"doi":"10.0311/fk2/e11643a99d903d0ccfc2d523b344d9ff","prefix":"10.0311","suffix":"fk2/e11643a99d903d0ccfc2d523b344d9ff","identifiers":[{"identifier":"https://handle.test.datacite.org/10.0311/fk2/e11643a99d903d0ccfc2d523b344d9ff","identifierType":"DOI"},{"identifier":"https://pasta-s.lternet.edu/package/eml/knb-lter-jrn/100/4","identifierType":"URL"}],"creators":[{"name":"Ji,
-        Wenjie","nameType":"Personal","givenName":"Wenjie","familyName":"Ji","affiliation":[],"nameIdentifiers":[]},{"name":"Hanan,
-        Niall P.","nameType":"Personal","givenName":"Niall P.","familyName":"Hanan","affiliation":[],"nameIdentifiers":[]}],"titles":[{"title":"High
-        resolution shrub cover raster maps of the Jornada Basin LTER, including JER
-        and CDRRC (2011)"}],"publisher":"Environmental Data Initiative","container":{},"publicationYear":2019,"subjects":[],"contributors":[],"dates":[{"date":"2019","dateType":"Issued"}],"language":"eng","types":{"ris":"DATA","bibtex":"misc","citeproc":"dataset","schemaOrg":"Dataset","resourceType":"dataPackage","resourceTypeGeneral":"Dataset"},"relatedIdentifiers":[],"sizes":[],"formats":[],"version":null,"rightsList":[],"descriptions":[{"lang":"en-US","description":"This
-        data package contains two raster shrub cover maps of the Jornada Experimental
-        Range and Chihuahuan Desert Rangeland Research Center (CDRRC) created using
-        1m resolution National Agriculture Imagery Program (NAIP) aerial photo acquired
-        in 2011. A one-meter resolution raster file lists cover as non-shrub, shrub,
-        or no data available. A hectare resolution raster file contains fractional
-        shrub cover values (0-1) calculed from the 1 meter raster. NOTE: There is
-        currently a hole in the coverage of the hectare raster (no-data values) in
-        the \"scarplet\" region in the southeastern portion of the Jornada Basin.
-        The creators of the dataset plan to fill this missing area of coverage in
-        a future update to the data package once suitable imagery of the area is acquired.","descriptionType":"Abstract"}],"geoLocations":[],"fundingReferences":[],"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC00LjEvbWV0YWRhdGEueHNkIj4KICA8aWRlbnRpZmllciBpZGVudGlmaWVyVHlwZT0iRE9JIj4xMC4wMzExL0ZLMi9FMTE2NDNBOTlEOTAzRDBDQ0ZDMkQ1MjNCMzQ0RDlGRjwvaWRlbnRpZmllcj4KICA8Y3JlYXRvcnM+CiAgICA8Y3JlYXRvcj4KICAgICAgPGNyZWF0b3JOYW1lPkppLCBXZW5qaWU8L2NyZWF0b3JOYW1lPgogICAgPC9jcmVhdG9yPgogICAgPGNyZWF0b3I+CiAgICAgIDxjcmVhdG9yTmFtZT5IYW5hbiwgTmlhbGwgUC48L2NyZWF0b3JOYW1lPgogICAgPC9jcmVhdG9yPgogIDwvY3JlYXRvcnM+CiAgPHRpdGxlcz4KICAgIDx0aXRsZT5IaWdoIHJlc29sdXRpb24gc2hydWIgY292ZXIgcmFzdGVyIG1hcHMgb2YgdGhlIEpvcm5hZGEgQmFzaW4gTFRFUiwgaW5jbHVkaW5nIEpFUiBhbmQgQ0RSUkMgKDIwMTEpPC90aXRsZT4KICA8L3RpdGxlcz4KICA8cHVibGlzaGVyPkVudmlyb25tZW50YWwgRGF0YSBJbml0aWF0aXZlPC9wdWJsaXNoZXI+CiAgPHB1YmxpY2F0aW9uWWVhcj4yMDE5PC9wdWJsaWNhdGlvblllYXI+CiAgPHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJEYXRhc2V0Ij5kYXRhUGFja2FnZTwvcmVzb3VyY2VUeXBlPgogIDxsYW5ndWFnZT5lbmc8L2xhbmd1YWdlPgogIDxhbHRlcm5hdGVJZGVudGlmaWVycz4KICAgIDxhbHRlcm5hdGVJZGVudGlmaWVyIGFsdGVybmF0ZUlkZW50aWZpZXJUeXBlPSJVUkwiPmh0dHBzOi8vcGFzdGEtcy5sdGVybmV0LmVkdS9wYWNrYWdlL2VtbC9rbmItbHRlci1qcm4vMTAwLzQ8L2FsdGVybmF0ZUlkZW50aWZpZXI+CiAgPC9hbHRlcm5hdGVJZGVudGlmaWVycz4KICA8ZGVzY3JpcHRpb25zPgogICAgPGRlc2NyaXB0aW9uIHhtbDpsYW5nPSJlbi1VUyIgZGVzY3JpcHRpb25UeXBlPSJBYnN0cmFjdCI+VGhpcyBkYXRhIHBhY2thZ2UgY29udGFpbnMgdHdvIHJhc3RlciBzaHJ1YiBjb3ZlciBtYXBzIG9mIHRoZSBKb3JuYWRhCiAgRXhwZXJpbWVudGFsIFJhbmdlIGFuZCBDaGlodWFodWFuIERlc2VydCBSYW5nZWxhbmQgUmVzZWFyY2ggQ2VudGVyCiAgKENEUlJDKSBjcmVhdGVkIHVzaW5nIDFtIHJlc29sdXRpb24gTmF0aW9uYWwgQWdyaWN1bHR1cmUgSW1hZ2VyeQogIFByb2dyYW0gKE5BSVApIGFlcmlhbCBwaG90byBhY3F1aXJlZCBpbiAyMDExLiBBIG9uZS1tZXRlciByZXNvbHV0aW9uCiAgcmFzdGVyIGZpbGUgbGlzdHMgY292ZXIgYXMgbm9uLXNocnViLCBzaHJ1Yiwgb3Igbm8gZGF0YSBhdmFpbGFibGUuIEEKICBoZWN0YXJlIHJlc29sdXRpb24gcmFzdGVyIGZpbGUgY29udGFpbnMgZnJhY3Rpb25hbCBzaHJ1YiBjb3ZlciB2YWx1ZXMKICAoMC0xKSBjYWxjdWxlZCBmcm9tIHRoZSAxIG1ldGVyIHJhc3Rlci4KCiAgICAgIAogICAgICAgIE5PVEU6IFRoZXJlIGlzIGN1cnJlbnRseSBhIGhvbGUgaW4gdGhlIGNvdmVyYWdlIG9mIHRoZQogIGhlY3RhcmUgcmFzdGVyIChuby1kYXRhIHZhbHVlcykgaW4gdGhlICJzY2FycGxldCIgcmVnaW9uIGluCiAgdGhlIHNvdXRoZWFzdGVybiBwb3J0aW9uIG9mIHRoZSBKb3JuYWRhIEJhc2luLiBUaGUgY3JlYXRvcnMgb2YgdGhlCiAgZGF0YXNldCBwbGFuIHRvIGZpbGwgdGhpcyBtaXNzaW5nIGFyZWEgb2YgY292ZXJhZ2UgaW4gYSBmdXR1cmUgdXBkYXRlCiAgdG8gdGhlIGRhdGEgcGFja2FnZSBvbmNlIHN1aXRhYmxlIGltYWdlcnkgb2YgdGhlIGFyZWEgaXMKICBhY3F1aXJlZC48L2Rlc2NyaXB0aW9uPgogIDwvZGVzY3JpcHRpb25zPgo8L3Jlc291cmNlPg==","url":"https://portal-s.lternet.edu/nis/mapbrowse?packageid=knb-lter-jrn.100.4","contentUrl":null,"metadataVersion":0,"schemaVersion":null,"source":"mds","isActive":true,"state":"findable","reason":null,"viewCount":0,"viewsOverTime":[],"downloadCount":0,"downloadsOverTime":[],"referenceCount":0,"citationCount":0,"citationsOverTime":[],"created":"2019-11-18T06:09:59.000Z","registered":"2019-11-18T06:10:00.000Z","published":"2019","updated":"2020-03-25T02:32:10.000Z"},"relationships":{"client":{"data":{"id":"datacite.edi","type":"clients"}},"media":{"data":{"id":"10.0311/fk2/e11643a99d903d0ccfc2d523b344d9ff","type":"media"}},"referenceEvents":{"data":[]},"citationEvents":{"data":[]}}},"included":[{"id":"datacite.edi","type":"clients","attributes":{"name":"Environmental
-        Data Initiative","symbol":"DATACITE.EDI","year":2017,"contactEmail":"mark.servilla@gmail.com","alternateName":null,"description":null,"language":null,"clientType":"repository","domains":"*","re3data":null,"opendoar":null,"issn":null,"url":null,"created":"2017-05-10T10:07:37.000Z","updated":"2018-08-26T01:31:05.000Z","isActive":true,"hasPassword":true},"relationships":{"provider":{"data":{"id":"datacite","type":"providers"}},"consortium":{"data":{"id":"dc","type":"providers"}},"prefixes":{"data":[{"id":"10.0311","type":"prefixes"}]}}}]}'
+      string: !binary |-
+        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
     http_version: 
-  recorded_at: Thu, 26 Mar 2020 08:53:14 GMT
+  recorded_at: Sat, 25 Apr 2020 01:33:48 GMT
 - request:
     method: get
     uri: https://api.test.datacite.org/dois/10.0311/fk2/e11643a99d903d0ccfc2d523b344d9ff
@@ -70,16 +60,18 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.7; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; +https://github.com/datacite/maremma)
       Accept:
       - application/ld+json
+      Accept-Encoding:
+      - gzip,deflate
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Thu, 26 Mar 2020 08:53:14 GMT
+      - Sat, 25 Apr 2020 01:33:48 GMT
       Content-Type:
       - application/vnd.schemaorg.ld+json; charset=utf-8
       Connection:
@@ -92,64 +84,22 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
+      Content-Encoding:
+      - gzip
       X-Request-Id:
-      - a08b4c9f-97da-4b18-ae7a-6ebfdd0ea91f
+      - 71a66599-bd90-4b78-9ad5-a3a1d6893ced
       Etag:
-      - W/"5f8015bff101dabbec61d70f8188a732"
+      - W/"b42b250a39fa149d24c7c2fa6c997e0f"
       X-Runtime:
-      - '0.012055'
+      - '0.013917'
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
       - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: |-
-        {
-          "@context": "http://schema.org",
-          "@type": "Dataset",
-          "@id": "https://doi.org/10.0311/fk2/e11643a99d903d0ccfc2d523b344d9ff",
-          "identifier": [
-            {
-              "@type": "PropertyValue",
-              "propertyID": "DOI",
-              "value": "https://handle.test.datacite.org/10.0311/fk2/e11643a99d903d0ccfc2d523b344d9ff"
-            },
-            {
-              "@type": "PropertyValue",
-              "propertyID": "URL",
-              "value": "https://pasta-s.lternet.edu/package/eml/knb-lter-jrn/100/4"
-            }
-          ],
-          "url": "https://portal-s.lternet.edu/nis/mapbrowse?packageid=knb-lter-jrn.100.4",
-          "additionalType": "dataPackage",
-          "name": "High resolution shrub cover raster maps of the Jornada Basin LTER, including JER and CDRRC (2011)",
-          "author": [
-            {
-              "name": "Wenjie Ji",
-              "givenName": "Wenjie",
-              "familyName": "Ji",
-              "@type": "Person"
-            },
-            {
-              "name": "Niall P. Hanan",
-              "givenName": "Niall P.",
-              "familyName": "Hanan",
-              "@type": "Person"
-            }
-          ],
-          "description": "This data package contains two raster shrub cover maps of the Jornada Experimental Range and Chihuahuan Desert Rangeland Research Center (CDRRC) created using 1m resolution National Agriculture Imagery Program (NAIP) aerial photo acquired in 2011. A one-meter resolution raster file lists cover as non-shrub, shrub, or no data available. A hectare resolution raster file contains fractional shrub cover values (0-1) calculed from the 1 meter raster. NOTE: There is currently a hole in the coverage of the hectare raster (no-data values) in the \"scarplet\" region in the southeastern portion of the Jornada Basin. The creators of the dataset plan to fill this missing area of coverage in a future update to the data package once suitable imagery of the area is acquired.",
-          "inLanguage": "eng",
-          "datePublished": "2019",
-          "publisher": {
-            "@type": "Organization",
-            "name": "Environmental Data Initiative"
-          },
-          "provider": {
-            "@type": "Organization",
-            "name": "DataCite"
-          }
-        }
+      string: !binary |-
+        H4sIAHyTo14AA6RV328bNwx+719B+MkB4rMv9gY4wLBliYG6CBzD8NqHdQ+0judTo5Nuks6tV+R/H6WTf7RwBhQDjDMgkh8/8iOlr28Aer8Joz198b1b6FXeN7fDoRMV1ZgZu+1dRxe/byjYH9CjI59OZXGIcRxUGBkihvkoG43zfFg+3wwpz3+ejHE6LaajcTESohQ3xU834814MimmZdkByYK0l6Uky3h/8gnA1/g9T720piHr9+9RtRTjor1Jx/OHyO9pfjLtoucZwwp1oSjz5HxWcCVCevpxyhH+5fr/0Pxj9fgfNBt0HgcuU56sJp9R0fKZeMYtDalWw2e9GQTb4JPVTH00nCRO/P0rNrS16htAYz2q7xC1dMMam401nx39mvBl8cs5esbo2aQTCYtCemk0qnUqNbRw2cV1LhrraHgrtxVYcka1IQJcZdsNCLMjC5aL4z/O7MCU4CuCd8ZqLBB+Ryc1PK5nq2uQWqi2kHoL72YrYN3g/mG1uof+zSjPrxKj1lfmwsgcaHwg/UkyvDz1eit3pBff2E/GEmup9gfredhJXbLO6MsjcEi7kKgULDN4ixr1K7kPTq9l/y72MoGj3gU5YWUTmh2c1pV0ENSBJCuEFUepHfjP5iDBuSqX5Jh94YmVNa8mKlihZpioQyWrFvmn4YEcz3RnU8G24gO0ooJ7jmLYfhTtCoQl9FRA64KieX0+HAvspgrutlaKVvnWEsxrZm33wNu0tVhDf3E3X14BMiH2bCrjDaD4u5WWUXlowlRkcAdG06CmkPosQ6q3lIpASeddKhodaKMHsQ/XkP6M5cOuebhDqXDDNwYjVyQ8MrNXcI8NLi2KVNB5g+OSO+iPBjm3AxUXysxLa+rY8xwS6wiZweJpPbuFdUWckbUUrbXcUbUHhMpwOi45hEXsoG+S7kiyY9bXZhAr6bJfHcI+9pxA2yjyH3tc0DYUk0zO8FJRDNcQ7o1gu7SnWWDXCWvscXaK7n2AhscBWCPujWIDl1BLF8Vnehi8j9Q5MULZRtnbhgEoBB7AjhNstGB2rfRBEJBpPlLaCMpJDiORpXdFP/JotuF+4q0gnV6zkGPZbngUKoovGE/PtDM16TjcKt1in1bvyW5Ry3/iuKbNPO78TO+kNTotS3glYa75umTnHYVtfengrdnxY/ej6AHvnt+qCPTm5V8AAAD//wMAeq9jmLYHAAA=
     http_version: 
-  recorded_at: Thu, 26 Mar 2020 08:53:14 GMT
+  recorded_at: Sat, 25 Apr 2020 01:33:48 GMT
 recorded_with: VCR 2.9.3

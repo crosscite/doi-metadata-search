@@ -8,9 +8,9 @@ describe "API", type: :model, vcr: true do
   context "get_works" do
     it "all" do
       response = subject.get_works
-      expect(response[:meta]["resourceTypes"].first).to eq("count"=>111611, "id"=>"dataset", "title"=>"Dataset")
+      expect(response[:meta]["resourceTypes"].first).to eq("count"=>134612, "id"=>"dataset", "title"=>"Dataset")
       work = response[:data].first
-      expect(work["id"]).to eq("10.21373/gbif.4066766673316484")
+      expect(work["id"]).to eq("10.23706/s9nrfwov")
     end
 
     it "one" do
@@ -32,21 +32,21 @@ describe "API", type: :model, vcr: true do
       response = subject.get_works("work-id" => "10.5438/0004")
       #expect(response[:meta]["resource-types"].first).to eq("id"=>"text", "title"=>"Text", "count"=>3)
       work = response[:data].first
-      expect(work["id"]).to eq("10.21373/gbif.4066766673316484")
+      expect(work["id"]).to eq("10.23706/s9nrfwov")
     end
 
     it "query" do
       response = subject.get_works(query: "california")
-      expect(response[:meta]["resourceTypes"].first).to eq("count"=>403, "id"=>"dataset", "title"=>"Dataset")
+      expect(response[:meta]["resourceTypes"].first).to eq("count"=>431, "id"=>"dataset", "title"=>"Dataset")
       work = response[:data].first
-      expect(work["id"]).to eq("10.21949/109/19559")
+      expect(work["id"]).to eq("10.23721/109/17766")
     end
   end
 
   context "get_people" do
     it "all" do
       response = subject.get_people
-      expect(response[:meta]).to eq("total"=>66557, "totalPages"=>400, "page"=>1)
+      expect(response[:meta]).to eq("total"=>66898, "totalPages"=>400, "page"=>1)
       contributor = response[:data].first
       expect(contributor["id"]).to eq("0000-0001-9354-2586")
     end
@@ -95,7 +95,7 @@ describe "API", type: :model, vcr: true do
   context "get_members" do
     it "all" do
       response = subject.get_members
-      expect(response[:meta]["regions"].first).to eq("id"=>"amer", "title"=>"Americas", "count"=>115)
+      expect(response[:meta]["regions"].first).to eq("id"=>"amer", "title"=>"Americas", "count"=>123)
       member = response[:data].first
       expect(member["id"]).to eq("akristia")
     end

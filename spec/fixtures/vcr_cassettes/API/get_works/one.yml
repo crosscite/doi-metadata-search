@@ -8,18 +8,20 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Mozilla/5.0 (compatible; Maremma/4.7; +https://github.com/datacite/maremma)
+      - Mozilla/5.0 (compatible; Maremma/4.6.1; +https://github.com/datacite/maremma)
       Accept:
       - text/html,application/json,application/xml;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5
       Content-Type:
       - application/json;charset=UTF-8
+      Accept-Encoding:
+      - gzip
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Thu, 26 Mar 2020 08:49:43 GMT
+      - Sat, 25 Apr 2020 01:33:45 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
@@ -32,23 +34,22 @@ http_interactions:
       - max-age=0, private, must-revalidate
       Vary:
       - Accept-Encoding, Origin
+      Content-Encoding:
+      - gzip
       X-Request-Id:
-      - 91944c1a-8af4-4e76-840d-608eeccd3e46
+      - e6671826-8df8-4fe2-99d6-2d7af7d50d14
       Etag:
-      - W/"cee98a5980ef59cc0b4ac78bb003056c"
+      - W/"a955f7458d1577a0555e6400033c30c7"
       X-Runtime:
-      - '0.069580'
+      - '0.085485'
       X-Powered-By:
       - Phusion Passenger 6.0.4
       Server:
       - nginx/1.14.0 + Phusion Passenger 6.0.4
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"10.70001/12334296","type":"dois","attributes":{"doi":"10.70001/12334296","prefix":"10.70001","suffix":"12334296","identifiers":null,"creators":[{"name":"Joyce
-        Mott Anderson","affiliation":[]}],"titles":[{"title":"The effects of early
-        intervention on young handicapped children who are nonverbal or have limited
-        expressive language skills"}],"publisher":"University of Nevada, Las Vegas","container":{},"publicationYear":1988,"subjects":null,"contributors":[],"dates":null,"language":null,"types":{"resourceTypeGeneral":"Text"},"relatedIdentifiers":null,"sizes":null,"formats":null,"version":null,"rightsList":[],"descriptions":null,"geoLocations":null,"fundingReferences":null,"xml":"PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHJlc291cmNlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCIgeHNpOnNjaGVtYUxvY2F0aW9uPSJodHRwOi8vZGF0YWNpdGUub3JnL3NjaGVtYS9rZXJuZWwtNCBodHRwOi8vc2NoZW1hLmRhdGFjaXRlLm9yZy9tZXRhL2tlcm5lbC00L21ldGFkYXRhLnhzZCI+CiAgPGlkZW50aWZpZXIgaWRlbnRpZmllclR5cGU9IkRPSSI+MTAuNzAwMDEvMTIzMzQyOTY8L2lkZW50aWZpZXI+CiAgPGNyZWF0b3JzPgogICAgPGNyZWF0b3I+CiAgICAgIDxjcmVhdG9yTmFtZT5Kb3ljZSBNb3R0IEFuZGVyc29uPC9jcmVhdG9yTmFtZT4KICAgIDwvY3JlYXRvcj4KICA8L2NyZWF0b3JzPgogIDx0aXRsZXM+CiAgICA8dGl0bGU+VGhlIGVmZmVjdHMgb2YgZWFybHkgaW50ZXJ2ZW50aW9uIG9uIHlvdW5nIGhhbmRpY2FwcGVkIGNoaWxkcmVuIHdobyBhcmUgbm9udmVyYmFsIG9yIGhhdmUgbGltaXRlZCBleHByZXNzaXZlIGxhbmd1YWdlIHNraWxsczwvdGl0bGU+CiAgPC90aXRsZXM+CiAgPHB1Ymxpc2hlcj5Vbml2ZXJzaXR5IG9mIE5ldmFkYSwgTGFzIFZlZ2FzPC9wdWJsaXNoZXI+CiAgPHB1YmxpY2F0aW9uWWVhcj4xOTg4PC9wdWJsaWNhdGlvblllYXI+CiAgPHJlc291cmNlVHlwZSByZXNvdXJjZVR5cGVHZW5lcmFsPSJUZXh0Ii8+CiAgPHZlcnNpb24vPgo8L3Jlc291cmNlPgo=","url":"https://digitalscholarship.unlv.edu/rtds/1","contentUrl":null,"metadataVersion":0,"schemaVersion":null,"source":null,"isActive":true,"state":"findable","reason":null,"viewCount":0,"viewsOverTime":[],"downloadCount":0,"downloadsOverTime":[],"referenceCount":0,"citationCount":0,"citationsOverTime":[],"created":"2019-04-08T08:20:10.000Z","registered":"2019-04-08T08:20:11.000Z","published":"1988","updated":"2020-03-22T20:31:53.000Z"},"relationships":{"client":{"data":{"id":"datacite.datacite","type":"clients"}},"media":{"data":{"id":"10.70001/12334296","type":"media"}},"referenceEvents":{"data":[]},"citationEvents":{"data":[]}}},"included":[{"id":"datacite.datacite","type":"clients","attributes":{"name":"DataCite
-        Repository","symbol":"DATACITE.DATACITE","year":2011,"contactEmail":"support@datacite.org","alternateName":null,"description":null,"language":["en","fr"],"clientType":"periodical","domains":"datacite.org","re3data":null,"opendoar":null,"issn":{"issnl":null,"print":"1545-7885","electronic":"1544-9173"},"url":null,"created":"2011-12-07T13:43:39.000Z","updated":"2019-08-24T06:22:34.000Z","isActive":true,"hasPassword":true},"relationships":{"provider":{"data":{"id":"datacite","type":"providers"}},"consortium":{"data":{"id":"dc","type":"providers"}},"prefixes":{"data":[{"id":"10.5438","type":"prefixes"},{"id":"10.70002","type":"prefixes"},{"id":"10.70001","type":"prefixes"}]}}}]}'
+      string: !binary |-
+        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
     http_version: 
-  recorded_at: Thu, 26 Mar 2020 08:49:44 GMT
+  recorded_at: Sat, 25 Apr 2020 01:33:45 GMT
 recorded_with: VCR 2.9.3
