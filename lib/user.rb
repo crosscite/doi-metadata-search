@@ -108,7 +108,7 @@ class User
     domain = if ENV["RACK_ENV"] == "production"
                ".datacite.org"
              elsif ENV["RACK_ENV"] == "stage"
-               ".test.datacite.org"
+               ".stage.datacite.org"
              else
                ".lvh.me"
              end
