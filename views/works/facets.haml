@@ -8,7 +8,7 @@
           - if params['registered'] == f.fetch("id", nil)
             %li.active
               %a{:href => works_query(params.except('registered'))}
-                %i.fa.fa-check-square-o
+                %i.far.fa-check-square
               .facet-title
                 = f.fetch("title", nil)
               %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
@@ -16,7 +16,7 @@
           - else
             %li
               %a{:href => works_query(params.merge('registered' => f.fetch("id", nil)))}
-                %i.fa.fa-square-o
+                %i.far.fa-square
               .facet-title
                 = f.fetch("title", nil)
               %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
@@ -31,7 +31,7 @@
           - if params['resource-type-id'] == f.fetch("id", nil)
             %li.active
               %a{:href => works_query(params.except('resource-type-id'))}
-                %i.fa.fa-check-square-o
+                %i.far.fa-check-square
               .facet-title
                 = f.fetch("title", nil)
               %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
@@ -39,7 +39,7 @@
           - else
             %li
               %a{:href => works_query(params.merge('resource-type-id' => f.fetch("id", nil)))}
-                %i.fa.fa-square-o
+                %i.far.fa-square
               .facet-title
                 = f.fetch("title", nil)
               %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
@@ -54,7 +54,7 @@
           - if params['data-center-id'] == f.fetch("id", nil)
             %li.active
               %a{:href => works_query(params.except('data-center-id'))}
-                %i.fa.fa-check-square-o
+                %i.far.fa-check-square
               .facet-title
                 = f.fetch("title", nil)
               %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
@@ -62,7 +62,7 @@
           - else
             %li
               %a{:href => works_query(params.merge('data-center-id' => f.fetch("id", nil)))}
-                %i.fa.fa-square-o
+                %i.far.fa-square
               .facet-title
                 = f.fetch("title", nil)
               %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
@@ -77,7 +77,7 @@
             - if params['affiliation-id'] == f.fetch("id", nil)
               %li.active
                 %a{:href => works_query(params.except('affiliation-id'))}
-                  %i.fa.fa-check-square-o
+                  %i.far.fa-check-square
                 .facet-title
                   = f.fetch("title", nil)
                 %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"
@@ -85,7 +85,7 @@
             - else
               %li
                 %a{:href => works_query(params.merge('affiliation-id' => f.fetch("id", nil)))}
-                  %i.fa.fa-square-o
+                  %i.far.fa-square
                 .facet-title
                   = f.fetch("title", nil)
                 %span.number.pull-right= "#{number_with_delimiter(f.fetch("count", 0))}"

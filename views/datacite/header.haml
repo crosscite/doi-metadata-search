@@ -37,37 +37,37 @@
                   - if is_person?
                     %li
                       %a{:href => "#{ENV['JWT_HOST']}/settings/me"}
-                        %i.fa.fa-cog
+                        %i.fas.fa-user-cog
                         Settings
                     %li
-                      %a{:href => "/people/#{current_user.orcid}"}
-                        %i.fa.fa-files-o
-                        Works
+                      %a{:href => "#{ENV['COMMONS_URL']}/orcid.org/#{current_user.orcid}"}
+                        %i.fas.fa-address-card
+                        Commons Page
                     %li.divider
                     %li
                       %a{:href => "#{ENV['ORCID_URL']}/#{current_user.orcid}"}
-                        %i.fa.fa-external-link
+                        %i.fab.fa-orcid
                         ORCID Record
                     %li.divider
                       %li
                         %a{:href => "#{ENV['JWT_HOST']}/sign_out"}
-                          %i.fa.fa-sign-out
+                          %i.fas.fa-sign-out-alt
                           Sign out
                   - else
                     %li.dropdown-header
                       = "Role: " + current_user.role_name 
                     %li
                       %a{:href => "#{ENV['FABRICA_URL']}/settings"}
-                        %i.fa.fa-cog
+                        %i.fas.fa-user-cog
                         Settings
                     %li.divider
                     %li
                       %a{:href => "#{ENV['FABRICA_URL']}/sign-out"}
-                        %i.fa.fa-sign-out
+                        %i.fas.fa-sign-out-alt
                         Sign out
             
             - else
               %li
                 %a.btn.btn-sm{:href => "#{ENV['JWT_HOST']}/sign_in", id: 'sign-in'}
-                  %i.fa.fa-sign-in
+                  %i.fas.fa-sign-in-alt
                   Sign in

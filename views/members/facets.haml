@@ -8,10 +8,10 @@
           %li
             - if @params["member-type"] == f.fetch("id", nil)
               %a{:href => "/members?region=#{params[:region]}&year=#{params[:year]}&query=#{params[:query]}"}
-                %i.fa.fa-check-square-o
+                %i.far.fa-check-square
             - else
               %a{:href => "/members?member-type=#{f.fetch("id", nil)}&region=#{params[:region]}&year=#{params[:year]}&query=#{params[:query]}"}
-                %i.fa.fa-square-o
+                %i.far.fa-square
             .facet-title
               = f.fetch("title", nil)
             %span.number.pull-right
@@ -28,10 +28,10 @@
           %li
             - if params[:region].present?
               %a{:href => "/members?member-type=#{params['member-type']}&year=#{params[:year]}&query=#{params[:query]}"}
-                %i.fa.fa-check-square-o
+                %i.far.fa-check-square
             - else
               %a{:href => "/members?region=#{f.fetch("id", nil)}&member-type=#{params['member-type']}&year=#{params[:year]}&query=#{params[:query]}"}
-                %i.fa.fa-square-o
+                %i.far.fa-square
             .facet-title
               = f.fetch("title", nil)
             %span.number.pull-right
@@ -48,10 +48,10 @@
           %li
             - if params[:year].present?
               %a{:href => "/members?member-type=#{params['member-type']}&region=#{params[:region]}&query=#{params[:query]}"}
-                %i.fa.fa-check-square-o
+                %i.far.fa-check-square
             - else
               %a{:href => "/members?year=#{f.fetch("id", nil)}&member-type=#{params['member-type']}&region=#{params[:region]}&query=#{params[:query]}"}
-                %i.fa.fa-square-o
+                %i.far.fa-square
             .facet-title
               = f.fetch("title", nil)
             %span.number.pull-right

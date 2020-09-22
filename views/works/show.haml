@@ -40,14 +40,6 @@
               %a{href: ENV['DATA_URL'] + "/dois/application/ld+json/#{@work[:data].dig('attributes', 'doi')}"}
                 Schema.org JSON-LD
               %br
-              - if @work[:data].dig('attributes', 'media').present?
-                - @work[:data].dig('attributes', 'media').each do |media|
-                  %a{href: media['url'], id: media['media-type'] }
-                    - if settings.chem_mime_types.find{ |item| item["type"] == media['media-type'] }.presence
-                      = settings.chem_mime_types.find{ |item| item["type"] == media['media-type'] }['description'].presence ||  media['media-type']
-                    - else
-                      = media['media-type']
-                    %br
           .panel.tags
             .panel-body
               .bottom-teaser.cf
@@ -58,7 +50,7 @@
                   - settings.social.each do |social|
                     - href = social['share_url'] + social['share_title'] + (@work.fetch("attributes", {}).fetch("title", nil)).to_s + social['share_link'] + @work.fetch("id", "")
                     %a{href: href, class: "icon-#{social['icon']} share", onclick: "window.open(this.href, '#{social['icon']}-share', 'width=550,height=255');return false;"}
-                      %i.fa{class: "fa-#{social['icon']}"}
+                      %i.fab{class: "fa-#{social['icon']}"}
                       %span.hidden
                         = social['icon']
 -#

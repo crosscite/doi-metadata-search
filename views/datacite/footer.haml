@@ -6,7 +6,7 @@
       %ul
         - settings.about_links.each do |item|
           %li
-            %a{:href => item['url']}
+            %a{:href => "#{ENV["HOMEPAGE_URL"]}#{item['url']}"}
               = item['name']
     .col-sm-3
       %h4
@@ -14,7 +14,7 @@
       %ul
         - settings.services_links.each do |item|
           %li
-            %a{:href => item['url']}
+            %a{:href => "#{ENV["HOMEPAGE_URL"]}#{item['url']}"}
               = item['name']
     .col-sm-3
       %h4
@@ -29,26 +29,28 @@
       %ul
         - settings.community_links.each do |item|
           %li
-            %a{:href => item['url']}
+            %a{:href => "#{ENV["HOMEPAGE_URL"]}#{item['url']}"}
               = item['name']
 
     .col-sm-3
       %h4.share Contact us
       %a{href: "mailto:support@datacite.org", class: "share"}
-        %i.fa.fa-at
+        %i.fas.fa-envelope
       %a{href: "https://blog.datacite.org", class: "share"}
-        %i.fa.fa-rss
+        %i.fas.fa-blog
       %a{href: "https://twitter.com/datacite", class: "share"}
-        %i.fa.fa-twitter
+        %i.fab.fa-twitter
       %a{href: "https://github.com/datacite/datacite", class: "share"}
-        %i.fa.fa-github
+        %i.fab.fa-github
+      %a{href: "https://www.youtube.com/channel/UCVsSDZhIN_WbnD_v5o9eB_A", class: "share"}
+        %i.fab.fa-youtube
       %a{href: "https://www.linkedin.com/company/datacite", class: "share"}
-        %i.fa.fa-linkedin
+        %i.fab.fa-linkedin
         
       %ul.share
         - settings.contact_links.each do |item|
           %li
-            %a{:href => item['url']}
+            %a{:href => "#{ENV["HOMEPAGE_URL"]}#{item['url']}"}
               = item['name']
       %a{href: "http://status.datacite.org", target: "_blank"}
         %span.color-dot
