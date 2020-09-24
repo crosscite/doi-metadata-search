@@ -59,27 +59,9 @@
     %script{:type => 'text/javascript', :src => 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js'}
     %script{:type => 'text/javascript', :src => '/javascripts/itemlist.js'}
     - if ENV['CDN_URL']
-      %script{:type => 'text/javascript', :src => "#{ENV['CDN_URL']}/javascripts/default.js"}
+      %script{:type => 'text/javascript', :src => "https://assets.datacite.org/javascripts/default.js"}
+      #consent{data: {"cdn-url" => ENV['CDN_URL']}}
+      %script{:type => 'text/javascript', :src => "#{ENV['CDN_URL']}/javascripts/consent.js"}
     - if ENV['GABBA_COOKIE']
-      %script{:type => 'text/javascript', :src => '/javascripts/ga.js'}
-      %script{:async => "", :src => "https://www.googletagmanager.com/gtag/js?id=#{ENV['GABBA_COOKIE']}"}
-      :javascript
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-        
-          gtag('config', "#{ENV['GABBA_COOKIE']}",{
-            'custom_map': {
-               'dimension1':'doi',
-               'dimension2':'views',
-               'dimension3':'downloads',
-               'dimension4':'resolutions',
-               'dimension5':'citations'
-            },
-            'linker': {
-              'domains': ['https://search.datacite.org', 'https://doi.datacite.org']
-            }
-          });
-        
-        
-
+      #ga{data: {"ga" => ENV['GABBA_COOKIE']}}
+      %script{:type => 'text/javascript', :src => "#{ENV['CDN_URL']}/javascripts/ga.js"}

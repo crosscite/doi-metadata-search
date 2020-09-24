@@ -27,3 +27,4 @@ output-*
 /coverage
 /spec/screenshots
 .solargraph
+.tmp/dist

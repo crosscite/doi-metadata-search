@@ -16,6 +16,7 @@ install:
   - travis_retry bundle install
   - curl -sL https://sentry.io/get-cli/ | bash
   - sentry-cli --version
+  - yarn install --non-interactive
 
 before_script:
   - cp .env.travis .env

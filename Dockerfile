@@ -65,6 +65,10 @@ WORKDIR /home/app/webapp
 RUN gem install bundler && \
     /sbin/setuser app bundle install --path vendor/bundle
 
+# Install javascript libraries and webpack
+RUN yarn install && \
+    yarn build
+
 # Run additional scripts during container startup (i.e. not at build time)
 RUN mkdir -p /etc/my_init.d
 COPY vendor/docker/70_templates.sh /etc/my_init.d/70_templates.sh
