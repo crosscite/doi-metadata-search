@@ -58,10 +58,9 @@
     %script{:type => 'text/javascript', :src => 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML'}
     %script{:type => 'text/javascript', :src => 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js'}
     %script{:type => 'text/javascript', :src => '/javascripts/itemlist.js'}
-    - if ENV['CDN_URL']
-      %script{:type => 'text/javascript', :src => "https://assets.datacite.org/javascripts/default.js"}
-      #consent{data: {"cdn-url" => ENV['CDN_URL']}}
-      %script{:type => 'text/javascript', :src => "#{ENV['CDN_URL']}/javascripts/consent.js"}
+    %script{:type => 'text/javascript', :src => "https://assets.datacite.org/javascripts/default.js"}
+    #consent
+    %script{:type => 'text/javascript', :src => "#{ENV['CDN_URL']}/javascripts/consent.js"}
     - if ENV['GABBA_COOKIE']
       #ga{data: {"ga" => ENV['GABBA_COOKIE']}}
       %script{:type => 'text/javascript', :src => "#{ENV['CDN_URL']}/javascripts/ga.js"}
