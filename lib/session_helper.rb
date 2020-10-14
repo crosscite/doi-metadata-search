@@ -11,7 +11,7 @@ module Sinatra
     end
 
     def user_signed_in?
-      !!current_user
+      current_user && current_user.role_name
     end
 
     def is_person?
