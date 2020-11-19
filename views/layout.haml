@@ -26,6 +26,8 @@
     - if @work.present? && @work[:schema_org].present?
       %script{:type => 'application/ld+json'}
         = @work[:schema_org]
+
+    %script{async: true, defer: true, "data-domain" => "#{ENV['GABBA_URL']}", src: "https://plausible.io/js/plausible.js"}
   
     %script{:type => 'text/javascript'}
       :plain
