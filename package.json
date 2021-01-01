@@ -24,7 +24,6 @@
     "bootstrap-sass": "^3.4.1",
     "bootstrap-social": "~5.0.0",
     "bootstrap3": "^3.3.5",
-    "datacite-components": "datacite/datacite-components#master",
     "es5-shim": "~4.1.0",
     "eslint": "^7.2.0",
     "eslint-loader": "^4.0.2",

@@ -17,7 +17,6 @@ log/*
 *.box
 packer_cache/*
 output-*
-/public/javascripts/datacite-components.min.js
 /node_modules/*
 /vendor/npm-debug.log
 /vendor/assets/*
