@@ -26,16 +26,6 @@
         = @work[:schema_org]
 
     %script{async: true, defer: true, "data-domain" => "#{ENV['GABBA_URL']}", src: "https://plausible.io/js/plausible.js"}
-  
-    %script{:type => 'text/javascript'}
-      :plain
-        var _prum = [['id', '5a1420c253eca68350edbf98'], ['mark', 'firstbyte', (new Date()).getTime()]];
-        (function() {
-          var s = document.getElementsByTagName('script')[0], p = document.createElement('script');
-          p.async = 'async';
-          p.src = '//rum-static.pingdom.net/prum.min.js';
-          s.parentNode.insertBefore(p, s);
-        })();
 
   %body
     .notifications.top-left
