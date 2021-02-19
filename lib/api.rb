@@ -87,6 +87,8 @@ module Sinatra
       else
         params = { id: params.fetch(:id, nil),
                    'member-type' => params.fetch('member-type', nil),
+                   'page[number]' => params.fetch('page[number]', 1),
+                   'page[size]' => params.fetch('page[size]', 25),
                    region: params.fetch(:region, nil),
                    year: params.fetch(:year, nil),
                    query: params.fetch(:query, nil) }.compact

@@ -16,6 +16,9 @@
           - @members[:data].each do |item|
             = haml :'members/item', locals: { item: item }
 
+          .text-center
+            = will_paginate @members[:data], renderer: BootstrapPagination::Sinatra, inner_window: 1
+
         - elsif @members[:errors].present?
           .alert.alert-warning
             = @members[:errors].first.fetch("title", "")

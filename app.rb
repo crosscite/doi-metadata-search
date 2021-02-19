@@ -256,7 +256,10 @@ get '/repositories/:id' do
 end
 
 get '/members' do
-  @members = get_members(query: params[:query], "member-type" => params["member-type"], region: params[:region], year: params[:year])
+  @members = get_members(query: params[:query], "page[number]" => @page, "member-type" => params["member-type"], region: params[:region], year: params[:year])
+
+  # pagination
+  @members[:data] = pagination_helper(@members[:data], @page, @members.fetch(:meta, {}).fetch("total", 0))
 
   haml :'members/index'
 end
