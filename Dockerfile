@@ -1,4 +1,4 @@
-FROM phusion/passenger-full:1.0.9
+FROM phusion/passenger-full:2.0.0
 LABEL maintainer="mfenner@datacite.org"
 
 # Set correct environment variables.
@@ -21,8 +21,8 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash && \
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
-# Use Ruby 2.6.5
-RUN bash -lc 'rvm --default use ruby-2.6.5'
+# Use Ruby 2.6.8
+RUN bash -lc 'rvm --default use ruby-2.6.8'
 
 # Set debconf to run non-interactively
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
