@@ -4,6 +4,7 @@ require 'rack-flash'
 
 module Sinatra
   module Volpino
+
     # query Profiles server, check whether list of dois has been claimed by particular user
     def get_claims(current_user, dois)
       return {} unless current_user.present? && current_user.orcid.present? && dois.present?
@@ -18,7 +19,7 @@ module Sinatra
 
     def merge_claims(items, claims)
       items.map do |item|
-        claim = Array(claims).find { |c| c.fetch('attributes', {}).fetch('doi', "claim") == item.fetch('attributes', {}).fetch('doi', "item") } || {}
+        claim = Array(claims).find { |c| c.fetch('attributes', {}).fetch('doi', "claim").end_with?(item.fetch('attributes', {}).fetch('doi', "item")) } || {}
         item["attributes"]["claim-status"] = claim.fetch('attributes', {}).fetch('state', 'none')
         item
       end
