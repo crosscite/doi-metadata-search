@@ -23,7 +23,7 @@ gem "sanitize"
 gem "rake"
 gem "namae"
 gem "gon-sinatra"
-gem "git", "~> 1.5"
+gem "git", "~> 1.13"
 gem "logstash-logger", "~> 0.26.1"
 gem 'crawler_detect'
 
