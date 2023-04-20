@@ -1,6 +1,18 @@
 .header{id: "navtop"}
   .navbar.navbar-default.navbar-static-top{role: "navigation"}
     .container-fluid
+      .panel-danger
+        .panel-heading
+          The DataCite Search service will be discontinued on 
+          %strong
+            June 1, 2023. 
+          All the functionalities of DataCite Search are now available in
+          %a{:href => "https://commons.datacite.org"}
+            DataCite Commons
+          \. If you have any questions, please contact
+          %a{:href => "mailto:support@datacite.org"}
+            support@datacite.org
+          \.
       .navbar-header
         %button.navbar-toggle{type: 'button', data: { toggle: "collapse", target: ".navbar-collapse"}}
           %span.sr-only Toggle Navigation
